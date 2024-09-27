@@ -1,0 +1,12 @@
+
+/*Begin stuk Richard */
+.carouselImg {
+    width: auto;
+    height: 350px;
+}
+
+#carouselImgSliderContainer {
+    display: flex;
+}
+
+/*Einde stuk Richard*/
