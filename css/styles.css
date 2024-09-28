@@ -4,6 +4,38 @@ body {
     margin-right: 15%;
 }
 
+.backgroundImages {
+    position: absolute;
+    z-index: -1;
+    opacity: 85%;
+    top: 120px;
+}
+
+.uspTable {
+    background-color: #dcd3c2;
+    position: relative;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-radius: 15px;
+}
+
+table, th, td {
+    border: 3px solid #b3ad98;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+.tableImg {
+    width: auto;    
+    height: 100px;
+    border-radius: 50%;
+}
+
 /*Begin stuk Richard */
 /*koptekst*/
 #kopTekst {
@@ -12,6 +44,7 @@ body {
     font-size: 80px;
     font-weight: 500;
     text-shadow: #3a3b33 1px 1px 1px ;
+    margin-right: 25%;
 }
 
 .headerPTekst {
@@ -19,6 +52,7 @@ body {
     color: #cc9c4e;
     font-size: 20px;
     text-shadow: #3a3b33 1px 1px 1px ;
+    margin-right: 60%;
 }
 
 .heading1Tekst {
@@ -41,6 +75,8 @@ body {
     max-width: 1300px;
     margin: 5px;
     overflow: auto;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .carouselImgBox {
@@ -49,6 +85,8 @@ body {
     margin-right: 15px;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    border: 3px solid #b3ad98;
+    border-radius: 20px;
 }
 
 .carouselImg {
@@ -62,6 +100,8 @@ body {
 .imgContent {
     width: 250px;
     margin-left: 10px;
+    border-top: 3px solid #b3ad98;
+    border-radius: 10%;
 }
 
 
