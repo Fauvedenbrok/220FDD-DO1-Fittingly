@@ -1,26 +1,69 @@
 /*Begin stuk Richard */
 #partnerPaginaBody {
   background-color: #215550;
-  margin-left: 15%;
-  margin-right: 15%;
-  width: 1080px;
+  margin: auto;
+  max-width: 2560px;
+}
+
+#totPlaatje {
+  border: #ceee00 solid 3px;
+  padding-bottom: 265px;
+}
+
+.totPlaatje0,
+.totPlaatje2,
+.totPlaatje3,
+.totPlaatje4 {
+  border: #ff0000 solid 3px;
+}
+
+/*Header*/
+.totPlaatje0 {
+  width: 2650px;
+  height: 200px;
+  background-color: #215550;
+}
+
+.totPlaatje2 {
+  margin-top: -480px;
+  background-color: #215550;
+  padding-top: 200px;
 }
 
 .backgroundImgDiv {
-    height: auto;
-    width: 1080p;
+  height: auto;
+  width: 100%;
 }
 
 #backgroundImg {
   position: absolute;
   z-index: -1;
   opacity: 85%;
-  top: 120px;
-  width: 100%;
+  width: 2560px;
   height: auto;
-  margin-left: -15%;
-  margin-right: -15%;
-  overflow: hidden;
+  top: -100px;
+}
+
+/*Koptekst op partnerpagina*/
+#kopTekst {
+  color: #cc9c4e;
+  font-family: "Playfair Display", serif;
+  font-size: 80px;
+  font-weight: 500;
+  text-shadow: #3a3b33 1px 1px 1px;
+  margin-right: 40%;
+  margin-top: 10%;
+  padding-top: 40px;
+  margin-left: 10%;
+}
+
+.headerPTekst {
+  font-family: "PlayFair Display", serif;
+  color: white;
+  font-size: 20px;
+  text-shadow: #3a3b33 1px 1px 1px;
+  margin-right: 45%;
+  margin-left: 10%;
 }
 
 /*USP Table op partnerpagina*/
@@ -31,10 +74,12 @@
   margin-left: 25%;
   border-radius: 15px;
   margin-bottom: 120px;
-  margin-top: 50px;
+  margin-top: 370px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 3px solid #b3ad98;
   border-radius: 15px;
   padding: 10px;
@@ -52,37 +97,52 @@ table {
   border-radius: 50%;
 }
 
-/*Koptekst op partnerpagina*/
-#kopTekst {
-  color: #cc9c4e;
-  font-family: "Playfair Display", serif;
-  font-size: 80px;
-  font-weight: 500;
-  text-shadow: #3a3b33 1px 1px 1px;
-  margin-right: 25%;
-}
-
-.headerPTekst {
-  font-family: "PlayFair Display", serif;
-  color: #cc9c4e;
-  font-size: 20px;
-  text-shadow: #3a3b33 1px 1px 1px;
-  margin-right: 60%;
-}
-
+/*Grote tekst heading*/
 .heading1Tekst {
-  color: #cc9c4e;
+  color: white;
   font-family: "Playfair Display", serif;
   font-size: 60px;
-  margin-bottom: 0;
+  margin-left: 10%;
+  margin-top: 100px;
 }
 
 .heading2Tekst {
   font-family: "PlayFair Display", serif;
   color: #cc9c4e;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 200;
   text-shadow: #3a3b33 1px 1px 1px;
+  margin-left: 10%;
+}
+
+.heading3Tekst {
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+}
+
+.paragraph2Tekst {
+  margin-left: 10%;
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  margin-right: 40%;
+}
+
+#partnersTekst {
+  margin-top: 600px;
+  text-align: center;
+}
+
+/*Image onder grote titel*/
+#deel2Img {
+  position: absolute;
+  margin-left: 1800px;
+  margin-top: -650px;
+  height: 1000px;
+  width: auto;
+  border-top-left-radius: 300px;
+  border-bottom-right-radius: 300px;
 }
 
 /*Carousel/imageslider op partnerpagina*/
@@ -91,8 +151,8 @@ table {
   max-width: 1300px;
   margin: 5px;
   overflow: auto;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 25%;
+  margin-right: 20%;
 }
 
 .carouselImgBox {
@@ -143,33 +203,33 @@ table {
 }
 
 .afsluitingsTekst {
-    text-align: center;
+  text-align: center;
 }
 
 /*Aanmeldknop onderaan de partnerpagina*/
 .aanmeldButton {
-    font-family: "PlayFair Display", serif;
-    background-color: #CC9C4E;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 3px solid #CC9C4E;
-    border-radius: 5px;
-    font-size: 20px;
+  font-family: "PlayFair Display", serif;
+  background-color: #cc9c4e;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 3px solid #cc9c4e;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .aanmeldButtonPressed {
-    font-family: "PlayFair Display", serif;
-    background-color: #b3ad98;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 3px solid #b3ad98;
-    border-radius: 5px;
-    font-size: 20px;
-    box-shadow: #3a3b33 5px 5px 5px 5px;
+  font-family: "PlayFair Display", serif;
+  background-color: #b3ad98;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 3px solid #b3ad98;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: #3a3b33 5px 5px 5px 5px;
+  margin-bottom: 20px;
 }
-
-
 
 /*Einde stuk Richard*/
