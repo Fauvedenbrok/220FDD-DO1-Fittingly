@@ -1,4 +1,7 @@
-body {
+
+
+/*Begin stuk Richard */
+#partnerPaginaBody {
     background-color: #215550;
     margin-left: 15%;
     margin-right: 15%;
@@ -11,12 +14,16 @@ body {
     top: 120px;
 }
 
+
+/*USP Table op partnerpagina*/
 .uspTable {
     background-color: #dcd3c2;
     position: relative;
     margin-right: 25%;
     margin-left: 25%;
     border-radius: 15px;
+    margin-bottom: 120px;
+    margin-top: 50px;
 }
 
 table, th, td {
@@ -28,6 +35,7 @@ table, th, td {
 
 table {
     width: 100%;
+    box-shadow: 5px 5px 5px 1px #b3ad98;
 }
 
 .tableImg {
@@ -36,8 +44,8 @@ table {
     border-radius: 50%;
 }
 
-/*Begin stuk Richard */
-/*koptekst*/
+
+/*Koptekst op partnerpagina*/
 #kopTekst {
     color: #cc9c4e;
     font-family: "Playfair Display", serif;
@@ -70,6 +78,8 @@ table {
     text-shadow: #3a3b33 1px 1px 1px ;
 }
 
+
+/*Carousel/imageslider op partnerpagina*/
 #carouselImgSliderContainer {
     display: flex;
     max-width: 1300px;
@@ -105,7 +115,7 @@ table {
 }
 
 
-/*Partner logos*/
+/*Partner logos op partnerpagina*/
 #logoBassinsin {
     border-radius: 15%;
 }
