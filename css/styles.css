@@ -1,12 +1,81 @@
+body {
+    background-color: #215550;
+    margin-left: 15%;
+    margin-right: 15%;
+}
 
 /*Begin stuk Richard */
-.carouselImg {
-    width: auto;
-    height: 350px;
+/*koptekst*/
+#kopTekst {
+    color: #cc9c4e;
+    font-family: "Playfair Display", serif;
+    font-size: 80px;
+    font-weight: 500;
+    text-shadow: #3a3b33 1px 1px 1px ;
+}
+
+.headerPTekst {
+    font-family: "PlayFair Display", serif;
+    color: #cc9c4e;
+    font-size: 20px;
+    text-shadow: #3a3b33 1px 1px 1px ;
+}
+
+.heading1Tekst {
+    color: #cc9c4e;
+    font-family: "Playfair Display", serif;
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+.heading2Tekst {
+    font-family: "PlayFair Display", serif;
+    color: #cc9c4e;
+    font-size: 20px;
+    font-weight: 200;
+    text-shadow: #3a3b33 1px 1px 1px ;
 }
 
 #carouselImgSliderContainer {
     display: flex;
+    max-width: 1300px;
+    margin: 5px;
+    overflow: auto;
+}
+
+.carouselImgBox {
+    max-width: 950px;
+    margin-left: 10px;
+    margin-right: 15px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.carouselImg {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 10px;
+    scroll-snap-align: center;
+}
+
+.imgContent {
+    width: 250px;
+    margin-left: 10px;
+}
+
+
+/*Partner logos*/
+#logoBassinsin {
+    border-radius: 15%;
+}
+
+#logoCaunhing {
+    border-radius: 35%;
+}
+
+#logoNomadThread {
+    border-radius: 50%;
 }
 
 /*Einde stuk Richard*/
