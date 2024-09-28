@@ -1,131 +1,175 @@
-
-
 /*Begin stuk Richard */
 #partnerPaginaBody {
-    background-color: #215550;
-    margin-left: 15%;
-    margin-right: 15%;
+  background-color: #215550;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 1080px;
 }
 
-.backgroundImages {
-    position: absolute;
-    z-index: -1;
-    opacity: 85%;
-    top: 120px;
+.backgroundImgDiv {
+    height: auto;
+    width: 1080p;
 }
 
+#backgroundImg {
+  position: absolute;
+  z-index: -1;
+  opacity: 85%;
+  top: 120px;
+  width: 100%;
+  height: auto;
+  margin-left: -15%;
+  margin-right: -15%;
+  overflow: hidden;
+}
 
 /*USP Table op partnerpagina*/
 .uspTable {
-    background-color: #dcd3c2;
-    position: relative;
-    margin-right: 25%;
-    margin-left: 25%;
-    border-radius: 15px;
-    margin-bottom: 120px;
-    margin-top: 50px;
+  background-color: #dcd3c2;
+  position: relative;
+  margin-right: 25%;
+  margin-left: 25%;
+  border-radius: 15px;
+  margin-bottom: 120px;
+  margin-top: 50px;
 }
 
 table, th, td {
-    border: 3px solid #b3ad98;
-    border-radius: 15px;
-    padding: 10px;
-    text-align: center;
+  border: 3px solid #b3ad98;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
 }
 
 table {
-    width: 100%;
-    box-shadow: 5px 5px 5px 1px #b3ad98;
+  width: 100%;
+  box-shadow: 5px 5px 5px 1px #b3ad98;
 }
 
 .tableImg {
-    width: auto;    
-    height: 100px;
-    border-radius: 50%;
+  width: auto;
+  height: 100px;
+  border-radius: 50%;
 }
-
 
 /*Koptekst op partnerpagina*/
 #kopTekst {
-    color: #cc9c4e;
-    font-family: "Playfair Display", serif;
-    font-size: 80px;
-    font-weight: 500;
-    text-shadow: #3a3b33 1px 1px 1px ;
-    margin-right: 25%;
+  color: #cc9c4e;
+  font-family: "Playfair Display", serif;
+  font-size: 80px;
+  font-weight: 500;
+  text-shadow: #3a3b33 1px 1px 1px;
+  margin-right: 25%;
 }
 
 .headerPTekst {
-    font-family: "PlayFair Display", serif;
-    color: #cc9c4e;
-    font-size: 20px;
-    text-shadow: #3a3b33 1px 1px 1px ;
-    margin-right: 60%;
+  font-family: "PlayFair Display", serif;
+  color: #cc9c4e;
+  font-size: 20px;
+  text-shadow: #3a3b33 1px 1px 1px;
+  margin-right: 60%;
 }
 
 .heading1Tekst {
-    color: #cc9c4e;
-    font-family: "Playfair Display", serif;
-    font-size: 60px;
-    margin-bottom: 0;
+  color: #cc9c4e;
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+  margin-bottom: 0;
 }
 
 .heading2Tekst {
-    font-family: "PlayFair Display", serif;
-    color: #cc9c4e;
-    font-size: 20px;
-    font-weight: 200;
-    text-shadow: #3a3b33 1px 1px 1px ;
+  font-family: "PlayFair Display", serif;
+  color: #cc9c4e;
+  font-size: 20px;
+  font-weight: 200;
+  text-shadow: #3a3b33 1px 1px 1px;
 }
-
 
 /*Carousel/imageslider op partnerpagina*/
 #carouselImgSliderContainer {
-    display: flex;
-    max-width: 1300px;
-    margin: 5px;
-    overflow: auto;
-    margin-left: 10%;
-    margin-right: 10%;
+  display: flex;
+  max-width: 1300px;
+  margin: 5px;
+  overflow: auto;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .carouselImgBox {
-    max-width: 950px;
-    margin-left: 10px;
-    margin-right: 15px;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    border: 3px solid #b3ad98;
-    border-radius: 20px;
+  max-width: 950px;
+  margin-left: 10px;
+  margin-right: 15px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  border: 3px solid #b3ad98;
+  border-radius: 20px;
+  padding: 15px;
 }
 
 .carouselImg {
-    width: 250px;
-    height: 250px;
-    margin: 10px;
-    border-radius: 10px;
-    scroll-snap-align: center;
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .imgContent {
-    width: 250px;
-    margin-left: 10px;
-    border-top: 3px solid #b3ad98;
-    border-radius: 10%;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  width: 250px;
+  border-top: 3px solid #b3ad98;
+  border-radius: 10%;
+  background-color: #b3ad98;
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 /*Partner logos op partnerpagina*/
 #logoBassinsin {
-    border-radius: 15%;
+  border-radius: 15%;
 }
 
 #logoCaunhing {
-    border-radius: 35%;
+  border-radius: 35%;
 }
 
 #logoNomadThread {
-    border-radius: 50%;
+  border-radius: 50%;
 }
+
+.afsluitingsTekst {
+    text-align: center;
+}
+
+/*Aanmeldknop onderaan de partnerpagina*/
+.aanmeldButton {
+    font-family: "PlayFair Display", serif;
+    background-color: #CC9C4E;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 3px solid #CC9C4E;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.aanmeldButtonPressed {
+    font-family: "PlayFair Display", serif;
+    background-color: #b3ad98;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 3px solid #b3ad98;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: #3a3b33 5px 5px 5px 5px;
+}
+
+
 
 /*Einde stuk Richard*/
