@@ -10,14 +10,19 @@
 
 <body>
 
-<header></header>
+<header include-header="header.html"></header>
 
 <main>
     <h2>Dit is een Test!</h2>
 </main>
 
-<footer></footer>
+<footer include-footer="footer.html"></footer>
 
     <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("include-header");
+        includeHTML("include-footer");
+
+    </script>
 </body>
 </html>
