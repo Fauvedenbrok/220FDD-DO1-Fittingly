@@ -2,7 +2,7 @@
 #partnerPaginaBody {
   background-color: #215550;
   margin: auto;
-  max-width: 2560px;
+  max-width: auto;
 }
 
 #totPlaatje {
@@ -10,6 +10,7 @@
   padding-bottom: 265px;
 }
 
+/*De verschillende divs om aan te duiden waar alles in staat*/
 .totPlaatje0,
 .totPlaatje2,
 .totPlaatje3,
@@ -19,7 +20,7 @@
 
 /*Header*/
 .totPlaatje0 {
-  width: 2650px;
+  width: auto;
   height: 200px;
   background-color: #215550;
 }
@@ -137,9 +138,9 @@ table {
 /*Image onder grote titel*/
 #deel2Img {
   position: absolute;
-  margin-left: 1800px;
+  margin-left: 60%;
   margin-top: -650px;
-  height: 1000px;
+  height: 800px;
   width: auto;
   border-top-left-radius: 300px;
   border-bottom-right-radius: 300px;
