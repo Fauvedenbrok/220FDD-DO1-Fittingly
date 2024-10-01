@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/contact.css"
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
+    <header include-header="header.html"></header>
+    <div class="background-container"></div>
+    <div class="content"></div>
     <h1>Contact</h1>
+    <p class="para">Neem contact op met één van onze representatives om te kijken welke mogelijkheden Fittingly jouw bedrijf
+        kan bieden.</p>
     <form>
-        <label for="naam">Naam:</label><br>
-        <input type="text" id="naam" name="naam" required><br><br>
-        
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="onderwerp">Onderwerp:</label><br>
-        <input type="text" id="onderwerp" name="onderwerp"><br><br>
+        <label for="naam">Naam:</label>
+        <input type="tekst" id="naam" placeholder="Naam">
+        <small class="error"></small>
 
-        <input type="checkbox" id="partner" name="partner">
-        <label for="partner"> Ik wil partner worden</label><br><br>
-        
-        <label for="bericht">Bericht:</label><br>
-        <textarea id="bericht" name="bericht" rows="4" cols="50" required></textarea><br><br>
-        
-        <input type="submit" value="Verzenden">
+        <label for="bedrijf">Bedrif:</label>
+        <input type="tekst" id="bedrijf" placeholder="Bedrijf">
+        <small class="error"></small>
+
+        <label for="email">E-mailadres:</label>
+        <input type="tekst" id="email" placeholder="E-mailadres">
+        <small class="error"></small>
+
+        <label for="telefoonnummer">Telefoonnummer:</label>
+        <input type="tekst" id="telefoonnummer" placeholder="Telefoonnummer">
+        <small class="error"></small>
+
+        <label for="bericht">Bericht:</label>
+        <textarea type="tekst" id="bericht" placeholder="Bericht" rows="6"></textarea>
+        <small class="error"></small>
+
+        <div class="center">
+            <input type="verzenden" value="Verzenden">
+            <p id="verzonden"></p>
+        </div>
+    </div>
     </form>
 
     <script src="/contact.js"></script>
 </body>
+
 </html>
