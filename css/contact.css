@@ -27,49 +27,30 @@ body {
   width: 100%; /* Bedekt de volledige breedte van de container */
   height: 100%; /* Bedekt de volledige hoogte van de container */
   background-color: rgba(0, 0, 0, 0.8); /* Zwart met 80% dekking */
-  z-index: 1; /* Zorgt ervoor dat de overlay boven de achtergrondafbeelding ligt */
+  z-index: 0; /* Zorgt ervoor dat de overlay boven de achtergrondafbeelding ligt */
 }
 
-/* Inhoud die boven de overlay komt */
-.content {
-    position: relative; /* Zorgt ervoor dat de inhoud boven de overlay wordt weergegeven */
-    z-index: 2; /* Hoger dan de overlay om ervoor te zorgen dat de tekst zichtbaar is */
-    color: white; /* Tekstkleur */
-    text-align: center; /* Centreert de tekst */
-  }
-
-form {
+.form-container {
+    position: relative; /* Hiermee kan je de z-index gebruiken */
     max-width: 550px;
     width: 90%;
     background: #B3AD98;
-    margin: 17vh auto 0 auto;
+    margin: -20vh auto 0 auto;
     padding: 40px;
     border-radius: 6px;
     box-sizing: border-box;
+    z-index: index 10;
 }
 
 h1 {
     position: absolute;
-    top: 15px;
+    top: 400px;
     left: 36%;
     transform: translateX(-50%); 
     margin: 0;
     color: #cc9c4e;
     font-family: "Playfair Display", serif;
     font-size: 45px;
-    font-weight: 500;
-    text-shadow: #3a3b33 1px 1px 1px;
-}
-
-p [class="para"] {
-    position: absolute;
-    top: 60px;
-    left: 36%;
-    transform: translateX(-8%); 
-    margin: 0;
-    color: #DCD3C2B2
-    font-family: montserrat;
-    font-size: 16px;
     font-weight: 400;
     text-shadow: #3a3b33 1px 1px 1px;
 }
@@ -88,19 +69,10 @@ input, textarea {
     border: none;
     border-bottom: 1px solid #d3d3d3;
     border-radius: 3px;
-
 }
 
 input[type="tekst"] :focus, textarea:focus {
     border-bottom: 1px solid #1A3030;
-}
-
-textarea::-webkit-scrollbar {
-    width: 4px;
-}
-
-textarea::-webkit-scrollbar-thumb {
-    background-color: #1A3030;
 }
 
 .center {
@@ -113,4 +85,19 @@ input[type="verzenden"] {
     max-width: 300px;
     text-align: center;
     background: #cc9c4e;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.error {
+    color:red;
+}
+
+.error-border {
+    border-bottom: 1px solid red;
+}
+
+#succes {
+    color: #28A745;
 }

@@ -13,37 +13,44 @@
     <div class="background-container"></div>
     <div class="content"></div>
     <h1>Contact</h1>
-    <p class="para">Neem contact op met één van onze representatives om te kijken welke mogelijkheden Fittingly jouw bedrijf
+    <p class="para">Neem contact op met één van onze representatives om te kijken welke mogelijkheden Fittingly jouw
+        bedrijf
         kan bieden.</p>
-    <form>
-        <label for="naam">Naam:</label>
-        <input type="tekst" id="naam" placeholder="Naam">
-        <small class="error"></small>
+    <div class="form-container">
+        <form>
+            <label for="naam">Naam:</label>
+            <input type="tekst" id="naam" placeholder="Naam">
+            <small class="error"></small>
 
-        <label for="bedrijf">Bedrif:</label>
-        <input type="tekst" id="bedrijf" placeholder="Bedrijf">
-        <small class="error"></small>
+            <label for="bedrijf">Bedrijf:</label>
+            <input type="tekst" id="bedrijf" placeholder="Bedrijf">
+            <small class="error"></small>
 
-        <label for="email">E-mailadres:</label>
-        <input type="tekst" id="email" placeholder="E-mailadres">
-        <small class="error"></small>
+            <label for="email">E-mailadres:</label>
+            <input type="tekst" id="email" placeholder="E-mailadres">
+            <small class="error"></small>
 
-        <label for="telefoonnummer">Telefoonnummer:</label>
-        <input type="tekst" id="telefoonnummer" placeholder="Telefoonnummer">
-        <small class="error"></small>
+            <label for="telefoonnummer">Telefoonnummer:</label>
+            <input type="tekst" id="telefoonnummer" placeholder="Telefoonnummer">
+            <small class="error"></small>
 
-        <label for="bericht">Bericht:</label>
-        <textarea type="tekst" id="bericht" placeholder="Bericht" rows="6"></textarea>
-        <small class="error"></small>
+            <label for="bericht">Bericht:</label>
+            <textarea type="tekst" id="bericht" placeholder="Bericht" rows="6"></textarea>
+            <small class="error"></small>
 
-        <div class="center">
-            <input type="verzenden" value="Verzenden">
-            <p id="verzonden"></p>
-        </div>
+            <div class="center">
+                <input type="verzenden" value="Verzenden">
+                <p id="verzonden"></p>
+            </div>
     </div>
     </form>
-
+    </div>
+    <footer include-footer="footer.html"></footer>
     <script src="/contact.js"></script>
+    <script>
+        includeHTML("include-header");
+        includeHTML("include-footer");
+    </script>
 </body>
 
 </html>
