@@ -79,9 +79,9 @@ body {
 }
 
 .contact-info h2 {
-    margin-bottom: 10px;
-    margin-top: -580px;
-    margin-left: 470px;
+    margin-bottom: 20px;
+    margin-top: -690px;
+    margin-left: 450px;
     color: #1A3030;
   }
   
@@ -89,7 +89,8 @@ body {
     margin: 5px 0;
     margin-bottom: 10px;
     margin-top: -10px;
-    margin-left: 470px;
+    margin-left: 490px;
+    margin-block: 40px;
     width: 300px;
     color: #1A3030;
     white-space: 100px;
@@ -158,6 +159,8 @@ textarea:focus {
 }
 
 .center {
+    margin-left: 150px;
+    width: 400px;
     text-align: center;
 }
 
