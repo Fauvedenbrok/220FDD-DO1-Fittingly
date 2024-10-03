@@ -5,14 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-    <script src="js/scripts.js"></script>
+    <header include-header="header.html"></header>
+    <div class="background-container"></div>
+    <div class="content"></div>
+    <h1>Contact</h1>
+    <p id="para">Neem contact op met één van onze representatives om te kijken welke mogelijkheden Fittingly jouw
+        bedrijf
+        kan bieden.</p>
+    <div class="form-and-info">
+        <div class="form-container">
+            <form>
+                <div class="form-content">
+                    <div class="input-fields">
+                        <label for="naam">Naam:</label>
+                        <input type="tekst" id="naam" placeholder="Naam">
+                        <small class="error"></small>
+
+                        <label for="bedrijf">Bedrijf:</label>
+                        <input type="tekst" id="bedrijf" placeholder="Bedrijf">
+                        <small class="error"></small>
+
+                        <label for="email">E-mailadres:</label>
+                        <input type="tekst" id="email" placeholder="E-mailadres">
+                        <small class="error"></small>
+
+                        <label for="tel">Telefoonnummer:</label>
+                        <input type="tekst" id="tel" placeholder="Telefoonnummer">
+                        <small class="error"></small>
+
+                        <label for="bericht">Bericht:</label>
+                        <textarea type="tekst" id="bericht" placeholder="Bericht" rows="12"></textarea>
+                        <small class="error"></small>
+
+                        <div class="center">
+                            <input type="verzenden" value="Verzenden">
+                            <p id="verzonden"></p>
+                        </div>
+
+                        <div class="contact-info">
+                            <h2>Contactinformatie</h2>
+                            <p>Adres: Straat 123, Breda</p>
+                            <p>Telefoon: +31631506081</p>
+                            <p>Email: info@fittinly.nl</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+    <footer include-footer="footer.html"></footer>
+    <script src="/contact.js"></script>
+    <script>
+        includeHTML("include-header");
+        includeHTML("include-footer");
+    </script>
 </body>
 
 </html>
