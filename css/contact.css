@@ -53,7 +53,6 @@ body {
     padding: 40px;
     border-radius: 6px;
     box-sizing: border-box;
-    z-index: index 10;
 }
 
 /* Form content: inputvelden + contactinformatie */
@@ -87,20 +86,22 @@ body {
   
   .contact-info p {
     margin: 5px 0;
-    margin-bottom: 10px;
-    margin-top: -10px;
-    margin-left: 490px;
+    margin-left: 450px;
     margin-block: 40px;
     width: 300px;
     color: #1A3030;
-    white-space: 100px;
   }
+
+  #usp1, #usp2, #usp3 {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+}
 
 h1 {
     position: absolute;
     top: 400px;
-    left: 28%;
-    transform: translateX(-50%);
+    left: 22%;
     margin: 0;
     color: #cc9c4e;
     font-family: "Playfair Display", serif;
@@ -134,7 +135,6 @@ input[type="tel"] {
   width: 50%; /* Maak de inputvelden smaller (bijv. 60% van de container) */
   padding: 8px;
   margin-bottom: 15px;
-  box-sizing: 
 }
 
 textarea#bericht {
@@ -153,7 +153,7 @@ textarea {
     border-radius: 3px;
 }
 
-input[type="tekst"] :focus,
+input[type="text"] :focus,
 textarea:focus {
     border-bottom: 1px solid #1A3030;
 }
@@ -164,7 +164,7 @@ textarea:focus {
     text-align: center;
 }
 
-input[type="verzenden"] {
+input[type="submit"] {
     margin-top: 30px;
     width: 90%;
     max-width: 300px;
