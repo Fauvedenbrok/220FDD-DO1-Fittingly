@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #1A3030;
+    background-color: #215550;
 }
 
 /* Container met de achtergrondafbeelding */
@@ -96,7 +96,7 @@ body {
     white-space: 100px;
   }
 
-h1 {
+.h1-contact {
     position: absolute;
     top: 400px;
     left: 28%;
@@ -134,7 +134,7 @@ input[type="tel"] {
   width: 50%; /* Maak de inputvelden smaller (bijv. 60% van de container) */
   padding: 8px;
   margin-bottom: 15px;
-  box-sizing: 
+  box-sizing: /*Placeholder*/
 }
 
 textarea#bericht {

@@ -1,16 +1,33 @@
-header, footer {
+header,
+footer {
         background-color: #215550;
         margin: auto;
         max-width: 2560px;
+        overflow: hidden;
+        padding: 20px 10px;
 }
 
+.flex-container {
+        display: flex;
+        flex-direction: row;
+}
 
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+        .flex-container {
+                flex-direction: column;
+        }
+}
 
+nav > button {
+        background-color: #f1f1f1;
+        margin: 5px;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+}
 
-
-
-
-
-
-
-
+.main-title {
+        font-size: large;
+        /* placeholder */
+}
