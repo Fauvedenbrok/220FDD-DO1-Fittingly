@@ -1,0 +1,187 @@
+body {
+    background-color: #1A3030;
+    background-image: url('./your-background-image.jpg'); /* Voeg hier je achtergrondafbeelding toe */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #DCD3C2;
+    font-family: Raleway, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; /* Maximaliseren breedte van de container */
+    padding: 20px;
+}
+
+.page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px; /* Ruimte rondom de tekstinhoud */
+}
+
+h1 {
+    color: #DCD3C2;
+    font-size: 2.5rem; /* Flexibele eenheid */
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #CC9C4E;
+    font-weight: normal;
+    font-size: 2rem; /* Flexibele eenheid */
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.image-right, .image-left {
+    max-width: 45%; /* Maximaliseren breedte van afbeeldingen */
+    height: auto;
+    margin-top: 20px;
+}
+
+.image-left {
+    float: left;
+}
+
+.slider-container {
+    overflow: hidden;
+    width: 100vw;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    /* Voeg dit toe om te zorgen dat de slider geen onverwachte ruimte heeft */
+    width: calc(100% + 12px); /* Corrigeer de breedte om marges van de afbeeldingen te compenseren */
+}
+
+.slider-image {
+    width: 300px; /* Pas aan indien nodig */
+    height: 400px; /* Pas aan indien nodig */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0px 7px 4px 0px #00000059;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 6px; /* Ruimte tussen afbeeldingen */
+    /* Voeg deze regel toe om ze allemaal netjes uit te lijnen */
+    flex-shrink: 0; /* Zorg ervoor dat de afbeeldingen niet krimpen */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px; /* Ruimte boven de knoppen */
+}
+
+.hexagon {
+    width: 100px; /* Pas de breedte aan */
+    height: 60px; /* Pas de hoogte aan */
+    background-color: #CC9C4E; /* Gouden kleur */
+    color: white;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    margin: 0 80px; /* Ruimte tussen knoppen */
+    transition: transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent; /* Halve breedte */
+    border-right: 50px solid transparent; /* Halve breedte */
+    border-bottom: 30px solid #CC9C4E; /* Gouden kleur */
+    position: absolute;
+    left: 0;
+}
+
+.hexagon::before {
+    bottom: 100%; /* Bovenkant van de knop */
+}
+
+.hexagon::after {
+    top: 100%; /* Onderkant van de knop */
+    border-bottom: none; /* Geen border bottom */
+    border-top: 30px solid #CC9C4E; /* Gouden kleur */
+}
+
+.hexagon:hover {
+    transform: translateY(-3px); /* Kleine omhoog-beweging bij hover */
+}
+
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #CC9C4E; /* Gouden kleur voor de knop */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s; /* Hover effect */
+}
+
+.mode-toggle:hover {
+    transform: scale(1.05); /* Vergroot de knop bij hover */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .image-right, .image-left {
+        max-width: 90%; /* Volledige breedte op kleinere schermen */
+    }
+
+    h1 {
+        font-size: 2rem; /* Kleinere kop op kleinere schermen */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Kleinere subtitel op kleinere schermen */
+    }
+
+    .hexagon {
+        width: 80px; /* Kleinere hexagon knoppen op kleinere schermen */
+        height: 48px; /* Kleinere hexagon knoppen op kleinere schermen */
+    }
+}
+
+/* Light mode styling */
+.light-mode {
+    background-color: #DCD3C2; /* Achtergrondkleur */
+    color: #3A3B33; /* Kleur voor tekst */
+}
+
+.light-mode h1 {
+    color: #1A3030; /* Kleur voor h1 in light mode */
+}
+
+.light-mode h2 {
+    color: #CC9C4E; /* Gouden kleur voor h2 in light mode */
+}
+
+.light-mode p {
+    color: #1A3030; /* Kleur voor p in light mode */
+}
