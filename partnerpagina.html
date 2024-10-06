@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
@@ -13,28 +12,17 @@
     />
   </head>
 
-  
-
-  <body id="partnerPaginaBody">
-    <!--Koptekst-->
-  <header include-header="header.html">  </header>
-    <div>
-      <h1 id="kopTekst">Duurzaam verhuren, Tijdloze elegantie</h1>
-      <p class="headerPTekst">
-        Sluit je aan bij Fittingly en geef je collectie een tweede leven. Bereik
-        een nieuwe doelgroep, verhoog je omzet en draag bij aan een duurzame
-        mode-industrie.
-      </p>
-    </div>
-
+  <body id="toggleDarkAndLight" class="darkMode">
     <!--Stuk van Richard begin-->
-    <main>
 
+    <button onclick="toggleDarkLight()">Click</button>
+
+    <main>
       <div id="totPlaatje">
         <div class="backgroundImgDiv">
           <img
             id="backgroundImg"
-            src="/Images/BackgroundImages/contactPagina.webp"
+            src="Images/BackgroundImages/contactPagina.webp"
             alt=""
           />
         </div>
@@ -56,21 +44,21 @@
               <th>
                 <img
                   class="tableImg"
-                  src="/Images/MensAIModels/mensBrownCoat.jpg"
+                  src="Images/MensAIModels/mensBrownCoat.jpg"
                   alt=""
                 />
               </th>
               <th>
                 <img
                   class="tableImg"
-                  src="/Images/WomensAIModels/womensBrownStraightVest.jpg"
+                  src="Images/WomensAIModels/womensBrownStraightVest.jpg"
                   alt=""
                 />
               </th>
               <th>
                 <img
                   class="tableImg"
-                  src="/Images/PartnerLogos/Caunhing.jpg"
+                  src="Images/PartnerLogos/Caunhing.jpg"
                   alt=""
                 />
               </th>
@@ -101,23 +89,21 @@
           </p>
           <img
             id="deel2Img"
-            src="/Images/MensAIModels/mensBrownCoat.jpg"
+            src="Images/MensAIModels/mensBrownCoat.jpg"
             alt="Mens Brown Long-Coat Model"
           />
         </div>
 
         <!--Carousel logos voor onze partners-->
         <div>
-          <h2 id="partnersTekst">
-            Deze partners gingen je al voor!
-          </h2>
+          <h2 id="partnersTekst">Deze partners gingen je al voor!</h2>
         </div>
         <div id="carouselImgSliderContainer" class="carouselImgSlider">
           <div class="carouselImgBox">
             <img
               id="logoBassinsin"
               class="carouselImg"
-              src="/Images/PartnerLogos/Bassinsins.jpg"
+              src="Images/PartnerLogos/Bassinsins.jpg"
               alt="Mens Brown Coat"
             />
             <div class="imgContent">
@@ -134,7 +120,7 @@
             <img
               id="logoCaunhing"
               class="carouselImg"
-              src="/Images/PartnerLogos/Caunhing.jpg"
+              src="Images/PartnerLogos/Caunhing.jpg"
               alt="Mens Brown Jacket"
             />
             <div class="imgContent">
@@ -151,7 +137,7 @@
             <img
               id="logoDBH"
               class="carouselImg"
-              src="/Images/PartnerLogos/DBH.jpg"
+              src="Images/PartnerLogos/DBH.jpg"
               alt="Womens Brown Straight Vest"
             />
             <div class="imgContent">
@@ -168,7 +154,7 @@
             <img
               id="logoNomadThread"
               class="carouselImg"
-              src="/Images/PartnerLogos/Nomad Thread.jpg"
+              src="Images/PartnerLogos/Nomad Thread.jpg"
               alt="Womens Red Coat"
             />
             <div class="imgContent">
@@ -194,7 +180,7 @@
             optio? Ea, et. Voluptates, repellendus! Qui temporibus consequatur
             doloribus modi perspiciatis.
           </p>
-          <a href="/contactformulier.html"
+          <a href="contactformulier.html"
             ><button class="aanmeldButton" onclick="pushButton()">
               Aanmelden
             </button></a
@@ -204,20 +190,9 @@
 
       <!--Stuk van Richard einde-->
       <div class="totPlaatje4"></div>
-
     </main>
-
-    <footer>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque,
-      dolor molestiae? Amet, nisi. Quisquam tempore autem minus aperiam alias
-      non voluptatem eum quasi, possimus assumenda odio, ipsam sint amet quis!
-    </footer>
 
     <script src="js/partnerPaginaScripts.js"></script>
     <script src="js/scripts.js"></script>
-    <script>
-      includeHTML("include-header");
-      includeHTML("include-footer");
-    </script>
   </body>
 </html>
