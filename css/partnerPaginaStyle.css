@@ -1,4 +1,6 @@
 /*Begin stuk Richard */
+
+
 .darkMode {
   background-color: #215550;
   margin: auto;
@@ -8,7 +10,7 @@
 .lightMode {
   background-color: #DCD3C2;
   margin: auto;
-  max-width: auto;
+  max-width: 2560px;
 }
 
 

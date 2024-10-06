@@ -10,3 +10,6 @@ function includeHTML(source, dst) {
 }
 
 
+function toggleDarkLight {
+  
+}
