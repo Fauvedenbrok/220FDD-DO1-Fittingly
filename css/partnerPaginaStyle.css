@@ -2,7 +2,7 @@
 #partnerPaginaBody {
   background-color: #215550;
   margin: auto;
-  max-width: auto;
+  max-width: 2560px;
 }
 
 #totPlaatje {
@@ -33,14 +33,14 @@
 
 .backgroundImgDiv {
   height: auto;
-  width: 100%;
+  max-width: 2560px;
 }
 
 #backgroundImg {
   position: absolute;
   z-index: -1;
   opacity: 85%;
-  width: 2560px;
+  max-width: 2560px;
   height: auto;
   top: -100px;
 }
