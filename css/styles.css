@@ -12,7 +12,7 @@ footer {
         width: 100px;
 }
 
-.flex-container {
+.header-flexbox {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -62,3 +62,15 @@ nav > button {
         text-align: center;
         right: 20px;
 }
+
+footer {
+        background-color: #B3AD98;
+        max-width: 2560px;
+        max-height: 640px;
+}
+
+footer > hr {
+        width: 90%;
+
+}
+
