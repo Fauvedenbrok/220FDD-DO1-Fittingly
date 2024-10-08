@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Over Ons & Ons Doel</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="./css/onsdoelstyles.css">
 </head>
 
-<body style="background-image: url('./Images/onsdoelImages/background_dark.png');"></body>
+<body style="background-image: url('./Images/onsdoelImages/background_dark.png');">
+  <header></header>
+  <main>
     <!-- <button id="mode-toggle" class="mode-toggle">Light Mode</button> -->
     <div class="mainContainer">
         <div id="about" class="textOpmaak">
@@ -111,7 +114,13 @@
             </div>
         </div>
     </div>
-
+  </main>
+  <footer></footer>
+  <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer")
+    </script>
     <script src="./js/onsdoelscript.js"></script>
 </body>
 
