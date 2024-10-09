@@ -12,16 +12,7 @@
 <body>
 
 <header>
-    <div class="header-flexbox">
-        <a onclick="includeHTML('onsdoel.html', 'main')"><img class="header-logo" src="images/logo_fittingly_light.png" alt="Het logo van Fittingly"></a>
-        <h1 class="main-title">Fittingly</h1>
-    <nav>
-        <button><a onclick="includeHTML('onsdoel.html', 'main')">Home</a></button>
-        <button><a onclick="includeHTML('paskamer.html', 'main')">Paskamer</a></button>
-        <button><a onclick="includeHTML('partnerpagina.html', 'main')">Partners</a></button>
-        <button><a onclick="includeHTML('contact.html', 'main')">Contact</a></button>
-    </nav>
-    </div>
+    
 </header>
 <main>
     
@@ -45,7 +36,8 @@
 
     <script src="js/scripts.js"></script>
     <script>
-        includeHTML("onsdoel.html", "main");
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer")
     </script>
 
 </body>

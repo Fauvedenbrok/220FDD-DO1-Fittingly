@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Over Ons & Ons Doel</title>
+    <title>Homepagina</title>
     <link rel="stylesheet" href="./css/onsdoelstyles.css">
 </head>
 
-<body style="background-image: url('./Images/onsdoelImages/background_dark.png');"></body>
+<body style="background-image: url('./Images/onsdoelImages/background_dark.png');">
+  <header></header>
+  <main>
     <!-- <button id="mode-toggle" class="mode-toggle">Light Mode</button> -->
     <div class="mainContainer">
         <div id="about" class="textOpmaak">
@@ -30,7 +32,7 @@
                   src="./Images/onsdoelImages/Suit4.png" 
                   alt="Placeholder afbeelding" 
                   class="image-right"
-            />
+                />
         </div>
 
         <div class="slider-container">
@@ -74,10 +76,10 @@
               alt="Placeholder afbeelding"
               class="image-left"
             />
-            <div class="textOpmaak2">
-                <h1 class="heading4Tekst" style="text-align: left;">Grote Titel</h1>
-                <h2 class="heading5Tekst" style="text-align: left;">Ons Doel</h2>
-                  <p class ="paragraph4Tekst">
+        <div class="textOpmaak2">
+            <h1 class="heading4Tekst" style="text-align: left;">Grote Titel</h1>
+            <h2 class="heading5Tekst" style="text-align: left;">Ons Doel</h2>
+                <p class ="paragraph4Tekst">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
                     doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
                     veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -89,6 +91,7 @@
                       alt="USP1Light"
                       class="hexagon"
                     />
+                  </button>
                       <p class="gold-text">USP1</p>
                 </div>
                 <div class="usp-item">
@@ -111,7 +114,13 @@
             </div>
         </div>
     </div>
-
+  </main>
+  <footer></footer>
+  <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer")
+    </script>
     <script src="./js/onsdoelscript.js"></script>
 </body>
 

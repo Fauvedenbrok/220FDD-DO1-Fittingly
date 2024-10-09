@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="/css/styles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
   </head>
 
   <body>
     <!--Stuk van Richard begin-->
+    <header>
 
+    </header>
     <main>
       <div class="container">
         <div class="background-container">
@@ -27,8 +27,6 @@
             </p>
           </div>
         </div>
-
-        <!--Koptekst-->
 
 
         <!--De usp table-->
@@ -82,12 +80,58 @@
             </p>
             <img
               id="deel2Img"
-              src="Images/MensAIModels/mensBrownCoat.jpg"
+              src="/Images/onsdoelImages/image_man_woman.jpg"
               alt="Mens Brown Long-Coat Model"
             />
           </div>
 
+<div class="slider">
+	<div class="slide-track">
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Nomad Thread.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img class="slideimg" src="/Images/partnerLogos/DBH.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Caunhing.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Bassinsins.jpg" alt="" />
+		</div>
+
+    <!--Duplicate images, nodig om the infinite carousel mogelijk te maken. -->
+    <div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Nomad Thread.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/DBH.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Caunhing.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Bassinsins.jpg" alt="" />
+		</div>
+    <div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Nomad Thread.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/DBH.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Caunhing.jpg" alt="" />
+		</div>
+		<div class="slide">
+			<img  class="slideimg" src="/Images/partnerLogos/Bassinsins.jpg" alt="" />
+		</div>
+    
+  </div>
+</div>
+
+
           <!--Carousel logos voor onze partners-->
+          <!--
           <div>
             <h2 id="partnersTekst">Deze partners gingen je al voor!</h2>
           </div>
@@ -163,6 +207,7 @@
             </div>
           </div>
         </div>
+      -->
 
         <div class="totPlaatje3">
           <!--Aanmeldingknop onderaan de pagina met functie-->
@@ -186,8 +231,15 @@
         <div class="totPlaatje4"></div>
       </div>
     </main>
+    <footer></footer>
 
+    
     <script src="js/partnerPaginaScripts.js"></script>
     <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer");
+    </script>
+    <script src="/contact.js"></script>
   </body>
 </html>
