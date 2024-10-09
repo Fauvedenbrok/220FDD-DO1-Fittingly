@@ -25,6 +25,44 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(showNextImage, 3000);
 });
 
+const usp1LightImage = document.querySelector('img[alt="USP1Light"]');
+const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
+const usp3LightImage = document.querySelector('img[alt="USP3Light"]');
+
+usp1LightImage.addEventListener('click', function() {
+    const paragraphText = document.querySelector('.paragraph4Tekst');
+    
+    if (paragraphText) {
+        // Toggle de class 'gold-text' op de specifieke paragraaf
+        paragraphText.classList.toggle('color-1');
+        // Verwijder andere kleuren classes
+        paragraphText.classList.remove('color-2', 'color-3');
+    }
+});
+
+usp2LightImage.addEventListener('click', function() {
+    const paragraphText = document.querySelector('.paragraph4Tekst');
+    
+    if (paragraphText) {
+        // Toggle de class 'color-2' op de specifieke paragraaf
+        paragraphText.classList.toggle('color-2');
+        // Verwijder andere kleuren classes
+        paragraphText.classList.remove('color-1', 'color-3');
+    }
+});
+
+usp3LightImage.addEventListener('click', function() {
+    const paragraphText = document.querySelector('.paragraph4Tekst');
+    
+    if (paragraphText) {
+        // Toggle de class 'color-3' op de specifieke paragraaf
+        paragraphText.classList.toggle('color-3');
+        // Verwijder andere kleuren classes
+        paragraphText.classList.remove('color-1', 'color-2');
+    }
+});
+
+
 // Toggle Light/Dark mode
 // const modeToggleButton = document.getElementById('mode-toggle');
 // let isLightMode = false;
