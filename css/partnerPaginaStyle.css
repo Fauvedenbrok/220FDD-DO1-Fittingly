@@ -1,60 +1,51 @@
 /*Begin stuk Richard */
-
-
-.darkMode {
+body {
   background-color: #215550;
   margin: auto;
-  max-width: 2560px;
 }
 
-.lightMode {
-  background-color: #DCD3C2;
-  margin: auto;
-  max-width: 2560px;
-}
+/* Container met de achtergrondafbeelding */
+.background-container {
+  position: relative;
+  /* Zorgt ervoor dat de overlay er bovenop kan worden geplaatst */
+  height: 90vh;
+  /* Volledige hoogte van het venster */
+  background-image: url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.webp);
+  background-size: cover;
+  /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
+  background-position: center;
 
-
-#totPlaatje {
-  border: #ceee00 solid 3px;
-  padding-bottom: 265px;
-}
-
-/*De verschillende divs om aan te duiden waar alles in staat*/
-.totPlaatje0,
-.totPlaatje2,
-.totPlaatje3,
-.totPlaatje4 {
-  border: #ff0000 solid 3px;
-}
-
-/*Header*/
-.totPlaatje0 {
-  width: auto;
-  height: 200px;
-  background-color: #215550;
-}
-
-.totPlaatje2 {
-  margin-top: -480px;
-  background-color: #215550;
-  padding-top: 200px;
-}
-
-.backgroundImgDiv {
-  height: auto;
-  max-width: 2560px;
+  /* Centreert de afbeelding */
+  display: flex;
+  /* Voor flexbox-positionering */
+  justify-content: center;
+  /* Centreert de inhoud horizontaal */
+  align-items: center;
+  /* Centreert de inhoud verticaal */
 }
 
 #backgroundImg {
   position: absolute;
+  background-image: url('your-image-url.jpg');
+  background-size: cover; /* Ensures the image covers the full width */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Keeps the image fixed while scrolling */
+  width: 100%;
+  height: 100vh; /* Makes the background cover the entire viewport height */
+  margin: 0;
+  padding: 0;
   z-index: -1;
-  opacity: 85%;
-  max-width: 2560px;
-  height: auto;
-  top: -100px;
+  background-color: rgba(19, 30, 36, 0.8);
 }
 
 /*Koptekst op partnerpagina*/
+#kopTekst-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
 #kopTekst {
   color: #cc9c4e;
   font-family: "Playfair Display", serif;
@@ -77,7 +68,7 @@
 }
 
 /*USP Table op partnerpagina*/
-.uspTable {
+.uspTableContainer {
   background-color: #dcd3c2;
   position: relative;
   margin-right: 25%;
@@ -87,7 +78,7 @@
   margin-top: 370px;
 }
 
-table,
+#uspTable,
 th,
 td {
   border: 3px solid #b3ad98;
@@ -151,7 +142,7 @@ table {
 
 /*Image onder grote titel*/
 #deel2Img {
-  position: absolute;
+  position: relative;
   margin-left: 60%;
   margin-top: -650px;
   height: 800px;
