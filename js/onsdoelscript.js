@@ -97,10 +97,10 @@ const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
 const usp3LightImage = document.querySelector('img[alt="USP3Light"]');
 
 usp1LightImage.addEventListener('click', function() {
-    const paragraphText = document.querySelector('.paragraph4Tekst');
+    const paragraphText = document.querySelector('.paragraph-tekst4');
     
     if (paragraphText) {
-        // Toggle de class 'gold-text' op de specifieke paragraaf
+        // Toggle de class 'color-1' op de specifieke paragraaf
         paragraphText.classList.toggle('color-1');
         // Verwijder andere kleuren classes
         paragraphText.classList.remove('color-2', 'color-3');
@@ -108,7 +108,7 @@ usp1LightImage.addEventListener('click', function() {
 });
 
 usp2LightImage.addEventListener('click', function() {
-    const paragraphText = document.querySelector('.paragraph4Tekst');
+    const paragraphText = document.querySelector('.paragraph-tekst4');
     
     if (paragraphText) {
         // Toggle de class 'color-2' op de specifieke paragraaf
@@ -119,7 +119,7 @@ usp2LightImage.addEventListener('click', function() {
 });
 
 usp3LightImage.addEventListener('click', function() {
-    const paragraphText = document.querySelector('.paragraph4Tekst');
+    const paragraphText = document.querySelector('.paragraph-tekst4');
     
     if (paragraphText) {
         // Toggle de class 'color-3' op de specifieke paragraaf
