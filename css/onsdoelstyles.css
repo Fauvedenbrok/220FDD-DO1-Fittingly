@@ -146,7 +146,7 @@ body {
 }
 
 .image-left {
-    max-width: 30%; /* Maximaliseren breedte van afbeeldingen */
+    max-width: 40%; /* Maximaliseren breedte van afbeeldingen */
     height: auto;
     margin-top: 20px;
     transform: translate(-50px, 50px); /* Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
