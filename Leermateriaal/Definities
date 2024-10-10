@@ -1,0 +1,49 @@
+HTML stands for HyperText Markup Language
+
+<!DOCTYPE html>, the declaration specifying the version of HTML for the browser
+The <html> tags that enclose all of your HTML code
+The <head> tag that contains the metadata of a webpage, such as its <title>
+
+  Alle content van de website in <body></body> tags
+    
+    Headings and sub-headings, <h1> to <h6> 
+
+        <p> (paragraph), <span> and <div> (division/container) tags specify text or blocks 
+
+            <em> and <strong> tags are used to emphasize text.
+
+                Line breaks with the <br> tag
+
+                  Ordered list <ol> are numbered and unordered lists <ul> are bulleted.
+                    > <li></li> gebruiken
+
+                    Images <img> 
+                    <img src="#" alt="A field of yellow sunflowers" /> 
+                    
+                    Videos <video> 
+                    <video src="myVideo.mp4" width="320" height="240" controls>
+                        Video not supported
+                    </video>  
+
+<div></div> = group HTML elements to apply same styles
+
+Attribute = 
+    class: Een HTML-attribuut dat wordt gebruikt om een of meer elementen te selecteren voor de toepassing van styling of logica.
+    dir: Stelt de richting van de tekst van een HTML-element in.
+    id: Wordt gebruikt om een uniek id voor een HTML-element te specificeren, dat niet gedeeld kan worden tussen meerdere elementen binnen hetzelfde HTML-document.
+    src: Geeft de locatie op van een digitale bron.
+    style: Geeft aan hoe een element weergegeven zal worden in een webbrowser.
+    title: Bevat en kan de gespecificeerde informatie over het element weergeven waartoe het behoort.
+    alt: attribute also plays a role in Search Engine Optimization
+
+Elementen, Tags, Container, Attribute
+
+link web pages together using a relative path > 
+  <a href="./contact.html">Contact</a>
+    Directly below the opening <body> tag
+
+link to other web pages > 
+  <a href="https://www.wikipedia.org/">This Is A Link To Wikipedia</a>
+  <a href="https://en.wikipedia.org/wiki/Brown_bear" target="_blank">The Brown Bear</a>
+    setting the target attribute to "_blank" instructs the browser to open the relevant Wikipedia page in a new window.
+

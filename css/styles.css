@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+header,
+footer {
+        
+        overflow: hidden;
+        
+}
+
+.header-logo {
+        width: 100px;
+}
+
+.main-container {
+        background-color: #1A3030;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 126px;
+}
+
+.header-flexbox {
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        max-width: 1200px;
+        justify-content: space-between;
+
+}
+
+nav {
+        height: 126px;
+        width: 40%;
+        display: flex;
+        align-items: center;
+}
+nav > button {
+        background-color: #DCD3C2;
+        font-family: monserat;
+        margin: 5px;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+        height: fit-content;
+
+        
+        
+}
+
+.main-title {
+        text-align: center;
+        position: relative;
+        flex: 35%;
+        font-family: "PlayFair Display", serif;
+        color: #DCD3C2;
+        font-weight: 400;
+        font-size: 64px;
+        margin: 0;
+}
+
+
+footer {
+        background-color: #B3AD98;
+        max-width: 2560px;
+        max-height: 640px;
+}
+
+footer > hr {
+        width: 90%;
+
+}
+

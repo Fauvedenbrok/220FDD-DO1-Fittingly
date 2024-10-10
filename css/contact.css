@@ -1,0 +1,187 @@
+* {
+    font-family: montserrat;
+}
+
+body {
+    background-color: #1A3030; 
+}
+
+/* Container met de achtergrondafbeelding */
+.background-container {
+    position: relative;
+    /* Zorgt ervoor dat de overlay er bovenop kan worden geplaatst */
+    height: 90vh;
+    /* Volledige hoogte van het venster */
+    background-image: url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
+    background-size: cover;
+    /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
+    background-position: center;
+    /* Centreert de afbeelding */
+    display: flex;
+    /* Voor flexbox-positionering */
+    justify-content: center;
+    /* Centreert de inhoud horizontaal */
+    align-items: center;
+    /* Centreert de inhoud verticaal */
+}
+
+/* Overlay van 80% dekking */
+.background-container::before {
+    content: '';
+    /* Nodig voor het pseudo-element */
+    position: absolute;
+    /* Absoluut geplaatst zodat het de hele container bedekt */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Bedekt de volledige breedte van de container */
+    height: 100%;
+    /* Bedekt de volledige hoogte van de container */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Zwart met 80% dekking */
+    z-index: 0;
+    /* Zorgt ervoor dat de overlay boven de achtergrondafbeelding ligt */
+}
+
+.form-container {
+    position: relative;
+    /* Hiermee kan je de z-index gebruiken */
+    max-width: 800px;
+    width: 60%;
+    background: #B3AD98;
+    margin: -20vh auto 0 auto;
+    padding: 40px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* Form content: inputvelden + contactinformatie */
+.form-content {
+    display: flex; /* Gebruik Flexbox om de velden naast elkaar te plaatsen */
+    justify-content: space-between; /* Verdeel de ruimte */
+    align-items: flex-start; /* Elementen bovenaan uitlijnen */
+  }
+
+.input-fields {
+    width: 60%;
+}
+
+/* Zorg ervoor dat de inputvelden en labels goed gestyled zijn */
+.input-fields label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+.contact-info {
+    width: 50%; /* Contactinfo neemt 35% van de breedte in */
+    padding: 10px;
+}
+
+.contact-info h2 {
+    margin-bottom: 20px;
+    margin-top: -690px;
+    margin-left: 450px;
+    color: #1A3030;
+  }
+  
+  .contact-info p {
+    margin: 5px 0;
+    margin-left: 450px;
+    margin-block: 40px;
+    width: 300px;
+    color: #1A3030;
+  }
+
+  #usp1Contact, #usp2Contact, #usp3Contact {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+}
+
+#h1Contact {
+    position: absolute;
+    top: 400px;
+    left: 22%;
+    margin: 0;
+    color: #cc9c4e;
+    font-family: "Playfair Display", serif;
+    font-size: 45px;
+    font-weight: 400;
+    text-shadow: #3a3b33 1px 1px 1px;
+}
+
+#paraContact {
+    position: relative;
+    top: -180px;
+    left: 300px;
+    margin: 10px;
+    padding: 5px;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #DCD3C2B2;
+    width: 880px;
+}
+
+label {
+    display: block;
+    margin: 20px 0;
+}
+
+/* Zorg dat alle inputvelden korter zijn */
+input[type="naam"],
+input[type="email"],
+input[type="bedrijf"],
+input[type="tel"] {
+  width: 50%; /* Maak de inputvelden smaller (bijv. 60% van de container) */
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+textarea#bericht {
+    width: 600px;
+  }
+
+input,
+textarea {
+    width: 70%;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+    border: none;
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 3px;
+}
+
+input[type="text"] :focus,
+textarea:focus {
+    border-bottom: 1px solid #1A3030;
+}
+
+.center {
+    margin-left: 150px;
+    width: 400px;
+    text-align: center;
+}
+
+button[type="submit"] {
+    margin-top: 30px;
+    width: 90%;
+    max-width: 300px;
+    background: #cc9c4e;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.error {
+    color: red;
+}
+
+.error-border {
+    border-bottom: 1px solid red;
+}
+
+#succes {
+    color: #28A745;
+}

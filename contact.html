@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <script src="menu.js"></script>
 </head>
+
 <body>
-    
+    <header></header>
+    <main>
+    <div class="background-container"></div>
+    <h1 id="h1Contact">Contact</h1>
+    <p id="paraContact">Neem contact op met één van onze representatives om te kijken welke mogelijkheden Fittingly jouw
+        bedrijf
+        kan bieden.</p>
+    <div class="form-and-info">
+        <div class="form-container">
+            <form>
+                <div class="form-content">
+                    <div class="input-fields">
+                        <label for="naam">Naam:</label>
+                        <input type="text" id="naam" placeholder="Naam">
+                        <small class="error"></small>
+
+                        <label for="bedrijf">Bedrijf:</label>
+                        <input type="text" id="bedrijf" placeholder="Bedrijf">
+                        <small class="error"></small>
+
+                        <label for="email">E-mailadres:</label>
+                        <input type="text" id="email" placeholder="E-mailadres">
+                        <small class="error"></small>
+
+                        <label for="tel">Telefoonnummer:</label>
+                        <input type="text" id="tel" placeholder="Telefoonnummer">
+                        <small class="error"></small>
+
+                        <label for="bericht">Bericht:</label>
+                        <textarea id="bericht" placeholder="Bericht" rows="12"></textarea>
+                        <small class="error"></small>
+
+                        <div class="center">
+                            <button type="submit" value="Verzenden"> Aanmelden</button>
+                            <p id="send"></p>
+                        </div>
+
+                        <div class="contact-info">
+                            <h2>Contactinformatie</h2>
+                            <p><img id="usp1Contact" src="Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Adres: Straat 123, Breda</p>
+                            <p><img id="usp2Contact" src="Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Telefoon: +31631506081</p>
+                            <p><img id="usp3Contact" src="Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Email: info@fittinly.nl</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer></footer>
+<script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer")
+    </script>
+    <script src="/contact.js"></script>
 </body>
+
 </html>
