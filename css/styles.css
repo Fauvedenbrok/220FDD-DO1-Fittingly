@@ -2,15 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+body {
+        margin: auto;
+}
+
 header,
 footer {
         
-        overflow: hidden;
-        
-}
-
-.header-logo {
-        width: 100px;
+        overflow: hidden;  
 }
 
 .main-container {
@@ -24,15 +23,19 @@ footer {
 .header-flexbox {
         display: flex;
         flex-direction: row;
-        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 1200px;
         justify-content: space-between;
 
 }
 
+.header-logo {
+        width: 100px;
+}
+
 nav {
         height: 126px;
-        width: 40%;
         display: flex;
         align-items: center;
 }

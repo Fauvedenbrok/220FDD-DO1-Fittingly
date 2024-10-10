@@ -5,11 +5,11 @@ bPush.classList.toggle("aanmeldButtonPressed")
 }
 
 
-function toggleDarkLight() {
-    var toggleDL = document.getElementById("toggleDarkAndLight")
-    toggleDL.classList.toggle("lightMode")
-    console.log(toggleDL)
-}
+// function toggleDarkLight() {
+//     var toggleDL = document.getElementById("toggleDarkAndLight")
+//     toggleDL.classList.toggle("lightMode")
+//     console.log(toggleDL)
+// }
 
 
 // function toggleDarkLight() {

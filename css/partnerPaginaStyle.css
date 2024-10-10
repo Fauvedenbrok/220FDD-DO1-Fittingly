@@ -1,24 +1,17 @@
 /*Begin stuk Richard */
 body {
   background-color: #1A3030;
-  margin: auto;
   justify-content: center;
-  display: flex;
   height: 100vh;
 }
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-  position: relative;
-  /* Zorgt ervoor dat de overlay er bovenop kan worden geplaatst */
   height: 100vh;
-  width: 100%;
   /* Volledige hoogte van het venster */
-  background-image: url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.webp);
   background-size: cover;
   /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
   background-position: center;
-
   /* Centreert de afbeelding */
   display: flex;
   /* Voor flexbox-positionering */
@@ -26,39 +19,17 @@ body {
   /* Centreert de inhoud horizontaal */
   align-items: center;
   /* Centreert de inhoud verticaal */
+  background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
 }
 
-#backgroundImg {
-  position: absolute;
-  background-image: url('your-image-url.jpg');
-  background-size: cover; /* Ensures the image covers the full width */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  background-attachment: fixed; /* Keeps the image fixed while scrolling */
-  width: 100%;
-  height: 100vh; /* Makes the background cover the entire viewport height */
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  background-color: rgba(19, 30, 36, 0.8);
-}
-
-/*Koptekst op partnerpagina*/
-#kopTekst-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-#kopTekst {
+#koptekst {
   color: #cc9c4e;
   font-family: "Playfair Display", serif;
   font-size: 80px;
   font-weight: 500;
   text-shadow: #3a3b33 1px 1px 1px;
   margin-right: 40%;
-  margin-top: 10%;
-  padding-top: 40px;
+  margin-top: -20%;
   margin-left: 10%;
 }
 
@@ -101,6 +72,17 @@ table {
   height: 100px;
   border-radius: 50%;
 }
+
+.ons-platform.container > div {
+  display: flex;
+  flex-direction: wrap;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
 
 /*Grote tekst heading*/
 .heading1Tekst {
@@ -146,13 +128,15 @@ table {
 
 /*Image onder grote titel*/
 #deel2Img {
-  position: relative;
+  width: auto;
+  height: 200px;
+  /* position: relative;
   margin-left: 60%;
   margin-top: -650px;
   height: 800px;
   width: auto;
   border-top-left-radius: 300px;
-  border-bottom-right-radius: 300px;
+  border-bottom-right-radius: 300px; */
 }
 
 
@@ -182,6 +166,7 @@ table {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-290px * 4));
   }
@@ -190,9 +175,11 @@ table {
 /* Slide Track and Slide */
 .slider .slide-track {
   /*De volledige animatie van de slider duurt 40 seconden. Na 40 seconden wordt de slider gereset */
-  animation: scroll 30s linear infinite; /* Scroll infinitely over 40 seconds */
+  animation: scroll 30s linear infinite;
+  /* Scroll infinitely over 40 seconds */
   /*Zorgt voor een smooth animatie in de slider*/
-  animation-timing-function: linear; /* Smooth linear animation */
+  animation-timing-function: linear;
+  /* Smooth linear animation */
   display: flex;
   /*De breedte van elke img * het aantal images die in de 40 seconden te zien zijn. De exacte breedte is belangrijk zodat de slider niet halverwege een img ge-reset wordt.*/
   width: calc(290px * 4);
@@ -205,7 +192,7 @@ table {
 
 .slide {
   margin-left: 20px;
-  margin-right: 20px;  
+  margin-right: 20px;
 }
 
 .slideimg {
