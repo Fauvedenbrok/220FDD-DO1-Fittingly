@@ -4,10 +4,7 @@
 
 header,
 footer {
-        background-color: #1A3030;
-        ;
-        margin: auto;
-        max-width: 2560px;
+        
         overflow: hidden;
         
 }
@@ -16,22 +13,23 @@ footer {
         width: 100px;
 }
 
-.header-flexbox {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
+.main-container {
+        background-color: #1A3030;
         width: 100%;
+        display: flex;
+        justify-content: center;
         height: 126px;
-        
-        justify-content: space-around;
 }
 
-/* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
-        .flex-container {
-                flex-direction: column;
-        }
+.header-flexbox {
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        max-width: 1200px;
+        justify-content: space-between;
+
 }
+
 nav {
         height: 126px;
         width: 40%;
