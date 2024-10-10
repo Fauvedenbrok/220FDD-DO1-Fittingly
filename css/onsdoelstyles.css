@@ -30,7 +30,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #DCD3C2;
     font-family: Raleway, sans-serif;
     margin: 0;
     padding: 0;
@@ -113,11 +112,25 @@ body {
 
 .paragraph3Tekst, .paragraph4Tekst {
     font-family: Raleway;
+    color: #DCD3C2;
     font-size: 20px;
     font-weight: 400;
     line-height: 39px;
     text-align: left;
     margin-bottom: 20px;
+}
+
+.paragraph4Tekst.color-1 {
+    color: #CC9C4E; /* Gouden kleur */
+}
+
+/* Nieuwe stijl voor andere kleuren */
+.paragraph4Tekst.color-2 {
+    color: #B3AD98; /* Tweede kleur */
+}
+
+.paragraph4Tekst.color-3 {
+    color: #3A3B33; /* Derde kleur */
 }
 
 .image-right {

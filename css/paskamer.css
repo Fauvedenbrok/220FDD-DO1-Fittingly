@@ -2,7 +2,7 @@
 
 
 .darkMode {
-    background-color: #215550;
+    background-color: #1A3030;
     margin: auto;
     max-width: 2560px;
   }
@@ -31,12 +31,12 @@
   .totPlaatje0 {
     width: auto;
     height: 200px;
-    background-color: #215550;
+    background-color: #1A3030;
   }
   
   .totPlaatje2 {
     margin-top: -480px;
-    background-color: #215550;
+    background-color: #1A3030;
     padding-top: 200px;
   }
   

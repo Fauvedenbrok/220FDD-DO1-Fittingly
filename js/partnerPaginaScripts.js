@@ -11,6 +11,7 @@ function toggleDarkLight() {
     console.log(toggleDL)
 }
 
+
 // function toggleDarkLight() {
 //     var toggleDL = document.getElementsByClassName("darkMode")
 //     console.log(toggleDL)
