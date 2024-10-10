@@ -33,7 +33,7 @@ usp1LightImage.addEventListener('click', function() {
     const paragraphText = document.querySelector('.paragraph4Tekst');
     
     if (paragraphText) {
-        // Toggle de class 'gold-text' op de specifieke paragraaf
+        // Toggle de class 'color-1' op de specifieke paragraaf
         paragraphText.classList.toggle('color-1');
         // Verwijder andere kleuren classes
         paragraphText.classList.remove('color-2', 'color-3');
