@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 header,
 footer {
-        background-color: #1A3030;
-        ;
-        margin: auto;
-        max-width: 2560px;
+        
         overflow: hidden;
         
 }
@@ -13,23 +13,24 @@ footer {
         width: 100px;
 }
 
-.header-flexbox {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
+.main-container {
+        background-color: #1A3030;
         width: 100%;
+        display: flex;
+        justify-content: center;
         height: 126px;
-        align-items: center;
 }
 
-/* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
-        .flex-container {
-                flex-direction: column;
-        }
+.header-flexbox {
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        max-width: 1200px;
+        justify-content: space-between;
+
 }
+
 nav {
-        text-align: center;
         height: 126px;
         width: 40%;
         display: flex;
@@ -59,10 +60,6 @@ nav > button {
         margin: 0;
 }
 
-.menu-top {
-        text-align: center;
-        right: 20px;
-}
 
 footer {
         background-color: #B3AD98;
