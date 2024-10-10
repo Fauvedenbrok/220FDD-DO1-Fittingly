@@ -25,6 +25,73 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(showNextImage, 3000);
 });
 
+
+/*Countdown timer */
+const countdown = new Date('2024-11-11T12:00:00').getTime(); /*tijd tussen 1-1-1970 en de releasedatum van Fittingly*/
+console.log(countdown);
+
+const days = document.querySelector(".days span");
+const hours = document.querySelector(".hours span");
+const minutes = document.querySelector(".minutes span");
+const seconds = document.querySelector(".seconds span");
+
+//Het berekenen van de overgebleven dagen, uren, minuten en seconden
+function getTimeRemaining(countdown) {
+	const now = new Date().getTime(); //De Date() functie is altijd vandaag
+	const difference = countdown - now;
+
+	const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+	const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+	const minutes = Math.floor((difference / 1000 / 60) % 60);
+	const seconds = Math.floor((difference / 1000) % 60);
+
+	return {
+		difference,
+		days,
+		hours,
+		minutes,
+		seconds
+	};
+}
+
+function updateTimer(countdown) {
+    const t = getTimeRemaining(countdown); //Variabele die de return waarde uit de getTimeRemaining functie haalt
+
+    //Controleert of de tijdwaardes een enkel cijfer bevatten. zo ja, dan wordt er een 0 voor gezet. Dit is voor de leesbaarheid
+    days.innerText = t.days <= 9 ? '0' + t.days : t.days;
+    hours.innerText = t.hours <= 9 ? `0` + t.hours : t.hours;
+    minutes.innerText = t.minutes <= 9 ? `0` + t.minutes : t.minutes;
+    seconds.innerText = t.seconds <= 9 ? `0` + t.seconds : t.seconds;
+
+    //Zodra de het verschil tussen nu en de releasedatum 0 bereikt, wordt alles op 00 gezet
+    if (t.difference <= 0) {
+        days.innerText = '00';
+        hours.innerText = '00';
+        minutes.innerText = '00';
+        seconds.innerText = '00';
+        clearInterval(timeinterval);
+    }
+}
+
+function smoothTransition(){
+    const elementArray = [days, hours, minutes, seconds];
+
+    elementArray.forEach(element => {
+        element.style.transition = 'all 0.5s ease-in-out'; 
+    });
+    
+}
+
+function initializeTimer() {
+    updateTimer();  // Het updaten van de timer
+    smoothTransition();  // transitie van de cijfers
+    const timeInterval = setInterval(updateTimer, 1000);  // iedere seconde wordt dit uitgevoerd
+}
+
+initializeTimer();
+
+
+
 // Toggle Light/Dark mode
 // const modeToggleButton = document.getElementById('mode-toggle');
 // let isLightMode = false;
