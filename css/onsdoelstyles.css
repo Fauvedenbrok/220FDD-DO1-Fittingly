@@ -56,17 +56,33 @@ body {
     clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
     width: 68%;
     left: 0;
-    align-content: center;
 }
 .hero-sectie-klanten > .hero-content {
     align-content: center;
     width: 495px;
+    padding: 0px 50px;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card > span {
+    display: inline-block;
+    background-color: #DCD3C2;
+    border-radius: 10px;
+    width: 70px;
+    height: 100px;
+    text-align: center;
+    align-content: center;
 }
 
 .timer-text {
     font-family: "Raleway", sans-serif;
     font-size: 20px;
     color: #CC9C4E;
+    text-align: center;
 }
 .hero-sectie-partners {
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/partnerPagina.jpg');
@@ -101,7 +117,7 @@ body {
 }
 
 .paragraph-tekst3, .paragraph-tekst4 {
-    font-family: Raleway, sans-serif;
+    font-family: "Raleway", sans-serif;
     color: #DCD3C2;
     font-size: 20px;
     font-weight: 400;
