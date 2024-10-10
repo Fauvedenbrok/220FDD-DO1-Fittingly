@@ -10,15 +10,19 @@ h2 {
 }
 
 h3 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Playfair Display", sans-serif;
     color: #DCD3C2;
-    font-size: 80px;
+    font-size: 2.5rem; /* Flexibele eenheid */
+    margin-bottom: 0px;
 }
 
 h4 {
     font-family: "Montserrat", sans-serif;
     color: #CC9C4E;
     font-size: 48px;
+    font-weight: normal;
+    font-size: 2rem; /* Flexibele eenheid */
+    margin-top: 0px;
 }
 
 p {
@@ -30,7 +34,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: Raleway, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -73,7 +76,7 @@ body {
     margin-left: -10%;
 }
 
-.mainContainer {
+.onsdoel-container {
     width: 100%;
     margin: auto;
     display: flex;
@@ -83,7 +86,7 @@ body {
     padding: 20px;
 }
 
-.textOpmaak {
+.text-opmaak {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,45 +94,32 @@ body {
     width: 100%;
 }
 
-.textOpmaak2 {
+.text-opmaak2 {
     display: flex;
     flex-direction: column;
     padding: 20px; /* Ruimte rondom de tekstinhoud */
 }
 
-.heading4Tekst {
-    color: #DCD3C2;
-    font-size: 2.5rem; /* Flexibele eenheid */
-    margin-bottom: 0px;
-}
-
-.heading5Tekst {
-    color: #CC9C4E;
-    font-weight: normal;
-    font-size: 2rem; /* Flexibele eenheid */
-    margin-top: 0px;
-}
-
-.paragraph3Tekst, .paragraph4Tekst {
-    font-family: Raleway;
+.paragraph-tekst3, .paragraph-tekst4 {
+    font-family: Raleway; sans-serif;
     color: #DCD3C2;
     font-size: 20px;
     font-weight: 400;
-    line-height: 39px;
+    line-height: 2em;
     text-align: left;
     margin-bottom: 20px;
 }
 
-.paragraph4Tekst.color-1 {
+.paragraph-tekst4.color-1 {
     color: #CC9C4E; /* Gouden kleur */
 }
 
 /* Nieuwe stijl voor andere kleuren */
-.paragraph4Tekst.color-2 {
+.paragraph-tekst4.color-2 {
     color: #B3AD98; /* Tweede kleur */
 }
 
-.paragraph4Tekst.color-3 {
+.paragraph-tekst4.color-3 {
     color: #3A3B33; /* Derde kleur */
 }
 
