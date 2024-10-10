@@ -1,51 +1,55 @@
 /*Begin stuk Richard */
-#partnerPaginaBody {
-  background-color: #215550;
+body {
+  background-color: #1A3030;
   margin: auto;
-  max-width: auto;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
 }
 
-#totPlaatje {
-  border: #ceee00 solid 3px;
-  padding-bottom: 265px;
-}
-
-/*De verschillende divs om aan te duiden waar alles in staat*/
-.totPlaatje0,
-.totPlaatje2,
-.totPlaatje3,
-.totPlaatje4 {
-  border: #ff0000 solid 3px;
-}
-
-/*Header*/
-.totPlaatje0 {
-  width: auto;
-  height: 200px;
-  background-color: #215550;
-}
-
-.totPlaatje2 {
-  margin-top: -480px;
-  background-color: #215550;
-  padding-top: 200px;
-}
-
-.backgroundImgDiv {
-  height: auto;
+/* Container met de achtergrondafbeelding */
+.background-container {
+  position: relative;
+  /* Zorgt ervoor dat de overlay er bovenop kan worden geplaatst */
+  height: 100vh;
   width: 100%;
+  /* Volledige hoogte van het venster */
+  background-image: url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.webp);
+  background-size: cover;
+  /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
+  background-position: center;
+
+  /* Centreert de afbeelding */
+  display: flex;
+  /* Voor flexbox-positionering */
+  justify-content: center;
+  /* Centreert de inhoud horizontaal */
+  align-items: center;
+  /* Centreert de inhoud verticaal */
 }
 
 #backgroundImg {
   position: absolute;
+  background-image: url('your-image-url.jpg');
+  background-size: cover; /* Ensures the image covers the full width */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Keeps the image fixed while scrolling */
+  width: 100%;
+  height: 100vh; /* Makes the background cover the entire viewport height */
+  margin: 0;
+  padding: 0;
   z-index: -1;
-  opacity: 85%;
-  width: 2560px;
-  height: auto;
-  top: -100px;
+  background-color: rgba(19, 30, 36, 0.8);
 }
 
 /*Koptekst op partnerpagina*/
+#kopTekst-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
 #kopTekst {
   color: #cc9c4e;
   font-family: "Playfair Display", serif;
@@ -68,17 +72,17 @@
 }
 
 /*USP Table op partnerpagina*/
-.uspTable {
+.uspTableContainer {
   background-color: #dcd3c2;
   position: relative;
   margin-right: 25%;
   margin-left: 25%;
   border-radius: 15px;
   margin-bottom: 120px;
-  margin-top: 370px;
+  margin-top: -100px;
 }
 
-table,
+#uspTable,
 th,
 td {
   border: 3px solid #b3ad98;
@@ -142,7 +146,7 @@ table {
 
 /*Image onder grote titel*/
 #deel2Img {
-  position: absolute;
+  position: relative;
   margin-left: 60%;
   margin-top: -650px;
   height: 800px;
@@ -151,35 +155,61 @@ table {
   border-bottom-right-radius: 300px;
 }
 
-/*Carousel/imageslider op partnerpagina*/
-#carouselImgSliderContainer {
-  display: flex;
-  max-width: 1300px;
-  margin: 5px;
-  overflow: auto;
-  margin-left: 25%;
-  margin-right: 20%;
-}
 
-.carouselImgBox {
-  max-width: 950px;
-  margin-left: 10px;
-  margin-right: 15px;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  border: 3px solid #b3ad98;
-  border-radius: 20px;
-  padding: 15px;
-}
 
-.carouselImg {
-  width: 250px;
+/* Main Styling */
+.slider {
   height: 250px;
-  margin: 10px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  padding: 100px;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-290px * 4));
+  }
+}
+
+/* Slide Track and Slide */
+.slider .slide-track {
+  /*De volledige animatie van de slider duurt 40 seconden. Na 40 seconden wordt de slider gereset */
+  animation: scroll 30s linear infinite; /* Scroll infinitely over 40 seconds */
+  /*Zorgt voor een smooth animatie in de slider*/
+  animation-timing-function: linear; /* Smooth linear animation */
+  display: flex;
+  /*De breedte van elke img * het aantal images die in de 40 seconden te zien zijn. De exacte breedte is belangrijk zodat de slider niet halverwege een img ge-reset wordt.*/
+  width: calc(290px * 4);
+}
+
+.slider .slide .slideimg {
+  width: 250px;
+  object-fit: cover;
+}
+
+.slide {
+  margin-left: 20px;
+  margin-right: 20px;  
+}
+
+.slideimg {
   border-radius: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .imgContent {
