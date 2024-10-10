@@ -154,7 +154,7 @@ body {
 
 .slider-container {
     overflow: hidden;
-    width: 100vw;
+    width: calc(100vw - 20px);
     position: relative;
 }
 
