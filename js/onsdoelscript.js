@@ -6,12 +6,12 @@ const totalImages = sliderImages.length;
 
 document.addEventListener('DOMContentLoaded', function() {
     const sliderImages = document.querySelectorAll('.slider-image');
-    let currentIndex = 3;
+    let currentIndex = 4;
     const totalImages = sliderImages.length;
 
     function updateSlider() {
         sliderImages.forEach((image, index) => {
-            image.style.transform = `translateX(${(index - currentIndex) * 75}%)`;
+            image.style.transform = `translateX(${(index - currentIndex) * 40}%)`;
         });
     }
 
@@ -28,12 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*Countdown timer */
 const countdown = new Date('2024-11-11T12:00:00').getTime(); /*tijd tussen 1-1-1970 en de releasedatum van Fittingly*/
-console.log(countdown);
+console.log("Countdown target time (in ms):", countdown);
 
 const days = document.querySelector(".days span");
 const hours = document.querySelector(".hours span");
 const minutes = document.querySelector(".minutes span");
 const seconds = document.querySelector(".seconds span");
+
+let timeInterval;
 
 //Het berekenen van de overgebleven dagen, uren, minuten en seconden
 function getTimeRemaining(countdown) {
@@ -62,35 +64,19 @@ function updateTimer(countdown) {
     hours.innerText = t.hours <= 9 ? `0` + t.hours : t.hours;
     minutes.innerText = t.minutes <= 9 ? `0` + t.minutes : t.minutes;
     seconds.innerText = t.seconds <= 9 ? `0` + t.seconds : t.seconds;
-
-    //Zodra de het verschil tussen nu en de releasedatum 0 bereikt, wordt alles op 00 gezet
-    if (t.difference <= 0) {
-        days.innerText = '00';
-        hours.innerText = '00';
-        minutes.innerText = '00';
-        seconds.innerText = '00';
-        clearInterval(timeinterval);
-    }
-}
-
-function smoothTransition(){
-    const elementArray = [days, hours, minutes, seconds];
-
-    elementArray.forEach(element => {
-        element.style.transition = 'all 0.5s ease-in-out'; 
-    });
-    
 }
 
 function initializeTimer() {
-    updateTimer();  // Het updaten van de timer
-    smoothTransition();  // transitie van de cijfers
-    const timeInterval = setInterval(updateTimer, 1000);  // iedere seconde wordt dit uitgevoerd
+    setInterval(() => {
+        getTimeRemaining(countdown);
+        updateTimer(countdown);
+    }, 1000);
 }
 
 initializeTimer();
 
 
+//functie Freek
 
 const usp1LightImage = document.querySelector('img[alt="USP1Light"]');
 const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
