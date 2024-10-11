@@ -19,6 +19,7 @@ body {
 
 /* Container met contactformulier */
 .form-container {
+    position: relative;
     max-width: 800px;
     width: 60%;
     background: #B3AD98;
@@ -31,91 +32,71 @@ body {
 
 /* Form content: inputvelden + contactinformatie */
 .form-content {
-    display: flex; /* Gebruik Flexbox om de velden naast elkaar te plaatsen */
+    display: flex; 
     justify-content: space-between;
-    align-items: flex-start; 
-  }
+    align-items: flex-start;
+}
 
 .input-fields {
     width: 60%;
 }
 
-/* Zorg ervoor dat de inputvelden en labels goed gestyled zijn */
 .input-fields label {
     display: block;
     margin-bottom: 5px;
-  }
+}
 
 .contact-info {
-    width: 50%; /* Contactinfo neemt 35% van de breedte in */
+    position: absolute;
+    top: 0; /* Verplaats naar de bovenkant van de container */
+    right: 0; /* Verplaats naar de rechterkant van de container */
+    width: 35%; 
     padding: 10px;
+
 }
 
 .contact-info h2 {
     margin-bottom: 20px;
-    margin-top: -690px;
-    margin-left: 450px;
     color: #1A3030;
-  }
+}
   
-  .contact-info p {
+.contact-info p {
     margin: 5px 0;
-    margin-left: 450px;
-    margin-block: 40px;
-    width: 300px;
     color: #1A3030;
-  }
+}
 
-  #usp1-contact, #usp2-contact, #usp3-contact {
+#usp1-contact, #usp2-contact, #usp3-contact {
     width: 20px;
     height: 20px;
     padding-right: 10px;
 }
 
 #h1-contact {
-    position: absolute;
-    top: 500px;
-    left: 22%;
-    margin: 0;
+    position: relative;
+    margin-top: 30px;
     color: #cc9c4e;
     font-family: "Playfair Display", serif;
     font-size: 45px;
     font-weight: 400;
     text-shadow: #3a3b33 1px 1px 1px;
+    text-align: center;
 }
 
 #para-contact {
-    /* display: flex;
-    justify-content: center; */
     color: #DCD3C2B2;
-    position: relative;
-    top: -180px;
-    left: 300px;
     margin: 10px;
     padding: 5px;
     font-size: 24px;
     line-height: 1.2;
-    width: 880px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
 }
 
 label {
     display: block;
     margin: 20px 0;
 }
-
-/* Zorg dat alle inputvelden korter zijn */
-input[type="naam"],
-input[type="email"],
-input[type="bedrijf"],
-input[type="tel"] {
-  width: 50%; /* Maak de inputvelden smaller (bijv. 60% van de container) */
-  padding: 8px;
-  margin-bottom: 15px;
-}
-
-textarea#bericht {
-    width: 600px;
-  }
 
 input,
 textarea {
@@ -129,25 +110,63 @@ textarea {
     border-radius: 3px;
 }
 
-input[type="text"] :focus,
+textarea#bericht {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px; 
+  }
+
+input[type="text"]:focus,
 textarea:focus {
     border-bottom: 1px solid #1A3030;
 }
 
-.center {
-    margin-left: 150px;
-    width: 400px;
-    text-align: center;
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 button[type="submit"] {
-    margin-top: 30px;
-    width: 90%;
-    max-width: 300px;
-    background: #cc9c4e;
-    font-size: 15px;
-    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #cc9c4e;
+    color: white;
+    border: none;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Basisopmaak voor grote schermen */
+.form-container {
+    max-width: 800px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* Media queries voor schermen kleiner dan 768px */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .form-content {
+        flex-direction: column; /* Velden onder elkaar */
+    }
+
+    .input-fields, .contact-info {
+        width: 100%; /* Volledige breedte voor mobiele weergave */
+    }
+
+    #h1-contact {
+        font-size: 2rem; /* Pas de grootte van de koptekst aan */
+    }
+
+    #para-contact {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+    }
 }
 
 .error {
