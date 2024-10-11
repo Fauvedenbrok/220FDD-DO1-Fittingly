@@ -2,6 +2,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+@media screen and (max-width: 768px) {
+        header button.hamburger {
+
+                display: block;
+
+        }
+
+        header nav {
+
+                display: none;
+
+                position: absolute;
+
+                width: 100%;
+
+                top: 126px;
+
+                z-index: 999;
+
+                flex-direction: column;
+
+                background-color: #1A3030 !important;
+
+                height: auto;
+
+        }
+
+
+
+        header nav button {
+
+                width: 100%;
+
+        }
+
+}
+
 body {
         margin: auto;
 }
@@ -36,13 +73,7 @@ p {
         font-weight: 400;
         line-height: 2em;
         text-align: left;
-        
-}
 
-header,
-footer {
-
-        overflow: hidden;
 }
 
 .main-container {
@@ -50,16 +81,14 @@ footer {
         width: 100%;
         display: flex;
         justify-content: center;
-        height: 126px;
 }
 
 .header-flexbox {
+        position: relative;
         display: flex;
-        flex-direction: row;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: space-between;
-
+        align-items: center;
+        overflow: visible !important;
+        height: 126px;
 }
 
 .header-logo {
@@ -67,8 +96,6 @@ footer {
 }
 
 nav {
-        height: 126px;
-        display: flex;
         align-items: center;
 }
 
@@ -80,9 +107,6 @@ nav>button {
         text-align: center;
         font-size: 20px;
         height: fit-content;
-
-
-
 }
 
 .main-title {
@@ -105,5 +129,34 @@ footer {
 
 footer>hr {
         width: 90%;
+
+}
+
+
+button.hamburger {
+
+        background: none;
+
+        box-shadow: none;
+        padding: 0;
+        border: none;
+
+        width: 50px;
+
+        position: relative;
+
+        height: 50px;
+
+}
+
+nav.visible {
+
+        display: flex;
+
+}
+
+button.hamburger {
+
+        display: none;
 
 }

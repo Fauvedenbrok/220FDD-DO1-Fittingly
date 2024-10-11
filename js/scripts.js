@@ -1,5 +1,11 @@
 "use strict";
 
+function changeNav(){
+
+    document.querySelector('header nav').classList.toggle('visible');
+
+};
+
 function includeHTML(source, dst) {
   fetch(source)
     .then(response => response.text())
@@ -8,6 +14,8 @@ function includeHTML(source, dst) {
     })
     .catch(error => console.error('Error fetching the menu: ', error))
 }
+
+ 
 
 
 // function toggleDarkLight {
