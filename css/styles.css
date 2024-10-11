@@ -84,11 +84,13 @@ p {
 }
 
 .header-flexbox {
+        width: 60%;
         position: relative;
         display: flex;
         align-items: center;
         overflow: visible !important;
         height: 126px;
+        justify-content: space-evenly;
 }
 
 .header-logo {
@@ -107,32 +109,15 @@ nav>button {
         text-align: center;
         font-size: 20px;
         height: fit-content;
+        border-radius: 10px;
+        border-color: #B3AD98;
 }
 
-.main-title {
-        text-align: center;
-        position: relative;
-        flex: 35%;
-        font-family: "PlayFair Display", serif;
-        color: #DCD3C2;
-        font-weight: 400;
-        font-size: 64px;
-        margin: 0;
+nav > button > a {
+        color: #1A3030;
+        text-decoration: none;
+        font-weight: 600;
 }
-
-
-footer {
-        background-color: #B3AD98;
-
-        width: 100vw;
-}
-
-footer>hr {
-        width: 90%;
-
-}
-
-
 button.hamburger {
 
         background: none;
@@ -159,4 +144,87 @@ button.hamburger {
 
         display: none;
 
+}
+
+.main-title {
+        text-align: center;
+        position: relative;
+        font-family: "PlayFair Display", serif;
+        color: #DCD3C2;
+        font-weight: 400;
+        font-size: 64px;
+        margin: 0;
+}
+
+
+footer {
+        background-color: #B3AD98;
+        height: 360px;
+        width: 100vw;
+}
+
+footer hr {
+        width: 60%;
+        color: #1A3030;
+        border-color: #1A3030;
+
+}
+
+.main-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 80%;
+}
+
+.footer-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 60%;
+        align-items: center;
+}
+
+.footer-social > img {
+        width: 65px;
+        height: 65px;
+}
+
+footer p {
+        color: #1A3030;
+        padding: 0; 
+        margin-bottom: 10px;   
+}
+
+.footer-links > a {
+        color: #1A3030;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+
+}
+
+.footer-newsletter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+}
+
+.footer-newsletter button {
+        background-color: #CC9C4E;
+        height: 30px;
+        border-radius: 8px;
+        border-color: #CC9C4E;
+}
+
+.footer-newsletter input {
+        height: 30px;
+        margin-bottom: 10px;
+}
+
+.footer-copyright {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        
 }
