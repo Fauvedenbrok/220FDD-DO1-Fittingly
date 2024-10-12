@@ -1,3 +1,9 @@
+@media screen and (max-width: 850px) {
+    h3#h3-contact{
+        font-size: 30px;
+    }
+}
+
 * {
     font-family: montserrat;
 }
@@ -8,26 +14,34 @@ body {
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-    height: 90vh;
+    width: 100vw;
+    height: 60vh;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
 }
 
 /* Container met contactformulier */
 .form-container {
+    display: flex;
     position: relative;
-    max-width: 800px;
     width: 60%;
     background: #B3AD98;
-    margin: -20vh auto 0 auto;
     padding: 40px;
     border-radius: 6px;
     box-sizing: border-box;
     margin-bottom: 80px;
+    margin: -10vh auto 0 auto;
+    flex-direction: row-reverse;
+    justify-content: space-between;    
+}
+
+#contactForm {
+    width: 50%;
 }
 
 /* Form content: inputvelden + contactinformatie */
@@ -35,6 +49,7 @@ body {
     display: flex; 
     justify-content: space-between;
     align-items: flex-start;
+    width: 200%;
 }
 
 .input-fields {
@@ -47,17 +62,11 @@ body {
 }
 
 .contact-info {
-    position: absolute;
+    position: relative;
     top: 0; /* Verplaats naar de bovenkant van de container */
     right: 0; /* Verplaats naar de rechterkant van de container */
-    width: 35%; 
+    width: 50%; 
     padding: 10px;
-
-}
-
-.contact-info h2 {
-    margin-bottom: 20px;
-    color: #1A3030;
 }
   
 .contact-info p {
@@ -71,25 +80,25 @@ body {
     padding-right: 10px;
 }
 
-#h1-contact {
-    position: relative;
-    margin-top: 30px;
-    color: #cc9c4e;
-    font-family: "Playfair Display", serif;
+#h2-contact {
     font-size: 45px;
     font-weight: 400;
     text-shadow: #3a3b33 1px 1px 1px;
-    text-align: center;
+    margin-right: 25%;
+    
+}
+
+#h3-contact {
+    margin-bottom: 20px;
+    color: #1A3030;
 }
 
 #para-contact {
     color: #DCD3C2B2;
-    margin: 10px;
-    padding: 5px;
+    margin-left: 25%;
     font-size: 24px;
     line-height: 1.2;
     width: 80%;
-    margin: 0 auto;
     text-align: left;
 }
 
@@ -137,17 +146,19 @@ button[type="submit"] {
 }
 
 /* Basisopmaak voor grote schermen */
-.form-container {
+/* .form-container {
     max-width: 800px;
     width: 60%;
     margin: 0 auto;
-}
+} */
 
 /* Media queries voor schermen kleiner dan 768px */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .form-container {
         width: 90%;
         padding: 20px;
+        flex-direction: column;
+
     }
 
     .form-content {
@@ -158,15 +169,12 @@ button[type="submit"] {
         width: 100%; /* Volledige breedte voor mobiele weergave */
     }
 
-    #h1-contact {
-        font-size: 2rem; /* Pas de grootte van de koptekst aan */
+    #para-contact {
+        font-size: 1rem;
+        margin-left: 0;
     }
 
-    #para-contact {
-        width: 100%;
-        padding: 10px;
-        font-size: 1rem;
-    }
+
 }
 
 .error {

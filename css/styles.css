@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
         div#about, .hero-sectie {
 
                 flex-direction: column;
@@ -40,6 +40,69 @@
 
                 width: 100%;
 
+        }
+
+        div.footer-body{
+                width: 100%;
+        }
+}
+
+@media screen and (max-width: 850px){
+        .main-container{
+                justify-content: space-between;
+        }
+        
+        div.header-flexbox{
+                width: 100%;
+
+        }
+
+        img.header-logo{
+                width: 65px;
+        }
+
+        h1.main-title{
+                font-size: 50px;
+        }
+
+        footer{
+                height: 400px;
+        }
+        .main-footer{
+                height: auto;
+
+        }
+
+        div.footer-body{
+                flex-direction: column;
+                height: auto;
+                margin-top: 20px;
+
+        }
+        .footer-wrap{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                width: 100%;
+        }
+        footer p {
+                line-height: normal;
+                font-size: 18px;
+        }
+        .footer-copyright{
+                padding: 10px;
+        }
+        hr {
+                margin-top: 10px;
+        }
+
+        .footer-newsletter {
+                width: 100%;
+                align-items: center;
+        }
+
+        .footer-newsletter input{
+                width: auto;
         }
 
 }
@@ -165,8 +228,9 @@ button.hamburger {
 
 footer {
         background-color: #B3AD98;
-        height: 360px;
+        height: auto;
         width: 100vw;
+        margin-top: 50px;
 }
 
 footer hr {
@@ -199,7 +263,7 @@ footer hr {
 footer p {
         color: #1A3030;
         padding: 0; 
-        margin-bottom: 10px;   
+        margin-bottom: 20px;   
 }
 
 .footer-links > a {
