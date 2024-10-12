@@ -51,9 +51,9 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     }
 
     if (valid) {
-        document.getElementById("send").textContent = "Formulier succesvol verstuurd!";
+        document.getElementById("send").textContent = window.alert("Formulier succesvol verstuurd!");
         // Hier kun je eventueel een AJAX-aanroep toevoegen om de gegevens naar de server te sturen
     } else {
-        document.getElementById("send").textContent = "Corrigeer de fouten en probeer opnieuw.";
+        document.getElementById("send").textContent = window.alert("Corrigeer de fouten en probeer opnieuw.");
     }
 });
