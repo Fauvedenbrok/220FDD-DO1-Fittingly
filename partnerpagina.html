@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fittingly/partners</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/partnerPaginaStyle.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/partnerPaginaStyle.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet" />
 </head>
@@ -19,7 +19,7 @@
 
   </header>
   <main>
-    <div class="container">
+    <div id="partnerpagina-container">
       <div class="background-container">
         <div id="koptekst-container">
           <h2 id="koptekst">Duurzaam verhuren, Tijdloze elegantie</h2>
@@ -32,27 +32,31 @@
       </div>
 
 
-      <!--De usp table-->
-      <div class="uspTableContainer">
-        <table id="uspTable">
-          <tr>
-            <th>
-              <img class="tableImg" src="Images/MensAIModels/mensBrownCoat.jpg" alt="" />
-            </th>
-            <th>
-              <img class="tableImg" src="Images/WomensAIModels/womensBrownStraightVest.jpg" alt="" />
-            </th>
-            <th>
-              <img class="tableImg" src="Images/PartnerLogos/Caunhing.jpg" alt="" />
-            </th>
-          </tr>
-          <tr>
-            <td>USP USP USP1</td>
-            <td>USP USP USP2</td>
-            <td>USP USP USP3</td>
-          </tr>
-        </table>
+
+      <div class="redline-div-container">
+
+        <div class="redline-div">
+          <div class="redline-div-usp-img">
+            <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt=""/>
+          </div>
+          <h5>Erg duurzaam!</h5>
+        </div class="redline-div-usp-tekst">
+
+        <div class="redline-div">
+          <div class="redline-div-img">
+            <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt=""/>
+          </div>
+          <h5 class="redline-div-usp-tekst">Lekker goeikoop!</h5>
+        </div>
+
+        <div class="redline-div">
+          <div class="redline-div-img">
+              <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt=""/>
+          </div>
+          <h5 class="redline-div-usp-tekst">Past ook nog goed joh!</h5>
+        </div>
       </div>
+
 
       <div class="totPlaatje2">
         <!--Heading 2 onder USP's-->
@@ -72,7 +76,7 @@
             </p>
           </div>
           <div class="img-container">
-            <img id="deel2Img" src="/Images/onsdoelImages/image_man_woman.jpg" alt="Mens Brown Long-Coat Model" />
+            <img id="img-couple" src="/Images/backgroundImages/faded_couple.png" alt="Mens Brown Long-Coat Model" />
           </div>
         </div>
 
@@ -128,7 +132,7 @@
           <!--Aanmeldingknop onderaan de pagina met functie-->
           <div class="afsluitingsTekst">
             <h2 class="heading3Tekst">Geïnteresseerd?</h2>
-            <p>
+            <p id="afsluitings-paragraph">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam,
               repellendus pariatur officiis ea ad quod labore nostrum ab impedit
               optio? Ea, et. Voluptates, repellendus! Qui temporibus consequatur
