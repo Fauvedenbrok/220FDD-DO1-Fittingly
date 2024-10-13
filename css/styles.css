@@ -12,6 +12,11 @@
     display: block;
   }
 
+  div#about,
+  .hero-sectie {
+    flex-direction: column;
+  }
+
   header nav {
     display: none;
     position: absolute;
@@ -30,6 +35,31 @@
   div.footer-body {
     width: 100%;
   }
+}
+
+@media screen and (max-width: 850px) {
+  .main-container {
+    justify-content: space-between;
+  }
+}
+
+header nav {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 126px;
+  z-index: 999;
+  flex-direction: column;
+  background-color: #1a3030 !important;
+  height: auto;
+}
+
+header nav button {
+  width: 100%;
+}
+
+div.footer-body {
+  width: 100%;
 }
 
 @media screen and (max-width: 850px) {
@@ -81,6 +111,35 @@
   .footer-newsletter {
     width: 100%;
     align-items: center;
+  }
+  div.footer-body {
+    flex-direction: column;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .footer-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  footer p {
+    line-height: normal;
+    font-size: 18px;
+  }
+
+  .footer-copyright {
+    padding: 10px;
+  }
+
+  hr {
+    margin-top: 10px;
+  }
+
+  .footer-newsletter input {
+    width: auto;
   }
 
   .footer-newsletter input {
@@ -170,17 +229,14 @@ nav > button > a {
   text-decoration: none;
   font-weight: 600;
 }
+
 button.hamburger {
   background: none;
-
   box-shadow: none;
   padding: 0;
   border: none;
-
   width: 50px;
-
   position: relative;
-
   height: 50px;
 }
 
