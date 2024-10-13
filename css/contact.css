@@ -8,6 +8,7 @@ body {
 
 /* Container met de achtergrondafbeelding */
 .background-container {
+    position: relative;
     height: 90vh;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg');
     background-size: cover;
@@ -19,15 +20,14 @@ body {
 
 /* Container met contactformulier */
 .form-container {
-    position: relative;
-    max-width: 800px;
-    width: 60%;
+    position: absolute;
+    width: 1005px;
+    height: 1144px;
+    top: 656px;
+    left: 218px;
     background: #B3AD98;
-    margin: -20vh auto 0 auto;
     padding: 40px;
-    border-radius: 6px;
-    box-sizing: border-box;
-    margin-bottom: 80px;
+    border-radius: 20px;
 }
 
 /* Form content: inputvelden + contactinformatie */
@@ -38,7 +38,7 @@ body {
 }
 
 .input-fields {
-    width: 60%;
+    width: 425px;
 }
 
 .input-fields label {
@@ -55,14 +55,21 @@ body {
 
 }
 
-.contact-info h2 {
-    margin-bottom: 20px;
-    color: #1A3030;
+.contact-info h5 {
+    margin-bottom: 20px; 
+    color: #1A3030; 
+    font-size: 24px;
+    font-family: Raleway;
+    font-weight: 600;
 }
   
 .contact-info p {
     margin: 5px 0;
     color: #1A3030;
+    font-family: Raleway;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
 #usp1-contact, #usp2-contact, #usp3-contact {
@@ -72,8 +79,8 @@ body {
 }
 
 #h1-contact {
-    position: relative;
-    margin-top: 30px;
+    display: flex;
+    justify-content: center;
     color: #cc9c4e;
     font-family: "Playfair Display", serif;
     font-size: 45px;
@@ -106,14 +113,17 @@ textarea {
     outline: none;
     resize: none;
     border: none;
-    border-bottom: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d9d9d9;
     border-radius: 3px;
 }
 
 textarea#bericht {
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px; 
+    width: 800px;
+    height: 361px;
+    top: 1239px;
+    left: 288px;
+    border-radius: 5px;
+    color: #d9d9d9;
   }
 
 input[type="text"]:focus,
@@ -123,17 +133,23 @@ textarea:focus {
 
 .button-container {
     display: flex;
-    justify-content: center;
+    align-self: center;
     width: 100%;
 }
 
 button[type="submit"] {
-    padding: 10px 20px;
     background-color: #cc9c4e;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39.01px;
+    width: 495px;
+    height: 61px;
+    top: 1657px;
+    left: 473;
+    border-radius: 10px;
+    border: 3px;
 }
 
 /* Basisopmaak voor grote schermen */
