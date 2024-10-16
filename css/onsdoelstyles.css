@@ -228,21 +228,92 @@ body {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    body {
+        padding: 0 10px; /* Wat ruimte aan de zijkanten voor mobiele weergave */
+    }
+
+    h2 {
+        font-size: 6vw; /* Proportioneel schalen */
+    }
+
+    h3 {
+        font-size: 5vw; /* Proportioneel schalen */
+    }
+
+    h4 {
+        font-size: 4vw; /* Proportioneel schalen */
+    }
+
+    .paragraph-tekst3, .paragraph-tekst4 {
+        font-size: 4vw; /* Proportioneel schalen */
+        line-height: 1.5em; /* Regelafstand aanpassen voor mobiele weergave */
+    }
+
+    .hero-sectie {
+        height: 50vh; /* Kleine hoogte voor mobiele weergave */
+    }
+
+    .hero-sectie-klanten, .hero-sectie-partners {
+        width: 100%; /* Volledige breedte op mobiele schermen */
+    }
+
     .image-right, .image-left {
-        max-width: 90%; /* Volledige breedte op kleinere schermen */
+        max-width: 90%; /* Volledige breedte voor afbeeldingen op mobiele schermen */
+        margin-top: 20px; /* Ruimte boven afbeeldingen */
     }
 
-    .heading4Tekst {
-        font-size: 2rem; /* Kleinere kop op kleinere schermen */
+    .slider-image {
+        width: 50%; /* Verklein de breedte van de afbeeldingen in de slider */
+        height: auto; /* Automatische hoogte voor de afbeeldingen */
+        margin: 0 2%; /* Verminder ruimte tussen afbeeldingen */
     }
 
-    .heading5Tekst {
-        font-size: 1.5rem; /* Kleinere subtitel op kleinere schermen */
+    .slider-container {
+        width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
+        padding: 0; /* Verwijder padding als dat nodig is */
+    }
+
+    .usp-container {
+        flex-direction: column; /* Lijsten onder elkaar op kleinere schermen */
+        align-items: center; /* Centraal uitlijnen */
+    }
+
+    .usp-item {
+        margin: 20px 0; /* Ruimte tussen USP-items */
     }
 
     .hexagon {
-        width: 80px; /* Kleinere hexagon knoppen op kleinere schermen */
-        height: 48px; /* Kleinere hexagon knoppen op kleinere schermen */
+        width: 60px; /* Kleinere hexagon knoppen op kleinere schermen */
+        height: auto; /* Automatische hoogte */
+    }
+
+}
+
+/* Extra voor kleinere schermen */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 5vw; /* Nog kleinere kop voor smartphones */
+    }
+
+    h3 {
+        font-size: 4vw; /* Nog kleinere subtitel voor smartphones */
+    }
+
+    h4 {
+        font-size: 3.5vw; /* Nog kleinere subtitel voor smartphones */
+    }
+
+    .paragraph-tekst3, .paragraph-tekst4 {
+        font-size: 3.5vw; /* Nog kleinere tekst voor smartphones */
+    }
+
+    .slider-image {
+        width: 50%; /* Verklein de breedte van de afbeeldingen in de slider voor smartphones */
+    }
+
+    .slider-container {
+        width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
+        padding: 0; /* Verwijder padding als dat nodig is */
     }
 }
 
