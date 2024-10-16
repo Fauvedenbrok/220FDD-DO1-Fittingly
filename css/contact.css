@@ -175,7 +175,7 @@ textarea:focus {
     margin-top: 20px;
 }
 
-button[type="submit"] {
+form button[type="submit"] {
     display: flex;
     justify-content: center; /* Zorgt dat de button gecentreerd is */
     background-color: #cc9c4e;
