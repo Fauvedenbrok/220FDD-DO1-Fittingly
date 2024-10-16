@@ -76,6 +76,9 @@ body {
 
 .input-fields {
     width: 425px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .input-bericht {
