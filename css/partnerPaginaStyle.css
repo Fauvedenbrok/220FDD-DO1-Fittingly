@@ -68,38 +68,6 @@ body {
   margin-left: 25%;
 }
 
-
-
-
-/*USP Table-clone op partnerpagina*/
-/* .usp-table-clone-container {
-  background-color: #dcd3c2;
-  position: relative;
-  margin-right: 25%;
-  margin-left: 25%;
-  border-radius: 15px;
-  margin-top: -396px;
-  max-width: 400px;
-} */
-
-/* #usp-tableclone,
-.th-clone,
-.td-clone {
-  border: 3px solid #b3ad98;
-  border-radius: 15px;
-  padding: 10px;
-  text-align: center;
-}
-
-.table-clone {
-  width: 100%;
-}
-.table-clone-img {
-  width: auto;
-  height: 100px;
-  border-radius: 50%;
-} */
-
 #partnerpagina-container {
   display: flex;
   flex-direction: column;
@@ -172,12 +140,7 @@ body {
 .ons-platform-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.ons-platformflex-container > div {
-  width: 100px;
-  text-align: center;
+  justify-content: space-around;
 }
 
 .img-container {
