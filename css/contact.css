@@ -1,3 +1,26 @@
+@media screen and (max-width: 850px) {
+    h3#h3-contact{
+        font-size: 30px;
+    }
+     /* Contact-info titels voor mobiel */
+     .contact-info h5 {
+        font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
+    }
+    
+    /* Contact-info tekst voor mobiel */
+    .contact-info p {
+        font-size: 18px; /* Kleiner lettertype voor de paragraaf */
+        margin: 10px 0; /* Meer ruimte tussen de paragrafen */
+    }
+
+    /* Iconen voor mobiel */
+    #usp1-contact, #usp2-contact, #usp3-contact {
+        width: 16px; /* Kleiner icoon voor mobiel */
+        height: 16px;
+        padding-right: 8px; /* Iets minder padding op mobiel */
+    }
+}
+
 * {
     font-family: montserrat;
 }
@@ -8,26 +31,34 @@ body {
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-    position: relative;
-    height: 90vh;
+    width: 100vw;
+    height: 60vh;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
 }
 
 /* Container met contactformulier */
 .form-container {
-    position: absolute;
-    width: 1005px;
-    height: 1144px;
-    top: 656px;
-    left: 218px;
+    display: flex;
+    position: relative;
+    width: 60%;
     background: #B3AD98;
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+    margin: -10vh auto 0 auto;
+    flex-direction: row-reverse;
+    justify-content: space-between;    
+}
+
+#contactForm {
+    width: 50%;
 }
 
 /* Form content: inputvelden + contactinformatie */
@@ -35,10 +66,15 @@ body {
     display: flex; 
     justify-content: space-between;
     align-items: flex-start;
+    width: 200%;
 }
 
 .input-fields {
     width: 425px;
+}
+
+.input-bericht {
+    width: 780px;
 }
 
 .input-fields label {
@@ -47,16 +83,13 @@ body {
 }
 
 .contact-info {
-    position: absolute;
-    top: 0; /* Verplaats naar de bovenkant van de container */
-    right: 0; /* Verplaats naar de rechterkant van de container */
-    width: 35%; 
-    padding: 10px;
+    width: 45%; /* Zorg dat de contactinfo minder ruimte neemt */
+    font-size: 18px;
 
 }
 
 .contact-info h5 {
-    margin-bottom: 20px; 
+    margin: 10px;
     color: #1A3030; 
     font-size: 24px;
     font-family: Raleway;
@@ -64,12 +97,12 @@ body {
 }
   
 .contact-info p {
-    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
     color: #1A3030;
     font-family: Raleway;
     font-size: 20px;
-    display: flex;
-    align-items: center;
 }
 
 #usp1-contact, #usp2-contact, #usp3-contact {
@@ -78,25 +111,25 @@ body {
     padding-right: 10px;
 }
 
-#h1-contact {
-    display: flex;
-    justify-content: center;
-    color: #cc9c4e;
-    font-family: "Playfair Display", serif;
+#h2-contact {
     font-size: 45px;
     font-weight: 400;
     text-shadow: #3a3b33 1px 1px 1px;
-    text-align: center;
+    margin-right: 50%;
+    margin-bottom: 10px;
+    
+}
+
+#h3-contact {
+    margin-bottom: 20px;
+    color: #1A3030;
 }
 
 #para-contact {
     color: #DCD3C2B2;
-    margin: 10px;
-    padding: 5px;
     font-size: 24px;
     line-height: 1.2;
-    width: 80%;
-    margin: 0 auto;
+    width: 60%; 
     text-align: left;
 }
 
@@ -118,10 +151,8 @@ textarea {
 }
 
 textarea#bericht {
-    width: 800px;
+    width: 100%;
     height: 361px;
-    top: 1239px;
-    left: 288px;
     border-radius: 5px;
     color: #d9d9d9;
   }
@@ -131,58 +162,68 @@ textarea:focus {
     border-bottom: 1px solid #1A3030;
 }
 
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 .button-container {
     display: flex;
-    align-self: center;
-    width: 100%;
+    justify-content: center; /* Zorgt dat de button gecentreerd is */
+    width: 100%; 
+    margin-top: 20px;
 }
 
 button[type="submit"] {
+    display: flex;
+    justify-content: center; /* Zorgt dat de button gecentreerd is */
     background-color: #cc9c4e;
     color: rgb(0, 0, 0);
     font-family: Montserrat;
     font-weight: 500;
     font-size: 32px;
     line-height: 39.01px;
-    width: 495px;
-    height: 61px;
+    width: 50%;
+    height: 50px;
     top: 1657px;
-    left: 473;
     border-radius: 10px;
     border: 3px;
 }
 
 /* Basisopmaak voor grote schermen */
-.form-container {
+/* .form-container {
     max-width: 800px;
     width: 60%;
     margin: 0 auto;
-}
+} */
 
 /* Media queries voor schermen kleiner dan 768px */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .form-container {
         width: 90%;
         padding: 20px;
+        /* flex-direction: column; */
     }
 
     .form-content {
         flex-direction: column; /* Velden onder elkaar */
     }
 
-    .input-fields, .contact-info {
+    .input-fields, .input-bericht, .contact-info {
         width: 100%; /* Volledige breedte voor mobiele weergave */
     }
 
-    #h1-contact {
-        font-size: 2rem; /* Pas de grootte van de koptekst aan */
+    #para-contact {
+        font-size: 1rem;
+        margin-left: 0;
     }
 
-    #para-contact {
-        width: 100%;
-        padding: 10px;
-        font-size: 1rem;
+    button[type="submit"] {
+        width: 100%; /* Button neemt volledige breedte op mobiel */
     }
+
+
 }
 
 .error {
@@ -196,3 +237,4 @@ button[type="submit"] {
 #succes {
     color: #28A745;
 }
+
