@@ -76,6 +76,9 @@ body {
 
 .input-fields {
     width: 425px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .input-bericht {
@@ -225,7 +228,7 @@ form button[type="submit"] {
         margin-left: 0;
     }
 
-    button[type="submit"] {
+    form button[type="submit"] {
         width: 100%; /* Button neemt volledige breedte op mobiel */
     }
 
