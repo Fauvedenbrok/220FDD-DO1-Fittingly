@@ -1,17 +1,22 @@
+@media screen and (max-width: 100px) {
+ /* Contact-info titels voor mobiel */
+ .contact-info h5 {
+    font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
+}
+
+/* Contact-info tekst voor mobiel */
+.contact-info p {
+    font-size: 18px; /* Kleiner lettertype voor de paragraaf */
+    margin: 10px 0; /* Meer ruimte tussen de paragrafen */
+}
+h3#h3-contact{
+    font-size: 30px;
+}
+}
+
 @media screen and (max-width: 850px) {
-    h3#h3-contact{
-        font-size: 30px;
-    }
-     /* Contact-info titels voor mobiel */
-     .contact-info h5 {
-        font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
-    }
+
     
-    /* Contact-info tekst voor mobiel */
-    .contact-info p {
-        font-size: 18px; /* Kleiner lettertype voor de paragraaf */
-        margin: 10px 0; /* Meer ruimte tussen de paragrafen */
-    }
 
     /* Iconen voor mobiel */
     #usp1-contact, #usp2-contact, #usp3-contact {
@@ -203,11 +208,12 @@ form button[type="submit"] {
     .form-container {
         width: 90%;
         padding: 20px;
-        /* flex-direction: column; */
+        flex-direction: column;
     }
 
     .form-content {
         flex-direction: column; /* Velden onder elkaar */
+        width: 100%;
     }
 
     .input-fields, .input-bericht, .contact-info {
