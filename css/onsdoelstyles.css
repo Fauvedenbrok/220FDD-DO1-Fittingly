@@ -103,7 +103,7 @@ body {
 }
 
 .text-opmaak {
-    display: inline-flex;
+    display: flex;
     margin-bottom: 20px;
     width: 100%;
 }
@@ -172,7 +172,7 @@ body {
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     box-shadow: 0px 7px 4px 0px #00000059;
     border-radius: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin: 0 6px; /* Ruimte tussen afbeeldingen */
     flex-shrink: 0; /* Zorg ervoor dat de afbeeldingen niet krimpen */
 }
@@ -228,9 +228,6 @@ body {
 
 /* Media Queries */
 @media (max-width: 768px) {
-    body {
-        padding: 0 10px; /* Wat ruimte aan de zijkanten voor mobiele weergave */
-    }
 
     h2 {
         font-size: 6vw; /* Proportioneel schalen */
@@ -250,7 +247,7 @@ body {
     }
 
     .hero-sectie {
-        height: 50vh; /* Kleine hoogte voor mobiele weergave */
+        height: 30vh; /* Kleine hoogte voor mobiele weergave */
     }
 
     .hero-sectie-klanten, .hero-sectie-partners {
@@ -274,8 +271,10 @@ body {
     }
 
     .usp-container {
-        flex-direction: column; /* Lijsten onder elkaar op kleinere schermen */
-        align-items: center; /* Centraal uitlijnen */
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
     }
 
     .usp-item {
@@ -287,6 +286,11 @@ body {
         height: auto; /* Automatische hoogte */
     }
 
+    .text-opmaak {
+        /* display: inline-flex; */
+        margin-bottom: 20px;
+        width: 100%;
+    }
 }
 
 /* Extra voor kleinere schermen */
@@ -314,6 +318,12 @@ body {
     .slider-container {
         width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
         padding: 0; /* Verwijder padding als dat nodig is */
+    }
+
+    .text-opmaak {
+        /* display: inline-flex; */
+        margin-bottom: 20px;
+        width: 100%;
     }
 }
 
