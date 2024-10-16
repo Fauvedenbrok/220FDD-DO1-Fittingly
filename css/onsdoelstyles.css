@@ -103,15 +103,12 @@ body {
 }
 
 .text-opmaak {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: inline-flex;
     margin-bottom: 20px;
     width: 100%;
 }
 
 .text-opmaak2 {
-    display: flex;
     flex-direction: column;
     padding: 20px; /* Ruimte rondom de tekstinhoud */
 }
@@ -140,16 +137,21 @@ body {
 }
 
 .image-right {
-    max-width: 45%; /* Maximaliseren breedte van afbeeldingen */
+    max-width: 45%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 120px;
+    /* /* display: flex;  */
+    /* justify-content: flex-end; */
+    
 }
 
 .image-left {
-    max-width: 20%; /* Maximaliseren breedte van afbeeldingen */
+    max-width: 40%; /* Maximaliseren breedte van afbeeldingen */
     height: auto;
-    margin-top: 20px;
-    transform: translate(-50px, 50px); /* Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
+    /* margin-top: 20px; */
+    /* display: grid; */
+    /* justify-content: space-between; */
+    /* transform: translate(-50px, 50px); Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
 }
 
 .slider-container {
@@ -177,7 +179,7 @@ body {
 
 .usp-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 80px;
 }
 
@@ -190,24 +192,26 @@ body {
 }
 
 .hexagon {
-    width: 100px; /* Pas de breedte aan */
-    height: 60px; /* Pas de hoogte aan */
-    /* background-color: #CC9C4E; Gouden kleur */
-    /* color: white; */
-    align-items: center;
+    width: 75px; Pas de breedte aan
+    height: auto;
+    /* height: 60px; Pas de hoogte aan */
+    /* align-items: center; */
     border: none;
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     outline: none;
-    margin: 0 40px; /* Ruimte tussen afbeeldingen */
+    /* margin: 0 40px; Ruimte tussen afbeeldingen */
     transition: transform 0.2s;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-    margin-bottom: 20px;
-    margin-left: 80px;
+    /* margin-bottom: 20px; */
+    margin-left: 40px;
+    /* display: flex; */
+    justify-content: space-between;
+    display: flex;
 }
 
-.hexagon:hover, .gold-text:hover {
-    transform: translateY(-3px); /* Kleine omhoog-beweging bij hover */
+.usp-item:hover .hexagon, .usp-item:hover .gold-text {
+    transform: translateY(-5px); /* Kleine omhoog-beweging bij hover */
 }
 
 .gold-text {
@@ -218,7 +222,8 @@ body {
     font-family: Raleway; 
     font-size: 20px; 
     font-weight: 400; 
-    line-height: 39px; 
+    line-height: 39px;
+    transition: transform 0.2s;
 }
 
 /* Media Queries */
