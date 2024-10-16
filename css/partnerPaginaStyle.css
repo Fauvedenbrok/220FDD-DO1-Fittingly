@@ -4,64 +4,22 @@ body {
   justify-content: center;
 }
 
+/*voor desktop*/
 @media (min-width: 901px) {
+  
   /*USP table*/
-
-.redline-div-container * {
+.usp-div-container * {
   text-align: center;
 }
 
-.redline-div-container {
+.usp-div-container {
   display: flex;
   justify-content: space-around;
   margin-top: -112px;
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.redline-div {
-  width: 100px;
-}
-}
-
-
-
-@media (max-width: 900px) {
-
-    /*USP table*/
-.redline-div-container * {
-  flex-direction: column;
-  padding: 10px;
-  text-align: center;
-  background-color: #dcd3c2;
-  border-radius: 20px;
-}
-
-.redline-div-container {
-  margin-top: -800px;
-}
-
-  #partner-koptekst {
-    text-align: center;
-    margin-top: 80px;
-  }
-
-  h2 {
-    font-size: 40px;
-  }
-
-  h3 {
-  }
-
-  h4 {
-  }
-
-  p {
-    font-size: 15px;
-  }
-}
-
-
-.redline-div-container {
+.usp-div-container {
   max-width: 50vw;
   background-color: #dcd3c2;
   border-radius: 20px;
@@ -95,7 +53,7 @@ body {
 #koptekst-container {
   overflow: hidden;
   max-width: 1100px;
-  margin: 30px 50px;
+  margin: 10% 15%;
 }
 
 .usp-img {
@@ -132,8 +90,8 @@ body {
 
 #partner-koptekst {
   text-align: center;
-  margin-top: 80px;
   margin-bottom: -40px;
+  margin-top: 100px;
 }
 
 /*Ons platform koptekst*/
@@ -161,7 +119,6 @@ body {
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: 100vw;
   padding-top: 100px;
 }
 
@@ -243,7 +200,8 @@ body {
   margin-right: 15%;
 }
 
-#afsluitings-paragraph {
+.afsluitings-paragraph {
+  text-align: center !important;
 }
 
 /*Aanmeldknop onderaan de partnerpagina*/
@@ -251,8 +209,8 @@ body {
   font-family: "PlayFair Display", serif;
   background-color: #cc9c4e;
   padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
   border: 3px solid #cc9c4e;
   border-radius: 5px;
   font-size: 20px;
@@ -263,13 +221,251 @@ body {
   font-family: "PlayFair Display", serif;
   background-color: #b3ad98;
   padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
   border: 3px solid #b3ad98;
   border-radius: 5px;
   font-size: 20px;
   box-shadow: #3a3b33 5px 5px 5px 5px;
   margin-bottom: 20px;
 }
+}
 
-/*Einde stuk Richard*/
+/*Voor tablets en mobiele telefoons*/
+@media (max-width: 900px) {
+
+    /*USP table*/
+.usp-div-container * {
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.usp-div-container {
+  max-width: 50vw;
+  background-color: #dcd3c2;
+  border-radius: 20px;
+  margin-left: 25%;
+  margin-top: -50%;
+}
+
+  h2 {
+    font-size: 50px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+
+  
+  #partnerpagina-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Container met de achtergrondafbeelding */
+  .background-container {
+    height: 100vh;
+    /* Volledige hoogte van het venster */
+    background-size: cover;
+    /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
+    background-position: center;
+    /* Centreert de afbeelding */
+    display: flex;
+    /* Voor flexbox-positionering */
+    justify-content: center;
+    /* Centreert de inhoud horizontaal */
+    background-image: linear-gradient(
+        rgba(19, 30, 36, 0.8),
+        rgba(19, 30, 36, 0.8)
+      ),
+      url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
+  }
+  
+  #koptekst-container {
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 10% 15%;
+  }
+  
+  .usp-img {
+    width: auto;
+    height: 100px;
+  }
+  
+  .tekst-container {
+    width: 80vh;
+  }
+  
+  /*Grote tekst heading*/
+  .heading1Tekst {
+    margin-left: 10%;
+    margin-top: 100px;
+    padding-left: 30px;
+  }
+  
+  .heading2Tekst {
+    margin-left: 10%;
+    padding-left: 30px;
+  }
+  
+  .paragraph2Tekst {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 30px;
+  }
+  
+  #partnersTekst {
+    margin-top: 600px;
+    text-align: center;
+  }
+  
+  #partner-koptekst {
+    text-align: center;
+    margin-bottom: -40px;
+  }
+  
+  /*Ons platform koptekst*/
+  .ons-platform-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .img-container {
+    width: auto;
+    height: 656px;
+    margin-right: 10%;
+  }
+  
+  /*Image onder grote titel*/
+  #img-couple {
+    height: 80%;
+    width: auto;
+  }
+  
+  /* Main Styling */
+  .slider {
+    height: 250px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    padding-top: 100px;
+  }
+  
+  .slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+  
+  .slider::before {
+    left: 0;
+    top: 0;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(calc(-290px * 4));
+    }
+  }
+  
+  /* Slide Track and Slide */
+  .slider .slide-track {
+    /*De volledige animatie van de slider duurt 40 seconden. Na 40 seconden wordt de slider gereset */
+    animation: scroll 30s linear infinite;
+    /* Scroll infinitely over 30 seconds */
+    /*Zorgt voor een smooth animatie in de slider*/
+    animation-timing-function: linear;
+    /* Smooth linear animation */
+    display: flex;
+    /*De breedte van elke img * het aantal images die in de 40 seconden te zien zijn. De exacte breedte is belangrijk zodat de slider niet halverwege een img ge-reset wordt.*/
+    width: calc(290px * 4);
+  }
+  
+  .slider .slide .slideimg {
+    width: 250px;
+    object-fit: cover;
+  }
+  
+  .slide {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .slideimg {
+    border-radius: 10px;
+  }
+  
+  .imgContent {
+    width: 250px;
+    border-top: 3px solid #b3ad98;
+    border-radius: 10%;
+    background-color: #b3ad98;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /*Partner logos op partnerpagina*/
+  #logoBassinsin {
+    border-radius: 15%;
+  }
+  
+  #logoCaunhing {
+    border-radius: 35%;
+  }
+  
+  #logoNomadThread {
+    border-radius: 50%;
+  }
+  
+  .afsluitingsTekst {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  
+.afsluitings-paragraph {
+  text-align: center !important;
+}
+
+  /*Aanmeldknop onderaan de partnerpagina*/
+  .aanmeldButton {
+    font-family: "PlayFair Display", serif;
+    background-color: #cc9c4e;
+    padding: 5px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border: 3px solid #cc9c4e;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .aanmeldButtonPressed {
+    font-family: "PlayFair Display", serif;
+    background-color: #b3ad98;
+    padding: 5px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border: 3px solid #b3ad98;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: #3a3b33 5px 5px 5px 5px;
+    margin-bottom: 20px;
+  }
+  
+  /*Einde stuk Richard*/
+  
+
+}
+
+
