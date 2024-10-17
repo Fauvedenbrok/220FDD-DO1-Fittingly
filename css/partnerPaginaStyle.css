@@ -15,13 +15,19 @@ body {
     justify-content: space-around;
     margin-top: -112px;
     padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  .usp-div-container {
     max-width: 50vw;
     background-color: #dcd3c2;
     border-radius: 20px;
     margin-left: 25%;
+    padding-bottom: 30px;
+  }
+
+  .usp-div {
+    width: 100px;
+  }
+
+  .usp-div-tekst {
+    margin: 0% 5%;
   }
 
   #partnerpagina-container {
@@ -169,17 +175,6 @@ body {
 
   .slideimg {
     border-radius: 10px;
-  }
-
-  .imgContent {
-    width: 250px;
-    border-top: 3px solid #b3ad98;
-    border-radius: 10%;
-    background-color: #b3ad98;
-    padding: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   /*Partner logos op partnerpagina*/
@@ -334,12 +329,13 @@ body {
 
   .ons-platform-img-container {
     width: auto;
-    height: 656px;
+    height: 650px;
+    margin-bottom: -100px;
   }
 
   /*Image onder grote titel*/
   #img-couple {
-    height: 80%;
+    height: 70%;
     width: auto;
   }
 
@@ -386,7 +382,7 @@ body {
     width: calc(290px * 4);
   }
 
-  .slider .slide .slideimg {
+  .slider .slide {
     width: 250px;
     object-fit: cover;
   }
@@ -398,18 +394,11 @@ body {
 
   .slideimg {
     border-radius: 10px;
+    object-fit: cover;
+    width: 200px;
   }
 
-  .imgContent {
-    width: 250px;
-    border-top: 3px solid #b3ad98;
-    border-radius: 10%;
-    background-color: #b3ad98;
-    padding: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
 
   /*Partner logos op partnerpagina*/
   #logoBassinsin {
@@ -426,8 +415,7 @@ body {
 
   .afsluiting-tekst-container {
     text-align: center;
-    margin-left: 15%;
-    margin-right: 15%;
+margin: 0% 20%;
   }
 
   .afsluitings-paragraph {
