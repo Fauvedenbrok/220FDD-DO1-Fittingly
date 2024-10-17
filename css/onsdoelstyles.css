@@ -266,6 +266,10 @@ body {
         font-size: 48px;
         text-align: center;
     }
+
+    h3 {
+        font size: 48px;
+    }
     .hero-sectie {
         flex-direction: column;
         height: unset;
