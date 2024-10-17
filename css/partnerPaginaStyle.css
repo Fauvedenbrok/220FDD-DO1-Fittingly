@@ -31,7 +31,7 @@ body {
 
   /* Container met de achtergrondafbeelding */
   .background-container {
-    height: 100vh;
+    height: 75vh;
     /* Volledige hoogte van het venster */
     background-size: cover;
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
@@ -106,7 +106,6 @@ body {
   .ons-platform-img-container {
     width: auto;
     height: 656px;
-    margin-right: 10%;
   }
 
   /*Image onder grote titel*/
@@ -266,7 +265,7 @@ body {
 
   /* Container met de achtergrondafbeelding */
   .background-container {
-    height: 100vh;
+    height: 85vh;
     /* Volledige hoogte van het venster */
     background-size: cover;
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
@@ -336,7 +335,6 @@ body {
   .ons-platform-img-container {
     width: auto;
     height: 656px;
-    margin-right: 10%;
   }
 
   /*Image onder grote titel*/
@@ -461,4 +459,9 @@ body {
     box-shadow: #3a3b33 5px 5px 5px 5px;
     margin-bottom: 20px;
   }
+}
+
+
+#koptekst {
+  margin-top: -10px;
 }
