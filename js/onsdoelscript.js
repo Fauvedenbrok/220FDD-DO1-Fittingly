@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateSlider() {
-        
-
         sliderImages.forEach((image, index) => {
             if(getTranslateX(image) < (index * -360)){
                 // positioneer de afbeelding aan de rechterkant van het scherm
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Start de slider zodra de pagina geladen is
     initializeSlider();
-    setInterval(showNextImage, 1000);
+    setInterval(showNextImage, 3000);
 });
 
 
