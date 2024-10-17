@@ -13,7 +13,6 @@ body {
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-    width: 100vw;
     height: 60vh;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg');
     background-size: cover;
@@ -192,7 +191,7 @@ form button[type="submit"] {
         margin-left: 0;
     }
 
-    button[type="submit"] {
+    form button[type="submit"] {
         width: 100%; /* Button neemt volledige breedte op mobiel */
     }
 }
