@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSlider() {
         sliderImages.forEach((image, index) => {
-            image.style.transform = `translateX(${(index - currentIndex) * 40}%)`;
+            image.style.transform = `translateX(${(index - currentIndex) * 60}%)`;
         });
     }
 

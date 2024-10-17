@@ -270,7 +270,7 @@ body {
         padding: 0; /* Verwijder padding als dat nodig is */
     }
 
-    .usp-container {
+    .USP-container {
         display: flex;
         flex-direction: column;
         align-content: center;
@@ -324,6 +324,13 @@ body {
         /* display: inline-flex; */
         margin-bottom: 20px;
         width: 100%;
+    }
+
+    .USP-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
     }
 }
 
