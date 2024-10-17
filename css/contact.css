@@ -54,8 +54,8 @@ body {
     justify-content: space-between;    
 }
 
-#contactForm {
-    width: 100%;
+#contact-form {
+    width: 50%;
 }
 
 /* Form content: inputvelden + contactinformatie */
@@ -63,11 +63,11 @@ body {
     display: flex; 
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
+    width: 200%;
 }
 
 .input-fields {
-    width: 75%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -192,6 +192,7 @@ form button[type="submit"] {
     form button[type="submit"] {
         width: 100%; /* Button neemt volledige breedte op mobiel */
     }
+
 }
    /* Media queries voor mobiel */
    @media screen and (max-width: 1200px) {
@@ -226,13 +227,17 @@ form button[type="submit"] {
     }
 
     .form-container {
-        width: 60%;
+        width: 80%;
         padding: 20px;
         flex-direction: column;
     }
 
     .input-fields, .input-bericht, .contact-info, contact-info p {
         width: 100%; /* Volledige breedte voor mobiele weergave */
+    }
+
+    #contact-form {
+        width: 100%;
     }
 
    }
