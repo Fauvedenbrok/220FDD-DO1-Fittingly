@@ -6,12 +6,12 @@ const totalImages = sliderImages.length;
 
 document.addEventListener('DOMContentLoaded', function() {
     const sliderImages = document.querySelectorAll('.slider-image');
-    let currentIndex = 3;
+    let currentIndex = 1;
     const totalImages = sliderImages.length;
 
     function updateSlider() {
         sliderImages.forEach((image, index) => {
-            image.style.transform = `translateX(${(index - currentIndex) * 50}%)`;
+            image.style.transform = `translateX(${(index - currentIndex) * 40}%)`;
         });
     }
 

@@ -1,153 +1,160 @@
 * {
-    font-family: montserrat;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: #1A3030; 
+    margin: 0;
+    padding: 0;
 }
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-    height: 90vh;
+    height: 60vh;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
+}
+
+#h2-contact {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-shadow: #3a3b33 1px 1px 1px;
+    margin-right: 50%;
+    margin-bottom: 10px;
+    
+}
+
+#para-contact {
+    color: #DCD3C2B2;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    width: 60%; 
+    text-align: left;
 }
 
 /* Container met contactformulier */
 .form-container {
-    max-width: 800px;
+    display: flex;
+    position: relative;
     width: 60%;
     background: #B3AD98;
-    margin: -20vh auto 0 auto;
     padding: 40px;
     border-radius: 6px;
     box-sizing: border-box;
     margin-bottom: 80px;
+    margin: -10vh auto 0 auto;
+    flex-direction: row-reverse;
+    justify-content: space-between;    
+}
+
+#contactForm {
+    width: 50%;
 }
 
 /* Form content: inputvelden + contactinformatie */
 .form-content {
-    display: flex; /* Gebruik Flexbox om de velden naast elkaar te plaatsen */
+    display: flex; 
     justify-content: space-between;
-    align-items: flex-start; 
-  }
+    align-items: flex-start;
+    width: 200%;
+}
 
 .input-fields {
-    width: 60%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-/* Zorg ervoor dat de inputvelden en labels goed gestyled zijn */
-.input-fields label {
-    display: block;
-    margin-bottom: 5px;
-  }
+.input-bericht {
+    width: 200%;
+}
+
+#h3-contact {
+    margin-bottom: 20px;
+    color: #1A3030;
+    font-size: 30px;
+}
 
 .contact-info {
-    width: 50%; /* Contactinfo neemt 35% van de breedte in */
-    padding: 10px;
+    width: 35%; /* Zorg dat de contactinfo minder ruimte neemt */
+    font-size: 1.2rem;
 }
 
-.contact-info h2 {
-    margin-bottom: 20px;
-    margin-top: -690px;
-    margin-left: 450px;
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
     color: #1A3030;
-  }
-  
-  .contact-info p {
-    margin: 5px 0;
-    margin-left: 450px;
-    margin-block: 40px;
-    width: 300px;
-    color: #1A3030;
-  }
+    font-family: Raleway;
+    font-size: 1.0rem;
+}
 
-  #usp1-contact, #usp2-contact, #usp3-contact {
-    width: 20px;
+#usp1-contact, #usp2-contact, #usp3-contact {
+    width: 30px;
     height: 20px;
     padding-right: 10px;
-}
-
-#h1-contact {
-    position: absolute;
-    top: 500px;
-    left: 22%;
-    margin: 0;
-    color: #cc9c4e;
-    font-family: "Playfair Display", serif;
-    font-size: 45px;
-    font-weight: 400;
-    text-shadow: #3a3b33 1px 1px 1px;
-}
-
-#para-contact {
-    /* display: flex;
-    justify-content: center; */
-    color: #DCD3C2B2;
-    position: relative;
-    top: -180px;
-    left: 300px;
-    margin: 10px;
-    padding: 5px;
-    font-size: 24px;
-    line-height: 1.2;
-    width: 880px;
 }
 
 label {
     display: block;
     margin: 20px 0;
+    /* margin-bottom: 10px; */
 }
-
-/* Zorg dat alle inputvelden korter zijn */
-input[type="naam"],
-input[type="email"],
-input[type="bedrijf"],
-input[type="tel"] {
-  width: 50%; /* Maak de inputvelden smaller (bijv. 60% van de container) */
-  padding: 8px;
-  margin-bottom: 15px;
-}
-
-textarea#bericht {
-    width: 600px;
-  }
 
 input,
 textarea {
-    width: 70%;
+    width: 100%;
     padding: 10px;
-    box-sizing: border-box;
-    outline: none;
-    resize: none;
+    margin-bottom: 10px;
     border: none;
-    border-bottom: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d9d9d9;
     border-radius: 3px;
 }
 
-input[type="text"] :focus,
-textarea:focus {
+textarea#bericht {
+    height: 350px;
+    border-radius: 5px;
+  }
+
+.input-fields label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input:focus, textarea:focus {
     border-bottom: 1px solid #1A3030;
 }
 
-.center {
-    margin-left: 150px;
-    width: 400px;
-    text-align: center;
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    /* width: 200%; */
 }
 
-button[type="submit"] {
-    margin-top: 30px;
-    width: 90%;
-    max-width: 300px;
-    background: #cc9c4e;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 6px;
+form button[type="submit"] {
+    width: 100%;
+    background-color: #cc9c4e;
+    border-color: #cc9c4e;
+    color: black;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Zorgt dat de button gecentreerd is */
+    width: 100%; 
+    margin-top: 20px;
 }
 
 .error {
@@ -161,3 +168,57 @@ button[type="submit"] {
 #succes {
     color: #28A745;
 }
+
+/* Media queries voor schermen kleiner dan 768px */
+@media (max-width: 1200px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .form-content {
+        flex-direction: column; /* Velden onder elkaar */
+        width: 100%;
+    }
+
+    .input-fields, .input-bericht, .contact-info, contact-info p {
+        width: 100%; /* Volledige breedte voor mobiele weergave */
+    }
+
+    #para-contact {
+        font-size: 1rem;
+        margin-left: 0;
+    }
+
+    form button[type="submit"] {
+        width: 100%; /* Button neemt volledige breedte op mobiel */
+    }
+}
+   
+   @media screen and (max-width: 850px) {
+
+       /* Iconen voor mobiel */
+       #usp1-contact, #usp2-contact, #usp3-contact {
+           width: 22px; /* Kleiner icoon voor mobiel */
+           height: 16px;
+           padding-right: 8px; /* Iets minder padding op mobiel */
+       }
+   }
+
+   @media screen and (max-width: 100px) {
+    /* Contact-info titels voor mobiel */
+    .contact-info h5 {
+       font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
+   }
+   
+   /* Contact-info tekst voor mobiel */
+   .contact-info p {
+       font-size: 18px; /* Kleiner lettertype voor de paragraaf */
+       margin: 10px 0; /* Meer ruimte tussen de paragrafen */
+   }
+   h3#h3-contact{
+       font-size: 30px;
+   }
+   }
+

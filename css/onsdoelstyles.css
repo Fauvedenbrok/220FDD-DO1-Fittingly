@@ -10,7 +10,7 @@ h2 {
 }
 
 h3 {
-    font-family: "Playfair Display", sans-serif;
+    font-family: "Playfair Display", serif;
     color: #DCD3C2;
     font-size: 2.5rem; /* Flexibele eenheid */
     margin-bottom: 0px;
@@ -46,10 +46,18 @@ body {
     position: relative;
 }
 .hero-sectie-klanten, .hero-sectie-partners {
+    display: flex;
+    justify-content: center;
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+.hero-content {
+    align-content: center;
+    width: 545px;
+    padding: 0px 50px;
+    position: relative;
 }
 .hero-sectie-klanten {
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/hero-section-klant-image.jpeg');
@@ -58,9 +66,7 @@ body {
     left: 0;
 }
 .hero-sectie-klanten > .hero-content {
-    align-content: center;
-    max-width: 500px;
-    padding: 0px 150px;
+    top: -25%;
 }
 
 .timer {
@@ -70,10 +76,17 @@ body {
 }
 
 .card > span {
-    display: flex;
-    font-family: "Playfair Display", sans-serif;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
     color: #1A3030;
-    font-size: 48px;
+    background-color: #DCD3C2;
+    border-radius: 10px;
+    width: 70px;
+    height: 100px;
+    text-align: center;
+    align-content: center;
 }
 
 .timer-text {
@@ -83,11 +96,30 @@ body {
     text-align: center;
 }
 .hero-sectie-partners {
+    align-items: center;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/partnerPagina.jpg');
     clip-path: polygon(14.5% 0, 100% 0, 100% 100%, 0% 100%);
     width: 50%;
     right: 0;
     margin-left: -10%;
+}
+.hero-sectie-partners > .hero-content {
+    bottom: -10%;
+}
+.hero-sectie-partners > .hero-content > h2 {
+    text-align: right;
+    font-size: 70px;
+}
+
+.hero-content > button {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 50%);
+    border: none;
+    background-color: #DCD3C2;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
 }
 
 .onsdoel-container {
@@ -97,19 +129,16 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 1200px; /* Maximaliseren breedte van de container */
-    padding: 20px;
+    
 }
 
 .text-opmaak {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
     width: 100%;
 }
 
 .text-opmaak2 {
-    display: flex;
     flex-direction: column;
     padding: 20px; /* Ruimte rondom de tekstinhoud */
 }
@@ -138,28 +167,33 @@ body {
 }
 
 .image-right {
-    max-width: 45%; /* Maximaliseren breedte van afbeeldingen */
+    max-width: 45%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 120px;
+    /* /* display: flex;  */
+    /* justify-content: flex-end; */
+    
 }
 
 .image-left {
-    max-width: 30%; /* Maximaliseren breedte van afbeeldingen */
+    max-width: 40%; /* Maximaliseren breedte van afbeeldingen */
     height: auto;
-    margin-top: 20px;
-    transform: translate(-50px, 50px); /* Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
+    /* margin-top: 20px; */
+    /* display: grid; */
+    /* justify-content: space-between; */
+    /* transform: translate(-50px, 50px); Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
 }
 
 .slider-container {
     overflow: hidden;
-    width: 100vw;
+    width: calc(100vw - 20px);
     position: relative;
 }
 
 .slider {
     display: flex;
     transition: transform 0.5s ease;
-    width: calc(100% + 12px); /* Corrigeer de breedte om marges van de afbeeldingen te compenseren */
+    /* width: calc(100% + 12px); Corrigeer de breedte om marges van de afbeeldingen te compenseren */
 }
 
 .slider-image {
@@ -168,14 +202,14 @@ body {
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     box-shadow: 0px 7px 4px 0px #00000059;
     border-radius: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin: 0 6px; /* Ruimte tussen afbeeldingen */
     flex-shrink: 0; /* Zorg ervoor dat de afbeeldingen niet krimpen */
 }
 
 .usp-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 80px;
 }
 
@@ -188,24 +222,27 @@ body {
 }
 
 .hexagon {
-    width: 100px; /* Pas de breedte aan */
-    height: 60px; /* Pas de hoogte aan */
-    /* background-color: #CC9C4E; Gouden kleur */
-    /* color: white; */
-    align-items: center;
+    width: 75px;
+    /*Pas de breedte aan*/
+    height: auto;
+    /* height: 60px; Pas de hoogte aan */
+    /* align-items: center; */
     border: none;
-    position: relative;
+    /* position: relative; */
     cursor: pointer;
     outline: none;
-    margin: 0 40px; /* Ruimte tussen afbeeldingen */
+    /* margin: 0 40px; Ruimte tussen afbeeldingen */
     transition: transform 0.2s;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-    margin-bottom: 20px;
-    margin-left: 80px;
+    /* margin-bottom: 20px; */
+    margin-left: 40px;
+    /* display: flex; */
+    justify-content: space-between;
+    display: flex;
 }
 
-.hexagon:hover, .gold-text:hover {
-    transform: translateY(-3px); /* Kleine omhoog-beweging bij hover */
+.usp-item:hover .hexagon, .usp-item:hover .gold-text {
+    transform: translateY(-5px); /* Kleine omhoog-beweging bij hover */
 }
 
 .gold-text {
@@ -216,26 +253,125 @@ body {
     font-family: Raleway; 
     font-size: 20px; 
     font-weight: 400; 
-    line-height: 39px; 
+    line-height: 39px;
+    transition: transform 0.2s;
 }
 
 /* Media Queries */
+@media (min-width: 1920px) {
+
+}
+@media (max-width: 1440px) {
+    h2 {
+        font-size: 48px;
+        text-align: center;
+    }
+    .hero-sectie {
+        flex-direction: column;
+        height: unset;
+    }
+    .hero-sectie-klanten, .hero-sectie-partners {
+        width: 100%;
+        clip-path: none;
+        margin: 0;
+        height: 40vh;
+    }
+    .hero-sectie-klanten > .hero-content,
+    .hero-sectie-partners > .hero-content{
+        width: unset;
+        top: 0;
+        justify-content: center;
+        padding: 0px 30px;
+    }
+    .hero-sectie-partners > .hero-content > h2 {
+        font-size: 48px;
+        text-align: center;
+    }
+
+}
 @media (max-width: 768px) {
+
+    h3 {
+        font-size: 5vw; /* Proportioneel schalen */
+    }
+
+    h4 {
+        font-size: 4vw; /* Proportioneel schalen */
+    }
+
+    .paragraph-tekst3, .paragraph-tekst4 {
+        font-size: 4vw; /* Proportioneel schalen */
+        line-height: 1.5em; /* Regelafstand aanpassen voor mobiele weergave */
+    }
+
     .image-right, .image-left {
-        max-width: 90%; /* Volledige breedte op kleinere schermen */
+        max-width: 90%; /* Volledige breedte voor afbeeldingen op mobiele schermen */
+        margin-top: 20px; /* Ruimte boven afbeeldingen */
     }
 
-    .heading4Tekst {
-        font-size: 2rem; /* Kleinere kop op kleinere schermen */
+    .slider-image {
+        width: 50%; /* Verklein de breedte van de afbeeldingen in de slider */
+        height: auto; /* Automatische hoogte voor de afbeeldingen */
+        margin: 0 2%; /* Verminder ruimte tussen afbeeldingen */
     }
 
-    .heading5Tekst {
-        font-size: 1.5rem; /* Kleinere subtitel op kleinere schermen */
+    .slider-container {
+        width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
+        padding: 0; /* Verwijder padding als dat nodig is */
+    }
+
+    .usp-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+
+    .usp-item {
+        margin: 20px 0; /* Ruimte tussen USP-items */
     }
 
     .hexagon {
-        width: 80px; /* Kleinere hexagon knoppen op kleinere schermen */
-        height: 48px; /* Kleinere hexagon knoppen op kleinere schermen */
+        width: 60px; /* Kleinere hexagon knoppen op kleinere schermen */
+        height: auto; /* Automatische hoogte */
+    }
+
+    .text-opmaak {
+        /* display: inline-flex; */
+        margin-bottom: 20px;
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+/* Extra voor kleinere schermen */
+@media (max-width: 480px) {
+
+    h3 {
+        font-size: 4vw; /* Nog kleinere subtitel voor smartphones */
+    }
+
+    h4 {
+        font-size: 3.5vw; /* Nog kleinere subtitel voor smartphones */
+    }
+
+    .paragraph-tekst3, .paragraph-tekst4 {
+        font-size: 3.5vw; /* Nog kleinere tekst voor smartphones */
+    }
+
+    .slider-image {
+        width: 50%; /* Verklein de breedte van de afbeeldingen in de slider voor smartphones */
+    }
+
+    .slider-container {
+        width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
+        padding: 0; /* Verwijder padding als dat nodig is */
+    }
+
+    .text-opmaak {
+        /* display: inline-flex; */
+        margin-bottom: 20px;
+        width: 100%;
     }
 }
 
