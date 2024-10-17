@@ -40,7 +40,7 @@ body {
 
 /* Hero sectie achtergrond*/
 .hero-sectie {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     position: relative;
@@ -59,23 +59,21 @@ body {
 }
 .hero-sectie-klanten > .hero-content {
     align-content: center;
-    width: 495px;
-    padding: 0px 50px;
+    max-width: 500px;
+    padding: 0px 150px;
 }
 
 .timer {
+    font-family: '';
     display: flex;
     justify-content: space-between;
 }
 
 .card > span {
-    display: inline-block;
-    background-color: #DCD3C2;
-    border-radius: 10px;
-    width: 70px;
-    height: 100px;
-    text-align: center;
-    align-content: center;
+    display: flex;
+    font-family: "Playfair Display", sans-serif;
+    color: #1A3030;
+    font-size: 48px;
 }
 
 .timer-text {
