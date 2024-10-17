@@ -14,6 +14,7 @@ h3 {
     color: #DCD3C2;
     font-size: 2.5rem; /* Flexibele eenheid */
     margin-bottom: 0px;
+    font-weight: 100;
 }
 
 h4 {
@@ -66,7 +67,7 @@ body {
     left: 0;
 }
 .hero-sectie-klanten > .hero-content {
-    top: -25%;
+    top: -20%;
 }
 
 .timer {
@@ -131,6 +132,13 @@ body {
     max-width: 1200px; /* Maximaliseren breedte van de container */
     
 }
+.image-blok-1 {
+    display: flex;
+    width: 200px;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
 
 .text-opmaak {
     display: flex;
@@ -141,6 +149,7 @@ body {
 .text-opmaak2 {
     flex-direction: column;
     padding: 20px; /* Ruimte rondom de tekstinhoud */
+    max-width: 800px;
 }
 
 .paragraph-tekst3, .paragraph-tekst4 {
@@ -167,12 +176,7 @@ body {
 }
 
 .image-right {
-    max-width: 45%;
-    height: auto;
-    margin-top: 120px;
-    /* /* display: flex;  */
-    /* justify-content: flex-end; */
-    
+    height: 400px;
 }
 
 .image-left {
@@ -266,6 +270,10 @@ body {
         font-size: 48px;
         text-align: center;
     }
+
+    h3 {
+        font size: 48px;
+    }
     .hero-sectie {
         flex-direction: column;
         height: unset;
@@ -274,7 +282,7 @@ body {
         width: 100%;
         clip-path: none;
         margin: 0;
-        height: 40vh;
+        min-height: 40vh;
     }
     .hero-sectie-klanten > .hero-content,
     .hero-sectie-partners > .hero-content{
@@ -287,6 +295,42 @@ body {
         font-size: 48px;
         text-align: center;
     }
+
+    .text-opmaak {
+        flex-direction: column;
+    }
+    .text-opmaak2 {
+        width: 100%;
+        max-width: unset;
+        padding: 0%;
+    }
+    .text-opmaak2 > * {
+        text-align: center;
+    }
+    .image-mobile {
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 50vh;
+    }
+    .image-about {
+        background-image: url('../Images/onsdoelImages/mobieldesign.png');
+        background-size: contain;
+    }
+    .image-goal {
+        background-image: linear-gradient(rgba(19, 30, 36, 0.2), rgba(19, 30, 36, 0.2)), url('../Images/backgroundImages/twosplitPartners.jpg');
+        background-size: cover;
+    }
+    .image-blok-1 {
+        visibility: hidden;
+        height: 0;
+    }
+
+    .image-left {
+        visibility: hidden;
+        height: 0;
+    }
+    
 
 }
 @media (max-width: 768px) {
