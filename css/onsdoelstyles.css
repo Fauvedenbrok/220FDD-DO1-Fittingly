@@ -10,7 +10,7 @@ h2 {
 }
 
 h3 {
-    font-family: "Playfair Display", sans-serif;
+    font-family: "Playfair Display", serif;
     color: #DCD3C2;
     font-size: 2.5rem; /* Flexibele eenheid */
     margin-bottom: 0px;
@@ -40,16 +40,24 @@ body {
 
 /* Hero sectie achtergrond*/
 .hero-sectie {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     position: relative;
 }
 .hero-sectie-klanten, .hero-sectie-partners {
+    display: flex;
+    justify-content: center;
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+.hero-content {
+    align-content: center;
+    width: 545px;
+    padding: 0px 50px;
+    position: relative;
 }
 .hero-sectie-klanten {
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/hero-section-klant-image.jpeg');
@@ -58,18 +66,21 @@ body {
     left: 0;
 }
 .hero-sectie-klanten > .hero-content {
-    align-content: center;
-    width: 495px;
-    padding: 0px 50px;
+    top: -25%;
 }
 
 .timer {
+    font-family: '';
     display: flex;
     justify-content: space-between;
 }
 
 .card > span {
     display: inline-block;
+    padding-bottom: 10px;
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
+    color: #1A3030;
     background-color: #DCD3C2;
     border-radius: 10px;
     width: 70px;
@@ -85,11 +96,30 @@ body {
     text-align: center;
 }
 .hero-sectie-partners {
+    align-items: center;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/partnerPagina.jpg');
     clip-path: polygon(14.5% 0, 100% 0, 100% 100%, 0% 100%);
     width: 50%;
     right: 0;
     margin-left: -10%;
+}
+.hero-sectie-partners > .hero-content {
+    bottom: -10%;
+}
+.hero-sectie-partners > .hero-content > h2 {
+    text-align: right;
+    font-size: 70px;
+}
+
+.hero-content > button {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 50%);
+    border: none;
+    background-color: #DCD3C2;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
 }
 
 .onsdoel-container {
@@ -192,7 +222,8 @@ body {
 }
 
 .hexagon {
-    width: 75px; Pas de breedte aan
+    width: 75px;
+    /*Pas de breedte aan*/
     height: auto;
     /* height: 60px; Pas de hoogte aan */
     /* align-items: center; */
@@ -227,11 +258,38 @@ body {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (min-width: 1920px) {
 
+}
+@media (max-width: 1440px) {
     h2 {
-        font-size: 6vw; /* Proportioneel schalen */
+        font-size: 48px;
+        text-align: center;
     }
+    .hero-sectie {
+        flex-direction: column;
+        height: unset;
+    }
+    .hero-sectie-klanten, .hero-sectie-partners {
+        width: 100%;
+        clip-path: none;
+        margin: 0;
+        height: 40vh;
+    }
+    .hero-sectie-klanten > .hero-content,
+    .hero-sectie-partners > .hero-content{
+        width: unset;
+        top: 0;
+        justify-content: center;
+        padding: 0px 30px;
+    }
+    .hero-sectie-partners > .hero-content > h2 {
+        font-size: 48px;
+        text-align: center;
+    }
+
+}
+@media (max-width: 768px) {
 
     h3 {
         font-size: 5vw; /* Proportioneel schalen */
@@ -244,14 +302,6 @@ body {
     .paragraph-tekst3, .paragraph-tekst4 {
         font-size: 4vw; /* Proportioneel schalen */
         line-height: 1.5em; /* Regelafstand aanpassen voor mobiele weergave */
-    }
-
-    .hero-sectie {
-        height: 30vh; /* Kleine hoogte voor mobiele weergave */
-    }
-
-    .hero-sectie-klanten, .hero-sectie-partners {
-        width: 100%; /* Volledige breedte op mobiele schermen */
     }
 
     .image-right, .image-left {
@@ -290,14 +340,12 @@ body {
         /* display: inline-flex; */
         margin-bottom: 20px;
         width: 100%;
+        flex-direction: column;
     }
 }
 
 /* Extra voor kleinere schermen */
 @media (max-width: 480px) {
-    h2 {
-        font-size: 5vw; /* Nog kleinere kop voor smartphones */
-    }
 
     h3 {
         font-size: 4vw; /* Nog kleinere subtitel voor smartphones */
