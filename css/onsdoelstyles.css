@@ -40,7 +40,7 @@ body {
 
 /* Hero sectie achtergrond*/
 .hero-sectie {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     position: relative;
@@ -70,6 +70,7 @@ body {
 }
 
 .timer {
+    font-family: '';
     display: flex;
     justify-content: space-between;
 }
@@ -319,7 +320,7 @@ body {
         padding: 0; /* Verwijder padding als dat nodig is */
     }
 
-    .usp-container {
+    .USP-container {
         display: flex;
         flex-direction: column;
         align-content: center;
@@ -371,6 +372,13 @@ body {
         /* display: inline-flex; */
         margin-bottom: 20px;
         width: 100%;
+    }
+
+    .USP-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
     }
 }
 
