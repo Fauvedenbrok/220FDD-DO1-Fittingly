@@ -1,37 +1,14 @@
-@media screen and (max-width: 100px) {
- /* Contact-info titels voor mobiel */
- .contact-info h5 {
-    font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
-}
-
-/* Contact-info tekst voor mobiel */
-.contact-info p {
-    font-size: 18px; /* Kleiner lettertype voor de paragraaf */
-    margin: 10px 0; /* Meer ruimte tussen de paragrafen */
-}
-h3#h3-contact{
-    font-size: 30px;
-}
-}
-
-@media screen and (max-width: 850px) {
-
-    
-
-    /* Iconen voor mobiel */
-    #usp1-contact, #usp2-contact, #usp3-contact {
-        width: 16px; /* Kleiner icoon voor mobiel */
-        height: 16px;
-        padding-right: 8px; /* Iets minder padding op mobiel */
-    }
-}
-
 * {
-    font-family: montserrat;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: #1A3030; 
+    margin: 0;
+    padding: 0;
 }
 
 /* Container met de achtergrondafbeelding */
@@ -45,6 +22,23 @@ body {
     justify-content: center;
     align-items: center;
     flex-flow: column;
+}
+
+#h2-contact {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-shadow: #3a3b33 1px 1px 1px;
+    margin-right: 50%;
+    margin-bottom: 10px;
+    
+}
+
+#para-contact {
+    color: #DCD3C2B2;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    width: 60%; 
+    text-align: left;
 }
 
 /* Container met contactformulier */
@@ -75,105 +69,86 @@ body {
 }
 
 .input-fields {
-    width: 425px;
+    width: 50%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
 .input-bericht {
-    width: 780px;
+    width: 200%;
 }
 
-.input-fields label {
-    display: block;
-    margin-bottom: 5px;
+#h3-contact {
+    margin-bottom: 20px;
+    color: #1A3030;
+    font-size: 30px;
 }
 
 .contact-info {
-    width: 45%; /* Zorg dat de contactinfo minder ruimte neemt */
-    font-size: 18px;
-
+    width: 35%; /* Zorg dat de contactinfo minder ruimte neemt */
+    font-size: 1.2rem;
 }
 
-.contact-info h5 {
-    margin: 10px;
-    color: #1A3030; 
-    font-size: 24px;
-    font-family: Raleway;
-    font-weight: 600;
-}
-  
 .contact-info p {
     display: flex;
     align-items: center;
     margin: 10px 0;
     color: #1A3030;
     font-family: Raleway;
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
 #usp1-contact, #usp2-contact, #usp3-contact {
-    width: 20px;
+    width: 30px;
     height: 20px;
     padding-right: 10px;
-}
-
-#h2-contact {
-    font-size: 45px;
-    font-weight: 400;
-    text-shadow: #3a3b33 1px 1px 1px;
-    margin-right: 50%;
-    margin-bottom: 10px;
-    
-}
-
-#h3-contact {
-    margin-bottom: 20px;
-    color: #1A3030;
-}
-
-#para-contact {
-    color: #DCD3C2B2;
-    font-size: 24px;
-    line-height: 1.2;
-    width: 60%; 
-    text-align: left;
 }
 
 label {
     display: block;
     margin: 20px 0;
+    /* margin-bottom: 10px; */
 }
 
 input,
 textarea {
-    width: 70%;
+    width: 100%;
     padding: 10px;
-    box-sizing: border-box;
-    outline: none;
-    resize: none;
+    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid #d9d9d9;
     border-radius: 3px;
 }
 
 textarea#bericht {
-    width: 100%;
-    height: 361px;
+    height: 350px;
     border-radius: 5px;
-    color: #d9d9d9;
   }
 
-input[type="text"]:focus,
-textarea:focus {
+.input-fields label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input:focus, textarea:focus {
     border-bottom: 1px solid #1A3030;
 }
 
 .button-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    /* width: 200%; */
+}
+
+form button[type="submit"] {
+    width: 100%;
+    background-color: #cc9c4e;
+    border-color: #cc9c4e;
+    color: black;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .button-container {
@@ -183,28 +158,17 @@ textarea:focus {
     margin-top: 20px;
 }
 
-form button[type="submit"] {
-    display: flex;
-    justify-content: center; /* Zorgt dat de button gecentreerd is */
-    background-color: #cc9c4e;
-    color: rgb(0, 0, 0);
-    font-family: Montserrat;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 39.01px;
-    width: 50%;
-    height: 50px;
-    top: 1657px;
-    border-radius: 10px;
-    border: 3px;
+.error {
+    color: red;
 }
 
-/* Basisopmaak voor grote schermen */
-/* .form-container {
-    max-width: 800px;
-    width: 60%;
-    margin: 0 auto;
-} */
+.error-border {
+    border-bottom: 1px solid red;
+}
+
+#succes {
+    color: #28A745;
+}
 
 /* Media queries voor schermen kleiner dan 768px */
 @media (max-width: 1200px) {
@@ -219,7 +183,7 @@ form button[type="submit"] {
         width: 100%;
     }
 
-    .input-fields, .input-bericht, .contact-info {
+    .input-fields, .input-bericht, .contact-info, contact-info p {
         width: 100%; /* Volledige breedte voor mobiele weergave */
     }
 
@@ -231,19 +195,31 @@ form button[type="submit"] {
     button[type="submit"] {
         width: 100%; /* Button neemt volledige breedte op mobiel */
     }
-
-
 }
+   
+   @media screen and (max-width: 850px) {
 
-.error {
-    color: red;
-}
+       /* Iconen voor mobiel */
+       #usp1-contact, #usp2-contact, #usp3-contact {
+           width: 22px; /* Kleiner icoon voor mobiel */
+           height: 16px;
+           padding-right: 8px; /* Iets minder padding op mobiel */
+       }
+   }
 
-.error-border {
-    border-bottom: 1px solid red;
-}
-
-#succes {
-    color: #28A745;
-}
+   @media screen and (max-width: 100px) {
+    /* Contact-info titels voor mobiel */
+    .contact-info h5 {
+       font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
+   }
+   
+   /* Contact-info tekst voor mobiel */
+   .contact-info p {
+       font-size: 18px; /* Kleiner lettertype voor de paragraaf */
+       margin: 10px 0; /* Meer ruimte tussen de paragrafen */
+   }
+   h3#h3-contact{
+       font-size: 30px;
+   }
+   }
 
