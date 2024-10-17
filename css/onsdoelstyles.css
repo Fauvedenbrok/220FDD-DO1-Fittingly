@@ -192,7 +192,7 @@ body {
 }
 
 .hexagon {
-    width: 75px; Pas de breedte aan
+    width: 75px; /*Pas de breedte aan*/
     height: auto;
     /* height: 60px; Pas de hoogte aan */
     /* align-items: center; */
