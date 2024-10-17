@@ -9,9 +9,28 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 1;
     const totalImages = sliderImages.length;
 
+    function getTranslateX(image) {
+        var style = window.getComputedStyle(image);
+        var matrix = new WebKitCSSMatrix(style.transform);
+        console.log('translateX: ', matrix.m41);
+        return matrix.m41;
+      }
+
+    function initializeSlider() {
+        sliderImages.forEach((image, index) => {
+            image.style.transform = `translateX(${((index) * 120)}px)`;
+        });
+    }
+
     function updateSlider() {
         sliderImages.forEach((image, index) => {
-            image.style.transform = `translateX(${(index - currentIndex) * 60}%)`;
+            if(getTranslateX(image) < (index * -360)){
+                // positioneer de afbeelding aan de rechterkant van het scherm
+            image.style.transform = `translateX(${getTranslateX(image) + 8500}px)`;
+            }
+            else{
+                image.style.transform = `translateX(${getTranslateX(image) - 120}px)`;
+            }
         });
     }
 
@@ -21,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Start de slider zodra de pagina geladen is
-    updateSlider();
+    initializeSlider();
     setInterval(showNextImage, 3000);
 });
 
