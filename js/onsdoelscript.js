@@ -101,39 +101,59 @@ const usp1LightImage = document.querySelector('img[alt="USP1Light"]');
 const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
 const usp3LightImage = document.querySelector('img[alt="USP3Light"]');
 
+// Sla de originele tekst op
+const paragraphText = document.querySelector('.paragraph-tekst4');
+const originalText = paragraphText ? paragraphText.textContent : '';  // Controleer of de paragraaf bestaat
+
+let lastClickedItem = null; // Houdt bij welk item het laatst is aangeklikt
+
 usp1LightImage.addEventListener('click', function() {
-    const paragraphText = document.querySelector('.paragraph-tekst4');
-    
     if (paragraphText) {
-        // Toggle de class 'color-1' op de specifieke paragraaf
-        paragraphText.classList.toggle('color-1');
-        // Verwijder andere kleuren classes
-        paragraphText.classList.remove('color-2', 'color-3');
+        // Check of dit het item is dat twee keer achter elkaar wordt geklikt
+        if (lastClickedItem === usp1LightImage) {
+            // Als dit hetzelfde item is, zet de originele tekst terug
+            paragraphText.textContent = originalText;
+            paragraphText.classList.remove('color-1', 'color-2', 'color-3');
+            lastClickedItem = null; // Reset de laatste klik
+        } else {
+            // Verander de tekst voor USP1 en voeg de juiste class toe
+            paragraphText.textContent = 'Nieuwe tekst voor USP1 Light knop.';
+            paragraphText.classList.add('color-1');
+            paragraphText.classList.remove('color-2', 'color-3');
+            lastClickedItem = usp1LightImage; // Sla dit item op als het laatst aangeklikte
+        }
     }
 });
 
 usp2LightImage.addEventListener('click', function() {
-    const paragraphText = document.querySelector('.paragraph-tekst4');
-    
     if (paragraphText) {
-        // Toggle de class 'color-2' op de specifieke paragraaf
-        paragraphText.classList.toggle('color-2');
-        // Verwijder andere kleuren classes
-        paragraphText.classList.remove('color-1', 'color-3');
+        if (lastClickedItem === usp2LightImage) {
+            paragraphText.textContent = originalText;
+            paragraphText.classList.remove('color-1', 'color-2', 'color-3');
+            lastClickedItem = null;
+        } else {
+            paragraphText.textContent = 'Nieuwe tekst voor USP2 Light knop.';
+            paragraphText.classList.add('color-2');
+            paragraphText.classList.remove('color-1', 'color-3');
+            lastClickedItem = usp2LightImage;
+        }
     }
 });
 
 usp3LightImage.addEventListener('click', function() {
-    const paragraphText = document.querySelector('.paragraph-tekst4');
-    
     if (paragraphText) {
-        // Toggle de class 'color-3' op de specifieke paragraaf
-        paragraphText.classList.toggle('color-3');
-        // Verwijder andere kleuren classes
-        paragraphText.classList.remove('color-1', 'color-2');
+        if (lastClickedItem === usp3LightImage) {
+            paragraphText.textContent = originalText;
+            paragraphText.classList.remove('color-1', 'color-2', 'color-3');
+            lastClickedItem = null;
+        } else {
+            paragraphText.textContent = 'Nieuwe tekst voor USP3 Light knop.';
+            paragraphText.classList.add('color-3');
+            paragraphText.classList.remove('color-1', 'color-2');
+            lastClickedItem = usp3LightImage;
+        }
     }
 });
-
 
 // Toggle Light/Dark mode
 // const modeToggleButton = document.getElementById('mode-toggle');
