@@ -499,9 +499,6 @@ body {
     h4 {
         font-size: 3.5vw; /* Nog kleinere subtitel voor smartphones */
     }
-    .card {
-        
-    }
     .card > span {
         font-size: 32px;
         width: 50px;
