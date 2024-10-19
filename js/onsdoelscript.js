@@ -6,8 +6,6 @@ const totalImages = sliderImages.length;
 
 document.addEventListener('DOMContentLoaded', function() {
     const sliderImages = document.querySelectorAll('.slider-image');
-    let currentIndex = 1;
-    const totalImages = sliderImages.length;
 
     function getTranslateX(image) {
         var style = window.getComputedStyle(image);
@@ -24,9 +22,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSlider() {
         sliderImages.forEach((image, index) => {
-            if(getTranslateX(image) < (index * -360)){
+            if (index <= 2 && (getTranslateX(image) < -840)){
+                image.style.display = 'none';
+                image.style.transform = `translateX(${getTranslateX(image) + 7560}px)`;
+                image.style.display = "";
+            }
+            else if(index > 2 && (getTranslateX(image) < (index * -360))){
+                image.style.display = 'none';
                 // positioneer de afbeelding aan de rechterkant van het scherm
-            image.style.transform = `translateX(${getTranslateX(image) + 8500}px)`;
+            image.style.transform = `translateX(${getTranslateX(image) + (index * -360) + 8400}px)`;
+            image.style.display = "";
             }
             else{
                 image.style.transform = `translateX(${getTranslateX(image) - 120}px)`;
@@ -34,14 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function showNextImage() {
-        currentIndex = (currentIndex + 1) % totalImages;
-        updateSlider();
-    }
-
     // Start de slider zodra de pagina geladen is
     initializeSlider();
-    setInterval(showNextImage, 3000);
+    setInterval(updateSlider, 1000);
+    setInterval(initializeSlider, 72000);
 });
 
 
