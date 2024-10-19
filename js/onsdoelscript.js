@@ -10,9 +10,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function getTranslateX(image) {
         var style = window.getComputedStyle(image);
         var matrix = new WebKitCSSMatrix(style.transform);
-        console.log('translateX: ', matrix.m41);
+        // console.log('translateX: ', matrix.m41);
         return matrix.m41;
       }
+    
+    // function getImageWidth(image){
+    //     var style = window.getComputedStyle(image);
+    //     var width = style.getPropertyValue('width');
+    //     return width;
+    // }
 
     function initializeSlider() {
         sliderImages.forEach((image, index) => {
@@ -41,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Start de slider zodra de pagina geladen is
     initializeSlider();
-    setInterval(updateSlider, 1000);
-    setInterval(initializeSlider, 72000);
+    setInterval(updateSlider, 3000);
+    setInterval(initializeSlider, 216000);
 });
 
 
