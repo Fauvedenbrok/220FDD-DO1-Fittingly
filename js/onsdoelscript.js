@@ -4,6 +4,47 @@ let currentIndex = 0;
 // Gebruik let wanneer een variabele binnen een blok moet veranderen of wanneer de waarde kan variëren.
 const totalImages = sliderImages.length;
 
+
+        // Immediately check if the page was loaded via hard refresh
+var navigationEntries = performance.getEntriesByType("navigation");
+var isHardRefresh = navigationEntries.length && navigationEntries[0].type === 'reload';
+
+        // Show splash screen only on hard refresh
+if (isHardRefresh) {
+    // Show splash screen
+    document.querySelector(".splash-screen").style.visibility = "visible";
+} else {
+            // Skip splash screen
+    document.querySelector(".splash-screen").style.visibility = "hidden";
+    document.querySelector("header").classList.add("visible"); // Show header immediately
+    document.querySelector(".main-content").classList.add("visible"); // Show main content immediately
+}
+document.addEventListener("DOMContentLoaded", function() {
+    var splashScreen = document.querySelector(".splash-screen");
+    var mainContent = document.querySelector(".main-content");
+    var header = document.querySelector("header");
+
+// Show splash screen only on hard refresh
+  if (isHardRefresh) {
+    setTimeout(function() {
+        // Hide the splash screen after the animation completes
+        splashScreen.style.visibility = "hidden"; // Make it invisible
+        splashScreen.style.height = "0";          // Collapse the height
+
+        // Show main content
+        header.classList.add("visible"); // Make header visible
+        mainContent.classList.add("visible");     // Add class to show main content
+    },3500); // Duration for splash screen
+} else {
+    // Skip the splash screen on internal navigation
+    splashScreen.style.visibility = "hidden";  // Make it invisible
+    splashScreen.style.height = "0";           // Collapse the height
+    header.classList.add("visible");           // Make header visible
+    mainContent.classList.add("visible");      // Show main content immediately
+}
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const sliderImages = document.querySelectorAll('.slider-image');
 

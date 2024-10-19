@@ -2,6 +2,102 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+
+header {
+    height: 0;
+    visibility: hidden; /* Hide visibility initially */
+    transition: height 0.5s ease, visibility 0.5s ease; /* Smooth transition */
+  }
+  header.visible {
+    height: auto; /* Allow height to expand */
+    visibility: visible; /* Make header visible */
+  }
+
+/* ------------------ Preloader / Splash screen ------------------*/
+.splash-screen {
+    background-color: #1A3030;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.logo-splash {
+    background-image: url(../Images/logo_fittingly_light.png);
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+.brandname-splash{
+    color: #DCD3C2;
+    font-family: "Playfair Display", serif;
+    font-size: 128px;
+    font-weight: 200;
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+.slogan-splash {
+    color: #DCD3C2;
+    font-family: "Playfair Display", serif;
+    font-weight: 100;
+    font-size: 48px;
+    margin: 0;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+    animation-delay: 1.5s;
+}
+
+@media  (max-width: 770px) {
+    .logo-splash {
+        width: 100px;
+        height: 100px;
+    }
+    .brandname-splash{
+        font-size: 72px;
+    }
+    .slogan-splash {
+        font-size: 28px;
+    }
+}
+
+/* Fade in animatie*/
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+/* --------------------------------------------------------------------------------*/
+        /* Main content styling */
+        .main-content {
+            visibility: hidden; 
+            height: 0;
+            opacity: 0;
+            transition: height 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+        }
+
+        /* When main content is shown */
+        .main-content.visible {
+            visibility: visible;
+            height: auto; /* Allow height to expand */
+            opacity: 1; /* Fade in */
+        }
+/* --------------------------------------------------------------------------------*/
+
 h2 {
     font-family: "Playfair Display", serif;
     color: #CC9C4E;
@@ -75,7 +171,11 @@ body {
     display: flex;
     justify-content: space-between;
 }
-
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .card > span {
     display: inline-block;
     padding-bottom: 10px;
@@ -121,6 +221,7 @@ body {
     border-radius: 10px;
     font-size: 20px;
     font-family: "Raleway", sans-serif;
+    cursor: pointer;
 }
 
 .onsdoel-container {
@@ -398,6 +499,19 @@ body {
     h4 {
         font-size: 3.5vw; /* Nog kleinere subtitel voor smartphones */
     }
+    .card {
+        
+    }
+    .card > span {
+        font-size: 32px;
+        width: 50px;
+        height: 80px;
+    }
+    
+    .timer-text {
+        font-size: 16px;
+    }
+    .he
 
     .paragraph-tekst3, .paragraph-tekst4 {
         font-size: 3.5vw; /* Nog kleinere tekst voor smartphones */

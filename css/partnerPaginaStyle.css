@@ -255,8 +255,6 @@ body {
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
     background-position: center;
     /* Centreert de afbeelding */
-    display: flex;
-    /* Voor flexbox-positionering */
     justify-content: center;
     /* Centreert de inhoud horizontaal */
     background-image: linear-gradient(
