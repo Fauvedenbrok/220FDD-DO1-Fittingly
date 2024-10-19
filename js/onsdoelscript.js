@@ -109,7 +109,7 @@ const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
 const usp3LightImage = document.querySelector('img[alt="USP3Light"]');
 
 // Sla de originele tekst op
-const paragraphText = document.querySelector('.paragraph-tekst4');
+const paragraphText = document.querySelector('.index-paragraph-tekst-2');
 const originalText = paragraphText ? paragraphText.textContent : '';  // Controleer of de paragraaf bestaat
 
 let lastClickedItem = null; // Houdt bij welk item het laatst is aangeklikt
