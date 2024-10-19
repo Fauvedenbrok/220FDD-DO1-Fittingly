@@ -42,6 +42,7 @@ body {
 
 .ons-platform-tekst-container {
   width: 80vh;
+  margin-top: 50px;
 }
 
 /*Grote tekst heading*/
@@ -132,6 +133,7 @@ body {
     width: 100%;
     max-width: 1000px;
     padding-top: 20px;
+    margin-bottom: -100px;
   }
 
   .usp-div-tekst {
@@ -228,22 +230,31 @@ body {
       url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
   }
 
+  .usp-div-container {
+    margin-bottom: -141.75px;
+  }
+
   .usp-img {
     width: auto;
     height: 65px;
+  }
+
+  .ons-platform-container {
+    margin-top: 50px;
+
   }
 
   #partner-koptekst {
     text-align: center;
     margin-bottom: -40px;
   }
-
   .ons-platform-img-container {
     width: auto;
     height: 650px;
     margin-bottom: -100px;
   }
 
+  
   /*Image onder grote titel*/
   #img-couple {
     height: 70%;
