@@ -26,8 +26,8 @@ body {
     font-size: 2.5rem;
     font-weight: 400;
     text-shadow: #3a3b33 1px 1px 1px;
-    margin-right: 50%;
     margin-bottom: 10px;
+    width: 60%;
     
 }
 
@@ -54,7 +54,7 @@ body {
     justify-content: space-between;    
 }
 
-#contactForm {
+#contact-form {
     width: 50%;
 }
 
@@ -106,7 +106,6 @@ body {
 label {
     display: block;
     margin: 20px 0;
-    /* margin-bottom: 10px; */
 }
 
 input,
@@ -169,7 +168,7 @@ form button[type="submit"] {
 }
 
 /* Media queries voor schermen kleiner dan 768px */
-@media (max-width: 1200px) {
+@media (max-width: 1201px) {
     .form-container {
         width: 90%;
         padding: 20px;
@@ -193,31 +192,53 @@ form button[type="submit"] {
     form button[type="submit"] {
         width: 100%; /* Button neemt volledige breedte op mobiel */
     }
+
 }
-   
-   @media screen and (max-width: 850px) {
+   /* Media queries voor mobiel */
+   @media screen and (max-width: 1200px) {
+    #usp1-contact, #usp2-contact, #usp3-contact {
+        width: 22px; /* Kleiner icoon voor mobiel */
+        height: 16px;
+        padding-right: 8px; /* Iets minder padding op mobiel */
+    }
 
-       /* Iconen voor mobiel */
-       #usp1-contact, #usp2-contact, #usp3-contact {
-           width: 22px; /* Kleiner icoon voor mobiel */
-           height: 16px;
-           padding-right: 8px; /* Iets minder padding op mobiel */
-       }
-   }
+    #h2-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
 
-   @media screen and (max-width: 100px) {
-    /* Contact-info titels voor mobiel */
-    .contact-info h5 {
-       font-size: 20px; /* Kleiner lettertype voor kleinere schermen */
-   }
-   
-   /* Contact-info tekst voor mobiel */
-   .contact-info p {
-       font-size: 18px; /* Kleiner lettertype voor de paragraaf */
-       margin: 10px 0; /* Meer ruimte tussen de paragrafen */
-   }
-   h3#h3-contact{
-       font-size: 30px;
-   }
+    #para-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #h3-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contact-info p {
+        display: flex;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .form-container {
+        width: 80%;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .input-fields, .input-bericht, .contact-info, contact-info p {
+        width: 100%; /* Volledige breedte voor mobiele weergave */
+    }
+
+    #contact-form {
+        width: 100%;
+    }
+
    }
 
