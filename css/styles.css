@@ -120,18 +120,21 @@ body {
   margin: auto;
 }
 
+
+
 h2 {
   font-family: "Playfair Display", serif;
   color: #cc9c4e;
-  font-weight: 100;
+  font-weight: normal;
   font-size: 80px;
 }
 
 h3 {
   font-family: "Playfair Display", sans-serif;
   color: #dcd3c2;
-  font-size: 2.5rem;
+  font-size: 60px;
   margin-bottom: 0px;
+  font-weight: normal;
 }
 
 h4 {
@@ -139,7 +142,7 @@ h4 {
   color: #cc9c4e;
   /* font-size: 48px; */
   font-weight: normal;
-  font-size: 2rem;
+  font-size: 40px;
   margin-top: 0px;
 }
 
