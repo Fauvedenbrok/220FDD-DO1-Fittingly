@@ -13,13 +13,13 @@ body {
   .usp-div-container {
     display: flex;
     justify-content: space-around;
-    margin-top: -112px;
-    padding-top: 30px;
-    max-width: 50vw;
     background-color: #dcd3c2;
     border-radius: 20px;
-    margin-left: 25%;
-    padding-bottom: 30px;
+    position: relative;
+    bottom: -65px;
+    width: 100%;
+    max-width: 1000px;
+    
   }
 
   .usp-div {
@@ -37,27 +37,21 @@ body {
 
   /* Container met de achtergrondafbeelding */
   .background-container {
-    height: 75vh;
-    /* Volledige hoogte van het venster */
+    padding: 0px 50px;
     background-size: cover;
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
     background-position: center;
     /* Centreert de afbeelding */
     display: flex;
     /* Voor flexbox-positionering */
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     /* Centreert de inhoud horizontaal */
     background-image: linear-gradient(
         rgba(19, 30, 36, 0.8),
         rgba(19, 30, 36, 0.8)
       ),
       url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
-  }
-
-  #koptekst-container {
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 10% 15%;
   }
 
   .header-paragraph-tekst {
@@ -232,25 +226,22 @@ body {
   /*USP table*/
   .usp-div-container * {
     flex-direction: column;
-    padding: 10px;
+    margin: 0;
     text-align: center;
     border-radius: 20px;
   }
 
   .usp-div-container {
-    max-width: 50vw;
     background-color: #dcd3c2;
     border-radius: 20px;
-    margin-left: 25%;
-    margin-top: -50%;
   }
 
   h2 {
-    font-size: 50px;
+    font-size: 5vw
   }
 
   p {
-    font-size: 20px;
+    font-size: 2vw;
   }
 
   #partnerpagina-container {
@@ -260,8 +251,6 @@ body {
 
   /* Container met de achtergrondafbeelding */
   .background-container {
-    height: 85vh;
-    /* Volledige hoogte van het venster */
     background-size: cover;
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
     background-position: center;
@@ -277,15 +266,11 @@ body {
       url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
   }
 
-  #koptekst-container {
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 10% 15%;
-  }
+
 
   .usp-img {
     width: auto;
-    height: 100px;
+    height: 65px;
   }
 
   .ons-platform-tekst-container {
@@ -294,8 +279,7 @@ body {
 
   /*Grote tekst heading*/
   .ons-platform-heading-tekst1 {
-    margin-left: 10%;
-    margin-top: 100px;
+    margin: 100px 10% 0% 10%;
     padding-left: 30px;
   }
 
@@ -452,4 +436,10 @@ margin: 0% 20%;
 
 #koptekst {
   margin-top: -10px;
+}
+
+#koptekst-container {
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 10% 15%;
 }
