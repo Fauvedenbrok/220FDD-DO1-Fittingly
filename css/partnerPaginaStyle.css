@@ -3,6 +3,22 @@ body {
   justify-content: center;
 }
 
+#partnerpagina-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#koptekst {
+  margin-top: -10px;
+}
+
+#koptekst-container {
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 10% 15%;
+  position: absolute;
+}
+
 /*voor desktop*/
 @media (min-width: 901px) {
   /*USP table*/
@@ -30,10 +46,7 @@ body {
     margin: 0% 5%;
   }
 
-  #partnerpagina-container {
-    display: flex;
-    flex-direction: column;
-  }
+
 
   /* Container met de achtergrondafbeelding */
   .background-container {
@@ -247,11 +260,6 @@ body {
     font-size: 2vw;
   }
 
-  #partnerpagina-container {
-    display: flex;
-    flex-direction: column;
-  }
-
   /* Container met de achtergrondafbeelding */
   .background-container {
     height: 85vh;
@@ -387,8 +395,6 @@ body {
     width: 200px;
   }
 
-
-
   /*Partner logos op partnerpagina*/
   #logoBassinsin {
     border-radius: 15%;
@@ -404,7 +410,7 @@ body {
 
   .afsluiting-tekst-container {
     text-align: center;
-margin: 0% 20%;
+    margin: 0% 20%;
   }
 
   .afsluitings-paragraph {
@@ -438,14 +444,3 @@ margin: 0% 20%;
   }
 }
 
-
-#koptekst {
-  margin-top: -10px;
-}
-
-#koptekst-container {
-  overflow: hidden;
-  max-width: 1100px;
-  margin: 10% 15%;
-  position: absolute;
-}
