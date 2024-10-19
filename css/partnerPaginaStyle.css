@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-
 body {
   background-color: #1a3030;
   justify-content: center;
+}
+
+h2 {
+  font-size: 60px;
 }
 
 #partnerpagina-container {
@@ -22,33 +22,61 @@ body {
   margin: 10% 15%;
 }
 
-.ons-platform-heading-tekst2 {
-  margin-left: 10%;
-  padding-left: 30px;
-}
-
-.ons-platform-paragraph-tekst2 {
-  margin-left: 10%;
-  margin-right: 10%;
-  padding-left: 30px;
-}
-
 /*Ons platform koptekst*/
 .ons-platform-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0% 10%;
 }
 
 .ons-platform-tekst-container {
-  width: 80vh;
+  width: 770px;
   margin-top: 50px;
 }
 
-/*Grote tekst heading*/
-.ons-platform-heading-tekst1 {
-  margin: 100px 10% 0% 10%;
-  padding-left: 30px;
+#couple-img-hidden {
+  background-image: url(/Images/backgroundImages/faded_couple.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  visibility: hidden;
+  height: 0;
+  width: auto;
+}
+
+/*Image onder grote titel*/
+#img-couple {
+  height: 626px;
+  width: auto;
+}
+
+@media (max-width: 1482px) {
+  #img-couple {
+    visibility: hidden;
+    height: 0;
+  }
+
+  #couple-img-hidden {
+    visibility: visible;
+    height: 50vw;
+  }
+
+  .ons-platform-container {
+    text-align: center;
+  }
+  .ons-platform-tekst-container {
+    width: unset;
+    margin-top: 50px;
+  }
+}
+
+#partner-koptekst {
+  margin-top: 60px;
+  margin-bottom: -40px;
+  text-align: center;
 }
 
 /* Main Styling */
@@ -105,7 +133,7 @@ body {
 .aanmeld-button {
   font-family: "PlayFair Display", serif;
   background-color: #cc9c4e;
-  padding: 5px 100px;
+  padding: 5px 150px;
   border: 3px solid #cc9c4e;
   border-radius: 5px;
   font-size: 20px;
@@ -118,7 +146,7 @@ body {
 }
 
 /*voor desktop*/
-@media (min-width: 901px) {
+@media (min-width: 913px) {
   /*USP table*/
   .usp-div-container * {
     text-align: center;
@@ -172,23 +200,31 @@ body {
   #partner-koptekst {
     text-align: center;
     margin-bottom: -40px;
-    margin-top: 100px;
   }
 
   .ons-platform-img-container {
-    width: auto;
-    height: 656px;
-  }
-
-  /*Image onder grote titel*/
-  #img-couple {
-    height: 100%;
-    width: auto;
+    margin: 50px 0px 0px 0px;
   }
 }
 
 /*Voor tablets en mobiele telefoons*/
-@media (max-width: 900px) {
+@media (max-width: 912px) {
+  h2 {
+    font-size: 6vw;
+  }
+
+  h3 {
+    font-size: 5vw;
+  }
+
+  h4 {
+    font-size: 4vw;
+  }
+
+  p {
+    font-size: 2vw;
+  }
+
   /*USP table*/
   .usp-div-container * {
     flex-direction: column;
@@ -233,23 +269,25 @@ body {
 
   .ons-platform-container {
     margin-top: 50px;
-
   }
 
   #partner-koptekst {
     text-align: center;
-    margin-bottom: -40px;
-  }
-  .ons-platform-img-container {
-    width: auto;
-    height: 650px;
-    margin-bottom: -100px;
   }
 
-  
-  /*Image onder grote titel*/
-  #img-couple {
-    height: 70%;
-    width: auto;
+  .ons-platform-tekst-container > * {
+    text-align: center;
+  }
+  .ons-platform-heading-tekst1 {
+    margin-top: 60px;
+  }
+
+  .aanmeld-button {
+    font-family: "PlayFair Display", serif;
+    background-color: #cc9c4e;
+    padding: 0px 20%;
+    border: 3px solid #cc9c4e;
+    border-radius: 5px;
+    font-size: 3vw;
   }
 }

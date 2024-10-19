@@ -1,7 +1,7 @@
 //Aanmeldknop class switch functie
 function pushButton() {
-var bPush = document.querySelector(".aanmeldButton")
-bPush.classList.toggle("aanmeldButtonPressed")
+var bPush = document.querySelector(".aanmeld-button")
+bPush.classList.toggle("aanmeld-button-pressed")
 }
 
 

@@ -2,19 +2,117 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+
+header {
+    height: 0;
+    visibility: hidden; /* Hide visibility initially */
+    transition: height 0.5s ease, visibility 0.5s ease; /* Smooth transition */
+  }
+  header.visible {
+    height: auto; /* Allow height to expand */
+    visibility: visible; /* Make header visible */
+  }
+
+/* ------------------ Preloader / Splash screen ------------------*/
+.splash-screen {
+    background-color: #1A3030;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.logo-splash {
+    background-image: url(../Images/logo_fittingly_light.png);
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+.brandname-splash{
+    color: #DCD3C2;
+    font-family: "Playfair Display", serif;
+    font-size: 128px;
+    font-weight: 200;
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+.slogan-splash {
+    color: #DCD3C2;
+    font-family: "Playfair Display", serif;
+    font-weight: 100;
+    font-size: 48px;
+    margin: 0;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+    animation-delay: 1.5s;
+}
+
+@media  (max-width: 770px) {
+    .logo-splash {
+        width: 100px;
+        height: 100px;
+    }
+    .brandname-splash{
+        font-size: 72px;
+    }
+    .slogan-splash {
+        font-size: 28px;
+    }
+}
+
+/* Fade in animatie*/
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+/* --------------------------------------------------------------------------------*/
+        /* Main content styling */
+        .main-content {
+            visibility: hidden; 
+            height: 0;
+            opacity: 0;
+            transition: height 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+        }
+
+        /* When main content is shown */
+        .main-content.visible {
+            visibility: visible;
+            height: auto; /* Allow height to expand */
+            opacity: 1; /* Fade in */
+        }
+/* --------------------------------------------------------------------------------*/
+
 h2 {
     font-family: "Playfair Display", serif;
     color: #CC9C4E;
     font-weight: 100;
     font-size: 80px;
+    line-height: 2;
 }
 
 h3 {
     font-family: "Playfair Display", serif;
     color: #DCD3C2;
-    font-size: 2.5rem; /* Flexibele eenheid */
+    font-size: 48px; /* Flexibele eenheid */
     margin-bottom: 0px;
     font-weight: 100;
+    line-height: 2;
 }
 
 h4 {
@@ -22,13 +120,14 @@ h4 {
     color: #CC9C4E;
     font-size: 48px;
     font-weight: normal;
-    font-size: 2rem; /* Flexibele eenheid */
+    font-size: 32px; 
     margin-top: 0px;
 }
 
 p {
     font-family: "Raleway", sans-serif;
-    line-height: 2em;
+    font-size: 20px;
+    line-height: 2;
 }
 body {
     background-color: #1A3030;
@@ -41,7 +140,6 @@ body {
 
 /* Hero sectie achtergrond*/
 .hero-sectie {
-    width: 100vw;
     height: 100vh;
     display: flex;
     position: relative;
@@ -75,7 +173,11 @@ body {
     display: flex;
     justify-content: space-between;
 }
-
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .card > span {
     display: inline-block;
     padding-bottom: 10px;
@@ -121,6 +223,7 @@ body {
     border-radius: 10px;
     font-size: 20px;
     font-family: "Raleway", sans-serif;
+    cursor: pointer;
 }
 
 .onsdoel-container {
@@ -142,7 +245,6 @@ body {
 
 .index-textopmaak-1 {
     display: flex;
-    margin-bottom: 20px;
     width: 100%;
 }
 
@@ -159,7 +261,7 @@ body {
     font-weight: 400;
     line-height: 2em;
     text-align: left;
-    margin-bottom: 20px;
+    margin: 30px 0px;
 }
 
 .index-paragraph-tekst-2.color-1 {
@@ -192,6 +294,7 @@ body {
     overflow: hidden;
     width: calc(100vw - 20px);
     position: relative;
+    margin: 50px 0px;
 }
 
 .slider {
@@ -237,10 +340,7 @@ body {
     outline: none;
     /* margin: 0 40px; Ruimte tussen afbeeldingen */
     transition: transform 0.2s;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-    /* margin-bottom: 20px; */
-    margin-left: 40px;
-    /* display: flex; */
+
     justify-content: space-between;
     display: flex;
 }
@@ -253,7 +353,6 @@ body {
     color: #CC9C4E; /* Gouden kleur */
     text-align: right; 
     margin-top: 10px; 
-    margin-left: 40px;
     font-family: "Raleway"; 
     font-size: 20px; 
     font-weight: 400; 
@@ -300,9 +399,8 @@ body {
         flex-direction: column;
     }
     .index-textopmaak-2 {
-        width: 100%;
         max-width: unset;
-        padding: 0%;
+        padding: 0px 50px;
     }
     .index-textopmaak-2 > * {
         text-align: center;
@@ -311,7 +409,7 @@ body {
         background-position: center;
         background-repeat: no-repeat;
         width: 100%;
-        height: 50vh;
+        height: 400px;
     }
     .image-about {
         background-image: url('../Images/onsdoelImages/mobieldesign.png');
@@ -336,16 +434,15 @@ body {
 @media (max-width: 768px) {
 
     h3 {
-        font-size: 5vw; /* Proportioneel schalen */
+        font-size: 32px; /* Proportioneel schalen */
     }
 
     h4 {
-        font-size: 4vw; /* Proportioneel schalen */
+        font-size: 24px; /* Proportioneel schalen */
     }
 
     .index-paragraph-tekst-1, .index-paragraph-tekst-2 {
-        font-size: 4vw; /* Proportioneel schalen */
-        line-height: 1.5em; /* Regelafstand aanpassen voor mobiele weergave */
+        font-size: 20px; /* Proportioneel schalen */
     }
 
     .image-right, .image-left {
@@ -389,18 +486,20 @@ body {
 }
 
 /* Extra voor kleinere schermen */
-@media (max-width: 480px) {
+@media (max-width: 520px) {
 
-    h3 {
-        font-size: 4vw; /* Nog kleinere subtitel voor smartphones */
+    .card > span {
+        font-size: 32px;
+        width: 50px;
+        height: 80px;
     }
-
-    h4 {
-        font-size: 3.5vw; /* Nog kleinere subtitel voor smartphones */
+    
+    .timer-text {
+        font-size: 16px;
     }
-
     .index-paragraph-tekst-1, .index-paragraph-tekst-2 {
-        font-size: 3.5vw; /* Nog kleinere tekst voor smartphones */
+        font-size: 14px; /* Nog kleinere tekst voor smartphones */
+        line-height: 2.5;
     }
 
     .slider-image {
@@ -418,8 +517,7 @@ body {
         width: 100%;
     }
 
-    .USP-container {
-        display: flex;
+    .usp-container {
         flex-direction: column;
         align-content: center;
         align-items: center;
