@@ -207,14 +207,6 @@ body {
     padding: 5px;
   }
 
-  h2 {
-    font-size: 5vw;
-  }
-
-  p {
-    font-size: 2vw;
-  }
-
   /* Container met de achtergrondafbeelding */
   .background-container {
     background-size: cover;
