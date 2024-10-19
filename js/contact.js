@@ -1,5 +1,5 @@
 //selecteerd het element met de id 'contactForm' en gaat daarna na of de button met type"submit" is ingeklikt.
-document.getElementById("contactForm").addEventListener("submit", function(event){
+document.getElementById("contact-form").addEventListener("submit", function(event){
     event.preventDefault(); // Voorkomt dat het formulier standaard verstuurt
 
     // geeft de Boolean waarde 'true' aan het variabele 'valid'

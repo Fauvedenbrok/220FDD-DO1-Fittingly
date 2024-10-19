@@ -70,7 +70,7 @@
     height: auto;
     margin-top: 20px;
   }
-  .footer-wrap {
+  div.footer-wrap {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -80,9 +80,7 @@
     line-height: normal;
     font-size: 18px;
   }
-  .footer-copyright {
-    padding: 10px;
-  }
+
   hr {
     margin-top: 10px;
   }
@@ -94,16 +92,27 @@
 
   .footer-newsletter input {
     width: auto;
+    font-size: 16px !important;
+    min-width: 320px;
   }
 
   footer button {
     width: 40%;
+    min-width: 320px;
   }
 
   div.footer-conditions {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  footer hr {
+    width: 90% !important;
+  }
+
+  div.footer-newsletter p {
+    font-size: 16px !important;
   }
 }
 
@@ -174,7 +183,7 @@ nav {
 
 nav > button {
   background-color: #dcd3c2;
-  font-family: monserat;
+  font-family: "Montserrat", sans-serif;
   margin: 5px;
   padding: 10px;
   text-align: center;
@@ -252,19 +261,24 @@ footer hr {
 footer p {
   color: #1a3030;
   padding: 0;
-  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  line-height: 39px;
+  font-weight: 500;
 }
 
 .footer-links > a {
   color: #1a3030;
   text-decoration: none;
-
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  line-height: 39px;
+  font-weight: 500;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  display: flex;
   flex-direction: column;
 }
 
@@ -276,14 +290,23 @@ footer p {
 
 .footer-newsletter button {
   background-color: #cc9c4e;
-  height: 30px;
   border-radius: 8px;
   border-color: #cc9c4e;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  line-height: 39px;
 }
 
 .footer-newsletter input {
   height: 30px;
   margin-bottom: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  line-height: 39px;
+  font-weight: 500;
+  border-radius: 10px;
+  border-width: 0px;
+  height: 53px;
 }
 
 .footer-copyright {
@@ -292,16 +315,17 @@ footer p {
   justify-content: center;
   align-content: center;
   align-items: center;
-  padding-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 39px;
 }
 
 .footer-conditions {
   display: flex;
   flex-direction: row;
-}
-
-.footer-conditions a {
-  padding:0 20px 10px 20px
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .footer-wrap {
