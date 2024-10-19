@@ -54,12 +54,6 @@ body {
       url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
   }
 
-  #koptekst-container {
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 10% 15%;
-  }
-
   .header-paragraph-tekst {
     margin-right: 25%;
   }
@@ -246,11 +240,11 @@ body {
   }
 
   h2 {
-    font-size: 50px;
+    font-size: 5vw
   }
 
   p {
-    font-size: 20px;
+    font-size: 2vw;
   }
 
   #partnerpagina-container {
@@ -277,11 +271,7 @@ body {
       url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
   }
 
-  #koptekst-container {
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 10% 15%;
-  }
+
 
   .usp-img {
     width: auto;
@@ -294,8 +284,7 @@ body {
 
   /*Grote tekst heading*/
   .ons-platform-heading-tekst1 {
-    margin-left: 10%;
-    margin-top: 100px;
+    margin: 100px 10% 0% 10%;
     padding-left: 30px;
   }
 
@@ -452,4 +441,11 @@ margin: 0% 20%;
 
 #koptekst {
   margin-top: -10px;
+}
+
+#koptekst-container {
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 10% 15%;
+  position: absolute;
 }
