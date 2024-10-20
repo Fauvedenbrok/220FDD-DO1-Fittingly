@@ -67,6 +67,7 @@ h2 {
   .ons-platform-container {
     text-align: center;
   }
+
   .ons-platform-tekst-container {
     width: unset;
     margin-top: 50px;
@@ -147,6 +148,7 @@ h2 {
 
 /*voor desktop*/
 @media (min-width: 913px) {
+
   /*USP table*/
   .usp-div-container * {
     text-align: center;
@@ -181,11 +183,9 @@ h2 {
     flex-direction: column;
     align-items: center;
     /* Centreert de inhoud horizontaal */
-    background-image: linear-gradient(
-        rgba(19, 30, 36, 0.8),
-        rgba(19, 30, 36, 0.8)
-      ),
-      url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8),
+        rgba(19, 30, 36, 0.8)),
+      url(/Images/backgroundImages/contactPagina.jpg);
   }
 
   .header-paragraph-tekst {
@@ -251,11 +251,9 @@ h2 {
     /* Centreert de afbeelding */
     justify-content: center;
     /* Centreert de inhoud horizontaal */
-    background-image: linear-gradient(
-        rgba(19, 30, 36, 0.8),
-        rgba(19, 30, 36, 0.8)
-      ),
-      url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8),
+        rgba(19, 30, 36, 0.8)),
+      url(/Images/backgroundImages/contactPagina.jpg);
   }
 
   .usp-div-container {
@@ -275,9 +273,10 @@ h2 {
     text-align: center;
   }
 
-  .ons-platform-tekst-container > * {
+  .ons-platform-tekst-container>* {
     text-align: center;
   }
+
   .ons-platform-heading-tekst1 {
     margin-top: 60px;
   }
