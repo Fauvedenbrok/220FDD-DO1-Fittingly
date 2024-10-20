@@ -70,6 +70,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    color: #1A3030;
 }
 
 .input-bericht {
@@ -79,7 +80,7 @@ body {
 #h3-contact {
     margin-bottom: 20px;
     color: #1A3030;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .contact-info {
@@ -100,6 +101,7 @@ body {
     width: 30px;
     height: 20px;
     padding-right: 10px;
+    margin: 10px;
 }
 
 label {
@@ -134,11 +136,10 @@ input:focus, textarea:focus {
 .button-wrapper {
     display: flex;
     justify-content: center;
-    /* width: 200%; */
 }
 
 form button[type="submit"] {
-    width: 100%;
+    width: 50%;
     background-color: #cc9c4e;
     border-color: #cc9c4e;
     color: black;
