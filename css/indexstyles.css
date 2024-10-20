@@ -229,6 +229,27 @@ body {
     font-family: "Raleway", sans-serif;
     cursor: pointer;
 }
+
+.scroll-info > p {
+    font-size: 32px;
+    font-family: "Raleway", sans-serif;
+    color: #DCD3C2;
+    position: absolute;
+    bottom: 10%;
+    left: 44%;
+}
+.scroll-info > p::after {
+    content: "";
+    position: absolute;
+    background-image: url('/Images/icons/arrow.png'); /* Change to your image path */
+    background-size: cover; /* Makes the image cover the whole area */
+    background-position: center; /* Centers the image */
+    top: 100%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 100%;
+    height: 100px; /
+}
 /* --------------------------------------------------------------------------------*/
 
 
@@ -412,6 +433,15 @@ body {
     .hero-sectie-partners > .hero-content > h2 {
         font-size: 48px;
         text-align: center;
+    }
+    .scroll-info > p {
+        left: unset;
+        width: 100%;
+        text-align: center;
+        bottom: 0%;
+    }
+    .scroll-info > p::after {
+        width: 100px;
     }
 
     .index-textopmaak-1 {
