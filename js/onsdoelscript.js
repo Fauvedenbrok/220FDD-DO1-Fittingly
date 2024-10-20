@@ -164,7 +164,7 @@ usp1LightImage.addEventListener('click', function () {
             lastClickedItem = null; // Reset de laatste klik
         } else {
             // Verander de tekst voor USP1 en voeg de juiste class toe
-            paragraphText.textContent = 'Exclusieve gelegenheidskleding voor iedereen toegankelijk maken, zonder dat je te maken krijgt met onnodige kosten of verspilling. In plaats van dure outfits te kopen die vaak maar één keer worden gedragen, bieden wij een eenvoudig en gebruiksvriendelijk platform om kleding te huren. ';
+            paragraphText.textContent = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
             paragraphText.classList.add('color-1');
             paragraphText.classList.remove('color-2', 'color-3');
             lastClickedItem = usp1LightImage; // Sla dit item op als het laatst aangeklikte
@@ -179,7 +179,7 @@ usp2LightImage.addEventListener('click', function () {
             paragraphText.classList.remove('color-1', 'color-2', 'color-3');
             lastClickedItem = null;
         } else {
-            paragraphText.textContent = 'Maak kennis met onze innovatieve AI Paskamer. Met deze unieke functie kun je, via de camera van je telefoon, digitale kleding passen zonder dat je de deur uit hoeft. Zo kun je vanuit het comfort van je eigen huis verschillende outfits uitproberen in slechts een paar minuten. Geen gedoe met winkelbezoeken of eindeloos passen, maar snel en eenvoudig de perfecte look vinden. Onze AI Paskamer zorgt ervoor dat je altijd de juiste keuze maakt. ';
+            paragraphText.textContent = 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aaanbieden.';
             paragraphText.classList.add('color-2');
             paragraphText.classList.remove('color-1', 'color-3');
             lastClickedItem = usp2LightImage;
@@ -194,7 +194,7 @@ usp3LightImage.addEventListener('click', function () {
             paragraphText.classList.remove('color-1', 'color-2', 'color-3');
             lastClickedItem = null;
         } else {
-            paragraphText.textContent = 'Mode en duurzaamheid moeten hand in hand kunnen gaan. Door het stimuleren van het huren van kleding in plaats van kopen, dragen we actief bij aan een circulaire economie. In deze economie draait het om hergebruik en het verlengen van de levensduur van kleding, wat zorgt voor minder verspilling en een kleinere ecologische voetafdruk. ';
+            paragraphText.textContent = 'Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.';
             paragraphText.classList.add('color-3');
             paragraphText.classList.remove('color-1', 'color-2');
             lastClickedItem = usp3LightImage;
