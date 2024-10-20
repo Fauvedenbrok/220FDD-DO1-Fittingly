@@ -1,8 +1,9 @@
 "use strict";
 
 function changeNav(){
-
-    document.querySelector('header nav').classList.toggle('visible');
+  // toggled een css class bij het element 'nav' in de header. 
+  // Als de class is toegevoegd wordt de navigatie zichtbaar en anders verdwijnt die weer.
+  document.querySelector('header nav').classList.toggle('visible');
 
 };
 

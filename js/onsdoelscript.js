@@ -5,47 +5,47 @@ let currentIndex = 0;
 const totalImages = sliderImages.length;
 
 
-        // Immediately check if the page was loaded via hard refresh
+// Immediately check if the page was loaded via hard refresh
 var navigationEntries = performance.getEntriesByType("navigation");
 var isHardRefresh = navigationEntries.length && navigationEntries[0].type === 'reload';
 
-        // Show splash screen only on hard refresh
+// Show splash screen only on hard refresh
 if (isHardRefresh) {
     // Show splash screen
     document.querySelector(".splash-screen").style.visibility = "visible";
 } else {
-            // Skip splash screen
+    // Skip splash screen
     document.querySelector(".splash-screen").style.visibility = "hidden";
     document.querySelector("header").classList.add("visible"); // Show header immediately
     document.querySelector(".main-content").classList.add("visible"); // Show main content immediately
 }
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var splashScreen = document.querySelector(".splash-screen");
     var mainContent = document.querySelector(".main-content");
     var header = document.querySelector("header");
 
-// Show splash screen only on hard refresh
-  if (isHardRefresh) {
-    setTimeout(function() {
-        // Hide the splash screen after the animation completes
-        splashScreen.style.visibility = "hidden"; // Make it invisible
-        splashScreen.style.height = "0";          // Collapse the height
+    // Show splash screen only on hard refresh
+    if (isHardRefresh) {
+        setTimeout(function () {
+            // Hide the splash screen after the animation completes
+            splashScreen.style.visibility = "hidden"; // Make it invisible
+            splashScreen.style.height = "0";          // Collapse the height
 
-        // Show main content
-        header.classList.add("visible"); // Make header visible
-        mainContent.classList.add("visible");     // Add class to show main content
-    },3500); // Duration for splash screen
-} else {
-    // Skip the splash screen on internal navigation
-    splashScreen.style.visibility = "hidden";  // Make it invisible
-    splashScreen.style.height = "0";           // Collapse the height
-    header.classList.add("visible");           // Make header visible
-    mainContent.classList.add("visible");      // Show main content immediately
-}
+            // Show main content
+            header.classList.add("visible"); // Make header visible
+            mainContent.classList.add("visible");     // Add class to show main content
+        }, 3500); // Duration for splash screen
+    } else {
+        // Skip the splash screen on internal navigation
+        splashScreen.style.visibility = "hidden";  // Make it invisible
+        splashScreen.style.height = "0";           // Collapse the height
+        header.classList.add("visible");           // Make header visible
+        mainContent.classList.add("visible");      // Show main content immediately
+    }
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sliderImages = document.querySelectorAll('.slider-image');
 
     function getTranslateX(image) {
@@ -53,13 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var matrix = new WebKitCSSMatrix(style.transform);
         // console.log('translateX: ', matrix.m41);
         return matrix.m41;
-      }
-    
-    // function getImageWidth(image){
-    //     var style = window.getComputedStyle(image);
-    //     var width = style.getPropertyValue('width');
-    //     return width;
-    // }
+    }
 
     function initializeSlider() {
         sliderImages.forEach((image, index) => {
@@ -69,18 +63,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSlider() {
         sliderImages.forEach((image, index) => {
-            if (index <= 2 && (getTranslateX(image) < -840)){
+            if (index <= 2 && (getTranslateX(image) < -840)) {
                 image.style.display = 'none';
                 image.style.transform = `translateX(${getTranslateX(image) + 7560}px)`;
                 image.style.display = "";
             }
-            else if(index > 2 && (getTranslateX(image) < (index * -360))){
+            else if (index > 2 && (getTranslateX(image) < (index * -360))) {
                 image.style.display = 'none';
                 // positioneer de afbeelding aan de rechterkant van het scherm
-            image.style.transform = `translateX(${getTranslateX(image) + (index * -360) + 8400}px)`;
-            image.style.display = "";
+                image.style.transform = `translateX(${getTranslateX(image) + (index * -360) + 8400}px)`;
+                image.style.display = "";
             }
-            else{
+            else {
                 image.style.transform = `translateX(${getTranslateX(image) - 120}px)`;
             }
         });
@@ -106,21 +100,21 @@ let timeInterval;
 
 //Het berekenen van de overgebleven dagen, uren, minuten en seconden
 function getTimeRemaining(countdown) {
-	const now = new Date().getTime(); //De Date() functie is altijd vandaag
-	const difference = countdown - now;
+    const now = new Date().getTime(); //De Date() functie is altijd vandaag
+    const difference = countdown - now;
 
-	const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-	const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-	const minutes = Math.floor((difference / 1000 / 60) % 60);
-	const seconds = Math.floor((difference / 1000) % 60);
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / 1000 / 60) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
 
-	return {
-		difference,
-		days,
-		hours,
-		minutes,
-		seconds
-	};
+    return {
+        difference,
+        days,
+        hours,
+        minutes,
+        seconds
+    };
 }
 
 function updateTimer(countdown) {
@@ -155,7 +149,7 @@ const originalText = paragraphText ? paragraphText.textContent : '';  // Control
 
 let lastClickedItem = null; // Houdt bij welk item het laatst is aangeklikt
 
-usp1LightImage.addEventListener('click', function() {
+usp1LightImage.addEventListener('click', function () {
     if (paragraphText) {
         // Check of dit het item is dat twee keer achter elkaar wordt geklikt
         if (lastClickedItem === usp1LightImage) {
@@ -173,7 +167,7 @@ usp1LightImage.addEventListener('click', function() {
     }
 });
 
-usp2LightImage.addEventListener('click', function() {
+usp2LightImage.addEventListener('click', function () {
     if (paragraphText) {
         if (lastClickedItem === usp2LightImage) {
             paragraphText.textContent = originalText;
@@ -188,7 +182,7 @@ usp2LightImage.addEventListener('click', function() {
     }
 });
 
-usp3LightImage.addEventListener('click', function() {
+usp3LightImage.addEventListener('click', function () {
     if (paragraphText) {
         if (lastClickedItem === usp3LightImage) {
             paragraphText.textContent = originalText;

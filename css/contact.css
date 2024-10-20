@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #1A3030; 
+    background-color: #1A3030;
     margin: 0;
     padding: 0;
 }
@@ -12,7 +12,7 @@ body {
 /* Container met de achtergrondafbeelding */
 .background-container {
     height: 60vh;
-    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg');
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url(/Images/backgroundImages/contactPagina.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -27,14 +27,14 @@ body {
     text-shadow: #3a3b33 1px 1px 1px;
     margin-bottom: 10px;
     width: 60%;
-    
+
 }
 
 #para-contact {
     color: #DCD3C2B2;
     font-size: 1.2rem;
     line-height: 1.5;
-    width: 60%; 
+    width: 60%;
     text-align: left;
 }
 
@@ -50,7 +50,7 @@ body {
     margin-bottom: 80px;
     margin: -10vh auto 0 auto;
     flex-direction: row-reverse;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
 #contact-form {
@@ -59,7 +59,7 @@ body {
 
 /* Form content: inputvelden + contactinformatie */
 .form-content {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
     width: 200%;
@@ -84,7 +84,8 @@ body {
 }
 
 .contact-info {
-    width: 35%; /* Zorg dat de contactinfo minder ruimte neemt */
+    width: 35%;
+    /* Zorg dat de contactinfo minder ruimte neemt */
     font-size: 1.2rem;
 }
 
@@ -97,7 +98,9 @@ body {
     font-size: 1.0rem;
 }
 
-#usp1-contact, #usp2-contact, #usp3-contact {
+#usp1-contact,
+#usp2-contact,
+#usp3-contact {
     width: 30px;
     height: 20px;
     padding-right: 10px;
@@ -122,14 +125,15 @@ textarea {
 textarea#bericht {
     height: 350px;
     border-radius: 5px;
-  }
+}
 
 .input-fields label {
     display: block;
     margin-bottom: 5px;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border-bottom: 1px solid #1A3030;
 }
 
@@ -150,8 +154,9 @@ form button[type="submit"] {
 
 .button-container {
     display: flex;
-    justify-content: center; /* Zorgt dat de button gecentreerd is */
-    width: 100%; 
+    justify-content: center;
+    /* Zorgt dat de button gecentreerd is */
+    width: 100%;
     margin-top: 20px;
 }
 
@@ -176,12 +181,17 @@ form button[type="submit"] {
     }
 
     .form-content {
-        flex-direction: column; /* Velden onder elkaar */
+        flex-direction: column;
+        /* Velden onder elkaar */
         width: 100%;
     }
 
-    .input-fields, .input-bericht, .contact-info, contact-info p {
-        width: 100%; /* Volledige breedte voor mobiele weergave */
+    .input-fields,
+    .input-bericht,
+    .contact-info,
+    contact-info p {
+        width: 100%;
+        /* Volledige breedte voor mobiele weergave */
     }
 
     #para-contact {
@@ -190,16 +200,23 @@ form button[type="submit"] {
     }
 
     form button[type="submit"] {
-        width: 100%; /* Button neemt volledige breedte op mobiel */
+        width: 100%;
+        /* Button neemt volledige breedte op mobiel */
     }
 
 }
-   /* Media queries voor mobiel */
-   @media screen and (max-width: 1200px) {
-    #usp1-contact, #usp2-contact, #usp3-contact {
-        width: 22px; /* Kleiner icoon voor mobiel */
+
+/* Media queries voor mobiel */
+@media screen and (max-width: 1200px) {
+
+    #usp1-contact,
+    #usp2-contact,
+    #usp3-contact {
+        width: 22px;
+        /* Kleiner icoon voor mobiel */
         height: 16px;
-        padding-right: 8px; /* Iets minder padding op mobiel */
+        padding-right: 8px;
+        /* Iets minder padding op mobiel */
     }
 
     #h2-contact {
@@ -232,13 +249,16 @@ form button[type="submit"] {
         flex-direction: column;
     }
 
-    .input-fields, .input-bericht, .contact-info, contact-info p {
-        width: 100%; /* Volledige breedte voor mobiele weergave */
+    .input-fields,
+    .input-bericht,
+    .contact-info,
+    contact-info p {
+        width: 100%;
+        /* Volledige breedte voor mobiele weergave */
     }
 
     #contact-form {
         width: 100%;
     }
 
-   }
-
+}
