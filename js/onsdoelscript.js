@@ -5,46 +5,49 @@ let currentIndex = 0;
 const totalImages = sliderImages.length;
 
 
-        // Immediately check if the page was loaded via hard refresh
+
+//--------------------------------- Functie preloader ---------------------------------//
+// Check of de pagina is geladen via een harde refresh
 var navigationEntries = performance.getEntriesByType("navigation");
 var isHardRefresh = navigationEntries.length && navigationEntries[0].type === 'reload';
 
-        // Show splash screen only on hard refresh
+        
 if (isHardRefresh) {
-    // Show splash screen
+    // Laat preloader zien als 'isHardRefresh' waar is
     document.querySelector(".splash-screen").style.visibility = "visible";
 } else {
-            // Skip splash screen
+    // Verberg preloader en laadt de rest van de landingspagina
     document.querySelector(".splash-screen").style.visibility = "hidden";
-    document.querySelector("header").classList.add("visible"); // Show header immediately
-    document.querySelector(".main-content").classList.add("visible"); // Show main content immediately
+    document.querySelector("header").classList.add("visible"); 
+    document.querySelector(".main-content").classList.add("visible"); 
 }
 document.addEventListener("DOMContentLoaded", function() {
     var splashScreen = document.querySelector(".splash-screen");
     var mainContent = document.querySelector(".main-content");
     var header = document.querySelector("header");
 
-// Show splash screen only on hard refresh
+// Functie die uitgevoerd wordt, 3500 miliseconde na de hard refresh
   if (isHardRefresh) {
     setTimeout(function() {
-        // Hide the splash screen after the animation completes
-        splashScreen.style.visibility = "hidden"; // Make it invisible
-        splashScreen.style.height = "0";          // Collapse the height
+        splashScreen.style.visibility = "hidden"; 
+        splashScreen.style.height = "0";          
 
-        // Show main content
-        header.classList.add("visible"); // Make header visible
-        mainContent.classList.add("visible");     // Add class to show main content
-    },3500); // Duration for splash screen
+        // laadt de main content op de landingspagina
+        header.classList.add("visible"); 
+        mainContent.classList.add("visible");
+    },3500);
 } else {
-    // Skip the splash screen on internal navigation
-    splashScreen.style.visibility = "hidden";  // Make it invisible
-    splashScreen.style.height = "0";           // Collapse the height
-    header.classList.add("visible");           // Make header visible
-    mainContent.classList.add("visible");      // Show main content immediately
+    // Laadt de main content en sla de preloader over (geen hard refresh)
+    splashScreen.style.visibility = "hidden";  
+    splashScreen.style.height = "0";           
+    header.classList.add("visible");           
+    mainContent.classList.add("visible");      
 }
 });
+//---------------------------------------------------------------------------------------//
 
 
+//--------------------------------- Functie image slider ---------------------------------//
 document.addEventListener('DOMContentLoaded', function() {
     const sliderImages = document.querySelectorAll('.slider-image');
 
@@ -91,11 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateSlider, 3000);
     setInterval(initializeSlider, 216000);
 });
+//---------------------------------------------------------------------------------------//
 
 
+//--------------------------------- Functie counhtdown timer ---------------------------------//
 /*Countdown timer */
 const countdown = new Date('2024-11-11T12:00:00').getTime(); /*tijd tussen 1-1-1970 en de releasedatum van Fittingly*/
-console.log("Countdown target time (in ms):", countdown);
 
 const days = document.querySelector(".days span");
 const hours = document.querySelector(".hours span");
@@ -141,10 +145,11 @@ function initializeTimer() {
 }
 
 initializeTimer();
+//---------------------------------------------------------------------------------------//
 
 
-//functie Freek
 
+//--------------------------------- Functie USP's text switch ---------------------------------//
 const usp1LightImage = document.querySelector('img[alt="USP1Light"]');
 const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
 const usp3LightImage = document.querySelector('img[alt="USP3Light"]');
@@ -202,6 +207,8 @@ usp3LightImage.addEventListener('click', function () {
         }
     }
 });
+//---------------------------------------------------------------------------------------//
+
 
 // Toggle Light/Dark mode
 // const modeToggleButton = document.getElementById('mode-toggle');

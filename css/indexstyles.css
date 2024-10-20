@@ -2,18 +2,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-
+/* ------------------ visibility header & main content voor de preloader ------------------*/
 header {
     height: 0;
     visibility: hidden; /* Hide visibility initially */
     transition: height 0.5s ease, visibility 0.5s ease; /* Smooth transition */
   }
-  header.visible {
+header.visible {
     height: auto; /* Allow height to expand */
     visibility: visible; /* Make header visible */
   }
 
-/* ------------------ Preloader / Splash screen ------------------*/
+/* Main content styling */
+.main-content {
+    visibility: hidden; 
+    height: 0;
+    opacity: 0;
+    transition: height 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+/* When main content is shown */
+.main-content.visible {
+    visibility: visible;
+    height: auto; /* Allow height to expand */
+    opacity: 1; /* Fade in */
+}
+/* ------------------ Preloader ------------------*/
 .splash-screen {
     background-color: #1A3030;
     position: fixed;
@@ -82,22 +96,9 @@ header {
     }
   }
 /* --------------------------------------------------------------------------------*/
-        /* Main content styling */
-        .main-content {
-            visibility: hidden; 
-            height: 0;
-            opacity: 0;
-            transition: height 0.5s ease, opacity 0.5s ease; /* Smooth transition */
-        }
 
-        /* When main content is shown */
-        .main-content.visible {
-            visibility: visible;
-            height: auto; /* Allow height to expand */
-            opacity: 1; /* Fade in */
-        }
-/* --------------------------------------------------------------------------------*/
 
+/* ------------------ main styles voor teksten ------------------*/
 h2 {
     font-family: "Playfair Display", serif;
     color: #CC9C4E;
@@ -138,7 +139,10 @@ body {
     padding: 0;
 }
 
-/* Hero sectie achtergrond*/
+/* --------------------------------------------------------------------------------*/
+
+
+/* ------------------ hero sectie landingspagina ------------------*/
 .hero-sectie {
     height: 100vh;
     display: flex;
@@ -225,7 +229,11 @@ body {
     font-family: "Raleway", sans-serif;
     cursor: pointer;
 }
+/* --------------------------------------------------------------------------------*/
 
+
+
+/* ------------------ Ons platform & ons doel blokken ------------------*/
 .onsdoel-container {
     width: 100%;
     margin: auto;
@@ -289,7 +297,11 @@ body {
     /* justify-content: space-between; */
     /* transform: translate(-50px, 50px); Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
 }
+/* --------------------------------------------------------------------------------*/
 
+
+
+/* ------------------ product image slider ------------------*/
 .slider-container {
     overflow: hidden;
     width: calc(100vw - 20px);
@@ -313,7 +325,11 @@ body {
     margin: 0 6px; /* Ruimte tussen afbeeldingen */
     flex-shrink: 0; /* Zorg ervoor dat de afbeeldingen niet krimpen */
 }
+/* --------------------------------------------------------------------------------*/
 
+
+
+/* ------------------ USP's (ons doel blok) ------------------*/
 .usp-container {
     display: flex;
     justify-content: space-between;
@@ -359,8 +375,11 @@ body {
     line-height: 39px;
     transition: transform 0.2s;
 }
+/* --------------------------------------------------------------------------------*/
 
-/* Media Queries */
+
+
+/* ------------------ media queries ------------------*/
 @media (min-width: 1920px) {
 
 }
