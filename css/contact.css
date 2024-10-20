@@ -172,7 +172,7 @@ form button[type="submit"] {
     color: #28A745;
 }
 
-/* Media queries voor schermen kleiner dan 768px */
+/* Media queries voor grote schermen */
 @media (max-width: 1201px) {
     .form-container {
         width: 90%;
@@ -188,8 +188,7 @@ form button[type="submit"] {
 
     .input-fields,
     .input-bericht,
-    .contact-info,
-    contact-info p {
+    .contact-info {
         width: 100%;
         /* Volledige breedte voor mobiele weergave */
     }
@@ -251,8 +250,7 @@ form button[type="submit"] {
 
     .input-fields,
     .input-bericht,
-    .contact-info,
-    contact-info p {
+    .contact-info {
         width: 100%;
         /* Volledige breedte voor mobiele weergave */
     }
