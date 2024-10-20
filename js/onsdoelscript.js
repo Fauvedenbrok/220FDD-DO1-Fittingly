@@ -164,7 +164,7 @@ usp1LightImage.addEventListener('click', function () {
             lastClickedItem = null; // Reset de laatste klik
         } else {
             // Verander de tekst voor USP1 en voeg de juiste class toe
-            paragraphText.textContent = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Op deze manier bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
+            paragraphText.textContent = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
             paragraphText.classList.add('color-1');
             paragraphText.classList.remove('color-2', 'color-3');
             lastClickedItem = usp1LightImage; // Sla dit item op als het laatst aangeklikte
@@ -179,7 +179,7 @@ usp2LightImage.addEventListener('click', function () {
             paragraphText.classList.remove('color-1', 'color-2', 'color-3');
             lastClickedItem = null;
         } else {
-            paragraphText.textContent = 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen in de markt en kunnen we onze klanten steeds weer verrassen met nieuwe mogelijkheden en diensten die hun ervaring verbeteren.';
+            paragraphText.textContent = 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aaanbieden, die hun ervaring verbeteren.';
             paragraphText.classList.add('color-2');
             paragraphText.classList.remove('color-1', 'color-3');
             lastClickedItem = usp2LightImage;
