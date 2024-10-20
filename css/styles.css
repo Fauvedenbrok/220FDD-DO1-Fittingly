@@ -30,6 +30,12 @@
     border-radius: 0;
     border-style: solid;
     border-width: 1px;
+    background-color: #dcd3c2;
+  }
+
+  nav button a {
+    color: #1a3030 !important;
+    font-weight: 500 !important;
   }
 
   div.footer-body {
