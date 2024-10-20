@@ -322,6 +322,12 @@ footer p {
   line-height: 39px;
 }
 
+.footer-copyright a {
+  color: #1a3030;
+  text-decoration: none;
+  padding-right: 20px;
+}
+
 .footer-conditions {
   display: flex;
   flex-direction: row;
