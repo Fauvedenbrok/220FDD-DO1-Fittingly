@@ -179,7 +179,7 @@ usp2LightImage.addEventListener('click', function () {
             paragraphText.classList.remove('color-1', 'color-2', 'color-3');
             lastClickedItem = null;
         } else {
-            paragraphText.textContent = 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aaanbieden, die hun ervaring verbeteren.';
+            paragraphText.textContent = 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aaanbieden.';
             paragraphText.classList.add('color-2');
             paragraphText.classList.remove('color-1', 'color-3');
             lastClickedItem = usp2LightImage;
