@@ -401,11 +401,6 @@ body {
 
 
 /* ------------------ media queries ------------------*/
-@media screen and (max-width: 1200px){
-    .scroll-info p{
-        display: none;
-    }
-}
 @media (min-width: 1920px) {
 
 }
@@ -417,6 +412,9 @@ body {
 
     h3 {
         font-size: 48px;
+    }
+    .scroll-info p{
+        display: none;
     }
     .hero-sectie {
         flex-direction: column;
