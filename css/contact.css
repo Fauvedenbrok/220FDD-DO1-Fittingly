@@ -85,7 +85,6 @@ body {
 
 .contact-info {
     width: 35%;
-    /* Zorg dat de contactinfo minder ruimte neemt */
     font-size: 1.2rem;
 }
 
@@ -155,7 +154,6 @@ form button[type="submit"] {
 .button-container {
     display: flex;
     justify-content: center;
-    /* Zorgt dat de button gecentreerd is */
     width: 100%;
     margin-top: 20px;
     cursor: pointer;
@@ -183,7 +181,6 @@ form button[type="submit"] {
 
     .form-content {
         flex-direction: column;
-        /* Velden onder elkaar */
         width: 100%;
     }
 
@@ -191,7 +188,6 @@ form button[type="submit"] {
     .input-bericht,
     .contact-info {
         width: 100%;
-        /* Volledige breedte voor mobiele weergave */
     }
 
     #para-contact {
@@ -201,7 +197,6 @@ form button[type="submit"] {
 
     form button[type="submit"] {
         width: 100%;
-        /* Button neemt volledige breedte op mobiel */
     }
 
 }
@@ -213,10 +208,8 @@ form button[type="submit"] {
     #usp2-contact,
     #usp3-contact {
         width: 22px;
-        /* Kleiner icoon voor mobiel */
         height: 16px;
         padding-right: 8px;
-        /* Iets minder padding op mobiel */
     }
 
     #h2-contact {
@@ -253,7 +246,6 @@ form button[type="submit"] {
     .input-bericht,
     .contact-info {
         width: 100%;
-        /* Volledige breedte voor mobiele weergave */
     }
 
     #contact-form {
