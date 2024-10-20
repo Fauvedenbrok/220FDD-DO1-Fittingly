@@ -53,26 +53,6 @@ h2 {
   width: auto;
 }
 
-@media (max-width: 1482px) {
-  #img-couple {
-    visibility: hidden;
-    height: 0;
-  }
-
-  #couple-img-hidden {
-    visibility: visible;
-    height: 50vw;
-  }
-
-  .ons-platform-container {
-    text-align: center;
-  }
-  .ons-platform-tekst-container {
-    width: unset;
-    margin-top: 50px;
-  }
-}
-
 #partner-koptekst {
   margin-top: 60px;
   margin-bottom: -40px;
@@ -143,6 +123,27 @@ h2 {
   background-color: #b3ad98;
   border: 3px solid #b3ad98;
   box-shadow: #3a3b33 5px 5px 5px 5px;
+}
+
+/*Fix voor de couple-img bij het ons-doel gedeelte*/
+@media (max-width: 1482px) {
+  #img-couple {
+    visibility: hidden;
+    height: 0;
+  }
+
+  #couple-img-hidden {
+    visibility: visible;
+    height: 50vw;
+  }
+
+  .ons-platform-container {
+    text-align: center;
+  }
+  .ons-platform-tekst-container {
+    width: unset;
+    margin-top: 50px;
+  }
 }
 
 /*voor desktop*/
