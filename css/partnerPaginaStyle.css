@@ -1,6 +1,10 @@
 body {
-  background-color: #1a3030;
-  justify-content: center;
+  background-color: #1A3030;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
