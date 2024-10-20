@@ -5,47 +5,50 @@ let currentIndex = 0;
 const totalImages = sliderImages.length;
 
 
-// Immediately check if the page was loaded via hard refresh
+
+//--------------------------------- Functie preloader ---------------------------------//
+// Check of de pagina is geladen via een harde refresh
 var navigationEntries = performance.getEntriesByType("navigation");
 var isHardRefresh = navigationEntries.length && navigationEntries[0].type === 'reload';
 
-// Show splash screen only on hard refresh
+        
 if (isHardRefresh) {
-    // Show splash screen
+    // Laat preloader zien als 'isHardRefresh' waar is
     document.querySelector(".splash-screen").style.visibility = "visible";
 } else {
-    // Skip splash screen
+    // Verberg preloader en laadt de rest van de landingspagina
     document.querySelector(".splash-screen").style.visibility = "hidden";
-    document.querySelector("header").classList.add("visible"); // Show header immediately
-    document.querySelector(".main-content").classList.add("visible"); // Show main content immediately
+    document.querySelector("header").classList.add("visible"); 
+    document.querySelector(".main-content").classList.add("visible"); 
 }
 document.addEventListener("DOMContentLoaded", function () {
     var splashScreen = document.querySelector(".splash-screen");
     var mainContent = document.querySelector(".main-content");
     var header = document.querySelector("header");
 
-    // Show splash screen only on hard refresh
-    if (isHardRefresh) {
-        setTimeout(function () {
-            // Hide the splash screen after the animation completes
-            splashScreen.style.visibility = "hidden"; // Make it invisible
-            splashScreen.style.height = "0";          // Collapse the height
+// Functie die uitgevoerd wordt, 3500 miliseconde na de hard refresh
+  if (isHardRefresh) {
+    setTimeout(function() {
+        splashScreen.style.visibility = "hidden"; 
+        splashScreen.style.height = "0";          
 
-            // Show main content
-            header.classList.add("visible"); // Make header visible
-            mainContent.classList.add("visible");     // Add class to show main content
-        }, 3500); // Duration for splash screen
-    } else {
-        // Skip the splash screen on internal navigation
-        splashScreen.style.visibility = "hidden";  // Make it invisible
-        splashScreen.style.height = "0";           // Collapse the height
-        header.classList.add("visible");           // Make header visible
-        mainContent.classList.add("visible");      // Show main content immediately
-    }
+        // laadt de main content op de landingspagina
+        header.classList.add("visible"); 
+        mainContent.classList.add("visible");
+    },3500);
+} else {
+    // Laadt de main content en sla de preloader over (geen hard refresh)
+    splashScreen.style.visibility = "hidden";  
+    splashScreen.style.height = "0";           
+    header.classList.add("visible");           
+    mainContent.classList.add("visible");      
+}
 });
+//---------------------------------------------------------------------------------------//
 
 
-document.addEventListener('DOMContentLoaded', function () {
+//--------------------------------- Functie image slider ---------------------------------//
+document.addEventListener('DOMContentLoaded', function() {
     const sliderImages = document.querySelectorAll('.slider-image');
 
     function getTranslateX(image) {
@@ -85,11 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateSlider, 3000);
     setInterval(initializeSlider, 216000);
 });
+//---------------------------------------------------------------------------------------//
 
 
+//--------------------------------- Functie counhtdown timer ---------------------------------//
 /*Countdown timer */
 const countdown = new Date('2024-11-11T12:00:00').getTime(); /*tijd tussen 1-1-1970 en de releasedatum van Fittingly*/
-console.log("Countdown target time (in ms):", countdown);
 
 const days = document.querySelector(".days span");
 const hours = document.querySelector(".hours span");
@@ -135,10 +139,11 @@ function initializeTimer() {
 }
 
 initializeTimer();
+//---------------------------------------------------------------------------------------//
 
 
-//functie Freek
 
+//--------------------------------- Functie USP's text switch ---------------------------------//
 const usp1LightImage = document.querySelector('img[alt="USP1Light"]');
 const usp2LightImage = document.querySelector('img[alt="USP2Light"]');
 const usp3LightImage = document.querySelector('img[alt="USP3Light"]');
@@ -159,7 +164,7 @@ usp1LightImage.addEventListener('click', function () {
             lastClickedItem = null; // Reset de laatste klik
         } else {
             // Verander de tekst voor USP1 en voeg de juiste class toe
-            paragraphText.textContent = 'Exclusieve gelegenheidskleding voor iedereen toegankelijk maken, zonder dat je te maken krijgt met onnodige kosten of verspilling. In plaats van dure outfits te kopen die vaak maar één keer worden gedragen, bieden wij een eenvoudig en gebruiksvriendelijk platform om kleding te huren. ';
+            paragraphText.textContent = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
             paragraphText.classList.add('color-1');
             paragraphText.classList.remove('color-2', 'color-3');
             lastClickedItem = usp1LightImage; // Sla dit item op als het laatst aangeklikte
@@ -174,7 +179,7 @@ usp2LightImage.addEventListener('click', function () {
             paragraphText.classList.remove('color-1', 'color-2', 'color-3');
             lastClickedItem = null;
         } else {
-            paragraphText.textContent = 'Maak kennis met onze innovatieve AI Paskamer. Met deze unieke functie kun je, via de camera van je telefoon, digitale kleding passen zonder dat je de deur uit hoeft. Zo kun je vanuit het comfort van je eigen huis verschillende outfits uitproberen in slechts een paar minuten. Geen gedoe met winkelbezoeken of eindeloos passen, maar snel en eenvoudig de perfecte look vinden. Onze AI Paskamer zorgt ervoor dat je altijd de juiste keuze maakt. ';
+            paragraphText.textContent = 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aaanbieden.';
             paragraphText.classList.add('color-2');
             paragraphText.classList.remove('color-1', 'color-3');
             lastClickedItem = usp2LightImage;
@@ -189,13 +194,15 @@ usp3LightImage.addEventListener('click', function () {
             paragraphText.classList.remove('color-1', 'color-2', 'color-3');
             lastClickedItem = null;
         } else {
-            paragraphText.textContent = 'Mode en duurzaamheid moeten hand in hand kunnen gaan. Door het stimuleren van het huren van kleding in plaats van kopen, dragen we actief bij aan een circulaire economie. In deze economie draait het om hergebruik en het verlengen van de levensduur van kleding, wat zorgt voor minder verspilling en een kleinere ecologische voetafdruk. ';
+            paragraphText.textContent = 'Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.';
             paragraphText.classList.add('color-3');
             paragraphText.classList.remove('color-1', 'color-2');
             lastClickedItem = usp3LightImage;
         }
     }
 });
+//---------------------------------------------------------------------------------------//
+
 
 // Toggle Light/Dark mode
 // const modeToggleButton = document.getElementById('mode-toggle');
