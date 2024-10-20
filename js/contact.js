@@ -41,8 +41,12 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 
     // Telefoon veld validatie
     const tel = document.getElementById("tel").value;
+    const telRegex = /^[0-9+]+$/; // Alleen nummers en het + teken
     if (tel === "") {
         errors[3].textContent = "Telefoonnummer is verplicht.";
+        valid = false;
+    } else if (!telRegex.test(tel)) {
+        errors[3].textContent = "Ongeldig telefoonnummer. Alleen cijfers en het + teken zijn toegestaan.";
         valid = false;
     } else {
         errors[3].textContent = "";
