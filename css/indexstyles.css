@@ -290,8 +290,8 @@ body {
 }
 
 .image-left {
-    max-width: 40%; /* Maximaliseren breedte van afbeeldingen */
-    height: auto;
+    width: auto; /* Maximaliseren breedte van afbeeldingen */
+    height: 600px;
     /* margin-top: 20px; */
     /* display: grid; */
     /* justify-content: space-between; */
