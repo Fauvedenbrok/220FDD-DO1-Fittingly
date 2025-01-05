@@ -413,6 +413,9 @@ body {
     h3 {
         font-size: 48px;
     }
+    .scroll-info p{
+        display: none;
+    }
     .hero-sectie {
         flex-direction: column;
         height: unset;
