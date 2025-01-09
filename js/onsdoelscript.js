@@ -83,6 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
+
     // Start de slider zodra de pagina geladen is
     initializeSlider();
     setInterval(updateSlider, 3000);
