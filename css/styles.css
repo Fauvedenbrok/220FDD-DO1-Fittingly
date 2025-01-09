@@ -316,6 +316,7 @@ footer p {
   border-radius: 10px;
   border-width: 0px;
   height: 53px;
+  padding-left: 10px;
 }
 
 .footer-copyright {

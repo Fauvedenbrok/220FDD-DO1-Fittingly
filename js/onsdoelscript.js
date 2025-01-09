@@ -11,6 +11,7 @@ const totalImages = sliderImages.length;
 var navigationEntries = performance.getEntriesByType("navigation");
 var isHardRefresh = navigationEntries.length && navigationEntries[0].type === 'reload';
 
+
         
 if (isHardRefresh) {
     // Laat preloader zien als 'isHardRefresh' waar is
