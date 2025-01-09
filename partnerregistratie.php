@@ -9,10 +9,26 @@ session_start();
     <link rel="icon" href="/Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
-    <title>Partner registratie</title>
+    <title>Klant registratie</title>
 </head>
 <body>
-<form method="post" action="index.php">
+<div class="background-container">
+            <h2 id="h2-contact">Registratie</h2>
+            <p id="para-contact">EVEN AANPASSEN </p>
+        </div>
+
+        <div class="form-container">
+            <div class="contact-info">
+                <h3 id="h3-contact">Contactinformatie</h3>
+                <p><img id="usp1-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Adres: Straat
+                    123, 1021 AB, Breda</p>
+                <p><img id="usp2-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Telefoon:
+                    +31631506081</p>
+                <p><img id="usp3-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Email:
+                    info@fittingly.nl</p>
+            </div>
+            <form id="contact-form">
+            <form method="post" action="index.php">
       <label for="name">
         Naam:
         <input type="text" name="name" id="name"><br>
@@ -66,7 +82,17 @@ session_start();
 
     <input type="submit" value="Registreer" name="submit">
 </form>
+            </form>
+        </div>
+    </main>
 
+    <footer></footer>
+    <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer")
+    </script>
+    <script src="js/contact.js"></script>
 
 </body>
 </html>
