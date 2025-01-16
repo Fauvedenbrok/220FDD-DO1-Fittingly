@@ -68,7 +68,7 @@ session_start();
     </label>
     <label for="country">
         Land:
-        <input type="text" name="country"><br>
+        <input type="text" name="country" require><br>
     </label>
     <label for="password">
         Wachtwoord:
@@ -102,6 +102,8 @@ include("Models/Address.php");
 include("Models/Message.php");
 include("Models/LoginData.php");
 include("Models/Account.php");
+
+// Valideren 
 
 $loginData = new LoginData($_POST["email"], $_POST["password"]);
 $person = null;
