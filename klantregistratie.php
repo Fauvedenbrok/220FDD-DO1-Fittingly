@@ -16,52 +16,12 @@
             <p id="para-contact">EVEN AANPASSEN </p>
         </div>
 
+        
+            
         <div class="form-container">
+
             <div class="contact-info">
-            <?php
-    include("Models/Person.php");
-    include("Models/Address.php");
-    include("Models/Message.php");
-    include("Models/Customer.php");
-    
-    // Valideren 
-    
-    $newsletter = null;  
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $dateOfBirth = $_POST['dateOfBirth'];
-    $password = $_POST["password"];
-    
-    $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
-    
-    $address = new Address($_POST['postalCode'],
-        $_POST['streetName'],
-        $_POST['streetNumber'],
-        $_POST['streetNumberAppendix'],
-        $_POST['city'],
-        $_POST['country']);
-    $person->address = $address;
-    
-    if(isset($_POST["submit"])){
-        if(isset($_POST["newsletter"])){
-            $newsletter = true;
-        }
-        else{
-            $newsletter = false;
-        }
-        echo $loginData->getPassword() . " " . $loginData->getUsername();
-        echo"<br>";
-        echo $person . " and " . $person->address;
-        echo "<br>";
-        echo "<br>";
-        $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
-        echo $message;
-        echo "<br>";
-        echo "<br>";
-    }
-    $account = new Account($person, 3, $newsletter);
-    ?>
+            
             </div>
             <form method="post" action="klantregistratie.php">
                 <label for="name">
@@ -114,7 +74,52 @@
                     <input type="submit" value="Registreer" name="submit">
                 </label>
             </form>
-            
+            <div>
+            <?php
+    include("Models/Person.php");
+    include("Models/Address.php");
+    include("Models/Message.php");
+    include("Models/Customer.php");
+    
+    // Valideren 
+    
+    $newsletter = null;  
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $dateOfBirth = $_POST['dateOfBirth'];
+    $password = $_POST["password"];
+    
+    $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
+    
+    $address = new Address($_POST['postalCode'],
+        $_POST['streetName'],
+        $_POST['streetNumber'],
+        $_POST['streetNumberAppendix'],
+        $_POST['city'],
+        $_POST['country']);
+    $person->address = $address;
+    
+    if(isset($_POST["submit"])){
+        if(isset($_POST["newsletter"])){
+            $newsletter = true;
+        }
+        else{
+            $newsletter = false;
+        }
+        echo $loginData->getPassword() . " " . $loginData->getUsername();
+        echo"<br>";
+        echo $person . " and " . $person->address;
+        echo "<br>";
+        echo "<br>";
+        $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
+        echo $message;
+        echo "<br>";
+        echo "<br>";
+    }
+    $account = new Account($person, 3, $newsletter);
+    ?>
+                </div>
         </div>
     </main>
 
