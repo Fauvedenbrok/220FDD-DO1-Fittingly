@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,10 +20,7 @@
             <p id="para-contact">EVEN AANPASSEN </p>
         </div>
 
-        
-            
         <div class="form-container">
-
             <div class="contact-info">
             
             </div>
@@ -74,8 +75,21 @@
                     <input type="submit" value="Registreer" name="submit">
                 </label>
             </form>
-            <div>
-            <?php
+            
+        </div>
+    </main>
+
+
+    <footer>
+    </footer>
+    <script src="js/scripts.js"></script>
+    <!-- <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer");
+    </script> -->
+</body>
+</html>
+<?php
     include("Models/Person.php");
     include("Models/Address.php");
     include("Models/Message.php");
@@ -98,16 +112,8 @@
         $_POST['streetNumberAppendix'],
         $_POST['city'],
         $_POST['country']);
+
     $person->address = $address;
-    
-    if(isset($_POST["submit"])){
-        if(isset($_POST["newsletter"])){
-            $newsletter = true;
-        }
-        else{
-            $newsletter = false;
-        }
-        echo $loginData->getPassword() . " " . $loginData->getUsername();
         echo"<br>";
         echo $person . " and " . $person->address;
         echo "<br>";
@@ -116,20 +122,15 @@
         echo $message;
         echo "<br>";
         echo "<br>";
+
+    if(isset($_POST["submit"])){
+        if(isset($_POST["newsletter"])){
+            $newsletter = true;
+        }
+        else{
+            $newsletter = false;
+        }
+        
     }
-    $account = new Account($person, 3, $newsletter);
+    $account = new Customer($person, 3, $newsletter);
     ?>
-                </div>
-        </div>
-    </main>
-
-
-    <footer>
-    </footer>
-    <script src="js/scripts.js"></script>
-    <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer");
-    </script>
-</body>
-</html>
