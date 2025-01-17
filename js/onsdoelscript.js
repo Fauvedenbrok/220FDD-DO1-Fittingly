@@ -94,7 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //--------------------------------- Functie counhtdown timer ---------------------------------//
 /*Countdown timer */
+<<<<<<< HEAD
 const countdown = new Date('2025-11-11T12:00:00').getTime(); /*tijd tussen 1-1-1970 en de releasedatum van Fittingly*/
+=======
+const countdown = new Date('2025-07-23T12:00:00').getTime(); /*tijd tussen 1-1-1970 en de releasedatum van Fittingly*/
+>>>>>>> 6087ee62bf3eb73baa1fac136de01ac6deaec5e0
 
 const days = document.querySelector(".days span");
 const hours = document.querySelector(".hours span");
