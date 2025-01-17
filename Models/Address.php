@@ -8,6 +8,10 @@ class Address
     private $streetName;
     private $streetNumber;
     private $streetNumberAppendix;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 32aa7be1b424362c40c1b88aae8f75ebdae399a9
     
 
     public function __construct($postalCode, $streetName, $streetNumber, $streetNumberAppendix, $city, $country){
