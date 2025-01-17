@@ -118,6 +118,7 @@
         echo $message;
         echo "<br>";
         echo "<br>";
+        echo $person->getPassword();
     }
     ?>
 
