@@ -8,7 +8,6 @@ class Address
     private $streetName;
     private $streetNumber;
     private $streetNumberAppendix;
-    private $city;
     
 
     public function __construct($postalCode, $streetName, $streetNumber, $streetNumberAppendix, $city, $country){

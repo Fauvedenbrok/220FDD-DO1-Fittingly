@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -75,21 +71,8 @@ session_start();
                     <input type="submit" value="Registreer" name="submit">
                 </label>
             </form>
-            
-        </div>
-    </main>
-
-
-    <footer>
-    </footer>
-    <script src="js/scripts.js"></script>
-    <!-- <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer");
-    </script> -->
-</body>
-</html>
-<?php
+            <div>
+            <?php
     include("Models/Person.php");
     include("Models/Address.php");
     include("Models/Message.php");
@@ -114,14 +97,8 @@ session_start();
         $_POST['country']);
 
     $person->address = $address;
-        echo"<br>";
-        echo $person . " and " . $person->address;
-        echo "<br>";
-        echo "<br>";
         $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
-        echo $message;
-        echo "<br>";
-        echo "<br>";
+       
 
     if(isset($_POST["submit"])){
         if(isset($_POST["newsletter"])){
@@ -130,7 +107,29 @@ session_start();
         else{
             $newsletter = false;
         }
-        
+        echo"<br>";
+        echo $person . " and " . $person->address;
+        echo "<br>";
+        echo "<br>";
+        echo $message;
+        echo "<br>";
+        echo "<br>";
     }
     $account = new Customer($person, 3, $newsletter);
     ?>
+
+            </div>
+
+        </div>
+    </main>
+
+
+    <footer>
+    </footer>
+    <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer");
+    </script>
+</body>
+</html>
