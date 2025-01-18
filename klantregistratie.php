@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,8 +31,8 @@
                 </label>
                 <label for="phone">
                     Telefoon:
+                    <input type="tel" name="phone" id="phone" required><br>
                 </label>
-                    <input type="text" name="phone" id="phone" required><br>
                 <label for="dateOfBirth">
                     Geboortedatum:
                     <input type="date" name="dateOfBirth" id="dateOfBirth" required><br>
@@ -77,11 +77,6 @@
     include("Models/Address.php");
     include("Models/Message.php");
     include("Models/Customer.php");
-    
-    // Valideren 
-    
-    
-       
 
     if(isset($_POST["submit"])){
         $newsletter = null;  
@@ -121,13 +116,9 @@
         echo $person->getPassword();
     }
     ?>
-
             </div>
-
         </div>
     </main>
-
-
     <footer>
     </footer>
     <script src="js/scripts.js"></script>
