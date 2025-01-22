@@ -4,7 +4,6 @@ class Address
 {
     private $postalCode;
     private $country;
-    private $city;
     private $streetName;
     private $streetNumber;
     private $streetNumberAppendix;
