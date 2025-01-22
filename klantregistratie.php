@@ -1,9 +1,5 @@
-<?php
-session_start();
-?>
-
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,8 +31,8 @@ session_start();
                 </label>
                 <label for="phone">
                     Telefoon:
+                    <input type="tel" name="phone" id="phone" required><br>
                 </label>
-                    <input type="text" name="phone" id="phone" required><br>
                 <label for="dateOfBirth">
                     Geboortedatum:
                     <input type="date" name="dateOfBirth" id="dateOfBirth" required><br>
@@ -75,62 +71,81 @@ session_start();
                     <input type="submit" value="Registreer" name="submit">
                 </label>
             </form>
-            
-        </div>
-    </main>
-
-
-    <footer>
-    </footer>
-    <script src="js/scripts.js"></script>
-    <!-- <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer");
-    </script> -->
-</body>
-</html>
-<?php
+            <div>
+            <?php
+    // de php functie 'include' takes all the text/code/markup that exists in the specified file and copies it into the file that uses the include statement. 
+    // Including files is very useful when you want to include the same PHP, HTML, or text on multiple pages of a website.
+    // In dit geval wordt het gebruikt voor de model klassen.
     include("Models/Person.php");
     include("Models/Address.php");
     include("Models/Message.php");
     include("Models/Customer.php");
+
+    // met de isset functie wordt hier gecontroleerd of de button met het name attribuut 'submit' is aangeklikt.
+    // Dit doet die door te controleren of in de Array $_POST de key 'submit' een waarde heeft.
+    if(isset($_POST["submit"])){
+        // als de button is aangeklikt, maken we variabelen aan waarin we de waardes stoppen. De $_POST['*'] *= name attribuut van de inputfields. 
+        // Deze zijn opgeslagen als key-value pairs in de $_POST array.
+        $newsletter = null;  
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $dateOfBirth = $_POST['dateOfBirth'];
+        $password = $_POST["password"];
     
-    // Valideren 
+        // Hier wordt een object van de Klasse Person gemaakt en opgeslagen in de variabele '$person'
+        // Om een object van de Klasse aan te maken, maak je gebruik van de contructor in de Klasse. (__construct(....))
+        // Het is belangrijk om alle variabele in te vullen die ook in de constructor staan, en op dezelfde volgorde.
+        $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
     
-    $newsletter = null;  
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $dateOfBirth = $_POST['dateOfBirth'];
-    $password = $_POST["password"];
-    
-    $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
-    
-    $address = new Address($_POST['postalCode'],
+        // Voor het aanmaken van een object hoef je niet persé de input eerst in een variabele te stoppen maar,
+        // dit is wel aan te raden als je nog meer controles zou willen uitvoeren op de binnenkomende data.
+        $address = new Address($_POST['postalCode'],
         $_POST['streetName'],
         $_POST['streetNumber'],
         $_POST['streetNumberAppendix'],
         $_POST['city'],
         $_POST['country']);
 
-    $person->address = $address;
-        echo"<br>";
-        echo $person . " and " . $person->address;
-        echo "<br>";
-        echo "<br>";
-        $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
-        echo $message;
-        echo "<br>";
-        echo "<br>";
+        // Hier wordt het object van de Klasse Address, opgeslagen in de variabele address in het Person object. 
+        // Dit kan alleen op deze manier als de variabele address public is in de Klasse.
+        // Variabele die public zijn in een Klasse zijn makkelijker te beïnvloeden maar kunnen ook een risico vormen. Dit kan je omzeilen door een aparte functie hiervoor te maken.
+        $person->address = $address;
 
-    if(isset($_POST["submit"])){
+        // Staat verder uitgelegd in Message.php
+        $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
+
+        // Als de waarde van $_POST["newsletter"], niet null is dan wordt die true, anders wordt die false.
         if(isset($_POST["newsletter"])){
             $newsletter = true;
         }
         else{
             $newsletter = false;
         }
-        
+
+        // echo laat de waarde tussen "" zien op je website.
+        echo"<br>";
+        // hier wordt de functie __ToString() van de Klasse Person en daarna van de Klasse Address gebruikt om data te laten zien.
+        echo $person . " and " . $person->address;
+        echo "<br>";
+        echo "<br>";
+        // Hier wordt de functie __ToString() van de Klasse Message gebruikt om data te laten zien.
+        echo $message;
+        echo "<br>";
+        echo "<br>";
+        // Hier wordt de functie getPassword() van de Klasse Person gebruikt.
+        echo $person->getPassword();
     }
-    $account = new Customer($person, 3, $newsletter);
     ?>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.html", "header");
+        includeHTML("footer.html", "footer");
+    </script>
+</body>
+</html>
