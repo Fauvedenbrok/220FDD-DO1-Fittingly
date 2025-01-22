@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,27 @@
     <link rel="stylesheet" href="css/contact.css">
     <title>Klant registratie</title>
 </head>
+
 <body>
     <header></header>
     <main>
-    <div class="background-container">
+        <div class="background-container">
             <h2 id="h2-contact">Registratie</h2>
-            <p id="para-contact">EVEN AANPASSEN </p>
+            <p id="para-contact">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit? </p>
         </div>
 
         <div class="form-container">
             <div class="contact-info">
-            
+
             </div>
             <form method="post" action="klantregistratie.php">
                 <label for="name">
                     Naam:
-                <input type="text" name="name" id="name" required><br>
+                    <input type="text" name="name" id="name" required><br>
                 </label>
                 <label for="email">
                     E-mail:
-                <input type="email" name="email" id="email" required><br>
+                    <input type="email" name="email" id="email" required><br>
                 </label>
                 <label for="phone">
                     Telefoon:
@@ -72,50 +74,52 @@
                 </label>
             </form>
             <div>
-            <?php
-    include("Models/Person.php");
-    include("Models/Address.php");
-    include("Models/Message.php");
-    include("Models/Customer.php");
+                <?php
+                include("Models/Person.php");
+                include("Models/Address.php");
+                include("Models/Message.php");
+                include("Models/Customer.php");
 
-    if(isset($_POST["submit"])){
-        $newsletter = null;  
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $dateOfBirth = $_POST['dateOfBirth'];
-        $password = $_POST["password"];
-    
-        $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
-    
-        $address = new Address($_POST['postalCode'],
-        $_POST['streetName'],
-        $_POST['streetNumber'],
-        $_POST['streetNumberAppendix'],
-        $_POST['city'],
-        $_POST['country']);
+                if (isset($_POST["submit"])) {
+                    $newsletter = null;
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $phone = $_POST['phone'];
+                    $dateOfBirth = $_POST['dateOfBirth'];
+                    $password = $_POST["password"];
 
-        $person->address = $address;
-        $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
+                    $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
+
+                    $address = new Address(
+                        $_POST['postalCode'],
+                        $_POST['streetName'],
+                        $_POST['streetNumber'],
+                        $_POST['streetNumberAppendix'],
+                        $_POST['city'],
+                        $_POST['country']
+                    );
+
+                    $person->address = $address;
+                    $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
 
 
-        if(isset($_POST["newsletter"])){
-            $newsletter = true;
-        }
-        else{
-            $newsletter = false;
-        }
+                    if (isset($_POST["newsletter"])) {
+                        $newsletter = true;
+                    } else {
+                        $newsletter = false;
+                    }
 
-        echo"<br>";
-        echo $person . " and " . $person->address;
-        echo "<br>";
-        echo "<br>";
-        echo $message;
-        echo "<br>";
-        echo "<br>";
-        echo $person->getPassword();
-    }
-    ?>
+                    echo "<br>";
+                    echo $person . " and " . $person->address;
+                    echo "<br>";
+                    echo "<br>";
+                    echo $message;
+                    echo "<br>";
+                    echo "<br>";
+                    echo $person->getPassword();
+                }
+
+                ?>
             </div>
         </div>
     </main>
@@ -127,4 +131,5 @@
         includeHTML("footer.html", "footer");
     </script>
 </body>
+
 </html>
