@@ -1,10 +1,169 @@
 body {
-  background-color: #1a3030;
-  justify-content: center;
+  background-color: #1A3030;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
 }
 
-/*voor desktop*/
-@media (min-width: 901px) {
+h2 {
+  font-size: 60px;
+}
+
+#partnerpagina-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#koptekst-container {
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 10% 15%;
+}
+
+#koptekst {
+  margin-top: -10px;
+}
+
+.usp-div-tekst {
+  padding: 5px;
+  width: 150px;
+  font-size: 20px;
+  color: #1a3030;
+  font-family: "Raleway";
+  font-weight: 400;
+  text-align: center;
+}
+
+/*Ons platform koptekst*/
+.ons-platform-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0% 10%;
+}
+
+.ons-platform-tekst-container {
+  width: 770px;
+  margin-top: 100px;
+}
+
+#couple-img-hidden {
+  background-image: url(/Images/backgroundImages/faded_couple.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  visibility: hidden;
+  height: 0;
+  width: auto;
+}
+
+/*Image onder grote titel*/
+#img-couple {
+  height: 626px;
+  width: auto;
+}
+
+#partner-koptekst {
+  margin-top: 60px;
+  margin-bottom: -40px;
+  text-align: center;
+}
+
+/* Main Styling */
+.slider {
+  height: 270px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  padding-top: 100px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX();
+  }
+
+  100% {
+    transform: translateX(calc(-270px * 4));
+  }
+}
+
+/*Slide Track en Slide*/
+.slider .slide-track {
+  /*De volledige animatie van de slider duurt 30 seconden. Na 30 seconden wordt de slider gereset 
+  Scroll is de 'functie' die wordt aangeroepen, linear betekent dat er een constante snelheid is en infinite spreek voor zichzelf*/
+  animation: scroll 30s linear infinite;
+  /* Scroll infinitely over 30 seconds */
+  display: flex;
+  /*De breedte van elke img * het aantal images die in de 30 seconden te zien zijn. De exacte breedte is belangrijk zodat de slider niet halverwege een img ge-reset wordt.*/
+  width: calc(270px * 4);
+}
+
+.slider .slide .slideimg {
+  width: 230px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.slide {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.afsluiting-tekst-container {
+  text-align: center;
+  margin: 0% 20%;
+}
+
+.afsluitings-paragraph {
+  text-align: center !important;
+}
+
+/*Aanmeldknop onderaan de partnerpagina*/
+.aanmeld-button {
+  font-family: "PlayFair Display", serif;
+  background-color: #cc9c4e;
+  padding: 5px 150px;
+  border: 3px solid #cc9c4e;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.aanmeld-button-pressed {
+  background-color: #b3ad98;
+  border: 3px solid #b3ad98;
+  box-shadow: #3a3b33 5px 5px 5px 5px;
+}
+
+/*Fix voor de couple-img bij het ons-doel gedeelte*/
+@media (max-width: 1482px) {
+  #img-couple {
+    visibility: hidden;
+    height: 0;
+  }
+
+  #couple-img-hidden {
+    visibility: visible;
+    height: 50vw;
+  }
+
+  .ons-platform-container {
+    text-align: center;
+  }
+  .ons-platform-tekst-container {
+    width: unset;
+    margin-top: 100px;
+  }
+}
+
+/*voor desktop (partnerpagina only)*/
+@media (min-width: 913px) {
+
   /*USP table*/
   .usp-div-container * {
     text-align: center;
@@ -13,51 +172,30 @@ body {
   .usp-div-container {
     display: flex;
     justify-content: space-around;
-    margin-top: -112px;
-    padding-top: 30px;
-    max-width: 50vw;
     background-color: #dcd3c2;
     border-radius: 20px;
-    margin-left: 25%;
-    padding-bottom: 30px;
-  }
-
-  .usp-div {
-    width: 100px;
-  }
-
-  .usp-div-tekst {
-    margin: 0% 5%;
-  }
-
-  #partnerpagina-container {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    padding-top: 30px;
+    margin-bottom: -128.15px;
   }
 
   /* Container met de achtergrondafbeelding */
   .background-container {
-    height: 75vh;
-    /* Volledige hoogte van het venster */
+    padding: 0px 50px;
     background-size: cover;
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
     background-position: center;
     /* Centreert de afbeelding */
     display: flex;
     /* Voor flexbox-positionering */
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     /* Centreert de inhoud horizontaal */
-    background-image: linear-gradient(
-        rgba(19, 30, 36, 0.8),
-        rgba(19, 30, 36, 0.8)
-      ),
-      url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
-  }
-
-  #koptekst-container {
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 10% 15%;
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8),
+        rgba(19, 30, 36, 0.8)),
+      url(/Images/backgroundImages/contactPagina.jpg);
   }
 
   .header-paragraph-tekst {
@@ -69,387 +207,110 @@ body {
     height: 100px;
   }
 
-  .ons-platform-tekst-container {
-    width: 80vh;
-  }
-
-  /*Grote tekst heading*/
-  .ons-platform-heading-tekst1 {
-    margin-left: 10%;
-    margin-top: 100px;
-    padding-left: 30px;
-  }
-
-  .ons-platform-heading-tekst2 {
-    margin-left: 10%;
-    padding-left: 30px;
-  }
-
-  .ons-platform-paragraph-tekst2 {
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-left: 30px;
-  }
-
-  #partnersTekst {
-    margin-top: 600px;
-    text-align: center;
-  }
-
   #partner-koptekst {
     text-align: center;
     margin-bottom: -40px;
-    margin-top: 100px;
-  }
-
-  /*Ons platform koptekst*/
-  .ons-platform-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
   }
 
   .ons-platform-img-container {
-    width: auto;
-    height: 656px;
-  }
-
-  /*Image onder grote titel*/
-  #img-couple {
-    height: 100%;
-    width: auto;
-  }
-
-  /* Main Styling */
-  .slider {
-    height: 250px;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-    padding-top: 100px;
-  }
-
-  .slider::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-  }
-
-  .slider::before {
-    left: 0;
-    top: 0;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(calc(-290px * 4));
-    }
-  }
-
-  /* Slide Track and Slide */
-  .slider .slide-track {
-    /*De volledige animatie van de slider duurt 40 seconden. Na 40 seconden wordt de slider gereset */
-    animation: scroll 30s linear infinite;
-    /* Scroll infinitely over 30 seconds */
-    /*Zorgt voor een smooth animatie in de slider*/
-    animation-timing-function: linear;
-    /* Smooth linear animation */
-    display: flex;
-    /*De breedte van elke img * het aantal images die in de 40 seconden te zien zijn. De exacte breedte is belangrijk zodat de slider niet halverwege een img ge-reset wordt.*/
-    width: calc(290px * 4);
-  }
-
-  .slider .slide .slideimg {
-    width: 250px;
-    object-fit: cover;
-  }
-
-  .slide {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .slideimg {
-    border-radius: 10px;
-  }
-
-  /*Partner logos op partnerpagina*/
-  #logoBassinsin {
-    border-radius: 15%;
-  }
-
-  #logoCaunhing {
-    border-radius: 35%;
-  }
-
-  #logoNomadThread {
-    border-radius: 50%;
-  }
-
-  .afsluiting-tekst-container {
-    text-align: center;
-    margin-left: 15%;
-    margin-right: 15%;
-  }
-
-  .afsluitings-paragraph {
-    text-align: center !important;
-  }
-
-  /*Aanmeldknop onderaan de partnerpagina*/
-  .aanmeldButton {
-    font-family: "PlayFair Display", serif;
-    background-color: #cc9c4e;
-    padding: 5px;
-    padding-left: 100px;
-    padding-right: 100px;
-    border: 3px solid #cc9c4e;
-    border-radius: 5px;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .aanmeldButtonPressed {
-    font-family: "PlayFair Display", serif;
-    background-color: #b3ad98;
-    padding: 5px;
-    padding-left: 100px;
-    padding-right: 100px;
-    border: 3px solid #b3ad98;
-    border-radius: 5px;
-    font-size: 20px;
-    box-shadow: #3a3b33 5px 5px 5px 5px;
-    margin-bottom: 20px;
+    margin: 100px 0px 0px 0px;
   }
 }
 
-/*Voor tablets en mobiele telefoons*/
-@media (max-width: 900px) {
+/*Voor tablets en mobiele telefoons (partnerpagina only)*/
+@media (max-width: 912px) {
+  h2 {
+    font-size: 6vw;
+  }
+
+  h3 {
+    font-size: 5vw;
+  }
+
+  h4 {
+    font-size: 4vw;
+  }
+
+  p {
+    font-size: 3vw;
+  }
+
   /*USP table*/
   .usp-div-container * {
     flex-direction: column;
-    padding: 10px;
+    margin: 0;
     text-align: center;
     border-radius: 20px;
   }
 
   .usp-div-container {
-    max-width: 50vw;
     background-color: #dcd3c2;
     border-radius: 20px;
-    margin-left: 25%;
-    margin-top: -50%;
+    margin: 0% 25%;
   }
-
-  h2 {
-    font-size: 50px;
-  }
-
-  p {
+  
+  .usp-div-tekst {
+    padding: 5px;
+    width: 150px;
     font-size: 20px;
-  }
-
-  #partnerpagina-container {
-    display: flex;
-    flex-direction: column;
+    color: #1a3030;
+    font-family: "Raleway";
+    font-weight: 400;
+    text-align: center;
+    margin: auto;
   }
 
   /* Container met de achtergrondafbeelding */
   .background-container {
-    height: 85vh;
-    /* Volledige hoogte van het venster */
     background-size: cover;
     /* Zorgt ervoor dat de afbeelding de volledige container bedekt */
     background-position: center;
     /* Centreert de afbeelding */
-    display: flex;
-    /* Voor flexbox-positionering */
     justify-content: center;
     /* Centreert de inhoud horizontaal */
-    background-image: linear-gradient(
-        rgba(19, 30, 36, 0.8),
-        rgba(19, 30, 36, 0.8)
-      ),
-      url(https://raw.githubusercontent.com/Fauvedenbrok/220FDD-DO1-Fittingly/refs/heads/main/Images/backgroundImages/contactPagina.jpg);
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8),
+        rgba(19, 30, 36, 0.8)),
+      url(/Images/backgroundImages/contactPagina.jpg);
   }
 
-  #koptekst-container {
-    overflow: hidden;
-    max-width: 1100px;
-    margin: 10% 15%;
+  .usp-div-container {
+    margin-bottom: -182.75px;
   }
 
   .usp-img {
     width: auto;
-    height: 100px;
+    height: 65px;
   }
 
-  .ons-platform-tekst-container {
-    width: 80vh;
-  }
-
-  /*Grote tekst heading*/
-  .ons-platform-heading-tekst1 {
-    margin-left: 10%;
+  .ons-platform-container {
     margin-top: 100px;
-    padding-left: 30px;
-  }
-
-  .ons-platform-heading-tekst2 {
-    margin-left: 10%;
-    padding-left: 30px;
-  }
-
-  .ons-platform-paragraph-tekst2 {
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-left: 30px;
-  }
-
-  #partnersTekst {
-    margin-top: 600px;
-    text-align: center;
   }
 
   #partner-koptekst {
     text-align: center;
-    margin-bottom: -40px;
   }
 
-  /*Ons platform koptekst*/
-  .ons-platform-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .ons-platform-img-container {
-    width: auto;
-    height: 650px;
-    margin-bottom: -100px;
-  }
-
-  /*Image onder grote titel*/
-  #img-couple {
-    height: 70%;
-    width: auto;
-  }
-
-  /* Main Styling */
-  .slider {
-    height: 250px;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-    padding-top: 100px;
-  }
-
-  .slider::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-  }
-
-  .slider::before {
-    left: 0;
-    top: 0;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(calc(-290px * 4));
-    }
-  }
-
-  /* Slide Track and Slide */
-  .slider .slide-track {
-    /*De volledige animatie van de slider duurt 40 seconden. Na 40 seconden wordt de slider gereset */
-    animation: scroll 30s linear infinite;
-    /* Scroll infinitely over 30 seconds */
-    /*Zorgt voor een smooth animatie in de slider*/
-    animation-timing-function: linear;
-    /* Smooth linear animation */
-    display: flex;
-    /*De breedte van elke img * het aantal images die in de 40 seconden te zien zijn. De exacte breedte is belangrijk zodat de slider niet halverwege een img ge-reset wordt.*/
-    width: calc(290px * 4);
-  }
-
-  .slider .slide {
-    width: 250px;
-    object-fit: cover;
-  }
-
-  .slide {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .slideimg {
-    border-radius: 10px;
-    object-fit: cover;
-    width: 200px;
-  }
-
-
-
-  /*Partner logos op partnerpagina*/
-  #logoBassinsin {
-    border-radius: 15%;
-  }
-
-  #logoCaunhing {
-    border-radius: 35%;
-  }
-
-  #logoNomadThread {
-    border-radius: 50%;
-  }
-
-  .afsluiting-tekst-container {
+  .ons-platform-tekst-container>* {
     text-align: center;
-margin: 0% 20%;
   }
 
-  .afsluitings-paragraph {
-    text-align: center !important;
+  .ons-platform-heading-tekst1 {
+    margin-top: 60px;
   }
 
-  /*Aanmeldknop onderaan de partnerpagina*/
-  .aanmeldButton {
+  .aanmeld-button {
     font-family: "PlayFair Display", serif;
     background-color: #cc9c4e;
-    padding: 5px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 0px 20%;
     border: 3px solid #cc9c4e;
     border-radius: 5px;
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 3vw;
   }
-
-  .aanmeldButtonPressed {
-    font-family: "PlayFair Display", serif;
+  
+  .aanmeld-button-pressed {
     background-color: #b3ad98;
-    padding: 5px;
-    padding-left: 100px;
-    padding-right: 100px;
     border: 3px solid #b3ad98;
-    border-radius: 5px;
-    font-size: 20px;
     box-shadow: #3a3b33 5px 5px 5px 5px;
-    margin-bottom: 20px;
   }
 }
 
-
-#koptekst {
-  margin-top: -10px;
-}
