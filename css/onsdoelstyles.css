@@ -272,7 +272,7 @@ body {
     }
 
     h3 {
-        font size: 48px;
+        font-size: 48px;
     }
     .hero-sectie {
         flex-direction: column;
