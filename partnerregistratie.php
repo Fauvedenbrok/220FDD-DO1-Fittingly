@@ -27,8 +27,8 @@ session_start();
                 <p><img id="usp3-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">Email:
                     info@fittingly.nl</p>
             </div>
-            <form id="contact-form">
-            <form method="post" action="index.php">
+
+            <form method="post" action="partnerregistratie.php" id="contact-form">
       <label for="name">
         Naam:
         <input type="text" name="name" id="name"><br>
@@ -81,7 +81,7 @@ session_start();
 
 
     <input type="submit" value="Registreer" name="submit">
-</form>
+
             </form>
         </div>
     </main>
