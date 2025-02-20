@@ -138,7 +138,6 @@
         // Hier wordt de functie getPassword() van de Klasse Person gebruikt.
         echo $person->getPassword();
 
-        echo $person->$name;
     }
     ?>
             </div>
