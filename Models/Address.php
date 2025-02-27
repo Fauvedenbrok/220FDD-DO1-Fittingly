@@ -8,6 +8,11 @@ class Address
     private $streetName;
     private $streetNumber;
     private $streetNumberAppendix;
+<<<<<<< Updated upstream
+=======
+
+    
+>>>>>>> Stashed changes
 
     public function __construct($postalCode, $streetName, $streetNumber, $streetNumberAppendix, $city, $country){
         $this->postalCode = $postalCode;

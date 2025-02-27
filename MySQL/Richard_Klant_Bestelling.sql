@@ -1,7 +1,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `Order`;
-DROP TABLE IF EXISTS `Adres`;
+DROP TABLE IF EXISTS `Address`;
 DROP TABLE IF EXISTS `Partner`;
 DROP TABLE IF EXISTS `Article`;
 DROP TABLE IF EXISTS `UserAccount`;
@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS `UserAccount`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `UserAccount` (
-    `EmailAdres` VARCHAR(100) PRIMARY KEY,
+    `EmailAddress` VARCHAR(100) PRIMARY KEY,
     `Password` VARCHAR(100) NOT NULL,
     `AccountStatus` BOOLEAN DEFAULT 1,
     `AccountAccessRights` BOOLEAN DEFAULT 0,
@@ -29,14 +29,13 @@ CREATE TABLE `Partner` (
     `BrandName` VARCHAR(25) NOT NULL
 );
 
-CREATE TABLE `Adres` (
+CREATE TABLE `Address` (
     `StreetName` VARCHAR(60) NOT NULL,
     `ZipCode` VARCHAR(20) NOT NULL,
     `HouseNumber` VARCHAR(20) NOT NULL,
-    `Country` VARCHAR(20) NOT NULL,
 
-    CONSTRAINT `PKAdres`
-    PRIMARY KEY (`StreetName`, `ZipCode`, `HouseNumber`, `Country`)
+    CONSTRAINT `PKAddress`
+    PRIMARY KEY (`StreetName`, `ZipCode`, `HouseNumber`)
 );
 
 CREATE TABLE `Order` (
@@ -46,20 +45,20 @@ CREATE TABLE `Order` (
     `Aantal` INT NOT NULL CHECK (`Aantal` > 0),
     `ArticleID` INT NOT NULL,
     `PartnerID` INT NOT NULL,
-    `EmailAdres` VARCHAR(100) NOT NULL,
+    `EmailAddress` VARCHAR(100) NOT NULL,
 
     CONSTRAINT `CHK_Datum` CHECK (`EindDatumReservering` > `StartDatumReservering`),
 
     FOREIGN KEY (`ArticleID`) REFERENCES `Article` (`ArticleID`) ON DELETE CASCADE,
     FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`) ON DELETE CASCADE,
-    FOREIGN KEY (`EmailAdres`) REFERENCES `UserAccount` (`EmailAdres`) ON DELETE CASCADE
+    FOREIGN KEY (`EmailAddress`) REFERENCES `UserAccount` (`EmailAddress`) ON DELETE CASCADE
 );
 
 
 
 
 
-INSERT INTO `UserAccount` (`EmailAdres`, `Password`, `AccountStatus`, `AccountAccessRights`, `RegistrationDate`) VALUES
+INSERT INTO `UserAccount` (`EmailAddress`, `Password`, `AccountStatus`, `AccountAccessRights`, `RegistrationDate`) VALUES
 ('daan.vanveen@example.com', 'securepass123', 1, 1, '2023-04-21'),
 ('emma.jansen@example.com', 'pass456', 1, 0, '2023-08-12'),
 ('noah.devries@example.com', 'qwerty789', 1, 1, '2022-11-30'),
@@ -86,16 +85,16 @@ INSERT INTO `Partner` (`BrandName`) VALUES
 ('LuxeHuren');
 
 
-INSERT INTO `Adres` (`StreetName`, `ZipCode`, `HouseNumber`, `Country`) VALUES
-('Kalverstraat', '1012NX', '15A', 'Netherlands'),
-('Damrak', '1012LG', '22B', 'Netherlands'),
-('Leidsestraat', '1017PA', '7C', 'Netherlands'),
-('Coolsingel', '3011AD', '45D', 'Netherlands'),
-('Grote Markt', '2511BG', '12E', 'Netherlands'),
-('Brabantdam', '5611AM', '9F', 'Netherlands');
+INSERT INTO `Address` (`StreetName`, `ZipCode`, `HouseNumber`) VALUES
+('Kalverstraat', '1012NX', '15A'),
+('Damrak', '1012LG', '22B'),
+('Leidsestraat', '1017PA', '7C'),
+('Coolsingel', '3011AD', '45D'),
+('Grote Markt', '2511BG', '12E'),
+('Brabantdam', '5611AM', '9F');
 
 
-INSERT INTO `Order` (`StartDatumReservering`, `EindDatumReservering`, `Aantal`, `ArticleID`, `PartnerID`, `EmailAdres`) VALUES
+INSERT INTO `Order` (`StartDatumReservering`, `EindDatumReservering`, `Aantal`, `ArticleID`, `PartnerID`, `EmailAddress`) VALUES
 ('2024-05-10', '2024-05-17', 1, 1, 1, 'daan.vanveen@example.com'),
 ('2024-06-12', '2024-06-19', 2, 2, 2, 'emma.jansen@example.com'),
 ('2024-07-01', '2024-07-08', 1, 3, 3, 'noah.devries@example.com'),
