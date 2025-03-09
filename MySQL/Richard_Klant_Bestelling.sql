@@ -17,15 +17,14 @@ CREATE TABLE `Address` (
     `StreetName` VARCHAR(60),
     `Country` VARCHAR(30) DEFAULT 'Nederland',
 
-    CONSTRAINT
+    CONSTRAINT `PK_Address`
     PRIMARY KEY(`PostalCode`, `HouseNumber`)
 );
-
 
 CREATE TABLE `Partner` (
     `PartnerID` INT NOT NULL PRIMARY KEY, 
     `CompanyName` VARCHAR(255) NOT NULL,
-    `VATNr` INT NOT NULL,
+    `VATNr` VARCHAR(15) NOT NULL,
     `CoCNr` INT NOT NULL,
     `PostalCode` VARCHAR(10),
     `HouseNumber` VARCHAR(10),
@@ -34,7 +33,6 @@ CREATE TABLE `Partner` (
     FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`) ON DELETE CASCADE
 
 );
-
 
 CREATE TABLE `Customer` (
     `CustomerID` INT NOT NULL PRIMARY KEY,
@@ -62,6 +60,8 @@ CREATE TABLE `UserAccount` (
 
     CONSTRAINT `FK_UserAccount`
     FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`) ON DELETE CASCADE,
+
+    CONSTRAINT `FK_UserAccount_Customer`
     FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`) ON DELETE CASCADE
 );
 
@@ -69,16 +69,17 @@ CREATE TABLE `Article` (
     `ArticleID` INT PRIMARY KEY,
     `Name` VARCHAR(50),
     `Size` VARCHAR(10),
+    `Weight` INT,
+    `WeightUnit` ENUM (`Gram`, `Kilogram`)
     `Color` VARCHAR(20),
     `Description` TEXT,
     `Image` BLOB,
-    `Category` ENUM ('Accessoires', 'Schoenen', 'Kleding'),
+    `Category` ENUM ('Accessoires', 'Mannenkleding', 'Vrouwenkleding'),
     `SubCategory` ENUM ('Jurken', 'T-Shirts', 'Broeken', 'Jassen'),
     `Material` ENUM ('Acryl', 'Zijde', 'Jute', 'Katoen', 'Linnen', 'Spandex'),
     `Brand` VARCHAR(50) NOT NULL,
     `Availability` BOOLEAN DEFAULT 0
 );
-
 
 CREATE TABLE `Stock` (
     `ArticleID` INT NOT NULL,
@@ -91,8 +92,6 @@ CREATE TABLE `Stock` (
     PRIMARY KEY (`ArticleID`, `PartnerID`)
 );
 
-
-
 CREATE TABLE `Order` (
     `OrderID` INT NOT NULL PRIMARY KEY,
     `OrderDate` DATE,
@@ -101,9 +100,11 @@ CREATE TABLE `Order` (
     `PostalCode` VARCHAR(10),
     `HouseNumber` VARCHAR(10),
 
-    CONSTRAINT `FK_Order`
-    FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`) ON DELETE CASCADE,
-    FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`) ON DELETE CASCADE
+    CONSTRAINT `FK_Order_Customer`
+    FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`),
+
+    CONSTRAINT `FK_Order_Address`
+    FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`)
 
 );
 
@@ -116,10 +117,17 @@ CREATE TABLE `OrderLine` (
     `EndDateReservation` DATE,
 
     CONSTRAINT `PK_OrderLine`
-    PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`)
+    PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`),
+
+    CONSTRAINT `FK_OrderLine_Order`
+    FOREIGN KEY (`OrderID`) REFERENCES `Order` (`OrderID`),
+
+    CONSTRAINT `FK_OrderLine_Partner`
+    FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`),
+
+    CONSTRAINT `FK_OrderLine_Article`
+    FOREIGN KEY (`ArticleID`) REFERENCES `Article` (`ArticleID`)
 );
-
-
 
 INSERT INTO `Address` (`PostalCode`, `HouseNumber`, `StreetName`, `Country`) VALUES
 ('1234AB', '12', 'Main Street', 'Nederland'),
@@ -200,3 +208,10 @@ INSERT INTO `OrderLine` (`OrderID`, `ArticleID`, `PartnerID`, `Quantity`, `Start
 (6, 6, 6, 2, '2025-01-15', '2025-01-22'),
 (7, 7, 7, 1, '2025-03-12', '2025-03-19'),
 (8, 8, 8, 1, '2025-02-28', '2025-03-07');
+
+
+
+
+CREATE ROLE `Admin`;
+
+GRANT SELECT, INSERT, UPDATE ON fittingly_database.customer TO `Admin`;
