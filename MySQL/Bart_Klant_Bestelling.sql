@@ -1,12 +1,22 @@
-CREATE TABLE `UserAccount` (
-    `EmailAddress` VARCHAR(255) PRIMARY KEY, --Een email adres kan 320 chars hebben dus misschien moeten we hier iets anders dan een VARCHAR van maken.
-    `Password` VARCHAR(255) NOT NULL,
-    `AccountStatus` BOOLEAN,
-    `AccountAccessRights` ENUM ('admin', 'partner', 'customer'),
-    `PartnerID` INT,
-    `CustomerID` INT,
-    CONSTRAINT FK_Partner_Account FOREIGN KEY (PartnerID) REFERENCES `Partner`(PartnerID),
-    CONSTRAINT FK_Customer_Account FOREIGN KEY (CustomerID) REFERENCES `Customer`(CustomerID)
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS `OrderLine`;
+DROP TABLE IF EXISTS `Order`;
+DROP TABLE IF EXISTS `Stock`;
+DROP TABLE IF EXISTS `UserAccount`;
+DROP TABLE IF EXISTS `Article`;
+DROP TABLE IF EXISTS `Customer`;
+DROP TABLE IF EXISTS `Partner`;
+DROP TABLE IF EXISTS `Address`;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE Address (
+    `PostalCode` VARCHAR(10),
+    `HouseNumber` VARCHAR(10),
+    `StreetName` VARCHAR(60), 
+    `Country` VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_Address PRIMARY KEY (HouseNumber, PostalCode)
 );
 
 CREATE TABLE `Partner` (
@@ -16,7 +26,7 @@ CREATE TABLE `Partner` (
     `CoCnr` VARCHAR(25) NOT NULL,
     `HouseNumber` VARCHAR(10),
     `PostalCode` VARCHAR(10),
-    CONSTRAINT FK_Partner_Address FOREIGN KEY (HouseNumber, PostalCode) REFERENCES `Address`(HouseNumber, PostalCode)
+    CONSTRAINT FK_Partner_Address FOREIGN KEY (HouseNumber, PostalCode) REFERENCES `Address`(HouseNumber, PostalCode) -- Willen we addressen verwijderen?
 );
 
 CREATE TABLE Customer (
@@ -28,15 +38,19 @@ CREATE TABLE Customer (
     `Newsletter` BOOLEAN,
     `HouseNumber` VARCHAR(10),
     `PostalCode` VARCHAR(10),
-    CONSTRAINT FK_Customer_Address FOREIGN KEY (HouseNumber, PostalCode) REFERENCES `Address`(HouseNumber, PostalCode)
+    CONSTRAINT FK_Customer_Address FOREIGN KEY (HouseNumber, PostalCode) REFERENCES `Address`(HouseNumber, PostalCode) -- Willen we addressen verwijderen?
 
 );
 
-CREATE TABLE Address (
-    `PostalCode` VARCHAR(10),
-    `HouseNumber` VARCHAR(10), 
-    `Country` VARCHAR(255) NOT NULL,
-    CONSTRAINT PK_Address PRIMARY KEY (HouseNumber, PostalCode)
+CREATE TABLE `UserAccount` (
+    `EmailAddress` VARCHAR(255) PRIMARY KEY, --Een email adres kan 320 chars hebben dus misschien moeten we hier iets anders dan een VARCHAR van maken.
+    `Password` VARCHAR(255) NOT NULL,
+    `AccountStatus` BOOLEAN,
+    `AccountAccessRights` ENUM ('admin', 'partner', 'customer'),
+    `PartnerID` INT,
+    `CustomerID` INT,
+    CONSTRAINT FK_Partner_Account FOREIGN KEY (PartnerID) REFERENCES `Partner`(PartnerID) ON DELETE CASCADE,
+    CONSTRAINT FK_Customer_Account FOREIGN KEY (CustomerID) REFERENCES `Customer`(CustomerID) ON DELETE CASCADE
 );
 
 CREATE TABLE Articles (
