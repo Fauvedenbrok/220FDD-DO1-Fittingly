@@ -3,8 +3,6 @@
 class Customer
 {
 
-    // Deze Klasse is nog niet af omdat ik nog niet heel goed weet hoe je een array als waarde in een Klasse kan gebruiken en aanpassen.
-    // Hij wordt ook nog niet in onze PoC gebruikt.
     private $accountID;
     private $rentalHistory = array();
     private $verificationStatus;
