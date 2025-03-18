@@ -1,47 +1,47 @@
 SET
     FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `OrderLine`;
+DROP TABLE IF EXISTS `OrderLines`;
 
-DROP TABLE IF EXISTS `Order`;
+DROP TABLE IF EXISTS `Orders`;
 
-DROP TABLE IF EXISTS `Stock`;
+DROP TABLE IF EXISTS `Stocks`;
 
-DROP TABLE IF EXISTS `UserAccount`;
+DROP TABLE IF EXISTS `UserAccounts`;
 
-DROP TABLE IF EXISTS `Article`;
+DROP TABLE IF EXISTS `Articles`;
 
-DROP TABLE IF EXISTS `Customer`;
+DROP TABLE IF EXISTS `Customers`;
 
-DROP TABLE IF EXISTS `Partner`;
+DROP TABLE IF EXISTS `Partners`;
 
-DROP TABLE IF EXISTS `Address`;
+DROP TABLE IF EXISTS `addresses`;
 
 SET
     FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE
-    `Address` (
+    `addresses` (
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         `StreetName` VARCHAR(60),
         `Country` VARCHAR(30) DEFAULT 'Nederland',
-        CONSTRAINT `PK_Address` PRIMARY KEY (`PostalCode`, `HouseNumber`)
+        CONSTRAINT `PK_addresses` PRIMARY KEY (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `Partner` (
+    `Partners` (
         `PartnerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `CompanyName` VARCHAR(255) NOT NULL,
         `VATNr` VARCHAR(15) NOT NULL,
         `CoCNr` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK_Partner_Address` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`) ON DELETE CASCADE
+        CONSTRAINT `FK_Partner_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `Customer` (
+    `Customers` (
         `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
@@ -50,24 +50,24 @@ CREATE TABLE
         `Newsletter` BOOLEAN,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK__Customer_Address` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`) ON DELETE CASCADE
+        CONSTRAINT `FK__Customer_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `UserAccount` (
+    `UserAccounts` (
         `EmailAdres` VARCHAR(320) PRIMARY KEY,
         `Password` VARCHAR(255) NOT NULL,
         `AccountStatus` BOOLEAN DEFAULT 0,
-        `AccountAccessRights` ENUM ('Klant', 'Partner', 'Admin'),
+        `AccountAccessRights` ENUM ('Customer', 'Partner', 'Admin'),
         `DateOfRegistration` DATE,
         `PartnerID` INT,
         `CustomerID` INT,
-        CONSTRAINT `FK_UserAccount` FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`) ON DELETE CASCADE,
-        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`) ON DELETE CASCADE,
+        CONSTRAINT `FK_UserAccount` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`) ,
+        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ,
     );
 
 CREATE TABLE
-    `Article` (
+    `Articles` (
         `ArticleID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `Name` VARCHAR(50),
         `Size` VARCHAR(10),
@@ -103,23 +103,27 @@ CREATE TABLE
         `QuantityOfStock` INT DEFAULT 0,
         `Price` DECIMAL(10, 2) DEFAULT 0,
         `DateAdded` DATE NOT NULL,
-        CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`)
+        CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`),
+
+        CONSTRAINT `FK_Stock` 
+        FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`),
+        FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`)
     );
 
 CREATE TABLE
-    `Order` (
+    `Orders` (
         `OrderID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `OrderDate` DATE,
         `PaymentStatus` BOOLEAN DEFAULT 0,
         `CustomerID` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`),
-        CONSTRAINT `FK_Order_Address` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`)
+        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`),
+        CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `OrderLine` (
+    `OrderLines` (
         `OrderID` INT NOT NULL,
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
@@ -127,13 +131,13 @@ CREATE TABLE
         `StartDateReservation` DATE,
         `EndDateReservation` DATE,
         CONSTRAINT `PK_OrderLine` PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`),
-        CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Order` (`OrderID`),
-        CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`),
-        CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Article` (`ArticleID`)
+        CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
+        CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
+        CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
     );
 
 INSERT INTO
-    `Address` (
+    `addresses` (
         `PostalCode`,
         `HouseNumber`,
         `StreetName`,
@@ -150,7 +154,7 @@ VALUES
     ('9900OP', '67', 'Mountain Drive', 'Nederland');
 
 INSERT INTO
-    `Partner` (
+    `Partners` (
         `CompanyName`,
         `VATNr`,
         `CoCNr`,
@@ -210,7 +214,7 @@ VALUES
     );
 
 INSERT INTO
-    `Customer` (
+    `Customers` (
         `FirstName`,
         `LastName`,
         `PhoneNumber`,
@@ -294,7 +298,7 @@ VALUES
     );
 
 INSERT INTO
-    `UserAccount` (
+    `UserAccounts` (
         `EmailAdres`,
         `Password`,
         `AccountStatus`,
@@ -308,7 +312,7 @@ VALUES
         'john.doe@example.com',
         'hashedpassword1',
         TRUE,
-        'Klant',
+        'Customer',
         '2025-03-01',
         NULL,
         1
@@ -335,7 +339,7 @@ VALUES
         'bob.williams@example.com',
         'hashedpassword4',
         TRUE,
-        'Klant',
+        'Customer',
         '2025-03-05',
         NULL,
         4
@@ -362,7 +366,7 @@ VALUES
         'eva.garcia@example.com',
         'hashedpassword7',
         TRUE,
-        'Klant',
+        'Customer',
         '2025-03-10',
         NULL,
         6
@@ -378,7 +382,7 @@ VALUES
     );
 
 INSERT INTO
-    `Article` (
+    `Articles` (
         `Name`,
         `Size`,
         `Color`,
@@ -507,7 +511,7 @@ VALUES
     (8, 8, 50, 149.99, '2025-02-22');
 
 INSERT INTO
-    `Order` (
+    `Orders` (
         `OrderDate`,
         `PaymentStatus`,
         `CustomerID`,
@@ -525,7 +529,7 @@ VALUES
     ('2025-02-28', TRUE, 8, '9900OP', '67');
 
 INSERT INTO
-    `OrderLine` (
+    `OrderLines` (
         `OrderID`,
         `ArticleID`,
         `PartnerID`,
