@@ -3,7 +3,7 @@ SET
 
 DROP TABLE IF EXISTS `OrderLines`;
 
-DROP TABLE IF EXISTS `Orders`;testie
+DROP TABLE IF EXISTS `Orders`;
 
 DROP TABLE IF EXISTS `Stocks`;
 
