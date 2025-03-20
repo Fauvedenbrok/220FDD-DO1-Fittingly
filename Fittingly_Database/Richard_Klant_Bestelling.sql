@@ -3,7 +3,7 @@ SET
 
 DROP TABLE IF EXISTS `OrderLines`;
 
-DROP TABLE IF EXISTS `Orders`;
+DROP TABLE IF EXISTS `Orders`;testie
 
 DROP TABLE IF EXISTS `Stocks`;
 
@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `Articles`;
 
 DROP TABLE IF EXISTS `Customers`;
 
-DROP TABLE IF EXISTS `Partners`;testyman
+DROP TABLE IF EXISTS `Partners`;
 
 DROP TABLE IF EXISTS `addresses`;
 
@@ -27,7 +27,7 @@ CREATE TABLE
         `StreetName` VARCHAR(60),
         `Country` VARCHAR(30) DEFAULT 'Nederland',
         CONSTRAINT `PK_addresses` PRIMARY KEY (`PostalCode`, `HouseNumber`)
-    );
+    );gt 
 
 CREATE TABLE
     `Partners` (
