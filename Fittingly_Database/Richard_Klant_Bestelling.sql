@@ -231,8 +231,17 @@ VALUES
         '1990-06-15',
         TRUE,
         '1234AB',
-        '12'
+        '12',
     ),
+    (
+        'Richard',
+        'Balke',
+        '0640260178',
+        '1993-10-26',
+        TRUE,
+        '6074BV',
+        '9'
+    )
     (
         'Jane',
         'Smith',
@@ -565,48 +574,13 @@ COMMIT;
 
 
 
-DELIMITER $$
-CREATE PROCEDURE SimulatePurchase()
-BEGIN
-    DECLARE available_stock INT;
-    DECLARE order_id INT;
-    -- Set the parameters for the purchase
-    SET @ArticleID = 1001; 
-    SET @PartnerID = 1;  
-    SET @UserID = 123;     
-    SET @new_quantity = 2; 
-    -- Start the transaction
-    START TRANSACTION;
-    -- Step 1: Check if there is enough stock available for the purchase
-    SELECT `QuantityOfStock` INTO available_stock
-    FROM `Stock`
-    WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
-    -- Step 2: If stock is sufficient, reduce the stock and record the purchase
-    IF available_stock >= @new_quantity THEN
-        -- Update the stock: reduce available stock
-        UPDATE `Stock`
-        SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
-        WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
-        -- Insert into Orders (representing the purchase)
-        INSERT INTO `Orders` (UserID, OrderDate)
-        VALUES (@UserID, NOW());
-        -- Get the last inserted OrderID for the new order
-        SET order_id = LAST_INSERT_ID();
-        -- Insert into OrderLine (representing the article purchased)
-        INSERT INTO `OrderLine` (OrderID, ArticleID, Quantity)
-        VALUES (order_id, @ArticleID, @new_quantity);
-        -- Commit the transaction
-        COMMIT;
-        -- Return success message with OrderID
-        SELECT 'Purchase successful' AS message, order_id AS OrderID;
-    ELSE
-        -- If stock is insufficient, rollback the transaction
-        ROLLBACK;
-        -- Return error message
-        SELECT 'Not enough stock available' AS message;
-    END IF;
-END$$
-DELIMITER ;
+
+
+
+
+
+
+
 
 
 CREATE ROLE `Admin`,
