@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `Articles`;
 
 DROP TABLE IF EXISTS `Customers`;
 
-DROP TABLE IF EXISTS `Partners`;
+DROP TABLE IF EXISTS `Partners`;testyman
 
 DROP TABLE IF EXISTS `addresses`;
 
