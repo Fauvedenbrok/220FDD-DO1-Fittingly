@@ -167,22 +167,13 @@ VALUES
     ('Anneke Visser', 'Anneke.Visser@example.com');
 
 
-INSERT INTO `Orders` (`OrderDate`, `TotalAmount`, `CustomerID`)
+INSERT INTO `Orders` (`OrderDate`, `TotalAmount`)
 VALUES
-    ('2024-02-10', 150.00, 1),
-    ('2024-10-01', 200, 2),
-    ('2013-11-12', 300, 3),
-    ('2024-03-15', 50, 4),
-    ('2024-04-20', 100, 5),
-    ('2024-05-25', 75, 6);
+    ('2024-02-10', 150.00),
+    ('2024-10-01', 200),
+    ('2013-11-12', 300),
+    ('2024-03-15', 50),
+    ('2024-04-20', 100),
+    ('2024-05-25', 75);
 
 
-
--- 13-03
-
-SELECT VERKOPER.Verkoopnaam, KAMER.Grootte
-FROM VERKOPER
-Join KAMER
-ON VERKOPER.Kamernummer = KAMER.Kamernummer
-WHERE Verkopernaam = 'Adams';
- 

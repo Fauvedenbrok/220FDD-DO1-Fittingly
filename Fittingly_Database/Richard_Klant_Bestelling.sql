@@ -1,47 +1,47 @@
 SET
     FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `OrderLine`;
+DROP TABLE IF EXISTS `OrderLines`;
 
-DROP TABLE IF EXISTS `Order`;
+DROP TABLE IF EXISTS `Orders`;
 
-DROP TABLE IF EXISTS `Stock`;
+DROP TABLE IF EXISTS `Stocks`;
 
-DROP TABLE IF EXISTS `UserAccount`;
+DROP TABLE IF EXISTS `UserAccounts`;
 
-DROP TABLE IF EXISTS `Article`;
+DROP TABLE IF EXISTS `Articles`;
 
-DROP TABLE IF EXISTS `Customer`;
+DROP TABLE IF EXISTS `Customers`;
 
-DROP TABLE IF EXISTS `Partner`;
+DROP TABLE IF EXISTS `Partners`;
 
-DROP TABLE IF EXISTS `Address`;
+DROP TABLE IF EXISTS `addresses`;
 
 SET
     FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE
-    `Address` (
+    `addresses` (
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         `StreetName` VARCHAR(60),
         `Country` VARCHAR(30) DEFAULT 'Nederland',
-        CONSTRAINT `PK_Address` PRIMARY KEY (`PostalCode`, `HouseNumber`)
+        CONSTRAINT `PK_addresses` PRIMARY KEY (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `Partner` (
+    `Partners` (
         `PartnerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `CompanyName` VARCHAR(255) NOT NULL,
         `VATNr` VARCHAR(15) NOT NULL,
         `CoCNr` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK_Partner_Address` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`) ON DELETE CASCADE
+        CONSTRAINT `FK_Partner_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `Customer` (
+    `Customers` (
         `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
@@ -50,34 +50,24 @@ CREATE TABLE
         `Newsletter` BOOLEAN,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK__Customer_Address` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`) ON DELETE CASCADE
+        CONSTRAINT `FK__Customer_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `UserAccount` (
+    `UserAccounts` (
         `EmailAdres` VARCHAR(320) PRIMARY KEY,
         `Password` VARCHAR(255) NOT NULL,
         `AccountStatus` BOOLEAN DEFAULT 0,
-        `AccountAccessRights` ENUM ('Klant', 'Partner', 'Admin'),
+        `AccountAccessRights` ENUM ('Customer', 'Partner', 'Admin'),
         `DateOfRegistration` DATE,
         `PartnerID` INT,
         `CustomerID` INT,
-        CONSTRAINT `FK_UserAccount` FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`) ON DELETE CASCADE,
-        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`) ON DELETE CASCADE,
-        CONSTRAINT `Check_User_Role` CHECK (
-            (
-                `PartnerID` IS NOT NULL
-                AND `CustomerID` IS NULL
-            )
-            OR (
-                `CustomerID` IS NOT NULL
-                AND `PartnerID` IS NULL
-            )
-        )
+        CONSTRAINT `FK_UserAccount` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`) ,
+        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ,
     );
 
 CREATE TABLE
-    `Article` (
+    `Articles` (
         `ArticleID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `Name` VARCHAR(50),
         `Size` VARCHAR(10),
@@ -113,23 +103,27 @@ CREATE TABLE
         `QuantityOfStock` INT DEFAULT 0,
         `Price` DECIMAL(10, 2) DEFAULT 0,
         `DateAdded` DATE NOT NULL,
-        CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`)
+        CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`),
+
+        CONSTRAINT `FK_Stock` 
+        FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`),
+        FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`)
     );
 
 CREATE TABLE
-    `Order` (
+    `Orders` (
         `OrderID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `OrderDate` DATE,
         `PaymentStatus` BOOLEAN DEFAULT 0,
         `CustomerID` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customer` (`CustomerID`),
-        CONSTRAINT `FK_Order_Address` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address` (`PostalCode`, `HouseNumber`)
+        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`),
+        CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
-    `OrderLine` (
+    `OrderLines` (
         `OrderID` INT NOT NULL,
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
@@ -137,13 +131,13 @@ CREATE TABLE
         `StartDateReservation` DATE,
         `EndDateReservation` DATE,
         CONSTRAINT `PK_OrderLine` PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`),
-        CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Order` (`OrderID`),
-        CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partner` (`PartnerID`),
-        CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Article` (`ArticleID`)
+        CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
+        CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
+        CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
     );
 
 INSERT INTO
-    `Address` (
+    `addresses` (
         `PostalCode`,
         `HouseNumber`,
         `StreetName`,
@@ -160,7 +154,7 @@ VALUES
     ('9900OP', '67', 'Mountain Drive', 'Nederland');
 
 INSERT INTO
-    `Partner` (
+    `Partners` (
         `CompanyName`,
         `VATNr`,
         `CoCNr`,
@@ -220,7 +214,7 @@ VALUES
     );
 
 INSERT INTO
-    `Customer` (
+    `Customers` (
         `FirstName`,
         `LastName`,
         `PhoneNumber`,
@@ -304,7 +298,7 @@ VALUES
     );
 
 INSERT INTO
-    `UserAccount` (
+    `UserAccounts` (
         `EmailAdres`,
         `Password`,
         `AccountStatus`,
@@ -318,7 +312,7 @@ VALUES
         'john.doe@example.com',
         'hashedpassword1',
         TRUE,
-        'Klant',
+        'Customer',
         '2025-03-01',
         NULL,
         1
@@ -345,7 +339,7 @@ VALUES
         'bob.williams@example.com',
         'hashedpassword4',
         TRUE,
-        'Klant',
+        'Customer',
         '2025-03-05',
         NULL,
         4
@@ -372,7 +366,7 @@ VALUES
         'eva.garcia@example.com',
         'hashedpassword7',
         TRUE,
-        'Klant',
+        'Customer',
         '2025-03-10',
         NULL,
         6
@@ -388,7 +382,7 @@ VALUES
     );
 
 INSERT INTO
-    `Article` (
+    `Articles` (
         `Name`,
         `Size`,
         `Color`,
@@ -517,7 +511,7 @@ VALUES
     (8, 8, 50, 149.99, '2025-02-22');
 
 INSERT INTO
-    `Order` (
+    `Orders` (
         `OrderDate`,
         `PaymentStatus`,
         `CustomerID`,
@@ -535,7 +529,7 @@ VALUES
     ('2025-02-28', TRUE, 8, '9900OP', '67');
 
 INSERT INTO
-    `OrderLine` (
+    `OrderLines` (
         `OrderID`,
         `ArticleID`,
         `PartnerID`,
@@ -553,61 +547,81 @@ VALUES
     (7, 7, 7, 1, '2025-03-12', '2025-03-19'),
     (8, 8, 8, 1, '2025-02-28', '2025-03-07');
 
---     START TRANSACTION;
--- SELECT `QuantityOfStock` INTO @available_stock
--- FROM `Stock`
--- WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
--- UPDATE `OrderLine`
--- SET `Quantity` = CASE
---     WHEN @available_stock >= @new_quantity THEN @new_quantity
---     ELSE `Quantity`
--- END
--- WHERE `OrderID` = @OrderID AND `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
--- UPDATE `Stock`
--- SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
--- WHERE ArticleID = @ArticleID AND PartnerID = @PartnerID AND QuantityOfStock >= @new_quantity;
--- COMMIT;
--- DELIMITER $$
--- CREATE PROCEDURE SimulatePurchase()
--- BEGIN
---     DECLARE available_stock INT;
---     DECLARE order_id INT;
---     -- Set the parameters for the purchase
---     SET @ArticleID = 1001; 
---     SET @PartnerID = 1;  
---     SET @UserID = 123;     
---     SET @new_quantity = 2; 
---     -- Start the transaction
---     START TRANSACTION;
---     -- Step 1: Check if there is enough stock available for the purchase
---     SELECT `QuantityOfStock` INTO available_stock
---     FROM `Stock`
---     WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
---     -- Step 2: If stock is sufficient, reduce the stock and record the purchase
---     IF available_stock >= @new_quantity THEN
---         -- Update the stock: reduce available stock
---         UPDATE `Stock`
---         SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
---         WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
---         -- Insert into Orders (representing the purchase)
---         INSERT INTO `Orders` (UserID, OrderDate)
---         VALUES (@UserID, NOW());
---         -- Get the last inserted OrderID for the new order
---         SET order_id = LAST_INSERT_ID();
---         -- Insert into OrderLine (representing the article purchased)
---         INSERT INTO `OrderLine` (OrderID, ArticleID, Quantity)
---         VALUES (order_id, @ArticleID, @new_quantity);
---         -- Commit the transaction
---         COMMIT;
---         -- Return success message with OrderID
---         SELECT 'Purchase successful' AS message, order_id AS OrderID;
---     ELSE
---         -- If stock is insufficient, rollback the transaction
---         ROLLBACK;
---         -- Return error message
---         SELECT 'Not enough stock available' AS message;
---     END IF;
--- END$$
--- DELIMITER ;
--- CREATE ROLE `Admin`;
--- GRANT SELECT, INSERT, UPDATE ON fittingly_database.customer TO `Admin`;
+    START TRANSACTION;
+SELECT `QuantityOfStock` INTO @available_stock
+FROM `Stock`
+WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+UPDATE `OrderLine`
+SET `Quantity` = CASE
+    WHEN @available_stock >= @new_quantity THEN @new_quantity
+    ELSE `Quantity`
+END
+WHERE `OrderID` = @OrderID AND `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+UPDATE `Stock`
+SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
+WHERE ArticleID = @ArticleID AND PartnerID = @PartnerID AND QuantityOfStock >= @new_quantity;
+COMMIT;
+
+
+
+
+DELIMITER $$
+CREATE PROCEDURE SimulatePurchase()
+BEGIN
+    DECLARE available_stock INT;
+    DECLARE order_id INT;
+    -- Set the parameters for the purchase
+    SET @ArticleID = 1001; 
+    SET @PartnerID = 1;  
+    SET @UserID = 123;     
+    SET @new_quantity = 2; 
+    -- Start the transaction
+    START TRANSACTION;
+    -- Step 1: Check if there is enough stock available for the purchase
+    SELECT `QuantityOfStock` INTO available_stock
+    FROM `Stock`
+    WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+    -- Step 2: If stock is sufficient, reduce the stock and record the purchase
+    IF available_stock >= @new_quantity THEN
+        -- Update the stock: reduce available stock
+        UPDATE `Stock`
+        SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
+        WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+        -- Insert into Orders (representing the purchase)
+        INSERT INTO `Orders` (UserID, OrderDate)
+        VALUES (@UserID, NOW());
+        -- Get the last inserted OrderID for the new order
+        SET order_id = LAST_INSERT_ID();
+        -- Insert into OrderLine (representing the article purchased)
+        INSERT INTO `OrderLine` (OrderID, ArticleID, Quantity)
+        VALUES (order_id, @ArticleID, @new_quantity);
+        -- Commit the transaction
+        COMMIT;
+        -- Return success message with OrderID
+        SELECT 'Purchase successful' AS message, order_id AS OrderID;
+    ELSE
+        -- If stock is insufficient, rollback the transaction
+        ROLLBACK;
+        -- Return error message
+        SELECT 'Not enough stock available' AS message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+CREATE ROLE `Admin`,
+CREATE ROLE `Customers`,
+CREATE ROLE `Partners`,
+CREATE ROLE `Read_Only`,
+
+GRANT SELECT, INSERT, UPDATE ON fittingly_database TO `Admin`,
+GRANT SELECT ON fittingly_database.orders TO `Customers`,
+GRANT SELECT, INSERT, UPDATE ON fittingly_database.stocks TO `Partners`,
+
+GRANT SELECT ON fittingly_database.* TO `Read_Only`;
+
+
+
+
+GRANT SELECT (column1, column2), INSERT (column1), UPDATE (column2) 
+ON fittingly_database.stocks TO 'username'@'host';
