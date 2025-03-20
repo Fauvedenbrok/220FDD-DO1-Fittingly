@@ -547,63 +547,81 @@ VALUES
     (7, 7, 7, 1, '2025-03-12', '2025-03-19'),
     (8, 8, 8, 1, '2025-02-28', '2025-03-07');
 
---     START TRANSACTION;
--- SELECT `QuantityOfStock` INTO @available_stock
--- FROM `Stock`
--- WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
--- UPDATE `OrderLine`
--- SET `Quantity` = CASE
---     WHEN @available_stock >= @new_quantity THEN @new_quantity
---     ELSE `Quantity`
--- END
--- WHERE `OrderID` = @OrderID AND `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
--- UPDATE `Stock`
--- SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
--- WHERE ArticleID = @ArticleID AND PartnerID = @PartnerID AND QuantityOfStock >= @new_quantity;
--- COMMIT;
+    START TRANSACTION;
+SELECT `QuantityOfStock` INTO @available_stock
+FROM `Stock`
+WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+UPDATE `OrderLine`
+SET `Quantity` = CASE
+    WHEN @available_stock >= @new_quantity THEN @new_quantity
+    ELSE `Quantity`
+END
+WHERE `OrderID` = @OrderID AND `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+UPDATE `Stock`
+SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
+WHERE ArticleID = @ArticleID AND PartnerID = @PartnerID AND QuantityOfStock >= @new_quantity;
+COMMIT;
 
--- DELIMITER $$
--- CREATE PROCEDURE SimulatePurchase()
--- BEGIN
---     DECLARE available_stock INT;
---     DECLARE order_id INT;
---     -- Set the parameters for the purchase
---     SET @ArticleID = 1001; 
---     SET @PartnerID = 1;  
---     SET @UserID = 123;     
---     SET @new_quantity = 2; 
---     -- Start the transaction
---     START TRANSACTION;
---     -- Step 1: Check if there is enough stock available for the purchase
---     SELECT `QuantityOfStock` INTO available_stock
---     FROM `Stock`
---     WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
---     -- Step 2: If stock is sufficient, reduce the stock and record the purchase
---     IF available_stock >= @new_quantity THEN
---         -- Update the stock: reduce available stock
---         UPDATE `Stock`
---         SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
---         WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
---         -- Insert into Orders (representing the purchase)
---         INSERT INTO `Orders` (UserID, OrderDate)
---         VALUES (@UserID, NOW());
---         -- Get the last inserted OrderID for the new order
---         SET order_id = LAST_INSERT_ID();
---         -- Insert into OrderLine (representing the article purchased)
---         INSERT INTO `OrderLine` (OrderID, ArticleID, Quantity)
---         VALUES (order_id, @ArticleID, @new_quantity);
---         -- Commit the transaction
---         COMMIT;
---         -- Return success message with OrderID
---         SELECT 'Purchase successful' AS message, order_id AS OrderID;
---     ELSE
---         -- If stock is insufficient, rollback the transaction
---         ROLLBACK;
---         -- Return error message
---         SELECT 'Not enough stock available' AS message;
---     END IF;
--- END$$
--- DELIMITER ;
 
--- CREATE ROLE `Admin`;
--- GRANT SELECT, INSERT, UPDATE ON fittingly_database.customer TO `Admin`;
+
+
+DELIMITER $$
+CREATE PROCEDURE SimulatePurchase()
+BEGIN
+    DECLARE available_stock INT;
+    DECLARE order_id INT;
+    -- Set the parameters for the purchase
+    SET @ArticleID = 1001; 
+    SET @PartnerID = 1;  
+    SET @UserID = 123;     
+    SET @new_quantity = 2; 
+    -- Start the transaction
+    START TRANSACTION;
+    -- Step 1: Check if there is enough stock available for the purchase
+    SELECT `QuantityOfStock` INTO available_stock
+    FROM `Stock`
+    WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+    -- Step 2: If stock is sufficient, reduce the stock and record the purchase
+    IF available_stock >= @new_quantity THEN
+        -- Update the stock: reduce available stock
+        UPDATE `Stock`
+        SET `QuantityOfStock` = `QuantityOfStock` - @new_quantity
+        WHERE `ArticleID` = @ArticleID AND `PartnerID` = @PartnerID;
+        -- Insert into Orders (representing the purchase)
+        INSERT INTO `Orders` (UserID, OrderDate)
+        VALUES (@UserID, NOW());
+        -- Get the last inserted OrderID for the new order
+        SET order_id = LAST_INSERT_ID();
+        -- Insert into OrderLine (representing the article purchased)
+        INSERT INTO `OrderLine` (OrderID, ArticleID, Quantity)
+        VALUES (order_id, @ArticleID, @new_quantity);
+        -- Commit the transaction
+        COMMIT;
+        -- Return success message with OrderID
+        SELECT 'Purchase successful' AS message, order_id AS OrderID;
+    ELSE
+        -- If stock is insufficient, rollback the transaction
+        ROLLBACK;
+        -- Return error message
+        SELECT 'Not enough stock available' AS message;
+    END IF;
+END$$
+DELIMITER ;
+
+
+CREATE ROLE `Admin`,
+CREATE ROLE `Customers`,
+CREATE ROLE `Partners`,
+CREATE ROLE `Read_Only`,
+
+GRANT SELECT, INSERT, UPDATE ON fittingly_database TO `Admin`,
+GRANT SELECT ON fittingly_database.orders TO `Customers`,
+GRANT SELECT, INSERT, UPDATE ON fittingly_database.stocks TO `Partners`,
+
+GRANT SELECT ON fittingly_database.* TO `Read_Only`;
+
+
+
+
+GRANT SELECT (column1, column2), INSERT (column1), UPDATE (column2) 
+ON fittingly_database.stocks TO 'username'@'host';
