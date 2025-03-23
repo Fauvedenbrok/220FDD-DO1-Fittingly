@@ -101,7 +101,7 @@ INSERT INTO Partner (CompanyName, VatNr, CoCNr, PostalCode, HouseNumber) VALUES
 ('Outdoor Gear', 'NL987654321B01', '987654321', '1000AB', '2'),
 ('Sports World', 'BE123456789', '112233445', '2000AA', '10'),
 ('Tech Haven', 'BE987654321', '998877665', '2000AB', '11'),
-('Home Essentials', 'LU123456789B01', '998877665', '3000AA', '20'),
+('Home Essentials', 'LU123456789B01', '998877664', '3000AA', '20'),
 ('Eco Fashion', 'LU987654321B01', '556677889', '3000AB', '21'),
 ('Gadget Shop', 'FR123456789B01', '112233445', '4000AA', '30'),
 ('Luxury Living', 'FR987654321B01', '667788990', '4000AB', '31'),

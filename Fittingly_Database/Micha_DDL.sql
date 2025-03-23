@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS `Fittingly_Database` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+
+USE `Fittingly_Database`;
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `Address`;
@@ -15,7 +19,7 @@ CREATE TABLE `Address` (
     `PostalCode` VARCHAR(10) NOT NULL,
     `HouseNumber` VARCHAR(10) NOT NULL,
     `StreetName` VARCHAR(100) NOT NULL,
-    `Country` ENUM('NL', 'BE', 'LU') NOT NULL -- #ISO3166 2-letter country code
+    `Country` ENUM('NL', 'BE', 'LU') NOT NULL, -- #ISO3166 2-letter country code
     CONSTRAINT PK_Address PRIMARY KEY (`PostalCode`, `HouseNumber`) -- Eerst Postalcode dan HouseNumber, omdat postcode uniek is en daardoor sneller te vinden
 );
 
@@ -109,6 +113,6 @@ CREATE TABLE `UserAccount`(
     `CustomerID` INT,
     CONSTRAINT PK_UserAccount PRIMARY KEY (`UserID`),
     CONSTRAINT FK_UserAccount_Partner FOREIGN KEY (`PartnerID`) REFERENCES `Partner`(`PartnerID`),
-    CONSTRAINT FK_UserAccount_Customer FOREIGN KEY (`CustomerID`) REFERENCES `Customer`(`CustomerID`)
-    CONSTRAINT UQ_UserAccount_Email UNIQUE (`Emailaddress`),
+    CONSTRAINT FK_UserAccount_Customer FOREIGN KEY (`CustomerID`) REFERENCES `Customer`(`CustomerID`),
+    CONSTRAINT UQ_UserAccount_Email UNIQUE (`Emailaddress`)
 );
