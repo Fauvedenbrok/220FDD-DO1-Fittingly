@@ -73,9 +73,9 @@ CREATE TABLE `Partner`(
     `PostalCode` VARCHAR(10) NOT NULL,
     `HouseNumber` VARCHAR(10) NOT NULL,
     CONSTRAINT PK_Partner PRIMARY KEY (`PartnerID`),
+    CONSTRAINT FK_Partner_Address FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address`(`PostalCode`, `HouseNumber`)
     CONSTRAINT UQ_Partner_VatNr UNIQUE (`VatNr`),
     CONSTRAINT UQ_Partner_CoCNr UNIQUE (`CoCNr`),
-    CONSTRAINT FK_Partner_Address FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address`(`PostalCode`, `HouseNumber`)
 );
 
 CREATE TABLE `OrderLine` (
