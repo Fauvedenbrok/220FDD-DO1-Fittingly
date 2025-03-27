@@ -34,6 +34,7 @@ UPDATE ON fittingly_database.UserAccounts.Passwords TO `Support`,
 -- Partner role features
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 CREATE VIEW fittingly_database_View_Partner_Customer AS
 =======
 CREATE VIEW
@@ -63,12 +64,15 @@ WHERE p.PartnerID = 2;
 
 
 
+=======
+>>>>>>> c15164f9438317e7b59deeda47e9e7e632af7091
 CREATE VIEW fittingly_database_View_Partner_Customer AS
 SELECT DISTINCT
 c.CustomerID,
 c.PostalCode,
 c.HouseNumber
 FROM fittingly_database.Customers c
+<<<<<<< HEAD
 >>>>>>> 0b7979e (wat een gedoe)
 WHERE p.PartnerID = 2;
 
@@ -114,10 +118,53 @@ FROM fittingly_database.OrderLines ol
 WHERE p.PartnerID = 2;
 
 <<<<<<< HEAD
+=======
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_Customer TO `Partner`;
+
+
+CREATE VIEW fittingly_database_View_Partner_Articles AS
+SELECT DISTINCT
+a.ArticleID,
+a.Category,
+a.SubCategory,
+a.Material,
+a.Brand,
+a.Availability
+FROM fittingly_database.Articles a
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_Articles TO `Partner`;
+
+
+CREATE VIEW fittingly_database_View_Partner_Orders AS
+SELECT DISTINCT
+o.OrderID,
+o.OrderDate,
+o.PaymentStatus
+FROM fittingly_database.Orders o
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_Orders TO `Partner`;
+
+
+CREATE VIEW fittingly_database_View_Partner_OrderLines AS
+SELECT DISTINCT
+ol.OrderID,
+ol.ArticleID,
+ol.Quantity,
+ol.StartDateReservation,
+ol.EndDateReservation
+FROM fittingly_database.OrderLines ol
+WHERE p.PartnerID = 2;
+
+>>>>>>> c15164f9438317e7b59deeda47e9e7e632af7091
 GRANT SELECT ON fittingly_database_View_Partner_OrderLines TO `Partner`;
 
 
 
+<<<<<<< HEAD
 GRANT SELECT ON fittingly_database_View_Partner TO `Partner`;
 GRANT INSERT, UPDATE ON fittingly_database.Articles TO `Partner`
 WHERE PartnerID = 2;
@@ -153,6 +200,22 @@ REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Cu
 
 
 >>>>>>> 0b7979e (wat een gedoe)
+=======
+
+
+
+-- Customer role features
+
+View articles and categories and subcategories, view and manage orders, update customer information, update useraccount_password, view useraccount_status, update newsletter_subscription,
+
+CREATE VIEW fittingly_database_View_Customer AS
+SELECT DISTINCT 
+
+
+
+GRANT SELECT, INSERT, UPDATE ON fittingly_database.Customer TO `Customer`;
+REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Customer`;
+>>>>>>> c15164f9438317e7b59deeda47e9e7e632af7091
 
 
 
@@ -166,6 +229,7 @@ REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Cu
 
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -187,3 +251,7 @@ REVOKE SELECT, INSERT, UPDATE, DELETE ON UserAccounts FROM 'partner_role';
 >>>>>>> 29693b5 (test)
 
 REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Customer`;
+=======
+
+
+>>>>>>> c15164f9438317e7b59deeda47e9e7e632af7091
