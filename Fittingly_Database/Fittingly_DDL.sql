@@ -30,7 +30,6 @@ CREATE TABLE
         `CoCNr` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        `PhoneNumber` VARCHAR(15),
         CONSTRAINT `FK_Partner_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`),
         CONSTRAINT `UQ_VATnr` UNIQUE (`VATNr`),
         CONSTRAINT `UQCoCNr` UNIQUE (`CoCNr`)
@@ -41,7 +40,6 @@ CREATE TABLE
         `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
-        `PhoneNumber` VARCHAR(15),
         `DateOfBirth` DATE,
         `Newsletter` BOOLEAN DEFAULT TRUE,
         `PostalCode` VARCHAR(10),
@@ -58,6 +56,7 @@ CREATE TABLE
         `DateOfRegistration` DATE,
         `PartnerID` INT,
         `CustomerID` INT,
+        `PhoneNumber` VARCHAR(15),
         CONSTRAINT `FK_UserAccount_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
         CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`)
     );
@@ -123,9 +122,10 @@ CREATE TABLE
         `PartnerID` INT NOT NULL,
         `Quantity` INT DEFAULT 0,
         `StartDateReservation` DATE,
-        `EndDateReservation` DATE,
+        `EndDateReservation` DATE,  
         CONSTRAINT `PK_OrderLine` PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`),
         CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
         CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
         CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
     );
+

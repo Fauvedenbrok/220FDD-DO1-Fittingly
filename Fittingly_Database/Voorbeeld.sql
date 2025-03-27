@@ -43,27 +43,13 @@ DELIMITER ;
 
 
 
-DELIMITER //
 
-CREATE TRIGGER Customer_insert
-AFTER INSERT ON `Customers`
-FOR EACH ROW
-BEGIN
-   INSERT INTO `UserAccounts` (EmailAdres, Password, AccountStatus, AccountAccessRights, DateOfRegistration, CustomerID)
-   VALUES (CONCAT(NEW.FirstName, '.', NEW.LastName, '@example.com'), 'hashedpassword', 1, 'Customer', CURDATE(), NEW.CustomerID);
-END //
-
-DELIMITER ;
-
-
-
+-- Random customer procedure
 DELIMITER $$
-
 CREATE PROCEDURE CreateRandomCustomerAccount()
 BEGIN
     DECLARE first_name VARCHAR(50);
     DECLARE last_name VARCHAR(50);
-    DECLARE phone_number VARCHAR(12);
     DECLARE email_address VARCHAR(320);
     DECLARE pass_word VARCHAR(255);
     DECLARE postal_code VARCHAR(10);
@@ -76,7 +62,6 @@ BEGIN
     -- Step 1: Generate Random Customer Data
     SET first_name = CONCAT('First', FLOOR(1 + (RAND() * 1000)));
     SET last_name = CONCAT('Last', FLOOR(1 + (RAND() * 1000)));
-    SET phone_number = CONCAT('06', FLOOR(100000000 + (RAND() * 900000000)));
     SET email_address = CONCAT(first_name, '.', last_name, '@example.com');
     SET pass_word = CONCAT('secure', FLOOR(1000 + (RAND() * 9000)));
     SET postal_code = CONCAT(FLOOR(1000 + (RAND() * 9000)), 'BV');
@@ -99,14 +84,14 @@ BEGIN
     );
     
     -- Step 3: Insert the customer into the 'Customers' table
-    INSERT INTO `Customers` (`FirstName`, `LastName`, `PhoneNumber`, `PostalCode`, `HouseNumber`, `DateOfBirth`, `Newsletter`)
-    VALUES (first_name, last_name, phone_number, postal_code, house_number, date_of_birth, newsletter_subscription);
+    INSERT INTO `Customers` (`FirstName`, `LastName`, `PostalCode`, `HouseNumber`, `DateOfBirth`, `Newsletter`)
+    VALUES (first_name, last_name, postal_code, house_number, date_of_birth, newsletter_subscription);
     
     -- Step 4: Get the newly created CustomerID
     SET @CustomerID = LAST_INSERT_ID();
     
     -- Step 5: Insert the user account
-    INSERT INTO `UserAccounts` (`EmailAdres`, `Password`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `CustomerID`)
+    INSERT INTO `UserAccounts` (`EmailAdres`, `Passwords`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `CustomerID`)
     VALUES (email_address, CONCAT('\'', pass_word, '\''), TRUE, 'Customer', CURDATE(), @CustomerID);
 
 END $$

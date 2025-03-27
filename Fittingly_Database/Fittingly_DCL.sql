@@ -1,21 +1,13 @@
-CREATE ROLE `Admin`,
-CREATE ROLE `Customers`,
-CREATE ROLE `Partners`,
-CREATE ROLE `Support`,
-
-
+CREATE ROLE `Admin`;
+CREATE ROLE `Customer`;
+CREATE ROLE `Partner`;
+CREATE ROLE `Support`;
 
 
 -- Admin role features
-GRANT ALL PRIVILEGES ON fittingly_database TO `Admin`,
-GRANT SELECT ON fittingly_database.orders TO `Customers`,
-GRANT SELECT, INSERT, UPDATE ON fittingly_database.stocks TO `Partners`,
-
-
-
-
-
-
+GRANT ALL PRIVILEGES ON fittingly_database TO `Admin`;
+GRANT SELECT ON fittingly_database.orders TO `Customers`;
+GRANT SELECT, INSERT, UPDATE, DELETE ON fittingly_database.stock TO `Partners`;
 
 
 
@@ -36,16 +28,102 @@ GRANT SELECT, UPDATE ON fittingly_database.UserAccounts.Passwords TO `Support`,
 
 -- Partner role features
 CREATE VIEW fittingly_database_View_Partner AS
-SELECT DISTINCT c.CustomerID, c.PostalCode, c.HouseNumber, c.PaymentStatus
+SELECT DISTINCT
+    o.PaymentStatus AS OrderPaymentStatus,  --misschien kan de AS statement weg
+    a.ArticleID,
+    ol.Quantity,
+    ol.StartDateReservation,
+    ol.EndDateReservation,
+    o.OrderID,
+    o.OrderDate
 FROM fittingly_database.Customers c
+JOIN fittingly_database.Orders o ON c.CustomerID = o.CustomerID
 JOIN fittingly_database.OrderLines ol ON o.OrderID = ol.OrderID
+JOIN fittingly_database.Articles a ON ol.ArticleID = a.ArticleID
 JOIN fittingly_database.Partners p ON ol.PartnerID = p.PartnerID
-WHERE p.PartnerID = @LoggedInPartnerID
+WHERE p.PartnerID = 2;
 
-SET @LoggedInPartnerID = [2];
+
+
+CREATE VIEW fittingly_database_View_Partner_Customer AS
+SELECT DISTINCT
+c.CustomerID,
+c.PostalCode,
+c.HouseNumber
+FROM fittingly_database.Customers c
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_Customer TO `Partner`;
+
+
+CREATE VIEW fittingly_database_View_Partner_Articles AS
+SELECT DISTINCT
+a.ArticleID,
+a.Category,
+a.SubCategory,
+a.Material,
+a.Brand,
+a.Availability
+FROM fittingly_database.Articles a
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_Articles TO `Partner`;
+
+
+CREATE VIEW fittingly_database_View_Partner_Orders AS
+SELECT DISTINCT
+o.OrderID,
+o.OrderDate,
+o.PaymentStatus
+FROM fittingly_database.Orders o
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_Orders TO `Partner`;
+
+
+CREATE VIEW fittingly_database_View_Partner_OrderLines AS
+SELECT DISTINCT
+ol.OrderID,
+ol.ArticleID,
+ol.Quantity,
+ol.StartDateReservation,
+ol.EndDateReservation
+FROM fittingly_database.OrderLines ol
+WHERE p.PartnerID = 2;
+
+GRANT SELECT ON fittingly_database_View_Partner_OrderLines TO `Partner`;
+
+
+
+GRANT SELECT ON fittingly_database_View_Partner TO `Partner`;
+GRANT INSERT, UPDATE ON fittingly_database.Articles TO `Partner`
+WHERE PartnerID = 2;
+
+GRANT INSERT, UPDATE, DELETE ON fittingly_database.Orders TO `Partner`
+WHERE PartnerID = 2;
+
+GRANT INSERT, UPDATE, DELETE ON fittingly_database.OrderLines TO `Partner`
+WHERE PartnerID = 2;
+
+
 
 
 -- Customer role features
+
+View articles and categories and subcategories, view and manage orders, update customer information, update useraccount_password, view useraccount_status, update newsletter_subscription,
+
+CREATE VIEW fittingly_database_View_Customer AS
+SELECT DISTINCT 
+
+
+
+GRANT SELECT, INSERT, UPDATE ON fittingly_database.Customer TO `Customer`;
+REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Customer`;
+
+
+
+
+
 
 
 
@@ -62,39 +140,6 @@ ON fittingly_database.stocks TO 'username'@'host';
 
 
 
-
-
--- Chatgpt, even uitzoeken.
-CREATE VIEW PartnerOrders AS
-SELECT 
-    o.OrderID,
-    o.OrderDate,
-    o.PaymentStatus,
-    ol.ArticleID,
-    ol.Quantity,
-    ol.StartDateReservation,
-    ol.EndDateReservation,
-    o.PostalCode, 
-    o.HouseNumber
-FROM Orders o
-JOIN OrderLines ol ON o.OrderID = ol.OrderID
-WHERE ol.PartnerID = CURRENT_USER_ID(); -- Replace with session-based filtering if needed
-
-
-CREATE VIEW CustomerOrders AS
-SELECT 
-    o.OrderID,
-    o.OrderDate,
-    o.PaymentStatus,
-    ol.ArticleID,
-    ol.Quantity,
-    ol.StartDateReservation,
-    ol.EndDateReservation
-FROM Orders o
-JOIN OrderLines ol ON o.OrderID = ol.OrderID
-WHERE o.CustomerID = CURRENT_USER_ID();
-
-
 -- Grant only SELECT access on PartnerOrders to partners
 GRANT SELECT ON PartnerOrders TO 'partner_role';
 
@@ -108,4 +153,4 @@ REVOKE SELECT, INSERT, UPDATE, DELETE ON Customers FROM 'partner_role';
 REVOKE SELECT, INSERT, UPDATE, DELETE ON UserAccounts FROM 'partner_role';
 
 
-GRANT ALL PRIVILEGES ON *.* TO 'admin_role';
+

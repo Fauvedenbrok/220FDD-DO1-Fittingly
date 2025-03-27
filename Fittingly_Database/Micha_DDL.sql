@@ -24,7 +24,7 @@ CREATE TABLE `Address` (
 );
 
 CREATE TABLE `Customer` (
-    `CustomerID` INT NOT NULL AUTO_INCREMENT,
+    `CustomerID` INT NOT NULL AUTO_INCREMENT, 
     `FirstName` VARCHAR(50) NOT NULL,
     `LastName` VARCHAR(50) NOT NULL,
     `PhoneNumber` VARCHAR(30),
@@ -73,9 +73,9 @@ CREATE TABLE `Partner`(
     `PostalCode` VARCHAR(10) NOT NULL,
     `HouseNumber` VARCHAR(10) NOT NULL,
     CONSTRAINT PK_Partner PRIMARY KEY (`PartnerID`),
-    CONSTRAINT FK_Partner_Address FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address`(`PostalCode`, `HouseNumber`)
+    CONSTRAINT FK_Partner_Address FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Address`(`PostalCode`, `HouseNumber`),
     CONSTRAINT UQ_Partner_VatNr UNIQUE (`VatNr`),
-    CONSTRAINT UQ_Partner_CoCNr UNIQUE (`CoCNr`),
+    CONSTRAINT UQ_Partner_CoCNr UNIQUE (`CoCNr`)
 );
 
 CREATE TABLE `OrderLine` (
