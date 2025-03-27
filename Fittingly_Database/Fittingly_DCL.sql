@@ -6,6 +6,12 @@ CREATE ROLE `Support`;
 
 -- Admin role features
 GRANT ALL PRIVILEGES ON fittingly_database TO `Admin`;
+<<<<<<< HEAD
+=======
+GRANT SELECT ON fittingly_database.orders TO `Customers`;
+GRANT SELECT, INSERT, UPDATE, DELETE ON fittingly_database.stock TO `Partners`;
+
+>>>>>>> 0b7979e (wat een gedoe)
 
 
 -- Support role features
@@ -28,12 +34,39 @@ GRANT SELECT, UPDATE ON fittingly_database.UserAccounts.Passwords TO `Support`,
 
 
 -- Partner role features
+<<<<<<< HEAD
 CREATE VIEW fittingly_database_View_Partner_Customer AS
 SELECT DISTINCT
 c.CustomerID,
 c.PostalCode,
 c.HouseNumber
 FROM fittingly_database.Customers c
+=======
+CREATE VIEW fittingly_database_View_Partner AS
+SELECT DISTINCT
+    o.PaymentStatus AS OrderPaymentStatus,  --misschien kan de AS statement weg
+    a.ArticleID,
+    ol.Quantity,
+    ol.StartDateReservation,
+    ol.EndDateReservation,
+    o.OrderID,
+    o.OrderDate
+FROM fittingly_database.Customers c
+JOIN fittingly_database.Orders o ON c.CustomerID = o.CustomerID
+JOIN fittingly_database.OrderLines ol ON o.OrderID = ol.OrderID
+JOIN fittingly_database.Articles a ON ol.ArticleID = a.ArticleID
+JOIN fittingly_database.Partners p ON ol.PartnerID = p.PartnerID
+WHERE p.PartnerID = 2;
+
+
+
+CREATE VIEW fittingly_database_View_Partner_Customer AS
+SELECT DISTINCT
+c.CustomerID,
+c.PostalCode,
+c.HouseNumber
+FROM fittingly_database.Customers c
+>>>>>>> 0b7979e (wat een gedoe)
 WHERE p.PartnerID = 2;
 
 GRANT SELECT ON fittingly_database_View_Partner_Customer TO `Partner`;
@@ -78,6 +111,19 @@ GRANT SELECT ON fittingly_database_View_Partner_OrderLines TO `Partner`;
 
 
 
+<<<<<<< HEAD
+=======
+GRANT SELECT ON fittingly_database_View_Partner TO `Partner`;
+GRANT INSERT, UPDATE ON fittingly_database.Articles TO `Partner`
+WHERE PartnerID = 2;
+
+GRANT INSERT, UPDATE, DELETE ON fittingly_database.Orders TO `Partner`
+WHERE PartnerID = 2;
+
+GRANT INSERT, UPDATE, DELETE ON fittingly_database.OrderLines TO `Partner`
+WHERE PartnerID = 2;
+
+>>>>>>> 0b7979e (wat een gedoe)
 
 
 
@@ -92,6 +138,15 @@ SELECT DISTINCT
 
 GRANT SELECT, INSERT, UPDATE ON fittingly_database.Customer TO `Customer`;
 REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Customer`;
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> 0b7979e (wat een gedoe)
 
 
 
@@ -105,5 +160,20 @@ REVOKE UPDATE, INSERT, DELETE (CustomerID) ON fittingly_database.Customer TO `Cu
 
 
 
+<<<<<<< HEAD
+=======
+-- Grant only SELECT access on PartnerOrders to partners
+GRANT SELECT ON PartnerOrders TO 'partner_role';
+
+-- Grant only SELECT access on CustomerOrders to customers
+GRANT SELECT ON CustomerOrders TO 'customer_role';
+
+-- Ensure partners cannot access raw customer data
+REVOKE SELECT, INSERT, UPDATE, DELETE ON Customers FROM 'partner_role';
+
+-- Ensure partners cannot access user accounts
+REVOKE SELECT, INSERT, UPDATE, DELETE ON UserAccounts FROM 'partner_role';
+
+>>>>>>> 0b7979e (wat een gedoe)
 
 
