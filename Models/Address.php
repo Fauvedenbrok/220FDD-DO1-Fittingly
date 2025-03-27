@@ -9,6 +9,8 @@ class Address
     private $streetNumber;
     private $streetNumberAppendix;
 
+    
+
     public function __construct($postalCode, $streetName, $streetNumber, $streetNumberAppendix, $city, $country){
         $this->postalCode = $postalCode;
         $this->streetName = $streetName;

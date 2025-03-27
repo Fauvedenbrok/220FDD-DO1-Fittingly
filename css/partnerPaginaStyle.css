@@ -84,7 +84,7 @@ h2 {
 
 @keyframes scroll {
   0% {
-    transform: translateX();
+    transform: translateX(0px);
   }
 
   100% {
