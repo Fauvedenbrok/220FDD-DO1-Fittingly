@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 INSERT INTO `Addresses` (`PostalCode`, `HouseNumber`, `StreetName`, `Country`) VALUES
 ('1011AB', '12', 'Damstraat', 'Nederland'),
 ('2011BB', '34', 'Keizersgracht', 'Nederland'),
@@ -102,7 +101,6 @@ INSERT INTO `OrderLines` (`OrderID`, `ArticleID`, `PartnerID`, `Quantity`, `Star
 (8, 8, 8, 1, '2025-03-08', '2025-03-18'),
 (9, 9, 9, 2, '2025-03-09', '2025-03-19'),
 (10, 10, 10, 1, '2025-03-10', '2025-03-20');
-=======
 INSERT INTO `Addresses` (`PostalCode`, `HouseNumber`, `StreetName`, `Country`)
 VALUES
     ('1234AB', '10', 'Main Street', 'Nederland'),
@@ -168,4 +166,3 @@ VALUES
     (4, 4, 4, 3, '2025-02-01', '2025-02-15'),
     (5, 5, 5, 1, '2025-02-03', '2025-02-08');
 
->>>>>>> c15164f9438317e7b59deeda47e9e7e632af7091
