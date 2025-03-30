@@ -1,10 +1,17 @@
 <?php
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $first_name = $_POST["first_name"];
-    $last_name = $_POST["last_name"];
-    $email= $_POST["email"];
-    $user_password = $_POST["user_password"];
+    $first_name = $_POST["FirstName"];
+    $last_name = $_POST["LastName"];
+    $phone_nr= $_POST["PhoneNumber"];
+    $dob= $_POST["DateOfBirth"];
+    $postal_code= $_POST["PostalCode"];
+    $street_name= $_POST["StreetName"];
+    $house_nr= $_POST["HouseNumber"];
+    $city= $_POST["City"];
+    $country= $_POST["Country"];
+    $email= $_POST["EmailAddress"];
+    $user_password = $_POST["UserPassword"];
 
     try{
         require_once "dbh.inc.php";
@@ -14,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         // Error handling
         $errors = [];
 
-        if(is_input_empty($first_name, $last_name, $email, $user_password)){
+        if(is_input_empty($first_name, $last_name, $postal_code, $street_name, $house_nr, $city, $country, $email, $user_password)){
             $errors["empty_input"] = "Fill in all the fields";
         }
         if(is_email_invalid($email)) {
@@ -28,13 +35,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         if($errors){
             $_SESSION["errors_signup"] = $errors;
-            header("location: ../index.php");
+            header("location: ../klantregistratie.php");
             die();
         }
 
-        create_user($pdo, $first_name, $last_name, $email, $user_password);
+        create_user( $pdo, $first_name, $last_name, $phone_nr, $dob, $postal_code, $street_name, $house_nr, $city, $country, $email, $user_password);
 
-        header("location: ../index.php?signup=success");
+        header("location: ../klantregistratie.php?signup=success");
 
         $pdo = null;
         $stmt = null;
@@ -44,6 +51,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         die("Query failed: " . $e->getMessage());
     }
 } else {
-    header("location: ../index.php");
+    header("location: ../klantregistratie.php");
     die();
 }

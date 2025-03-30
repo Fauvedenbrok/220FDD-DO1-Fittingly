@@ -1,3 +1,8 @@
+<?php
+require_once 'includes/config_session.inc.php';
+require_once 'includes/signup_view.inc.php';
+?>
+
 <!doctype html>
 <html lang="nl">
 
@@ -22,50 +27,50 @@
             <div class="contact-info">
 
             </div>
-            <form method="post" action="klantregistratie.php">
+            <form method="post" action="includes/signup.inc.php">
                 <label for="name">
-                    Naam:
-                    <input type="text" name="name" id="name" required><br>
+                    Voornaam:
+                    <input type="text" name="FirstName" id="firstname" required><br>
+                </label>
+                <label for="name">
+                    Achternaam:
+                    <input type="text" name="LastName" id="lastname" required><br>
                 </label>
                 <label for="email">
                     E-mail:
-                    <input type="email" name="email" id="email" required><br>
+                    <input type="email" name="EmailAddress" id="email" required><br>
                 </label>
                 <label for="phone">
                     Telefoon:
-                    <input type="tel" name="phone" id="phone" required><br>
+                    <input type="tel" name="PhoneNumber" id="phone"><br>
                 </label>
                 <label for="dateOfBirth">
                     Geboortedatum:
-                    <input type="date" name="dateOfBirth" id="dateOfBirth" required><br>
+                    <input type="date" name="DateOfBirth" id="dateOfBirth" required><br>
                 </label>
                 <label for="postalCode">
                     Postcode:
-                    <input type="text" name="postalCode" id="postalCode" required><br>
+                    <input type="text" name="PostalCode" id="postalCode" required><br>
                 </label>
                 <label for="streetName">
                     Straat:
-                    <input type="text" name="streetName" id="streetName" required><br>
+                    <input type="text" name="StreetName" id="streetName" required><br>
                 </label>
                 <label for="streetNumber">
                     Huisnummer:
-                    <input type="text" name="streetNumber" id="streetNumber" required><br>
-                </label>
-                <label for="streetNumberAppendix">
-                    Huisnummer toevoeging:
-                    <input type="text" name="streetNumberAppendix" id="streetNumberAppendix"><br>
+                    <input type="text" name="HouseNumber" id="streetNumber" required><br>
                 </label>
                 <label for="city">
                     Stad:
-                    <input type="text" name="city" id="city" required><br>
+                    <input type="text" name="City" id="city" required><br>
                 </label>
                 <label for="country">
                     Land:
-                    <input type="text" name="country" id="country" required><br>
+                    <input type="text" name="Country" id="country" required><br>
                 </label>
                 <label for="password">
                     Wachtwoord:
-                    <input type="password" name="password" id="password" required><br>
+                    <input type="password" name="UserPassword" id="password" required><br>
                 </label>
                 <label>
                     <input type="checkbox" name="newsletter">
@@ -74,7 +79,8 @@
                 </label>
             </form>
             <div>
-            <?php
+            <?php 
+            check_signup_errors();/*
     include("Models/Person.php");
     include("Models/Address.php");
     include("Models/Message.php");
@@ -118,7 +124,7 @@
         echo $person->getPassword();
 
  
-    }
+    } */
     ?>
             </div>
         </div>
