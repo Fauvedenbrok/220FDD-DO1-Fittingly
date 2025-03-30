@@ -41,7 +41,7 @@ CREATE TABLE
         `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
-        `DateOfBirth` DATE,
+        `DateOfBirth` VARCHAR(100),
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         CONSTRAINT `FK_Customer_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`)

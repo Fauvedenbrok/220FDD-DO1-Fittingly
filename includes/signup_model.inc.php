@@ -26,7 +26,9 @@ function set_user(
     string $email, 
     string $user_password) 
     {
-
+        try {
+            // Begin a transaction
+            $pdo->beginTransaction();
 
             $useraccountQuery = "INSERT INTO useraccounts (EmailAddress, UserPassword, PhoneNumber) 
                                 VALUES (:email, :user_password, :phone_nr);";
@@ -42,8 +44,8 @@ function set_user(
             $stmt->bindParam(":phone_nr", $phone_nr);
             $stmt->execute();
 
-            $addressQuery = "INSERT INTO addressess (PostalCode, HouseNumber, StreetName, City, Country) 
-                            VALUES (:postal_code, :house_nr, :street_name, :city, :country;";
+            $addressQuery = "INSERT INTO addresses (PostalCode, HouseNumber, StreetName, City, Country) 
+                            VALUES (:postal_code, :house_nr, :street_name, :city, :country);";
             $stmt = $pdo->prepare($addressQuery);
 
             $stmt->bindParam(":postal_code", $postal_code);
@@ -54,7 +56,7 @@ function set_user(
             $stmt->execute();
 
             $customerQuery = "INSERT INTO customers (FirstName, LastName, DateOfBirth, PostalCode, HouseNumber) 
-                            VALUES (:first_name, :last_name, :dob, ;postal_code, :house_nr);";
+                            VALUES (:first_name, :last_name, :dob, :postal_code, :house_nr);";
             $stmt = $pdo->prepare($customerQuery);
 
             $stmt->bindParam(":first_name", $first_name);
@@ -63,4 +65,12 @@ function set_user(
             $stmt->bindParam(":postal_code", $postal_code);
             $stmt->bindParam(":house_nr", $house_nr);
             $stmt->execute();
+
+            // Commit the transaction
+            $pdo->commit();
+        } catch (Exception $e) {
+            // Rollback the transaction in case of an error
+            $pdo->rollBack();
+            throw $e;
+        }
     }

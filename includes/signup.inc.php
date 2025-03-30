@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             die();
         }
 
-        create_user( $pdo, $first_name, $last_name, $phone_nr, $dob, $postal_code, $street_name, $house_nr, $city, $country, $email, $user_password);
+        create_user( $pdo,$first_name, $last_name, $phone_nr, $dob, $postal_code, $street_name, $house_nr, $city, $country, $email, $user_password);
 
         header("location: ../klantregistratie.php?signup=success");
 
