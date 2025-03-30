@@ -213,3 +213,42 @@ VALUES
 (9, 5, 70, 12.00, '2025-03-09'),
 (10, 5, 35, 40.00, '2025-03-10');
 
+
+-- Partner view for write table: Partners
+CREATE VIEW Partners_CompanyName_VATNr_CoCNr_PartnerView AS
+SELECT CompanyName, VATNr, CoCNr
+FROM Partners
+WHERE PartnerID = @PartnerID AND RoleID = ...;
+END;
+
+-- Partner view for update table: Partners
+CREATE VIEW Partners_CompanyName_PartnerView AS
+SELECT CompanyName
+FROM Partners
+WHERE PartnerID = @PartnerID;
+END;
+
+-- Partner view for delete table: Partners
+CREATE VIEW Partners_PartnerID_PartnerView AS
+SELECT PartnerID
+FROM Partners
+WHERE PartnerID = @PartnerID;
+END;
+
+-- grant partner read on table: Partners
+
+
+-- Customer view for read table: Partners
+CREATE VIEW Partners_CompanyName_VATNr_CoCNr_CustomerView AS
+SELECT CompanyName, VATNr, CoCNr
+FROM Partners
+WHERE CustomerID = @CustomerID;
+END;
+
+-- Support view for create|update table: Partners
+CREATE VIEW Partners_CompanyName_VATNr_CoCNr_SupportView AS
+SELECT CompanyName, VATNr, CoCNr
+FROM Partners
+-- Dit moet misschien op de role gebasseerd zijn ipv op een accountID
+WHERE SupportID = @SupportID;
+END;
