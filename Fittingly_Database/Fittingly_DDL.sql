@@ -25,7 +25,7 @@ CREATE TABLE
 
 CREATE TABLE
     `Partners` (
-        `PartnerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `PartnerID` INT NOT NULL AUTO_INCREMENT = 1 PRIMARY KEY,
         `CompanyName` VARCHAR(255) NOT NULL,
         `VATNr` VARCHAR(15) NOT NULL,
         `CoCNr` INT NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE
 
 CREATE TABLE
     `Customers` (
-        `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `CustomerID` INT NOT NULL AUTO_INCREMENT = 1 PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
         `DateOfBirth` DATE,
@@ -64,7 +64,7 @@ CREATE TABLE
 
 CREATE TABLE
     `Articles` (
-        `ArticleID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `ArticleID` INT NOT NULL AUTO_INCREMENT = 1 PRIMARY KEY,
         `Name` VARCHAR(50),
         `Size` VARCHAR(10),
         `Weight` FLOAT,
@@ -107,7 +107,7 @@ CREATE TABLE
 
 CREATE TABLE
     `Orders` (
-        `OrderID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `OrderID` INT NOT NULL AUTO_INCREMENT = 1 PRIMARY KEY,
         `OrderDate` DATE,
         `PaymentStatus` BOOLEAN DEFAULT FALSE,
         `PostalCode` VARCHAR(10),
