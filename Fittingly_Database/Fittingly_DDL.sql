@@ -50,7 +50,7 @@ CREATE TABLE
 CREATE TABLE
     `UserAccounts` (
         `EmailAddress` VARCHAR(320) PRIMARY KEY,
-        `Password` VARCHAR(255) NOT NULL,
+        `UserPassword` VARCHAR(255) NOT NULL,
         `AccountStatus` ENUM ('Non-active', 'Active', 'Suspended'), 
         `AccountAccessRights` ENUM ('Customer', 'Partner', 'Admin', 'Support'),
         `DateOfRegistration` DATE,
@@ -97,6 +97,7 @@ CREATE TABLE
         `QuantityOfStock` INT DEFAULT 0,
         `Price` DECIMAL(10, 2) DEFAULT 0,
         `DateAdded` DATE NOT NULL,
+        `InternalReference` VARCHAR(50) NOT NULL,
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
         CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`),
@@ -132,3 +133,6 @@ CREATE TABLE
         CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
     );
 
+
+
+    
