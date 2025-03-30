@@ -214,41 +214,99 @@ VALUES
 (10, 5, 35, 40.00, '2025-03-10');
 
 
--- Partner view for write table: Partners
-CREATE VIEW Partners_CompanyName_VATNr_CoCNr_PartnerView AS
-SELECT CompanyName, VATNr, CoCNr
-FROM Partners
-WHERE PartnerID = @PartnerID AND RoleID = ...;
-END;
+-- -- Partner view for write table: Partners
+-- CREATE VIEW Partners_CompanyName_VATNr_CoCNr_PartnerView AS
+-- SELECT CompanyName, VATNr, CoCNr
+-- FROM Partners
+-- WHERE PartnerID = @PartnerID AND RoleID = ...;
+-- END;
 
--- Partner view for update table: Partners
-CREATE VIEW Partners_CompanyName_PartnerView AS
+-- -- Partner view for update table: Partners
+-- CREATE VIEW Partners_CompanyName_PartnerView AS
+-- SELECT CompanyName
+-- FROM Partners
+-- WHERE PartnerID = @PartnerID;
+-- END;
+
+-- -- Partner view for delete table: Partners
+-- CREATE VIEW Partners_PartnerID_PartnerView AS
+-- SELECT PartnerID
+-- FROM Partners
+-- WHERE PartnerID = @PartnerID;
+-- END;
+
+-- -- grant partner read on table: Partners
+
+
+-- -- Customer view for read table: Partners
+-- CREATE VIEW Partners_CompanyName_VATNr_CoCNr_CustomerView AS
+-- SELECT CompanyName, VATNr, CoCNr
+-- FROM Partners
+-- WHERE CustomerID = @CustomerID;
+-- END;
+
+-- -- Support view for create|update table: Partners
+-- CREATE VIEW Partners_CompanyName_VATNr_CoCNr_SupportView AS
+-- SELECT CompanyName, VATNr, CoCNr
+-- FROM Partners
+-- -- Dit moet misschien op de role gebasseerd zijn ipv op een accountID
+-- WHERE SupportID = @SupportID;
+-- END;
+
+CREATE VIEW 'View_CompanyName' AS
 SELECT CompanyName
-FROM Partners
-WHERE PartnerID = @PartnerID;
-END;
+FROM Partners;
 
--- Partner view for delete table: Partners
-CREATE VIEW Partners_PartnerID_PartnerView AS
-SELECT PartnerID
-FROM Partners
-WHERE PartnerID = @PartnerID;
-END;
+GRANT UPDATE on 'View_CompanyName' TO 'Partner';	
 
--- grant partner read on table: Partners
+CREATE VIEW 'View_PartnerID' AS
+SELECT CompanyName
+FROM Partners;
+
+GRANT DELETE on 'View_PartnerID' TO 'Partner';
 
 
--- Customer view for read table: Partners
-CREATE VIEW Partners_CompanyName_VATNr_CoCNr_CustomerView AS
-SELECT CompanyName, VATNr, CoCNr
-FROM Partners
-WHERE CustomerID = @CustomerID;
-END;
+-- Grants for OrderLines table
+CREATE VIEW 'View_Start_EndDateReservation' AS
+SELECT StartDateReservation, EndDateReservation
+FROM OrderLines;
 
--- Support view for create|update table: Partners
-CREATE VIEW Partners_CompanyName_VATNr_CoCNr_SupportView AS
-SELECT CompanyName, VATNr, CoCNr
-FROM Partners
--- Dit moet misschien op de role gebasseerd zijn ipv op een accountID
-WHERE SupportID = @SupportID;
-END;
+GRANT UPDATE ON 'View_Start_EndDateReservation' TO 'Partner';
+GRANT SELECT ON OrderLines TO 'Customer', 'Partner', 'Support';
+
+--  grants for Orders table
+CREATE VIEW 'View_OrderStatus' AS
+SELECT OrderStatus
+FROM Orders;
+
+CREATE VIEW 'View_OrderStatus_PaymentStatus' AS
+SELECT OrderStatus, PaymentStatus
+FROM Orders;
+
+
+GRANT UPDATE ON 'View_OrderStatus' TO 'Customer', 'Partner';
+GRANT UPDATE ON 'View_OrderStatus_PaymentStatus' TO 'Support';
+GRANT SELECT ON Orders TO 'Customer', 'Partner', 'Support';
+
+-- grants for Stock table
+CREATE VIEW 'View_Price_InternalReference' AS
+SELECT Price, InternalReference
+FROM Stock;
+
+CREATE VIEW 'View_Price_InternalReference_QuantityOfStock' AS
+SELECT Price, InternalReference, QuantityOfStock
+FROM Stock;
+
+GRANT SELECT ON 'View_Price_InternalReference' TO 'Customer', 'Guest';
+GRANT UPDATE ON 'View_Price_InternalReference_QuantityOfStock' TO 'Partner';
+GRANT SELECT ON Stock TO 'Partner', 'Support';
+GRANT INSERT ON Stock TO 'Partner';
+
+-- grant for Articles table
+CREATE VIEW 'View_Article_Without_ID' AS
+SELECT 'Name', 'Description', 'Availability', 'Size', 'Weight', WeightUnit, Color, 'Image', Category, SubCategory, Material, Brand
+FROM Articles;
+
+GRANT UPDATE ON 'View_Article_Without_ID' TO 'Partner', 'Support';
+GRANT SELECT ON Articles TO 'Customer', 'Partner', 'Support';
+GRANT INSERT ON Articles TO 'Partner';
