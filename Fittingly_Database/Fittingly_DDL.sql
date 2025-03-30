@@ -18,6 +18,7 @@ CREATE TABLE
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         `StreetName` VARCHAR(60),
+        `City` VARCHAR(100),
         `Country` VARCHAR(30) DEFAULT 'Nederland',
         CONSTRAINT `PK_addresses` PRIMARY KEY (`PostalCode`, `HouseNumber`)
     );
@@ -48,8 +49,8 @@ CREATE TABLE
 
 CREATE TABLE
     `UserAccounts` (
-        `EmailAdres` VARCHAR(320) PRIMARY KEY,
-        `Passwords` VARCHAR(255) NOT NULL,
+        `EmailAddress` VARCHAR(320) PRIMARY KEY,
+        `Password` VARCHAR(255) NOT NULL,
         `AccountStatus` ENUM ('Non-active', 'Active', 'Suspended'), 
         `AccountAccessRights` ENUM ('Customer', 'Partner', 'Admin', 'Support'),
         `DateOfRegistration` DATE,

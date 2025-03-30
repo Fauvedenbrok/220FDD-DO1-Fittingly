@@ -1,168 +1,71 @@
-INSERT INTO `Addresses` (`PostalCode`, `HouseNumber`, `StreetName`, `Country`) VALUES
-('1011AB', '12', 'Damstraat', 'Nederland'),
-('2011BB', '34', 'Keizersgracht', 'Nederland'),
-('3011CD', '56', 'Burgwal', 'Nederland'),
-('4011DE', '78', 'Westerstraat', 'Nederland'),
-('5011EF', '90', 'Langezijds', 'Nederland'),
-('6011FG', '21', 'Valkenpad', 'Nederland'),
-('7011GH', '11', 'Houtplein', 'Nederland'),
-('8011HI', '13', 'Zandstraat', 'Nederland'),
-('9011IJ', '45', 'Torenlaan', 'Nederland'),
-('1001KL', '67', 'Stadhoudersweg', 'Nederland');
-
-
-INSERT INTO `Partners` (`CompanyName`, `VATNr`, `CoCNr`, `PostalCode`, `HouseNumber`, `PhoneNumber`) VALUES
-('Fashion House', 'NL123456789B01', 123456789, '1011AB', '12', '0201234567'),
-('Luxury Wear', 'NL987654321B01', 987654321, '2011BB', '34', '0207654321'),
-('Style Factory', 'NL543216789B01', 543216789, '3011CD', '56', '0309876543'),
-('Elegance Clothing', 'NL135792468B01', 135792468, '4011DE', '78', '0403456789'),
-('Chic Attire', 'NL246813579B01', 246813579, '5011EF', '90', '0501237890'),
-('Urban Fashion', 'NL369258147B01', 369258147, '6011FG', '21', '0602345678'),
-('Trendy Wardrobe', 'NL258369147B01', 258369147, '7011GH', '11', '0703456789'),
-('Street Style', 'NL741852963B01', 741852963, '8011HI', '13', '0802345678'),
-('Classy Trends', 'NL963741258B01', 963741258, '9011IJ', '45', '0903456789'),
-('Modern Couture', 'NL852963741B01', 852963741, '1001KL', '67', '0101234567');
-
-
-INSERT INTO `Customers` (`FirstName`, `LastName`, `PhoneNumber`, `DateOfBirth`, `Newsletter`, `PostalCode`, `HouseNumber`) VALUES
-('Jan', 'Jansen', '0612345678', '1985-04-10', TRUE, '1011AB', '12'),
-('Piet', 'Pietersen', '0623456789', '1990-08-15', FALSE, '2011BB', '34'),
-('Sanne', 'Smit', '0634567890', '1982-11-20', TRUE, '3011CD', '56'),
-('Kees', 'Keesen', '0645678901', '1995-02-28', FALSE, '4011DE', '78'),
-('Emma', 'Evers', '0656789012', '1988-06-12', TRUE, '5011EF', '90'),
-('Tom', 'Timmerman', '0667890123', '1981-03-05', TRUE, '6011FG', '21'),
-('Anna', 'Ankersmit', '0678901234', '1993-07-25', FALSE, '7011GH', '11'),
-('Joris', 'Janssen', '0689012345', '1992-05-30', TRUE, '8011HI', '13'),
-('Lotte', 'Laan', '0690123456', '1986-09-10', FALSE, '9011IJ', '45'),
-('Mark', 'Mans', '0610234567', '1984-12-22', TRUE, '1001KL', '67');
-
-
-INSERT INTO `UserAccounts` (`EmailAdres`, `Passwords`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `PartnerID`, `CustomerID`) VALUES
-('jan.jansen@example.com', 'password123', TRUE, 'Customer', '2025-03-01', NULL, 1),
-('piet.pietersen@example.com', 'password456', FALSE, 'Partner', '2025-03-02', 1, NULL),
-('sanne.smit@example.com', 'password789', TRUE, 'Admin', '2025-03-03', NULL, NULL),
-('kees.keesen@example.com', 'keespassword', TRUE, 'Customer', '2025-03-04', NULL, 4),
-('emma.evers@example.com', 'emmapassword', FALSE, 'Partner', '2025-03-05', 2, NULL),
-('tom.timmerman@example.com', 'timpassword', TRUE, 'Customer', '2025-03-06', NULL, 6),
-('anna.ankersmit@example.com', 'annapassword', TRUE, 'Admin', '2025-03-07', NULL, NULL),
-('joris.janssen@example.com', 'jorispassword', TRUE, 'Customer', '2025-03-08', NULL, 8),
-('lotte.laan@example.com', 'lottepassword', FALSE, 'Partner', '2025-03-09', 3, NULL),
-('mark.mans@example.com', 'markpassword', TRUE, 'Admin', '2025-03-10', NULL, NULL);
-
-
-
-INSERT INTO `Articles` (`Name`, `Size`, `Weight`, `WeightUnit`, `Color`, `Description`, `Category`, `SubCategory`, `Material`, `Brand`, `Availability`) VALUES
-('Blue Dress', 'M', 250, 'Gram', 'Blauw', 'Elegant blue dress for parties', 'Vrouwenkleding', 'Jurken', 'Zijde', 'Chic Attire', TRUE),
-('White T-Shirt', 'L', 200, 'Gram', 'Wit', 'Comfortable white cotton T-shirt', 'Mannenkleding', 'T-Shirts', 'Katoen', 'Fashion House', TRUE),
-('Leather Jacket', 'M', 1000, 'Gram', 'Zwart', 'Stylish leather jacket for winter', 'Vrouwenkleding', 'Jassen', 'Linnen', 'Modern Couture', TRUE),
-('Red Shoes', '40', 500, 'Gram', 'Rood', 'Stylish red shoes for events', 'Vrouwenkleding', 'Schoenen', 'Spandex', 'Urban Fashion', FALSE),
-('Grey Suit', 'XL', 1500, 'Gram', 'Grijs', 'Elegant grey suit', 'Mannenkleding', 'Broeken', 'Acryl', 'Luxury Wear', TRUE),
-('Black Trousers', 'S', 400, 'Gram', 'Zwart', 'Slim-fit black trousers', 'Mannenkleding', 'Broeken', 'Spandex', 'Style Factory', TRUE),
-('Pink Handbag', 'One Size', 300, 'Gram', 'Roze', 'Fashionable pink handbag', 'Accessoires', 'Schoenen', 'Zijde', 'Elegance Clothing', TRUE),
-('White Sneakers', '42', 600, 'Gram', 'Wit', 'Casual white sneakers', 'Mannenkleding', 'Schoenen', 'Katoen', 'Trendy Wardrobe', TRUE),
-('Blue Blouse', 'L', 150, 'Gram', 'Blauw', 'Elegant blue blouse for office wear', 'Vrouwenkleding', 'Jurken', 'Jute', 'Street Style', TRUE),
-('Black Belt', 'One Size', 100, 'Gram', 'Zwart', 'Classic black leather belt', 'Accessoires', 'Schoenen', 'Linnen', 'Classy Trends', TRUE);
-
-
-INSERT INTO `Stock` (`ArticleID`, `PartnerID`, `QuantityOfStock`, `Price`, `DateAdded`) VALUES
-(1, 1, 15, 99.99, '2025-03-01'),
-(2, 2, 20, 19.99, '2025-03-02'),
-(3, 3, 10, 150.00, '2025-03-03'),
-(4, 4, 5, 129.99, '2025-03-04'),
-(5, 5, 12, 200.00, '2025-03-05'),
-(6, 6, 30, 49.99, '2025-03-06'),
-(7, 7, 25, 59.99, '2025-03-07'),
-(8, 8, 40, 69.99, '2025-03-08'),
-(9, 9, 35, 89.99, '2025-03-09'),
-(10, 10, 50, 39.99, '2025-03-10');
-
-
-INSERT INTO `Orders` (`OrderDate`, `PaymentStatus`, `CustomerID`, `PostalCode`, `HouseNumber`) VALUES
-('2025-03-01', TRUE, 1, '1011AB', '12'),
-('2025-03-02', FALSE, 2, '2011BB', '34'),
-('2025-03-03', TRUE, 3, '3011CD', '56'),
-('2025-03-04', TRUE, 4, '4011DE', '78'),
-('2025-03-05', FALSE, 5, '5011EF', '90'),
-('2025-03-06', TRUE, 6, '6011FG', '21'),
-('2025-03-07', TRUE, 7, '7011GH', '11'),
-('2025-03-08', FALSE, 8, '8011HI', '13'),
-('2025-03-09', TRUE, 9, '9011IJ', '45'),
-('2025-03-10', TRUE, 10, '1001KL', '67');
-
-
-INSERT INTO `OrderLines` (`OrderID`, `ArticleID`, `PartnerID`, `Quantity`, `StartDateReservation`, `EndDateReservation`) VALUES
-(1, 1, 1, 2, '2025-03-01', '2025-03-10'),
-(2, 2, 2, 3, '2025-03-02', '2025-03-12'),
-(3, 3, 3, 1, '2025-03-03', '2025-03-13'),
-(4, 4, 4, 1, '2025-03-04', '2025-03-14'),
-(5, 5, 5, 2, '2025-03-05', '2025-03-15'),
-(6, 6, 6, 1, '2025-03-06', '2025-03-16'),
-(7, 7, 7, 2, '2025-03-07', '2025-03-17'),
-(8, 8, 8, 1, '2025-03-08', '2025-03-18'),
-(9, 9, 9, 2, '2025-03-09', '2025-03-19'),
-(10, 10, 10, 1, '2025-03-10', '2025-03-20');
-INSERT INTO `Addresses` (`PostalCode`, `HouseNumber`, `StreetName`, `Country`)
-VALUES
+    -- Insert data into Addresses
+    INSERT INTO `Addresses` (`PostalCode`, `HouseNumber`, `StreetName`, `Country`) VALUES
     ('1234AB', '10', 'Main Street', 'Nederland'),
-    ('5678CD', '25', 'Pine Avenue', 'Nederland'),
-    ('2345EF', '12', 'Elm Road', 'Nederland'),
-    ('6789GH', '30', 'Oak Lane', 'Nederland'),
-    ('3456IJ', '7', 'Maple Boulevard', 'Nederland');
+    ('5678CD', '20', 'Second Avenue', 'Nederland'),
+    ('9101EF', '30', 'Third Boulevard', 'Nederland'),
+    ('1121GH', '40', 'Fourth Lane', 'Nederland'),
+    ('3141IJ', '50', 'Fifth Road', 'Nederland'),
+    ('5161KL', '60', 'Sixth Street', 'Nederland');
 
-INSERT INTO `Partners` (`CompanyName`, `VATNr`, `CoCNr`, `PostalCode`, `HouseNumber`, `PhoneNumber`)
-VALUES
-    ('Fashion Hub', 'NL123456789B01', 12345, '1234AB', '10', '0612345678'),
-    ('StyleWorks', 'NL987654321B02', 54321, '5678CD', '25', '0698765432'),
-    ('Trendsetter', 'NL135792468B03', 11223, '2345EF', '12', '0611122334'),
-    ('Luxury Apparel', 'NL246813579B04', 33221, '6789GH', '30', '0687654321'),
-    ('Chic Couture', 'NL369258147B05', 44556, '3456IJ', '7', '0654321098');
+    -- Insert data into Partners
+    INSERT INTO `Partners` (`CompanyName`, `VATNr`, `CoCNr`, `PostalCode`, `HouseNumber`) VALUES
+    ('Partner A', 'NL123456789B01', 12345678, '1234AB', '10'),
+    ('Partner B', 'NL987654321B02', 87654321, '5678CD', '20'),
+    ('Partner C', 'NL112233445B03', 11223344, '9101EF', '30'),
+    ('Partner D', 'NL556677889B04', 55667788, '1121GH', '40'),
+    ('Partner E', 'NL998877665B05', 99887766, '3141IJ', '50'),
+    ('Partner F', 'NL443322110B06', 44332211, '5161KL', '60');
 
-INSERT INTO `Customers` (`FirstName`, `LastName`, `PhoneNumber`, `DateOfBirth`, `Newsletter`, `PostalCode`, `HouseNumber`)
-VALUES
-    ('John', 'Doe', '0612345678', '1990-05-12', TRUE, '1234AB', '10'),
-    ('Jane', 'Smith', '0698765432', '1985-08-24', FALSE, '5678CD', '25'),
-    ('Bob', 'Johnson', '0611122334', '2000-02-01', TRUE, '2345EF', '12'),
-    ('Alice', 'Brown', '0687654321', '1995-11-30', TRUE, '6789GH', '30'),
-    ('Charlie', 'Davis', '0654321098', '1992-03-15', FALSE, '3456IJ', '7');
+    -- Insert data into Customers
+    INSERT INTO `Customers` (`FirstName`, `LastName`, `DateOfBirth`, `PostalCode`, `HouseNumber`) VALUES
+    ('John', 'Doe', '1990-01-01', '1234AB', '10'),
+    ('Jane', 'Smith', '1985-05-15', '5678CD', '20'),
+    ('Alice', 'Johnson', '1992-07-20', '9101EF', '30'),
+    ('Bob', 'Brown', '1988-03-10', '1121GH', '40'),
+    ('Charlie', 'Davis', '1995-09-25', '3141IJ', '50'),
+    ('Diana', 'Miller', '1993-12-30', '5161KL', '60');
 
-INSERT INTO `UserAccounts` (`EmailAdres`, `Passwords`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `PartnerID`, `CustomerID`)
-VALUES
-    ('john.doe@example.com', 'password123', 'Active', 'Customer', '2025-01-01', NULL, 1),
-    ('jane.smith@example.com', 'mypassword456', 'Active', 'Partner', '2025-01-02', 1, NULL),
-    ('bob.johnson@example.com', 'securepassword789', 'Suspended', 'Admin', '2025-01-03', NULL, 3),
-    ('alice.brown@example.com', 'supersecure321', 'Active', 'Support', '2025-01-04', NULL, 4),
-    ('charlie.davis@example.com', 'password789', 'Non-active', 'Customer', '2025-01-05', NULL, 5);
+    -- Insert data into UserAccounts
+    INSERT INTO `UserAccounts` (`EmailAdres`, `Passwords`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `PhoneNumber`, `Newsletter`, `PartnerID`, `CustomerID`) VALUES
+    ('john.doe@example.com', 'password123', 'Active', 'Customer', '2023-01-01', '0612345678', TRUE, NULL, 1),
+    ('jane.smith@example.com', 'password456', 'Active', 'Customer', '2023-02-01', '0612345679', TRUE, NULL, 2),
+    ('partner.a@example.com', 'partnerpass1', 'Active', 'Partner', '2023-03-01', '0612345680', FALSE, 1, NULL),
+    ('partner.b@example.com', 'partnerpass2', 'Active', 'Partner', '2023-04-01', '0612345681', FALSE, 2, NULL),
+    ('admin@example.com', 'adminpass', 'Active', 'Admin', '2023-05-01', '0612345682', FALSE, NULL, NULL),
+    ('support@example.com', 'supportpass', 'Active', 'Support', '2023-06-01', '0612345683', TRUE, NULL, NULL);
 
-INSERT INTO `Articles` (`Name`, `Size`, `Weight`, `WeightUnit`, `Color`, `Description`, `Category`, `SubCategory`, `Material`, `Brand`, `Availability`)
-VALUES
-    ('Summer Dress', 'M', 200.5, 'Gram', 'Red', 'A beautiful red dress for summer events.', 'Vrouwenkleding', 'Jurken', 'Katoen', 'BrandA', TRUE),
-    ('T-Shirt', 'L', 150.0, 'Gram', 'Blue', 'A classic blue t-shirt for everyday wear.', 'Mannenkleding', 'T-Shirts', 'Katoen', 'BrandB', TRUE),
-    ('Leather Jacket', 'XL', 500.0, 'Gram', 'Black', 'A stylish black leather jacket.', 'Mannenkleding', 'Jassen', 'Katoen', 'BrandC', FALSE),
-    ('Running Shoes', '42', 800.0, 'Gram', 'White', 'Comfortable white running shoes.', 'Accessoires', 'Schoenen', 'Spandex', 'BrandD', TRUE),
-    ('Silk Scarf', 'One Size', 150.0, 'Gram', 'Pink', 'A luxurious pink silk scarf.', 'Accessoires', 'Schoenen', 'Zijde', 'BrandE', TRUE); 
+    -- Insert data into Articles
+    INSERT INTO `Articles` (`Name`, `Size`, `Weight`, `WeightUnit`, `Color`, `Description`, `Category`, `SubCategory`, `Material`, `Brand`, `Availability`) VALUES
+    ('T-Shirt', 'M', 0.5, 'Kilogram', 'Red', 'Comfortable cotton t-shirt', 'Mannenkleding', 'T-Shirts', 'Katoen', 'Brand A', TRUE),
+    ('Jeans', 'L', 1.2, 'Kilogram', 'Blue', 'Stylish denim jeans', 'Mannenkleding', 'Broeken', 'Linnen', 'Brand B', TRUE),
+    ('Jacket', 'XL', 2.0, 'Kilogram', 'Black', 'Warm winter jacket', 'Mannenkleding', 'Jassen', 'Spandex', 'Brand C', FALSE),
+    ('Dress', 'S', 0.8, 'Kilogram', 'Green', 'Elegant evening dress', 'Vrouwenkleding', 'Jurken', 'Zijde', 'Brand D', TRUE),
+    ('Shoes', '42', 1.5, 'Kilogram', 'White', 'Comfortable running shoes', 'Accessoires', 'Schoenen', 'Acryl', 'Brand E', TRUE),
+    ('Hat', 'One Size', 0.3, 'Kilogram', 'Brown', 'Stylish summer hat', 'Accessoires', 'Accessoires', 'Jute', 'Brand F', FALSE);
 
+    -- Insert data into Stock
+    INSERT INTO `Stock` (`QuantityOfStock`, `Price`, `DateAdded`, `ArticleID`, `PartnerID`) VALUES
+    (100, 19.99, '2023-01-01', 1, 1),
+    (50, 49.99, '2023-02-01', 2, 2),
+    (30, 99.99, '2023-03-01', 3, 3),
+    (20, 79.99, '2023-04-01', 4, 4),
+    (10, 59.99, '2023-05-01', 5, 5),
+    (5, 29.99, '2023-06-01', 6, 6);
 
-INSERT INTO `Stock` (`ArticleID`, `PartnerID`, `QuantityOfStock`, `Price`, `DateAdded`)
-VALUES
-    (1, 1, 100, 29.99, '2025-01-01'),
-    (2, 2, 200, 19.99, '2025-01-02'),
-    (3, 3, 50, 99.99, '2025-01-03'),
-    (4, 4, 150, 49.99, '2025-01-04'),
-    (5, 5, 75, 59.99, '2025-01-05');
+    -- Insert data into Orders
+    INSERT INTO `Orders` (`OrderDate`, `PaymentStatus`, `PostalCode`, `HouseNumber`, `OrderStatus`, `CustomerID`) VALUES
+    ('2023-01-10', TRUE, '1234AB', '10', 'Delivered', 1),
+    ('2023-02-15', FALSE, '5678CD', '20', 'Pending', 2),
+    ('2023-03-20', TRUE, '9101EF', '30', 'Shipped', 3),
+    ('2023-04-25', TRUE, '1121GH', '40', 'Cancelled', 4),
+    ('2023-05-30', FALSE, '3141IJ', '50', 'Pending', 5),
+    ('2023-06-05', TRUE, '5161KL', '60', 'Delivered', 6);
 
-INSERT INTO `Orders` (`OrderDate`, `PaymentStatus`, `CustomerID`, `PostalCode`, `HouseNumber`)
-VALUES
-    ('2025-01-01', TRUE, 1, '1234AB', '10'),
-    ('2025-01-02', FALSE, 2, '5678CD', '25'),
-    ('2025-01-03', TRUE, 3, '2345EF', '12'),
-    ('2025-01-04', TRUE, 4, '6789GH', '30'),
-    ('2025-01-05', FALSE, 5, '3456IJ', '7');
-
-INSERT INTO `OrderLines` (`OrderID`, `ArticleID`, `PartnerID`, `Quantity`, `StartDateReservation`, `EndDateReservation`)
-VALUES
-    (1, 1, 1, 2, '2025-02-01', '2025-02-07'),
-    (2, 2, 2, 1, '2025-02-01', '2025-02-10'),
-    (3, 3, 3, 1, '2025-02-05', '2025-02-12'),
-    (4, 4, 4, 3, '2025-02-01', '2025-02-15'),
-    (5, 5, 5, 1, '2025-02-03', '2025-02-08');
-
+    -- Insert data into OrderLines
+    INSERT INTO `OrderLines` (`Quantity`, `StartDateReservation`, `EndDateReservation`, `OrderLinePrice`, `OrderID`, `ArticleID`, `PartnerID`) VALUES
+    (2, '2023-01-01', '2023-01-05', 39.98, 1, 1, 1),
+    (1, '2023-02-01', '2023-02-03', 49.99, 2, 2, 2),
+    (3, '2023-03-01', '2023-03-07', 299.97, 3, 3, 3),
+    (1, '2023-04-01', '2023-04-02', 79.99, 4, 4, 4),
+    (2, '2023-05-01', '2023-05-10', 119.98, 5, 5, 5),
+    (1, '2023-06-01', '2023-06-03', 29.99, 6, 6, 6);
