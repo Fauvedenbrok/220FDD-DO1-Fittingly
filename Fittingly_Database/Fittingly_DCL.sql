@@ -4,10 +4,11 @@ CREATE ROLE `Partner`;
 CREATE ROLE `Support`;
 CREATE ROLE `Guest`;
 
-GRANT `Customer` TO 'user1@example.com'@'%';
-GRANT `Partner` TO 'business@example.com'@'%';
-GRANT `Support` TO 'support@example.com'@'%';
-GRANT `Admin` TO 'admin@example.com'@'%';
+GRANT `Customer` TO 'user1@example.com';
+GRANT `Partner` TO 'business@example.com';
+GRANT `Support` TO 'support@example.com';
+GRANT `Admin` TO 'admin@example.com';
+GRANT `Guest` TO 'guest@example.com'@'%';	
 
 
 
@@ -24,19 +25,20 @@ CREATE VIEW `View_CompanyName_VATNr_CoCNr` AS
 SELECT CompanyName, VATNr, CoCNr
 FROM Partners;
 
-CREATE VIEW 'View_CompanyName' AS
+CREATE VIEW `View_CompanyName` AS
 SELECT CompanyName
 FROM Partners;
 
-CREATE VIEW 'View_PartnerID' AS
-SELECT CompanyName
+CREATE VIEW `View_PartnerID` AS
+SELECT PartnerID
 FROM Partners;
 
-GRANT UPDATE on 'View_CompanyName' TO 'Partner';
-GRANT DELETE on 'View_PartnerID' TO 'Partner';
+GRANT UPDATE ON `View_CompanyName` TO `Partner`;
+GRANT DELETE ON `View_PartnerID` TO `Partner`;
 GRANT SELECT ON `View_CompanyName_VATNr_CoCNr` TO `Customer`;
 GRANT SELECT, INSERT ON `Partners` TO `Partner`, `Support`;
 GRANT UPDATE ON `View_CompanyName_VATNr_CoCNr` TO `Support`;
+
 
 
 -- Customer Table
@@ -90,13 +92,14 @@ GRANT DELETE ON `View_EmailAddress_UserPassword_PhoneNumber` TO `Customer`, `Par
 GRANT UPDATE ON `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` TO `Support`;
 
 -- Articles Table
-CREATE VIEW 'View_Article_Without_ID' AS
-SELECT 'Name', 'Description', 'Availability', 'Size', 'Weight', WeightUnit, Color, 'Image', Category, SubCategory, Material, Brand
+CREATE VIEW `View_Article_Without_ID` AS
+SELECT `Name`, `Description`, `Availability`, `Size`, `Weight`, WeightUnit, Color, `Image`, Category, SubCategory, Material, Brand
 FROM Articles;
 
-GRANT UPDATE ON 'View_Article_Without_ID' TO 'Partner', 'Support';
+GRANT UPDATE ON `View_Article_Without_ID` TO 'Partner', 'Support';
 GRANT SELECT ON Articles TO 'Customer', 'Partner', 'Support';
 GRANT INSERT ON Articles TO 'Partner';
+
 
 
 
@@ -131,9 +134,9 @@ GRANT SELECT ON Orders TO 'Customer', 'Partner', 'Support';
 
 
 -- OrderLines Table
-CREATE VIEW 'View_Start_EndDateReservation' AS
+CREATE VIEW `View_Start_EndDateReservation` AS
 SELECT StartDateReservation, EndDateReservation
 FROM OrderLines;
 
-GRANT UPDATE ON 'View_Start_EndDateReservation' TO 'Partner';
-GRANT SELECT ON OrderLines TO 'Customer', 'Partner', 'Support';
+GRANT UPDATE ON `View_Start_EndDateReservation` TO `Partner`;
+GRANT SELECT ON OrderLines TO `Customer`, `Partner`, `Support`;
