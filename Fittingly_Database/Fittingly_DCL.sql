@@ -90,6 +90,7 @@ GRANT SELECT, UPDATE, DELETE ON `View_EmailAddress_UserPassword_PhoneNumber_News
 GRANT SELECT ON `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` TO `Partner`;
 GRANT DELETE ON `View_EmailAddress_UserPassword_PhoneNumber` TO `Customer`, `Partner`;
 GRANT UPDATE ON `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` TO `Support`;
+GRANT UPDATE ON `View_Newsletter` TO `Guest`;
 
 -- Articles Table
 CREATE VIEW `View_Article_Without_ID` AS
