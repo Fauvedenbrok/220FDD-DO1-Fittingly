@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $user_password = $_POST["UserPassword"];
 
     try{
-        require_once "dbh.inc.php";
+        require_once "../dbh.inc.php";
         require_once "signup_model.inc.php";
         require_once "signup_control.inc.php";
 
@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         create_user( $pdo,$first_name, $last_name, $phone_nr, $dob, $postal_code, $street_name, $house_nr, $city, $country, $email, $user_password);
 
-        header("location: ../klantregistratie.php?signup=success");
+        header("location: ../../klantregistratie.php?signup=success");
 
         $pdo = null;
         $stmt = null;
@@ -51,6 +51,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         die("Query failed: " . $e->getMessage());
     }
 } else {
-    header("location: ../klantregistratie.php");
+    header("location: ../../klantregistratie.php");
     die();
 }
