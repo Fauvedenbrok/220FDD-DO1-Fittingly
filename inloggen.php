@@ -1,6 +1,5 @@
 <?php
-require_once 'includes/config_session.inc.php';
-require_once 'includes/login_view.inc.php';
+require_once 'includes/login/login_view.inc.php';
 ?>
 
 <!doctype html>
@@ -27,18 +26,21 @@ require_once 'includes/login_view.inc.php';
             <div class="contact-info">
 
             </div>
-            <form method="post" action="inloggen.php">
+            <form method="post" action="includes/login/login.inc.php">
                 <label for="email">
                     E-mail:
-                    <input type="email" name="email" id="email" required><br>
+                    <input type="text" name="EmailAddress" placeholder="Email"><br>
                 </label>
                 <label for="password">
                     Wachtwoord:
-                    <input type="password" name="password" id="password" required><br>
+                    <input type="password" name="UserPassword" placeholder="Password"><br>
                 </label>
                 <label>
-                    <input type="submit" value="Log in" name="login">
+                    <button>Login</button>
                 </label>
+                <?php 
+                    check_login_errors();
+                ?>
             </form>
         </div>
     </main>

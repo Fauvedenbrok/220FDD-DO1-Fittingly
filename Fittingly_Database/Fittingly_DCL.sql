@@ -4,16 +4,17 @@ CREATE ROLE `Partner`;
 CREATE ROLE `Support`;
 CREATE ROLE `Guest`;
 
-GRANT `Customer` TO 'user1@example.com';
-GRANT `Partner` TO 'business@example.com';
-GRANT `Support` TO 'support@example.com';
-GRANT `Admin` TO 'admin@example.com';
-GRANT `Guest` TO 'guest@example.com'@'%';	
+-- GRANT `Customer` TO 'user1@example.com';
+-- GRANT `Partner` TO 'business@example.com';
+-- GRANT `Support` TO 'support@example.com';
+-- GRANT `Admin` TO 'admin@example.com';
+-- GRANT `Guest` TO 'guest@example.com'@'%';	
 
 
 
 /* Admin role features */
-GRANT ALL PRIVILIGES ON fittingly_database TO `Admin`;
+GRANT ALL PRIVILEGES ON fittingly_database.* TO 'Admin';
+
 
 
 -- Addresses Table
@@ -54,7 +55,7 @@ CREATE VIEW `View_CustomerID` AS
 SELECT CustomerID
 FROM Customers;
 
-GRANT SELECT ON `View_FirstName_LastName` TO `Partners`;
+GRANT SELECT ON `View_FirstName_LastName` TO `Partner`;
 GRANT SELECT, DELETE ON `View_CustomerID` TO `Customer`, `Support`;
 GRANT SELECT, INSERT, UPDATE ON `View_FirstName_LastName_DateofBirth` TO `Customer`, `Support`;
 
@@ -105,32 +106,32 @@ GRANT INSERT ON Articles TO 'Partner';
 
 
 -- Stock Table
-CREATE VIEW 'View_Price_InternalReference' AS
+CREATE VIEW `View_Price_InternalReference` AS
 SELECT Price, InternalReference
 FROM Stock;
 
-CREATE VIEW 'View_Price_InternalReference_QuantityOfStock' AS
+CREATE VIEW `View_Price_InternalReference_QuantityOfStock` AS
 SELECT Price, InternalReference, QuantityOfStock
 FROM Stock;
 
-GRANT SELECT ON 'View_Price_InternalReference' TO 'Customer', 'Guest';
-GRANT UPDATE ON 'View_Price_InternalReference_QuantityOfStock' TO 'Partner';
+GRANT SELECT ON `View_Price_InternalReference` TO 'Customer', 'Guest';
+GRANT UPDATE ON `View_Price_InternalReference_QuantityOfStock` TO 'Partner';
 GRANT SELECT ON Stock TO 'Partner', 'Support';
 GRANT INSERT ON Stock TO 'Partner';
 
 
 -- Orders Table
 
-CREATE VIEW 'View_OrderStatus' AS
+CREATE VIEW `View_OrderStatus` AS
 SELECT OrderStatus
 FROM Orders;
 
-CREATE VIEW 'View_OrderStatus_PaymentStatus' AS
+CREATE VIEW `View_OrderStatus_PaymentStatus` AS
 SELECT OrderStatus, PaymentStatus
 FROM Orders;
 
-GRANT UPDATE ON 'View_OrderStatus' TO 'Customer', 'Partner';
-GRANT UPDATE ON 'View_OrderStatus_PaymentStatus' TO 'Support';
+GRANT UPDATE ON `View_OrderStatus` TO 'Customer', 'Partner';
+GRANT UPDATE ON `View_OrderStatus_PaymentStatus` TO 'Support';
 GRANT SELECT ON Orders TO 'Customer', 'Partner', 'Support';
 
 
