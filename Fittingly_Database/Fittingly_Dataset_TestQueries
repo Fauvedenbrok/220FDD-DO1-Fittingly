@@ -19,7 +19,7 @@ SELECT City, COUNT(*) AS NumberOfCities
 FROM Addresses
 JOIN Customers ON Addresses.PostalCode = Customers.PostalCode AND Addresses.HouseNumber = Customers.HouseNumber
 GROUP BY City
-HAVING NumberOfCities > 1;
+HAVING NumberOfCities = 1;
 
 -- Distinct om unieke waarden te selecteren
 SELECT DISTINCT Country FROM Addresses;
@@ -67,11 +67,20 @@ INNER JOIN Articles ON Stock.ArticleID = Articles.ArticleID;
 SELECT Customers.FirstName, Customers.LastName, Orders.OrderDate
 FROM Customers
 FULL OUTER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+-- FULL OUTER JOIN wordt niet ondersteund door MariaDB, maar kan worden nagebootst.
+-- - De eerste SELECT-query gebruikt een LEFT JOIN om alle klanten te krijgen, inclusief degenen zonder overeenkomende orders.
+-- De tweede SELECT-query gebruikt een RIGHT JOIN om alle orders op te halen, inclusief degenen zonder overeenkomende klanten.
+-- Beide resultaten worden gecombineerd met UNION om een volledige outer join na te bootsen.
+SELECT Customers.FirstName, Customers.LastName, Orders.OrderDate
+FROM Customers
+LEFT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID
+UNION
+SELECT Customers.FirstName, Customers.LastName, Orders.OrderDate
+FROM Customers
+RIGHT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
 
-SELECT Partners.CompanyName, Articles.Name, Stock.Price
-FROM Partners
-FULL OUTER JOIN Stock ON Partners.PartnerID = Stock.PartnerID
-FULL OUTER JOIN Articles ON Stock.ArticleID = Articles.ArticleID;
 
 
 
