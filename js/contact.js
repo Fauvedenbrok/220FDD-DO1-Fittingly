@@ -33,7 +33,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     // de waarde van emailPattern = (één of meerdere tekens)@(één of meerdere tekens).(2 tot 3 tekens waarbij alleen tekens in het alfabet mogen.)
     const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (!email.match(emailPattern)) {
-        errors[2].textContent = "Voer een geldig e-mailadres in.";
+        errors[2].textContent = "Voer een geldig e-mailAddress in.";
         valid = false;
     } else {
         errors[2].textContent = "";
