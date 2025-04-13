@@ -8,6 +8,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         require_once "../dbh.inc.php";
         require_once "login_model.inc.php";
         require_once "login_control.inc.php";
+        require_once "login_view.inc.php";
 
         // Error handling
         $errors = [];
