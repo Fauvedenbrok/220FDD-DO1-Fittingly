@@ -412,9 +412,12 @@ body {
 
     h3 {
         font-size: 48px;
+<<<<<<< HEAD:css/onsdoelstyles.css
+=======
     }
     .scroll-info p{
         display: none;
+>>>>>>> 94ee410b748e541089832cfa11bd1aea43e9de01:css/indexstyles.css
     }
     .hero-sectie {
         flex-direction: column;
