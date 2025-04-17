@@ -1,13 +1,14 @@
 <?php
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $email= $_POST["email"];
-    $user_password = $_POST["user_password"];
+    $email= $_POST["EmailAddress"];
+    $user_password = $_POST["UserPassword"];
 
     try{
-        require_once "dbh.inc.php";
+        require_once "../dbh.inc.php";
         require_once "login_model.inc.php";
         require_once "login_control.inc.php";
+        require_once "login_view.inc.php";
 
         // Error handling
         $errors = [];
@@ -22,28 +23,20 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $errors["login_incorrect"] = "Incorrect login information";
         }
 
-        if(!is_useremail_wrong($result) && is_password_wrong($user_password, $result["user_password"])){
+        if(!is_useremail_wrong($result) && is_password_wrong($user_password, $result["UserPassword"])){
             $errors["login_incorrect"] = "Incorrect login information";
         }
 
-        require_once "config_session.inc.php";
 
         if($errors){
             $_SESSION["errors_login"] = $errors;
             
-            header("location: ../index.php");
+            header("location: /inloggen.php");
             die();
         }
 
-        $newSessionId = session_create_id();
-        $sessionId = $newSessionId . "_" . $result["id"];
-        session_id($sessionId);
 
-        $_SESSION["user_id"] = $result["id"];
-        $_SESSION["user_name"] = htmlspecialchars($result["first_name"]);
-        $_SESSION["last_regeneration"] = time();
-
-        header("location: ../index.php?login=success");
+        header("location: /querybuilder.html");
         $pdo = null;
         $stmt = null;
 
@@ -52,6 +45,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         die("Query failed: " . $e->getMessage());
     }
 } else {
-    header("location: ../index.php");
+    header("location: /inloggen.php");
     die();
 }

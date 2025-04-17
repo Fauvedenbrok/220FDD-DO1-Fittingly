@@ -1,111 +1,144 @@
-CREATE ROLE `Admin`,
-CREATE ROLE `Customers`,
-CREATE ROLE `Partners`,
-CREATE ROLE `Support`,
+CREATE ROLE `Admin`;
+CREATE ROLE `Customer`;
+CREATE ROLE `Partner`;
+CREATE ROLE `Support`;
+CREATE ROLE `Guest`;
+
+-- GRANT `Customer` TO 'user1@example.com';
+-- GRANT `Partner` TO 'business@example.com';
+-- GRANT `Support` TO 'support@example.com';
+-- GRANT `Admin` TO 'admin@example.com';
+-- GRANT `Guest` TO 'guest@example.com'@'%';	
+
+
+
+/* Admin role features */
+GRANT ALL PRIVILEGES ON fittingly_database.* TO 'Admin';
+
+
+
+-- Addresses Table
+GRANT SELECT, INSERT, UPDATE ON `Addresses` TO `Customer`, `Support`, `Partner`;
+
+
+-- Partner Table
+CREATE VIEW `View_CompanyName_VATNr_CoCNr` AS
+SELECT CompanyName, VATNr, CoCNr
+FROM Partners;
+
+CREATE VIEW `View_CompanyName` AS
+SELECT CompanyName
+FROM Partners;
+
+CREATE VIEW `View_PartnerID` AS
+SELECT PartnerID
+FROM Partners;
+
+GRANT UPDATE ON `View_CompanyName` TO `Partner`;
+GRANT DELETE ON `View_PartnerID` TO `Partner`;
+GRANT SELECT ON `View_CompanyName_VATNr_CoCNr` TO `Customer`;
+GRANT SELECT, INSERT ON `Partners` TO `Partner`, `Support`;
+GRANT UPDATE ON `View_CompanyName_VATNr_CoCNr` TO `Support`;
+
+
+
+-- Customer Table
+CREATE VIEW `View_FirstName_LastName_DateofBirth` AS
+SELECT FirstName, LastName, DateOfBirth
+FROM Customers;
+
+CREATE VIEW `View_FirstName_LastName` AS
+SELECT FirstName, LastName	
+FROM Customers;
+
+CREATE VIEW `View_CustomerID` AS
+SELECT CustomerID
+FROM Customers;
+
+GRANT SELECT ON `View_FirstName_LastName` TO `Partner`;
+GRANT SELECT, DELETE ON `View_CustomerID` TO `Customer`, `Support`;
+GRANT SELECT, INSERT, UPDATE ON `View_FirstName_LastName_DateofBirth` TO `Customer`, `Support`;
+
+
+-- UserAccounts Table
+CREATE VIEW `View_EmailAddress_UserPassword_PhoneNumber_Newsletter` AS
+SELECT EmailAddress, UserPassword, PhoneNumber, Newsletter
+FROM UserAccounts;
+
+CREATE VIEW `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` AS
+SELECT EmailAddress, UserPassword, AccountStatus, PhoneNumber, Newsletter
+FROM UserAccounts;
+
+CREATE VIEW `View_EmailAddress_UserPassword_PhoneNumber` AS
+SELECT EmailAddress, UserPassword, PhoneNumber
+FROM UserAccounts;
+
+CREATE VIEW `View_Newsletter` AS
+SELECT Newsletter
+FROM UserAccounts;
+
+CREATE VIEW `View_EmailAddress_UserPassword_Newsletter` AS
+SELECT EmailAddress, UserPassword, Newsletter
+FROM UserAccounts;
+
+CREATE VIEW `View_EmailAddress_UserPassword_AccountStatus_PhoneNumber` AS
+SELECT EmailAddress, UserPassword, AccountStatus, PhoneNumber
+FROM UserAccounts;
+
+
+GRANT INSERT ON `UserAccounts` TO `Customer`, `Support`, `Partner`, `Guest`;
+GRANT SELECT, UPDATE, DELETE ON `View_EmailAddress_UserPassword_PhoneNumber_Newsletter` TO `Customer`, `Support`, `Partner`;
+GRANT SELECT ON `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` TO `Partner`;
+GRANT DELETE ON `View_EmailAddress_UserPassword_PhoneNumber` TO `Customer`, `Partner`;
+GRANT UPDATE ON `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` TO `Support`;
+GRANT UPDATE ON `View_Newsletter` TO `Guest`;
+
+-- Articles Table
+CREATE VIEW `View_Article_Without_ID` AS
+SELECT `Name`, `Description`, `Availability`, `Size`, `Weight`, WeightUnit, Color, `Image`, Category, SubCategory, Material, Brand
+FROM Articles;
+
+GRANT UPDATE ON `View_Article_Without_ID` TO 'Partner', 'Support';
+GRANT SELECT ON Articles TO 'Customer', 'Partner', 'Support';
+GRANT INSERT ON Articles TO 'Partner';
 
 
 
 
--- Admin role features
-GRANT ALL PRIVILEGES ON fittingly_database TO `Admin`,
-GRANT SELECT ON fittingly_database.orders TO `Customers`,
-GRANT SELECT, INSERT, UPDATE ON fittingly_database.stocks TO `Partners`,
+-- Stock Table
+CREATE VIEW `View_Price_InternalReference` AS
+SELECT Price, InternalReference
+FROM Stock;
+
+CREATE VIEW `View_Price_InternalReference_QuantityOfStock` AS
+SELECT Price, InternalReference, QuantityOfStock
+FROM Stock;
+
+GRANT SELECT ON `View_Price_InternalReference` TO 'Customer', 'Guest';
+GRANT UPDATE ON `View_Price_InternalReference_QuantityOfStock` TO 'Partner';
+GRANT SELECT ON Stock TO 'Partner', 'Support';
+GRANT INSERT ON Stock TO 'Partner';
 
 
+-- Orders Table
+
+CREATE VIEW `View_OrderStatus` AS
+SELECT OrderStatus
+FROM Orders;
+
+CREATE VIEW `View_OrderStatus_PaymentStatus` AS
+SELECT OrderStatus, PaymentStatus
+FROM Orders;
+
+GRANT UPDATE ON `View_OrderStatus` TO 'Customer', 'Partner';
+GRANT UPDATE ON `View_OrderStatus_PaymentStatus` TO 'Support';
+GRANT SELECT ON Orders TO 'Customer', 'Partner', 'Support';
 
 
+-- OrderLines Table
+CREATE VIEW `View_Start_EndDateReservation` AS
+SELECT StartDateReservation, EndDateReservation
+FROM OrderLines;
 
-
-
-
-
--- Support role features
--- Select op customers, partners, useraccounts > passwords, orderlines, orders, stocks, articles
--- revoke op alle primary en foreign keys
-
-CREATE VIEW fittingly_database_View_Support AS 
-SELECT Passwords, AccountStatus, CustomerID, PartnerID
-FROM fittingly_database.UserAccounts;
-
-GRANT SELECT ON fittingly_database.Customers TO `Support`;
-GRANT SELECT ON fittingly_database.OrderLines TO `Support`;
-GRANT SELECT ON fittingly_database.Partners TO `Support`;
-GRANT SELECT, UPDATE ON fittingly_database.UserAccounts.Passwords TO `Support`,
-
-
-
--- Partner role features
-CREATE VIEW fittingly_database_View_Partner AS
-SELECT DISTINCT c.CustomerID, c.PostalCode, c.HouseNumber, c.PaymentStatus
-FROM fittingly_database.Customers c
-JOIN fittingly_database.OrderLines ol ON o.OrderID = ol.OrderID
-JOIN fittingly_database.Partners p ON ol.PartnerID = p.PartnerID
-WHERE p.PartnerID = @LoggedInPartnerID
-
-SET @LoggedInPartnerID = [2];
-
-
--- Customer role features
-
-
-
-
-
-
-
-
-
-
-GRANT SELECT (column1, column2), INSERT (column1), UPDATE (column2) 
-ON fittingly_database.stocks TO 'username'@'host';
-
-
-
-
-
-
--- Chatgpt, even uitzoeken.
-CREATE VIEW PartnerOrders AS
-SELECT 
-    o.OrderID,
-    o.OrderDate,
-    o.PaymentStatus,
-    ol.ArticleID,
-    ol.Quantity,
-    ol.StartDateReservation,
-    ol.EndDateReservation,
-    o.PostalCode, 
-    o.HouseNumber
-FROM Orders o
-JOIN OrderLines ol ON o.OrderID = ol.OrderID
-WHERE ol.PartnerID = CURRENT_USER_ID(); -- Replace with session-based filtering if needed
-
-
-CREATE VIEW CustomerOrders AS
-SELECT 
-    o.OrderID,
-    o.OrderDate,
-    o.PaymentStatus,
-    ol.ArticleID,
-    ol.Quantity,
-    ol.StartDateReservation,
-    ol.EndDateReservation
-FROM Orders o
-JOIN OrderLines ol ON o.OrderID = ol.OrderID
-WHERE o.CustomerID = CURRENT_USER_ID();
-
-
--- Grant only SELECT access on PartnerOrders to partners
-GRANT SELECT ON PartnerOrders TO 'partner_role';
-
--- Grant only SELECT access on CustomerOrders to customers
-GRANT SELECT ON CustomerOrders TO 'customer_role';
-
--- Ensure partners cannot access raw customer data
-REVOKE SELECT, INSERT, UPDATE, DELETE ON Customers FROM 'partner_role';
-
--- Ensure partners cannot access user accounts
-REVOKE SELECT, INSERT, UPDATE, DELETE ON UserAccounts FROM 'partner_role';
-
-
-GRANT ALL PRIVILEGES ON *.* TO 'admin_role';
+GRANT UPDATE ON `View_Start_EndDateReservation` TO `Partner`;
+GRANT SELECT ON OrderLines TO `Customer`, `Partner`, `Support`;

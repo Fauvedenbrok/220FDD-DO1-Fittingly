@@ -18,6 +18,7 @@ CREATE TABLE
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         `StreetName` VARCHAR(60),
+        `City` VARCHAR(100),
         `Country` VARCHAR(30) DEFAULT 'Nederland',
         CONSTRAINT `PK_addresses` PRIMARY KEY (`PostalCode`, `HouseNumber`)
     );
@@ -30,7 +31,6 @@ CREATE TABLE
         `CoCNr` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        `PhoneNumber` VARCHAR(15),
         CONSTRAINT `FK_Partner_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`),
         CONSTRAINT `UQ_VATnr` UNIQUE (`VATNr`),
         CONSTRAINT `UQCoCNr` UNIQUE (`CoCNr`)
@@ -41,9 +41,7 @@ CREATE TABLE
         `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
-        `PhoneNumber` VARCHAR(15),
-        `DateOfBirth` DATE,
-        `Newsletter` BOOLEAN DEFAULT TRUE,
+        `DateOfBirth` VARCHAR(100),
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         CONSTRAINT `FK_Customer_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`)
@@ -51,11 +49,13 @@ CREATE TABLE
 
 CREATE TABLE
     `UserAccounts` (
-        `EmailAdres` VARCHAR(320) PRIMARY KEY,
-        `Passwords` VARCHAR(255) NOT NULL,
+        `EmailAddress` VARCHAR(320) PRIMARY KEY,
+        `UserPassword` VARCHAR(255) NOT NULL,
         `AccountStatus` ENUM ('Non-active', 'Active', 'Suspended'), 
         `AccountAccessRights` ENUM ('Customer', 'Partner', 'Admin', 'Support'),
         `DateOfRegistration` DATE,
+        `PhoneNumber` VARCHAR(15),
+        `Newsletter` BOOLEAN DEFAULT TRUE,
         `PartnerID` INT,
         `CustomerID` INT,
         CONSTRAINT `FK_UserAccount_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
@@ -94,11 +94,12 @@ CREATE TABLE
 
 CREATE TABLE
     `Stock` (
-        `ArticleID` INT NOT NULL,
-        `PartnerID` INT NOT NULL,
         `QuantityOfStock` INT DEFAULT 0,
         `Price` DECIMAL(10, 2) DEFAULT 0,
         `DateAdded` DATE NOT NULL,
+        `InternalReference` VARCHAR(50) NOT NULL,
+        `ArticleID` INT NOT NULL,
+        `PartnerID` INT NOT NULL,
         CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`),
         CONSTRAINT `FK_Stock` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`),
         FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`)
@@ -109,23 +110,29 @@ CREATE TABLE
         `OrderID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `OrderDate` DATE,
         `PaymentStatus` BOOLEAN DEFAULT FALSE,
-        `CustomerID` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
+        `OrderStatus` ENUM ('Pending', 'Shipped', 'Delivered', 'Cancelled'),
+        `CustomerID` INT NOT NULL,
         CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`),
         CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
     `OrderLines` (
+        `Quantity` INT DEFAULT 0,
+        `StartDateReservation` DATE,
+        `EndDateReservation` DATE,  
+        `OrderLinePrice` DECIMAL(10, 2) DEFAULT 0,	
         `OrderID` INT NOT NULL,
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
-        `Quantity` INT DEFAULT 0,
-        `StartDateReservation` DATE,
-        `EndDateReservation` DATE,
         CONSTRAINT `PK_OrderLine` PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`),
         CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
         CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
         CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
     );
+
+
+
+    

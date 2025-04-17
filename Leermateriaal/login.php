@@ -1,19 +1,17 @@
 <?php
-require_once 'includes/signup/signup_view.inc.php';
+session_start();
 ?>
 
 <!doctype html>
-<html lang="nl">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/Images/icons/favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/contact.css">
-    <title>Klant registratie</title>
+    <title>Document</title>
 </head>
-
 <body>
     <header></header>
     <main>
@@ -26,50 +24,50 @@ require_once 'includes/signup/signup_view.inc.php';
             <div class="contact-info">
 
             </div>
-            <form method="post" action="includes/signup.inc.php">
+            <form method="post" action="klantregistratie.php">
                 <label for="name">
-                    Voornaam:
-                    <input type="text" name="FirstName" id="firstname" required><br>
-                </label>
-                <label for="name">
-                    Achternaam:
-                    <input type="text" name="LastName" id="lastname" required><br>
+                    Naam:
+                    <input type="text" name="name" id="name" required><br>
                 </label>
                 <label for="email">
                     E-mail:
-                    <input type="email" name="EmailAddress" id="email" required><br>
+                    <input type="email" name="email" id="email" required><br>
                 </label>
                 <label for="phone">
                     Telefoon:
-                    <input type="tel" name="PhoneNumber" id="phone"><br>
+                    <input type="tel" name="phone" id="phone" required><br>
                 </label>
                 <label for="dateOfBirth">
                     Geboortedatum:
-                    <input type="date" name="DateOfBirth" id="dateOfBirth" required><br>
+                    <input type="date" name="dateOfBirth" id="dateOfBirth" required><br>
                 </label>
                 <label for="postalCode">
                     Postcode:
-                    <input type="text" name="PostalCode" id="postalCode" required><br>
+                    <input type="text" name="postalCode" id="postalCode" required><br>
                 </label>
                 <label for="streetName">
                     Straat:
-                    <input type="text" name="StreetName" id="streetName" required><br>
+                    <input type="text" name="streetName" id="streetName" required><br>
                 </label>
                 <label for="streetNumber">
                     Huisnummer:
-                    <input type="text" name="HouseNumber" id="streetNumber" required><br>
+                    <input type="text" name="streetNumber" id="streetNumber" required><br>
+                </label>
+                <label for="streetNumberAppendix">
+                    Huisnummer toevoeging:
+                    <input type="text" name="streetNumberAppendix" id="streetNumberAppendix"><br>
                 </label>
                 <label for="city">
                     Stad:
-                    <input type="text" name="City" id="city" required><br>
+                    <input type="text" name="city" id="city" required><br>
                 </label>
                 <label for="country">
                     Land:
-                    <input type="text" name="Country" id="country" required><br>
+                    <input type="text" name="country" id="country" required><br>
                 </label>
                 <label for="password">
                     Wachtwoord:
-                    <input type="password" name="UserPassword" id="password" required><br>
+                    <input type="password" name="password" id="password" required><br>
                 </label>
                 <label>
                     <input type="checkbox" name="newsletter">
@@ -78,8 +76,7 @@ require_once 'includes/signup/signup_view.inc.php';
                 </label>
             </form>
             <div>
-            <?php 
-            check_signup_errors();/*
+            <?php
     include("Models/Person.php");
     include("Models/Address.php");
     include("Models/Message.php");
@@ -123,7 +120,7 @@ require_once 'includes/signup/signup_view.inc.php';
         echo $person->getPassword();
 
  
-    } */
+    }
     ?>
             </div>
         </div>
@@ -136,5 +133,31 @@ require_once 'includes/signup/signup_view.inc.php';
         includeHTML("footer.html", "footer");
     </script>
 </body>
-
+<body>
+<form action="login.php" method="post">
+    <label>Username:<br>
+        <input type="text" name="username">
+    </label><br>
+    <label>password:<br>
+        <input type="text" name="password">
+    </label><br>
+    <input type="submit" name="login" value="login"><br>
+</form>
+</body>
 </html>
+
+
+<?php
+if(isset($_POST["login"])){
+    if(!empty($_POST["username"]) && !empty($_POST["password"])){
+        $_SESSION["username"] = $_POST['username'];
+        $_SESSION["password"] = $_POST['password'];
+
+        header("Location: home.php");
+    }
+    else{
+        echo "Missing Username or password<br>";
+    }
+}
+
+

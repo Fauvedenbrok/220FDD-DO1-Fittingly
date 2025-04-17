@@ -57,6 +57,11 @@ body {
     width: 50%;
 }
 
+.form-error {
+    color: red;
+    font-weight: bold;
+}
+
 /* Form content: inputvelden + contactinformatie */
 .form-content {
     display: flex;
