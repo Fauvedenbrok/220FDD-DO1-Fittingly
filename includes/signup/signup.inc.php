@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         if($errors){
             $_SESSION["errors_signup"] = $errors;
-            header("location: ../klantregistratie.php");
+            header("location: ../../klantregistratie.php");
             die();
         }
 

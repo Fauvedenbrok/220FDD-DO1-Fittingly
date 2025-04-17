@@ -76,10 +76,13 @@ require_once 'includes/signup/signup_view.inc.php';
                     Nieuwsbrief<br>
                     <input type="submit" value="Registreer" name="submit">
                 </label>
+                <?php 
+                    check_signup_errors();
+                ?>
             </form>
             <div>
             <?php 
-            check_signup_errors();/*
+    /*
     include("Models/Person.php");
     include("Models/Address.php");
     include("Models/Message.php");
