@@ -1,17 +1,17 @@
--- SET
---     FOREIGN_KEY_CHECKS = 0;
+SET
+    FOREIGN_KEY_CHECKS = 0;
 
--- DROP TABLE IF EXISTS `OrderLines`;
--- DROP TABLE IF EXISTS `Orders`;
--- DROP TABLE IF EXISTS `Stock`;
--- DROP TABLE IF EXISTS `UserAccounts`;
--- DROP TABLE IF EXISTS `Articles`;
--- DROP TABLE IF EXISTS `Customers`;
--- DROP TABLE IF EXISTS `Partners`;
--- DROP TABLE IF EXISTS `Addresses`;
+DROP TABLE IF EXISTS `OrderLines`;
+DROP TABLE IF EXISTS `Orders`;
+DROP TABLE IF EXISTS `Stock`;
+DROP TABLE IF EXISTS `UserAccounts`;
+DROP TABLE IF EXISTS `Articles`;
+DROP TABLE IF EXISTS `Customers`;
+DROP TABLE IF EXISTS `Partners`;
+DROP TABLE IF EXISTS `Addresses`;
 
--- SET
---     FOREIGN_KEY_CHECKS = 1;
+SET
+    FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE
     `Addresses` (
@@ -59,7 +59,7 @@ CREATE TABLE
         `PartnerID` INT,
         `CustomerID` INT,
         CONSTRAINT `FK_UserAccount_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
-        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE --Als een customer (uiteindelijk) gedelete wordt, dan wordt ook de useraccount gedelete.
+        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE -- Als een customer (uiteindelijk) gedelete wordt, dan wordt ook de useraccount gedelete.
     );
 
 CREATE TABLE
@@ -114,7 +114,7 @@ CREATE TABLE
         `HouseNumber` VARCHAR(10),
         `OrderStatus` ENUM ('Pending', 'Shipped', 'Delivered', 'Cancelled'),
         `CustomerID` INT NOT NULL,
-        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE, ---- Als een customer (uiteindelijk) gedelete wordt, dan worden ook de orders van die customer gedelete.
+        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE, -- Als een customer (uiteindelijk) gedelete wordt, dan worden ook de orders van die customer gedelete.
         CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
