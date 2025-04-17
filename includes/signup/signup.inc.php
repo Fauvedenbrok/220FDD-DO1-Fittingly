@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             $errors["email_registered"] = "This e-mail is already registered";
         }
 
-        require_once "config_session.inc.php";
+
 
         if($errors){
             $_SESSION["errors_signup"] = $errors;

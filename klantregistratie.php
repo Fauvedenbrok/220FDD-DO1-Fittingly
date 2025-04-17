@@ -26,7 +26,7 @@ require_once 'includes/signup/signup_view.inc.php';
             <div class="contact-info">
 
             </div>
-            <form method="post" action="includes/signup.inc.php">
+            <form method="post" action="includes/signup/signup.inc.php">
                 <label for="name">
                     Voornaam:
                     <input type="text" name="FirstName" id="firstname" required><br>
