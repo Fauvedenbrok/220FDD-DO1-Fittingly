@@ -66,6 +66,14 @@ function set_user(
             $stmt->bindParam(":house_nr", $house_nr);
             $stmt->execute();
 
+            $customerId = $pdo->lastInsertId();
+
+            $updateUserAccountQuery = "UPDATE useraccounts SET CustomerID = :customer_id WHERE EmailAddress = :email;";
+            $stmt = $pdo->prepare($updateUserAccountQuery);
+            $stmt->bindParam(":customer_id", $customerId);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+
             // Commit the transaction
             $pdo->commit();
         } catch (Exception $e) {

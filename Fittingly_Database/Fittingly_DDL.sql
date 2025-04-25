@@ -31,7 +31,7 @@ CREATE TABLE
         `CoCNr` INT NOT NULL,
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK_Partner_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`),
+        CONSTRAINT `FK_Partner_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`) ON UPDATE CASCADE, -- Als een adres van een partner verandert, dan moet dat ook in de addresses tabel veranderen.
         CONSTRAINT `UQ_VATnr` UNIQUE (`VATNr`),
         CONSTRAINT `UQCoCNr` UNIQUE (`CoCNr`)
     );
@@ -44,7 +44,7 @@ CREATE TABLE
         `DateOfBirth` VARCHAR(100),
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
-        CONSTRAINT `FK_Customer_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`)
+        CONSTRAINT `FK_Customer_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`) ON UPDATE CASCADE -- Als een adres van een customer verandert, dan moet dat ook in de addresses tabel veranderen.
     );
 
 CREATE TABLE
@@ -59,7 +59,7 @@ CREATE TABLE
         `PartnerID` INT,
         `CustomerID` INT,
         CONSTRAINT `FK_UserAccount_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
-        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`)
+        CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE -- Als een customer (uiteindelijk) gedelete wordt, dan wordt ook de useraccount gedelete.
     );
 
 CREATE TABLE
@@ -101,7 +101,7 @@ CREATE TABLE
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
         CONSTRAINT `PK_Stock` PRIMARY KEY (`ArticleID`, `PartnerID`),
-        CONSTRAINT `FK_Stock` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`),
+        CONSTRAINT `FK_Stock` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`) ON DELETE CASCADE, -- Als een artikel gedelete wordt, dan wordt ook de stock van dat artikel gedelete.
         FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`)
     );
 
@@ -114,7 +114,7 @@ CREATE TABLE
         `HouseNumber` VARCHAR(10),
         `OrderStatus` ENUM ('Pending', 'Shipped', 'Delivered', 'Cancelled'),
         `CustomerID` INT NOT NULL,
-        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`),
+        CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE, -- Als een customer (uiteindelijk) gedelete wordt, dan worden ook de orders van die customer gedelete.
         CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
     );
 
@@ -128,11 +128,8 @@ CREATE TABLE
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
         CONSTRAINT `PK_OrderLine` PRIMARY KEY (`OrderID`, `PartnerID`, `ArticleID`),
-        CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
+        CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`) ON DELETE CASCADE, -- Als een order gedelete wordt, dan worden ook de orderlines van die order gedelete.
         CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
         CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
-    );
+        );
 
-
-
-    
