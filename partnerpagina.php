@@ -138,7 +138,7 @@
               om van je te horen!
             </p>
             <div>
-              <a href="contact.html"><button class="aanmeld-button" onclick="pushButton()">
+              <a href="contact.php"><button class="aanmeld-button" onclick="pushButton()">
                   Aanmelden
                 </button></a>
             </div>
@@ -152,8 +152,8 @@
   <script src="js/partnerPaginaScripts.js"></script>
   <script src="js/scripts.js"></script>
   <script>
-    includeHTML("header.html", "header");
-    includeHTML("footer.html", "footer");
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer");
   </script>
 </body>
 

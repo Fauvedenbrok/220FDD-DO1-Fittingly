@@ -48,8 +48,8 @@ require_once 'includes/login/login_view.inc.php';
     </footer>
     <script src="js/scripts.js"></script>
     <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer");
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer");
     </script>
 </body>
 

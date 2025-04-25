@@ -2,7 +2,7 @@
   <body>
     <div class="main-container">
       <div class="header-flexbox">
-        <a href="index.html"
+        <a href="index.php"
           ><img
             class="header-logo"
             src="/Images/logo_fittingly_light.png"
@@ -18,14 +18,14 @@
         </button>
         <nav>
           <button>
-            <a class="nav-button-tekst" href="index.html">Home</a>
+            <a class="nav-button-tekst" href="index.php">Home</a>
           </button>
           <button>
-            <a class="nav-button-tekst" href="partnerpagina.html"
+            <a class="nav-button-tekst" href="partnerpagina.php"
               >Partners</a>
           </button>
           <button>
-            <a class="nav-button-tekst" href="contact.html">Contact</a>
+            <a class="nav-button-tekst" href="contact.php">Contact</a>
           </button>
           <button>
             <a class="nav-button-tekst" href="klantregistratie.php">Registreren</a>

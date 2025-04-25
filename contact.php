@@ -66,8 +66,8 @@
     <footer></footer>
     <script src="js/scripts.js"></script>
     <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer")
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer")
     </script>
     <script src="js/contact.js"></script>
 </body>

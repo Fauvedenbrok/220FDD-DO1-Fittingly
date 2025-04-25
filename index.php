@@ -46,7 +46,7 @@
       <div class="hero-sectie-partners">
         <div class="hero-content">
           <h2>Partner worden van Fittingly?</h2>
-          <button class="cta-partner-hero" onclick="window.location.href='partnerpagina.html'">Meer informatie</button>
+          <button class="cta-partner-hero" onclick="window.location.href='partnerpagina.php'">Meer informatie</button>
         </div>
       </div>
       <div class="scroll-info">
@@ -129,8 +129,8 @@
   <footer></footer>
   <script src="js/scripts.js"></script>
   <script>
-    includeHTML("header.html", "header");
-    includeHTML("footer.html", "footer")
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer")
   </script>
   <script src="./js/onsdoelscript.js"></script>
 </body>
