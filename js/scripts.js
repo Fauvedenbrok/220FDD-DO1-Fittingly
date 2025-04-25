@@ -7,6 +7,14 @@ function changeNav(){
 
 };
 
+function changeLang() {
+  // Selecteer het dropdown-menu
+  const dropdown = document.getElementById('language-dropdown');
+  
+  // Toggle de 'visible'-klasse
+  dropdown.classList.toggle('visible');
+}
+
 function includeHTML(source, dst) {
   fetch(source)
     .then(response => response.text())

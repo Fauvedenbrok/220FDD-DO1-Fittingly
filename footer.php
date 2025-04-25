@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
+$lang = $_SESSION['lang'] ?? 'nl';
+
+// Laad het juiste taalbestand
+include "lang/$lang.php";
+?>
+
 <html lang="nl">
 
 <body>

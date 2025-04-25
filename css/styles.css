@@ -38,6 +38,45 @@
     font-weight: 500 !important;
   }
 
+  .language-dropdown {
+    display: none; /* Verberg het menu standaard */
+    position: absolute;
+    right: 78px; /* Zorg dat het menu rechts uitlijnt */
+    top: 75px;
+    background-color: #1a3030; /* Achtergrondkleur van het menu */
+    border: 1px solid #cc9c4e; /* Optionele rand */
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 999;
+    width: 100px !important; /* Pas de breedte van het menu aan */
+  }
+
+  .language-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #dcd3c2;
+  }
+  
+  .language-dropdown button {
+    background: none;
+    border: none;
+    margin: 5px 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .language-dropdown img {
+    width: 50px; /* Pas de grootte van de vlaggen aan */
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .language-dropdown.visible {
+    display: flex; /* Maak het menu zichtbaar */
+    flex-direction: column; /* Zorg dat de vlaggen onder elkaar staan */
+  }
+
   div.footer-body {
     width: 100%;
   }
@@ -198,13 +237,20 @@ nav > button {
   height: fit-content;
 }
 
+
+
+@media (max-width: 1400px) {
+  nav > button {
+    padding: 0px;
+  }
+}
+
 nav > button > a {
   color: rgba(220, 211, 194, 1);
   text-decoration: none;
   font-weight: 400;
   line-height: 24px;
 }
-
 
 button.hamburger {
   background: none;
@@ -219,6 +265,23 @@ button.hamburger {
 
 button.hamburger {
   display: none;
+}
+
+#header-lang-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -150px;
+  top: 0px;
+  height: 100%;
+}
+
+.header-lang-img {
+  width: auto;
+  height: 25px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 .main-title {
@@ -349,4 +412,10 @@ footer p {
   flex-direction: row;
   justify-content: space-evenly;
   width: 50%;
+}
+
+@media (min-width: 1200px) {
+  .language-button {
+    display: none;
+  }
 }
