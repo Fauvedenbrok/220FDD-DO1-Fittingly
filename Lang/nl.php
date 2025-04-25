@@ -1,0 +1,75 @@
+<?php
+// index
+$hero_content_h2 = "Partner worden van Fittingly?";
+$hero_content_button = "Meer informatie";
+$scroll_info_text = "Wie zijn wij?";
+$about_h3 = "Exclusieve kleding, zonder kopen";
+$about_h4 = "Ons platform";
+$about_text = "Fittingly is dé bestemming voor het huren van exclusieve kleding! Of je nu naar een bruiloft, gala of een andere bijzondere gelegenheid gaat, bij ons vind je de perfecte outfit, zonder dat je deze hoeft te kopen. Hiermee draag je bij aan duurzaamheid en voorkom je kledingverspilling.";
+$index_textopmaak_h3 = "Duurzame Mode, Luxe Ervaring";
+$index_textopmaak_h4 = "Onze doel";
+$index_paragraph_text = "Bij Fittingly willen we luxe en duurzaamheid op een unieke manier combineren. Ons doel is om dé standaard te worden voor exclusieve kledingverhuur. We streven ernaar een leidende rol te spelen in een toekomst waarin kleding delen en hergebruiken vanzelfsprekend is. Op die manier dragen we samen bij aan een duurzame wereld waarin luxe en verantwoordelijkheid hand in hand gaan.";
+$usp_container_1 = "Betaalbaarheid";
+$usp_container_2 = "Innovatie";
+$usp_container_3 = "Duurzaamheid";
+
+
+// partnerpagina
+$partnerpagina_h2 = "Duurzaam verhuren, Tijdloze elegantie";
+$partnerpagina_paragraph = "Sluit je aan bij Fittingly en geef je collectie een tweede leven. Bereik een nieuwe doelgroep, verhoog je omzet en draag bij aan een duurzame mode-industrie.";
+$partnerpagina_usp1 = "Duurzaam kledingverhuur";
+$partnerpagina_usp2 = "Toegankelijke prijsstructuur";
+$partnerpagina_usp3 = "Virtuele paskamer";
+$partnerpagina_h3 = "Samenwerken met Fittingly";
+$partnerpagina_h4 = "De toekomst van Modeverhuur";
+$partnerpagina_paragraph2 = "Bij Fittingly zetten we ons in om mode toegankelijker, duurzamer en innovatiever te maken. Ons platform biedt een betrouwbare en gepersonaliseerde kledingverhuurervaring, waarbij hygiëne en klanttevredenheid voorop staan. We werken samen met vooruitstrevende merken en partners om onze klanten een zorgvuldig geselecteerd aanbod te bieden. Samen kunnen we bijdragen aan een circulaire mode-industrie en de impact op het milieu verkleinen. Word partner van Fittingly en ontdek hoe wij de modewereld transformeren!";
+$partnerpagina_koptekst_h4 = "Deze partners gingen je voor";
+$partnerpagina_afsluiting_p_1 = "Geïnteresserd?";
+$partnerpagina_afsluiting_p_2 = " Zie jij mogelijkheden om samen te werken met Fittingly en deel uit te maken van de toekomst van mode? Meld je dan vandaag nog aan en ontdek wat we samen kunnen bereiken. We kijken ernaar uit om van je te horen!";
+$partnerpagina_aanmeld_button = "Aanmelden";
+
+
+// contactformulier pagina
+$contactpagina_h2_contact = "Contact";
+$contactpagina_p_contact = "Benieuwd naar de mogelijkheden? Meld je aan en verhuur jouw exclusieve kleding via ons platform, terwijl je bijdraagt aan een duurzame toekomst.";
+$contactpagina_h3_contactinfo = "Contactinformatie";
+$contactpagina_p_contactinfo_1 = "Adres: Straat 123, 1021 AB, Breda";
+$contactpagina_p_contactinfo_2 = "Telefoon: +31631506081";
+$contactpagina_p_contactinfo_3 = "Email: info@fittingly.nl";
+
+$contactpagina_formulier_naam = "Naam:";
+$contactpagina_formulier_naam_placeholder = "Naam:";
+$contactpagina_formulier_bedrijf = "Bedrijf:";
+$contactpagina_formulier_bedrijf_placeholder = "Bedrijf:";
+$contactpagina_formulier_email = "Email adres:";
+$contactpagina_formulier_email_placeholder = "Email adres:";
+$contactpagina_formulier_tel = "Telefoonnummer:";
+$contactpagina_formulier_tel_placeholder = "Telefoonnummer:";
+$contactpagina_formulier_bericht = "Bericht:";
+$contactpagina_formulier_bericht_placeholder = "Bericht:";
+$contactpagina_formulier_button = "Aanmelden";
+
+
+// registratiepagina
+$klantregistratiepagina_titel = "Klantregistratie";
+$klantregistratiepagina_contact_h2 = "Registatie";
+$klantregistratiepagina_contact_p = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit?";
+$klantregistratiepagina_formulier_naam = "Voornaam:";
+$klantregistratiepagina_formulier_achternaam = "Achternaam:";
+$klantregistratiepagina_formulier_email = "E-mail:";
+$klantregistratiepagina_formulier_tel = "Telefoon:";
+$klantregistratiepagina_formulier_geboortedatum = "Geboortedatum:";
+$klantregistratiepagina_formulier_postcode = "Postcode:";
+$klantregistratiepagina_formulier_straat = "Straat:";
+$klantregistratiepagina_formulier_huisnummer = "Huisnummer:";
+$klantregistratiepagina_formulier_stad = "Stad:";
+$klantregistratiepagina_formulier_land = "Land:";
+$klantregistratiepagina_formulier_wachtwoord = "Wachtwoord:";
+$klantregistratiepagina_formulier_nieuwsbrief = "Nieuwsbrief";
+$klantregistratiepagina_formulier_button = "Registreer";
+
+
+// inlogpagina
+
+
+?>

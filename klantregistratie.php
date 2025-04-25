@@ -1,4 +1,16 @@
 <?php
+session_start();
+// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+}
+
+// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+$lang = $_SESSION['lang'] ?? 'nl';
+
+// Laad het juiste taalbestand
+include "lang/$lang.php";
+
 require_once 'includes/signup/signup_view.inc.php';
 ?>
 
@@ -11,15 +23,15 @@ require_once 'includes/signup/signup_view.inc.php';
     <link rel="icon" href="/Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
-    <title>Klant registratie</title>
+    <title> <?= $klantregistratiepagina_titel ?> </title>
 </head>
 
 <body>
     <header></header>
     <main>
         <div class="background-container">
-            <h2 id="h2-contact">Registratie</h2>
-            <p id="para-contact">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit? </p>
+            <h2 id="h2-contact"> <?= $klantregistratiepagina_contact_h2 ?> </h2>
+            <p id="para-contact"> <?= $klantregistratiepagina_contact_p ?> </p>
         </div>
 
         <div class="form-container">
@@ -28,53 +40,53 @@ require_once 'includes/signup/signup_view.inc.php';
             </div>
             <form method="post" action="includes/signup/signup.inc.php">
                 <label for="name">
-                    Voornaam:
+                    <?= $klantregistratiepagina_formulier_naam ?>
                     <input type="text" name="FirstName" id="firstname" required><br>
                 </label>
                 <label for="name">
-                    Achternaam:
+                <?= $klantregistratiepagina_formulier_achternaam ?>
                     <input type="text" name="LastName" id="lastname" required><br>
                 </label>
                 <label for="email">
-                    E-mail:
+                <?= $klantregistratiepagina_formulier_email ?>
                     <input type="email" name="EmailAddress" id="email" required><br>
                 </label>
                 <label for="phone">
-                    Telefoon:
+                <?= $klantregistratiepagina_formulier_tel ?>
                     <input type="tel" name="PhoneNumber" id="phone"><br>
                 </label>
                 <label for="dateOfBirth">
-                    Geboortedatum:
+                <?= $klantregistratiepagina_formulier_geboortedatum ?>
                     <input type="date" name="DateOfBirth" id="dateOfBirth" required><br>
                 </label>
                 <label for="postalCode">
-                    Postcode:
+                <?= $klantregistratiepagina_formulier_postcode ?>
                     <input type="text" name="PostalCode" id="postalCode" required><br>
                 </label>
                 <label for="streetName">
-                    Straat:
+                <?= $klantregistratiepagina_formulier_straat ?>
                     <input type="text" name="StreetName" id="streetName" required><br>
                 </label>
                 <label for="streetNumber">
-                    Huisnummer:
+                <?= $klantregistratiepagina_formulier_huisnummer ?>
                     <input type="text" name="HouseNumber" id="streetNumber" required><br>
                 </label>
                 <label for="city">
-                    Stad:
+                <?= $klantregistratiepagina_formulier_stad ?>
                     <input type="text" name="City" id="city" required><br>
                 </label>
                 <label for="country">
-                    Land:
+                <?= $klantregistratiepagina_formulier_land ?>
                     <input type="text" name="Country" id="country" required><br>
                 </label>
                 <label for="password">
-                    Wachtwoord:
+                <?= $klantregistratiepagina_formulier_wachtwoord ?>
                     <input type="password" name="UserPassword" id="password" required><br>
                 </label>
                 <label>
                     <input type="checkbox" name="newsletter">
-                    Nieuwsbrief<br>
-                    <input type="submit" value="Registreer" name="submit">
+                    <?= $klantregistratiepagina_formulier_nieuwsbrief ?><br>
+                    <input type="submit" value="<?= $klantregistratiepagina_formulier_button; ?>" name="submit">
                 </label>
             </form>
             <div>
@@ -136,8 +148,8 @@ require_once 'includes/signup/signup_view.inc.php';
     </footer>
     <script src="js/scripts.js"></script>
     <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer");
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer");
     </script>
 </body>
 

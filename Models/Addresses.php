@@ -11,15 +11,15 @@ class Addresses
 
     
 
-    public function __construct($postalCode, $houseNumber, $streetNumber, $city, $country){
+    public function __construct($postalCode, $houseNumber, $streetName, $city, $country){
         $this->postalCode = $postalCode;
         $this->houseNumber = $houseNumber;
-        $this->streetNumber = $streetNumber;
+        $this->streetName = $streetName;
         $this->city = $city;
         $this->country = $country;
     }
     function __toString(){
-        return "$this->postalCode, $this->houseNumber, $this->streetNumber, $this->city, $this->country";
+        return "$this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country";
     }
 
 }

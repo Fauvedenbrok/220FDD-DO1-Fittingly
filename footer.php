@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
+$lang = $_SESSION['lang'] ?? 'nl';
+
+// Laad het juiste taalbestand
+include "lang/$lang.php";
+?>
+
 <html lang="nl">
 
 <body>
@@ -14,11 +24,11 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#hero">Ons platform</a>
-                    <a href="index.html#about">Ons doel</a>
-                    <a href="partnerpagina.html">Partner worden?</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="index.php">Home</a>
+                    <a href="index.php#hero">Ons platform</a>
+                    <a href="index.php#about">Ons doel</a>
+                    <a href="partnerpagina.php">Partner worden?</a>
+                    <a href="contact.php">Contact</a>
                 </div>
             </div>
             <div class="footer-newsletter">
