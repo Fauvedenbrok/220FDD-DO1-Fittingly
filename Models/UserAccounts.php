@@ -27,6 +27,19 @@ class UserAccounts
     function __toString(){
         return "Email: " . $this->emailAddress . ", Password: " . $this->userPassword . ", Account Status: " . $this->accountStatus . ", Access Rights: " . $this->accountAccessRights . ", Date of Registration: " . $this->dateOfRegistration . ", Phone Number: " . $this->phoneNumber . ", Newsletter: " . $this->newsletter . ", Partner ID: " . $this->partnerID . ", Customer ID: " . $this->customerID;
     }
+    // prepared statement nog voor het toevoegen van een account
+    public function addAccount($conn){
+        $sql = "INSERT INTO useraccounts (emailAddress, userPassword, accountStatus, accountAccessRights, dateOfRegistration, phoneNumber, newsletter, partnerID, customerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        // ssssssiii moet nog veranderd worden naar de juiste types
+        // s = string, i = integer, d = double, b = blob
+        $stmt->bind_param("ssssssiii", $this->emailAddress, $this->userPassword, $this->accountStatus, $this->accountAccessRights, $this->dateOfRegistration, $this->phoneNumber, $this->newsletter, $this->partnerID, $this->customerID);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     function getName(){
         return $this->name;

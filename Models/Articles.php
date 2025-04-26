@@ -30,5 +30,12 @@ class Articles
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
     }
+    public function __toString()
+    {
+        return "$this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability";
+    }
+
+    // prepared statement nog voor het toevoegen van een artikel
+
 }
 
