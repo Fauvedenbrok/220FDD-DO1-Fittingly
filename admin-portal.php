@@ -42,7 +42,6 @@ include "lang/$lang.php";
 
 <body style="background-image: url('./Images/onsdoelImages/background_dark.png');">
   <header>
-    <?php include "header.php"; ?>
   </header>
   
   <main class="main-content">
@@ -54,10 +53,12 @@ include "lang/$lang.php";
     </form>
   </main>
   <footer>
-    <?php include "footer.php"; ?>
   </footer>
   <script src="js/scripts.js"></script>
-  <script src="./js/onsdoelscript.js"></script>
+  <script>
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer")
+  </script>
 </body>
 
 </html>
