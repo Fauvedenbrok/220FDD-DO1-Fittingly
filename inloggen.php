@@ -1,4 +1,16 @@
 <?php
+session_start();
+// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+}
+
+// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+$lang = $_SESSION['lang'] ?? 'nl';
+
+// Laad het juiste taalbestand
+include "lang/$lang.php";
+
 require_once 'includes/login/login_view.inc.php';
 ?>
 
@@ -48,8 +60,8 @@ require_once 'includes/login/login_view.inc.php';
     </footer>
     <script src="js/scripts.js"></script>
     <script>
-        includeHTML("header.html", "header");
-        includeHTML("footer.html", "footer");
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer");
     </script>
 </body>
 

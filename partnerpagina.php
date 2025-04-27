@@ -1,3 +1,17 @@
+<?php
+session_start();
+// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+}
+
+// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+$lang = $_SESSION['lang'] ?? 'nl';
+
+// Laad het juiste taalbestand
+include "lang/$lang.php";
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -20,33 +34,29 @@
     <div id="partnerpagina-container">
       <div class="background-container">
         <div id="koptekst-container">
-          <h2 id="koptekst">Duurzaam verhuren, Tijdloze elegantie</h2>
-          <p class="header-paragraph-tekst">
-            Sluit je aan bij Fittingly en geef je collectie een tweede leven.
-            Bereik een nieuwe doelgroep, verhoog je omzet en draag bij aan een
-            duurzame mode-industrie.
-          </p>
+          <h2 id="koptekst"> <?= $partnerpagina_h2 ?> </h2>
+          <p class="header-paragraph-tekst"> <?= $partnerpagina_paragraph ?> </p>
         </div>
         <div class="usp-div-container">
           <div class="usp-div">
             <div class="usp-div-img">
               <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
-            <h5 class="usp-div-tekst">Duurzaam kledingverhuur</h5>
+            <h5 class="usp-div-tekst"> <?= $partnerpagina_usp1 ?> </h5>
           </div>
 
           <div class="usp-div">
             <div class="usp-div-img">
               <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
-            <h5 class="usp-div-tekst">Toegankelijke prijsstructuur</h5>
+            <h5 class="usp-div-tekst"> <?= $partnerpagina_usp2 ?> </h5>
           </div>
 
           <div class="usp-div">
             <div class="usp-div-img">
               <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
-            <h5 class="usp-div-tekst">Virtuele paskamer</h5>
+            <h5 class="usp-div-tekst"> <?= $partnerpagina_usp3 ?> </h5>
           </div>
         </div>
       </div>
@@ -56,22 +66,14 @@
         <div class="ons-platform-container">
           <div class="ons-platform-tekst-container">
             <h3 class="ons-platform-heading-tekst1">
-              Samenwerken met Fittingly
+              <?= $partnerpagina_h3 ?>
             </h3>
             <h4 class="ons-platform-heading-tekst2">
-              De toekomst van Modeverhuur
+              <?= $partnerpagina_h4 ?>
             </h4>
             <div id="couple-img-hidden"></div>
             <p class="ons-platform-paragraph-tekst2">
-              Bij Fittingly zetten we ons in om mode toegankelijker, duurzamer
-              en innovatiever te maken. Ons platform biedt een betrouwbare en
-              gepersonaliseerde kledingverhuurervaring, waarbij hygiëne en
-              klanttevredenheid voorop staan. <br />We werken samen met
-              vooruitstrevende merken en partners om onze klanten een
-              zorgvuldig geselecteerd aanbod te bieden. Samen kunnen we
-              bijdragen aan een circulaire mode-industrie en de impact op het
-              milieu verkleinen. Word partner van Fittingly en ontdek hoe wij
-              de modewereld transformeren!
+              <?= $partnerpagina_paragraph2 ?>
             </p>
           </div>
           <div class="ons-platform-img-container">
@@ -80,7 +82,7 @@
         </div>
 
         <div>
-          <h4 id="partner-koptekst">Deze partners gingen je voor</h4>
+          <h4 id="partner-koptekst"> <?= $partnerpagina_koptekst_h4 ?> </h4>
         </div>
 
         <!--De 4 plaatjes voor de slider-->
@@ -130,16 +132,13 @@
         <!--Aanmeldingknop onderaan de pagina met functie-->
         <div class="afsluiting-div-container">
           <div class="afsluiting-tekst-container">
-            <p class="afsluiting-heading-tekst">Geïnteresseerd?</p>
+            <p class="afsluiting-heading-tekst"> <?= $partnerpagina_afsluiting_p_1 ?> </p>
             <p class="afsluitings-paragraph">
-              Zie jij mogelijkheden om samen te werken met Fittingly en deel
-              uit te maken van de toekomst van mode? Meld je dan vandaag nog
-              aan en ontdek wat we samen kunnen bereiken. We kijken ernaar uit
-              om van je te horen!
+              <?= $partnerpagina_afsluiting_p_2 ?>
             </p>
             <div>
-              <a href="contact.html"><button class="aanmeld-button" onclick="pushButton()">
-                  Aanmelden
+              <a href="contact.php"><button class="aanmeld-button" onclick="pushButton()">
+                  <?= $partnerpagina_aanmeld_button ?>
                 </button></a>
             </div>
           </div>
@@ -152,8 +151,8 @@
   <script src="js/partnerPaginaScripts.js"></script>
   <script src="js/scripts.js"></script>
   <script>
-    includeHTML("header.html", "header");
-    includeHTML("footer.html", "footer");
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer");
   </script>
 </body>
 

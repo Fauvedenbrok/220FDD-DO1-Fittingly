@@ -1,3 +1,18 @@
+<?php
+session_start();
+// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+}
+
+// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+$lang = $_SESSION['lang'] ?? 'nl';
+
+// Laad het juiste taalbestand
+include "lang/$lang.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -45,26 +60,22 @@
       </div>
       <div class="hero-sectie-partners">
         <div class="hero-content">
-          <h2>Partner worden van Fittingly?</h2>
-          <button class="cta-partner-hero" onclick="window.location.href='partnerpagina.html'">Meer informatie</button>
+          <h2> <?= $hero_content_h2 ?> </h2>
+          <button class="cta-partner-hero" onclick="window.location.href='partnerpagina.php'"> <?= $hero_content_button ?> </button>
         </div>
       </div>
       <div class="scroll-info">
-        <p>Wie zijn wij?</p>
+        <p> <?= $scroll_info_text ?> </p>
         <div class="arrow"></div>
       </div>
     </div>
     <div class="onsdoel-container">
       <div id="about" class="index-textopmaak-1">
         <div class="index-textopmaak-2">
-          <h3>Exclusieve kleding, zonder kopen</h3>
-          <h4>Ons platform</h4>
+          <h3> <?= $about_h3 ?> </h3>
+          <h4> <?= $about_h4 ?> </h4>
           <div class="image-mobile image-about"></div>
-          <p class="index-paragraph-tekst-1">
-            Fittingly is dé bestemming voor het huren van exclusieve kleding! Of je nu naar een bruiloft, gala of een
-            andere bijzondere gelegenheid gaat, bij ons vind je de perfecte outfit, zonder dat je deze hoeft te kopen.
-            Hiermee draag je bij aan duurzaamheid en voorkom je kledingverspilling.
-          </p>
+          <p class="index-paragraph-tekst-1"> <?= $about_text ?> </p>
         </div>
         <div class="image-blok-1"><img src="./Images/onsdoelImages/mobieldesign.png" alt="Mobiele weergave afbeelding"
             class="image-right"></div>
@@ -98,28 +109,23 @@
       <div id="goal" class="index-textopmaak-1">
         <img src="./Images/onsdoelImages/faded_bride.png" alt="Placeholder afbeelding" class="image-left">
         <div class="index-textopmaak-2">
-          <h3>Duurzame Mode, Luxe Ervaring</h3>
-          <h4>Ons Doel</h4>
+          <h3> <?= $index_textopmaak_h3 ?> </h3>
+          <h4> <?= $index_textopmaak_h4 ?> </h4>
           <div class="image-mobile image-goal"></div>
-          <p class="index-paragraph-tekst-2">
-            Bij Fittingly willen we luxe en duurzaamheid op een unieke manier combineren. Ons doel is om dé standaard te
-            worden voor exclusieve kledingverhuur. We streven ernaar een leidende rol te spelen in een toekomst waarin
-            kleding delen en hergebruiken vanzelfsprekend is. Op die manier dragen we samen bij aan een duurzame wereld
-            waarin luxe en verantwoordelijkheid hand in hand gaan.
-          </p>
+          <p class="index-paragraph-tekst-2"> <?= $index_paragraph_text ?> </p>
           <div class="usp-container">
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP1Light" class="hexagon">
 
-              <p class="gold-text">Betaalbaarheid</p>
+              <p class="gold-text"> <?= $usp_container_1 ?> </p>
             </div>
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP2Light" class="hexagon">
-              <p class="gold-text">Innovatie</p>
+              <p class="gold-text"> <?= $usp_container_2 ?> </p>
             </div>
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP3Light" class="hexagon">
-              <p class="gold-text">Duurzaamheid</p>
+              <p class="gold-text"> <?= $usp_container_3 ?> </p>
             </div>
           </div>
         </div>
@@ -129,8 +135,8 @@
   <footer></footer>
   <script src="js/scripts.js"></script>
   <script>
-    includeHTML("header.html", "header");
-    includeHTML("footer.html", "footer")
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer")
   </script>
   <script src="./js/onsdoelscript.js"></script>
 </body>
