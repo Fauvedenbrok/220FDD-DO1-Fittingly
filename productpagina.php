@@ -16,10 +16,10 @@ $artikelen = $articlesRepo->findAll($zoekwoord, $categorie);
 <head>
     <meta charset="UTF-8">
     <title>Productpagina</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<header></header>
 <div class="container">
     <h1>Onze Artikelen</h1>
 
@@ -44,6 +44,11 @@ $artikelen = $articlesRepo->findAll($zoekwoord, $categorie);
         <?php endforeach; ?>
     </div>
 </div>
-
+<footer></footer>
+<script src="js/scripts.js"></script>
+<script>
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer")
+</script>
 </body>
 </html>

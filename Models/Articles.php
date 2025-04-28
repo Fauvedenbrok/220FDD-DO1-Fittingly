@@ -15,7 +15,7 @@ class Articles
     private string $articleBrand;
     private bool $articleAvailability;
 
-    public function __construct(int $articleID, string $articleName, float $weight, string $weightUnit, string $color, string $articleDescription, string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
+    public function __construct(int $articleID, string $articleName, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
     {
         $this->articleID = $articleID;
         $this->articleName = $articleName;
