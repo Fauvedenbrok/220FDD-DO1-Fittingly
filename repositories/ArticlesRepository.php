@@ -1,21 +1,23 @@
 <?php
-// repositories/ArticlesRepository.php
 require_once 'models/Articles.php';
 
-class ArticlesRepository {
+class ArticlesRepository
+{
     private $pdo;
 
-    public function __construct(PDO $pdo) {
+    public function __construct(PDO $pdo)
+    {
         $this->pdo = $pdo;
     }
 
-    public function findAll($zoekwoord = '', $categorie = '') {
+    public function findAll(string $zoekwoord = '', string $categorie = ''): array
+    {
         $sql = "SELECT * FROM articles WHERE 1=1";
         $params = [];
 
         if ($zoekwoord) {
             $sql .= " AND Name LIKE :zoekwoord";
-            $params['zoekwoord'] = "%$zoekwoord%";
+            $params['zoekwoord'] = '%' . $zoekwoord . '%';
         }
 
         if ($categorie) {
@@ -27,18 +29,50 @@ class ArticlesRepository {
         $stmt->execute($params);
 
         $artikelen = [];
+
         while ($row = $stmt->fetch()) {
-            $artikelen[] = new Articles($row);
+            $artikelen[] = new Articles(
+                $row['ArticleID'],
+                $row['Name'],
+                (float) $row['Weight'],
+                $row['WeightUnit'],
+                $row['Color'],
+                $row['Description'],
+                $row['Image'],
+                $row['Category'],
+                $row['SubCategory'],
+                $row['Material'],
+                $row['Brand'],
+                (bool) $row['Availability']
+            );
         }
 
         return $artikelen;
     }
 
-    public function findById($id) {
+    public function findById(int $id): ?Articles
+    {
         $stmt = $this->pdo->prepare("SELECT * FROM articles WHERE ArticleID = :id");
         $stmt->execute(['id' => $id]);
-        $data = $stmt->fetch();
-        return $data ? new Articles($data) : null;
+        $row = $stmt->fetch();
+
+        if ($row) {
+            return new Articles(
+                $row['ArticleID'],
+                $row['Name'],
+                (float) $row['Weight'],
+                $row['WeightUnit'],
+                $row['Color'],
+                $row['Description'],
+                $row['Image'],
+                $row['Category'],
+                $row['SubCategory'],
+                $row['Material'],
+                $row['Brand'],
+                (bool) $row['Availability']
+            );
+        }
+        return null;
     }
 }
 ?>
