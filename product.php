@@ -1,40 +1,48 @@
 <?php
-require 'db_connect.php';
+require_once 'db_connect.php';
+require_once 'repositories/ArticlesRepository.php';
 
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$db = new Database();
+$pdo = $db->getPdo();
+$articlesRepo = new ArticlesRepository($pdo);
 
-if ($id > 0) {
-    $stmt = $pdo->prepare("SELECT * FROM articles WHERE ArticleID = :id");
-    $stmt->execute(['id' => $id]);
-    $product = $stmt->fetch();
-}
+$id = (int) ($_GET['id'] ?? 0);
+$article = $articlesRepo->findById($id);
 
-if (!$product) {
+if (!$article) {
     echo "Artikel niet gevonden.";
     exit;
 }
+
+$categorieClass = strtolower(str_replace(' ', '-', $article->category));
 ?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo htmlspecialchars($product['Name']); ?></title>
-    <link rel="stylesheet" href="styles.css">
+    <title><?php echo htmlspecialchars($article->name); ?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1><?php echo htmlspecialchars($product['Name']); ?></h1>
-    <p><strong>Prijs:</strong> (prijs ontbreekt in tabel, maar je kunt gewicht tonen!)</p>
-    <p><strong>Gewicht:</strong> <?php echo $product['Weight'] . ' ' . $product['WeightUnit']; ?></p>
-    <p><strong>Categorie:</strong> <?php echo htmlspecialchars($product['Category']); ?></p>
-    <p><strong>Subcategorie:</strong> <?php echo htmlspecialchars($product['SubCategory']); ?></p>
-    <p><strong>Materiaal:</strong> <?php echo htmlspecialchars($product['Material']); ?></p>
-    <p><strong>Kleur:</strong> <?php echo htmlspecialchars($product['Color']); ?></p>
-    <p><strong>Beschrijving:</strong> <?php echo htmlspecialchars($product['Description']); ?></p>
-    <p><strong>Merk:</strong> <?php echo htmlspecialchars($product['Brand']); ?></p>
+<div class="product-detail <?php echo $categorieClass; ?>">
+    <h1><?php echo htmlspecialchars($article->name); ?></h1>
 
-    <a href="productpagina.php">← Terug naar artikelen</a>
+    <?php if (!empty($article->image)): ?>
+        <img src="uploads/<?php echo htmlspecialchars($article->image); ?>" alt="<?php echo htmlspecialchars($article->name); ?>" class="product-image">
+    <?php else: ?>
+        <img src="uploads/default.jpg" alt="Standaard afbeelding" class="product-image">
+    <?php endif; ?>
+
+    <p><strong>Categorie:</strong> <?php echo htmlspecialchars($article->category); ?></p>
+    <p><strong>Subcategorie:</strong> <?php echo htmlspecialchars($article->subcategory); ?></p>
+    <p><strong>Kleur:</strong> <?php echo htmlspecialchars($article->color); ?></p>
+    <p><strong>Materiaal:</strong> <?php echo htmlspecialchars($article->material); ?></p>
+    <p><strong>Gewicht:</strong> <?php echo htmlspecialchars($article->weight . ' ' . $article->weightUnit); ?></p>
+    <p><strong>Beschrijving:</strong> <?php echo htmlspecialchars($article->description); ?></p>
+    <p><strong>Merk:</strong> <?php echo htmlspecialchars($article->brand); ?></p>
+
+    <a href="productpagina.php" class="back-link">← Terug naar artikelen</a>
 </div>
 
 </body>

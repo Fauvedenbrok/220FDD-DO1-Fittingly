@@ -37,5 +37,19 @@ class Articles
 
     // prepared statement nog voor het toevoegen van een artikel
 
-}
 
+// Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!
+public function getArticleID() { return $this->articleID; }
+public function getArticleName() { return $this->articleName; }
+public function getWeight() { return $this->weight; }
+public function getWeightUnit() { return $this->weightUnit; }
+public function getColor() { return $this->color; }
+public function getArticleDescription() { return $this->articleDescription; }
+public function getArticleImagePath() { return $this->articleImagePath; }
+public function getArticleCategory() { return $this->articleCategory; }
+public function getArticleSubCategory() { return $this->articleSubCategory; }
+public function getArticleMaterial() { return $this->articleMaterial; }
+public function getArticleBrand() { return $this->articleBrand; }
+public function getArticleAvailability() { return $this->articleAvailability; }
+}
+?>
