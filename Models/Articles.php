@@ -2,18 +2,18 @@
 
 class Articles
 {
-    private $articleID;
-    private $articleName;
-    private $weight;
-    private $weightUnit;
-    private $color;
-    private $articleDescription;
-    private $articleImagePath;
-    private $articleCategory;
-    private $articleSubCategory;
-    private $articleMaterial;
-    private $articleBrand;
-    private $articleAvailability;
+    private int $articleID;
+    private string $articleName;
+    private float $weight;
+    private string $weightUnit;
+    private string $color;
+    private string $articleDescription;
+    private ?string $articleImagePath;
+    private string $articleCategory;
+    private string $articleSubCategory;
+    private string $articleMaterial;
+    private string $articleBrand;
+    private bool $articleAvailability;
 
     public function __construct(int $articleID, string $articleName, float $weight, string $weightUnit, string $color, string $articleDescription, string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
     {

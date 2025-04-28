@@ -2,12 +2,12 @@
 
 class Stock{
    
-    private $quantityOfStock;
-    private $price;
-    private $dateAdded;
-    private $internalReference;
-    private $articleID;
-    private $partnerID;
+    private int $quantityOfStock;
+    private decimal $price;
+    private date $dateAdded;
+    private string $internalReference;
+    private int $articleID;
+    private int $partnerID;
 
     public function __construct(int $quantityOfStock, float $price, string $dateAdded, string $internalReference, int $articleID, int $partnerID){
         $this->quantityOfStock = $quantityOfStock;
