@@ -8,9 +8,6 @@ class Addresses
     private $streetName;
     private $houseNumber;
 
-
-    
-
     public function __construct($postalCode, $houseNumber, $streetName, $city, $country){
         $this->postalCode = $postalCode;
         $this->houseNumber = $houseNumber;

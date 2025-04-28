@@ -36,6 +36,18 @@ class Articles
     }
 
     // prepared statement nog voor het toevoegen van een artikel
-
+    public function addArticle($conn)
+    {
+        $sql = "INSERT INTO articles (articleID, articleName, weight, weightUnit, color, articleDescription, articleImagePath, articleCategory, articleSubCategory, articleMaterial, articleBrand, articleAvailability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        // issssssssssi moet nog veranderd worden naar de juiste types
+        // s = string, i = integer, d = double, b = blob
+        $stmt->bind_param("issssssssssi", $this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
