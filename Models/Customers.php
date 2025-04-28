@@ -21,6 +21,24 @@ class Customers
         $this->houseNumber = $houseNumber;
     }
 
+    public function __toString(){
+        return "$this->customerID, $this->firstName, $this->lastName, $this->dateOfBirth, $this->postalCode, $this->houseNumber";
+    }
+
+    // prepared statement nog voor het toevoegen van een klant
+    public function addCustomer($conn){
+        $sql = "INSERT INTO customers (customerID, firstName, lastName, dateOfBirth, postalCode, houseNumber) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        // ssssss moet nog veranderd worden naar de juiste types
+        // s = string, i = integer, d = double, b = blob
+        $stmt->bind_param("ssssss", $this->customerID, $this->firstName, $this->lastName, $this->dateOfBirth, $this->postalCode, $this->houseNumber);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function registerAccount(){
         // placeholder
     }
