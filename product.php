@@ -24,7 +24,7 @@ $categorieClass = strtolower(str_replace(' ', '-', $artikel->getArticleCategory(
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<header></header>
 <div class="product-detail <?php echo $categorieClass; ?>">
     <h1><?php echo htmlspecialchars($artikel->getArticleName()); ?></h1>
 
@@ -44,6 +44,11 @@ $categorieClass = strtolower(str_replace(' ', '-', $artikel->getArticleCategory(
 
     <a href="productpagina.php" class="back-link">← Terug naar overzicht</a>
 </div>
-
+<footer></footer>
+<script src="js/scripts.js"></script>
+<script>
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer")
+</script>
 </body>
 </html>
