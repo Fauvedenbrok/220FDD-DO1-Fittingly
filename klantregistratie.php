@@ -92,50 +92,50 @@ require_once 'includes/signup/signup_view.inc.php';
             <div>
                 <?php
                 check_signup_errors();/*
-include("Models/Person.php");
-include("Models/Address.php");
-include("Models/Message.php");
-include("Models/Customer.php");
+                include("Models/Person.php");
+                include("Models/Address.php");
+                include("Models/Message.php");
+                include("Models/Customer.php");
 
-if(isset($_POST["submit"])){
-$newsletter = null;  
-$name = $_POST['name'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$dateOfBirth = $_POST['dateOfBirth'];
-$password = $_POST["password"];
+                if(isset($_POST["submit"])){
+                $newsletter = null;  
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
+                $dateOfBirth = $_POST['dateOfBirth'];
+                $password = $_POST["password"];
 
-$person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null); -- moet hier 2x $email zijn? En waarom null?
+                $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null); -- moet hier 2x $email zijn? En waarom null?
 
-$address = new Address($_POST['postalCode'],
-$_POST['streetName'],
-$_POST['streetNumber'],
-$_POST['streetNumberAppendix'],
-$_POST['city'],
-$_POST['country']);
+                $address = new Address($_POST['postalCode'],
+                $_POST['streetName'],
+                $_POST['streetNumber'],
+                $_POST['streetNumberAppendix'],
+                $_POST['city'],
+                $_POST['country']);
 
-$person->address = $address;
+                $person->address = $address;
 
-$message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
+                $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
 
-if(isset($_POST["newsletter"])){
-$newsletter = true;
-}
-else{
-$newsletter = false;
-}
+                if(isset($_POST["newsletter"])){
+                $newsletter = true;
+                }
+                else{
+                $newsletter = false;
+                }
 
-echo"<br>";
-echo $person . " and " . $person->address;
-echo "<br>";
-echo "<br>";
-echo $message;
-echo "<br>";
-echo "<br>";
-echo $person->getPassword();
+                echo"<br>";
+                echo $person . " and " . $person->address;
+                echo "<br>";
+                echo "<br>";
+                echo $message;
+                echo "<br>";
+                echo "<br>";
+                echo $person->getPassword();
 
 
-} */
+                } */
                 ?>
             </div>
         </div>
