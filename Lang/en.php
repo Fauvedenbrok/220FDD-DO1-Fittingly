@@ -29,8 +29,10 @@ $footer_navbar_4 = "Our goal";
 $footer_navbar_5 = "Want to become a partner?";
 $footer_navbar_6 = "Contact";
 $footer_newsletter_paragraph = "Want to stay up to date with updates and news? Sign up for our newsletter!";
-$footer_formulier_email_placeholder = "janedoe123@test.uk";
+$footer_formulier_email_placeholder = "janedoe123@email.uk";
 $footer_submit_button = "Sign Up";
+$footer_privacypolicy = "Privacy Policy";
+$footer_terms_conditions = "Terms and Conditions";
 $footer_allrights = "Fittingly, all rights reserved";
 
 // Partnerpagina
@@ -61,7 +63,7 @@ $contactpagina_formulier_naam_placeholder = "Firstname Lastname";
 $contactpagina_formulier_bedrijf = "Company";
 $contactpagina_formulier_bedrijf_placeholder = "Company name";
 $contactpagina_formulier_email = "Email Address";
-$contactpagina_formulier_email_placeholder = "johndoe123@test.nl";
+$contactpagina_formulier_email_placeholder = "johndoe123@email.nl";
 $contactpagina_formulier_tel = "Phone Number";
 $contactpagina_formulier_tel_placeholder = "+44-12345678";
 $contactpagina_formulier_bericht = "Message:";

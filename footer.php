@@ -15,13 +15,8 @@ include "lang/$lang.php";
         <div class="footer-body">
             <div class="footer-wrap">
                 <div class="footer-social">
-<<<<<<< HEAD
                     <img src="/Images/logo_fittingly_dark.png" alt="logo van Fittingly met donkere tinten">
                     <p><?= $footer_navbar_1 ?></p>
-=======
-                    <img src="../Images/logo_fittingly_dark.png" alt="logo van Fittingly met donkere tinten">
-                    <p>Vind ons:</p>
->>>>>>> daed629377d8ca9a4665d217b5d44016fc15f068
                     <div class="footer-icons">
                         <img src="../Images/icons/insta-icon.png" alt="instagram icon">
                         <img src="../Images/icons/facebook-icon.png" alt="facebook icon">
@@ -47,11 +42,11 @@ include "lang/$lang.php";
     <hr>
     <div class="footer-copyright">
         <div class="footer-conditions">
-            <a href="Privacyverklaring_Fittingly.pdf" target="_blank">Privacyverklaring</a>
-            <a href="Algemene_voorwaarden_Fittingly.pdf" target="_blank">Algemene voorwaarden</a>
+            <a href="Privacyverklaring_Fittingly.pdf" target="_blank"><?= $footer_privacypolicy ?></a>
+            <a href="Algemene_voorwaarden_Fittingly.pdf" target="_blank"><?= $footer_terms_conditions ?></a>
         </div>
         <div>
-            <span>&copy;Fittingly, alle rechten voorbehouden</span>
+            <span>&copy;<?= $footer_allrights ?> </span>
         </div>
     </div>
 
