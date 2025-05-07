@@ -25,9 +25,8 @@ class Stock{
     public function addStock($conn){
         $sql = "INSERT INTO stock (quantityOfStock, price, dateAdded, internalReference, articleID, partnerID) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        // issiii moet nog veranderd worden naar de juiste types
         // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("issiii", $this->quantityOfStock, $this->price, $this->dateAdded, $this->internalReference, $this->articleID, $this->partnerID);
+        $stmt->bind_param("idssii", $this->quantityOfStock, $this->price, $this->dateAdded, $this->internalReference, $this->articleID, $this->partnerID);
         if ($stmt->execute()) {
             return true;
         } else {
