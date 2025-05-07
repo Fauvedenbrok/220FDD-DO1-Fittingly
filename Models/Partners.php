@@ -27,9 +27,8 @@ class Partners
     public function addPartner($conn){
         $sql = "INSERT INTO partners (partnerID, companyName, vatNr, coCNr, postalCode, houseNumber) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        // issssi moet nog veranderd worden naar de juiste types
         // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("issssi", $this->partnerID, $this->companyName, $this->vatNr, $this->coCNr, $this->postalCode, $this->houseNumber);
+        $stmt->bind_param("ississ", $this->partnerID, $this->companyName, $this->vatNr, $this->coCNr, $this->postalCode, $this->houseNumber);
         if ($stmt->execute()) {
             return true;
         } else {
