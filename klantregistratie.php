@@ -44,43 +44,43 @@ require_once 'includes/signup/signup_view.inc.php';
                     <input type="text" name="FirstName" id="firstname" required><br>
                 </label>
                 <label for="name">
-                <?= $klantregistratiepagina_formulier_achternaam ?>
+                    <?= $klantregistratiepagina_formulier_achternaam ?>
                     <input type="text" name="LastName" id="lastname" required><br>
                 </label>
                 <label for="email">
-                <?= $klantregistratiepagina_formulier_email ?>
+                    <?= $klantregistratiepagina_formulier_email ?>
                     <input type="email" name="EmailAddress" id="email" required><br>
                 </label>
                 <label for="phone">
-                <?= $klantregistratiepagina_formulier_tel ?>
+                    <?= $klantregistratiepagina_formulier_tel ?>
                     <input type="tel" name="PhoneNumber" id="phone"><br>
                 </label>
                 <label for="dateOfBirth">
-                <?= $klantregistratiepagina_formulier_geboortedatum ?>
+                    <?= $klantregistratiepagina_formulier_geboortedatum ?>
                     <input type="date" name="DateOfBirth" id="dateOfBirth" required><br>
                 </label>
                 <label for="postalCode">
-                <?= $klantregistratiepagina_formulier_postcode ?>
+                    <?= $klantregistratiepagina_formulier_postcode ?>
                     <input type="text" name="PostalCode" id="postalCode" required><br>
                 </label>
                 <label for="streetName">
-                <?= $klantregistratiepagina_formulier_straat ?>
+                    <?= $klantregistratiepagina_formulier_straat ?>
                     <input type="text" name="StreetName" id="streetName" required><br>
                 </label>
                 <label for="streetNumber">
-                <?= $klantregistratiepagina_formulier_huisnummer ?>
+                    <?= $klantregistratiepagina_formulier_huisnummer ?>
                     <input type="text" name="HouseNumber" id="streetNumber" required><br>
                 </label>
                 <label for="city">
-                <?= $klantregistratiepagina_formulier_stad ?>
+                    <?= $klantregistratiepagina_formulier_stad ?>
                     <input type="text" name="City" id="city" required><br>
                 </label>
                 <label for="country">
-                <?= $klantregistratiepagina_formulier_land ?>
+                    <?= $klantregistratiepagina_formulier_land ?>
                     <input type="text" name="Country" id="country" required><br>
                 </label>
                 <label for="password">
-                <?= $klantregistratiepagina_formulier_wachtwoord ?>
+                    <?= $klantregistratiepagina_formulier_wachtwoord ?>
                     <input type="password" name="UserPassword" id="password" required><br>
                 </label>
                 <label>
@@ -90,57 +90,53 @@ require_once 'includes/signup/signup_view.inc.php';
                 </label>
             </form>
             <div>
-            <?php 
-            check_signup_errors();/*
-    include("Models/Person.php");
-    include("Models/Address.php");
-    include("Models/Message.php");
-    include("Models/Customer.php");
+                <?php
+                check_signup_errors();/*
+                include("Models/Person.php");
+                include("Models/Address.php");
+                include("Models/Message.php");
+                include("Models/Customer.php");
 
-    if(isset($_POST["submit"])){
-        $newsletter = null;  
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $dateOfBirth = $_POST['dateOfBirth'];
-        $password = $_POST["password"];
-    
-        $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null);
-    
-        $address = new Address($_POST['postalCode'],
-        $_POST['streetName'],
-        $_POST['streetNumber'],
-        $_POST['streetNumberAppendix'],
-        $_POST['city'],
-        $_POST['country']);
+                if(isset($_POST["submit"])){
+                $newsletter = null;  
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $phone = $_POST['phone'];
+                $dateOfBirth = $_POST['dateOfBirth'];
+                $password = $_POST["password"];
 
-        $person->address = $address;
+                $person = new Person($name, $email, $phone, $email, $dateOfBirth, $password, null); -- moet hier 2x $email zijn? En waarom null?
 
-        $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
+                $address = new Address($_POST['postalCode'],
+                $_POST['streetName'],
+                $_POST['streetNumber'],
+                $_POST['streetNumberAppendix'],
+                $_POST['city'],
+                $_POST['country']);
 
-        if(isset($_POST["newsletter"])){
-            $newsletter = true;
-        }
-        else{
-            $newsletter = false;
-        }
+                $person->address = $address;
 
-        echo"<br>";
-        echo $person . " and " . $person->address;
-        echo "<br>";
-        echo "<br>";
-        echo $message;
-        echo "<br>";
-        echo "<br>";
-        echo $person->getPassword();
+                $message = new Message($person->getName(), "Thank you for registering!", "Kind regards,<br>Fittingly");
 
-<<<<<<< HEAD
-    }
-=======
- 
-    } */
->>>>>>> ba4e0cb17c02ff47db19ecbe52665be014a2c5d7
-    ?>
+                if(isset($_POST["newsletter"])){
+                $newsletter = true;
+                }
+                else{
+                $newsletter = false;
+                }
+
+                echo"<br>";
+                echo $person . " and " . $person->address;
+                echo "<br>";
+                echo "<br>";
+                echo $message;
+                echo "<br>";
+                echo "<br>";
+                echo $person->getPassword();
+
+
+                } */
+                ?>
             </div>
         </div>
     </main>
