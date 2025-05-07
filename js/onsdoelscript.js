@@ -167,7 +167,7 @@ usp1LightImage.addEventListener('click', function () {
             lastClickedItem = null; // Reset de laatste klik
         } else {
             // Verander de tekst voor USP1 en voeg de juiste class toe
-            paragraphText.textContent = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
+            paragraphText.textContent = $header_navbar_1 ;
             paragraphText.classList.add('color-1');
             paragraphText.classList.remove('color-2', 'color-3');
             lastClickedItem = usp1LightImage; // Sla dit item op als het laatst aangeklikte

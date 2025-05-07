@@ -16,7 +16,7 @@ include "lang/$lang.php";
             <div class="footer-wrap">
                 <div class="footer-social">
                     <img src="/Images/logo_fittingly_dark.png" alt="logo van Fittingly met donkere tinten">
-                    <p>Vind ons:</p>
+                    <p><?= $footer_navbar_1 ?></p>
                     <div class="footer-icons">
                         <img src="/Images/icons/insta-icon.png" alt="instagram icon">
                         <img src="/Images/icons/facebook-icon.png" alt="facebook icon">
@@ -24,17 +24,17 @@ include "lang/$lang.php";
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="index.php">Home</a>
-                    <a href="index.php#hero">Ons platform</a>
-                    <a href="index.php#about">Ons doel</a>
-                    <a href="partnerpagina.php">Partner worden?</a>
-                    <a href="contact.php">Contact</a>
+                    <a href="index.php"><?= $footer_navbar_2 ?></a>
+                    <a href="index.php#hero"><?= $footer_navbar_3 ?></a>
+                    <a href="index.php#about"><?= $footer_navbar_4 ?></a>
+                    <a href="partnerpagina.php"><?= $footer_navbar_5 ?></a>
+                    <a href="contact.php"><?= $footer_navbar_6 ?></a>
                 </div>
             </div>
             <div class="footer-newsletter">
-                <p>Blijf op de hoogte van updates en nieuws:</p>
-                <input id="newsletter-input" type="email" placeholder="email@voorbeeld.nl">
-                <button type="submit" class="footer-news">Aanmelden</button>
+                <p><?= $footer_newsletter_paragraph ?></p>
+                <input id="newsletter-input" type="email" placeholder="<?= $footer_formulier_email_placeholder ?>">
+                <button type="submit" class="footer-news"><?= $footer_submit_button ?></button>
             </div>
         </div>
     </div>

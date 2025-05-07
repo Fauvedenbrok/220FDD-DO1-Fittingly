@@ -1,9 +1,9 @@
 <?php
 // index
-$hero_content_h2 = "Become a partner of Fittingly?";
+$hero_content_h2 = "Become a partner";
 $hero_content_button = "More information";
 $scroll_info_text = "Who are we?";
-$about_h3 = "Exclusive clothing, without buying";
+$about_h3 = "Exclusive clothing, Low Cost";
 $about_h4 = "Our platform";
 $about_text = "Fittingly is the destination for renting exclusive clothing! Whether you're attending a wedding, gala, or another special occasion, with us you'll find the perfect outfit without having to buy it. This contributes to sustainability and prevents clothing waste.";
 $index_textopmaak_h3 = "Sustainable Fashion, Luxurious Experience";
@@ -14,7 +14,26 @@ $usp_container_2 = "Innovation";
 $usp_container_3 = "Sustainability";
 
 
-// partnerpagina
+// Header
+$header_navbar_1 = "Home";
+$header_navbar_2 = "Partners";
+$header_navbar_3 = "Contact";
+$header_navbar_4 = "Register";
+$header_navbar_5 = "Login";
+
+// Footer
+$footer_navbar_1 = "Find us on Social Media";
+$footer_navbar_2 = "Home";
+$footer_navbar_3 = "Our platform";
+$footer_navbar_4 = "Our goal";
+$footer_navbar_5 = "Want to become a partner?";
+$footer_navbar_6 = "Contact";
+$footer_newsletter_paragraph = "Want to stay up to date with updates and news? Sign up for our newsletter!";
+$footer_formulier_email_placeholder = "janedoe123@test.uk";
+$footer_submit_button = "Sign Up";
+$footer_allrights = "Fittingly, all rights reserved";
+
+// Partnerpagina
 $partnerpagina_h2 = "Sustainable Renting, Timeless Elegance";
 $partnerpagina_paragraph = "Join Fittingly and give your collection a second life. Reach a new audience, increase your revenue, and contribute to a sustainable fashion industry.";
 $partnerpagina_usp1 = "Sustainable Clothing Rental";
@@ -37,16 +56,16 @@ $contactpagina_p_contactinfo_1 = "Address: Street 123, 1021 AB, Breda";
 $contactpagina_p_contactinfo_2 = "Phone: +31631506081";
 $contactpagina_p_contactinfo_3 = "Email: info@fittingly.nl";
 
-$contactpagina_formulier_naam = "Name:";
-$contactpagina_formulier_naam_placeholder = "Name:";
-$contactpagina_formulier_bedrijf = "Company:";
-$contactpagina_formulier_bedrijf_placeholder = "Company:";
-$contactpagina_formulier_email = "Email Address:";
-$contactpagina_formulier_email_placeholder = "Email Address:";
-$contactpagina_formulier_tel = "Phone Number:";
-$contactpagina_formulier_tel_placeholder = "Phone Number:";
+$contactpagina_formulier_naam = "Name";
+$contactpagina_formulier_naam_placeholder = "Firstname Lastname";
+$contactpagina_formulier_bedrijf = "Company";
+$contactpagina_formulier_bedrijf_placeholder = "Company name";
+$contactpagina_formulier_email = "Email Address";
+$contactpagina_formulier_email_placeholder = "johndoe123@test.nl";
+$contactpagina_formulier_tel = "Phone Number";
+$contactpagina_formulier_tel_placeholder = "+44-12345678";
 $contactpagina_formulier_bericht = "Message:";
-$contactpagina_formulier_bericht_placeholder = "Message:";
+$contactpagina_formulier_bericht_placeholder = "Message";
 $contactpagina_formulier_button = "Sign Up";
 $contactpagina_formulier_send = "Sign Up";
 
@@ -55,7 +74,7 @@ $contactpagina_formulier_send = "Sign Up";
 // registration page
 $klantregistratiepagina_titel = "Customer Registration";
 $klantregistratiepagina_contact_h2 = "Registration";
-$klantregistratiepagina_contact_p = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit?";
+$klantregistratiepagina_contact_p = "Join Fittingly and discover a new way to experience luxury. Register for free and get access to exclusive garments, carefully selected to match your style and occasion. Start renting today and wear fashion with a story.";
 $klantregistratiepagina_formulier_naam = "First Name:";
 $klantregistratiepagina_formulier_achternaam = "Last Name:";
 $klantregistratiepagina_formulier_email = "Email:";

@@ -28,19 +28,19 @@ include "lang/$lang.php";
       </button>
       <nav>
         <button>
-          <a class="nav-button-tekst" href="index.php">Home</a>
+          <a class="nav-button-tekst" href="index.php"><?= $header_navbar_1 ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="partnerpagina.php">Partners</a>
+          <a class="nav-button-tekst" href="partnerpagina.php"><?= $header_navbar_2 ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="contact.php">Contact</a>
+          <a class="nav-button-tekst" href="contact.php"><?= $header_navbar_3 ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="klantregistratie.php">Registreren</a>
+          <a class="nav-button-tekst" href="klantregistratie.php"><?= $header_navbar_4 ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="inloggen.php">Inloggen</a>
+          <a class="nav-button-tekst" href="inloggen.php"><?= $header_navbar_5 ?></a>
         </button>
       </nav>
 

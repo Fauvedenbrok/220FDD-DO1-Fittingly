@@ -56,12 +56,12 @@ include "lang/$lang.php";
                         <small class="error"></small>
 
                         <label for="tel"> <?= $contactpagina_formulier_tel ?>:</label>
-                        <input type="text" id="tel" placeholder="<?= $contactpagina_formulier_bericht_placeholder ?>" autocomplete="off">
+                        <input type="text" id="tel" placeholder="<?= $contactpagina_formulier_tel_placeholder ?>" autocomplete="off">
                         <small class="error"></small>
 
                         <div class="input-bericht">
                             <label for="bericht"> <?= $contactpagina_formulier_bericht ?></label>
-                            <textarea id="bericht" placeholder="Bericht" rows="12"></textarea>
+                            <textarea id="bericht" placeholder=" <?= $contactpagina_formulier_bericht_placeholder ?>" rows="12"></textarea>
                             <small class="error"></small>
                         </div>
                         <div class="button-wrapper">
