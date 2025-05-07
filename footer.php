@@ -15,12 +15,12 @@ include "lang/$lang.php";
         <div class="footer-body">
             <div class="footer-wrap">
                 <div class="footer-social">
-                    <img src="/Images/logo_fittingly_dark.png" alt="logo van Fittingly met donkere tinten">
+                    <img src="../Images/logo_fittingly_dark.png" alt="logo van Fittingly met donkere tinten">
                     <p>Vind ons:</p>
                     <div class="footer-icons">
-                        <img src="/Images/icons/insta-icon.png" alt="instagram icon">
-                        <img src="/Images/icons/facebook-icon.png" alt="facebook icon">
-                        <img src="/Images/icons/pinterest-icon.png" alt="pinterest icon">
+                        <img src="../Images/icons/insta-icon.png" alt="instagram icon">
+                        <img src="../Images/icons/facebook-icon.png" alt="facebook icon">
+                        <img src="../Images/icons/pinterest-icon.png" alt="pinterest icon">
                     </div>
                 </div>
                 <div class="footer-links">

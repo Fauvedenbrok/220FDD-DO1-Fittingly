@@ -59,7 +59,7 @@ include "../lang/$lang.php";
       </ul>
   </nav>
     
-    <form action="../includes/upload/csv-upload.php" method="post" enctype="multipart/form-data">
+    <form action="..includes/upload/csv-upload.php" method="post" enctype="multipart/form-data">
     Selecteer CSV-bestand:
     <input type="file" name="csv_file" accept=".csv">
     <input type="submit" name="upload" value="Uploaden">
