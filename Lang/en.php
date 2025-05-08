@@ -9,9 +9,23 @@ $about_text = "Fittingly is the destination for renting exclusive clothing! Whet
 $index_textopmaak_h3 = "Sustainable Fashion, Luxurious Experience";
 $index_textopmaak_h4 = "Our Goal";
 $index_paragraph_text = "At Fittingly, we aim to combine luxury and sustainability in a unique way. Our goal is to become the standard for exclusive clothing rental. We strive to play a leading role in a future where sharing and reusing clothing is the norm. In this way, we contribute to a sustainable world where luxury and responsibility go hand in hand.";
+
 $usp_container_1 = "Affordability";
+$usp1_translation = "At Fittingly, we believe that luxury should be accessible to everyone. By renting exclusive clothing instead of selling it, we make it possible to wear high-end fashion at a fraction of the price. This way, everyone can enjoy beautiful outfits without the high costs typically associated with luxury. We offer affordable solutions without compromising on style or quality.";
+
 $usp_container_2 = "Innovation";
+$usp2_translation = "Innovation is at the heart of everything we do at Fittingly. We leverage advanced technologies to make our rental process simple and efficient, from online bookings to smart clothing maintenance systems. By continuously innovating, we stay ahead of the market and can offer our customers new possibilities and services time and again.";
+
 $usp_container_3 = "Sustainability";
+$usp3_translation = "Sustainability is a core value of Fittingly. We aim to minimize our ecological footprint by giving clothing a second, third, or even fourth life. Our circular model contributes to less waste and more conscious consumption. By choosing Fittingly, you not only choose luxury but also a sustainable future where reuse and environmental friendliness are central.";
+
+
+$translations = [
+    'usp1' => 'At Fittingly, we believe luxury should be accessible to everyone. By renting exclusive clothing instead of selling it, we make it possible to wear high-end fashion at a fraction of the cost. This way, everyone can enjoy beautiful outfits without the high price tags normally associated with luxury.',
+    'usp2' => 'Innovation is at the core of everything we do at Fittingly. We use advanced technologies to make our rental process easy and efficient, from online bookings to smart garment care systems. By constantly innovating, we stay ahead of the curve and offer our customers new services.',
+    'usp3' => 'Sustainability is a core value at Fittingly. We aim to minimize our ecological footprint by giving clothes a second, third, or even fourth life. Our circular model contributes to less waste and more conscious consumption. Choosing Fittingly means choosing both luxury and a sustainable future.',
+];
+
 
 
 // Header

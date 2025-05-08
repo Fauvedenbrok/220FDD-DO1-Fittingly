@@ -2,7 +2,7 @@
 session_start();
 // Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
 if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+  $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
 }
 
 // Als er geen taal is gekozen, gebruik dan de default taal 'nl'
@@ -133,12 +133,24 @@ include "lang/$lang.php";
     </div>
   </main>
   <footer></footer>
+
   <script src="js/scripts.js"></script>
+  <script src="js/onsdoelscript.js"></script>
+
+  <script>
+    const translations = <?= json_encode($translations) ?>;
+  </script>
+
+  <script src="js/scripts.js"></script>
+  <script src="js/onsdoelscript.js"></script>
+
   <script>
     includeHTML("header.php", "header");
     includeHTML("footer.php", "footer")
   </script>
-  <script src="./js/onsdoelscript.js"></script>
+
+
+
 </body>
 
 </html>
