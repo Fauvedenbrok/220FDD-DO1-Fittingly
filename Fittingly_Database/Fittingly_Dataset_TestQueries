@@ -42,7 +42,7 @@ SELECT SUM(Quantity) AS TotalQuantity FROM OrderLines;
 SELECT MAX(`Weight`) AS MaxWeight FROM Articles;
 SELECT MIN(QuantityOfStock) AS MinStock FROM Stock;
 
--- gebruik van innder join om gegevens uit meerdere tabellen te combineren
+-- gebruik van inner join om gegevens uit meerdere tabellen te combineren
 SELECT Customers.FirstName, Customers.LastName, Orders.OrderDate
 FROM Customers
 INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
