@@ -27,9 +27,8 @@ class OrderLines{
     public function addOrderLine($conn){
         $sql = "INSERT INTO orderlines (quantity, startDateReservation, endDateReservation, orderLinePrice, orderID, articleID, partnerID) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        // issiiii moet nog veranderd worden naar de juiste types
         // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("issiiii", $this->quantity, $this->startDateReservation, $this->endDateReservation, $this->orderLinePrice, $this->orderID, $this->articleID, $this->partnerID);
+        $stmt->bind_param("issdiii", $this->quantity, $this->startDateReservation, $this->endDateReservation, $this->orderLinePrice, $this->orderID, $this->articleID, $this->partnerID);
         if ($stmt->execute()) {
             return true;
         } else {

@@ -14,6 +14,28 @@ $usp_container_2 = "Innovatie";
 $usp_container_3 = "Duurzaamheid";
 
 
+// Header
+$header_navbar_1 = "Home";
+$header_navbar_2 = "Partners";
+$header_navbar_3 = "Contact";
+$header_navbar_4 = "Registreren";
+$header_navbar_5 = "Inloggen";
+
+
+// Footer
+$footer_navbar_1 = "Vind ons:";
+$footer_navbar_2 = "Home";
+$footer_navbar_3 = "Ons platform";
+$footer_navbar_4 = "Ons doel";
+$footer_navbar_5 = "Partner worden?";
+$footer_navbar_6 = "Contact";
+$footer_newsletter_paragraph = "Blijf op de hoogte van updates en nieuws:";
+$footer_formulier_email_placeholder = "johndoe123@email.nl";
+$footer_submit_button = "Aanmelden";
+$footer_privacypolicy = "Privacyverklaring";
+$footer_terms_conditions = "Algemene voorwaarden";
+$footer_allrights = "Fittingly, alle rechten voorbehouden";
+
 // partnerpagina
 $partnerpagina_h2 = "Duurzaam verhuren, Tijdloze elegantie";
 $partnerpagina_paragraph = "Sluit je aan bij Fittingly en geef je collectie een tweede leven. Bereik een nieuwe doelgroep, verhoog je omzet en draag bij aan een duurzame mode-industrie.";
@@ -37,23 +59,23 @@ $contactpagina_p_contactinfo_1 = "Adres: Straat 123, 1021 AB, Breda";
 $contactpagina_p_contactinfo_2 = "Telefoon: +31631506081";
 $contactpagina_p_contactinfo_3 = "Email: info@fittingly.nl";
 
-$contactpagina_formulier_naam = "Naam:";
-$contactpagina_formulier_naam_placeholder = "Naam:";
-$contactpagina_formulier_bedrijf = "Bedrijf:";
-$contactpagina_formulier_bedrijf_placeholder = "Bedrijf:";
-$contactpagina_formulier_email = "Email adres:";
-$contactpagina_formulier_email_placeholder = "Email adres:";
-$contactpagina_formulier_tel = "Telefoonnummer:";
-$contactpagina_formulier_tel_placeholder = "Telefoonnummer:";
-$contactpagina_formulier_bericht = "Bericht:";
-$contactpagina_formulier_bericht_placeholder = "Bericht:";
+$contactpagina_formulier_naam = "Naam";
+$contactpagina_formulier_naam_placeholder = "Voornaam Achternaam";
+$contactpagina_formulier_bedrijf = "Bedrijf";
+$contactpagina_formulier_bedrijf_placeholder = "Bedrijfsnaam";
+$contactpagina_formulier_email = "Email adres";
+$contactpagina_formulier_email_placeholder = "janedoe123@email.uk";
+$contactpagina_formulier_tel = "Telefoonnummer";
+$contactpagina_formulier_tel_placeholder = "06-12345678";
+$contactpagina_formulier_bericht = "Bericht";
+$contactpagina_formulier_bericht_placeholder = "Bericht";
 $contactpagina_formulier_button = "Aanmelden";
 
 
 // registratiepagina
 $klantregistratiepagina_titel = "Klantregistratie";
 $klantregistratiepagina_contact_h2 = "Registatie";
-$klantregistratiepagina_contact_p = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit?";
+$klantregistratiepagina_contact_p = "Word lid van Fittingly en ontdek een nieuwe manier van luxe beleven. Registreer je gratis en krijg toegang tot exclusieve kledingstukken, speciaal geselecteerd voor jouw stijl en gelegenheid. Begin vandaag nog met huren en draag mode met een verhaal.";
 $klantregistratiepagina_formulier_naam = "Voornaam:";
 $klantregistratiepagina_formulier_achternaam = "Achternaam:";
 $klantregistratiepagina_formulier_email = "E-mail:";

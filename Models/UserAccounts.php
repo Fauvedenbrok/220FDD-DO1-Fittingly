@@ -31,7 +31,6 @@ class UserAccounts
     public function addAccount($conn){
         $sql = "INSERT INTO useraccounts (emailAddress, userPassword, accountStatus, accountAccessRights, dateOfRegistration, phoneNumber, newsletter, partnerID, customerID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        // ssssssiii moet nog veranderd worden naar de juiste types
         // s = string, i = integer, d = double, b = blob
         $stmt->bind_param("ssssssiii", $this->emailAddress, $this->userPassword, $this->accountStatus, $this->accountAccessRights, $this->dateOfRegistration, $this->phoneNumber, $this->newsletter, $this->partnerID, $this->customerID);
         if ($stmt->execute()) {
