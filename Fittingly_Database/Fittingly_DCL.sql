@@ -93,6 +93,7 @@ GRANT DELETE ON `View_EmailAddress_UserPassword_PhoneNumber` TO `Customer`, `Par
 GRANT UPDATE ON `View_EmailAddress_Password_AccountStatus_PhoneNumber_Newsletter` TO `Support`;
 GRANT UPDATE ON `View_Newsletter` TO `Guest`;
 
+
 -- Articles Table
 CREATE VIEW `View_Article_Without_ID` AS
 SELECT `Name`, `Description`, `Availability`, `Size`, `Weight`, WeightUnit, Color, `Image`, Category, SubCategory, Material, Brand
@@ -101,8 +102,6 @@ FROM Articles;
 GRANT UPDATE ON `View_Article_Without_ID` TO 'Partner', 'Support';
 GRANT SELECT ON Articles TO 'Customer', 'Partner', 'Support';
 GRANT INSERT ON Articles TO 'Partner';
-
-
 
 
 -- Stock Table
@@ -121,7 +120,6 @@ GRANT INSERT ON Stock TO 'Partner';
 
 
 -- Orders Table
-
 CREATE VIEW `View_OrderStatus` AS
 SELECT OrderStatus
 FROM Orders;
