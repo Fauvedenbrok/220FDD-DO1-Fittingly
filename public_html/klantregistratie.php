@@ -25,7 +25,7 @@ require_once '../project_root/includes/signup/signup_view.inc.php';
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
     <title> <?= $klantregistratiepagina_titel ?> </title>
-</head>
+</head
 
 <body>
     <header></header>
