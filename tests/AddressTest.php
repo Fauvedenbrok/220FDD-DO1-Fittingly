@@ -17,6 +17,6 @@ class AddressTest extends TestCase
 
     public function testToString()
     {
-        $this->assertEquals("1234AB, 12, Main Street, Amsterdam, Netherlands", (string)$this->address);
+        $this->assertEquals("1234AB, 12, Main Street, Amsterdam, Netherlands", $this->address->ToString());
     }
 }
