@@ -9,9 +9,24 @@ $about_text = "Fittingly is dé bestemming voor het huren van exclusieve kleding
 $index_textopmaak_h3 = "Duurzame Mode, Luxe Ervaring";
 $index_textopmaak_h4 = "Onze doel";
 $index_paragraph_text = "Bij Fittingly willen we luxe en duurzaamheid op een unieke manier combineren. Ons doel is om dé standaard te worden voor exclusieve kledingverhuur. We streven ernaar een leidende rol te spelen in een toekomst waarin kleding delen en hergebruiken vanzelfsprekend is. Op die manier dragen we samen bij aan een duurzame wereld waarin luxe en verantwoordelijkheid hand in hand gaan.";
+
 $usp_container_1 = "Betaalbaarheid";
+$usp1_translation = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
+
 $usp_container_2 = "Innovatie";
+$usp2_translation = "Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aanbieden.";
+
 $usp_container_3 = "Duurzaamheid";
+$usp3_translation = "Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.";
+
+$translations = [
+    'usp1' => 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan.',
+    'usp2' => 'Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud.',
+    'usp3' => 'Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven.',
+];
+
+
+
 
 
 // Header
