@@ -9,7 +9,26 @@ if (isset($_GET['lang'])) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 // Laad het juiste taalbestand
-include "../lang/$lang.php";
+
+
+
+
+
+
+
+
+include "../lang/$lang.php";  // check even mn taalbestanden. ik heb geen $lang.php bestand!
+
+
+
+
+
+// check ^^^^^^^^
+
+
+
+
+
 ?>
 <?php
 

@@ -1,6 +1,8 @@
 <?php 
 use PHPUnit\Framework\TestCase;
-include "Models\Addresses.php"; // Assuming the class is in the Models namespace
+
+
+include_once "../Models/Addresses.php"; // Adjust the path as necessary
 
 class AddressTest extends TestCase
 {

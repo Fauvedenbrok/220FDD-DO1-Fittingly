@@ -11,7 +11,8 @@ $lang = $_SESSION['lang'] ?? 'nl';
 // Laad het juiste taalbestand
 include "lang/$lang.php";
 
-require_once 'includes/login/login_view.inc.php';
+require_once '../project_root/includes/login/login_view.inc.php';
+
 ?>
 
 <!doctype html>
@@ -38,7 +39,7 @@ require_once 'includes/login/login_view.inc.php';
             <div class="contact-info">
 
             </div>
-            <form method="post" action="includes/login/login.inc.php">
+            <form method="post" action="../project_root/includes/login/login.inc.php">
                 <label for="email">
                     E-mail:
                     <input type="text" name="EmailAddress" placeholder="Email"><br>
