@@ -89,6 +89,9 @@ require_once '../project_root/includes/signup/signup_view.inc.php';
                     <?= $klantregistratiepagina_formulier_nieuwsbrief ?><br>
                     <input type="submit" value="<?= $klantregistratiepagina_formulier_button; ?>" name="submit">
                 </label>
+                <?php 
+                    check_signup_errors();
+                ?>
             </form>
             <div>
                 <?php
