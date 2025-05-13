@@ -1,6 +1,6 @@
 <?php
-require_once 'db_connect.php';
-require_once 'repositories/ArticlesRepository.php';
+require_once __DIR__ . '/../private_html/db_connect.php';
+require_once __DIR__ . '/../project_root/repositories/ArticlesRepository.php';
 
 $db = new Database();
 $pdo = $db->getPdo();
@@ -16,7 +16,7 @@ $artikelen = $articlesRepo->findAll($zoekwoord, $categorie);
 <head>
     <meta charset="UTF-8">
     <title>Productpagina</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header></header>

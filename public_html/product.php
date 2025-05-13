@@ -1,6 +1,6 @@
 <?php
-require_once 'db_connect.php';
-require_once 'repositories/ArticlesRepository.php';
+require_once __DIR__ . '/../private_html/db_connect.php';
+require_once __DIR__ . '/../project_root/repositories/ArticlesRepository.php';
 
 $db = new Database();
 $pdo = $db->getPdo();
@@ -21,7 +21,7 @@ $categorieClass = strtolower(str_replace(' ', '-', $artikel->getArticleCategory(
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($artikel->getArticleName()); ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header></header>
