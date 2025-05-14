@@ -1,0 +1,4 @@
+﻿ArticleID,Name,Size,Weight,WeightUnit,Color,Description,Image,Category,SubCategory,Material,Brand,Availability
+8,Stylish Jacket,L,1.2,Kilogram,Zwart,Een elegante jas voor elke gelegenheid,example_image_8.jpg,Mannenkleding,Jassen,Katoen,Nike,TRUE
+9,Casual T-Shirt,M,0.3,Kilogram,Wit,Comfortabel en stijlvol,example_image_9.jpg,Mannenkleding,T-Shirts,Jute,Adidas,FALSE
+10,Chic Dress,S,0.8,Kilogram,Rood,Perfect voor een avondje uit,example_image_10.jpg,Vrouwenkleding,Jurken,Zijde,Zara,TRUE
