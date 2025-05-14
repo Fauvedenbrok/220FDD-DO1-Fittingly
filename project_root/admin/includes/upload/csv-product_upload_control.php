@@ -24,12 +24,14 @@
                 } catch (PDOException $e) {
                     die("Databaseverbinding mislukt: " . $e->getMessage());
                 }
+                // slaat de eerste regel van de csv over
+                // Dit is de header regel, die we niet willen verwerken
                 fgetcsv($handle, 1000, ",");
 
     
-            // Verwerk rijen van de CSV
+            // Verwerk rijen van de CSV hierbij controleert die of er nog een record is in de csv
             while (($data = fgetcsv($handle, 1000, ",")) !== false) {
-    // Extracting CSV data
+    // pakt regel uit CSV data
     $id = $data[0];
     $name = $data[1];
     $size = $data[2];
