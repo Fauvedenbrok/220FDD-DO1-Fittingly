@@ -90,7 +90,7 @@ include "../lang/$lang.php";  // check even mn taalbestanden. ik heb geen $lang.
   <script src="../js/scripts.js"></script>
   <script>
     includeHTML("../header.php", "header");
-    includeHTML("../footer.php", "footer")
+    includeHTML("../footer.php", "footer");
   </script>
 </body>
 
