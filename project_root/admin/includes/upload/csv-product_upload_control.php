@@ -41,7 +41,7 @@
     $weightUnit = $data[4]; // Matches `WeightUnit`
     $color = $data[5];
     $description = $data[6];
-    $image = $data[7]; // Assuming base64 or file path handling
+    $image = $data[7]; 
     $category = $data[8];
     $subcategory = $data[9];
     $material = $data[10];
@@ -118,15 +118,7 @@
 
 fclose($handle);
 header("Location: ../../products.php?lang=nl&upload=success");
-    // Hier kan je een succesbericht tonen of een redirect doen
-    // echo "CSV processing completed successfully!";
-    // exit();
-        } else {
-            // Kan het bestand niet openen
-            // echo "Kan het CSV-bestand niet openen.";
+        } else {   
             header("Location: ../../products.php?lang=nl&upload=error");
-
-            //exit();
-
         }
     }
