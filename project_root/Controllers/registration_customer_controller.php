@@ -6,28 +6,34 @@ use Models\UserAccounts;
 use Models\Addresses;
 use Core\Validator;
 
+require_once "../Core/validator.php";
+require_once "../Core/db_handler.php";
+require_once "../Models/UserAccounts.php";
+require_once "../Models/Addresses.php";
+require_once "../Models/Customers.php";
+
 class RegistrationCustomerController {
     public function register(): void{
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $data = $_POST;
 
             $required = ['FirstName', 'LastName', 'EmailAddress', 'UserPassword', 'DateOfBirth', 'PostalCode', 'HouseNumber', 'StreetName', 'City', 'Country'];
-
-            if (Validator::isEmpty($data, $required)) {
+            $validation = new Validator();
+            if ($validation->isEmpty($data, $required)) {
                 echo "Vul alle velden in.";
                 return;
             }
 
-            if (!Validator::isValidEmail($data['EmailAddress'])) {
+            if (!$validation->isValidEmail($data['EmailAddress'])) {
                 echo "Ongeldig e-mailadres.";
                 return;
             }
 
             try {
                 $db = \Core\Database::getConnection();
-                $db = beginTransaction();
+                $db->beginTransaction();
 
-                $userAccount = new Models\UserAccount(
+                $userAccount = new \Models\UserAccounts(
                 $data['EmailAddress'],
                 $data['UserPassword'],
                 'pending',          // voorbeeld status
@@ -43,8 +49,20 @@ class RegistrationCustomerController {
                     throw new \Exception("Fout bij het opslaan van een UserAccount");
                 }
 
-                $customer = new Models\Customer(
-                null,
+                $address = new \Models\Addresses(
+                $data['PostalCode'],
+                $data['HouseNumber'],
+                $data['StreetName'],
+                $data['City'],
+                $data['Country']
+                );
+
+                if(!$address->saveAddress()){
+                    throw new \Exception("Fout bij het opslaan van Address");
+                }
+
+                $customer = new \Models\Customers(
+                rand(10, 99999),
                 $data['FirstName'],
                 $data['LastName'],
                 $data['DateOfBirth'],
@@ -56,21 +74,10 @@ class RegistrationCustomerController {
                     throw new \Exception("Fout bij het opslaan van Customer");
                 }
 
-                $address = new Addresses(
-                $data['postalCode'],
-                $data['houseNumber'],
-                $data['streetName'],
-                $data['city'],
-                $data['country']
-                );
-
-                if(!$address->saveAddress()){
-                    throw new \Exception("Fout bij het opslaan van Address");
-                }
-
                 $db->commit();
                 echo "Registratie succesvol!";
             } catch (\Exception $e){
+                $db = \Core\Database::getConnection();
                 $db->rollback();
                 echo "Registratie mislukt: " . $e->getMessage();
             }
