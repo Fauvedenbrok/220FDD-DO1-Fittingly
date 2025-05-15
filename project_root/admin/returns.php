@@ -13,17 +13,7 @@ include "../lang/$lang.php";
 ?>
 <?php
 
-
-
 // login check en rechten check
-
-// CSV download
-
-// afbeelding upload
-
-// producten aanpassen
-// producten toevoegen
-// producten verwijderen
 
 
 ?>

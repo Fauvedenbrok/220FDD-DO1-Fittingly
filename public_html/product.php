@@ -1,6 +1,16 @@
 <?php
-require_once 'db_connect.php';
-require_once 'repositories/ArticlesRepository.php';
+session_start();
+require_once 'Lang/translator.php';
+
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+$lang = $_SESSION['lang'] ?? 'nl';
+
+$translator = new Translator($lang);
+
+require_once __DIR__ . '/../private_html/db_connect.php';
+require_once __DIR__ . '/../project_root/repositories/ArticlesRepository.php';
 
 $db = new Database();
 $pdo = $db->getPdo();
@@ -21,7 +31,7 @@ $categorieClass = strtolower(str_replace(' ', '-', $artikel->getArticleCategory(
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($artikel->getArticleName()); ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header></header>

@@ -1,18 +1,31 @@
 <?php
+namespace Models;
+use PDO;
+use Core\Database;
 
 class Customers
 {
 
-    private $customerID;
-    private $firstName;
-    private $lastName;
-    private $dateOfBirth;
-    private $postalCode;
-    private $houseNumber;
+    private int $customerID;
+    private string $firstName;
+    private string $lastName;
+    private string $dateOfBirth;
+    private string $postalCode;
+    private string $houseNumber;
+    private PDO $db;
 
 
 
-    public function __construct($customerID, $firstName, $lastName, $dateOfBirth, $postalCode, $houseNumber){
+    public function __construct(
+        int $customerID,
+        string $firstName,
+        string $lastName,
+        string $dateOfBirth,
+        string $postalCode,
+        string $houseNumber
+    ) {
+        $this->db = Database::getConnection();
+
         $this->customerID = $customerID;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -25,17 +38,19 @@ class Customers
         return "$this->customerID, $this->firstName, $this->lastName, $this->dateOfBirth, $this->postalCode, $this->houseNumber";
     }
 
-    // prepared statement nog voor het toevoegen van een klant
-    public function addCustomer($conn){
-        $sql = "INSERT INTO customers (customerID, firstName, lastName, dateOfBirth, postalCode, houseNumber) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("isssss", $this->customerID, $this->firstName, $this->lastName, $this->dateOfBirth, $this->postalCode, $this->houseNumber);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+    public function saveCustomer(): bool {
+        $stmt = $this->db->prepare("
+            INSERT INTO customers (customerID, firstName, lastName, dateOfBirth, postalCode, houseNumber)
+            VALUES (:customerID, :firstName, :lastName, :dateOfBirth, :postalCode, :houseNumber)");
+
+        return $stmt->execute([
+            ':customerID' => $this->customerID,
+            ':firstName' => $this->firstName,
+            ':lastName' => $this->lastName,
+            ':dateOfBirth' => $this->dateOfBirth,
+            ':postalCode' => $this->postalCode,
+            ':houseNumber' => $this->houseNumber
+        ]);
     }
 
     public function registerAccount(){

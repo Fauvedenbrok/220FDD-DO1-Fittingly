@@ -9,25 +9,7 @@ if (isset($_GET['lang'])) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 // Laad het juiste taalbestand
-
-
-
-
-
-
-
-
-include "../lang/$lang.php";  // check even mn taalbestanden. ik heb geen $lang.php bestand!
-
-
-
-
-
-// check ^^^^^^^^
-
-
-
-
+include "../lang/$lang.php";  
 
 ?>
 <?php
@@ -90,7 +72,7 @@ include "../lang/$lang.php";  // check even mn taalbestanden. ik heb geen $lang.
   <script src="../js/scripts.js"></script>
   <script>
     includeHTML("../header.php", "header");
-    includeHTML("../footer.php", "footer")
+    includeHTML("../footer.php", "footer");
   </script>
 </body>
 

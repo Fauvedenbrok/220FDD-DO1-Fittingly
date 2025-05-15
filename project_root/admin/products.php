@@ -9,10 +9,18 @@ if (isset($_GET['lang'])) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 // Laad het juiste taalbestand
-include "../lang/$lang.php";
+include "../../public_html/Lang/$lang.php";
 ?>
 <?php
 
+if(isset($_GET['upload'])) {
+    // Hier kan je de upload status controleren
+    if($_GET['upload'] == "success") {
+        echo "<script>alert('Upload succesvol!');</script>";
+    } elseif($_GET['upload'] == "error") {
+        echo "<script>alert('Upload mislukt!');</script>";
+    }
+}
 
 
 // login check en rechten check
@@ -59,7 +67,7 @@ include "../lang/$lang.php";
       </ul>
   </nav>
     
-    <form action="..includes/upload/csv-upload.php" method="post" enctype="multipart/form-data">
+    <form action="includes/upload/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
     Selecteer CSV-bestand:
     <input type="file" name="csv_file" accept=".csv">
     <input type="submit" name="upload" value="Uploaden">
