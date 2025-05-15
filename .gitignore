@@ -131,3 +131,4 @@ dist
 
 # PHPUnit and Composer
 vendor/
+composer.lock

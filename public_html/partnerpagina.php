@@ -1,15 +1,13 @@
 <?php
 session_start();
-// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
-}
+require_once 'Lang/translator.php';
 
-// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
 $lang = $_SESSION['lang'] ?? 'nl';
 
-// Laad het juiste taalbestand
-include "lang/$lang.php";
+$translator = new Translator($lang);
 ?>
 
 <!DOCTYPE html>
@@ -34,29 +32,29 @@ include "lang/$lang.php";
     <div id="partnerpagina-container">
       <div class="background-container">
         <div id="koptekst-container">
-          <h2 id="koptekst"> <?= $partnerpagina_h2 ?> </h2>
-          <p class="header-paragraph-tekst"> <?= $partnerpagina_paragraph ?> </p>
+          <h2 id="koptekst"> <?= $translator-> get('partnerpagina_h2') ?> </h2>
+          <p class="header-paragraph-tekst"> <?= $translator-> get('partnerpagina_paragraph') ?> </p>
         </div>
         <div class="usp-div-container">
           <div class="usp-div">
             <div class="usp-div-img">
               <img class="usp-img" src="./Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
-            <h5 class="usp-div-tekst"> <?= $partnerpagina_usp1 ?> </h5>
+            <h5 class="usp-div-tekst"> <?= $translator-> get('partnerpagina_usp1') ?> </h5>
           </div>
 
           <div class="usp-div">
             <div class="usp-div-img">
               <img class="usp-img" src="./Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
-            <h5 class="usp-div-tekst"> <?= $partnerpagina_usp2 ?> </h5>
+            <h5 class="usp-div-tekst"> <?= $translator-> get('partnerpagina_usp2') ?> </h5>
           </div>
 
           <div class="usp-div">
             <div class="usp-div-img">
               <img class="usp-img" src="./Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
-            <h5 class="usp-div-tekst"> <?= $partnerpagina_usp3 ?> </h5>
+            <h5 class="usp-div-tekst"> <?= $translator-> get('partnerpagina_usp3') ?> </h5>
           </div>
         </div>
       </div>
@@ -66,14 +64,14 @@ include "lang/$lang.php";
         <div class="ons-platform-container">
           <div class="ons-platform-tekst-container">
             <h3 class="ons-platform-heading-tekst1">
-              <?= $partnerpagina_h3 ?>
+              <?= $translator-> get('partnerpagina_h3') ?>
             </h3>
             <h4 class="ons-platform-heading-tekst2">
-              <?= $partnerpagina_h4 ?>
+              <?= $translator-> get('partnerpagina_h4') ?>
             </h4>
             <div id="couple-img-hidden"></div>
             <p class="ons-platform-paragraph-tekst2">
-              <?= $partnerpagina_paragraph2 ?>
+              <?= $translator-> get('partnerpagina_paragraph2') ?>
             </p>
           </div>
           <div class="ons-platform-img-container">
@@ -82,7 +80,7 @@ include "lang/$lang.php";
         </div>
 
         <div>
-          <h4 id="partner-koptekst"> <?= $partnerpagina_koptekst_h4 ?> </h4>
+          <h4 id="partner-koptekst"> <?= $translator-> get('partnerpagina_koptekst_h4') ?> </h4>
         </div>
 
         <!--De 4 plaatjes voor de slider-->
@@ -132,13 +130,13 @@ include "lang/$lang.php";
         <!--Aanmeldingknop onderaan de pagina met functie-->
         <div class="afsluiting-div-container">
           <div class="afsluiting-tekst-container">
-            <p class="afsluiting-heading-tekst"> <?= $partnerpagina_afsluiting_p_1 ?> </p>
+            <p class="afsluiting-heading-tekst"> <?= $translator-> get('partnerpagina_afsluiting_p_1') ?> </p>
             <p class="afsluitings-paragraph">
-              <?= $partnerpagina_afsluiting_p_2 ?>
+              <?= $translator-> get('partnerpagina_afsluiting_p_2') ?>
             </p>
             <div>
               <a href="contact.php"><button class="aanmeld-button" onclick="pushButton()">
-                  <?= $partnerpagina_aanmeld_button ?>
+                  <?= $translator-> get('partnerpagina_aanmeld_button') ?>
                 </button></a>
             </div>
           </div>

@@ -1,4 +1,14 @@
 <?php
+session_start();
+require_once 'Lang/translator.php';
+
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+$lang = $_SESSION['lang'] ?? 'nl';
+
+$translator = new Translator($lang);
+
 require_once __DIR__ . '/../private_html/db_connect.php';
 require_once __DIR__ . '/../project_root/repositories/ArticlesRepository.php';
 
