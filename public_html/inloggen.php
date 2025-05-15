@@ -24,15 +24,15 @@ require_once '../project_root/includes/login/login_view.inc.php';
     <link rel="icon" href="/Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
-    <title>Klant registratie</title>
+    <title> <?= $inlogpagina_title_text?> </title>
 </head>
 
 <body>
     <header></header>
     <main>
         <div class="background-container">
-            <h2 id="h2-contact">Registratie</h2>
-            <p id="para-contact">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit? </p>
+            <h2 id="h2-contact"> <?= $inlogpagina_header_text ?> </h2>
+            <p id="para-contact"> <?= $inlogpagina_paragraph_text ?> </p>
         </div>
 
         <div class="form-container">
@@ -41,15 +41,15 @@ require_once '../project_root/includes/login/login_view.inc.php';
             </div>
             <form method="post" action="../project_root/includes/login/login.inc.php">
                 <label for="email">
-                    E-mail:
-                    <input type="text" name="EmailAddress" placeholder="Email"><br>
+                    <?= $inlogpagina_formulier_email?>
+                    <input type="text" name="EmailAddress" placeholder="<?= $inlogpagina_formulier_email_placeholder?> "><br>
                 </label>
                 <label for="password">
-                    Wachtwoord:
-                    <input type="password" name="UserPassword" placeholder="Password"><br>
+                    <?= $inlogpagina_formulier_password?>
+                    <input type="password" name="UserPassword" placeholder="<?= $inlogpagina_formulier_password_placeholder?> "><br>
                 </label>
                 <label>
-                    <button>Login</button>
+                    <button><?= $inlogpagina_formulier_button?> </button>
                 </label>
                 <?php 
                     check_login_errors();
