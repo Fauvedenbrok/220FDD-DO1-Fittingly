@@ -1,15 +1,15 @@
 <?php
 session_start();
-// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+require_once 'Lang/translator.php';
+// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
 if (isset($_GET['lang'])) {
-  $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+    $_SESSION['lang'] = $_GET['lang'];
 }
-
-// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
 $lang = $_SESSION['lang'] ?? 'nl';
-
 // Laad het juiste taalbestand
-include "lang/$lang.php";
+
+$translator = new Translator($lang);
+
 ?>
 
 
@@ -60,22 +60,22 @@ include "lang/$lang.php";
       </div>
       <div class="hero-sectie-partners">
         <div class="hero-content">
-          <h2> <?= $hero_content_h2 ?> </h2>
-          <button class="cta-partner-hero" onclick="window.location.href='/partnerpagina.php'"> <?= $hero_content_button ?> </button>
+          <h2> <?= $translator->get('hero_content_h2') ?> </h2>
+          <button class="cta-partner-hero" onclick="window.location.href='/partnerpagina.php'"> <?= $translator->get('hero_content_button') ?> </button>
         </div>
       </div>
       <div class="scroll-info">
-        <p> <?= $scroll_info_text ?> </p>
+        <p> <?= $translator->get('scroll_info_text') ?> </p>
         <div class="arrow"></div>
       </div>
     </div>
     <div class="onsdoel-container">
       <div id="about" class="index-textopmaak-1">
         <div class="index-textopmaak-2">
-          <h3> <?= $about_h3 ?> </h3>
-          <h4> <?= $about_h4 ?> </h4>
+          <h3> <?= $translator->get ('about_h3') ?> </h3>
+          <h4> <?= $translator->get ('about_h4') ?> </h4>
           <div class="image-mobile image-about"></div>
-          <p class="index-paragraph-tekst-1"> <?= $about_text ?> </p>
+          <p class="index-paragraph-tekst-1"> <?= $translator->get ('about_text') ?> </p>
         </div>
         <div class="image-blok-1"><img src="./Images/onsdoelImages/mobieldesign.png" alt="Mobiele weergave afbeelding"
             class="image-right"></div>
@@ -109,23 +109,23 @@ include "lang/$lang.php";
       <div id="goal" class="index-textopmaak-1">
         <img src="./Images/onsdoelImages/faded_bride.png" alt="Placeholder afbeelding" class="image-left">
         <div class="index-textopmaak-2">
-          <h3> <?= $index_textopmaak_h3 ?> </h3>
-          <h4> <?= $index_textopmaak_h4 ?> </h4>
+          <h3> <?= $translator->get ('index_textopmaak_h3') ?> </h3>
+          <h4> <?= $translator->get ('index_textopmaak_h4') ?> </h4>
           <div class="image-mobile image-goal"></div>
-          <p class="index-paragraph-tekst-2"> <?= $index_paragraph_text ?> </p>
+          <p class="index-paragraph-tekst-2"> <?= $translator->get ('index_paragraph_text') ?> </p>
           <div class="usp-container">
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP1Light" class="hexagon">
 
-              <p class="gold-text"> <?= $usp_container_1 ?> </p>
+              <p class="gold-text"> <?= $translator->get ('usp_container_1') ?> </p>
             </div>
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP2Light" class="hexagon">
-              <p class="gold-text"> <?= $usp_container_2 ?> </p>
+              <p class="gold-text"> <?= $translator->get ('usp_container_2') ?> </p>
             </div>
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP3Light" class="hexagon">
-              <p class="gold-text"> <?= $usp_container_3 ?> </p>
+              <p class="gold-text"> <?= $translator->get ('usp_container_3') ?> </p>
             </div>
           </div>
         </div>
