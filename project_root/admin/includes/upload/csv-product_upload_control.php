@@ -1,5 +1,6 @@
 <?php 
     if (isset($_POST["upload"])) {
+        // Hier zou ook een aparte functie van gemaakt kunnen worden. Als je bijvoorbeeld ook een andere file upload wilt maken.
     if ($_FILES["csv_file"]["error"] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES["csv_file"]["tmp_name"];
         $fileName = $_FILES["csv_file"]["name"];
@@ -14,7 +15,8 @@
         echo "Fout bij uploaden.";
     }
     }
-
+    // functie verwerkt de csv, controleert of de gegevens al bestaan in de database en voegt ze toe of update ze.
+    // Deze functie ga ik dus nog opsplitsen in losse functies en OOP maken. -Bart
     function processCSV($filePath) {
         $handle = fopen($filePath, "r");
 
@@ -47,6 +49,7 @@
     $availability = filter_var($data[12], FILTER_VALIDATE_BOOLEAN); // Ensuring boolean type
 
     // Check if the ArticleID exists in the database
+    // maak hier een functie van in Model Articles!!!
     $sqlCheck = "SELECT COUNT(*) FROM Articles WHERE ArticleID = :id";
     $stmt = $pdo->prepare($sqlCheck);
     $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -55,6 +58,7 @@
 
     if ($exists > 0) {
         // Update existing row
+        // maak hier een functie van in Model Articles!!!
         $sqlUpdate = "UPDATE Articles SET 
             Name = :name, 
             Size = :size, 
@@ -87,6 +91,7 @@
         $updateStmt->execute();
     } else {
         // Insert new row
+        // maak hier een functie van in Model Articles!!!
         $sqlInsert = "INSERT INTO Articles (Name, Size, Weight, WeightUnit, 
             Color, Description, Image, Category, SubCategory, 
             Material, Brand, Availability) 
@@ -112,8 +117,16 @@
 }
 
 fclose($handle);
-echo "CSV processing completed successfully!";
+header("Location: ../../products.php?lang=nl&upload=success");
+    // Hier kan je een succesbericht tonen of een redirect doen
+    // echo "CSV processing completed successfully!";
+    // exit();
         } else {
-            echo "Kan het CSV-bestand niet openen.";
+            // Kan het bestand niet openen
+            // echo "Kan het CSV-bestand niet openen.";
+            header("Location: ../../products.php?lang=nl&upload=error");
+
+            //exit();
+
         }
     }
