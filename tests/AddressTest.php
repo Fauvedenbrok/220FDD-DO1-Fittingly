@@ -1,6 +1,10 @@
 <?php 
 use PHPUnit\Framework\TestCase;
-include "Models\Addresses.php"; // Assuming the class is in the Models namespace
+
+
+include_once "../project_root/Models/Addresses.php";
+
+
 
 class AddressTest extends TestCase
 {
@@ -13,6 +17,6 @@ class AddressTest extends TestCase
 
     public function testToString()
     {
-        $this->assertEquals("1234AB, 12, Main Street, Amsterdam, Netherlands", (string)$this->address);
+        $this->assertEquals("1234AB, 12, Main Street, Amsterdam, Netherlands", $this->address->ToString());
     }
 }

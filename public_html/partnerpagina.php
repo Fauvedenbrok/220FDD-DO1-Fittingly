@@ -40,21 +40,21 @@ include "lang/$lang.php";
         <div class="usp-div-container">
           <div class="usp-div">
             <div class="usp-div-img">
-              <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
+              <img class="usp-img" src="./Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
             <h5 class="usp-div-tekst"> <?= $partnerpagina_usp1 ?> </h5>
           </div>
 
           <div class="usp-div">
             <div class="usp-div-img">
-              <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
+              <img class="usp-img" src="./Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
             <h5 class="usp-div-tekst"> <?= $partnerpagina_usp2 ?> </h5>
           </div>
 
           <div class="usp-div">
             <div class="usp-div-img">
-              <img class="usp-img" src="/Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
+              <img class="usp-img" src="./Images/onsdoelImages/usp_Fittingly_dark.png" alt="">
             </div>
             <h5 class="usp-div-tekst"> <?= $partnerpagina_usp3 ?> </h5>
           </div>
@@ -77,7 +77,7 @@ include "lang/$lang.php";
             </p>
           </div>
           <div class="ons-platform-img-container">
-            <img id="img-couple" src="/Images/backgroundImages/faded_couple.png" alt="Mens Brown Long-Coat Model">
+            <img id="img-couple" src="./Images/backgroundImages/faded_couple.png" alt="Mens Brown Long-Coat Model">
           </div>
         </div>
 
@@ -89,42 +89,42 @@ include "lang/$lang.php";
         <div class="slider">
           <div class="slide-track">
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Nomad_Thread.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Nomad_Thread.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/DBH.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/DBH.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Caunhing.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Caunhing.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Bassinsins.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Bassinsins.jpg" alt="">
             </div>
 
             <!--Duplicate images, nodig om the infinite carousel mogelijk te maken. -->
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Nomad_Thread.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Nomad_Thread.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/DBH.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/DBH.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Caunhing.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Caunhing.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Bassinsins.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Bassinsins.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Nomad_Thread.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Nomad_Thread.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/DBH.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/DBH.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Caunhing.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Caunhing.jpg" alt="">
             </div>
             <div class="slide">
-              <img class="slideimg" src="/Images/partnerLogos/Bassinsins.jpg" alt="">
+              <img class="slideimg" src="./Images/partnerLogos/Bassinsins.jpg" alt="">
             </div>
           </div>
         </div>

@@ -89,7 +89,7 @@ $contactpagina_formulier_button = "Aanmelden";
 
 // registratiepagina
 $klantregistratiepagina_titel = "Klantregistratie";
-$klantregistratiepagina_contact_h2 = "Registatie";
+$klantregistratiepagina_contact_h2 = "Registratie";
 $klantregistratiepagina_contact_p = "Word lid van Fittingly en ontdek een nieuwe manier van luxe beleven. Registreer je gratis en krijg toegang tot exclusieve kledingstukken, speciaal geselecteerd voor jouw stijl en gelegenheid. Begin vandaag nog met huren en draag mode met een verhaal.";
 $klantregistratiepagina_formulier_naam = "Voornaam:";
 $klantregistratiepagina_formulier_achternaam = "Achternaam:";
