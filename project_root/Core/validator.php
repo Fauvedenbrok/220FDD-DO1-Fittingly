@@ -14,3 +14,5 @@ class Validator {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 }
+
+big testie voor de zekerheid

@@ -36,7 +36,7 @@ $translator = new Translator($lang);
             <div class="contact-info">
 
             </div>
-            <form method="post" action="../project_root/Controllers/registration_customer_controller.php">
+            <form method="post" action="../project_root/Core/registration_handler.php">
                 <label for="name">
                     <?= $translator->get ('klantregistratiepagina_formulier_naam') ?>
                     <input type="text" name="FirstName" id="firstname" required><br>
