@@ -1,25 +1,25 @@
 
 
 
-// index
-// $hero_content_h2 = "Partner worden van Fittingly?";
-// $hero_content_button = "Meer informatie";
-// $scroll_info_text = "Wie zijn wij?";
-// $about_h3 = "Exclusieve kleding, zonder kopen";
-// $about_h4 = "Ons platform";
-// $about_text = "Fittingly is dé bestemming voor het huren van exclusieve kleding! Of je nu naar een bruiloft, gala of een andere bijzondere gelegenheid gaat, bij ons vind je de perfecte outfit, zonder dat je deze hoeft te kopen. Hiermee draag je bij aan duurzaamheid en voorkom je kledingverspilling.";
-// $index_textopmaak_h3 = "Duurzame Mode, Luxe Ervaring";
-// $index_textopmaak_h4 = "Onze doel";
-// $index_paragraph_text = "Bij Fittingly willen we luxe en duurzaamheid op een unieke manier combineren. Ons doel is om dé standaard te worden voor exclusieve kledingverhuur. We streven ernaar een leidende rol te spelen in een toekomst waarin kleding delen en hergebruiken vanzelfsprekend is. Op die manier dragen we samen bij aan een duurzame wereld waarin luxe en verantwoordelijkheid hand in hand gaan.";
+index
+$hero_content_h2 = "Partner worden van Fittingly?";
+$hero_content_button = "Meer informatie";
+$scroll_info_text = "Wie zijn wij?";
+$about_h3 = "Exclusieve kleding, zonder kopen";
+$about_h4 = "Ons platform";
+$about_text = "Fittingly is dé bestemming voor het huren van exclusieve kleding! Of je nu naar een bruiloft, gala of een andere bijzondere gelegenheid gaat, bij ons vind je de perfecte outfit, zonder dat je deze hoeft te kopen. Hiermee draag je bij aan duurzaamheid en voorkom je kledingverspilling.";
+$index_textopmaak_h3 = "Duurzame Mode, Luxe Ervaring";
+$index_textopmaak_h4 = "Onze doel";
+$index_paragraph_text = "Bij Fittingly willen we luxe en duurzaamheid op een unieke manier combineren. Ons doel is om dé standaard te worden voor exclusieve kledingverhuur. We streven ernaar een leidende rol te spelen in een toekomst waarin kleding delen en hergebruiken vanzelfsprekend is. Op die manier dragen we samen bij aan een duurzame wereld waarin luxe en verantwoordelijkheid hand in hand gaan.";
 
-// $usp_container_1 = "Betaalbaarheid";
-// $usp1_translation = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
+$usp_container_1 = "Betaalbaarheid";
+$usp1_translation = 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.';
 
-// $usp_container_2 = "Innovatie";
-// $usp2_translation = "Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aanbieden.";
+$usp_container_2 = "Innovatie";
+$usp2_translation = "Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aanbieden.";
 
-// $usp_container_3 = "Duurzaamheid";
-// $usp3_translation = "Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.";
+usp_container_3 = "Duurzaamheid";
+$usp3_translation = "Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.";
 
 $translations = [
     'usp1' => 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan.',
@@ -90,22 +90,22 @@ $translations = [
 
 
 // // registratiepagina
-// $klantregistratiepagina_titel = "Klantregistratie";
-// $klantregistratiepagina_contact_h2 = "Registratie";
-// $klantregistratiepagina_contact_p = "Word lid van Fittingly en ontdek een nieuwe manier van luxe beleven. Registreer je gratis en krijg toegang tot exclusieve kledingstukken, speciaal geselecteerd voor jouw stijl en gelegenheid. Begin vandaag nog met huren en draag mode met een verhaal.";
-// $klantregistratiepagina_formulier_naam = "Voornaam:";
-// $klantregistratiepagina_formulier_achternaam = "Achternaam:";
-// $klantregistratiepagina_formulier_email = "E-mail:";
-// $klantregistratiepagina_formulier_tel = "Telefoon:";
-// $klantregistratiepagina_formulier_geboortedatum = "Geboortedatum:";
-// $klantregistratiepagina_formulier_postcode = "Postcode:";
-// $klantregistratiepagina_formulier_straat = "Straat:";
-// $klantregistratiepagina_formulier_huisnummer = "Huisnummer:";
-// $klantregistratiepagina_formulier_stad = "Stad:";
-// $klantregistratiepagina_formulier_land = "Land:";
-// $klantregistratiepagina_formulier_wachtwoord = "Wachtwoord:";
-// $klantregistratiepagina_formulier_nieuwsbrief = "Nieuwsbrief";
-// $klantregistratiepagina_formulier_button = "Registreer";
+// $translator->get ('klantregistratiepagina_titel = "Klantregistratie";
+// $translator->get ('klantregistratiepagina_contact_h2 = "Registratie";
+// $translator->get ('klantregistratiepagina_contact_p = "Word lid van Fittingly en ontdek een nieuwe manier van luxe beleven. Registreer je gratis en krijg toegang tot exclusieve kledingstukken, speciaal geselecteerd voor jouw stijl en gelegenheid. Begin vandaag nog met huren en draag mode met een verhaal.";
+// $translator->get ('klantregistratiepagina_formulier_naam = "Voornaam:";
+// $translator->get ('klantregistratiepagina_formulier_achternaam = "Achternaam:";
+// $translator->get ('klantregistratiepagina_formulier_email = "E-mail:";
+// $translator->get ('klantregistratiepagina_formulier_tel = "Telefoon:";
+// $translator->get ('klantregistratiepagina_formulier_geboortedatum = "Geboortedatum:";
+// $translator->get ('klantregistratiepagina_formulier_postcode = "Postcode:";
+// $translator->get ('klantregistratiepagina_formulier_straat = "Straat:";
+// $translator->get ('klantregistratiepagina_formulier_huisnummer = "Huisnummer:";
+// $translator->get ('klantregistratiepagina_formulier_stad = "Stad:";
+// $translator->get ('klantregistratiepagina_formulier_land = "Land:";
+// $translator->get ('klantregistratiepagina_formulier_wachtwoord = "Wachtwoord:";
+// $translator->get ('klantregistratiepagina_formulier_nieuwsbrief = "Nieuwsbrief";
+// $translator->get ('klantregistratiepagina_formulier_button = "Registreer";
 
 
 // // inlogpagina

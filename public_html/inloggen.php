@@ -1,18 +1,13 @@
 <?php
 session_start();
-// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
-}
+require_once 'Lang/translator.php';
 
-// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
 $lang = $_SESSION['lang'] ?? 'nl';
 
-// Laad het juiste taalbestand
-include "lang/$lang.php";
-
-require_once '../project_root/includes/login/login_view.inc.php';
-
+$translator = new Translator($lang);
 ?>
 
 <!doctype html>

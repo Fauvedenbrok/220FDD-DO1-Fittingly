@@ -13,6 +13,7 @@ $translator = new Translator($lang);
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="nl">
 
