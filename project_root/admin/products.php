@@ -15,7 +15,6 @@ include "../../public_html/Lang/$lang.php";
 
 if(isset($_GET['upload'])) {
     // Hier kan je de upload status controleren
-    // Dit is een voorbeeld, je moet dit aanpassen aan je eigen upload logica
     if($_GET['upload'] == "success") {
         echo "<script>alert('Upload succesvol!');</script>";
     } elseif($_GET['upload'] == "error") {
