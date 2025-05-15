@@ -11,7 +11,6 @@ $lang = $_SESSION['lang'] ?? 'nl';
 // Laad het juiste taalbestand
 include "lang/$lang.php";
 
-require_once '../project_root/includes/signup/signup_view.inc.php';
 
 ?>
 

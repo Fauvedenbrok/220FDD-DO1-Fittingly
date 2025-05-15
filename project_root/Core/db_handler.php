@@ -10,9 +10,9 @@ class Database {
     public static function getConnection(): PDO {
         if (self::$instance === null) {
             $host = 'localhost';
-            $db = 'your_database';
-            $user = 'your_user';
-            $pass = 'your_password';
+            $db = 'fittingly_database';
+            $user = 'root';
+            $pass = '';
             $charset = 'utf8mb4';
 
             $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

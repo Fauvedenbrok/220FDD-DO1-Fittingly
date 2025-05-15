@@ -35,7 +35,7 @@ class Addresses
             INSERT INTO addresses (PostalCode, HouseNumber, StreetName, City, Country)
             VALUES (:postalCode, :houseNumber, :streetName, :city, :country)
         ");
-
+        
         return $stmt->execute([
             ':postalCode' => $this->postalCode,
             ':houseNumber' => $this->houseNumber,
