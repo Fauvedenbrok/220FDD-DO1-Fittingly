@@ -19,7 +19,7 @@ $translator = new Translator($lang);
     <link rel="icon" href="/Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
-    <title> <?= $inlogpagina_title_text?> </title>
+    <title> <?=$inlogpagina_title_text?> </title>
 </head>
 
 <body>
