@@ -11,7 +11,8 @@ $lang = $_SESSION['lang'] ?? 'nl';
 // Laad het juiste taalbestand
 include "lang/$lang.php";
 
-require_once 'includes/signup/signup_view.inc.php';
+require_once '../project_root/includes/signup/signup_view.inc.php';
+
 ?>
 
 <!doctype html>
@@ -20,11 +21,11 @@ require_once 'includes/signup/signup_view.inc.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/Images/icons/favicon.ico">
+    <link rel="icon" href="./Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
     <title> <?= $klantregistratiepagina_titel ?> </title>
-</head>
+</head
 
 <body>
     <header></header>
@@ -38,7 +39,7 @@ require_once 'includes/signup/signup_view.inc.php';
             <div class="contact-info">
 
             </div>
-            <form method="post" action="includes/signup/signup.inc.php">
+            <form method="post" action="../project_root/includes/signup/signup.inc.php">
                 <label for="name">
                     <?= $klantregistratiepagina_formulier_naam ?>
                     <input type="text" name="FirstName" id="firstname" required><br>
@@ -88,6 +89,9 @@ require_once 'includes/signup/signup_view.inc.php';
                     <?= $klantregistratiepagina_formulier_nieuwsbrief ?><br>
                     <input type="submit" value="<?= $klantregistratiepagina_formulier_button; ?>" name="submit">
                 </label>
+                <?php 
+                    check_signup_errors();
+                ?>
             </form>
             <div>
                 <?php

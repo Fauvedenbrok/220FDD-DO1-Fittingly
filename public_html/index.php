@@ -61,7 +61,7 @@ include "lang/$lang.php";
       <div class="hero-sectie-partners">
         <div class="hero-content">
           <h2> <?= $hero_content_h2 ?> </h2>
-          <button class="cta-partner-hero" onclick="window.location.href='partnerpagina.php'"> <?= $hero_content_button ?> </button>
+          <button class="cta-partner-hero" onclick="window.location.href='/partnerpagina.php'"> <?= $hero_content_button ?> </button>
         </div>
       </div>
       <div class="scroll-info">
