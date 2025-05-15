@@ -1,14 +1,15 @@
 <?php
 session_start();
-
+require_once 'Lang/translator.php';
 // Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
 $lang = $_SESSION['lang'] ?? 'nl';
-
 // Laad het juiste taalbestand
-include "lang/$lang.php";
+
+$translator = new Translator($lang);
 ?>
-
-
 
 <html lang="nl">
 
@@ -28,19 +29,19 @@ include "lang/$lang.php";
       </button>
       <nav>
         <button>
-          <a class="nav-button-tekst" href="index.php"><?= $header_navbar_1 ?></a>
+          <a class="nav-button-tekst" href="index.php"><?= $translator->get ('header_navbar_1') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="partnerpagina.php"><?= $header_navbar_2 ?></a>
+          <a class="nav-button-tekst" href="partnerpagina.php"><?= $translator->get ('header_navbar_2') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="contact.php"><?= $header_navbar_3 ?></a>
+          <a class="nav-button-tekst" href="contact.php"><?= $translator->get ('header_navbar_3') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="klantregistratie.php"><?= $header_navbar_4 ?></a>
+          <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get ('header_navbar_4') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="inloggen.php"><?= $header_navbar_5 ?></a>
+          <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get ('header_navbar_5') ?></a>
         </button>
       </nav>
 
