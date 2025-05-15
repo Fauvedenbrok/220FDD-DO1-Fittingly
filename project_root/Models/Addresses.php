@@ -4,12 +4,7 @@ use PDO;
 use Core\Database;
 
 class Addresses
-{    
-    private $postalCode;
-    private $country;
-    private $city;
-    private $streetName;
-    private $houseNumber;
+{
 
     private PDO $db;
 
@@ -40,7 +35,7 @@ class Addresses
             INSERT INTO addresses (PostalCode, HouseNumber, StreetName, City, Country)
             VALUES (:postalCode, :houseNumber, :streetName, :city, :country)
         ");
-        
+
         return $stmt->execute([
             ':postalCode' => $this->postalCode,
             ':houseNumber' => $this->houseNumber,
@@ -49,29 +44,33 @@ class Addresses
             ':country' => $this->country
         ]);
     }
+    // private $postalCode;
+    // private $country;
+    // private $city;
+    // private $streetName;
+    // private $houseNumber;
 
+    // public function __construct($postalCode, $houseNumber, $streetName, $city, $country){
+    //     $this->postalCode = $postalCode;
+    //     $this->houseNumber = $houseNumber;
+    //     $this->streetName = $streetName;
+    //     $this->city = $city;
+    //     $this->country = $country;
+    // }
+    // function __toString(){
+    //     return "$this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country";
+    // }
 
-    public function __construct($postalCode, $houseNumber, $streetName, $city, $country){
-        $this->postalCode = $postalCode;
-        $this->houseNumber = $houseNumber;
-        $this->streetName = $streetName;
-        $this->city = $city;
-        $this->country = $country;
-    }
-    function __toString(){
-        return "$this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country";
-    }
-
-    // prepared statement voor het toevoegen van een adres
-    public function addAddress($conn){
-        $sql = "INSERT INTO addresses (postalCode, houseNumber, streetName, city, country) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("sssss", $this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // // prepared statement voor het toevoegen van een adres
+    // public function addAddress($conn){
+    //     $sql = "INSERT INTO addresses (postalCode, houseNumber, streetName, city, country) VALUES (?, ?, ?, ?, ?)";
+    //     $stmt = $conn->prepare($sql);
+    //     // s = string, i = integer, d = double, b = blob
+    //     $stmt->bind_param("sssss", $this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country);
+    //     if ($stmt->execute()) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 }
