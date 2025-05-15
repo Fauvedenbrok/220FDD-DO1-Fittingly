@@ -9,21 +9,17 @@ if (isset($_GET['lang'])) {
 $lang = $_SESSION['lang'] ?? 'nl';
 
 // Laad het juiste taalbestand
-include "../lang/$lang.php"; // idem dito!!!!!!
+include "../lang/$lang.php"; 
 ?>
 <?php
 
 
 
-// login check en rechten check
+// login check en rechten check || Class maken
 
 // CSV download
 
-// afbeelding upload
 
-// producten aanpassen
-// producten toevoegen
-// producten verwijderen
 
 
 ?>
