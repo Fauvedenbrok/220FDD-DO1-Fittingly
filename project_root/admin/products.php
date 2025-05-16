@@ -23,7 +23,7 @@ if(isset($_GET['upload'])) {
 }
 
 
-// login check en rechten check
+// login check en rechten
 
 // CSV download
 
