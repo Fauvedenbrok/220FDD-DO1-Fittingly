@@ -11,7 +11,6 @@ body {
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-    height: 60vh;
     background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url(/Images/backgroundImages/contactPagina.jpg);
     background-size: cover;
     background-position: center;
@@ -48,7 +47,6 @@ body {
     border-radius: 6px;
     box-sizing: border-box;
     margin-bottom: 80px;
-    margin: -10vh auto 0 auto;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
@@ -177,7 +175,7 @@ form button[type="submit"] {
 }
 
 /* Media queries voor grote schermen */
-@media (max-width: 1201px) {
+@media (max-width: 1200px) {
     .form-container {
         width: 90%;
         padding: 20px;

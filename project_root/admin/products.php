@@ -1,26 +1,15 @@
 <?php
 session_start();
-// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+require_once __DIR__ . '/../../public_html/Lang/translator.php';
+// filepath: c:\Users\Richard\Documents\School Avans\Jaar 1\Projecten\220FDD-DO1-Fittingly\project_root\admin\adminportal.php
+// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
 if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+    $_SESSION['lang'] = $_GET['lang'];
 }
-
-// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
 $lang = $_SESSION['lang'] ?? 'nl';
-
 // Laad het juiste taalbestand
-include "../../public_html/Lang/$lang.php";
-?>
-<?php
 
-if(isset($_GET['upload'])) {
-    // Hier kan je de upload status controleren
-    if($_GET['upload'] == "success") {
-        echo "<script>alert('Upload succesvol!');</script>";
-    } elseif($_GET['upload'] == "error") {
-        echo "<script>alert('Upload mislukt!');</script>";
-    }
-}
+$translator = new Translator($lang);
 
 
 // login check en rechten

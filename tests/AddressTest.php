@@ -2,7 +2,8 @@
 use PHPUnit\Framework\TestCase;
 
 
-include_once "../project_root/Models/Addresses.php";
+
+include_once __DIR__ . '/../project_root/Models/Addresses.php';
 
 
 
@@ -10,7 +11,7 @@ class AddressTest extends TestCase
 {
     private $address;
 
-    protected function setUp(): void
+    function setUp(): void
     {
         $this->address = new Addresses("1234AB", "12", "Main Street", "Amsterdam", "Netherlands");
     }
