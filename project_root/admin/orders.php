@@ -13,6 +13,9 @@ $translator = new Translator($lang);
 
 // login check en rechten check
 
+// alle orders laten zien op vorlgorde
+// status van de order bijwerken
+
 
 
 ?>

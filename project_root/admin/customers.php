@@ -8,14 +8,8 @@ if (isset($_GET['lang'])) {
 }
 $lang = $_SESSION['lang'] ?? 'nl';
 // Laad het juiste taalbestand
-<<<<<<< HEAD
-include "../lang/$lang.php"; 
-?>
-<?php
-=======
 
 $translator = new Translator($lang);
->>>>>>> richard
 
 
 

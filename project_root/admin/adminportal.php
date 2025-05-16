@@ -15,14 +15,6 @@ $translator = new Translator($lang);
 
 // login check en rechten check
 
-// CSV download
-
-// afbeelding upload
-
-// producten aanpassen
-// producten toevoegen
-// producten verwijderen
-
 
 ?>
 

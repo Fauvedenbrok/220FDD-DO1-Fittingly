@@ -27,11 +27,11 @@
                 }
                 // slaat de eerste regel van de csv over
                 // Dit is de header regel, die we niet willen verwerken
-                fgetcsv($handle, 1000, ",");
+                fgetcsv($handle, 0, ",");
 
     
             // Verwerk rijen van de CSV hierbij controleert die of er nog een record is in de csv
-            while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+            while (($data = fgetcsv($handle, 0, ",")) !== false) {
                 // pakt regel uit CSV data
 
                 // ik wil de $data array in een object van Articles stoppen

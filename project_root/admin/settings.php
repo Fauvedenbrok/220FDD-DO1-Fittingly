@@ -14,6 +14,8 @@ $translator = new Translator($lang);
 
 // login check en rechten check
 
+// admin gegevens bijwerken / partner
+
 ?>
 
 <!DOCTYPE html>
