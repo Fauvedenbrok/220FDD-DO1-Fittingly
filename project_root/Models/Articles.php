@@ -1,9 +1,11 @@
 <?php
+namespace Models;
 
-class Articles
+class Articles extends CrudModel
 {
     private int $articleID;
     private string $articleName;
+    private string $size;
     private float $weight;
     private string $weightUnit;
     private string $color;
@@ -14,11 +16,13 @@ class Articles
     private string $articleMaterial;
     private string $articleBrand;
     private bool $articleAvailability;
+    private array $articlesArray;
 
-    public function __construct(int $articleID, string $articleName, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
+    public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
     {
         $this->articleID = $articleID;
         $this->articleName = $articleName;
+        $this->size = $size;
         $this->weight = $weight;
         $this->weightUnit = $weightUnit;
         $this->color = $color;
@@ -29,6 +33,22 @@ class Articles
         $this->articleMaterial = $articleMaterial;
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
+        // array met alle properties voor CRUD
+        $this->articlesArray = array(
+            'ArticleID' => $this->articleID,
+            'Name' => $this->articleName,
+            'Size' => $this->size,
+            'Weight' => $this->weight,
+            'WeightUnit' => $this->weightUnit,
+            'Color' => $this->color,
+            'Description' => $this->articleDescription,
+            'Image' => $this->articleImagePath,
+            'Category' => $this->articleCategory,
+            'SubCategory' => $this->articleSubCategory,
+            'Material' => $this->articleMaterial,
+            'Brand' => $this->articleBrand,
+            'Availability' => $this->articleAvailability
+        );
     }
     public function __toString()
     {
@@ -42,7 +62,7 @@ class Articles
         $sql = "INSERT INTO articles (articleID, articleName, weight, weightUnit, color, articleDescription, articleImagePath, articleCategory, articleSubCategory, articleMaterial, articleBrand, articleAvailability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("issdssbbsssi", $this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability);
+        $stmt->bindValue("isdssbbssssi", $this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability);
         if ($stmt->execute()) {
             return true;
         } else {
@@ -76,5 +96,6 @@ public function getArticleSubCategory() { return $this->articleSubCategory; }
 public function getArticleMaterial() { return $this->articleMaterial; }
 public function getArticleBrand() { return $this->articleBrand; }
 public function getArticleAvailability() { return $this->articleAvailability; }
+public function getArticlesArray() { return $this->articlesArray; }
 }
 ?>

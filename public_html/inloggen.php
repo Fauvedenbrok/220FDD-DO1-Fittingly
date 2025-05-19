@@ -1,18 +1,13 @@
 <?php
 session_start();
-// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
-}
+require_once 'Lang/translator.php';
 
-// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
+if (isset($_GET['lang'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
 $lang = $_SESSION['lang'] ?? 'nl';
 
-// Laad het juiste taalbestand
-include "lang/$lang.php";
-
-require_once '../project_root/includes/login/login_view.inc.php';
-
+$translator = new Translator($lang);
 ?>
 
 <!doctype html>
@@ -24,37 +19,34 @@ require_once '../project_root/includes/login/login_view.inc.php';
     <link rel="icon" href="/Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
-    <title>Klant registratie</title>
+    <link rel="stylesheet" href="css/registration_login.css">
+    <title> <?= $translator->get('inlogpagina_title_text') ?> </title>
 </head>
 
 <body>
     <header></header>
     <main>
         <div class="background-container">
-            <h2 id="h2-contact">Registratie</h2>
-            <p id="para-contact">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore alias expedita eius! Ut enim fugiat eum pariatur non amet laudantium. Temporibus possimus non rerum exercitationem nesciunt officiis asperiores dolores impedit? </p>
-        </div>
+            <h2 class="h2-registration-login"> <?= $translator->get('inlogpagina_header_text') ?> </h2>
+            <p class="p-registration-login"> <?= $translator->get('inlogpagina_paragraph_text') ?> </p>
 
-        <div class="form-container">
-            <div class="contact-info">
 
+            <div class="registration-login-form-container">
+
+                <form method="post" action="../project_root/includes/login/login.inc.php">
+                    <label for="email">
+                        <?= $translator->get('inlogpagina_formulier_email') ?>
+                        <input type="text" name="EmailAddress" placeholder="<?= $translator->get('inlogpagina_formulier_email_placeholder') ?> "><br>
+                    </label>
+                    <label for="password">
+                        <?= $translator->get('inlogpagina_formulier_password') ?>
+                        <input type="password" name="UserPassword" placeholder="<?= $translator->get('inlogpagina_formulier_password_placeholder') ?> "><br>
+                    </label>
+                    <label>
+                        <button><?= $translator->get('inlogpagina_formulier_button') ?> </button>
+                    </label>
+                </form>
             </div>
-            <form method="post" action="../project_root/includes/login/login.inc.php">
-                <label for="email">
-                    E-mail:
-                    <input type="text" name="EmailAddress" placeholder="Email"><br>
-                </label>
-                <label for="password">
-                    Wachtwoord:
-                    <input type="password" name="UserPassword" placeholder="Password"><br>
-                </label>
-                <label>
-                    <button>Login</button>
-                </label>
-                <?php 
-                    check_login_errors();
-                ?>
-            </form>
         </div>
     </main>
     <footer>
@@ -62,8 +54,9 @@ require_once '../project_root/includes/login/login_view.inc.php';
     <script src="js/scripts.js"></script>
     <script>
         includeHTML("header.php", "header");
-        includeHTML("footer.php", "footer");
+        includeHTML("footer.php", "footer")
     </script>
+
 </body>
 
 </html>
