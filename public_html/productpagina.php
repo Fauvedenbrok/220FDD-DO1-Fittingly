@@ -35,14 +35,22 @@ $artikelen = $articlesRepo->findAll($zoekwoord, $categorie);
     </form>
 
     <div class="producten">
-        <?php foreach ($artikelen as $artikel): ?>
-            <div class="product">
-                <h2><?php echo htmlspecialchars($artikel->getArticleName()); ?></h2>
-                <p>Beschikbaar: <?php echo $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></p>
-                <a href="product.php?id=<?php echo $artikel->getArticleID(); ?>">Bekijk product</a>
-            </div>
-        <?php endforeach; ?>
-    </div>
+    <?php foreach ($artikelen as $artikel): ?>
+        <div class="product">
+            <h2><?php echo htmlspecialchars($artikel->getArticleName()); ?></h2>
+
+            <?php if ($artikel->imageExists()): ?>
+                <img src="<?php echo $artikel->getImageUrl(); ?>" alt="Afbeelding van <?php echo htmlspecialchars($artikel->getArticleName()); ?>"style="max-width: 200px;">
+            <?php else: ?>
+                <img src="Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
+            <?php endif; ?>
+
+            <p>Beschikbaar: <?php echo $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></p>
+            <a href="product.php?id=<?php echo $artikel->getArticleID(); ?>">Bekijk product</a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
 </div>
 <footer></footer>
 <script src="js/scripts.js"></script>

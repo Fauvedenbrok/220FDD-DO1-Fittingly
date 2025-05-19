@@ -30,6 +30,9 @@ class ArticlesRepository
             $sql .= " AND Category = :categorie";
             $params['categorie'] = $categorie;
         }
+        //$sql .= " " join stock
+           // . "LEFT JOIN stock ON articles.ArticleID = stock.ArticleID "//
+            //. "WHERE stock.Availability = 1";//
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
@@ -50,6 +53,7 @@ class ArticlesRepository
                 $row['Material'],
                 $row['Brand'],
                 (bool) $row['Availability']
+                // columns from stock table
             );
         }
 

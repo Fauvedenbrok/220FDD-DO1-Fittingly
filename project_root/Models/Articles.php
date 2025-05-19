@@ -50,6 +50,19 @@ class Articles
         }
     }
 
+    // Geeft het URL-pad naar de afbeelding (voor <img src=...>)
+    public function getImageUrl(): string 
+    {
+    // Als je databasepad NIET wilt gebruiken maar bestand op basis van ID
+            return 'Images/productImages/' . $this->articleID . '.jpg';
+    }
+
+    public function imageExists(): bool {
+    // Gebruik absoluut pad op de server (let op: pad buiten public_html)
+    $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
+    return file_exists($serverPath);
+}
+
 // Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!
 public function getArticleID() { return $this->articleID; }
 public function getArticleName() { return $this->articleName; }
