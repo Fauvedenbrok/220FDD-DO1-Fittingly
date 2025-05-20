@@ -414,8 +414,20 @@ footer p {
   width: 50%;
 }
 
+
+
+
 @media (min-width: 1201px) {
   .language-button {
     display: none;
   }
+}
+
+.product-foto {
+  height: 10px;
+  width: 10px;
+  max-width: 300px;
+  display: block;
+  margin: 10px auto;
+
 }
