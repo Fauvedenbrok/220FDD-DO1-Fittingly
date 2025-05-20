@@ -98,4 +98,15 @@ return [
     'inlogpagina_formulier_password' => "Wachtwoord:",
     'inlogpagina_formulier_password_placeholder' => "Wachtwoord",
     'inlogpagina_formulier_button' => "Inloggen",
+
+    // Admin Portaal
+    'admin-navbar_1' => "Home",
+    'admin-navbar_2' => "Producten",
+    'admin-navbar_3' => "Orders",
+    'admin-navbar_4' => "Berichten",
+    'admin-navbar_5' => "Retouren",
+    'admin-navbar_6' => "Klanten",
+    'admin-navbar_7' => "Instellingen",
+    'admin-navbar_8' => "Uitloggen",
+
 ];

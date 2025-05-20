@@ -25,8 +25,8 @@ $translator = new Translator($lang);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/adminstyles.css">
+  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
+  <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
 <body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
@@ -36,26 +36,15 @@ $translator = new Translator($lang);
   <main class="main-content">
   <!-- extra navigatie voor opties admin portal 
    // producten, orders, berichten, retouren, klanten, instellingen-->
-  <nav class="admin-nav">
-    <ul class="admin-nav-list">
-      <li><a href="adminportal.php?lang=<?php echo $lang; ?>">Home</a></li>
-      <li><a href="products.php?lang=<?php echo $lang; ?>">Producten</a></li>
-      <li><a href="orders.php?lang=<?php echo $lang; ?>">Orders</a></li>
-      <li><a href="messages.php?lang=<?php echo $lang; ?>">Berichten</a></li>
-      <li><a href="returns.php?lang=<?php echo $lang; ?>">Retouren</a></li>
-      <li><a href="customers.php?lang=<?php echo $lang; ?>">Klanten</a></li>
-      <li><a href="settings.php?lang=<?php echo $lang; ?>">Instellingen</a></li>
-      </ul>
-  </nav>
+
     
 
   </main>
   <footer>
   </footer>
-  <script src="../js/scripts.js"></script>
+  <script src="/public_html/js/scripts.js"></script>
   <script>
-    includeHTML("../header.php", "header");
-    includeHTML("../footer.php", "footer")
+    includeHTML("/project_root/admin/adminheader.php", "header");
   </script>
 </body>
 
