@@ -1,6 +1,8 @@
 <?php
 namespace Models;
 
+require_once __DIR__ . '/CrudModel.php';
+
 class Articles extends CrudModel
 {
     private int $articleID;
