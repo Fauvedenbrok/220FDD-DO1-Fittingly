@@ -1,17 +1,10 @@
 <?php
-
 use Core\Database;
 use Repositories\ArticlesRepository;
 
 session_start();
 require_once 'Lang/translator.php';
-
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-$lang = $_SESSION['lang'] ?? 'nl';
-
-$translator = new Translator($lang);
+$translator = init_translator();
 
 require_once __DIR__ . '/../project_root/Core/Database.php';
 require_once __DIR__ . '/../project_root/repositories/ArticlesRepository.php';
