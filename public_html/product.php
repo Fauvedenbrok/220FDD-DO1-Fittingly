@@ -1,4 +1,7 @@
 <?php
+
+use Core\Database;
+
 session_start();
 require_once 'Lang/translator.php';
 
