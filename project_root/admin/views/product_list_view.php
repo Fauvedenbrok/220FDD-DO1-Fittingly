@@ -9,7 +9,10 @@
 // availability
 // product id
 foreach($articlesArray as $article) {
-    $productId = $article->getArticleID();
+    // html specialchars om XSS attacks te voorkomen
+    $productId = htmlspecialchars($article->getArticleID());
+
+    // html specialchars toevoegen!!!
     $title = $article->getArticleName();
     $price = $article->getPrice();
     $stock = $article->getQuantityOfStock();
