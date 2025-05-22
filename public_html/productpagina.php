@@ -9,11 +9,11 @@ $lang = $_SESSION['lang'] ?? 'nl';
 
 $translator = new Translator($lang);
 
-require_once __DIR__ . '/../private_html/db_connect.php';
+require_once __DIR__ . '/../project_root/Core/Database.php';
 require_once __DIR__ . '/../project_root/repositories/ArticlesRepository.php';
 
 $db = new Database();
-$pdo = $db->getPdo();
+$pdo = $db->getConnection();
 $articlesRepo = new ArticlesRepository($pdo);
 
 $zoekwoord = $_GET['zoekwoord'] ?? '';

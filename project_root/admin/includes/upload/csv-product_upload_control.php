@@ -1,4 +1,6 @@
 <?php 
+    require_once __DIR__ . '/Core/Database.php';
+    
     // Hier zou ook een aparte functie van gemaakt kunnen worden. Als je bijvoorbeeld ook een andere file upload wilt maken.
     if (isset($_POST["upload"])) { 
     if ($_FILES["csv_file"]["error"] === UPLOAD_ERR_OK) {
@@ -20,11 +22,8 @@
         $handle = fopen($filePath, "r");
 
         if ($handle !== false) {
-            try {
-                require_once "../dbh.inc.php";
-                } catch (PDOException $e) {
-                    die("Databaseverbinding mislukt: " . $e->getMessage());
-                }
+            $db = new Database();
+            $pdo = $db->getConnection();
                 // slaat de eerste regel van de csv over
                 // Dit is de header regel, die we niet willen verwerken
                 fgetcsv($handle, 0, ",");
