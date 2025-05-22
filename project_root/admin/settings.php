@@ -1,30 +1,20 @@
 <?php
 session_start();
-// Als er een taal gekozen is via de URL (bijvoorbeeld ?lang=nl of ?lang=en)
+require_once __DIR__ . '/../../public_html/Lang/translator.php';
+// filepath: c:\Users\Richard\Documents\School Avans\Jaar 1\Projecten\220FDD-DO1-Fittingly\project_root\admin\adminportal.php
+// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
 if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];  // Sla de gekozen taal op in de sessie
+  $_SESSION['lang'] = $_GET['lang'];
 }
-
-// Als er geen taal is gekozen, gebruik dan de default taal 'nl'
 $lang = $_SESSION['lang'] ?? 'nl';
-
 // Laad het juiste taalbestand
-include "../lang/$lang.php";
-?>
-<?php
 
+$translator = new Translator($lang);
 
 
 // login check en rechten check
 
-// CSV download
-
-// afbeelding upload
-
-// producten aanpassen
-// producten toevoegen
-// producten verwijderen
-
+// admin gegevens bijwerken / partner
 
 ?>
 
@@ -36,37 +26,27 @@ include "../lang/$lang.php";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/adminstyles.css">
+  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
+  <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
 <body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
   <header>
   </header>
-  
+
   <main class="main-content">
-  <!-- extra navigatie voor opties admin portal 
+    <!-- extra navigatie voor opties admin portal 
    // producten, orders, berichten, retouren, klanten, instellingen-->
-  <nav class="admin-nav">
-    <ul class="admin-nav-list">
-      <li><a href="adminportal.php?lang=<?php echo $lang; ?>">Home</a></li>
-      <li><a href="products.php?lang=<?php echo $lang; ?>">Producten</a></li>
-      <li><a href="orders.php?lang=<?php echo $lang; ?>">Orders</a></li>
-      <li><a href="messages.php?lang=<?php echo $lang; ?>">Berichten</a></li>
-      <li><a href="returns.php?lang=<?php echo $lang; ?>">Retouren</a></li>
-      <li><a href="customers.php?lang=<?php echo $lang; ?>">Klanten</a></li>
-      <li><a href="settings.php?lang=<?php echo $lang; ?>">Instellingen</a></li>
-      </ul>
-  </nav>
-    
+
+
 
   </main>
   <footer>
   </footer>
-  <script src="../js/scripts.js"></script>
+
+  <script src="/public_html/js/scripts.js"></script>
   <script>
-    includeHTML("../header.php", "header");
-    includeHTML("../footer.php", "footer")
+    includeHTML("/project_root/admin/adminheader.php", "header");
   </script>
 </body>
 

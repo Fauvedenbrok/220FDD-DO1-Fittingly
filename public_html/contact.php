@@ -26,9 +26,9 @@ $translator = new Translator($lang);
     <header></header>
     <main>
         <div class="background-container">
-            <h2 id="h2-contact"> <?=  $translator-> get('contactpagina_h2_contact') ?> </h2>
-            <p id="para-contact"> <?= $translator-> get('contactpagina_p_contact')?> </p>
-        </dv>
+            <h2 id="h2-contact"> <?= $translator->get('contactpagina_h2_contact') ?> </h2>
+            <p id="para-contact"> <?= $translator->get('contactpagina_p_contact') ?> </p>
+            </dv>
 
         <div class="form-container">
             <div class="contact-info">
@@ -44,31 +44,31 @@ $translator = new Translator($lang);
                         <input type="text" id="naam" placeholder="<?= $translator-> get('contactpagina_formulier_naam_placeholder') ?> ">
                         <small class="error"></small>
 
-                        <label for="bedrijf"> <?= $translator-> get('contactpagina_formulier_bedrijf') ?>:</label>
-                        <input type="text" id="bedrijf" placeholder="<?= $translator-> get('contactpagina_formulier_bedrijf_placeholder') ?> ">
-                        <small class="error"></small>
-
-                        <label for="email"> <?= $translator-> get('contactpagina_formulier_email') ?>:</label>
-                        <input type="text" id="email" placeholder="<?= $translator-> get('contactpagina_formulier_email_placeholder') ?>" autocomplete="off">
-                        <small class="error"></small>
-
-                        <label for="tel"> <?= $translator-> get('contactpagina_formulier_tel') ?>:</label>
-                        <input type="text" id="tel" placeholder="<?= $translator-> get('contactpagina_formulier_tel_placeholder') ?>" autocomplete="off">
-                        <small class="error"></small>
-
-                        <div class="input-bericht">
-                            <label for="bericht"> <?= $translator-> get('contactpagina_formulier_bericht') ?></label>
-                            <textarea id="bericht" placeholder=" <?= $translator-> get('contactpagina_formulier_bericht_placeholder') ?>" rows="12"></textarea>
+                            <label for="bedrijf"> <?= $translator->get('contactpagina_formulier_bedrijf') ?>:</label>
+                            <input type="text" id="bedrijf" placeholder="<?= $translator->get('contactpagina_formulier_bedrijf_placeholder') ?> ">
                             <small class="error"></small>
+
+                            <label for="email"> <?= $translator->get('contactpagina_formulier_email') ?>:</label>
+                            <input type="text" id="email" placeholder="<?= $translator->get('contactpagina_formulier_email_placeholder') ?>" autocomplete="off">
+                            <small class="error"></small>
+
+                            <label for="tel"> <?= $translator->get('contactpagina_formulier_tel') ?>:</label>
+                            <input type="text" id="tel" placeholder="<?= $translator->get('contactpagina_formulier_tel_placeholder') ?>" autocomplete="off">
+                            <small class="error"></small>
+
+                            <div class="input-bericht">
+                                <label for="bericht"> <?= $translator->get('contactpagina_formulier_bericht') ?></label>
+                                <textarea id="bericht" placeholder=" <?= $translator->get('contactpagina_formulier_bericht_placeholder') ?>" rows="12"></textarea>
+                                <small class="error"></small>
+                            </div>
+                            <div class="button-wrapper">
+                                <button class="button-container" type="submit" value="Verzenden"> <?= $translator->get('contactpagina_formulier_button') ?> </button>
+                            </div>
+                            <p id="send"></p>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="button-container" type="submit" value="Verzenden"> <?= $translator-> get('contactpagina_formulier_button') ?> </button>
-                        </div>
-                        <p id="send"></p>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
     </main>
 
     <footer></footer>
