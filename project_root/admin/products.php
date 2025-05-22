@@ -22,8 +22,6 @@ if(isset($_GET['upload'])) {
 
 // login check en rechten
 
-// CSV download
-
 // afbeelding upload
 
 // producten aanpassen
@@ -45,7 +43,7 @@ if(isset($_GET['upload'])) {
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
+<body style="background-image: url('/public_html/Images/onsdoelImages/background_dark.png');">
   <header>
   </header>
   
@@ -58,6 +56,9 @@ if(isset($_GET['upload'])) {
     Selecteer CSV-bestand:
     <input type="file" name="csv_file" accept=".csv">
     <input type="submit" name="upload" value="Uploaden">
+    </form>
+    <form action="includes/download/csv-product-download-controller.php">
+      <input type="submit" name="download" value="Download CSV">
     </form>
   </main>
   <footer>

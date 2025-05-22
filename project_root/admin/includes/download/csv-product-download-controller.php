@@ -1,11 +1,12 @@
 <?php
+use Core\Database;
 
-require_once __DIR__ . '/Core/Database.php';
+require_once '../../../Core/Database.php';
 // Fetch data from the table
 $db = new Database();
 $pdo = $db->getConnection();
 
-$query = "SELECT * FROM Products";
+$query = "SELECT * FROM Articles";
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 $data = $stmt->fetchAll();
