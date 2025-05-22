@@ -1,13 +1,9 @@
 <?php
-session_start();
+
 require_once 'Lang/translator.php';
 
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-$lang = $_SESSION['lang'] ?? 'nl';
+$translator = init_translator();
 
-$translator = new Translator($lang);
 ?>
 
 <html lang="nl">

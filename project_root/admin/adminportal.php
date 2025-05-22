@@ -1,15 +1,11 @@
 <?php
-session_start();
-require_once __DIR__ . '/../../public_html/Lang/translator.php';
-// filepath: c:\Users\Richard\Documents\School Avans\Jaar 1\Projecten\220FDD-DO1-Fittingly\project_root\admin\adminportal.php
-// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-$lang = $_SESSION['lang'] ?? 'nl';
-// Laad het juiste taalbestand
 
-$translator = new Translator($lang);
+require_once __DIR__ . '/../../public_html/Lang/translator.php';
+
+$translator = init_translator();
+
+include 'adminheader.php'; // include admin header
+
 
 
 
@@ -33,25 +29,22 @@ $translator = new Translator($lang);
 <body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
   <header>
   </header>
-  
+
   <main class="main-content">
-  <!-- extra navigatie voor opties admin portal 
+    <!-- extra navigatie voor opties admin portal 
    // producten, orders, berichten, retouren, klanten, instellingen-->
 
     <div>
       <h1>Admin Portal</h1>
-      <p>Welkom bij het admin portal. Hier kunt u de verschillende opties beheren.</p>
-      <p>Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.</p>
-      <p>Als u vragen heeft, neem dan contact op met de support.</p>
+      <p> <?= $translator-> get('adminportal_intro_1') ?> </p>
+      <p> <?= $translator-> get('adminportal_intro_2') ?> </p>
+      <p> <?= $translator-> get('adminportal_intro_3') ?> </p>
     </div>
-   
+
   </main>
   <footer>
   </footer>
   <script src="/public_html/js/scripts.js"></script>
-  <script>
-    includeHTML("/project_root/admin/adminheader.php", "header");
-  </script>
 </body>
 
 </html>
