@@ -33,11 +33,11 @@ $translator = new Translator($lang);
         <div class="form-container">
             <div class="contact-info">
                 <h3 id="h3-contact"> <?= $translator-> get('contactpagina_h2_contact') ?> </h3>
-                <p><img id="usp1-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp"> <?= $translator-> get('contactpagina_p_contactinfo_1') ?> </p>
-                <p><img id="usp2-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp"> <?= $translator-> get('contactpagina_p_contactinfo_2') ?> </p>
-                <p><img id="usp3-contact" src="/Images/backgroundImages/usp_Fittingly_dark.png" alt="usp"> <?= $translator-> get('contactpagina_p_contactinfo_3') ?> </p>
+                <p><img id="usp1-contact" src="./Images/backgroundImages/usp_Fittingly_dark.png" alt="usp"> <?= $translator-> get('contactpagina_p_contactinfo_1') ?> </p>
+                <p><img id="usp2-contact" src="./Images/backgroundImages/usp_Fittingly_dark.png" alt="usp"> <?= $translator-> get('contactpagina_p_contactinfo_2') ?> </p>
+                <p><img id="usp3-contact" src="./Images/backgroundImages/usp_Fittingly_dark.png" alt="usp"> <?= $translator-> get('contactpagina_p_contactinfo_3') ?> </p>
             </div>
-            <form id="contact-form">
+            <form id="contact-form" action="contact.php" method="post">
                 <div class="form-content">
                     <div class="input-fields">
                         <label for="naam"> <?= $translator-> get('contactpagina_formulier_naam') ?>:</label>
@@ -72,12 +72,27 @@ $translator = new Translator($lang);
     </main>
 
     <footer></footer>
-    <script src="js/scripts.js"></script>
+    <!-- <script src="js/scripts.js"></script> -->
     <script>
         includeHTML("header.php", "header");
         includeHTML("footer.php", "footer")
     </script>
-    <script src="js/contact.js"></script>
+    <!-- <script src="js/contact.js"></script> -->
 </body>
 
 </html>
+
+<?php
+// laat het result van de submit zien
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $naam = $_POST['naam'];
+    $bedrijf = $_POST['bedrijf'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $bericht = $_POST['bericht'];
+
+    
+}
+
+//Valideer de contactgegeven voordat ze de database ingaan
+ 
