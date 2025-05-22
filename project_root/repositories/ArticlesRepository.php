@@ -1,11 +1,11 @@
 <?php
+
+namespace Repositories;
 use Models\Articles;
+use PDO;
+use PDOException;
 
 require_once __DIR__ . '/../Models/Articles.php';
-
-
-
-
 
 class ArticlesRepository
 {
@@ -30,16 +30,13 @@ class ArticlesRepository
             $sql .= " AND Category = :categorie";
             $params['categorie'] = $categorie;
         }
-        //$sql .= " " join stock
-           // . "LEFT JOIN stock ON articles.ArticleID = stock.ArticleID "//
-            //. "WHERE stock.Availability = 1";//
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
 
         $artikelen = [];
 
-        while ($row = $stmt->fetch()) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $artikelen[] = new Articles(
                 $row['ArticleID'],
                 $row['Name'],
@@ -54,7 +51,6 @@ class ArticlesRepository
                 $row['Material'],
                 $row['Brand'],
                 (bool) $row['Availability']
-                // columns from stock table
             );
         }
 
@@ -65,7 +61,7 @@ class ArticlesRepository
     {
         $stmt = $this->pdo->prepare("SELECT * FROM articles WHERE ArticleID = :id");
         $stmt->execute(['id' => $id]);
-        $row = $stmt->fetch();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
             return new Articles(
@@ -84,7 +80,7 @@ class ArticlesRepository
                 (bool) $row['Availability']
             );
         }
+
         return null;
     }
 }
-?>
