@@ -7,7 +7,7 @@ use Models\Addresses;
 use Core\Validator;
 
 require_once "../Core/validator.php";
-require_once "../Core/db_handler.php";
+require_once "../Core/Database.php";
 require_once "../Models/UserAccounts.php";
 require_once "../Models/Addresses.php";
 require_once "../Models/Customers.php";
@@ -84,4 +84,5 @@ class RegistrationCustomerController {
 
         }
     }
+    
 }

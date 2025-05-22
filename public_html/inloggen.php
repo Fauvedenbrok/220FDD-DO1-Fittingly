@@ -19,37 +19,34 @@ $translator = new Translator($lang);
     <link rel="icon" href="/Images/icons/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
-    <title> <?=$inlogpagina_title_text?> </title>
+    <link rel="stylesheet" href="css/registration_login.css">
+    <title> <?= $translator->get('inlogpagina_title_text') ?> </title>
 </head>
 
 <body>
     <header></header>
     <main>
         <div class="background-container">
-            <h2 id="h2-contact"> <?= $inlogpagina_header_text ?> </h2>
-            <p id="para-contact"> <?= $inlogpagina_paragraph_text ?> </p>
-        </div>
+            <h2 class="h2-registration-login"> <?= $translator->get('inlogpagina_header_text') ?> </h2>
+            <p class="p-registration-login"> <?= $translator->get('inlogpagina_paragraph_text') ?> </p>
 
-        <div class="form-container">
-            <div class="contact-info">
 
+            <div class="registration-login-form-container">
+
+                <form method="post" action="../project_root/includes/login/login.inc.php">
+                    <label for="email">
+                        <?= $translator->get('inlogpagina_formulier_email') ?>
+                        <input type="text" name="EmailAddress" placeholder="<?= $translator->get('inlogpagina_formulier_email_placeholder') ?> "><br>
+                    </label>
+                    <label for="password">
+                        <?= $translator->get('inlogpagina_formulier_password') ?>
+                        <input type="password" name="UserPassword" placeholder="<?= $translator->get('inlogpagina_formulier_password_placeholder') ?> "><br>
+                    </label>
+                    <label>
+                        <button><?= $translator->get('inlogpagina_formulier_button') ?> </button>
+                    </label>
+                </form>
             </div>
-            <form method="post" action="../project_root/includes/login/login.inc.php">
-                <label for="email">
-                    <?= $inlogpagina_formulier_email?>
-                    <input type="text" name="EmailAddress" placeholder="<?= $inlogpagina_formulier_email_placeholder?> "><br>
-                </label>
-                <label for="password">
-                    <?= $inlogpagina_formulier_password?>
-                    <input type="password" name="UserPassword" placeholder="<?= $inlogpagina_formulier_password_placeholder?> "><br>
-                </label>
-                <label>
-                    <button><?= $inlogpagina_formulier_button?> </button>
-                </label>
-                <?php 
-                    check_login_errors();
-                ?>
-            </form>
         </div>
     </main>
     <footer>
@@ -57,8 +54,9 @@ $translator = new Translator($lang);
     <script src="js/scripts.js"></script>
     <script>
         includeHTML("header.php", "header");
-        includeHTML("footer.php", "footer");
+        includeHTML("footer.php", "footer")
     </script>
+
 </body>
 
 </html>

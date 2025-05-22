@@ -19,6 +19,11 @@ class Database {
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                // Wanneer PDO::ATTR_EMULATE_PREPARES op false is ingesteld, 
+                // worden prepared statements rechtstreeks door de database-engine 
+                // verwerkt in plaats van door PHP zelf. Dit kan helpen bij het 
+                // voorkomen van SQL-injectie en zorgt ervoor dat bepaalde 
+                // datatypen correct worden behandeld door de database.
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
 
