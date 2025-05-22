@@ -1,5 +1,5 @@
 <?php
-
+use Models\Articles;
 
 require_once __DIR__ . '/../Models/Articles.php';
 
@@ -43,6 +43,7 @@ class ArticlesRepository
             $artikelen[] = new Articles(
                 $row['ArticleID'],
                 $row['Name'],
+                $row['Size'],
                 (float) $row['Weight'],
                 $row['WeightUnit'],
                 $row['Color'],
@@ -70,6 +71,7 @@ class ArticlesRepository
             return new Articles(
                 $row['ArticleID'],
                 $row['Name'],
+                $row['Size'],
                 (float) $row['Weight'],
                 $row['WeightUnit'],
                 $row['Color'],

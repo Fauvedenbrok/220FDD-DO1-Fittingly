@@ -1,7 +1,9 @@
 <?php
 use Core\Database;
 
-require_once '../../../Core/Database.php';
+// require_once '../../../Core/Database.php';
+
+require_once './project_root/Core/Database.php'
 // Fetch data from the table
 $db = new Database();
 $pdo = $db->getConnection();

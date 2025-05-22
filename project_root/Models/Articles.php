@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Articles extends CrudModel
+class Articles
 {
     private int $articleID;
     private string $articleName;
