@@ -36,7 +36,7 @@ if(isset($_GET['upload'])) {
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('/public_html/Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
   </header>
   

@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 @media screen and (max-width: 1200px) {
+
   div#about,
   .hero-sectie {
     flex-direction: column;
@@ -39,16 +40,21 @@
   }
 
   .language-dropdown {
-    display: none; /* Verberg het menu standaard */
+    display: none;
+    /* Verberg het menu standaard */
     position: absolute;
-    right: 78px; /* Zorg dat het menu rechts uitlijnt */
+    right: 78px;
+    /* Zorg dat het menu rechts uitlijnt */
     top: 75px;
-    background-color: #1a3030; /* Achtergrondkleur van het menu */
-    border: 1px solid #cc9c4e; /* Optionele rand */
+    background-color: #1a3030;
+    /* Achtergrondkleur van het menu */
+    border: 1px solid #cc9c4e;
+    /* Optionele rand */
     border-radius: 5px;
     padding: 10px;
     z-index: 999;
-    width: 100px !important; /* Pas de breedte van het menu aan */
+    width: 100px !important;
+    /* Pas de breedte van het menu aan */
   }
 
   .language-button {
@@ -57,7 +63,7 @@
     cursor: pointer;
     color: #dcd3c2;
   }
-  
+
   .language-dropdown button {
     background: none;
     border: none;
@@ -65,16 +71,19 @@
     padding: 0;
     cursor: pointer;
   }
-  
+
   .language-dropdown img {
-    width: 50px; /* Pas de grootte van de vlaggen aan */
+    width: 50px;
+    /* Pas de grootte van de vlaggen aan */
     height: auto;
     border-radius: 5px;
   }
-  
+
   .language-dropdown.visible {
-    display: flex; /* Maak het menu zichtbaar */
-    flex-direction: column; /* Zorg dat de vlaggen onder elkaar staan */
+    display: flex;
+    /* Maak het menu zichtbaar */
+    flex-direction: column;
+    /* Zorg dat de vlaggen onder elkaar staan */
   }
 
   div.footer-body {
@@ -106,6 +115,7 @@
   footer {
     height: 400px;
   }
+
   .main-footer {
     height: auto;
   }
@@ -115,12 +125,14 @@
     height: auto;
     margin-top: 20px;
   }
+
   div.footer-wrap {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
   }
+
   footer p {
     line-height: normal;
     font-size: 18px;
@@ -163,6 +175,7 @@
 
 body {
   margin: auto;
+  background-color: #142227;
 }
 
 h2 {
@@ -226,7 +239,7 @@ nav {
   align-items: center;
 }
 
-nav > button {
+nav>button {
   background: none;
   border: none;
   font-family: "Montserrat", sans-serif;
@@ -240,12 +253,12 @@ nav > button {
 
 
 @media (max-width: 1400px) {
-  nav > button {
+  nav>button {
     padding: 0px;
   }
 }
 
-nav > button > a {
+nav>button>a {
   color: rgba(220, 211, 194, 1);
   text-decoration: none;
   font-weight: 400;
@@ -297,7 +310,7 @@ button.hamburger {
 footer {
   background-color: #b3ad98;
   height: auto;
- 
+
   margin-top: 50px;
 }
 
@@ -324,7 +337,7 @@ footer hr {
   align-items: center;
 }
 
-.footer-social > img {
+.footer-social>img {
   width: 65px;
   height: 65px;
 }
@@ -338,7 +351,7 @@ footer p {
   font-weight: 500;
 }
 
-.footer-links > a {
+.footer-links>a {
   color: #1a3030;
   text-decoration: none;
   font-family: 'Raleway', sans-serif;
