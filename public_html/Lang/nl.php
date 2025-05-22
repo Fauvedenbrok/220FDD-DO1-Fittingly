@@ -109,4 +109,9 @@ return [
     'admin-navbar_7' => "Instellingen",
     'admin-navbar_8' => "Uitloggen",
 
+    // Admin portaal
+    'adminportal_intro_1' => "Welkom bij het admin portal. Hier kunt u de verschillende opties beheren.",
+    'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
+    'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
+
 ];
