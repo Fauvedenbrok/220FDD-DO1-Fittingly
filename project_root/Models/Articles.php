@@ -91,6 +91,7 @@ public function getArticleName() { return $this->articleName; }
 public function getWeight() { return $this->weight; }
 public function getWeightUnit() { return $this->weightUnit; }
 public function getColor() { return $this->color; }
+public function getSize() { return $this->size; }
 public function getArticleDescription() { return $this->articleDescription; }
 public function getArticleImagePath() { return $this->articleImagePath; }
 public function getArticleCategory() { return $this->articleCategory; }

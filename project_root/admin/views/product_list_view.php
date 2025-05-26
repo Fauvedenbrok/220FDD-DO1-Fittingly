@@ -1,33 +1,53 @@
-<?php
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Productpagina</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 
+<header></header>
 
-// echo een lijst met minimale product informatie
-// product afbeelding zal kleiner zijn
-// product naam
-// product prijs
-// voorraad
-// availability
-// product id
-foreach($articlesArray as $article) {
-    // html specialchars om XSS attacks te voorkomen
-    $productId = htmlspecialchars($article->getArticleID());
+<div class="container">
+    <h1>Onze Artikelen</h1>
 
-    // html specialchars toevoegen!!!
-    $title = $article->getArticleName();
-    $price = $article->getPrice();
-    $stock = $article->getQuantityOfStock();
-    $availability = $article->getArticleAvailability();
-    $afbeelding = "<img src='{$article->getArticleImagePath()}' alt='{$title}' style='width: 100px; height: auto;'>";
+    <form method="get" action="productpagina.php">
+        <input type="text" name="zoekwoord" placeholder="Zoek artikelen..." value="<?= htmlspecialchars($zoekwoord); ?>">
+        <select name="categorie">
+            <option value="">Alle categorieën</option>
+            <option value="Mannenkleding" <?= $categorie === 'Mannenkleding' ? 'selected' : ''; ?>>Mannenkleding</option>
+            <option value="Vrouwenkleding" <?= $categorie === 'Vrouwenkleding' ? 'selected' : ''; ?>>Vrouwenkleding</option>
+            <option value="Accessoires" <?= $categorie === 'Accessoires' ? 'selected' : ''; ?>>Accessoires</option>
+        </select>
+        <button type="submit">Zoek</button>
+    </form>
 
-    // Hier kan je de HTML genereren voor elk product
-    echo "
-<div>$afbeelding</div>
-<div>$title</div>
-<div>$price</div>
-<div>$stock</div>
-<div>$availability</div>
-<div>$productId</div>
-";
-    // Hier kan je ook een link toevoegen naar de product detail pagina
-    echo "<a href='product_view.php?productId=$productId'>Bekijk product</a>";
-}
+    <div class="producten">
+        <?php foreach ($artikelen as $artikel): ?>
+            <div class="product">
+                <h2><?= htmlspecialchars($artikel->getArticleName()); ?></h2>
+
+                <?php if ($artikel->imageExists()): ?>
+                    <img src="<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= htmlspecialchars($artikel->getArticleName()); ?>" style="max-width: 200px;">
+                <?php else: ?>
+                    <img src="Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
+                <?php endif; ?>
+
+                <p>Beschikbaar: <?= $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></p>
+                <a href="product.php?id=<?= $artikel->getArticleID(); ?>">Bekijk product</a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<footer></footer>
+
+<script src="js/scripts.js"></script>
+<script>
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer");
+</script>
+
+</body>
+</html>
