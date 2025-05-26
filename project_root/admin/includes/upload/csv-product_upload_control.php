@@ -1,5 +1,7 @@
 <?php 
-    require_once __DIR__ . '/Core/Database.php';
+use Core\Database;
+
+    require_once '../../../Core/Database.php';
     
     // Hier zou ook een aparte functie van gemaakt kunnen worden. Als je bijvoorbeeld ook een andere file upload wilt maken.
     if (isset($_POST["upload"])) { 

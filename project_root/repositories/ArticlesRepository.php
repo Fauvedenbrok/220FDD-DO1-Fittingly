@@ -1,7 +1,6 @@
 <?php
 
 namespace Repositories;
-
 use Models\Articles;
 use PDO;
 use PDOException;
@@ -41,7 +40,7 @@ class ArticlesRepository
             $artikelen[] = new Articles(
                 $row['ArticleID'],
                 $row['Name'],
-                $row['Size'], // Zorg dat je database deze kolom bevat
+                $row['Size'],
                 (float) $row['Weight'],
                 $row['WeightUnit'],
                 $row['Color'],
@@ -68,7 +67,7 @@ class ArticlesRepository
             return new Articles(
                 $row['ArticleID'],
                 $row['Name'],
-                $row['Size'], // Let op: ook hier moet 'Size' in je DB-tabel zitten
+                $row['Size'],
                 (float) $row['Weight'],
                 $row['WeightUnit'],
                 $row['Color'],

@@ -3,7 +3,7 @@ namespace Models;
 
 require_once __DIR__ . '/CrudModel.php';
 
-class Articles extends CrudModel
+class Articles
 {
     private int $articleID;
     private string $articleName;

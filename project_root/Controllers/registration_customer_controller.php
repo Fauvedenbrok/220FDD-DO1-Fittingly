@@ -79,7 +79,7 @@ class RegistrationCustomerController {
             } catch (\Exception $e){
                 $db = \Core\Database::getConnection();
                 $db->rollback();
-                echo "Registratie mislukt: " . $e->getMessage();
+                exit;
             }
 
         }

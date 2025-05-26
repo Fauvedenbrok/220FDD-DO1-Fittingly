@@ -22,6 +22,7 @@ $translator = init_translator();
           onclick="changeNav()"
           alt="menu knop">
       </button>
+      
       <nav>
         <button>
           <a class="nav-button-tekst" href="index.php"><?= $translator->get ('header_navbar_1') ?></a>
