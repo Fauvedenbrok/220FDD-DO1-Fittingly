@@ -1,8 +1,6 @@
 <?php
 namespace Models;
 
-require_once __DIR__ . '/CrudModel.php';
-
 class Articles
 {
     private int $articleID;
@@ -18,7 +16,6 @@ class Articles
     private string $articleMaterial;
     private string $articleBrand;
     private bool $articleAvailability;
-    private array $articlesArray;
 
     public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
     {
@@ -35,22 +32,6 @@ class Articles
         $this->articleMaterial = $articleMaterial;
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
-        // array met alle properties voor CRUD
-        $this->articlesArray = array(
-            'ArticleID' => $this->articleID,
-            'Name' => $this->articleName,
-            'Size' => $this->size,
-            'Weight' => $this->weight,
-            'WeightUnit' => $this->weightUnit,
-            'Color' => $this->color,
-            'Description' => $this->articleDescription,
-            'Image' => $this->articleImagePath,
-            'Category' => $this->articleCategory,
-            'SubCategory' => $this->articleSubCategory,
-            'Material' => $this->articleMaterial,
-            'Brand' => $this->articleBrand,
-            'Availability' => $this->articleAvailability
-        );
     }
     public function __toString()
     {
@@ -83,7 +64,27 @@ class Articles
     // Gebruik absoluut pad op de server (let op: pad buiten public_html)
     $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
     return file_exists($serverPath);
-}
+    }
+
+    public function createAssociativeArray(){
+        // array met alle properties voor CRUD
+        $articlesArray = array(
+            'ArticleID' => $this->articleID,
+            'Name' => $this->articleName,
+            'Size' => $this->size,
+            'Weight' => $this->weight,
+            'WeightUnit' => $this->weightUnit,
+            'Color' => $this->color,
+            'Description' => $this->articleDescription,
+            'Image' => $this->articleImagePath,
+            'Category' => $this->articleCategory,
+            'SubCategory' => $this->articleSubCategory,
+            'Material' => $this->articleMaterial,
+            'Brand' => $this->articleBrand,
+            'Availability' => $this->articleAvailability
+        );
+        return $articlesArray;
+    }
 
 // Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!
 public function getArticleID() { return $this->articleID; }
