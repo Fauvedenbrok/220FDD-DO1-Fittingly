@@ -1,8 +1,12 @@
 <?php 
 use Core\Database;
+use Models\Articles;
+use Models\CrudModel;
 
     require_once '../../../Core/Database.php';
-    
+    require_once '../../../Models/CrudModel.php';
+    require_once '../../../Models/Articles.php';
+
     // Hier zou ook een aparte functie van gemaakt kunnen worden. Als je bijvoorbeeld ook een andere file upload wilt maken.
     if (isset($_POST["upload"])) { 
     if ($_FILES["csv_file"]["error"] === UPLOAD_ERR_OK) {
@@ -24,105 +28,34 @@ use Core\Database;
         $handle = fopen($filePath, "r");
 
         if ($handle !== false) {
-            $db = new Database();
-            $pdo = $db->getConnection();
+            $pdo = Database::getConnection();
                 // slaat de eerste regel van de csv over
                 // Dit is de header regel, die we niet willen verwerken
                 fgetcsv($handle, 0, ",");
-
-    
             // Verwerk rijen van de CSV hierbij controleert die of er nog een record is in de csv
             while (($data = fgetcsv($handle, 0, ",")) !== false) {
-                // pakt regel uit CSV data
-
-                // ik wil de $data array in een object van Articles stoppen
-                // Dan kan ik functies in Articles gebruiken om de onderstaande acties uit te voeren.
-                $id = $data[0];
-                $name = $data[1];
-                $size = $data[2];
-                $weight = $data[3];
-                $weightUnit = $data[4]; // Matches `WeightUnit`
-                $color = $data[5];
-                $description = $data[6];
-                $image = $data[7]; 
-                $category = $data[8];
-                $subcategory = $data[9];
-                $material = $data[10];
-                $brand = $data[11];
-                $availability = filter_var($data[12], FILTER_VALIDATE_BOOLEAN); // Ensuring boolean type
                 
+                $tableName = "Articles";
+
+                 // the ... is the splat operator. - The ... operator (argument unpacking) automatically passes each array element as a separate argument
+                $articles = new Articles(...array_values($data));
+                $articles = $articles->createAssociativeArray();
                 // maak hier een functie van in Model Articles!!!
                 // Check if the ArticleID exists in the database
-                $sqlCheck = "SELECT COUNT(*) FROM Articles WHERE ArticleID = :id";
-                $stmt = $pdo->prepare($sqlCheck);
-                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-                $stmt->execute();
-                $exists = $stmt->fetchColumn();
+                $exists = CrudModel::countRecords($tableName, $articles);
                 
                 if ($exists > 0) {
                     // Update existing row
-                    // maak hier een functie van in Model Articles!!!
-                    $sqlUpdate = "UPDATE Articles SET 
-                    Name = :name, 
-                    Size = :size, 
-                    Weight = :weight, 
-                    WeightUnit = :weightUnit, 
-                    Color = :color, 
-                    Description = :description, 
-                    Image = :image, 
-                    Category = :category, 
-                    SubCategory = :subcategory, 
-                    Material = :material, 
-                    Brand = :brand, 
-                    Availability = :availability  
-                    WHERE ArticleID = :id";
-        
-                    $updateStmt = $pdo->prepare($sqlUpdate);
-                    $updateStmt->bindParam(":id", $id, PDO::PARAM_INT);
-                    $updateStmt->bindParam(":name", $name);
-                    $updateStmt->bindParam(":size", $size);
-                    $updateStmt->bindParam(":weight", $weight, PDO::PARAM_STR);
-                    $updateStmt->bindParam(":weightUnit", $weightUnit);
-                    $updateStmt->bindParam(":color", $color);
-                    $updateStmt->bindParam(":description", $description);
-                    $updateStmt->bindParam(":image", $image, PDO::PARAM_LOB); // Assuming BLOB handling
-                    $updateStmt->bindParam(":category", $category);
-                    $updateStmt->bindParam(":subcategory", $subcategory);
-                    $updateStmt->bindParam(":material", $material);
-                    $updateStmt->bindParam(":brand", $brand);
-                    $updateStmt->bindParam(":availability", $availability, PDO::PARAM_BOOL);
-                    $updateStmt->execute();
+                    CrudModel::updateData($tableName, $articles);
                 } else {
-                    // Insert new row
-                    // maak hier een functie van in Model Articles!!!
-                    $sqlInsert = "INSERT INTO Articles (Name, Size, Weight, WeightUnit, 
-                    Color, Description, Image, Category, SubCategory, 
-                    Material, Brand, Availability) 
-                    VALUES (:name, :size, :weight, :weightUnit, :color, 
-                    :description, :image, :category, :subcategory, :material, 
-                    :brand, :availability)";
-        
-                $insertStmt = $pdo->prepare($sqlInsert);
-                $insertStmt->bindParam(":name", $name);
-                $insertStmt->bindParam(":size", $size);
-                $insertStmt->bindParam(":weight", $weight, PDO::PARAM_STR);
-                $insertStmt->bindParam(":weightUnit", $weightUnit);
-                $insertStmt->bindParam(":color", $color);
-                $insertStmt->bindParam(":description", $description);
-                $insertStmt->bindParam(":image", $image, PDO::PARAM_LOB); // Assuming BLOB handling
-                $insertStmt->bindParam(":category", $category);
-                $insertStmt->bindParam(":subcategory", $subcategory);
-                $insertStmt->bindParam(":material", $material);
-                $insertStmt->bindParam(":brand", $brand);
-                $insertStmt->bindParam(":availability", $availability, PDO::PARAM_BOOL);
-                $insertStmt->execute();
-                }
-            }
+                    CrudModel::createData($tableName, $articles);
+            }}
 
             fclose($handle);
 
             header("Location: ../../products.php?lang=nl&upload=success");
-        } else {   
+         } 
+        else {   
             header("Location: ../../products.php?lang=nl&upload=error");
         }
     }
