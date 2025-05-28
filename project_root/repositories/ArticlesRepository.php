@@ -37,21 +37,7 @@ class ArticlesRepository
         $artikelen = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $artikelen[] = new Articles(
-                $row['ArticleID'],
-                $row['Name'],
-                $row['Size'],
-                (float) $row['Weight'],
-                $row['WeightUnit'],
-                $row['Color'],
-                $row['Description'],
-                $row['Image'],
-                $row['Category'],
-                $row['SubCategory'],
-                $row['Material'],
-                $row['Brand'],
-                (bool) $row['Availability']
-            );
+            $artikelen[] = new Articles(...array_values($row));
         }
 
         return $artikelen;

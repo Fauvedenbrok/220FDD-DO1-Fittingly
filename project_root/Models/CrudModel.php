@@ -11,34 +11,29 @@ class CrudModel
     $columns = implode(", ", array_keys($data));
     $placeholders = implode(", ", array_fill(0, count($data), "?"));
     $query = "INSERT INTO {$table} ($columns) VALUES ($placeholders)";
-    
     $stmt = $pdo->prepare($query);
-    
     return $stmt->execute(array_values($data));
 }
 
-    // public function read($id) {
-    //     $query = "SELECT * FROM {$this->table} WHERE id = :id";
-    //     $stmt = $this->pdo->prepare($query);
-    //     $stmt->execute(['id' => $id]);
-    //     return $stmt->fetch(PDO::FETCH_ASSOC);
-    // }
+    public static function readAllById($tableName, $id) {
+        $pdo = Database::getConnection();
+        $query = "SELECT * FROM {$tableName} WHERE id = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     // $data should be an associative array
     // with column names as keys and values to update
     public static function updateData($table, $data) {
     $pdo = Database::getConnection();
-
     // Extract the first key as the primary key column and its value as the ID
     $primaryKey = array_key_first($data); // Get the first key (e.g., ArticleID, UserID, etc.)
     $id = array_shift($data); // Remove the first element (ID) from the array
-
     // Build the SET part of the query
     $set = implode(", ", array_map(fn($key) => "$key = ?", array_keys($data)));
     $query = "UPDATE {$table} SET $set WHERE {$primaryKey} = ?";
-
     $stmt = $pdo->prepare($query);
-
     return $stmt->execute([...array_values($data), $id]);
     }
 
@@ -51,7 +46,6 @@ class CrudModel
     $query = "SELECT COUNT(*) FROM {$table} WHERE {$primaryKey} = ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
-
     return $stmt->fetchColumn();
 }
 
