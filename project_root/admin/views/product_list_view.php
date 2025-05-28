@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+use Helpers\ViewHelper;
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -15,7 +20,7 @@
     <h2>Fittingly Wardrobe</h2>
 
     <form method="get" action="productpagina.php" class="search-form">
-        <input type="text" name="zoekwoord" placeholder="Zoek artikelen..." value="<?= htmlspecialchars($zoekwoord); ?>">
+        <input type="text" name="zoekwoord" placeholder="Zoek artikelen..." value="<?= ViewHelper::e($zoekwoord); ?>">
         
         <select name="categorie">
             <option value="">Alle categorieën</option>
@@ -30,16 +35,16 @@
     <div class="product-grid">
         <?php foreach ($artikelen as $artikel): ?>
             <div class="product-card">
-                <h3><?= htmlspecialchars($artikel->getArticleName()); ?></h3>
+                <h3><?= ViewHelper::e($artikel->getArticleName()); ?></h3>
 
                 <?php if ($artikel->imageExists()): ?>
-                    <img src="<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= htmlspecialchars($artikel->getArticleName()); ?>">
+                    <img src="<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= ViewHelper::e($artikel->getArticleName()); ?>">
                 <?php else: ?>
                     <img src="Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
                 <?php endif; ?>
 
                 <p><?= $artikel->getArticleAvailability() ? 'Op voorraad' : 'Niet beschikbaar'; ?></p>
-                <a href="product.php?id=<?= $artikel->getArticleID(); ?>" class="detail-button">Bekijk product</a>
+                <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button">Bekijk product</a>
             </div>
         <?php endforeach; ?>
     </div>

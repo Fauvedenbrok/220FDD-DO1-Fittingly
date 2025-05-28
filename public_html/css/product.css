@@ -134,3 +134,28 @@ body {
   color: #cc9c4e;
   font-family: "Montserrat", sans-serif;
 }
+
+.product-attributes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-attributes li {
+  display: flex;
+  padding: 4px 0;
+  font-family: "Raleway", sans-serif;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.attr-label {
+  flex: 0 0 150px; /* vaste breedte */
+  font-weight: bold;
+  color: #dcd3c2;
+}
+
+.attr-value {
+  flex: 1;
+  color: #dcd3c2;
+}

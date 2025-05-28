@@ -1,8 +1,13 @@
+<?php
+require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+use Helpers\ViewHelper;
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title><?= htmlspecialchars($artikel->getArticleName()); ?></title>
+    <title><?= ViewHelper::e($artikel->getArticleName()); ?></title>
    <link rel="stylesheet" href="css/styles.css">
    <link rel="stylesheet" href="css/product.css">
 </head>
@@ -22,26 +27,28 @@
         </div>
 
         <div class="product-detail-info">
-            <h2><?= htmlspecialchars($artikel->getArticleName()); ?></h2>
-            <p class="product-description"><?= nl2br(htmlspecialchars($artikel->getArticleDescription())); ?></p>
+            <h2><?= viewHelper::e($artikel->getArticleName()); ?></h2>
 
-            <div class="product-attributes">
-                <p><strong>Merk:</strong> <?= htmlspecialchars($artikel->getArticleBrand()); ?></p>
-                <p><strong>Categorie:</strong> <?= htmlspecialchars($artikel->getArticleCategory()); ?></p>
-                <p><strong>Subcategorie:</strong> <?= htmlspecialchars($artikel->getArticleSubCategory()); ?></p>
-                <p><strong>Kleur:</strong> <?= htmlspecialchars($artikel->getColor()); ?></p>
-                <p><strong>Maat:</strong> <?= htmlspecialchars($artikel->getSize()); ?></p>
-                <p><strong>Materiaal:</strong> <?= htmlspecialchars($artikel->getArticleMaterial()); ?></p>
-                <p><strong>Gewicht:</strong> <?= htmlspecialchars($artikel->getWeight()) . ' ' . $artikel->getWeightUnit(); ?></p>
-                <p><strong>Voorraad:</strong> <?= method_exists($artikel, 'getQuantityOfStock') ? $artikel->getQuantityOfStock() : 'N.v.t.'; ?></p>
-                <p><strong>Prijs:</strong> <?= method_exists($artikel, 'getPrice') ? '€' . number_format($artikel->getPrice(), 2, ',', '.') : 'N.v.t.'; ?></p>
-                <p><strong>Beschikbaar:</strong> <?= $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></p>
-            </div>
+            <p class="product-description">
+                <?= ViewHelper::eWithBreaks($artikel->getArticleDescription()); ?>
+            </p>
+
+        <ul class="product-attributes">
+            <li><div class="attr-label">Product ID:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleID()); ?></div></li>
+            <li><div class="attr-label">Merk:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleBrand()); ?></div></li>
+            <li><div class="attr-label">Categorie:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleCategory()); ?></div></li>
+            <li><div class="attr-label">Subcategorie:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleSubCategory()); ?></div></li>
+            <li><div class="attr-label">Kleur:</div><div class="attr-value"><?= ViewHelper::e($artikel->getColor()); ?></div></li>
+            <li><div class="attr-label">Maat:</div><div class="attr-value"><?= ViewHelper::e($artikel->getSize()); ?></div></li>
+            <li><div class="attr-label">Materiaal:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleMaterial()); ?></div></li>
+            <li><div class="attr-label">Gewicht:</div><div class="attr-value"><?= ViewHelper::e($artikel->getWeight()) . ' ' . ViewHelper::e($artikel->getWeightUnit()); ?></div></li>
+            <li><div class="attr-label">Voorraad:</div><div class="attr-value"><?= method_exists($artikel, 'getQuantityOfStock') ? ViewHelper::e($artikel->getQuantityOfStock()) : 'N.v.t.'; ?></div></li>
+            <li><div class="attr-label">Prijs:</div><div class="attr-value"><?= method_exists($artikel, 'getPrice') ? '€' . number_format($artikel->getPrice(), 2, ',', '.') : 'N.v.t.'; ?></div></li>
+            <li><div class="attr-label">Beschikbaar:</div><div class="attr-value"><?= $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></div></li>
+        </ul>
+        <a href="productpagina.php" class="back-link">← Terug naar overzicht</a>
         </div>
     </div>
-
-    <a href="productpagina.php" class="back-link">← Terug naar overzicht</a>
-</div>
 </main>
 
 <footer></footer>
