@@ -15,7 +15,7 @@ class Addresses
     private string $streetName;
     private string $city;
     private string $country;
-    private $addressInfo;
+    private array $addressInfo;
      
     public function __construct(
         string $postalCode,
@@ -40,7 +40,7 @@ class Addresses
             'HouseNumber' => $this->houseNumber,
             'StreetName' => $this->streetName,
             'City' => $this->city,
-            'Country' => $this->country,
+            'Country' => $this->country
         );
         return $addressesArray;
     }

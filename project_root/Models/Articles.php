@@ -1,5 +1,6 @@
 <?php
 namespace Models;
+use Models\CrudModel;
 
 class Articles
 {
@@ -16,6 +17,7 @@ class Articles
     private string $articleMaterial;
     private string $articleBrand;
     private bool $articleAvailability;
+    private array $articleInfo;
 
     public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
     {
@@ -32,6 +34,7 @@ class Articles
         $this->articleMaterial = $articleMaterial;
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
+        $this->articleInfo = $this->createAssociativeArray();
     }
     public function __toString()
     {
@@ -69,6 +72,10 @@ class Articles
             'Availability' => $this->articleAvailability
         );
         return $articlesArray;
+    }
+
+    public function saveArticle(): bool {
+        return CrudModel::createData("Articles", $this->articleInfo);
     }
 
 // Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!

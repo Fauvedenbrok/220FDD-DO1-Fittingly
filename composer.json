@@ -9,6 +9,8 @@
 	},
 	"scripts": {
 		"test": "phpunit tests"
+	},
+	"require": {
+		"ramsey/uuid": "^4.7"
 	}
 }
-
