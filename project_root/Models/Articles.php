@@ -38,21 +38,6 @@ class Articles
         return "$this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability";
     }
 
-    // prepared statement nog voor het toevoegen van een artikel
-
-    public function addArticle($conn)
-    {
-        $sql = "INSERT INTO articles (articleID, articleName, weight, weightUnit, color, articleDescription, articleImagePath, articleCategory, articleSubCategory, articleMaterial, articleBrand, articleAvailability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        // s = string, i = integer, d = double, b = blob
-        $stmt->bindValue("isdssbbssssi", $this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     // Geeft het URL-pad naar de afbeelding (voor <img src=...>)
     public function getImageUrl(): string 
     {
@@ -66,8 +51,8 @@ class Articles
     return file_exists($serverPath);
     }
 
+    // als je alle gegevens in een associative array wilt opvragen.
     public function createAssociativeArray(){
-        // array met alle properties voor CRUD
         $articlesArray = array(
             'ArticleID' => $this->articleID,
             'Name' => $this->articleName,

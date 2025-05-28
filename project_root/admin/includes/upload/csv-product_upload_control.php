@@ -28,7 +28,6 @@ use Models\CrudModel;
         $handle = fopen($filePath, "r");
 
         if ($handle !== false) {
-            $pdo = Database::getConnection();
                 // slaat de eerste regel van de csv over
                 // Dit is de header regel, die we niet willen verwerken
                 fgetcsv($handle, 0, ",");
