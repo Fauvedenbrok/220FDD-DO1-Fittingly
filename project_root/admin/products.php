@@ -1,15 +1,8 @@
 <?php
-session_start();
-require_once __DIR__ . '/../../public_html/Lang/translator.php';
-// filepath: c:\Users\Richard\Documents\School Avans\Jaar 1\Projecten\220FDD-DO1-Fittingly\project_root\admin\adminportal.php
-// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-$lang = $_SESSION['lang'] ?? 'nl';
-// Laad het juiste taalbestand
 
-$translator = new Translator($lang);
+require_once __DIR__ . '/../../public_html/Lang/translator.php';
+
+$translator = init_translator();
 
 if(isset($_GET['upload'])) {
     // Hier kan je de upload status controleren
@@ -21,8 +14,6 @@ if(isset($_GET['upload'])) {
 }
 
 // login check en rechten
-
-// CSV download
 
 // afbeelding upload
 
@@ -45,7 +36,7 @@ if(isset($_GET['upload'])) {
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
+<body style="background-image: url('/public_html/Images/onsdoelImages/background_dark.png');">
   <header>
   </header>
   
@@ -58,6 +49,9 @@ if(isset($_GET['upload'])) {
     Selecteer CSV-bestand:
     <input type="file" name="csv_file" accept=".csv">
     <input type="submit" name="upload" value="Uploaden">
+    </form>
+    <form action="includes/download/csv-product-download-controller.php">
+      <input type="submit" name="download" value="Download CSV">
     </form>
   </main>
   <footer>

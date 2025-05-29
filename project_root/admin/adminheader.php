@@ -1,15 +1,9 @@
 <?php
-session_start();
+
 require_once __DIR__ . '/../../public_html/Lang/translator.php';
-// Haal de taal uit de sessie (standaard 'nl' als niet ingesteld)
 
-if (isset($_GET['lang'])) {
-  $_SESSION['lang'] = $_GET['lang'];
-}
-$lang = $_SESSION['lang'] ?? 'nl';
-// Laad het juiste taalbestand
+$translator = init_translator();
 
-$translator = new Translator($lang);
 ?>
 
 <html lang="nl">
