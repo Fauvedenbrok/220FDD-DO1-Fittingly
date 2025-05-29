@@ -1,6 +1,6 @@
 <?php
 // 1. Laad de controller en ontvang de data
-$data = require_once __DIR__ . '/../project_root/Controllers/product_detail_controller.php';
+$data = require_once '../Controllers/product_detail_controller.php';
 
 // 2. Controleer of artikel is gevonden
 if (!isset($data['artikel'])) {
@@ -12,4 +12,4 @@ if (!isset($data['artikel'])) {
 extract($data);
 
 // 4. Laad de HTML-view
-require_once __DIR__ . '/views/product_detail_view.php';
+require_once 'views/product_detail_view.php';

@@ -6,4 +6,4 @@ $data = require_once __DIR__ . '/../project_root/Controllers/product_list_contro
 extract($data);
 
 // Laad de view (HTML weergave)
-require_once __DIR__ . '/../project_root/admin/views/product_list_view.php';
+require_once __DIR__ . '/views/product_list_view.php';

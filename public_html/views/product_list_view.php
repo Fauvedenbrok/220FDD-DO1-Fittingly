@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+require_once '../project_root/Helpers/ViewHelper.php';
 use Helpers\ViewHelper;
 ?>
 
@@ -8,8 +8,8 @@ use Helpers\ViewHelper;
 <head>
     <meta charset="UTF-8">
     <title>Productpagina</title>
-    <link rel="stylesheet" href="../../public_html/css/styles.css">
-    <link rel="stylesheet" href="../../public_html/css/product.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/product.css">
 
 </head>
 <body>
@@ -38,9 +38,9 @@ use Helpers\ViewHelper;
                 <h3><?= ViewHelper::e($artikel->getArticleName()); ?></h3>
 
                 <?php if ($artikel->imageExists()): ?>
-                    <img src="../../public_html/<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= ViewHelper::e($artikel->getArticleName()); ?>">
+                    <img src="<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= ViewHelper::e($artikel->getArticleName()); ?>">
                 <?php else: ?>
-                    <img src="../../public_html/Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
+                    <img src="Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
                 <?php endif; ?>
 
                 <p><?= $artikel->getArticleAvailability() ? 'Op voorraad' : 'Niet beschikbaar'; ?></p>

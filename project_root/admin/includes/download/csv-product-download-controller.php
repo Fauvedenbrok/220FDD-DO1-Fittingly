@@ -1,17 +1,11 @@
 <?php
-use Core\Database;
+use Models\CrudModel;
 
-require_once '../../../Core/Database.php';
-ob_start();
-// Fetch data from the table
-$db = new Database();
-$pdo = $db->getConnection();
+require_once '../../../Models/CrudModel.php';
 
-$query = "SELECT * FROM Articles";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$data = $stmt->fetchAll();
+// ob_start();
 
+$data = CrudModel::readAll("Articles");
 // Set CSV headers
 header('Content-Type: text/csv');
 header('Content-Disposition: attachment; filename="data.csv"');
@@ -29,6 +23,6 @@ foreach ($data as $row) {
 
 fclose($output);
 
-ob_end_flush();
+// ob_end_flush();
 
 ?>

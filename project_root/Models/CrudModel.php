@@ -1,31 +1,47 @@
 <?php
 namespace Models;
 use Core\Database;
+use PDO;
 
 class CrudModel
 {
     // $data should be an associative array
     // with column names as keys and values to insert
-    public static function createData($table, $data) {
+    public static function createData(string $table, array $data) {
     $pdo = Database::getConnection();
     $columns = implode(", ", array_keys($data));
     $placeholders = implode(", ", array_fill(0, count($data), "?"));
     $query = "INSERT INTO {$table} ($columns) VALUES ($placeholders)";
     $stmt = $pdo->prepare($query);
     return $stmt->execute(array_values($data));
-}
+    }
 
-    public static function readAllById($tableName, $id) {
+    public static function readAllById(string $tableName, string $columnName, int $id) : array {
         $pdo = Database::getConnection();
-        $query = "SELECT * FROM {$tableName} WHERE id = ?";
+        $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
         $stmt = $pdo->prepare($query);
-        $stmt->execute(['id' => $id]);
+        $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function readAll(string $tableName) : array {
+        $pdo = Database::getConnection();
+        $query = "SELECT * FROM {$tableName}";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+
+        $objects = [];
+        foreach ($rows as $row) {
+            $objects[] = $row;
+        }
+
+        return $objects;
+    }
+    
     // $data should be an associative array
     // with column names as keys and values to update
-    public static function updateData($table, $data) {
+    public static function updateData(string $table, array $data) {
     $pdo = Database::getConnection();
     // Extract the first key as the primary key column and its value as the ID
     $primaryKey = array_key_first($data); // Get the first key (e.g., ArticleID, UserID, etc.)
@@ -37,7 +53,7 @@ class CrudModel
     return $stmt->execute([...array_values($data), $id]);
     }
 
-    public static function countRecords($table, $data) {
+    public static function countRecords(string $table, array $data) {
     $pdo = Database::getConnection();
     // Extract the first key as the primary key column and its value as the ID
     $primaryKey = array_key_first($data);
@@ -47,7 +63,7 @@ class CrudModel
     $stmt = $pdo->prepare($query);
     $stmt->execute([$id]);
     return $stmt->fetchColumn();
-}
+    }
 
     // public function delete($id) {
     //     $query = "DELETE FROM {$this->table} WHERE id = :id";

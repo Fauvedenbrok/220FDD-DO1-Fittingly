@@ -50,6 +50,7 @@ class ArticlesRepository
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
+            // door ...array_values($row) tussen de haakjes bij Articles(); te zetten stopt die alle variabelen op volgorde van de database kollommen in de constructor.
             return new Articles(
                 $row['ArticleID'],
                 $row['Name'],

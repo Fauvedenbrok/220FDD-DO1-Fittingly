@@ -78,6 +78,10 @@ class Articles
         return CrudModel::createData("Articles", $this->articleInfo);
     }
 
+    public function updateArticle(): bool {
+        return CrudModel::updateData("Articles", $this->articleInfo);
+    }
+
 // Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!
 public function getArticleID() { return $this->articleID; }
 public function getArticleName() { return $this->articleName; }

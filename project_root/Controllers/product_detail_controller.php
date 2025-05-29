@@ -3,18 +3,18 @@
 use Core\Database;
 use Repositories\ArticlesRepository;
 
-require_once 'Lang/translator.php';
+// require_once 'Lang/translator.php';
 require_once __DIR__ . '/../Core/Database.php';
 require_once __DIR__ . '/../repositories/ArticlesRepository.php';
 
-session_start();
+// session_start();
 
-// Taal instellen
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-}
-$lang = $_SESSION['lang'] ?? 'nl';
-$translator = new Translator($lang);
+// // Taal instellen
+// if (isset($_GET['lang'])) {
+//     $_SESSION['lang'] = $_GET['lang'];
+// }
+// $lang = $_SESSION['lang'] ?? 'nl';
+// $translator = new Translator($lang);
 
 // Database & repository
 $db = new Database();
