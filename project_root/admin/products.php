@@ -36,7 +36,7 @@ if(isset($_GET['upload'])) {
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('/public_html/Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
   </header>
   
@@ -48,11 +48,20 @@ if(isset($_GET['upload'])) {
     <form action="includes/upload/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
     Selecteer CSV-bestand:
     <input type="file" name="csv_file" accept=".csv">
-    <input type="submit" name="upload" value="Uploaden">
+    <button type="submit" name="upload">Uploaden</button>
     </form>
-    <form action="includes/download/csv-product-download-controller.php">
-      <input type="submit" name="download" value="Download CSV">
+    <form action="includes/download/csv-product-download-controller.php" method="post">
+      <button type="submit" name="download">Download CSV</button>
     </form>
+    <?php
+    $data = require_once '../Controllers/product_list_controller.php';
+
+    // Extraheer de variabelen uit de controller naar losse variabelen
+    extract($data);
+
+    // Laad de view (HTML weergave)
+    require_once 'views/product_list_view.php';
+    ?>
   </main>
   <footer>
   </footer>

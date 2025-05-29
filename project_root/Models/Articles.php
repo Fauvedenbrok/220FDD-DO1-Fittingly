@@ -1,7 +1,8 @@
 <?php
 namespace Models;
+use Models\CrudModel;
 
-class Articles extends CrudModel
+class Articles
 {
     private int $articleID;
     private string $articleName;
@@ -16,7 +17,7 @@ class Articles extends CrudModel
     private string $articleMaterial;
     private string $articleBrand;
     private bool $articleAvailability;
-    private array $articlesArray;
+    private array $articleInfo;
 
     public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
     {
@@ -33,8 +34,29 @@ class Articles extends CrudModel
         $this->articleMaterial = $articleMaterial;
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
-        // array met alle properties voor CRUD
-        $this->articlesArray = array(
+        $this->articleInfo = $this->createAssociativeArray();
+    }
+    public function __toString()
+    {
+        return "$this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability";
+    }
+
+    // Geeft het URL-pad naar de afbeelding (voor <img src=...>)
+    public function getImageUrl(): string 
+    {
+    // Als je databasepad NIET wilt gebruiken maar bestand op basis van ID
+            return 'Images/productImages/' . $this->articleID . '.jpg';
+    }
+
+    public function imageExists(): bool {
+    // Gebruik absoluut pad op de server (let op: pad buiten public_html)
+    $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
+    return file_exists($serverPath);
+    }
+
+    // als je alle gegevens in een associative array wilt opvragen.
+    public function createAssociativeArray(){
+        $articlesArray = array(
             'ArticleID' => $this->articleID,
             'Name' => $this->articleName,
             'Size' => $this->size,
@@ -49,39 +71,16 @@ class Articles extends CrudModel
             'Brand' => $this->articleBrand,
             'Availability' => $this->articleAvailability
         );
-    }
-    public function __toString()
-    {
-        return "$this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability";
+        return $articlesArray;
     }
 
-    // prepared statement nog voor het toevoegen van een artikel
-
-    public function addArticle($conn)
-    {
-        $sql = "INSERT INTO articles (articleID, articleName, weight, weightUnit, color, articleDescription, articleImagePath, articleCategory, articleSubCategory, articleMaterial, articleBrand, articleAvailability) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        // s = string, i = integer, d = double, b = blob
-        $stmt->bindValue("isdssbbssssi", $this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+    public function saveArticle(): bool {
+        return CrudModel::createData("Articles", $this->articleInfo);
     }
 
-    // Geeft het URL-pad naar de afbeelding (voor <img src=...>)
-    public function getImageUrl(): string 
-    {
-    // Als je databasepad NIET wilt gebruiken maar bestand op basis van ID
-            return 'Images/productImages/' . $this->articleID . '.jpg';
+    public function updateArticle(): bool {
+        return CrudModel::updateData("Articles", $this->articleInfo);
     }
-
-    public function imageExists(): bool {
-    // Gebruik absoluut pad op de server (let op: pad buiten public_html)
-    $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
-    return file_exists($serverPath);
-}
 
 // Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!
 public function getArticleID() { return $this->articleID; }
@@ -89,6 +88,7 @@ public function getArticleName() { return $this->articleName; }
 public function getWeight() { return $this->weight; }
 public function getWeightUnit() { return $this->weightUnit; }
 public function getColor() { return $this->color; }
+public function getSize() { return $this->size; }
 public function getArticleDescription() { return $this->articleDescription; }
 public function getArticleImagePath() { return $this->articleImagePath; }
 public function getArticleCategory() { return $this->articleCategory; }
