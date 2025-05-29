@@ -9,6 +9,8 @@ require_once '../../../Core/Database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $articleID = $_POST['productID'];
+
+    // deze regel moest ik naar de juiste map zetten omdat die de map anders niet kon vinden..
     $uploadDir = 'C:\Users\Bart\220FDD-DO1-Fittingly\public_html\Images\productImages/'; // De map waar de afbeelding wordt opgeslagen
     $allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; // Toegestane bestandsformaten
     
