@@ -26,30 +26,30 @@ use Helpers\ViewHelper;
             <?php endif; ?>
         </div>
 
-        <div class="product-detail-info">
-            <h2><?= viewHelper::e($artikel->getArticleName()); ?></h2>
-
-            <p class="product-description">
-                <?= ViewHelper::eWithBreaks($artikel->getArticleDescription()); ?>
-            </p>
-        <form action="includes/update/product_update_controller.php" method="post">
+        <form action="includes/update/product_update_controller.php" method="post" enctype="multipart/form-data">
         <ul class="product-attributes">
-            <li><div class="attr-label">Product ID:</div><input type="text" id="productID" name="productID" value="<?= ViewHelper::e($artikel->getArticleID()); ?>"></li>
-            <li><div class="attr-label">Merk:</div><input type="text" id="productBrand" value="<?= ViewHelper::e($artikel->getArticleBrand()); ?>"></li>
-            <li><div class="attr-label">Categorie:</div><input type="text" id="productCategory" value="<?= ViewHelper::e($artikel->getArticleCategory()); ?>"></li>
-            <li><div class="attr-label">Subcategorie:</div><input type="text" id="productSubCategory" value="<?= ViewHelper::e($artikel->getArticleSubCategory()); ?>"></li>
-            <li><div class="attr-label">Kleur:</div><input type="text" id="productColor" value="<?= ViewHelper::e($artikel->getColor()); ?>"></li>
-            <li><div class="attr-label">Maat:</div><input type="text" id="productSize" value="<?= ViewHelper::e($artikel->getSize()); ?>"></li>
-            <li><div class="attr-label">Materiaal:</div><input type="text" id="productMaterial" value="<?= ViewHelper::e($artikel->getArticleMaterial()); ?>"></li>
-            <li><div class="attr-label">Gewicht:</div><input type="text" id="productWeight" value="<?= ViewHelper::e($artikel->getWeight()) . ' ' . ViewHelper::e($artikel->getWeightUnit()); ?>"></li>
-            <li><div class="attr-label">Voorraad:</div><input type="text" id="productStock" value="<?= method_exists($artikel, 'getQuantityOfStock') ? ViewHelper::e($artikel->getQuantityOfStock()) : 'N.v.t.'; ?>"></li>
-            <li><div class="attr-label">Prijs:</div><input type="text" id="productPrice" value="<?= method_exists($artikel, 'getPrice') ? '€' . number_format($artikel->getPrice(), 2, ',', '.') : 'N.v.t.'; ?>"></li>
+            <li><input type="hidden" id="productID" name="productID" value="<?= ViewHelper::e($artikel->getArticleID()); ?>"></li>
+            <li><div class="attr-label">Titel:</div><input type="text" id="productName" name="productName" value="<?= ViewHelper::e($artikel->getArticleName()); ?>" required></li>
+            <li><div class="attr-label">Beschrijving:</div><input type="text" id="productDescription" name="productDescription" value="<?= ViewHelper::e($artikel->getArticleDescription()); ?>" required></li>
+            <li><div class="attr-label">Merk:</div><input type="text" id="productBrand" name="productBrand" value="<?= ViewHelper::e($artikel->getArticleBrand()); ?>" required></li>
+            <li><div class="attr-label">Categorie:</div><input type="text" id="productCategory" name="productCategory" value="<?= ViewHelper::e($artikel->getArticleCategory()); ?>" required></li>
+            <li><div class="attr-label">Subcategorie:</div><input type="text" id="productSubCategory" name="productSubCategory" value="<?= ViewHelper::e($artikel->getArticleSubCategory()); ?>" required></li>
+            <li><div class="attr-label">Kleur:</div><input type="text" id="productColor" name="productColor" value="<?= ViewHelper::e($artikel->getColor()); ?>" required></li>
+            <li><div class="attr-label">Maat:</div><input type="text" id="productSize" name="productSize" value="<?= ViewHelper::e($artikel->getSize()); ?>" required></li>
+            <li><div class="attr-label">Materiaal:</div><input type="text" id="productMaterial" name="productMaterial" value="<?= ViewHelper::e($artikel->getArticleMaterial()); ?>" required></li>
+            <li><div class="attr-label">Gewicht:</div><input type="text" id="productWeight" name="productWeight" value="<?= ViewHelper::e($artikel->getWeight()); ?>" required></li>
+            <li><div class="attr-label">Gewichtseenheid:</div><input type="text" id="productWeightUnit" name="productWeightUnit" value="<?= ViewHelper::e($artikel->getWeightUnit()); ?>" required></li>
+            <li><div class="attr-label">Voorraad:</div><input type="text" id="productStock" name="productStock" value="<?= method_exists($artikel, 'getQuantityOfStock') ? ViewHelper::e($artikel->getQuantityOfStock()) : 'N.v.t.'; ?>" required></li>
+            <li><div class="attr-label">Prijs:</div><input type="text" id="productPrice" name="productPrice" value="<?= method_exists($artikel, 'getPrice') ? '€' . number_format($artikel->getPrice(), 2, ',', '.') : 'N.v.t.'; ?>" required></li>
             <li><div class="attr-label">Beschikbaar:</div>
-                <select id="productAvailability">
+                <select id="productAvailability" name="productAvailability" required>
                     <option value="1" <?= $artikel->getArticleAvailability() ? 'selected' : ''; ?>>Ja</option>
                     <option value="0" <?= !$artikel->getArticleAvailability() ? 'selected' : ''; ?>>Nee</option>
                 </select>
             </li>
+            <li><label for="file">Upload afbeelding:</label>
+            <input type="file" name="imagePath" id="file" accept="image/*"></li>
+
         </ul>
         <button type="submit" name="update">Update Productinformatie</button>
         </form>
