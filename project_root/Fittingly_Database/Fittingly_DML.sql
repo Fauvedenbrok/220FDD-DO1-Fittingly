@@ -1,34 +1,44 @@
         -- Insert fake data for Addresses
         INSERT INTO `Addresses` (`PostalCode`, `HouseNumber`, `StreetName`, `City`, `Country`) VALUES
-        ('1234AB', '10', 'Main Street', 'Amsterdam', 'Nederland'),
-        ('5678CD', '20', 'Second Avenue', 'Rotterdam', 'Nederland'),
-        ('9101EF', '30', 'Third Boulevard', 'Utrecht', 'Nederland'),
-        ('1121GH', '40', 'Fourth Lane', 'Eindhoven', 'Nederland'),
-        ('3141IJ', '50', 'Fifth Road', 'Groningen', 'Nederland');
+        ('1111AA', '15', 'Luxe Laan', 'Amsterdam', 'Nederland'),
+        ('2222BB', '27', 'Designerstraat', 'Rotterdam', 'Nederland'),
+        ('3333CC', '39', 'Modehof', 'Utrecht', 'Nederland'),
+        ('4444DD', '51', 'Fashion Boulevard', 'Eindhoven', 'Nederland'),
+        ('5555EE', '63', 'Catwalkweg', 'Den Haag', 'Nederland'),
+        ('4321XY', '12', 'Exclusieve Straat', 'Groningen', 'Nederland'),
+        ('8765ZW', '24', 'Stijlplein', 'Maastricht', 'Nederland'),
+        ('3456UV', '36', 'Trendy Steeg', 'Leeuwarden', 'Nederland'),
+        ('7890TS', '48', 'Voguepad', 'Arnhem', 'Nederland'),
+        ('9087QR', '60', 'Glamourgracht', 'Zwolle', 'Nederland');
 
         -- Insert fake data for Partners
         INSERT INTO `Partners` (`CompanyName`, `VATNr`, `CoCNr`, `PostalCode`, `HouseNumber`) VALUES
-        ('Partner A', 'NL123456789B01', 12345678, '1234AB', '10'),
-        ('Partner B', 'NL987654321B02', 87654321, '5678CD', '20'),
-        ('Partner C', 'NL112233445B03', 11223344, '9101EF', '30'),
-        ('Partner D', 'NL556677889B04', 55667788, '1121GH', '40'),
-        ('Partner E', 'NL998877665B05', 99887766, '3141IJ', '50');
+        ('Prestige Wardrobe Rentals', 'NL101010101B06', 12345001, '4321XY', '12'),
+        ('Elite Fashion Hire', 'NL202020202B07', 22345002, '8765ZW', '24'),
+        ('HauteCouture Leasing', 'NL303030303B08', 32345003, '3456UV', '36'),
+        ('LuxeWear On-Demand', 'NL404040404B09', 42345004, '7890TS', '48'),
+        ('Runway Glam Rentals', 'NL505050505B10', 52345005, '9087QR', '60');
 
         -- Insert fake data for Customers
         INSERT INTO `Customers` (`FirstName`, `LastName`, `DateOfBirth`, `PostalCode`, `HouseNumber`) VALUES
-        ('John', 'Doe', '1990-01-01', '1234AB', '10'),
-        ('Jane', 'Smith', '1985-05-15', '5678CD', '20'),
-        ('Alice', 'Johnson', '1992-07-20', '9101EF', '30'),
-        ('Bob', 'Brown', '1988-03-10', '1121GH', '40'),
-        ('Eve', 'Davis', '1995-11-25', '3141IJ', '50');
+        ('Michael', 'Jones', '1987-08-12', '1111AA', '15'),
+        ('Sophia', 'Miller', '1991-03-25', '2222BB', '27'),
+        ('Daniel', 'Wilson', '1985-11-05', '3333CC', '39'),
+        ('Emily', 'Clark', '1998-06-18', '4444DD', '51'),
+        ('David', 'Martinez', '1993-09-30', '5555EE', '63');
 
         -- Insert fake data for UserAccounts
-        INSERT INTO `UserAccounts` (`EmailAddress`, `UserPassword`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `PhoneNumber`, `Newsletter`) VALUES
-        ('john.doe@example.com', 'password123', 'Active', 'Customer', '2023-01-01', '0612345678', TRUE),
-        ('jane.smith@example.com', 'password456', 'Active', 'Customer', '2023-02-01', '0612345679', FALSE),
-        ('alice.johnson@example.com', 'password789', 'Suspended', 'Customer', '2023-03-01', '0612345680', TRUE),
-        ('bob.brown@example.com', 'password321', 'Non-active', 'Customer', '2023-04-01', '0612345681', TRUE),
-        ('eve.davis@example.com', 'password654', 'Active', 'Customer', '2023-05-01', '0612345682', FALSE);
+        INSERT INTO `UserAccounts` (`EmailAddress`, `UserPassword`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`, `PhoneNumber`, `Newsletter`, `partnerID`, `customerID`) VALUES
+        ('michael.jones@example.com', 'pass987', 'Active', 'Customer', '2024-01-10', '0611111111', TRUE, NULL, 1), 
+        ('sophia.miller@example.com', 'pass654', 'Active', 'Customer', '2024-02-15', '0622222222', FALSE, NULL, 2), 
+        ('daniel.wilson@example.com', 'pass321', 'Suspended', 'Customer', '2024-03-20', '0633333333', TRUE, NULL, 3), 
+        ('emily.clark@example.com', 'pass456', 'Active', 'Customer', '2024-04-25', '0644444444', FALSE, NULL, 4), 
+        ('david.martinez@example.com', 'pass789', 'Non-active', 'Customer', '2024-05-30', '0655555555', TRUE, NULL, 5), 
+        ('prestige.contact@example.com', 'pass111', 'Active', 'Partner', '2024-06-10', '0666666666', TRUE, 1, NULL), 
+        ('elite.support@example.com', 'pass222', 'Suspended', 'Partner', '2024-07-15', '0677777777', TRUE, 2, NULL), 
+        ('hautecouture.team@example.com', 'pass333', 'Active', 'Partner', '2024-08-20', '0688888888', FALSE, 3, NULL), 
+        ('luxewear.sales@example.com', 'pass444', 'Non-active', 'Partner', '2024-09-25', '0699999999', TRUE, 4, NULL), 
+        ('runway.glam@example.com', 'pass555', 'Active', 'Partner', '2024-10-30', '0670000000', FALSE, 5, NULL);
 
         -- Insert fake data for Articles
         INSERT INTO `Articles` (`Name`, `Size`, `Weight`, `WeightUnit`, `Color`, `Description`, `Category`, `SubCategory`, `Material`, `Brand`, `Availability`) VALUES
@@ -48,11 +58,11 @@
 
         -- Insert fake data for Orders
         INSERT INTO `Orders` (`OrderDate`, `PaymentStatus`, `PostalCode`, `HouseNumber`, `OrderStatus`, `CustomerID`) VALUES
-        ('2023-01-10', TRUE, '1234AB', '10', 'Shipped', 1),
-        ('2023-02-15', FALSE, '5678CD', '20', 'Pending', 2),
-        ('2023-03-20', TRUE, '9101EF', '30', 'Delivered', 3),
-        ('2023-04-25', FALSE, '1121GH', '40', 'Cancelled', 4),
-        ('2023-05-30', TRUE, '3141IJ', '50', 'Shipped', 5);
+        ('2023-01-10', TRUE, '1111AA', '15', 'Shipped', 1),  
+        ('2023-02-15', FALSE, '2222BB', '27', 'Pending', 2), 
+        ('2023-03-20', TRUE, '3333CC', '39', 'Delivered', 3), 
+        ('2023-04-25', FALSE, '4444DD', '51', 'Cancelled', 4), 
+        ('2023-05-30', TRUE, '5555EE', '63', 'Shipped', 5); 
 
         -- Insert fake data for OrderLines
         INSERT INTO `OrderLines` (`Quantity`, `StartDateReservation`, `EndDateReservation`, `OrderLinePrice`, `OrderID`, `ArticleID`, `PartnerID`) VALUES
