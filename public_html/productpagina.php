@@ -1,12 +1,18 @@
 <?php
 use Models\CrudModel;
+use Core\DataBase;
+
+require_once '../project_root/Models/CrudModel.php';
+require_once '../project_root/Core/Database.php';
 // zoekwoorden toevoegen aan database
-if(!isempty($_GET['zoekwoord'])){
+if(isset($_GET['zoekwoord'])){
+if(!empty($_GET['zoekwoord'])){
     // voeg het zoekwoord toe aan de database toe
     $tableName = "searchlog";
     $searchword = $_GET['zoekwoord'];
     $searchWordArray = ['SearchWord' => $searchword];
     CrudModel::createData($tableName, $searchWordArray);
+}
 }
 
 // Laad de controller en haal de data op
