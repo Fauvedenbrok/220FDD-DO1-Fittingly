@@ -136,6 +136,6 @@ CREATE TABLE
 CREATE TABLE
 `SearchLog` (
     `SearchWord` VARCHAR(50) PRIMARY KEY,
-    `Count` INT DEFAULT 0
+    `Count` INT DEFAULT 1
 );
 

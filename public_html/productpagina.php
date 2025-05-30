@@ -1,4 +1,5 @@
 <?php
+
 use Models\CrudModel;
 use Core\DataBase;
 
@@ -19,8 +20,8 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
         $stmt = $pdo->prepare("UPDATE $tableName SET Count = Count + 1 WHERE SearchWord = ?");
         $stmt->execute([$searchword]);
     } else {
-        // Zoekwoord bestaat niet, voeg toe met Count = 1
-        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord, Count) VALUES (?, 1)");
+        // Zoekwoord bestaat niet, voeg toe (Count krijgt automatisch de waarde 1)
+        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord) VALUES (?)");
         $stmt->execute([$searchword]);
     }
 }
