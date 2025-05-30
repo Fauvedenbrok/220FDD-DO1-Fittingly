@@ -136,6 +136,7 @@ CREATE TABLE
 CREATE TABLE
 `SearchLog` (
     `SearchID` INT AUTO_INCREMENT PRIMARY KEY,
-    `SearchWord` VARCHAR(50)
+    `SearchWord` VARCHAR(50),
+    `SearchCount` INT DEFAULT 0
 );
 

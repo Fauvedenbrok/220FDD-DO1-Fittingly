@@ -69,6 +69,8 @@ class CrudModel
     return $stmt->fetchColumn();
     }
 
+    
+
     // public function delete($id) {
     //     $query = "DELETE FROM {$this->table} WHERE id = :id";
     //     $stmt = $this->pdo->prepare($query);

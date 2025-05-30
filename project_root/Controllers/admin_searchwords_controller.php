@@ -21,7 +21,7 @@ function getSearchWords() {
     $pdo = new PDO($dsn, $user, $pass, $options);
 
     // Pas de query aan naar jouw tabel- en kolomnamen
-    $stmt = $pdo->query("SELECT word, count FROM searchlog ORDER BY count DESC");
+    $stmt = $pdo->query("SELECT SearchWord, Count FROM searchlog ORDER BY Count DESC");
     return $stmt->fetchAll();
   } catch (\PDOException $e) {
     echo "Databasefout: " . htmlspecialchars($e->getMessage());
