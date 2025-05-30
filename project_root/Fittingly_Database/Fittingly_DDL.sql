@@ -115,7 +115,7 @@ CREATE TABLE
         `OrderStatus` ENUM ('Pending', 'Shipped', 'Delivered', 'Cancelled'),
         `CustomerID` INT NOT NULL,
         CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE, -- Als een customer (uiteindelijk) gedelete wordt, dan worden ook de orders van die customer gedelete.
-        CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `addresses` (`PostalCode`, `HouseNumber`)
+        CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`)
     );
 
 CREATE TABLE
