@@ -114,4 +114,9 @@ return [
     'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
     'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
 
+    // Admin Products
+    'admin_products_upload_csv' => "Selecteer CSV-bestand:",
+    'admin_products_upload_button' => "Uploaden",
+    'admin_products_download_csv' => "Download CSV",
+
 ];

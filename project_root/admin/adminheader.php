@@ -56,12 +56,12 @@ $translator = init_translator();
       <nav id="language-dropdown" class="language-dropdown">
         <button>
           <a href="?lang=nl">
-            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+            <img class="header-lang-img" src="/public_html/Images/icons/netherlands_flag.png" alt="Nederlands">
           </a>
         </button>
         <button>
           <a href="?lang=en">
-            <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
+            <img class="header-lang-img" src="/public_html/Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
           </a>
         </button>
       </nav>

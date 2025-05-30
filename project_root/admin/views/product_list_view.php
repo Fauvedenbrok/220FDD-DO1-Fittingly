@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+
 use Helpers\ViewHelper;
 ?>
 
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Productpagina</title>
@@ -12,51 +14,53 @@ use Helpers\ViewHelper;
     <link rel="stylesheet" href="../../public_html/css/product.css">
 
 </head>
+
 <body>
 
-<header></header>
+    <header></header>
 
-<div class="product-overview-container">
-    <h2>Fittingly Wardrobe</h2>
+    <div class="product-overview-container">
+        <h2>Fittingly Wardrobe</h2>
 
-    <form method="get" action="productpagina.php" class="search-form">
-        <input type="text" name="zoekwoord" placeholder="Zoek artikelen..." value="<?= ViewHelper::e($zoekwoord); ?>">
-        
-        <select name="categorie">
-            <option value="">Alle categorieën</option>
-            <option value="Mannenkleding" <?= $categorie === 'Mannenkleding' ? 'selected' : ''; ?>>Mannenkleding</option>
-            <option value="Vrouwenkleding" <?= $categorie === 'Vrouwenkleding' ? 'selected' : ''; ?>>Vrouwenkleding</option>
-            <option value="Accessoires" <?= $categorie === 'Accessoires' ? 'selected' : ''; ?>>Accessoires</option>
-        </select>
+        <form method="get" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="search-form">
+            <input type="text" name="zoekwoord" placeholder="Zoek artikelen..." value="<?= ViewHelper::e($zoekwoord); ?>">
 
-        <button type="submit">Zoek</button>
-    </form>
+            <select name="categorie">
+                <option value="">Alle categorieën</option>
+                <option value="Mannenkleding" <?= $categorie === 'Mannenkleding' ? 'selected' : ''; ?>>Mannenkleding</option>
+                <option value="Vrouwenkleding" <?= $categorie === 'Vrouwenkleding' ? 'selected' : ''; ?>>Vrouwenkleding</option>
+                <option value="Accessoires" <?= $categorie === 'Accessoires' ? 'selected' : ''; ?>>Accessoires</option>
+            </select>
 
-    <div class="product-grid">
-        <?php foreach ($artikelen as $artikel): ?>
-            <div class="product-card">
-                <h3><?= ViewHelper::e($artikel->getArticleName()); ?></h3>
+            <button type="submit">Zoek</button>
+        </form>
 
-                <?php if ($artikel->imageExists()): ?>
-                    <img src="../../public_html/<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= ViewHelper::e($artikel->getArticleName()); ?>">
-                <?php else: ?>
-                    <img src="../../public_html/Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
-                <?php endif; ?>
+        <div class="product-grid">
+            <?php foreach ($artikelen as $artikel): ?>
+                <div class="product-card">
+                    <h3><?= ViewHelper::e($artikel->getArticleName()); ?></h3>
 
-                <p><?= $artikel->getArticleAvailability() ? 'Op voorraad' : 'Niet beschikbaar'; ?></p>
-                <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button">Bekijk product</a>
-            </div>
-        <?php endforeach; ?>
+                    <?php if ($artikel->imageExists()): ?>
+                        <img src="../../public_html/<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= ViewHelper::e($artikel->getArticleName()); ?>">
+                    <?php else: ?>
+                        <img src="../../public_html/Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
+                    <?php endif; ?>
+
+                    <p><?= $artikel->getArticleAvailability() ? 'Op voorraad' : 'Niet beschikbaar'; ?></p>
+                    <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button">Bekijk product</a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
 
-<footer></footer>
+    <footer></footer>
 
-<script src="js/scripts.js"></script>
-<script>
-    includeHTML("header.php", "header");
-    includeHTML("footer.php", "footer");
-</script>
+    <script src="js/scripts.js"></script>
+    <script>
+        includeHTML("header.php", "header");
+        includeHTML("footer.php", "footer");
+    </script>
 
 </body>
+
 </html>

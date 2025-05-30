@@ -96,6 +96,6 @@ public function getArticleSubCategory() { return $this->articleSubCategory; }
 public function getArticleMaterial() { return $this->articleMaterial; }
 public function getArticleBrand() { return $this->articleBrand; }
 public function getArticleAvailability() { return $this->articleAvailability; }
-public function getArticlesArray() { return $this->articlesArray; }
+public function getArticlesArray() { return $this->articleInfo; }
 }
 ?>
