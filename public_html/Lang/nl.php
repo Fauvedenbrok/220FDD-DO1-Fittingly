@@ -104,7 +104,7 @@ return [
     'admin-navbar_2' => "Producten",
     'admin-navbar_3' => "Orders",
     'admin-navbar_4' => "Berichten",
-    'admin-navbar_5' => "Retouren",
+    'admin-navbar_5' => "Zoekwoorden",
     'admin-navbar_6' => "Klanten",
     'admin-navbar_7' => "Instellingen",
     'admin-navbar_8' => "Uitloggen",
@@ -118,5 +118,11 @@ return [
     'admin_products_upload_csv' => "Selecteer CSV-bestand:",
     'admin_products_upload_button' => "Uploaden",
     'admin_products_download_csv' => "Download CSV",
+
+    // Admin_searchwords
+    'admin_searchwords_title' => "Zoekwoorden",
+    'admin_searchwords_column_word' => "Zoekwoord",
+    'admin_searchwords_column_count' => "Aantal zoekopdrachten",
+    
 
 ];

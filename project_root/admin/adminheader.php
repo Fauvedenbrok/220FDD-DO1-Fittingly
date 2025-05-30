@@ -37,7 +37,7 @@ $translator = init_translator();
             <a class="nav-button-tekst" href="messages.php"><?= $translator->get('admin-navbar_4') ?></a>
           </button>
           <button>
-            <a class="nav-button-tekst" href="returns.php"><?= $translator->get('admin-navbar_5') ?></a>
+            <a class="nav-button-tekst" href="admin_searchwords.php"><?= $translator->get('admin-navbar_5') ?></a>
           </button>
           <button>
             <a class="nav-button-tekst" href="customers.php"><?= $translator->get('admin-navbar_6') ?></a>

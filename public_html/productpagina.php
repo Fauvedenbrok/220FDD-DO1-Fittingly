@@ -1,7 +1,13 @@
 <?php
 use Models\CrudModel;
+
+require_once __DIR__ . '/../public_html/Lang/translator.php';
+$translator = init_translator();
+
+require_once __DIR__ . '/../project_root/Models/CrudModel.php';
+
 // zoekwoorden toevoegen aan database
-if(!isempty($_GET['zoekwoord'])){
+if(!empty($_GET['zoekwoord'])){
     // voeg het zoekwoord toe aan de database toe
     $tableName = "searchlog";
     $searchword = $_GET['zoekwoord'];
