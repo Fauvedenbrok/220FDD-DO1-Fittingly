@@ -133,3 +133,9 @@ CREATE TABLE
         CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
         );
 
+CREATE TABLE
+`SearchLog` (
+    `SearchID` INT AUTO_INCREMENT PRIMARY KEY,
+    `SearchWord` VARCHAR(50)
+);
+

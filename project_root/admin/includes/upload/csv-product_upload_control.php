@@ -41,7 +41,7 @@ use Models\CrudModel;
                 $articles = $articles->createAssociativeArray();
                 // maak hier een functie van in Model Articles!!!
                 // Check if the ArticleID exists in the database
-                $exists = CrudModel::countRecords($tableName, $articles);
+                $exists = CrudModel::checkRecordExists($tableName, $articles);
                 
                 if ($exists > 0) {
                     // Update existing row

@@ -9,8 +9,10 @@ class CrudModel
     // with column names as keys and values to insert
     public static function createData(string $table, array $data) {
     $pdo = Database::getConnection();
+    // 'waarde1', 'waarde2'
     $columns = implode(", ", array_keys($data));
     $placeholders = implode(", ", array_fill(0, count($data), "?"));
+    // INSERT INTO 'Articles' 'kolomnaam1', 'kolomnaam2' etc VALUES ?, ?, etc
     $query = "INSERT INTO {$table} ($columns) VALUES ($placeholders)";
     $stmt = $pdo->prepare($query);
     return $stmt->execute(array_values($data));
@@ -48,12 +50,14 @@ class CrudModel
     $id = array_shift($data); // Remove the first element (ID) from the array
     // Build the SET part of the query
     $set = implode(", ", array_map(fn($key) => "$key = ?", array_keys($data)));
+    // UPDATE Articles SET Name = ?, Size = ?, etc WHERE ArticleID = ?
     $query = "UPDATE {$table} SET $set WHERE {$primaryKey} = ?";
     $stmt = $pdo->prepare($query);
+    // alle ?'s worden gevuld de values van de array
     return $stmt->execute([...array_values($data), $id]);
     }
 
-    public static function countRecords(string $table, array $data) {
+    public static function checkRecordExists(string $table, array $data) {
     $pdo = Database::getConnection();
     // Extract the first key as the primary key column and its value as the ID
     $primaryKey = array_key_first($data);
