@@ -5,14 +5,24 @@ use Core\DataBase;
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
 // zoekwoorden toevoegen aan database
-if(isset($_GET['zoekwoord'])){
-if(!empty($_GET['zoekwoord'])){
-    // voeg het zoekwoord toe aan de database toe
-    $tableName = "searchlog";
+if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
     $searchword = $_GET['zoekwoord'];
-    $searchWordArray = ['SearchWord' => $searchword];
-    CrudModel::createData($tableName, $searchWordArray);
-}
+    $tableName = "searchlog";
+
+    $pdo = \Core\Database::getConnection();
+    $stmt = $pdo->prepare("SELECT Count FROM $tableName WHERE SearchWord = ?");
+    $stmt->execute([$searchword]);
+    $row = $stmt->fetch();
+
+    if ($row) {
+        // Zoekwoord bestaat, verhoog Count met 1
+        $stmt = $pdo->prepare("UPDATE $tableName SET Count = Count + 1 WHERE SearchWord = ?");
+        $stmt->execute([$searchword]);
+    } else {
+        // Zoekwoord bestaat niet, voeg toe met Count = 1
+        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord, Count) VALUES (?, 1)");
+        $stmt->execute([$searchword]);
+    }
 }
 
 // Laad de controller en haal de data op
