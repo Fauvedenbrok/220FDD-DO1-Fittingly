@@ -21,7 +21,7 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
         $stmt->execute([$searchword]);
     } else {
         // Zoekwoord bestaat niet, voeg toe (Count krijgt automatisch de waarde 1)
-        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord) VALUES (?)");
+        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord, Count) VALUES (?, 1)");
         $stmt->execute([$searchword]);
     }
 }

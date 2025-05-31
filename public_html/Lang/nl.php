@@ -122,7 +122,8 @@ return [
     // Admin_searchwords
     'admin_searchwords_title' => "Zoekwoorden",
     'admin_searchwords_column_word' => "Zoekwoord",
-    'admin_searchwords_column_count' => "Aantal zoekopdrachten",
+    'admin_searchwords_column_count' => "Aantal",
+    'admin_searchwords_column_delete' => "Verwijderen",
     
 
 ];

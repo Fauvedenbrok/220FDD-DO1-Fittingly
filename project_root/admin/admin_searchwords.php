@@ -6,7 +6,10 @@ $translator = init_translator();
 
 require_once __DIR__ . '/../Controllers/admin_searchwords_controller.php';
 
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
+  deleteSearchWord($_POST['delete_word']);
+  // Optional: header('Location: admin_searchwords.php'); exit; // to refresh the page
+}
 // login check en rechten check
 
 
@@ -20,14 +23,14 @@ require_once __DIR__ . '/../Controllers/admin_searchwords_controller.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
   <link rel="stylesheet" href="/public_html/css/styles.css">
+  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
 </head>
 
 <body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
   <header>
   </header>
-  
+
   <main class="main-content">
     <!-- Table waar de zoekwoorden worden weergegeven vanuit de database -->
     <div class="search-words-table">
@@ -37,29 +40,33 @@ require_once __DIR__ . '/../Controllers/admin_searchwords_controller.php';
           <tr>
             <th><?php echo $translator->get('admin_searchwords_column_word'); ?></th>
             <th><?php echo $translator->get('admin_searchwords_column_count'); ?></th>
+            <th><?php echo $translator->get('admin_searchwords_column_delete'); ?></th>
           </tr>
         </thead>
         <tbody>
           <?php
-          // Laad de zoekwoorden uit de database
-
           $searchWords = getSearchWords();
 
           // Loop door de zoekwoorden en voeg ze toe aan de tabel
-          foreach ($searchWords as $word) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($word['SearchWord']) . "</td>";
-            echo "<td>" . htmlspecialchars($word['Count']) . "</td>";
-            echo "</tr>";
-          }
-          ?>
+          foreach ($searchWords as $word): ?>
+            <tr>
+              <td><?= htmlspecialchars($word['SearchWord']) ?></td>
+              <td><?= htmlspecialchars($word['Count']) ?></td>
+              <td>
+                <form method="post" action="">
+                  <input type="hidden" name="delete_word" value="<?= htmlspecialchars($word['SearchWord']) ?>">
+                  <button type="submit" onclick="return confirm('Weet je zeker dat je dit zoekwoord wilt verwijderen?')">Verwijder</button>
+                </form>
+              </td>
+            </tr>
+          <?php endforeach; ?>
 
         </tbody>
       </table>
-     
 
 
-    
+
+
 
   </main>
   <footer>
