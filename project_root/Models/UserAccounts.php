@@ -16,7 +16,7 @@ class UserAccounts
     private ?int $partnerID;
     private ?string $customerID;
     private PDO $db;
->>>>>>> temp-detached-branch
+
         
 
     public function __construct(
@@ -41,7 +41,7 @@ class UserAccounts
         $this->newsletter = $newsletter;
         $this->partnerID = $partnerID;
         $this->customerID = $customerID;
-        $this->userInfo = $this->createAssociativeArray();
+
     }
 
     function __toString(){
@@ -61,7 +61,23 @@ class UserAccounts
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
-
+    public function saveUserAccount(): bool {
+    $db = \Core\Database::getConnection();
+    $stmt = $db->prepare("INSERT INTO useraccounts 
+        (emailAddress, userPassword, accountStatus, accountAccessRights, dateOfRegistration, phoneNumber, newsletter, partnerID, customerID)
+        VALUES (:emailAddress, :userPassword, :accountStatus, :accountAccessRights, :dateOfRegistration, :phoneNumber, :newsletter, :partnerID, :customerID)");
+    return $stmt->execute([
+        ':emailAddress' => $this->emailAddress,
+        ':userPassword' => password_hash($this->userPassword, PASSWORD_DEFAULT),
+        ':accountStatus' => $this->accountStatus,
+        ':accountAccessRights' => $this->accountAccessRights,
+        ':dateOfRegistration' => $this->dateOfRegistration,
+        ':phoneNumber' => $this->phoneNumber,
+        ':newsletter' => $this->newsletter,
+        ':partnerID' => $this->partnerID,
+        ':customerID' => $this->customerID
+    ]);
+}
 
 
 }
