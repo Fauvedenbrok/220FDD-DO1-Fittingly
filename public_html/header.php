@@ -39,6 +39,8 @@ $translator = init_translator();
         <button>
           <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get ('header_navbar_5') ?></a>
         </button>
+        <button>
+          <a class="nav-button-tekst" href="uitloggen.php">Log uit</a>
       </nav>
 
 

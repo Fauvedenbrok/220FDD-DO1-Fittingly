@@ -1,7 +1,7 @@
 <?php
 namespace Models;
-// use PDO;
-// use Core\Database;
+use PDO;
+use Core\Database;
 use Models\CrudModel;
 
 class UserAccounts
@@ -50,7 +50,6 @@ class UserAccounts
 
     public function setCustomerID($id){
         $this->customerID = $id;
-        $this->userInfo['customerID'] = $id;
     }
 
     public static function getUserAccountByEmail(string $email): ?array {
