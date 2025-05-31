@@ -38,7 +38,7 @@ CREATE TABLE
 
 CREATE TABLE
     `Customers` (
-        `CustomerID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `CustomerID` VARCHAR(36) NOT NULL  PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
         `DateOfBirth` VARCHAR(100),
@@ -57,7 +57,7 @@ CREATE TABLE
         `PhoneNumber` VARCHAR(15),
         `Newsletter` BOOLEAN DEFAULT TRUE,
         `PartnerID` INT,
-        `CustomerID` INT,
+        `CustomerID` VARCHAR(36),
         CONSTRAINT `FK_UserAccount_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
         CONSTRAINT `FK_UserAccount_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE -- Als een customer (uiteindelijk) gedelete wordt, dan wordt ook de useraccount gedelete.
     );
@@ -113,7 +113,7 @@ CREATE TABLE
         `PostalCode` VARCHAR(10),
         `HouseNumber` VARCHAR(10),
         `OrderStatus` ENUM ('Pending', 'Shipped', 'Delivered', 'Cancelled'),
-        `CustomerID` INT NOT NULL,
+        `CustomerID` VARCHAR(36) NOT NULL,
         CONSTRAINT `FK_Order_Customer` FOREIGN KEY (`CustomerID`) REFERENCES `Customers` (`CustomerID`) ON DELETE CASCADE, -- Als een customer (uiteindelijk) gedelete wordt, dan worden ook de orders van die customer gedelete.
         CONSTRAINT `FK_Order_addresses` FOREIGN KEY (`PostalCode`, `HouseNumber`) REFERENCES `Addresses` (`PostalCode`, `HouseNumber`)
     );

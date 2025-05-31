@@ -29,7 +29,7 @@ $translator = init_translator();
 
             <div class="registration-login-form-container">
 
-                <form method="post" action="../project_root/includes/login/login.inc.php">
+                <form method="post" action="../project_root/Core/LoginHandler.php">
                     <label for="email">
                         <?= $translator->get('inlogpagina_formulier_email') ?>
                         <input type="text" name="EmailAddress" placeholder="<?= $translator->get('inlogpagina_formulier_email_placeholder') ?> "><br>
