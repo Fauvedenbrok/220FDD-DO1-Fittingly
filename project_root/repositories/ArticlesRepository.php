@@ -1,11 +1,11 @@
 <?php
 
+namespace Repositories;
+use Models\Articles;
+use PDO;
+use PDOException;
 
 require_once __DIR__ . '/../Models/Articles.php';
-
-
-
-
 
 class ArticlesRepository
 {
@@ -30,31 +30,14 @@ class ArticlesRepository
             $sql .= " AND Category = :categorie";
             $params['categorie'] = $categorie;
         }
-        //$sql .= " " join stock
-           // . "LEFT JOIN stock ON articles.ArticleID = stock.ArticleID "//
-            //. "WHERE stock.Availability = 1";//
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
 
         $artikelen = [];
 
-        while ($row = $stmt->fetch()) {
-            $artikelen[] = new Articles(
-                $row['ArticleID'],
-                $row['Name'],
-                (float) $row['Weight'],
-                $row['WeightUnit'],
-                $row['Color'],
-                $row['Description'],
-                $row['Image'],
-                $row['Category'],
-                $row['SubCategory'],
-                $row['Material'],
-                $row['Brand'],
-                (bool) $row['Availability']
-                // columns from stock table
-            );
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $artikelen[] = new Articles(...array_values($row));
         }
 
         return $artikelen;
@@ -64,12 +47,14 @@ class ArticlesRepository
     {
         $stmt = $this->pdo->prepare("SELECT * FROM articles WHERE ArticleID = :id");
         $stmt->execute(['id' => $id]);
-        $row = $stmt->fetch();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
+            // door ...array_values($row) tussen de haakjes bij Articles(); te zetten stopt die alle variabelen op volgorde van de database kollommen in de constructor.
             return new Articles(
                 $row['ArticleID'],
                 $row['Name'],
+                $row['Size'],
                 (float) $row['Weight'],
                 $row['WeightUnit'],
                 $row['Color'],
@@ -82,7 +67,7 @@ class ArticlesRepository
                 (bool) $row['Availability']
             );
         }
+
         return null;
     }
 }
-?>

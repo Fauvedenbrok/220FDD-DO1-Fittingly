@@ -1,7 +1,9 @@
 <?php
 namespace Models;
-use PDO;
-use Core\Database;
+// use PDO;
+// use Core\Database;
+use Models\CrudModel;
+
 class UserAccounts
 {
     private string $emailAddress;
@@ -13,7 +15,8 @@ class UserAccounts
     private bool $newsletter;
     private ?int $partnerID;
     private ?int $customerID;
-    private PDO $db;
+    private array $userInfo;
+    // private PDO $db;
         
 
     public function __construct(
@@ -27,7 +30,7 @@ class UserAccounts
         ?int $partnerID,
         ?int $customerID
     ) {
-        $this->db = Database::getConnection();
+        // $this->db = Database::getConnection();
 
         $this->emailAddress = $emailAddress;
         $this->userPassword = $userPassword;
@@ -38,30 +41,55 @@ class UserAccounts
         $this->newsletter = $newsletter;
         $this->partnerID = $partnerID;
         $this->customerID = $customerID;
+        $this->userInfo = $this->createAssociativeArray();
     }
 
     function __toString(){
         return "Email: " . $this->emailAddress . ", Password: " . $this->userPassword . ", Account Status: " . $this->accountStatus . ", Access Rights: " . $this->accountAccessRights . ", Date of Registration: " . $this->dateOfRegistration . ", Phone Number: " . $this->phoneNumber . ", Newsletter: " . $this->newsletter . ", Partner ID: " . $this->partnerID . ", Customer ID: " . $this->customerID;
     }
-    // prepared statement nog voor het toevoegen van een account
-    public function saveUserAccount(): bool {
-        $stmt = $this->db->prepare("
-            INSERT INTO useraccounts (emailAddress, userPassword, accountStatus, accountAccessRights, dateOfRegistration, phoneNumber, newsletter, partnerID, customerID)
-            VALUES (:emailAddress, :userPassword, :accountStatus, :accountAccessRights, :dateOfRegistration, :phoneNumber, :newsletter, :partnerID, :customerID)
-        ");
 
-        return $stmt->execute([
-            ':emailAddress' => $this->emailAddress,
-            ':userPassword' => password_hash($this->userPassword, PASSWORD_DEFAULT),
-            ':accountStatus' => $this->accountStatus,
-            ':accountAccessRights' => $this->accountAccessRights,
-            ':dateOfRegistration' => $this->dateOfRegistration,
-            ':phoneNumber' => $this->phoneNumber,
-            ':newsletter' => $this->newsletter,
-            ':partnerID' => $this->partnerID,
-            ':customerID' => $this->customerID
-        ]);
+    public function setCustomerID($id){
+        $this->customerID = $id;
+        $this->userInfo['customerID'] = $id;
     }
+
+    public function createAssociativeArray(): array {
+        $userArray = array(
+            'EmailAddress' => $this->emailAddress,
+            'UserPassword' => password_hash($this->userPassword, PASSWORD_DEFAULT),
+            'AccountStatus' => $this->accountStatus,
+            'AccountAccessRights' => $this->accountAccessRights,
+            'DateOfRegistration' => $this->dateOfRegistration,
+            'PhoneNumber' => $this->phoneNumber,
+            'Newsletter' => $this->newsletter,
+            'PartnerID' => $this->partnerID,
+            'CustomerID' => $this->customerID
+        );
+        return $userArray;
+    }
+
+    public function saveUserAccount(): bool {
+        return CrudModel::createData("useraccounts", $this->userInfo);
+    }
+    // prepared statement nog voor het toevoegen van een account
+    // public function saveUserAccount(): bool {
+    //     $stmt = $this->db->prepare("
+    //         INSERT INTO useraccounts (emailAddress, userPassword, accountStatus, accountAccessRights, dateOfRegistration, phoneNumber, newsletter, partnerID, customerID)
+    //         VALUES (:emailAddress, :userPassword, :accountStatus, :accountAccessRights, :dateOfRegistration, :phoneNumber, :newsletter, :partnerID, :customerID)
+    //     ");
+
+    //     return $stmt->execute([
+    //         ':emailAddress' => $this->emailAddress,
+    //         ':userPassword' => password_hash($this->userPassword, PASSWORD_DEFAULT),
+    //         ':accountStatus' => $this->accountStatus,
+    //         ':accountAccessRights' => $this->accountAccessRights,
+    //         ':dateOfRegistration' => $this->dateOfRegistration,
+    //         ':phoneNumber' => $this->phoneNumber,
+    //         ':newsletter' => $this->newsletter,
+    //         ':partnerID' => $this->partnerID,
+    //         ':customerID' => $this->customerID
+    //     ]);
+    // }
 
     // function getName(){
     //     return $this->name;

@@ -104,9 +104,25 @@ return [
     'admin-navbar_2' => "Producten",
     'admin-navbar_3' => "Orders",
     'admin-navbar_4' => "Berichten",
-    'admin-navbar_5' => "Retouren",
+    'admin-navbar_5' => "Zoekwoorden",
     'admin-navbar_6' => "Klanten",
     'admin-navbar_7' => "Instellingen",
     'admin-navbar_8' => "Uitloggen",
+
+    // Admin portaal
+    'adminportal_intro_1' => "Welkom bij het admin portal. Hier kunt u de verschillende opties beheren.",
+    'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
+    'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
+
+    // Admin Products
+    'admin_products_upload_csv' => "Selecteer CSV-bestand:",
+    'admin_products_upload_button' => "Uploaden",
+    'admin_products_download_csv' => "Download CSV",
+
+    // Admin_searchwords
+    'admin_searchwords_title' => "Zoekwoorden",
+    'admin_searchwords_column_word' => "Zoekwoord",
+    'admin_searchwords_column_count' => "Aantal zoekopdrachten",
+    
 
 ];

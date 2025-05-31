@@ -1,16 +1,11 @@
 <?php
-use Core\Database;
+use Models\CrudModel;
 
-require_once '../../../Core/Database.php';
-// Fetch data from the table
-$db = new Database();
-$pdo = $db->getConnection();
+require_once '../../../Models/CrudModel.php';
 
-$query = "SELECT * FROM Articles";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$data = $stmt->fetchAll();
+// ob_start();
 
+$data = CrudModel::readAll("Articles");
 // Set CSV headers
 header('Content-Type: text/csv');
 header('Content-Disposition: attachment; filename="data.csv"');
@@ -28,13 +23,6 @@ foreach ($data as $row) {
 
 fclose($output);
 
-if (!empty($_SERVER['HTTP_REFERER'])) {
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit;
-} else {
-    // Fallback if no referer is available
-    header("Location: index.php"); // Change 'index.php' to your default page
-    exit;
-}
+// ob_end_flush();
 
 ?>
