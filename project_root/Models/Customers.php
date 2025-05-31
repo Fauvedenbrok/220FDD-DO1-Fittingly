@@ -6,7 +6,7 @@ use Core\Database;
 class Customers
 {
 
-    private int $customerID;
+    private string $customerID;
     private string $firstName;
     private string $lastName;
     private string $dateOfBirth;
@@ -17,7 +17,7 @@ class Customers
 
 
     public function __construct(
-        int $customerID,
+        string $customerID,
         string $firstName,
         string $lastName,
         string $dateOfBirth,

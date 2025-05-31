@@ -12,7 +12,7 @@ class UserAccounts
     private string $phoneNumber;
     private bool $newsletter;
     private ?int $partnerID;
-    private ?int $customerID;
+    private ?string $customerID;
     private PDO $db;
         
 
@@ -25,7 +25,7 @@ class UserAccounts
         string $phoneNumber,
         int $newsletter,
         ?int $partnerID,
-        ?int $customerID
+        ?string $customerID
     ) {
         $this->db = Database::getConnection();
 
@@ -63,34 +63,13 @@ class UserAccounts
         ]);
     }
 
-    // function getName(){
-    //     return $this->name;
-    // }
-    // public function getPassword(){
-    //     return password_hash($this->userPassword, PASSWORD_DEFAULT);
-    // }
-    // function checkPassword($userPassword){
-    //     return password_verify($userPassword, $this->getPassword());
-    // }
+    public static function getUserAccountByEmail(string $email): ?array {
+        $db = Database::getConnection();
 
-    // function calculateAge(){
-    //     // placeholder
-    // }
-    // function addAddress(){
-    //     // placeholder
-    // }
-    // function addPhoneNumber(){
-    //     // placeholder
-    // }
-    // function changePassword(){
-    //     // placeholder
-    // }
-    // function login(){
-    //     // placeholder
-    // }
-    // function logout(){
-    //     // placeholder
-    // }
+        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE emailAddress = :emailAddress");
+        $stmt->execute([':emailAddress' => $email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 
 
 
