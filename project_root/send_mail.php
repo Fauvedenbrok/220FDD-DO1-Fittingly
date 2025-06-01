@@ -8,6 +8,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $config = require __DIR__ . '/admin/includes/config.php';
+#TODO array voor de verwachte velden
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $naam = htmlspecialchars($_POST['naam']);
@@ -16,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tel = htmlspecialchars($_POST['tel']);
     $bericht = htmlspecialchars($_POST['bericht']);
 
+    #TODO  // functie met input array
     $mail = new PHPMailer(true);
 
     try {
@@ -29,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->Timeout = 10; // 10 seconden timeout
 
-        $mail->setFrom($config['from_email'], $config['from_name']);
-        $mail->addAddress($email, $naam);   // Ontvanger
-        $mail->addReplyTo($email, $naam);   // Antwoordadres
+        $mail->setFrom($config['from_email'], $config['from_name']);    // Sender
+        $mail->addAddress($email, $naam);                               // Recipient
+        $mail->addReplyTo($email, $naam);                               // Reply-To
 
 
         $mail->isHTML(true);
@@ -46,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         error_log("PHPMailer fout: " . $mail->ErrorInfo);
         exit;
     }
+    //
 } else {
     echo $translator->get('contactpagina_formulier_no_post');
     exit;
