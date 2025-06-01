@@ -23,6 +23,7 @@ return [
     'header_navbar_3' => "Contact",
     'header_navbar_4' => "Register",
     'header_navbar_5' => "Login",
+    'header_navbar_6' => "Logout",
 
     // Footer
     'footer_navbar_1' => "Find us on Social Media",
