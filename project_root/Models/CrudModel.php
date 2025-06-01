@@ -3,13 +3,15 @@ namespace Models;
 use Core\Database;
 use PDO;
 
+
 class CrudModel
 {
     // $data should be an associative array
     // with column names as keys and values to insert
     public static function createData(string $table, array $data) {
     $pdo = Database::getConnection();
-    // 'waarde1', 'waarde2'
+    $id = array_shift($data); // Remove the first element (ID) from the array
+    // 'key1', 'key2', 'key3' etc
     $columns = implode(", ", array_keys($data));
     $placeholders = implode(", ", array_fill(0, count($data), "?"));
     // INSERT INTO 'Articles' 'kolomnaam1', 'kolomnaam2' etc VALUES ?, ?, etc
@@ -18,7 +20,7 @@ class CrudModel
     return $stmt->execute(array_values($data));
     }
 
-    public static function readAllById(string $tableName, string $columnName, int $id) : array {
+    public static function readAllById(string $tableName, string $columnName, $id) : array {
         $pdo = Database::getConnection();
         $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
         $stmt = $pdo->prepare($query);
