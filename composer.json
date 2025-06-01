@@ -9,6 +9,9 @@
 	},
 	"scripts": {
 		"test": "phpunit tests"
+	},
+	"require": {
+		"phpmailer/phpmailer": "^6.10",
+		"ramsey/uuid": "^4.8"
 	}
 }
-
