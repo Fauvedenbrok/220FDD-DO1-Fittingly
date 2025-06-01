@@ -29,22 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->Timeout = 10; // 10 seconden timeout
 
-        $mail->setFrom($config['from_email'], $config['from_name']);      // jouw mailadres als afzender
-        $mail->addAddress('michadebruine@hotmail.com', 'Micha');          // jouw mailadres als ontvanger
-        $mail->addReplyTo($email, $naam);                                 // reply-to op het mailadres van de gebruiker
+        $mail->setFrom($config['from_email'], $config['from_name']);
+        $mail->addAddress($email, $naam);   // Ontvanger
+        $mail->addReplyTo($email, $naam);   // Antwoordadres
 
 
-        $mail->isHTML(false);
+        $mail->isHTML(true);
         $mail->Subject = 'Fittingly contactformulier';
         $mail->Body = "Naam: $naam\nBedrijf: $bedrijf\nEmail: $email\nTelefoon: $tel\nBericht: $bericht";
 
         $mail->send();
-<<<<<<< HEAD
         echo $translator->get('contactpagina_formulier_success');
-=======
-        // laat zien dat het bericht succesvol is verzonden en redirect naar de contactpagina
-        header('Location: /contact.php?status=success');
->>>>>>> 1fa42cc2a50111639686833d47ab775bcf7519a0
         exit;
     } catch (Exception $e) {
         echo $translator->get('contactpagina_formulier_error');
