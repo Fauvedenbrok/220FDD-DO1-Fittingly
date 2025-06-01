@@ -18,7 +18,7 @@ class CrudModel
     return $stmt->execute(array_values($data));
     }
 
-    public static function readAllById(string $tableName, string $columnName, int $id) : array {
+    public static function readAllById(string $tableName, string $columnName, $id) : array {
         $pdo = Database::getConnection();
         $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
         $stmt = $pdo->prepare($query);
