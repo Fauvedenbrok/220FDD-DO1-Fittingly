@@ -23,14 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Password = $config['smtp_pass'];
         $mail->SMTPSecure = $config['smtp_encryption'];
         $mail->Port = $config['smtp_port'];
-
-        // Debug en timeout
-        $mail->SMTPDebug = 2; // Verander naar 0 om uit te zetten als werkt
-        $mail->Debugoutput = 'html';
         $mail->Timeout = 10; // 10 seconden timeout
-
         $mail->setFrom($config['from_email'], $config['from_name']);
-
+        $mail->addAddress($config['from_email'], $config['from_name']);
         $mail->isHTML(false);
         $mail->Subject = 'Fittingly contactformulier';
         $mail->Body = "Naam: $naam\nBedrijf: $bedrijf\nEmail: $email\nTelefoon: $tel\nBericht: $bericht";
