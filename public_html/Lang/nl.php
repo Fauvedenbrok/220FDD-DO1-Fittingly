@@ -25,6 +25,7 @@ return [
     'header_navbar_4' => "Registreren",
     'header_navbar_5' => "Inloggen",
     'header_navbar_6' => "Uitloggen",
+    'header_navbar_7' => "Producten",
 
     // Footer
     'footer_navbar_1' => "Vind ons:",
