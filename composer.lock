@@ -56,11 +56,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/brick/math/tree/0.12.3"
-=======
                 "source": "https://github.com/brick/math/tree/0.13.1"
->>>>>>> 6e3b5898b670442f887d917eb3012f32ccf05b4c
             },
             "funding": [
                 {
@@ -68,9 +64,6 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2025-02-28T13:11:00+00:00"
-=======
             "time": "2025-03-29T13:50:30+00:00"
         },
         {
@@ -153,7 +146,6 @@
                 }
             ],
             "time": "2025-04-24T15:19:31+00:00"
->>>>>>> 6e3b5898b670442f887d917eb3012f32ccf05b4c
         },
         {
             "name": "ramsey/collection",
@@ -233,22 +225,6 @@
         },
         {
             "name": "ramsey/uuid",
-<<<<<<< HEAD
-            "version": "4.7.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/uuid.git",
-                "reference": "91039bc1faa45ba123c4328958e620d382ec7088"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/91039bc1faa45ba123c4328958e620d382ec7088",
-                "reference": "91039bc1faa45ba123c4328958e620d382ec7088",
-                "shasum": ""
-            },
-            "require": {
-                "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11 || ^0.12",
-=======
             "version": "4.8.1",
             "source": {
                 "type": "git",
@@ -263,7 +239,6 @@
             },
             "require": {
                 "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11 || ^0.12 || ^0.13",
->>>>>>> 6e3b5898b670442f887d917eb3012f32ccf05b4c
                 "ext-json": "*",
                 "php": "^8.0",
                 "ramsey/collection": "^1.2 || ^2.0"
@@ -272,28 +247,6 @@
                 "rhumsaa/uuid": "self.version"
             },
             "require-dev": {
-<<<<<<< HEAD
-                "captainhook/captainhook": "^5.10",
-                "captainhook/plugin-composer": "^5.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "doctrine/annotations": "^1.8",
-                "ergebnis/composer-normalize": "^2.15",
-                "mockery/mockery": "^1.3",
-                "paragonie/random-lib": "^2",
-                "php-mock/php-mock": "^2.2",
-                "php-mock/php-mock-mockery": "^1.3",
-                "php-parallel-lint/php-parallel-lint": "^1.1",
-                "phpbench/phpbench": "^1.0",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-mockery": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^8.5 || ^9",
-                "ramsey/composer-repl": "^1.4",
-                "slevomat/coding-standard": "^8.4",
-                "squizlabs/php_codesniffer": "^3.5",
-                "vimeo/psalm": "^4.9"
-=======
                 "captainhook/captainhook": "^5.25",
                 "captainhook/plugin-composer": "^5.3",
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -311,7 +264,6 @@
                 "phpunit/phpunit": "^9.6",
                 "slevomat/coding-standard": "^8.18",
                 "squizlabs/php_codesniffer": "^3.13"
->>>>>>> 6e3b5898b670442f887d917eb3012f32ccf05b4c
             },
             "suggest": {
                 "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
@@ -346,25 +298,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/ramsey/uuid/tree/4.7.6"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-04-27T21:32:50+00:00"
-=======
                 "source": "https://github.com/ramsey/uuid/tree/4.8.1"
             },
             "time": "2025-06-01T06:28:46+00:00"
->>>>>>> 6e3b5898b670442f887d917eb3012f32ccf05b4c
         }
     ],
     "packages-dev": [

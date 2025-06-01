@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../public_html/Lang/translator.php';
+$translator = init_translator();
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -31,14 +34,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body = "Naam: $naam\nBedrijf: $bedrijf\nEmail: $email\nTelefoon: $tel\nBericht: $bericht";
 
         $mail->send();
-        echo "Bericht verzonden!";
+        echo $translator->get('contactpagina_formulier_success');
         exit;
     } catch (Exception $e) {
-        echo "Fout bij verzenden: {$mail->ErrorInfo}";
+        echo $translator->get('contactpagina_formulier_error');
         error_log("PHPMailer fout: " . $mail->ErrorInfo);
         exit;
     }
 } else {
-    echo "Geen POST data ontvangen.";
+    echo $translator->get('contactpagina_formulier_no_post');
     exit;
 }
