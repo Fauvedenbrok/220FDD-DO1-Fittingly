@@ -1,7 +1,12 @@
 <?php
 
+require_once 'Lang/translator.php';
+$translator = init_translator();
+
 use Models\CrudModel;
 use Core\DataBase;
+
+
 
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';

@@ -3,7 +3,7 @@
 use Core\Database;
 use Repositories\ArticlesRepository;
 
-require_once 'Lang/translator.php';
+require_once __DIR__ . '/../../public_html/Lang/translator.php';
 require_once __DIR__ . '/../Core/Database.php';
 require_once __DIR__ . '/../repositories/ArticlesRepository.php';
 

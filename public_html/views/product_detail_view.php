@@ -1,6 +1,10 @@
 <?php
+require_once 'Lang/translator.php';
+$translator = init_translator();
+
 require_once '../project_root/Helpers/ViewHelper.php';
 use Helpers\ViewHelper;
+
 ?>
 
 <!DOCTYPE html>
@@ -34,19 +38,19 @@ use Helpers\ViewHelper;
             </p>
 
         <ul class="product-attributes">
-            <li><div class="attr-label">Product ID:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleID()); ?></div></li>
-            <li><div class="attr-label">Merk:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleBrand()); ?></div></li>
-            <li><div class="attr-label">Categorie:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleCategory()); ?></div></li>
-            <li><div class="attr-label">Subcategorie:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleSubCategory()); ?></div></li>
-            <li><div class="attr-label">Kleur:</div><div class="attr-value"><?= ViewHelper::e($artikel->getColor()); ?></div></li>
-            <li><div class="attr-label">Maat:</div><div class="attr-value"><?= ViewHelper::e($artikel->getSize()); ?></div></li>
-            <li><div class="attr-label">Materiaal:</div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleMaterial()); ?></div></li>
-            <li><div class="attr-label">Gewicht:</div><div class="attr-value"><?= ViewHelper::e($artikel->getWeight()) . ' ' . ViewHelper::e($artikel->getWeightUnit()); ?></div></li>
-            <li><div class="attr-label">Voorraad:</div><div class="attr-value"><?= method_exists($artikel, 'getQuantityOfStock') ? ViewHelper::e($artikel->getQuantityOfStock()) : 'N.v.t.'; ?></div></li>
-            <li><div class="attr-label">Prijs:</div><div class="attr-value"><?= method_exists($artikel, 'getPrice') ? '€' . number_format($artikel->getPrice(), 2, ',', '.') : 'N.v.t.'; ?></div></li>
-            <li><div class="attr-label">Beschikbaar:</div><div class="attr-value"><?= $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_product_id')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleID()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_brand')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleBrand()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_category')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleCategory()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_subcategory')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleSubCategory()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_color')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getColor()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_size')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getSize()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_material')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleMaterial()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_weight')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getWeight()) . ' ' . ViewHelper::e($artikel->getWeightUnit()); ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_stock_quantity')?></div><div class="attr-value"><?= method_exists($artikel, 'getQuantityOfStock') ? ViewHelper::e($artikel->getQuantityOfStock()) : 'N.v.t.'; ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_price')?></div><div class="attr-value"><?= method_exists($artikel, 'getPrice') ? '€' . number_format($artikel->getPrice(), 2, ',', '.') : 'N.v.t.'; ?></div></li>
+            <li><div class="attr-label"><?= $translator->get('product_detail_view_availability')?></div><div class="attr-value"><?= $artikel->getArticleAvailability() ? 'Ja' : 'Nee'; ?></div></li>
         </ul>
-        <a href="productpagina.php" class="back-link">← Terug naar overzicht</a>
+        <a href="productpagina.php" class="back-link"><?= $translator->get('product_detail_view_back_link') ?></a>
         </div>
     </div>
 </main>
