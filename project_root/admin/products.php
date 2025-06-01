@@ -46,7 +46,7 @@ if (isset($_GET['upload'])) {
 
 
     <form action="includes/upload/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
-      Selecteer CSV-bestand:
+      <?= $translator->get('admin_products_upload_csv_label') ?>
       <input type="file" name="csv_file" accept=".csv">
       <button type="submit" name="upload"><?= $translator->get('admin_products_upload_button') ?></button>
     </form>

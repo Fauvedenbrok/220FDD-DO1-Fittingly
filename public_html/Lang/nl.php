@@ -17,7 +17,7 @@ return [
     'usp2_translation' => "Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aanbieden.",
     'usp_container_3' => "Duurzaamheid",
     'usp3_translation' => "Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.",
-    
+
     // Header
     'header_navbar_1' => "Home",
     'header_navbar_2' => "Partners",
@@ -105,10 +105,8 @@ return [
     // Admin Portaal
     'admin-navbar_1' => "Home",
     'admin-navbar_2' => "Producten",
-    'admin-navbar_3' => "Orders",
-    'admin-navbar_4' => "Berichten",
+    'admin-navbar_4' => "Mail",
     'admin-navbar_5' => "Zoekwoorden",
-    'admin-navbar_6' => "Klanten",
     'admin-navbar_7' => "Instellingen",
     'admin-navbar_8' => "Uitloggen",
 
@@ -117,17 +115,18 @@ return [
     'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
     'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
 
-    // Admin Products
+    // Admin/Partner Products
     'admin_products_upload_csv' => "Selecteer CSV-bestand:",
     'admin_products_upload_button' => "Uploaden",
     'admin_products_download_csv' => "Download CSV",
+    'admin_products_upload_csv_label' => "Upload een CSV-bestand met productgegevens om producten toe te voegen of bij te werken.",
 
     // Admin_searchwords
     'admin_searchwords_title' => "Zoekwoorden",
     'admin_searchwords_column_word' => "Zoekwoord",
     'admin_searchwords_column_count' => "Aantal",
     'admin_searchwords_column_delete' => "Verwijderen",
-    
+
     // Product_detail_view
     'product_detail_view_product_id' => "Product ID:",
     'product_detail_view_brand' => "Merk:",
@@ -153,6 +152,8 @@ return [
     'product_list_view_detail_button' => "Bekijk details",
     'product_list_view_availability_in_stock' => "Op voorraad",
     'product_list_view_availability_out_of_stock' => "Niet op voorraad",
+
+
 
     // Contactpagina
     'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. <a href=\"/public_html/index.php\">Terug naar de homepage</a>",
