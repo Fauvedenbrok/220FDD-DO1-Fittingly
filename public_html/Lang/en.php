@@ -121,5 +121,6 @@ return [
     'admin_searchwords_title' => "Search Words",
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
+    'admin_searchwords_column_delete' => "Delete",
     
 ];
