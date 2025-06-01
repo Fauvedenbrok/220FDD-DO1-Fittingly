@@ -32,8 +32,10 @@ $translator = init_translator();
     <div class="hero-sectie" id="hero">
       <div class="hero-sectie-klanten">
         <div class="hero-content">
-          <h2>Rent your perfect fit in:</h2>
-          <div class="timer">
+          <h2>Rent your perfect fit</h2>
+          <button class="cta-partner-hero" onclick="window.location.href='/public_html/productpagina.php'"> <?= $translator->get('hero_content_productpagina_button') ?> </button>
+
+          <!-- <div class="timer">
             <div class="card days">
               <span>00</span>
               <p class="timer-text">Days</p>
@@ -50,13 +52,14 @@ $translator = init_translator();
               <span>00</span>
               <p class="timer-text">Seconds</p>
             </div>
-          </div>
+          </div> -->
+          
         </div>
       </div>
       <div class="hero-sectie-partners">
         <div class="hero-content">
           <h2> <?= $translator->get('hero_content_h2') ?> </h2>
-          <button class="cta-partner-hero" onclick="window.location.href='/partnerpagina.php'"> <?= $translator->get('hero_content_button') ?> </button>
+          <button class="cta-partner-hero" onclick="window.location.href='/public_html/partnerpagina.php'"> <?= $translator->get('hero_content_partnerpagina_button') ?> </button>
         </div>
       </div>
       <div class="scroll-info">
@@ -67,10 +70,10 @@ $translator = init_translator();
     <div class="onsdoel-container">
       <div id="about" class="index-textopmaak-1">
         <div class="index-textopmaak-2">
-          <h3> <?= $translator->get ('about_h3') ?> </h3>
-          <h4> <?= $translator->get ('about_h4') ?> </h4>
+          <h3> <?= $translator->get('about_h3') ?> </h3>
+          <h4> <?= $translator->get('about_h4') ?> </h4>
           <div class="image-mobile image-about"></div>
-          <p class="index-paragraph-tekst-1"> <?= $translator->get ('about_text') ?> </p>
+          <p class="index-paragraph-tekst-1"> <?= $translator->get('about_text') ?> </p>
         </div>
         <div class="image-blok-1"><img src="./Images/onsdoelImages/mobieldesign.png" alt="Mobiele weergave afbeelding"
             class="image-right"></div>
@@ -104,23 +107,23 @@ $translator = init_translator();
       <div id="goal" class="index-textopmaak-1">
         <img src="./Images/onsdoelImages/faded_bride.png" alt="Placeholder afbeelding" class="image-left">
         <div class="index-textopmaak-2">
-          <h3> <?= $translator->get ('index_textopmaak_h3') ?> </h3>
-          <h4> <?= $translator->get ('index_textopmaak_h4') ?> </h4>
+          <h3> <?= $translator->get('index_textopmaak_h3') ?> </h3>
+          <h4> <?= $translator->get('index_textopmaak_h4') ?> </h4>
           <div class="image-mobile image-goal"></div>
-          <p class="index-paragraph-tekst-2"> <?= $translator->get ('index_paragraph_text') ?> </p>
+          <p class="index-paragraph-tekst-2"> <?= $translator->get('index_paragraph_text') ?> </p>
           <div class="usp-container">
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP1Light" class="hexagon">
 
-              <p class="gold-text"> <?= $translator->get ('usp_container_1') ?> </p>
+              <p class="gold-text"> <?= $translator->get('usp_container_1') ?> </p>
             </div>
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP2Light" class="hexagon">
-              <p class="gold-text"> <?= $translator->get ('usp_container_2') ?> </p>
+              <p class="gold-text"> <?= $translator->get('usp_container_2') ?> </p>
             </div>
             <div class="usp-item">
               <img src="./Images/onsdoelImages/usp_Fittingly_light.png" alt="USP3Light" class="hexagon">
-              <p class="gold-text"> <?= $translator->get ('usp_container_3') ?> </p>
+              <p class="gold-text"> <?= $translator->get('usp_container_3') ?> </p>
             </div>
           </div>
         </div>

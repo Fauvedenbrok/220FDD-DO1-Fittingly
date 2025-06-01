@@ -1,7 +1,12 @@
 <?php
 
+require_once 'Lang/translator.php';
+$translator = init_translator();
+
 use Models\CrudModel;
 use Core\DataBase;
+
+
 
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
@@ -10,7 +15,7 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
     $searchword = $_GET['zoekwoord'];
     $tableName = "searchlog";
 
-    $pdo = \Core\Database::getConnection();
+    $pdo = Database::getConnection();
     $stmt = $pdo->prepare("SELECT Count FROM $tableName WHERE SearchWord = ?");
     $stmt->execute([$searchword]);
     $row = $stmt->fetch();
@@ -21,7 +26,7 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
         $stmt->execute([$searchword]);
     } else {
         // Zoekwoord bestaat niet, voeg toe (Count krijgt automatisch de waarde 1)
-        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord) VALUES (?)");
+        $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord, Count) VALUES (?, 1)");
         $stmt->execute([$searchword]);
     }
 }

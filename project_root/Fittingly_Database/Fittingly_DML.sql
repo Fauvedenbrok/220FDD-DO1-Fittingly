@@ -38,7 +38,7 @@
         ('elite.support@example.com', 'pass222', 'Suspended', 'Partner', '2024-07-15', '0677777777', TRUE, 2, NULL), 
         ('hautecouture.team@example.com', 'pass333', 'Active', 'Partner', '2024-08-20', '0688888888', FALSE, 3, NULL), 
         ('luxewear.sales@example.com', 'pass444', 'Non-active', 'Partner', '2024-09-25', '0699999999', TRUE, 4, NULL), 
-        ('runway.glam@example.com', 'pass555', 'Active', 'Partner', '2024-10-30', '0670000000', FALSE, 5, NULL),
+        ('runway.glam@example.com', 'pass555', 'Active', 'Partner', '2024-10-30', '0670000000', FALSE, 5, NULL);
 
         -- Insert fake data for Articles
         INSERT INTO `Articles` (`Name`, `Size`, `Weight`, `WeightUnit`, `Color`, `Description`, `Category`, `SubCategory`, `Material`, `Brand`, `Availability`) VALUES

@@ -18,3 +18,16 @@ function getSearchWords() {
     return [];
   }
 }
+
+
+function deleteSearchWord($searchWord) {
+  $pdo = Database::getConnection();
+
+  try {
+    $stmt = $pdo->prepare("DELETE FROM searchlog WHERE SearchWord = ?");
+    return $stmt->execute([$searchWord]);
+  } catch (\PDOException $e) {
+    echo "Databasefout: " . htmlspecialchars($e->getMessage());
+    return false;
+  }
+}
