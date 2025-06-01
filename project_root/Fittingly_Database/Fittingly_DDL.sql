@@ -139,3 +139,25 @@ CREATE TABLE
     `Count` INT DEFAULT 1
 );
 
+
+INSERT INTO UserAccounts (
+    EmailAddress,
+    UserPassword,
+    AccountStatus,
+    AccountAccessRights,
+    DateOfRegistration,
+    PhoneNumber,
+    Newsletter,
+    PartnerID,
+    CustomerID
+) VALUES (
+    'Admin@fittingly.nl',
+    '$2y$10$ARUIPnDNzBM4PZd9kyxNSeYy9OrxzPwcMdUS7ZMBGRJyRwZg6O7JW', -- replace with your generated hash
+    'Active',
+    'Admin',
+    CURDATE(),
+    NULL,
+    TRUE,
+    NULL,
+    NULL
+);
