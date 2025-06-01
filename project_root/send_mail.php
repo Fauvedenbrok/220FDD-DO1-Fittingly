@@ -23,15 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Password = $config['smtp_pass'];
         $mail->SMTPSecure = $config['smtp_encryption'];
         $mail->Port = $config['smtp_port'];
+
         $mail->Timeout = 10; // 10 seconden timeout
-        $mail->setFrom($config['from_email'], $config['from_name']);
-        $mail->addAddress($config['from_email'], $config['from_name']);
+
+        $mail->setFrom($config['from_email'], $config['from_name']);      // jouw mailadres als afzender
+        $mail->addAddress('michadebruine@hotmail.com', 'Micha');          // jouw mailadres als ontvanger
+        $mail->addReplyTo($email, $naam);                                 // reply-to op het mailadres van de gebruiker
+
+
         $mail->isHTML(false);
         $mail->Subject = 'Fittingly contactformulier';
         $mail->Body = "Naam: $naam\nBedrijf: $bedrijf\nEmail: $email\nTelefoon: $tel\nBericht: $bericht";
 
         $mail->send();
-        echo "Bericht verzonden!";
+        // laat zien dat het bericht succesvol is verzonden en redirect naar de contactpagina
+        header('Location: /contact.php?status=success');
         exit;
     } catch (Exception $e) {
         echo "Fout bij verzenden: {$mail->ErrorInfo}";

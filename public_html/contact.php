@@ -84,19 +84,6 @@ $translator = init_translator();
         includeHTML("footer.php", "footer")
     </script>
     <!-- <script src="js/contact.js"></script> -->
-
-    <?php if (isset($_GET['success'])): ?>
-        <p id="send" style="color: green;">
-            <?php if ($_GET['success'] == '1'): ?>
-                Bericht verzonden!
-            <?php else: ?>
-                Er is een fout opgetreden bij het verzenden van het bericht.
-            <?php endif; ?>
-        </p>
-    <?php else: ?>
-        <p id="send"></p>
-    <?php endif; ?>
-
 </body>
 
 </html>
