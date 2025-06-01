@@ -2,12 +2,19 @@ SET
     FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `OrderLines`;
+
 DROP TABLE IF EXISTS `Orders`;
+
 DROP TABLE IF EXISTS `Stock`;
+
 DROP TABLE IF EXISTS `UserAccounts`;
+
 DROP TABLE IF EXISTS `Articles`;
+
 DROP TABLE IF EXISTS `Customers`;
+
 DROP TABLE IF EXISTS `Partners`;
+
 DROP TABLE IF EXISTS `Addresses`;
 
 SET
@@ -38,7 +45,7 @@ CREATE TABLE
 
 CREATE TABLE
     `Customers` (
-        `CustomerID` VARCHAR(36) NOT NULL  PRIMARY KEY,
+        `CustomerID` VARCHAR(36) NOT NULL PRIMARY KEY,
         `FirstName` VARCHAR(50),
         `LastName` VARCHAR(50),
         `DateOfBirth` VARCHAR(100),
@@ -51,7 +58,7 @@ CREATE TABLE
     `UserAccounts` (
         `EmailAddress` VARCHAR(320) PRIMARY KEY,
         `UserPassword` VARCHAR(255) NOT NULL,
-        `AccountStatus` ENUM ('Non-active', 'Active', 'Suspended'), 
+        `AccountStatus` ENUM ('Non-active', 'Active', 'Suspended'),
         `AccountAccessRights` ENUM ('Customer', 'Partner', 'Admin', 'Support'),
         `DateOfRegistration` DATE,
         `PhoneNumber` VARCHAR(15),
@@ -122,8 +129,8 @@ CREATE TABLE
     `OrderLines` (
         `Quantity` INT DEFAULT 0,
         `StartDateReservation` DATE,
-        `EndDateReservation` DATE,  
-        `OrderLinePrice` DECIMAL(10, 2) DEFAULT 0,	
+        `EndDateReservation` DATE,
+        `OrderLinePrice` DECIMAL(10, 2) DEFAULT 0,
         `OrderID` INT NOT NULL,
         `ArticleID` INT NOT NULL,
         `PartnerID` INT NOT NULL,
@@ -131,33 +138,10 @@ CREATE TABLE
         CONSTRAINT `FK_OrderLine_Order` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`) ON DELETE CASCADE, -- Als een order gedelete wordt, dan worden ook de orderlines van die order gedelete.
         CONSTRAINT `FK_OrderLine_Partner` FOREIGN KEY (`PartnerID`) REFERENCES `Partners` (`PartnerID`),
         CONSTRAINT `FK_OrderLine_Article` FOREIGN KEY (`ArticleID`) REFERENCES `Articles` (`ArticleID`)
-        );
+    );
 
 CREATE TABLE
-`SearchLog` (
-    `SearchWord` VARCHAR(50) PRIMARY KEY,
-    `Count` INT DEFAULT 1
-);
-
-
-INSERT INTO UserAccounts (
-    EmailAddress,
-    UserPassword,
-    AccountStatus,
-    AccountAccessRights,
-    DateOfRegistration,
-    PhoneNumber,
-    Newsletter,
-    PartnerID,
-    CustomerID
-) VALUES (
-    'Admin@fittingly.nl',
-    '$2y$10$ARUIPnDNzBM4PZd9kyxNSeYy9OrxzPwcMdUS7ZMBGRJyRwZg6O7JW', -- replace with your generated hash
-    'Active',
-    'Admin',
-    CURDATE(),
-    NULL,
-    TRUE,
-    NULL,
-    NULL
-);
+    `SearchLog` (
+        `SearchWord` VARCHAR(50) PRIMARY KEY,
+        `Count` INT DEFAULT 1
+    );

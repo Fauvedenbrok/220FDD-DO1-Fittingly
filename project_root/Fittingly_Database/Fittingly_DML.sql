@@ -38,7 +38,7 @@
         ('elite.support@example.com', 'pass222', 'Suspended', 'Partner', '2024-07-15', '0677777777', TRUE, 2, NULL), 
         ('hautecouture.team@example.com', 'pass333', 'Active', 'Partner', '2024-08-20', '0688888888', FALSE, 3, NULL), 
         ('luxewear.sales@example.com', 'pass444', 'Non-active', 'Partner', '2024-09-25', '0699999999', TRUE, 4, NULL), 
-        ('runway.glam@example.com', 'pass555', 'Active', 'Partner', '2024-10-30', '0670000000', FALSE, 5, NULL);
+        ('runway.glam@example.com', 'pass555', 'Active', 'Partner', '2024-10-30', '0670000000', FALSE, 5, NULL),
 
         -- Insert fake data for Articles
         INSERT INTO `Articles` (`Name`, `Size`, `Weight`, `WeightUnit`, `Color`, `Description`, `Category`, `SubCategory`, `Material`, `Brand`, `Availability`) VALUES
@@ -71,3 +71,14 @@
         (3, '2023-03-20', '2023-03-25', 89.97, 3, 3, 3),
         (1, '2023-04-25', '2023-04-30', 99.99, 4, 4, 4),
         (4, '2023-05-30', '2023-06-05', 159.96, 5, 5, 5);
+
+
+        -- Insert admin accounts
+        INSERT INTO `useraccounts` (`EmailAddress`, `UserPassword`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`,`PhoneNumber`,`Newsletter`,`PartnerID`,`CustomerID`) VALUES
+        ('Richard@fittingly.nl','$2y$10$yb1kASao8ei5QhhxD5pMuOW/d80u.bezLnG0w1WqdVVEgdCVLrDT.', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Fauve@fittingly.nl', '$2y$10$CtCcR3XZxYimPRkuBQjLHeuz/RULwjF/yNev9VGshUSQCBnGTyeca', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Yoran@fittingly.nl', '$2y$10$JIJbxSoALFTIj/qXsLuOTOg9a649YjhaRK7D6v5ScEleQErrr1R1W', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Bart@fittingly.nl',  '$2y$10$ahcEE61CQ6k3RxPZtkON1uR1Yshz4tITCV8AtblOqYHhcP4DFPTjm', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Micha@fittingly.nl', '$2y$10$SYqSgzSJPfHGWwAF3mo9cut5yP7u/ocOgIEllQu13.ar8kCmSml1O', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Freek@fittingly.nl', '$2y$10$pbfN/.7JoY0xzcVWeVuND.nd8CZ..CPA56qrmr4sQe0e/XPd.jFd2', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL);
+
