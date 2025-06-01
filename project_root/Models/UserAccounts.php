@@ -58,9 +58,14 @@ class UserAccounts
 
     public function createAssociativeArray(): array
     {
+        $password = $this->userPassword;
+
+        if (!(strlen($password) === 60 && str_starts_with($password, '$2'))) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        }
         $userArray = array(
             'EmailAddress' => $this->emailAddress,
-            'UserPassword' => password_hash($this->userPassword, PASSWORD_DEFAULT),
+            'UserPassword' => $password,
             'AccountStatus' => $this->accountStatus,
             'AccountAccessRights' => $this->accountAccessRights,
             'DateOfRegistration' => $this->dateOfRegistration,
