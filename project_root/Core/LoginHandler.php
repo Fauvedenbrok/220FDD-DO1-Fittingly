@@ -6,5 +6,11 @@ use Controllers\LoginCustomerController;
 require_once "../Controllers/LoginCustomerController.php";
 
 $controller = new LoginCustomerController();
-$controller->login();
-header("Location: /public_html/inloggen.php?message=thankyou");
+
+$action = $_GET['action'] ?? 'login';
+
+if ($action === 'logout') {
+    $controller->logout();
+} else {
+    $controller->login();
+}

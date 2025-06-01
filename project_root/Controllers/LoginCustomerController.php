@@ -26,13 +26,13 @@ class LoginCustomerController
             if ($validation->isEmpty($data, $required)) {
                 Session::set('login_error', "Vul alle verplichte velden in.");
                 header("Location: /public_html/inloggen.php");
-
+                exit;
             }
 
             if (!$validation->isValidEmail($data['EmailAddress'])) {
                 Session::set('login_error', 'Ongeldig e-mailadres.');
                 header("Location: /public_html/inloggen.php");
-
+                exit;
             }
 
             $user = UserAccounts::getUserAccountByEmail($data['EmailAddress']);
@@ -40,14 +40,14 @@ class LoginCustomerController
             if (!$user) {
                 Session::set('login_error', 'Geen gebruiker gevonden met dit e-mailadres.');
                 header("Location: /public_html/inloggen.php");
-
+                exit;
             }
 
             $hashed_password = $user['UserPassword'];
             if (!password_verify($data['UserPassword'], $hashed_password)) {
                 Session::set('login_error', 'Ongeldig wachtwoord');
                 header("Location: /public_html/inloggen.php");
-
+                exit;
             }
 
             // Set session variables
@@ -63,5 +63,13 @@ class LoginCustomerController
             }
             exit;
         }
+    }
+
+    public function logout(): void
+    {
+        Session::destroy();
+        $redirect = $_SERVER['HTTP_REFERER'] ?? '/public_html/inloggen.php';
+        header("Location: $redirect?message=logged_out");
+        exit;
     }
 }

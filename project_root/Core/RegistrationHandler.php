@@ -3,7 +3,7 @@
 
 use Controllers\RegistrationCustomerController;
 
-require_once "../Controllers/registration_customer_controller.php";
+require_once "../Controllers/RegistrationCustomerController.php";
 
 $controller = new RegistrationCustomerController();
 $controller->register();
