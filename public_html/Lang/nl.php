@@ -25,6 +25,7 @@ return [
     'header_navbar_4' => "Registreren",
     'header_navbar_5' => "Inloggen",
     'header_navbar_6' => "Uitloggen",
+    'header_navbar_7' => "Producten",
 
     // Footer
     'footer_navbar_1' => "Vind ons:",
@@ -152,6 +153,10 @@ return [
     'product_list_view_detail_button' => "Bekijk details",
     'product_list_view_availability_in_stock' => "Op voorraad",
     'product_list_view_availability_out_of_stock' => "Niet op voorraad",
-    
+
+    // Contactpagina
+    'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. <a href=\"/public_html/index.php\">Terug naar de homepage</a>",
+    'contactpagina_formulier_error' => "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw.",
+    'contactpagina_formulier_no_post' => "Geen gegevens ontvangen. Zorg ervoor dat u het formulier correct invult.",
 
 ];

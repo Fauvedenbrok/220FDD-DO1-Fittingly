@@ -25,6 +25,7 @@ return [
     'header_navbar_4' => "Register",
     'header_navbar_5' => "Login",
     'header_navbar_6' => "Logout",
+    'header_navbar_7' => "Products",
 
     // Footer
     'footer_navbar_1' => "Find us on Social Media",
@@ -78,7 +79,7 @@ return [
     // registration page
     'klantregistratiepagina_titel' => "Customer Registration",
     'klantregistratiepagina_contact_h2' => "Registration",
-    'klantregistratiepagina_contact_p' => "Join Fittingly and discover a new way to experience luxury. Register for free and get access to exclusive garments, carefully selected to match your style and occasion. Start renting today and wear fashion with a story.",	
+    'klantregistratiepagina_contact_p' => "Join Fittingly and discover a new way to experience luxury. Register for free and get access to exclusive garments, carefully selected to match your style and occasion. Start renting today and wear fashion with a story.",
     'klantregistratiepagina_formulier_naam' => "First Name:",
     'klantregistratiepagina_formulier_achternaam' => "Last Name:",
     'klantregistratiepagina_formulier_email' => "Email:",
@@ -103,7 +104,7 @@ return [
     'inlogpagina_formulier_password_placeholder' => "Password",
     'inlogpagina_formulier_button' => "Login",
 
-        // Admin Portal
+    // Admin Portal
     'admin-navbar_1' => "Home",
     'admin-navbar_2' => "Products",
     'admin-navbar_3' => "Orders",
@@ -124,7 +125,7 @@ return [
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
     'admin_searchwords_column_delete' => "Delete",
-    
+
 
     // Product Detail View
     'product_detail_view_product_id' => "Product ID",
@@ -151,5 +152,10 @@ return [
     'product_list_view_detail_button' => "View Details",
     'product_list_view_availability_in_stock' => "In Stock",
     'product_list_view_availability_out_of_stock' => "Out of Stock",
+
+    // Contact Page
+    'contactpagina_formulier_success' => "Thank you for your message! We will contact you as soon as possible. <a href=\"/public_html/index.php\">Back to the homepage</a>",
+    'contactpagina_formulier_error' => "There was an error sending your message. Please try again later.",
+    'contactpagina_formulier_no_post' => "No POST data received. Please fill out the form and try again.",
 
 ];

@@ -1,9 +1,7 @@
 <?php
-require_once 'Lang/translator.php';
-$translator = init_translator();
-
-require_once '../project_root/Helpers/ViewHelper.php';
 use Helpers\ViewHelper;
+require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
+
 
 ?>
 
