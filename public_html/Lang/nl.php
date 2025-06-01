@@ -23,6 +23,7 @@ return [
     'header_navbar_3' => "Contact",
     'header_navbar_4' => "Registreren",
     'header_navbar_5' => "Inloggen",
+    'header_navbar_6' => "Uitloggen",
 
     // Footer
     'footer_navbar_1' => "Vind ons:",

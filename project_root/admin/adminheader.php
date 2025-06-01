@@ -46,7 +46,7 @@ $translator = init_translator();
             <a class="nav-button-tekst" href="settings.php"><?= $translator->get('admin-navbar_7') ?></a>
           </button>
           <button>
-            <a class="nav-button-tekst" href="/public_html/index.php"><?= $translator->get('admin-navbar_8') ?></a>
+            <a class="nav-button-tekst" href="/public_html/uitloggen.php"><?= $translator->get('admin-navbar_8') ?></a>
           </button>
       </nav>
 
