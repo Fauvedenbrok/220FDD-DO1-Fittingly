@@ -10,7 +10,7 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
     $searchword = $_GET['zoekwoord'];
     $tableName = "searchlog";
 
-    $pdo = \Core\Database::getConnection();
+    $pdo = Database::getConnection();
     $stmt = $pdo->prepare("SELECT Count FROM $tableName WHERE SearchWord = ?");
     $stmt->execute([$searchword]);
     $row = $stmt->fetch();

@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
               <td>
                 <form method="post" action="">
                   <input type="hidden" name="delete_word" value="<?= htmlspecialchars($word['SearchWord']) ?>">
-                  <button type="submit" onclick="return confirm('Weet je zeker dat je dit zoekwoord wilt verwijderen?')">Verwijder</button>
+                  <button type="submit" onclick="return confirm('Weet je zeker dat je dit zoekwoord wilt verwijderen?')"><?= $translator->get('admin_searchwords_column_delete') ?></button>
                 </form>
               </td>
             </tr>

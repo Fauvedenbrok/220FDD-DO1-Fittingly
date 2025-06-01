@@ -2,7 +2,8 @@
 return [
     //index
     'hero_content_h2' => 'Partner worden van Fittingly?',
-    'hero_content_button' => "Meer informatie",
+    'hero_content_partnerpagina_button' => "Meer informatie",
+    'hero_content_productpagina_button' => "Bekijk producten",
     'scroll_info_text' => "Wie zijn wij?",
     'about_h3' => "Exclusieve kleding, zonder kopen",
     'about_h4' => "Ons platform",
