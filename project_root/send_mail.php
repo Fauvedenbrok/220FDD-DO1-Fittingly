@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Timeout = 10; // 10 seconden timeout
 
         $mail->setFrom($config['from_email'], $config['from_name']);
-        $mail->addAddress('michadebruine@hotmail.com', 'Micha');
 
         $mail->isHTML(false);
         $mail->Subject = 'Fittingly contactformulier';
