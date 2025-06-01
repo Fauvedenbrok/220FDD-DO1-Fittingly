@@ -22,8 +22,9 @@ include 'adminheader.php'; // include admin header
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
+
   <link rel="stylesheet" href="/public_html/css/styles.css">
+  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
 </head>
 
 <body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
@@ -35,10 +36,10 @@ include 'adminheader.php'; // include admin header
    // producten, orders, berichten, retouren, klanten, instellingen-->
 
     <div>
-      <h1>Admin Portal</h1>
-      <p> <?= $translator-> get('adminportal_intro_1') ?> </p>
-      <p> <?= $translator-> get('adminportal_intro_2') ?> </p>
-      <p> <?= $translator-> get('adminportal_intro_3') ?> </p>
+      <h1 id="welkomst_tekst_admin_h1"> <?= $translator->get('adminportal_welcome_title') ?></h1>
+      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_1') ?> </p>
+      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_2') ?> </p>
+      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_3') ?> </p>
     </div>
 
   </main>

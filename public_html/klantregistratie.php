@@ -29,7 +29,7 @@ $translator = init_translator();
 
             <div class="registration-login-form-container">
 
-                <form method="post" action="../project_root/Controllers/registration_customer_controller.php">
+                <form method="post" action="../project_root/Core/RegistrationHandler.php">
                     <label for="name">
                         <?= $translator->get('klantregistratiepagina_formulier_naam') ?>
                         <input type="text" name="FirstName" id="firstname" required><br>
@@ -81,7 +81,18 @@ $translator = init_translator();
                     </label>
                 </form>
             </div>
-            <?php if (isset($_SESSION['registration_error'])): ?>
+            <?php 
+            $message = htmlspecialchars($_GET['message'] ?? '', ENT_QUOTES, 'UTF-8');
+            if ($message === 'thankyou'): ?>
+                <script>
+                    window.addEventListener('DOMContentLoaded', function () {
+                        alert("Thank you for registering!");
+                    });
+                </script>
+            <?php endif; ?>
+
+            <?php
+            if (isset($_SESSION['registration_error'])): ?>
                 <p class="error"><?= $_SESSION['registration_error'];
                                     unset($_SESSION['registration_error']); ?></p>
             <?php endif; ?>

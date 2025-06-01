@@ -13,7 +13,7 @@ $translator = init_translator();
     <div class="header-flexbox">
       <a href="index.php"><img
           class="header-logo"
-          src="./Images/logo_fittingly_light.png"
+          src="/public_html/Images/logo_fittingly_light.png"
           alt="Het logo van Fittingly"></a>
       <h1 class="main-title">Fittingly</h1>
       <button class="hamburger">
@@ -23,33 +23,31 @@ $translator = init_translator();
           alt="menu knop">
       </button>
 
-      <nav class="admin-nav">
-        <ul class="admin-nav-list">
+      <nav>
           <button>
-            <li><a href="adminportal.php"><?= $translator->get('admin-navbar_1') ?></a></li>
+            <a class="nav-button-tekst" href="adminportal.php"><?= $translator->get('admin-navbar_1') ?></a>
           </button>
           <button>
-            <li><a href="products.php"><?= $translator->get('admin-navbar_2') ?></a></li>
+            <a class="nav-button-tekst" href="products.php"><?= $translator->get('admin-navbar_2') ?></a>
           </button>
           <button>
-            <li><a href="orders.php"><?= $translator->get('admin-navbar_3') ?></a></li>
+            <a class="nav-button-tekst" href="orders.php"><?= $translator->get('admin-navbar_3') ?></a>
           </button>
           <button>
-            <li><a href="messages.php"><?= $translator->get('admin-navbar_4') ?></a></li>
+            <a class="nav-button-tekst" href="messages.php"><?= $translator->get('admin-navbar_4') ?></a>
           </button>
           <button>
-            <li><a href="returns.php"><?= $translator->get('admin-navbar_5') ?></a></li>
+            <a class="nav-button-tekst" href="admin_searchwords.php"><?= $translator->get('admin-navbar_5') ?></a>
           </button>
           <button>
-            <li><a href="customers.php"><?= $translator->get('admin-navbar_6') ?></a></li>
+            <a class="nav-button-tekst" href="customers.php"><?= $translator->get('admin-navbar_6') ?></a>
           </button>
           <button>
-            <li><a href="settings.php"><?= $translator->get('admin-navbar_7') ?></a></li>
+            <a class="nav-button-tekst" href="settings.php"><?= $translator->get('admin-navbar_7') ?></a>
           </button>
           <button>
-            <li><a href="/public_html/index.php"><?= $translator->get('admin-navbar_8') ?></a></li>
+            <a class="nav-button-tekst" href="/public_html/uitloggen.php"><?= $translator->get('admin-navbar_8') ?></a>
           </button>
-        </ul>
       </nav>
 
 
@@ -58,12 +56,12 @@ $translator = init_translator();
       <nav id="language-dropdown" class="language-dropdown">
         <button>
           <a href="?lang=nl">
-            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+            <img class="header-lang-img" src="/public_html/Images/icons/netherlands_flag.png" alt="Nederlands">
           </a>
         </button>
         <button>
           <a href="?lang=en">
-            <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
+            <img class="header-lang-img" src="/public_html/Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
           </a>
         </button>
       </nav>

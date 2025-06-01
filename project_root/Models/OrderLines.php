@@ -9,6 +9,7 @@ class OrderLines{
     private $orderID;
     private $articleID;
     private $partnerID;
+    private $orderLineInfo;
 
     public function __construct(int $quantity, string $startDateReservation, string $endDateReservation, float $orderLinePrice, int $orderID, int $articleID, int $partnerID){
         $this->quantity = $quantity;
@@ -18,21 +19,26 @@ class OrderLines{
         $this->orderID = $orderID;
         $this->articleID = $articleID;
         $this->partnerID = $partnerID;
+        $this->orderLineInfo = $this->createAssociativeArray();
     }
     public function __toString(){
         return "$this->quantity, $this->startDateReservation, $this->endDateReservation, $this->orderLinePrice, $this->orderID, $this->articleID, $this->partnerID";
     }
 
-    // prepared statement nog voor het toevoegen van een orderline
-    public function addOrderLine($conn){
-        $sql = "INSERT INTO orderlines (quantity, startDateReservation, endDateReservation, orderLinePrice, orderID, articleID, partnerID) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        // s = string, i = integer, d = double, b = blob
-        $stmt->bind_param("issdiii", $this->quantity, $this->startDateReservation, $this->endDateReservation, $this->orderLinePrice, $this->orderID, $this->articleID, $this->partnerID);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+    public function createAssociativeArray(): array {
+        $orderLineArray = array(
+            'Quantity' => $this->quantity,
+            'StartDateReservation' => $this->startDateReservation,
+            'EndDateReservation' => $this->endDateReservation,
+            'OrderLinePrice' => $this->orderLinePrice,
+            'OrderID' => $this->orderID,
+            'ArticleID' => $this->articleID,
+            'PartnerID' => $this->partnerID
+        );
+        return $orderLineArray;
+    }
+
+    public function saveCustomer(): bool {
+        return CrudModel::createData("orderlines", $this->oderLineInfo);
     }
 }

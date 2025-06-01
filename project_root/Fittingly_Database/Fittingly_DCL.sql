@@ -44,19 +44,15 @@ GRANT UPDATE ON `View_CompanyName_VATNr_CoCNr` TO `Support`;
 
 -- Customer Table
 CREATE VIEW `View_FirstName_LastName_DateofBirth` AS
-SELECT FirstName, LastName, DateOfBirth
+SELECT CustomerID, FirstName, LastName, DateOfBirth
 FROM Customers;
 
 CREATE VIEW `View_FirstName_LastName` AS
-SELECT FirstName, LastName	
-FROM Customers;
-
-CREATE VIEW `View_CustomerID` AS
-SELECT CustomerID
+SELECT CustomerID, FirstName, LastName	
 FROM Customers;
 
 GRANT SELECT ON `View_FirstName_LastName` TO `Partner`;
-GRANT SELECT, DELETE ON `View_CustomerID` TO `Customer`, `Support`;
+GRANT SELECT, DELETE ON Customers TO `Customer`, `Support`;
 GRANT SELECT, INSERT, UPDATE ON `View_FirstName_LastName_DateofBirth` TO `Customer`, `Support`;
 
 
@@ -74,7 +70,7 @@ SELECT EmailAddress, UserPassword, PhoneNumber
 FROM UserAccounts;
 
 CREATE VIEW `View_Newsletter` AS
-SELECT Newsletter
+SELECT EmailAddress, Newsletter
 FROM UserAccounts;
 
 CREATE VIEW `View_EmailAddress_UserPassword_Newsletter` AS
@@ -95,22 +91,18 @@ GRANT UPDATE ON `View_Newsletter` TO `Guest`;
 
 
 -- Articles Table
-CREATE VIEW `View_Article_Without_ID` AS
-SELECT `Name`, `Description`, `Availability`, `Size`, `Weight`, WeightUnit, Color, `Image`, Category, SubCategory, Material, Brand
-FROM Articles;
-
-GRANT UPDATE ON `View_Article_Without_ID` TO 'Partner', 'Support';
+GRANT UPDATE ON Articles TO 'Partner', 'Support';
 GRANT SELECT ON Articles TO 'Customer', 'Partner', 'Support';
 GRANT INSERT ON Articles TO 'Partner';
 
 
 -- Stock Table
 CREATE VIEW `View_Price_InternalReference` AS
-SELECT Price, InternalReference
+SELECT Price, InternalReference, ArticleID, PartnerID
 FROM Stock;
 
 CREATE VIEW `View_Price_InternalReference_QuantityOfStock` AS
-SELECT Price, InternalReference, QuantityOfStock
+SELECT Price, InternalReference, QuantityOfStock, ArticleID, PartnerID
 FROM Stock;
 
 GRANT SELECT ON `View_Price_InternalReference` TO 'Customer', 'Guest';
@@ -121,11 +113,11 @@ GRANT INSERT ON Stock TO 'Partner';
 
 -- Orders Table
 CREATE VIEW `View_OrderStatus` AS
-SELECT OrderStatus
+SELECT OrderID, OrderStatus
 FROM Orders;
 
 CREATE VIEW `View_OrderStatus_PaymentStatus` AS
-SELECT OrderStatus, PaymentStatus
+SELECT OrderID, OrderStatus, PaymentStatus
 FROM Orders;
 
 GRANT UPDATE ON `View_OrderStatus` TO 'Customer', 'Partner';
@@ -135,7 +127,7 @@ GRANT SELECT ON Orders TO 'Customer', 'Partner', 'Support';
 
 -- OrderLines Table
 CREATE VIEW `View_Start_EndDateReservation` AS
-SELECT StartDateReservation, EndDateReservation
+SELECT OrderID, ArticleID, PartnerID, StartDateReservation, EndDateReservation
 FROM OrderLines;
 
 GRANT UPDATE ON `View_Start_EndDateReservation` TO `Partner`;
