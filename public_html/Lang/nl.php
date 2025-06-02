@@ -140,9 +140,10 @@ return [
     'product_detail_view_stock_quantity' => "Voorraad:",
     'product_detail_view_price' => "Prijs:",
     'product_detail_view_availability' => "Beschikbaarheid:",
-    'product_detail_view_back_to_overview' => "← Terug naar overzicht",
+    'product_detail_view_back_link' => "← Terug naar overzicht",
 
     // Product_list_view
+    'product_list_view_title' => "Productoverzicht",
     'product_list_view_search_placeholder' => "Zoek naar producten...",
     'product_list_view_search_button' => "Zoeken",
     'product_list_view_category_all' => "Alle categorieën",

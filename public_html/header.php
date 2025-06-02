@@ -60,16 +60,31 @@ Session::start();
 
       <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="./Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
       <nav id="language-dropdown" class="language-dropdown">
-        <button>
-          <a href="?lang=nl">
+    <button>
+        <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=nl' : '?lang=nl' ?>">
             <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
-          </a>
-        </button>
+        </a>
+    </button>
+
         <button>
-          <a href="?lang=en">
+        <a href="<?php
+        if (isset($_GET['id'])) {
+            echo '?id=' . urlencode($_GET['id']) . '&lang=nl';
+
+        } else {
+            echo '?lang=en';
+        }
+        ?>">
+            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+        </a>
+    </button>
+
+    
+    <button>
+        <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=en' : '?lang=en' ?>">
             <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
-          </a>
-        </button>
+        </a>
+    </button>
       </nav>
 
     </div>

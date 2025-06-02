@@ -15,6 +15,7 @@ $articlesRepo = new ArticlesRepository($pdo);
 // Artikel-ID ophalen uit de URL
 $id = (int) ($_GET['id'] ?? 0);
 
+
 if (!$id) {
     return []; // Geen geldig ID
 }

@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
 
 <head>
     <meta charset="UTF-8">
-    <title>Productpagina</title>
+    <title><?= $translator->get('product_list_view_title') ?></title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/product.css">
 
