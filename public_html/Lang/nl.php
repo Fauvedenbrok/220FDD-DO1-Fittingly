@@ -160,4 +160,16 @@ return [
     'contactpagina_formulier_error' => "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw.",
     'contactpagina_formulier_no_post' => "Geen gegevens ontvangen. Zorg ervoor dat u het formulier correct invult.",
 
+    // Winkelwagen
+    'cart_title' => 'Winkelwagen',
+    'cart_empty' => 'Je winkelwagen is leeg.',
+    'cart_continue_shopping' => 'Verder winkelen',
+    'cart_table_product' => 'Product',
+    'cart_table_price' => 'Prijs',
+    'cart_table_quantity' => 'Aantal',
+    'cart_table_subtotal' => 'Subtotaal',
+    'cart_table_actions' => 'Acties',
+    'cart_remove_button' => 'Verwijderen',
+    'cart_total' => 'Totaal',
+    'cart_update_button' => 'Bijwerken',
 ];

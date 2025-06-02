@@ -1,0 +1,141 @@
+<?php
+session_start();
+
+require_once 'CartHandler.php';
+$cartHandler = new CartHandler();
+
+require_once 'Lang/translator.php';
+$translator = init_translator();
+
+require_once '../project_root/Helpers/ViewHelper.php';
+use Helpers\ViewHelper;
+
+require_once '../project_root/Models/CrudModel.php';
+require_once '../project_root/Core/Database.php';
+
+$data = require __DIR__ . '/../project_root/Controllers/product_list_controller.php';
+$artikelen = $data['artikelen'] ?? [];
+
+$cartItems = $cartHandler->getCartItems();
+
+// Verwerken verwijderen product uit winkelwagen
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['remove_product_id'])) {
+        $productIdToRemove = filter_input(INPUT_POST, 'remove_product_id', FILTER_VALIDATE_INT);
+        if ($productIdToRemove) {
+            $cartHandler->removeFromCart($productIdToRemove);
+            header('Location: Cart.php');
+            exit();
+        }
+    }
+
+    if (isset($_POST['update_quantities'])) {
+        foreach ($_POST['quantities'] as $productId => $quantity) {
+            $productId = (int)$productId;
+            $quantity = (int)$quantity;
+            if ($quantity <= 0) {
+                $cartHandler->removeFromCart($productId);
+            } else {
+                // Voor nu verwijderen en opnieuw toevoegen:
+                $cartHandler->removeFromCart($productId);
+                $cartHandler->addToCart($productId, $quantity);
+            }
+        }
+        header('Location: Cart.php');
+        exit();
+    }
+}
+
+// Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
+$totaalPrijs = 0;
+foreach ($cartItems as $productId => $quantity) {
+    $prijs = 0; // placeholder prijs
+    $totaalPrijs += $prijs * $quantity;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Winkelwagen</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header></header>
+
+<main class="cart-container">
+    <h2><?= $translator->get('cart_title'); ?></h2>
+
+    <?php if (empty($cartItems)): ?>
+        <p><?= $translator->get('cart_empty'); ?></p>
+    <?php else: ?>
+        <form method="post" action="Cart.php" class="cart-form">
+            <table>
+                <thead>
+                    <tr>
+                        <th><?= $translator->get('cart_table_product'); ?></th>
+                        <th><?= $translator->get('cart_table_price'); ?></th>
+                        <th><?= $translator->get('cart_table_quantity'); ?></th>
+                        <th><?= $translator->get('cart_table_subtotal'); ?></th>
+                        <th><?= $translator->get('cart_table_actions'); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($cartItems as $productId => $quantity): ?>
+                    <?php
+                        $artikel = null;
+                        foreach ($artikelen as $a) {
+                            if ($a->getArticleID() == $productId) {
+                                $artikel = $a;
+                                break;
+                            }
+                        }
+                        if (!$artikel) continue; // Product bestaat niet meer
+                        $prijs = 0; // prijs nog niet beschikbaar
+                        $subtotal = $prijs * $quantity;
+                    ?>
+                    <tr>
+                        <td><?= ViewHelper::e($artikel->getArticleName()); ?></td>
+                        <td>€<?= number_format($prijs, 2, ',', '.'); ?></td>
+                        <td>
+                            <input 
+                                type="number" 
+                                name="quantities[<?= ViewHelper::e($productId); ?>]" 
+                                value="<?= ViewHelper::e($quantity); ?>" 
+                                min="0" max="99" 
+                                required
+                            >
+                        </td>
+                        <td>€<?= number_format($subtotal, 2, ',', '.'); ?></td>
+                        <td>
+                            <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('Weet je zeker dat je dit product wilt verwijderen?')">
+                                <?= $translator->get('cart_remove_button'); ?>
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <p><strong><?= $translator->get('cart_total'); ?>:</strong> €<?= number_format($totaalPrijs, 2, ',', '.'); ?></p>
+
+            <button type="submit" name="update_quantities"><?= $translator->get('cart_update_button'); ?></button>
+        </form>
+    <?php endif; ?>
+
+    <!-- Deze knop is altijd zichtbaar -->
+    <a href="productpagina.php" class="button-back"><?= $translator->get('cart_continue_shopping'); ?></a>
+</main>
+
+<footer></footer>
+
+<script src="js/scripts.js"></script>
+<script>
+    includeHTML("header.php", "header");
+    includeHTML("footer.php", "footer");
+</script>
+
+</body>
+</html>
