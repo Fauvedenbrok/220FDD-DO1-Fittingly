@@ -124,6 +124,36 @@ return [
     'admin_searchwords_column_word' => "Zoekwoord",
     'admin_searchwords_column_count' => "Aantal",
     'admin_searchwords_column_delete' => "Verwijderen",
-    
+
+    // Product_detail_view
+    'product_detail_view_product_id' => "Product ID:",
+    'product_detail_view_brand' => "Merk:",
+    'product_detail_view_category' => "Categorie:",
+    'product_detail_view_subcategory' => "Subcategorie:",
+    'product_detail_view_color' => "Kleur:",
+    'product_detail_view_size' => "Maat:",
+    'product_detail_view_material' => "Materiaal:",
+    'product_detail_view_weight' => "Gewicht:",
+    'product_detail_view_weight_unit' => "Gewicht:",
+    'product_detail_view_stock_quantity' => "Voorraad:",
+    'product_detail_view_price' => "Prijs:",
+    'product_detail_view_availability' => "Beschikbaarheid:",
+    'product_detail_view_back_to_overview' => "← Terug naar overzicht",
+
+    // Product_list_view
+    'product_list_view_search_placeholder' => "Zoek naar producten...",
+    'product_list_view_search_button' => "Zoeken",
+    'product_list_view_category_all' => "Alle categorieën",
+    'product_list_view_category_men' => "Mannenkleding",
+    'product_list_view_category_women' => "Vrouwenkleding",
+    'product_list_view_category_accessories' => "Accessoires",
+    'product_list_view_detail_button' => "Bekijk details",
+    'product_list_view_availability_in_stock' => "Op voorraad",
+    'product_list_view_availability_out_of_stock' => "Niet op voorraad",
+
+    // Contactpagina
+    'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. <a href=\"/public_html/index.php\">Terug naar de homepage</a>",
+    'contactpagina_formulier_error' => "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw.",
+    'contactpagina_formulier_no_post' => "Geen gegevens ontvangen. Zorg ervoor dat u het formulier correct invult.",
 
 ];
