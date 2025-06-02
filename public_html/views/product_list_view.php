@@ -1,23 +1,7 @@
 <?php
 use Helpers\ViewHelper;
 
-require_once 'CartHandler.php';
-$cartHandler = new CartHandler();
-
-
 require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
-
-// Verwerken winkelwagen toevoeging via CartHandler
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
-    $productId = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
-    $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT, ['options' => ['default' => 1, 'min_range' => 1]]);
-
-    if ($productId && $quantity > 0) {
-        $cartHandler->addToCart($productId, $quantity);
-        header('Location: productpagina.php');
-        exit();
-    }
-}
 
 
 ?>
@@ -30,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     <title>Productpagina</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/product.css">
-
 </head>
 
 <body>
@@ -70,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
 
                     <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_availability_in_stock') : $translator->get('product_list_view_availability_out_of_stock'); ?></p>
                     
-                    <form method="post" action="productpagina.php" class="add-to-cart-form">
+                    <form method="post" action="../project_root/Controllers/cart_controller.php" class="add-to-cart-form">
                     <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
 
                     <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>">Aantal:</label>
