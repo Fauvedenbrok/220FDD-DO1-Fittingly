@@ -11,6 +11,7 @@
 		"test": "phpunit tests"
 	},
 	"require": {
-		"ramsey/uuid": "^4.7"
+		"phpmailer/phpmailer": "^6.10",
+		"ramsey/uuid": "^4.8"
 	}
 }

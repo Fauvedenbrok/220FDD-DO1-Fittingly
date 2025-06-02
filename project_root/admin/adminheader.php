@@ -22,32 +22,26 @@ $translator = init_translator();
           onclick="changeNav()"
           alt="menu knop">
       </button>
-
+      
       <nav>
-          <button>
-            <a class="nav-button-tekst" href="adminportal.php"><?= $translator->get('admin-navbar_1') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="products.php"><?= $translator->get('admin-navbar_2') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="orders.php"><?= $translator->get('admin-navbar_3') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="messages.php"><?= $translator->get('admin-navbar_4') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="admin_searchwords.php"><?= $translator->get('admin-navbar_5') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="customers.php"><?= $translator->get('admin-navbar_6') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="settings.php"><?= $translator->get('admin-navbar_7') ?></a>
-          </button>
-          <button>
-            <a class="nav-button-tekst" href="/public_html/uitloggen.php"><?= $translator->get('admin-navbar_8') ?></a>
-          </button>
+        <button>
+          <a class="nav-button-tekst" href="adminportal.php"><?= $translator->get('admin-navbar_1') ?></a>
+        </button>
+        <button>
+          <a class="nav-button-tekst" href="products.php"><?= $translator->get('admin-navbar_2') ?></a>
+        </button>
+        <button>
+          <a class="nav-button-tekst" href="admin_searchwords.php"><?= $translator->get('admin-navbar_5') ?></a>
+        </button>
+        <button>
+          <a class="nav-button-tekst" href="settings.php"><?= $translator->get('admin-navbar_7') ?></a>
+        </button>
+        <button>
+          <a class="nav-button-tekst" onclick="window.location.href='https://mail.one.com/mail/INBOX/1'"><?= $translator->get('admin-navbar_4') ?></a>
+        </button>
+        <button>
+          <a class="nav-button-tekst" href="/public_html/uitloggen.php"><?= $translator->get('admin-navbar_8') ?></a>
+        </button>
       </nav>
 
 

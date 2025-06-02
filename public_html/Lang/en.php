@@ -2,7 +2,8 @@
 return [
     // Index
     'hero_content_h2' => 'Become a partner of Fittingly?',
-    'hero_content_button' => "More information",
+    'hero_content_partnerpagina_button' => "More information",
+    'hero_content_productpagina_button' => "Become a partner",
     'scroll_info_text' => "Who are we?",
     'about_h3' => "Exclusive clothing, without buying",
     'about_h4' => "Our platform",
@@ -24,6 +25,7 @@ return [
     'header_navbar_4' => "Register",
     'header_navbar_5' => "Login",
     'header_navbar_6' => "Logout",
+    'header_navbar_7' => "Products",
 
     // Footer
     'footer_navbar_1' => "Find us on Social Media",
@@ -77,7 +79,7 @@ return [
     // registration page
     'klantregistratiepagina_titel' => "Customer Registration",
     'klantregistratiepagina_contact_h2' => "Registration",
-    'klantregistratiepagina_contact_p' => "Join Fittingly and discover a new way to experience luxury. Register for free and get access to exclusive garments, carefully selected to match your style and occasion. Start renting today and wear fashion with a story.",	
+    'klantregistratiepagina_contact_p' => "Join Fittingly and discover a new way to experience luxury. Register for free and get access to exclusive garments, carefully selected to match your style and occasion. Start renting today and wear fashion with a story.",
     'klantregistratiepagina_formulier_naam' => "First Name:",
     'klantregistratiepagina_formulier_achternaam' => "Last Name:",
     'klantregistratiepagina_formulier_email' => "Email:",
@@ -102,24 +104,62 @@ return [
     'inlogpagina_formulier_password_placeholder' => "Password",
     'inlogpagina_formulier_button' => "Login",
 
-        // Admin Portal
+    // Admin Portal
     'admin-navbar_1' => "Home",
     'admin-navbar_2' => "Products",
-    'admin-navbar_3' => "Orders",
-    'admin-navbar_4' => "Messages",
+    'admin-navbar_4' => "Mail",
     'admin-navbar_5' => "Searchwords",
-    'admin-navbar_6' => "Customers",
     'admin-navbar_7' => "Settings",
     'admin-navbar_8' => "Log Out?",
 
+    'adminportal_welcome_title' => "Welcome to the Admin Portal",
     'adminportal_intro_1' => "Welcome to the admin portal. Here you can manage the different options.",
     'adminportal_intro_2' => "Use the navigation bar at the top of your screen to navigate through the different sections.",
     'adminportal_intro_3' => "If you have any questions, please contact support.",
+
+    // Admin/Partner Products
+    'admin_products_upload_csv' => "Select a CSV file to upload products",
+    'admin_products_upload_button' => "Upload",
+    'admin_products_download_csv' => "Download CSV",
+    'admin_products_upload_csv_label' => "Upload a CSV file with product data to add or update products.",
 
 
     // Admin Searchwords
     'admin_searchwords_title' => "Search Words",
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
-    
+    'admin_searchwords_column_delete' => "Delete",
+
+
+    // Product Detail View
+    'product_detail_view_product_id' => "Product ID",
+    'product_detail_view_brand' => "Brand",
+    'product_detail_view_category' => "Category",
+    'product_detail_view_subcategory' => "Subcategory",
+    'product_detail_view_color' => "Color",
+    'product_detail_view_size' => "Size",
+    'product_detail_view_material' => "Material",
+    'product_detail_view_weight' => "Weight",
+    'product_detail_view_weight_unit' => "Weight Unit",
+    'product_detail_view_stock_quantity' => "Stock Quantity",
+    'product_detail_view_price' => "Price",
+    'product_detail_view_availability' => "Availability",
+    'product_detail_view_back_link' => "← Back to overview",
+
+    // Product List View
+    'product_list_view_search_placeholder' => "Search for products...",
+    'product_list_view_search_button' => "Search",
+    'product_list_view_category_all' => "All Categories",
+    'product_list_view_category_men' => "Men's Clothing",
+    'product_list_view_category_women' => "Women's Clothing",
+    'product_list_view_category_accessories' => "Accessories",
+    'product_list_view_detail_button' => "View Details",
+    'product_list_view_availability_in_stock' => "In Stock",
+    'product_list_view_availability_out_of_stock' => "Out of Stock",
+
+    // Contact Page
+    'contactpagina_formulier_success' => "Thank you for your message! We will contact you as soon as possible. <a href=\"/public_html/index.php\">Back to the homepage</a>",
+    'contactpagina_formulier_error' => "There was an error sending your message. Please try again later.",
+    'contactpagina_formulier_no_post' => "No POST data received. Please fill out the form and try again.",
+
 ];
