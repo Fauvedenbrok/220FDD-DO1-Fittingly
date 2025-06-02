@@ -427,11 +427,43 @@ footer p {
   width: 50%;
 }
 
-
-
-
 @media (min-width: 1201px) {
   .language-button {
     display: none;
   }
 }
+
+
+/* Admin styles */
+.search-words-table {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#welkomst_tekst_admin_h1 {
+    margin-bottom: 20px;
+    color: #cc9c4e;
+    margin-left: 50px;
+}
+
+.admin-intro-text {
+    margin: 20px;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.admin-table  {
+  width: auto;
+}
+
+.admin-table-data, .admin-table-header {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+

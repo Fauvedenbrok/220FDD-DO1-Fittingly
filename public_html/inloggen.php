@@ -4,6 +4,23 @@ require_once 'Lang/translator.php';
 
 $translator = init_translator();
 
+require_once "../project_root/Core/Session.php";
+use Core\Session;
+
+if (Session::exists('user_email')) {
+    // User is logged in
+    $email = Session::get('user_email');
+    if ($email === 'Admin@fittingly.nl') {
+        echo "$email";
+    } else {
+        echo "You are logged in as: $email";
+    }
+} else {
+    // User is NOT logged in
+    echo "You are not logged in.";
+}
+
+
 ?>
 
 <!doctype html>
@@ -29,7 +46,7 @@ $translator = init_translator();
 
             <div class="registration-login-form-container">
 
-                <form method="post" action="../project_root/includes/login/login.inc.php">
+                <form method="post" action="../project_root/Core/LoginHandler.php">
                     <label for="email">
                         <?= $translator->get('inlogpagina_formulier_email') ?>
                         <input type="text" name="EmailAddress" placeholder="<?= $translator->get('inlogpagina_formulier_email_placeholder') ?> "><br>

@@ -71,3 +71,14 @@
         (3, '2023-03-20', '2023-03-25', 89.97, 3, 3, 3),
         (1, '2023-04-25', '2023-04-30', 99.99, 4, 4, 4),
         (4, '2023-05-30', '2023-06-05', 159.96, 5, 5, 5);
+
+
+        -- Insert admin accounts
+        INSERT INTO `useraccounts` (`EmailAddress`, `UserPassword`, `AccountStatus`, `AccountAccessRights`, `DateOfRegistration`,`PhoneNumber`,`Newsletter`,`PartnerID`,`CustomerID`) VALUES
+        ('Richard@fittingly.nl','$2y$10$yb1kASao8ei5QhhxD5pMuOW/d80u.bezLnG0w1WqdVVEgdCVLrDT.', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Fauve@fittingly.nl', '$2y$10$CtCcR3XZxYimPRkuBQjLHeuz/RULwjF/yNev9VGshUSQCBnGTyeca', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Yoran@fittingly.nl', '$2y$10$JIJbxSoALFTIj/qXsLuOTOg9a649YjhaRK7D6v5ScEleQErrr1R1W', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Bart@fittingly.nl',  '$2y$10$ahcEE61CQ6k3RxPZtkON1uR1Yshz4tITCV8AtblOqYHhcP4DFPTjm', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Micha@fittingly.nl', '$2y$10$SYqSgzSJPfHGWwAF3mo9cut5yP7u/ocOgIEllQu13.ar8kCmSml1O', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
+        ('Freek@fittingly.nl', '$2y$10$pbfN/.7JoY0xzcVWeVuND.nd8CZ..CPA56qrmr4sQe0e/XPd.jFd2', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL);
+

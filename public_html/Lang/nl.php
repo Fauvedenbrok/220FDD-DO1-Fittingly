@@ -2,7 +2,8 @@
 return [
     //index
     'hero_content_h2' => 'Partner worden van Fittingly?',
-    'hero_content_button' => "Meer informatie",
+    'hero_content_partnerpagina_button' => "Meer informatie",
+    'hero_content_productpagina_button' => "Bekijk producten",
     'scroll_info_text' => "Wie zijn wij?",
     'about_h3' => "Exclusieve kleding, zonder kopen",
     'about_h4' => "Ons platform",
@@ -16,13 +17,15 @@ return [
     'usp2_translation' => "Innovatie staat bij Fittingly centraal in alles wat we doen. We gebruiken geavanceerde technologieën om ons verhuurproces eenvoudig en efficiënt te maken, van online reserveringen tot slimme systemen voor kledingonderhoud. Door voortdurend te innoveren, blijven we vooroplopen op de markt en kunnen we onze klanten steeds weer nieuwe mogelijkheden en diensten aanbieden.",
     'usp_container_3' => "Duurzaamheid",
     'usp3_translation' => "Duurzaamheid is een kernwaarde van Fittingly. We streven ernaar om onze ecologische voetafdruk te minimaliseren door kleding een tweede, derde of zelfs vierde leven te geven. Ons circulaire model draagt bij aan minder verspilling en een bewuster consumptiegedrag. Door te kiezen voor Fittingly, kies je niet alleen voor luxe, maar ook voor een duurzame toekomst waarin hergebruik en milieuvriendelijkheid centraal staan.",
-    
+
     // Header
     'header_navbar_1' => "Home",
     'header_navbar_2' => "Partners",
     'header_navbar_3' => "Contact",
     'header_navbar_4' => "Registreren",
     'header_navbar_5' => "Inloggen",
+    'header_navbar_6' => "Uitloggen",
+    'header_navbar_7' => "Producten",
 
     // Footer
     'footer_navbar_1' => "Vind ons:",
@@ -102,22 +105,21 @@ return [
     // Admin Portaal
     'admin-navbar_1' => "Home",
     'admin-navbar_2' => "Producten",
-    'admin-navbar_3' => "Orders",
-    'admin-navbar_4' => "Berichten",
+    'admin-navbar_4' => "Mail",
     'admin-navbar_5' => "Zoekwoorden",
-    'admin-navbar_6' => "Klanten",
     'admin-navbar_7' => "Instellingen",
     'admin-navbar_8' => "Uitloggen",
 
-    // Admin portaal
+    'adminportal_welcome_title' => "Welkom bij het Admin Portal",
     'adminportal_intro_1' => "Welkom bij het admin portal. Hier kunt u de verschillende opties beheren.",
     'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
     'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
 
-    // Admin Products
+    // Admin/Partner Products
     'admin_products_upload_csv' => "Selecteer CSV-bestand:",
     'admin_products_upload_button' => "Uploaden",
     'admin_products_download_csv' => "Download CSV",
+    'admin_products_upload_csv_label' => "Upload een CSV-bestand met productgegevens om producten toe te voegen of bij te werken.",
 
     // Admin_searchwords
     'admin_searchwords_title' => "Zoekwoorden",
@@ -150,6 +152,8 @@ return [
     'product_list_view_detail_button' => "Bekijk details",
     'product_list_view_availability_in_stock' => "Op voorraad",
     'product_list_view_availability_out_of_stock' => "Niet op voorraad",
+
+
 
     // Contactpagina
     'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. <a href=\"/public_html/index.php\">Terug naar de homepage</a>",

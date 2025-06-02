@@ -1,4 +1,8 @@
 <?php
+
+require_once __DIR__ . '/Lang/translator.php';
+$translator = init_translator();
+
 // 1. Laad de controller en ontvang de data
 $data = require_once __DIR__ . '/../project_root/Controllers/product_detail_controller.php';
 

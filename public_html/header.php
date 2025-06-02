@@ -1,8 +1,13 @@
 <?php
 
 require_once 'Lang/translator.php';
-
 $translator = init_translator();
+
+require_once '../project_root/Core/Session.php';
+
+use Core\Session;
+
+Session::start();
 
 ?>
 
@@ -22,23 +27,34 @@ $translator = init_translator();
           onclick="changeNav()"
           alt="menu knop">
       </button>
-      
+
       <nav>
         <button>
-          <a class="nav-button-tekst" href="index.php"><?= $translator->get ('header_navbar_1') ?></a>
+          <a class="nav-button-tekst" href="index.php"><?= $translator->get('header_navbar_1') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="partnerpagina.php"><?= $translator->get ('header_navbar_2') ?></a>
+          <a class="nav-button-tekst" href="productpagina.php"><?= $translator->get('header_navbar_7') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="contact.php"><?= $translator->get ('header_navbar_3') ?></a>
+          <a class="nav-button-tekst" href="partnerpagina.php"><?= $translator->get('header_navbar_2') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get ('header_navbar_4') ?></a>
+          <a class="nav-button-tekst" href="contact.php"><?= $translator->get('header_navbar_3') ?></a>
         </button>
         <button>
-          <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get ('header_navbar_5') ?></a>
+          <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_4') ?></a>
         </button>
+
+        <?php if (!Session::exists('user_email')): ?>
+          <button>
+            <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_5') ?></a>
+          </button>
+        <?php endif; ?>
+
+        <?php if (Session::exists('user_email')): ?>
+          <button>
+            <a class="nav-button-tekst" href="uitloggen.php"><?= $translator->get('header_navbar_6') ?></a>
+          <?php endif; ?>
       </nav>
 
 

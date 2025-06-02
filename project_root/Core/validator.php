@@ -13,4 +13,12 @@ class Validator {
     public static function isValidEmail(string $email): bool {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
+
+    public function is_password_wrong(string $userPassword, string $hashed_password) {
+    if (!password_verify($userPassword,  $hashed_password)){
+        return true;
+    } else {
+        return false;
+    }
+}
 }

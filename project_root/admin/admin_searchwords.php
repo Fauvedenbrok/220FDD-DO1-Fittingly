@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
   <link rel="stylesheet" href="/public_html/css/styles.css">
-  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
 </head>
 
 <body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
@@ -35,12 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
     <!-- Table waar de zoekwoorden worden weergegeven vanuit de database -->
     <div class="search-words-table">
       <h2><?php echo $translator->get('admin_searchwords_title'); ?></h2>
-      <table>
+      <table id="admin-table">
         <thead>
           <tr>
-            <th><?php echo $translator->get('admin_searchwords_column_word'); ?></th>
-            <th><?php echo $translator->get('admin_searchwords_column_count'); ?></th>
-            <th><?php echo $translator->get('admin_searchwords_column_delete'); ?></th>
+            <th class="admin-table-header"><?php echo $translator->get('admin_searchwords_column_word'); ?></th>
+            <th class="admin-table-header"><?php echo $translator->get('admin_searchwords_column_count'); ?></th>
+            <th class="admin-table-header"><?php echo $translator->get('admin_searchwords_column_delete'); ?></th>
           </tr>
         </thead>
         <tbody>
@@ -50,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
           // Loop door de zoekwoorden en voeg ze toe aan de tabel
           foreach ($searchWords as $word): ?>
             <tr>
-              <td><?= htmlspecialchars($word['SearchWord']) ?></td>
-              <td><?= htmlspecialchars($word['Count']) ?></td>
-              <td>
+              <td class="admin-table-data"><?= htmlspecialchars($word['SearchWord']) ?></td>
+              <td class="admin-table-data"><?= htmlspecialchars($word['Count']) ?></td>
+              <td class="admin-table-data">
                 <form method="post" action="">
                   <input type="hidden" name="delete_word" value="<?= htmlspecialchars($word['SearchWord']) ?>">
-                  <button type="submit" onclick="return confirm('Weet je zeker dat je dit zoekwoord wilt verwijderen?')">Verwijder</button>
+                  <button type="submit" onclick="return confirm('Weet je zeker dat je dit zoekwoord wilt verwijderen?')"><?= $translator->get('admin_searchwords_column_delete') ?></button>
                 </form>
               </td>
             </tr>

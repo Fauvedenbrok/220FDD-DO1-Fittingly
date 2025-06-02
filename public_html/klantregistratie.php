@@ -29,7 +29,7 @@ $translator = init_translator();
 
             <div class="registration-login-form-container">
 
-                <form method="post" action="../project_root/Core/registration_handler.php">
+                <form method="post" action="../project_root/Core/RegistrationHandler.php">
                     <label for="name">
                         <?= $translator->get('klantregistratiepagina_formulier_naam') ?>
                         <input type="text" name="FirstName" id="firstname" required><br>
