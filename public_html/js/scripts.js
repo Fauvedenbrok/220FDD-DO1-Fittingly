@@ -15,6 +15,14 @@ function changeLang() {
   dropdown.classList.toggle('visible');
 }
 
+function toggleAccountMenu() {
+  // Toggle de 'visible' class op het account-menu
+  const menu = document.getElementById('account-menu');
+  if (menu) {
+    menu.classList.toggle('visible');
+  }
+}
+
 function includeHTML(source, dst) {
   fetch(source)
     .then(response => response.text())

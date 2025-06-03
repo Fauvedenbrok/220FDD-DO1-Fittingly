@@ -144,7 +144,7 @@ $translator = init_translator();
 </script>
 
   <script>
-    includeHTML("header.php", "header");
+    includeHTML("header.php", "header")
     includeHTML("footer.php", "footer")
   </script>
 

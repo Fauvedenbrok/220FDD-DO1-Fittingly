@@ -237,9 +237,10 @@ nav.visible {
 
 nav {
   align-items: center;
+  display: flex;
 }
 
-nav>button {
+nav>button{
   background: none;
   border: none;
   font-family: "Montserrat", sans-serif;
@@ -258,11 +259,55 @@ nav>button {
   }
 }
 
-nav>button>a {
+nav>button>a,
+.nav-profiel {
+  font-family: "Montserrat", sans-serif;
   color: rgba(220, 211, 194, 1);
   text-decoration: none;
   font-weight: 400;
   line-height: 24px;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.winkelmand-btn {
+  padding: 15px;
+}
+.account-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 15px;
+}
+
+.account-menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  background: rgba(220, 211, 194, 1);
+  border: 1px solid #1a3030;
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+.account-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #1a3030;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.account-menu.visible {
+  display: block;
+}
+
+.account-menu a:hover {
+  background: #f4f4f4;
 }
 
 button.hamburger {
