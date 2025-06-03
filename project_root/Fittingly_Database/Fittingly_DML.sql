@@ -51,10 +51,10 @@
         -- Insert fake data for Stock
         INSERT INTO `Stock` (`QuantityOfStock`, `Price`, `DateAdded`, `InternalReference`, `ArticleID`, `PartnerID`) VALUES
         (100, 19.99, '2023-01-01', 'REF001', 1, 1),
-        (50, 49.99, '2023-02-01', 'REF002', 2, 2),
-        (200, 29.99, '2023-03-01', 'REF003', 3, 3),
-        (150, 99.99, '2023-04-01', 'REF004', 4, 4),
-        (75, 39.99, '2023-05-01', 'REF005', 5, 5);
+        (50, 49.99, '2023-02-01', 'REF002', 2, 1),
+        (200, 29.99, '2023-03-01', 'REF003', 3, 1),
+        (150, 99.99, '2023-04-01', 'REF004', 4, 1),
+        (75, 39.99, '2023-05-01', 'REF005', 5, 1);
 
         -- Insert fake data for Orders
         INSERT INTO `Orders` (`OrderDate`, `PaymentStatus`, `PostalCode`, `HouseNumber`, `OrderStatus`, `CustomerID`) VALUES

@@ -164,4 +164,16 @@ return [
     'contactpagina_formulier_error' => "There was an error sending your message. Please try again later.",
     'contactpagina_formulier_no_post' => "No POST data received. Please fill out the form and try again.",
 
+    // Shopping Cart
+    'cart_title' => 'Shopping Cart',
+    'cart_empty' => 'Your shopping cart is empty.',
+    'cart_continue_shopping' => 'Continue Shopping',
+    'cart_table_product' => 'Product',
+    'cart_table_price' => 'Price',
+    'cart_table_quantity' => 'Quantity',
+    'cart_table_subtotal' => 'Subtotal',
+    'cart_table_actions' => 'Actions',
+    'cart_remove_button' => 'Remove',
+    'cart_total' => 'Total',
+    'cart_update_button' => 'Update'
 ];

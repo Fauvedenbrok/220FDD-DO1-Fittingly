@@ -511,4 +511,100 @@ footer p {
   text-align: left;
 }
 
+.cart-icon-link {
+  margin-left: 15px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
+.cart-icon-link:hover {
+  color: #CC9C4E; /* Of pas aan naar je eigen kleurenschema */
+}
+
+/* styles.css */
+
+.cart-container {
+  font-family: "Montserrat", sans-serif;
+  color: #1a3030;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #dcd3c2;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.cart-container h2 {
+  color: #cc9c4e;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.empty-cart-message p {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.empty-cart-message a {
+  display: inline-block;
+  background-color: #cc9c4e;
+  color: #1a3030;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.empty-cart-message a:hover {
+  background-color: #b38b42;
+}
+
+.cart-form table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.cart-form th, .cart-form td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+.cart-form th {
+  background-color: #cc9c4e;
+  color: #1a3030;
+}
+
+.cart-form button {
+  background-color: #cc9c4e;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.cart-form button:hover {
+  background-color: #b38b42;
+}
+
+.cart-form p strong {
+  font-size: 1.2rem;
+}
+
+.cart-form button[name="update_quantities"] {
+  display: block;
+  margin: 1rem auto 0;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+}
