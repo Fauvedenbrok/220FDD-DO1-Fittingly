@@ -14,7 +14,7 @@ $translator = init_translator();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fittingly</title>
+  <title>Fittingly</title>o
   <link rel="icon" href="./Images/icons/favicon.ico">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="./css/indexstyles.css">
@@ -135,12 +135,13 @@ $translator = init_translator();
   <script src="js/scripts.js"></script>
   <script src="js/onsdoelscript.js"></script>
 
-  <script>
-    const translations = <?= json_encode($translations) ?>;
-  </script>
-
-  <script src="js/scripts.js"></script>
-  <script src="js/onsdoelscript.js"></script>
+ <script>
+  const translations = {
+      usp1: "<?= $translator->get('translation.usp1') ?>",
+      usp2: "<?= $translator->get('translation.usp2') ?>",
+      usp3: "<?= $translator->get('translation.usp3') ?>"
+  };
+</script>
 
   <script>
     includeHTML("header.php", "header");
