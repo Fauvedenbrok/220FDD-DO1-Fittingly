@@ -15,6 +15,13 @@ Session::start();
 
 <body>
   <div class="main-container">
+    <a href="Cart.php" class="cart-icon-link" aria-label="Naar winkelwagen">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+  </svg>
+</a>
     <div class="header-flexbox">
       <a href="index.php"><img
           class="header-logo"
@@ -61,6 +68,7 @@ Session::start();
 
       <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="./Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
       <nav id="language-dropdown" class="language-dropdown">
+        <?php if(!Session::exists('id')): ?>
         <button>
           <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=nl' : '?lang=nl' ?>">
             <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
@@ -72,6 +80,18 @@ Session::start();
             <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
           </a>
         </button>
+        <?php else: ?>
+          <button>
+          <a href="<?php echo("?id=" . "{$_SESSION['id']}" . "&lang=nl")?>">
+            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+          </a>
+        </button>
+        <button>
+          <a href="<?php echo("?id=" . "{$_SESSION['id']}" . "&lang=en")?>">
+            <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
+          </a>
+        </button>
+        <?php endif; ?>
       </nav>
 
     </div>
