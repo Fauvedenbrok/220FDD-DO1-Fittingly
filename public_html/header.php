@@ -50,9 +50,12 @@ Session::start();
         <button class="nav-button">
           <a class="nav-button-tekst" href="contact.php"><?= $translator->get('header_navbar_3') ?></a>
         </button>
-          <button id="winkelmand-btn">
-            <a href=""><img src="./Images/icons/winkelmand.png" alt="Account" style="width:32px;height:32px;"></a>
-          </button>
+        <?php
+        $cartHref = Session::exists('user_email') ? 'Cart.php' : 'inloggen.php';
+        ?>
+        <button id="winkelmand-btn">
+          <a href="<?= $cartHref ?>"><img src="./Images/icons/winkelmand.png" alt="Account" style="width:32px;height:32px;"></a>
+        </button>
         <?php if (Session::exists('user_email')):
             $userName = UserAccounts::getUserNameBySession();
         ?>
