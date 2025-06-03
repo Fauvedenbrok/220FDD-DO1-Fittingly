@@ -61,5 +61,7 @@ require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
     includeHTML("footer.php", "footer");
 </script>
 
+
+
 </body>
 </html>

@@ -17,3 +17,5 @@ extract($data);
 
 // 4. Laad de HTML-view
 require_once __DIR__ . '/views/product_detail_view.php';
+
+
