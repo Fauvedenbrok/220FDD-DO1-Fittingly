@@ -11,10 +11,7 @@ $translator = init_translator();
 <body>
   <div class="main-container">
     <div class="header-flexbox">
-      <a href="index.php"><img
-          class="header-logo"
-          src="/public_html/Images/logo_fittingly_light.png"
-          alt="Het logo van Fittingly"></a>
+      <img class="header-logo" src="/public_html/Images/logo_fittingly_light.png" alt="Het logo van Fittingly">
       <h1 class="main-title">Fittingly</h1>
       <button class="hamburger">
         <img
@@ -33,11 +30,11 @@ $translator = init_translator();
         <button>
           <a class="nav-button-tekst" href="admin_searchwords.php"><?= $translator->get('admin-navbar_5') ?></a>
         </button>
-        <button>
+        <!-- <button>
           <a class="nav-button-tekst" href="settings.php"><?= $translator->get('admin-navbar_7') ?></a>
-        </button>
+        </button> -->
         <button>
-          <a class="nav-button-tekst" onclick="window.location.href='https://mail.one.com/mail/INBOX/1'"><?= $translator->get('admin-navbar_4') ?></a>
+          <a class="nav-button-tekst" href="https://mail.one.com/mail/INBOX/1" target="_blank"><?= $translator->get('admin-navbar_4') ?></a>
         </button>
         <button>
           <a class="nav-button-tekst" href="/public_html/uitloggen.php"><?= $translator->get('admin-navbar_8') ?></a>
