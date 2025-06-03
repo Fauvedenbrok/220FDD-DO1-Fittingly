@@ -67,6 +67,7 @@ Session::start();
 
       <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="./Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
       <nav id="language-dropdown" class="language-dropdown">
+        <?php if(!Session::exists('id')): ?>
         <button>
           <a href="?lang=nl">
             <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
@@ -77,6 +78,18 @@ Session::start();
             <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
           </a>
         </button>
+        <?php else: ?>
+          <button>
+          <a href="<?php echo("?id=" . "{$_SESSION['id']}" . "&lang=nl")?>">
+            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+          </a>
+        </button>
+        <button>
+          <a href="<?php echo("?id=" . "{$_SESSION['id']}" . "&lang=en")?>">
+            <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
+          </a>
+        </button>
+        <?php endif; ?>
       </nav>
 
     </div>
