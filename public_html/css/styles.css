@@ -476,10 +476,10 @@ footer p {
 }
 
 .cart-icon-link:hover {
-  color: #CC9C4E; /* Of pas aan naar je eigen kleurenschema */
+  color: #CC9C4E;
 }
 
-/* styles.css */
+
 
 .cart-container {
   font-family: "Montserrat", sans-serif;
