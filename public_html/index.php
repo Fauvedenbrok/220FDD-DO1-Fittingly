@@ -139,11 +139,8 @@ $translator = init_translator();
     const translations = <?= json_encode($translations) ?>;
   </script>
 
-  <script src="js/scripts.js"></script>
-  <script src="js/onsdoelscript.js"></script>
-
   <script>
-    includeHTML("header.php", "header");
+    includeHTML("header.php", "header")
     includeHTML("footer.php", "footer")
   </script>
 

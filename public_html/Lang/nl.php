@@ -26,6 +26,9 @@ return [
     'header_navbar_5' => "Inloggen",
     'header_navbar_6' => "Uitloggen",
     'header_navbar_7' => "Producten",
+    'header_navbar_8' => "Welkom",
+    'header_navbar_9' => "Mijn account",
+
 
     // Footer
     'footer_navbar_1' => "Vind ons:",
