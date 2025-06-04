@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../public_html/CartHandler.php';
+require_once __DIR__ . '../../public_html/CartHandler.php';
 $cartHandler = new CartHandler();
 
 // Verwerken winkelwagen toevoeging via CartHandler
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
 
     if ($productId && $quantity > 0) {
         $cartHandler->addToCart($productId, $quantity);
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: productpagina.php');
         exit();
     }
 }

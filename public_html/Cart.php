@@ -1,5 +1,4 @@
-.0<?php
-session_start();
+<?php
 require_once '../project_root/Core/Session.php';
 use Core\Session;
 if (!Session::exists('user_email')) {
@@ -18,6 +17,18 @@ use Helpers\ViewHelper;
 
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
+
+// Verwerken winkelwagen toevoeging via CartHandler
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    $productId = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
+    $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT, ['options' => ['default' => 1, 'min_range' => 1]]);
+
+    if ($productId && $quantity > 0) {
+        $cartHandler->addToCart($productId, $quantity);
+        header('Location: productpagina.php');
+        exit();
+    }
+}
 
 $data = require __DIR__ . '/../project_root/Controllers/product_list_controller.php';
 $artikelen = $data['artikelen'] ?? [];
