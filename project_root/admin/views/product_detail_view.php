@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+/** ViewHelper verwerkt htmlspecialchars voor veilige HTML-uitvoer en minder herhaling (OOP) */
 use Helpers\ViewHelper;
 ?>
 
@@ -16,8 +17,24 @@ use Helpers\ViewHelper;
 <header></header>
 
 <main>
+    <!--    
+    /** Container voor de detailpagina van een product.
+    * @class product-detail-container   Voor styling via CSS.
+    * @?= $categorieClass; ?            Short echo van PHP-variabele die dynamisch een extra class toevoegt (bijv. "mannen", "vrouwen").
+    * @categorieClass string            Wordt meestal bepaald aan de hand van de gekozen categorie.
+    */
+    -->
     <div class="product-detail-container <?= $categorieClass; ?>">
     <div class="product-detail-layout">
+        <!--
+        /** Toont afbeelding van product of een placeholder.
+         * @if $artikel->imageExists()        Methode van object die checkt of er een afbeelding beschikbaar is (bool).
+         * @getImageUrl()                     Methode die de URL van de afbeelding retourneert (string).
+         * @getArticleName()                  Geeft productnaam terug voor alt-tekst.
+         * @htmlspecialchars()                Escape functie om XSS in alt-tekst te voorkomen.
+         * @artikel object                    Bevat alle informatie over 1 artikel.
+         */
+        -->
         <div class="product-detail-image">
             <?php if ($artikel->imageExists()): ?>
                 <img src="../../public_html/<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= htmlspecialchars($artikel->getArticleName()); ?>">
@@ -25,8 +42,25 @@ use Helpers\ViewHelper;
                 <img src="Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
             <?php endif; ?>
         </div>
-
+        <!--
+        /** Formulier om een product te updaten als admin (POST).
+        * @action string           Verwijst naar controller die de update uitvoert.
+        * @method POST             Gegevens worden veilig verstuurd.
+        * @enctype multipart/...   Nodig voor bestand (image) upload.
+        */
+        -->
         <form action="includes/update/product_update_controller.php" method="post" enctype="multipart/form-data">
+        <!--
+        /** Lijst met attributen van het product. Elk <li> bevat één regel.
+        * @ul.product-attributes      Layout-class voor styling.
+        * @type hidden                Niet zichtbaar in user interface.
+        * @name="productID"           Formulier-naam.
+        * @getArticleX()              Verschillende methodes die artikelinfo ophalen: naam, beschrijving, merk, etc.
+        * @method_exists()            Alleen uitvoeren als methode (price) bestaat.
+        * @getQuantityOfStock()       Methode die voorraad teruggeeft (int)
+        * @'N.v.t.'                   Wordt getoond als methode (price) niet beschikbaar is.
+        */
+        -->
         <ul class="product-attributes">
             <li><input type="hidden" id="productID" name="productID" value="<?= ViewHelper::e($artikel->getArticleID()); ?>"></li>
             <li><div class="attr-label">Titel:</div><input type="text" id="productName" name="productName" value="<?= ViewHelper::e($artikel->getArticleName()); ?>" required></li>
@@ -47,6 +81,13 @@ use Helpers\ViewHelper;
                     <option value="0" <?= !$artikel->getArticleAvailability() ? 'selected' : ''; ?>>Nee</option>
                 </select>
             </li>
+            <!--
+            /** Inputveld voor het uploaden van een afbeelding (admin).
+            * @type file               Nodig voor bestandsselectie.
+            * @name imagePath          Key voor verwerking in controller.
+            * @accept="image/*"        Beperk bestandstypes tot afbeeldingen.
+            */
+            -->
             <li><label for="file">Upload afbeelding:</label>
             <input type="file" name="imagePath" id="file" accept="image/*"></li>
 
