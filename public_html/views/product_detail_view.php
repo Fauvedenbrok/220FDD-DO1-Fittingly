@@ -2,6 +2,9 @@
 use Helpers\ViewHelper;
 require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
 
+if(isset($_GET['id'])){
+    $_SESSION['id'] = $_GET['id'];
+}
 
 ?>
 

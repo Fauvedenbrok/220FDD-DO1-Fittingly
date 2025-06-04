@@ -15,13 +15,6 @@ if (isset($_GET['upload'])) {
 
 // login check en rechten
 
-// afbeelding upload
-
-// producten aanpassen
-// producten toevoegen
-// producten verwijderen
-
-
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +34,6 @@ if (isset($_GET['upload'])) {
   </header>
 
   <main class="main-content">
-    <!-- extra navigatie voor opties admin portal 
-   // producten, orders, berichten, retouren, klanten, instellingen-->
-
-
     <form action="includes/upload/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
       <?= $translator->get('admin_products_upload_csv_label') ?>
       <input type="file" name="csv_file" accept=".csv">

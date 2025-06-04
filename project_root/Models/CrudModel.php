@@ -3,6 +3,8 @@ namespace Models;
 use Core\Database;
 use PDO;
 
+require_once __DIR__ . '/../Core/Database.php';
+
 
 class CrudModel
 {
