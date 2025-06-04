@@ -124,24 +124,24 @@ function getTimeRemaining(countdown) {
     };
 }
 
-function updateTimer(countdown) {
-    const t = getTimeRemaining(countdown); //Variabele die de return waarde uit de getTimeRemaining functie haalt
+// function updateTimer(countdown) {
+//     const t = getTimeRemaining(countdown); //Variabele die de return waarde uit de getTimeRemaining functie haalt
 
-    //Controleert of de tijdwaardes een enkel cijfer bevatten. zo ja, dan wordt er een 0 voor gezet. Dit is voor de leesbaarheid
-    days.innerText = t.days <= 9 ? '0' + t.days : t.days;
-    hours.innerText = t.hours <= 9 ? `0` + t.hours : t.hours;
-    minutes.innerText = t.minutes <= 9 ? `0` + t.minutes : t.minutes;
-    seconds.innerText = t.seconds <= 9 ? `0` + t.seconds : t.seconds;
-}
+//     //Controleert of de tijdwaardes een enkel cijfer bevatten. zo ja, dan wordt er een 0 voor gezet. Dit is voor de leesbaarheid
+//     days.innerText = t.days <= 9 ? '0' + t.days : t.days;
+//     hours.innerText = t.hours <= 9 ? `0` + t.hours : t.hours;
+//     minutes.innerText = t.minutes <= 9 ? `0` + t.minutes : t.minutes;
+//     seconds.innerText = t.seconds <= 9 ? `0` + t.seconds : t.seconds;
+// }
 
-function initializeTimer() {
-    setInterval(() => {
-        getTimeRemaining(countdown);
-        updateTimer(countdown);
-    }, 1000);
-}
+// function initializeTimer() {
+//     setInterval(() => {
+//         getTimeRemaining(countdown);
+//         updateTimer(countdown);
+//     }, 1000);
+// }
 
-initializeTimer();
+// initializeTimer();
 //---------------------------------------------------------------------------------------//
 
 

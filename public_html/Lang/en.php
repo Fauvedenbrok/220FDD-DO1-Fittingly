@@ -26,6 +26,8 @@ return [
     'header_navbar_5' => "Login",
     'header_navbar_6' => "Logout",
     'header_navbar_7' => "Products",
+    'header_navbar_8' => "Welcome",
+    'header_navbar_9' => "My Account",
 
     // Footer
     'footer_navbar_1' => "Find us on Social Media",

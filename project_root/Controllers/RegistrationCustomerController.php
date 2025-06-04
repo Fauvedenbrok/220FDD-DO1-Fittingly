@@ -47,6 +47,7 @@ class RegistrationCustomerController {
                 $data['Country']
                 );
 
+                
                 if(!$address->saveAddress()){
                     throw new \Exception("Fout bij het opslaan van Address");
                 }
