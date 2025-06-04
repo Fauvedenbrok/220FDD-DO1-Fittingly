@@ -175,4 +175,5 @@ return [
     'cart_remove_button' => 'Verwijderen',
     'cart_total' => 'Totaal',
     'cart_update_button' => 'Bijwerken',
+    'cart_checkout_button' => 'Afrekenen',
 ];

@@ -26,7 +26,8 @@ class CrudModel
         $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result : [];
     }
 
     public static function readAll(string $tableName) : array {
@@ -42,6 +43,14 @@ class CrudModel
         }
 
         return $objects;
+    }
+    
+    public static function readAllByColumn(string $tableName, string $columnName, $value): array {
+        $pdo = Database::getConnection();
+        $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$value]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
     // $data should be an associative array
@@ -71,6 +80,16 @@ class CrudModel
     $stmt->execute([$id]);
     return $stmt->fetchColumn();
     }
+
+    public static function getForeignKeyValue(string $tableName, string $searchColumn, $searchValue, string $foreignKeyColumn) {
+        $pdo = Database::getConnection();
+        $query = "SELECT {$foreignKeyColumn} FROM {$tableName} WHERE {$searchColumn} = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$searchValue]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result[$foreignKeyColumn] ?? null;
+    }
+
 
     
 

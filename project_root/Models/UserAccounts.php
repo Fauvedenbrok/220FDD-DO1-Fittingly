@@ -112,6 +112,9 @@ public static function getUserNameBySession(): ?string
     return $customer['FirstName'];
 }
 
-
+    public function getUserEmail(): string
+    {
+        return $this->emailAddress;
+    }
 
 }

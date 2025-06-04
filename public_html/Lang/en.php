@@ -175,5 +175,6 @@ return [
     'cart_table_actions' => 'Actions',
     'cart_remove_button' => 'Remove',
     'cart_total' => 'Total',
-    'cart_update_button' => 'Update'
+    'cart_update_button' => 'Update',
+    'cart_checkout_button' => 'Checkout',
 ];

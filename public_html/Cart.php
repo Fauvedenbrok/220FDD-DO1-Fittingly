@@ -29,6 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
         exit();
     }
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {            
+    if(!empty($_SESSION['cart'])) {
+        $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), Session::get('customer_id'), array_keys($_SESSION['cart']));
+        $cartHandler->processOrder($checkoutData, $_SESSION['cart']);
+        var_dump($_SESSION['order_id']);
+    }
+
+    header('Location: checkout.php');
+    exit();
+        }
 
 $data = require __DIR__ . '/../project_root/Controllers/product_list_controller.php';
 $artikelen = $data['artikelen'] ?? [];
@@ -139,6 +149,7 @@ foreach ($cartItems as $productId => $quantity) {
             <p><strong><?= $translator->get('cart_total'); ?>:</strong> €<?= number_format($totaalPrijs, 2, ',', '.'); ?></p>
 
             <button type="submit" name="update_quantities"><?= $translator->get('cart_update_button'); ?></button>
+            <button type="submit" name="checkout"><?= $translator->get('cart_checkout_button'); ?></button>
         </form>
     <?php endif; ?>
 
