@@ -12,7 +12,6 @@ class CrudModel
     // with column names as keys and values to insert
     public static function createData(string $table, array $data) {
     $pdo = Database::getConnection();
-    $id = array_shift($data); // Remove the first element (ID) from the array
     // 'key1', 'key2', 'key3' etc
     $columns = implode(", ", array_keys($data));
     $placeholders = implode(", ", array_fill(0, count($data), "?"));

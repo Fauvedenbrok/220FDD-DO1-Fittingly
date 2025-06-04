@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
 
     if ($productId && $quantity > 0) {
         $cartHandler->addToCart($productId, $quantity);
-        header('Location: productpagina.php');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit();
     }
 }
