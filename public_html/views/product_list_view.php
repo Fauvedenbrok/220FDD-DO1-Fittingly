@@ -53,7 +53,7 @@ require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
 
                     <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_availability_in_stock') : $translator->get('product_list_view_availability_out_of_stock'); ?></p>
                     
-                    <form method="post" action="../project_root/Controllers/cart_controller.php" class="add-to-cart-form">
+                    <form method="post" action="../public_html/Cart.php" class="add-to-cart-form">
                     <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
 
                     <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>">Aantal:</label>

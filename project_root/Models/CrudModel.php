@@ -3,6 +3,8 @@ namespace Models;
 use Core\Database;
 use PDO;
 
+require_once __DIR__ . '/../Core/Database.php';
+
 
 class CrudModel
 {
@@ -10,7 +12,6 @@ class CrudModel
     // with column names as keys and values to insert
     public static function createData(string $table, array $data) {
     $pdo = Database::getConnection();
-    $id = array_shift($data); // Remove the first element (ID) from the array
     // 'key1', 'key2', 'key3' etc
     $columns = implode(", ", array_keys($data));
     $placeholders = implode(", ", array_fill(0, count($data), "?"));
@@ -25,7 +26,8 @@ class CrudModel
         $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result : [];
     }
 
     public static function readAll(string $tableName) : array {
@@ -41,6 +43,14 @@ class CrudModel
         }
 
         return $objects;
+    }
+    
+    public static function readAllByColumn(string $tableName, string $columnName, $value): array {
+        $pdo = Database::getConnection();
+        $query = "SELECT * FROM {$tableName} WHERE {$columnName} = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$value]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
     // $data should be an associative array
@@ -70,6 +80,16 @@ class CrudModel
     $stmt->execute([$id]);
     return $stmt->fetchColumn();
     }
+
+    public static function getForeignKeyValue(string $tableName, string $searchColumn, $searchValue, string $foreignKeyColumn) {
+        $pdo = Database::getConnection();
+        $query = "SELECT {$foreignKeyColumn} FROM {$tableName} WHERE {$searchColumn} = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$searchValue]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result[$foreignKeyColumn] ?? null;
+    }
+
 
     
 

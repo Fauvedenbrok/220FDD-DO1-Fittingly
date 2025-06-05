@@ -91,6 +91,30 @@ class UserAccounts
         return $user ?: null;
     }
 
+public static function getUserNameBySession(): ?string
+{
+    if (!isset($_SESSION['user_email'])) {
+        return null;
+    }
+    $email = $_SESSION['user_email'];
+    // Stap 1: Haal useraccount op
+    $user = CrudModel::readAllById('useraccounts', 'EmailAddress', $email);
+    if (!$user || !isset($user['CustomerID'])) {
+        return null;
+    }
+    $customerID = $user['CustomerID'];
+    // Stap 2: Haal klant op uit customer-tabel
+    $customer = CrudModel::readAllById('customers', 'CustomerID', $customerID);
+    if (!$customer || !isset($customer['FirstName'])) {
+        return null;
+    }
+    // Pas 'FirstName' aan als jouw kolom anders heet
+    return $customer['FirstName'];
+}
 
+    public function getUserEmail(): string
+    {
+        return $this->emailAddress;
+    }
 
 }

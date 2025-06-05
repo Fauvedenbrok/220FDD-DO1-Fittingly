@@ -9,8 +9,9 @@ class Orders{
     private $houseNumber;
     private $orderStatus;
     private $customerID;
+    private $orderInfo;
 
-    public function __construct(int $orderID, string $orderDate, bool $paymentStatus, string $postalCode, string $houseNumber, string $orderStatus, int $customerID){
+    public function __construct(int $orderID, string $orderDate, bool $paymentStatus, string $postalCode, string $houseNumber, string $orderStatus, string $customerID) {
         $this->orderID = $orderID;
         $this->orderDate = $orderDate;
         $this->paymentStatus = $paymentStatus;
@@ -18,9 +19,23 @@ class Orders{
         $this->houseNumber = $houseNumber;
         $this->orderStatus = $orderStatus;
         $this->customerID = $customerID;
+        $this->orderInfo = $this->createAssociativeArray();
     }
     public function __toString(){
         return "$this->orderID, $this->orderDate, $this->paymentStatus, $this->postalCode, $this->houseNumber, $this->orderStatus, $this->customerID";
+    }
+
+    public function createAssociativeArray(): array {
+        $orderArray = array(
+            'OrderID' => $this->orderID,
+            'OrderDate' => $this->orderDate,
+            'PaymentStatus' => $this->paymentStatus,
+            'PostalCode' => $this->postalCode,
+            'HouseNumber' => $this->houseNumber,
+            'OrderStatus' => $this->orderStatus,
+            'CustomerID' => $this->customerID
+        );
+        return $orderArray;
     }
 
 }

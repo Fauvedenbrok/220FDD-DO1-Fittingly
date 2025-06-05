@@ -237,9 +237,10 @@ nav.visible {
 
 nav {
   align-items: center;
+  display: flex;
 }
 
-nav>button {
+nav>button{
   background: none;
   border: none;
   font-family: "Montserrat", sans-serif;
@@ -258,11 +259,55 @@ nav>button {
   }
 }
 
-nav>button>a {
+nav>button>a,
+.nav-profiel {
+  font-family: "Montserrat", sans-serif;
   color: rgba(220, 211, 194, 1);
   text-decoration: none;
   font-weight: 400;
   line-height: 24px;
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.winkelmand-btn {
+  padding: 15px;
+}
+.account-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 15px;
+}
+
+.account-menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  background: rgba(220, 211, 194, 1);
+  border: 1px solid #1a3030;
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+.account-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #1a3030;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.account-menu.visible {
+  display: block;
+}
+
+.account-menu a:hover {
+  background: #f4f4f4;
 }
 
 button.hamburger {
@@ -466,19 +511,16 @@ footer p {
   text-align: left;
 }
 
-.cart-icon-link {
-  margin-left: 15px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 /* Winkelmand styles */
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 29cf47f163f21e045e841c24b7b7c19362db2aa9
 .cart-icon-link:hover {
   color: #CC9C4E;
 }
@@ -565,3 +607,4 @@ footer p {
   font-size: 1.1rem;
   padding: 0.75rem 2rem;
 }
+>>>>>>> cc16fa4c2e6445a8344ebac09d6f0e6dd2bf84f4

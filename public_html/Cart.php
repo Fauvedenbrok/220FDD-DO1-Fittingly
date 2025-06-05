@@ -1,5 +1,10 @@
 <?php
-session_start();
+require_once '../project_root/Core/Session.php';
+use Core\Session;
+if (!Session::exists('user_email')) {
+    header('Location: inloggen.php');
+    exit;
+}
 
 require_once 'CartHandler.php';
 $cartHandler = new CartHandler();
@@ -12,6 +17,28 @@ use Helpers\ViewHelper;
 
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
+
+// Verwerken winkelwagen toevoeging via CartHandler
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    $productId = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
+    $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT, ['options' => ['default' => 1, 'min_range' => 1]]);
+
+    if ($productId && $quantity > 0) {
+        $cartHandler->addToCart($productId, $quantity);
+        header('Location: productpagina.php');
+        exit();
+    }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {            
+    if(!empty($_SESSION['cart'])) {
+        $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), Session::get('customer_id'), array_keys($_SESSION['cart']));
+        $cartHandler->processOrder($checkoutData, $_SESSION['cart']);
+        
+    }
+
+    header('Location: checkout.php');
+    exit();
+        }
 
 $data = require __DIR__ . '/../project_root/Controllers/product_list_controller.php';
 $artikelen = $data['artikelen'] ?? [];
@@ -122,6 +149,7 @@ foreach ($cartItems as $productId => $quantity) {
             <p><strong><?= $translator->get('cart_total'); ?>:</strong> €<?= number_format($totaalPrijs, 2, ',', '.'); ?></p>
 
             <button type="submit" name="update_quantities"><?= $translator->get('cart_update_button'); ?></button>
+            <button type="submit" name="checkout"><?= $translator->get('cart_checkout_button'); ?></button>
         </form>
     <?php endif; ?>
 

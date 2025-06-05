@@ -20,7 +20,7 @@ GRANT ALL PRIVILEGES ON fittingly_database.* TO 'Admin';
 -- Addresses Table
 GRANT SELECT, INSERT, UPDATE ON `Addresses` TO `Customer`, `Support`, `Partner`;
 
-
+-- nog ID's aan de views toevoegen, zodat de views ook kunnen worden gebruikt voor het updaten van de tabellen
 -- Partner Table
 CREATE VIEW `View_CompanyName_VATNr_CoCNr` AS
 SELECT CompanyName, VATNr, CoCNr
