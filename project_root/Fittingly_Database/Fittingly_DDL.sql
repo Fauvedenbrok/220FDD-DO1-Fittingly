@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS `Partners`;
 
 DROP TABLE IF EXISTS `Addresses`;
 
+DROP TABLE IF EXISTS `SearchLog`;
+
 SET
     FOREIGN_KEY_CHECKS = 1;
 

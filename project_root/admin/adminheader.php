@@ -51,12 +51,11 @@ use Models\UserAccounts;
         ?>
           <div class="account-dropdown">
             <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
-              <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
+              <img src="/public_html/Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
               <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
               </span>
             </button>
             <div id="account-menu" class="account-menu">
-              <a class="nav-button-tekst" href="mijnaccount.php"><?= $translator->get('header_navbar_9') ?></a><br>
               <a class="nav-button-tekst" href="../Core/LoginHandler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
           </div>
@@ -68,6 +67,9 @@ use Models\UserAccounts;
                <?= $translator->get('header_dropdown_text') ?>
               </span>
             </button>
+          <div id="account-menu" class="account-menu">
+            <a class="nav-button-tekst" href="/public_html/inloggen.php"><?= $translator->get('header_navbar_5') ?></a>
+          </div>
 
           </div>
         <?php endif; ?>

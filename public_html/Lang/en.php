@@ -76,7 +76,7 @@ return [
     'contactpagina_formulier_tel_placeholder' => "+44-12345678",
     'contactpagina_formulier_bericht' => "Message:",
     'contactpagina_formulier_bericht_placeholder' => "Message",
-    'contactpagina_formulier_button' => "Sign Up",
+    'contactpagina_formulier_button' => "Submit",
     'contactpagina_formulier_send' => "Sign Up",
 
     // registration page
