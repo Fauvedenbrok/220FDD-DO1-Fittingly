@@ -28,6 +28,7 @@ return [
     'header_navbar_7' => "Products",
     'header_navbar_8' => "Welcome",
     'header_navbar_9' => "My Account",
+    'header_dropdown_text' => "Account",
 
     // Footer
     'footer_navbar_1' => "Find us on Social Media",
@@ -149,6 +150,7 @@ return [
     'product_detail_view_back_link' => "← Back to overview",
 
     // Product List View
+    'product_list_view_title' => "Product Page",
     'product_list_view_search_placeholder' => "Search for products...",
     'product_list_view_search_button' => "Search",
     'product_list_view_category_all' => "All Categories",
