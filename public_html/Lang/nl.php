@@ -75,7 +75,7 @@ return [
     'contactpagina_formulier_tel_placeholder' => "06-12345678",
     'contactpagina_formulier_bericht' => "Bericht",
     'contactpagina_formulier_bericht_placeholder' => "Bericht",
-    'contactpagina_formulier_button' => "Aanmelden",
+    'contactpagina_formulier_button' => "Verstuur",
 
     // registratiepagina
     'klantregistratiepagina_titel' => "Klantregistratie",
@@ -159,7 +159,7 @@ return [
 
 
     // Contactpagina
-    'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. <a href=\"/public_html/index.php\">Terug naar de homepage</a>",
+    'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. U wordt automatisch teruggeleid naar de homepage binnen 5 seconden. Als dat niet lukt, klik dan <a href=\"/public_html/index.php\">hier</a>.",
     'contactpagina_formulier_error' => "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het later opnieuw.",
     'contactpagina_formulier_no_post' => "Geen gegevens ontvangen. Zorg ervoor dat u het formulier correct invult.",
 

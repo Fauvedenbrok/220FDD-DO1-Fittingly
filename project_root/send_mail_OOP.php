@@ -136,7 +136,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ];
 
     $mailer = new ContactMailer($config, $translator);
-    echo $mailer->send($data);
+    $result = $mailer->send($data);
+    echo $result;
+
+    // Als het succesbericht getoond wordt, redirect na 5 seconden
+    if ($result === $translator->get('contactpagina_formulier_success')) {
+        echo '<meta http-equiv="refresh" content="5;url=../public_html/index.php">';
+    }
+
     exit;
 } else {
     echo $translator->get('contactpagina_formulier_no_post');
