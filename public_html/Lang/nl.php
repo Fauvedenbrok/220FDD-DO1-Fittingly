@@ -107,12 +107,11 @@ return [
     'inlogpagina_formulier_button' => "Inloggen",
 
     // Admin Portaal
-    'admin-navbar_1' => "Home",
+    'admin-navbar_1' => "Admin Portaal",
     'admin-navbar_2' => "Producten",
     'admin-navbar_4' => "Mail",
     'admin-navbar_5' => "Zoekwoorden",
     'admin-navbar_7' => "Instellingen",
-    'admin-navbar_8' => "Uitloggen",
 
     'adminportal_welcome_title' => "Welkom bij het Admin Portal",
     'adminportal_intro_1' => "Welkom bij het admin portal. Hier kunt u de verschillende opties beheren.",
@@ -157,8 +156,6 @@ return [
     'product_list_view_detail_button' => "Bekijk details",
     'product_list_view_availability_in_stock' => "Op voorraad",
     'product_list_view_availability_out_of_stock' => "Niet op voorraad",
-
-
 
     // Contactpagina
     'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. U wordt automatisch teruggeleid naar de homepage binnen 5 seconden. Als dat niet lukt, klik dan <a href=\"/public_html/index.php\">hier</a>.",

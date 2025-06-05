@@ -61,8 +61,9 @@ class Addresses
         // ]);
     }
     
-    // function __toString(){
-    //     return "$this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country";
-    // }
+    function __toString(){
+        return "$this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country";
+    }
+
 
 }

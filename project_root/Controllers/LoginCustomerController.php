@@ -80,12 +80,12 @@ class LoginCustomerController
         exit;
     }
 
-        public function logout_admin(): void
+    public function adminlogout(): void
     {
         Session::remove('user_email');
         Session::remove('account_access_rights');
 
-        $redirect = '/public_html/index.php';
-
+        header("Location: /public_html/index.php");
+        exit;
     }
 }
