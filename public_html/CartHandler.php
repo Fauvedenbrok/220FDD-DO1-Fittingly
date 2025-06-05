@@ -87,6 +87,7 @@ class CartHandler {
                     $quantity = 1; // Default quantity if not specified
                 }
                 
+                
                 // 
                 $orderLineData = [
                     'OrderID' => $orderId,
@@ -139,7 +140,7 @@ class CartHandler {
             $articleData = new Articles(...array_values(CrudModel::readAllById('Articles', 'ArticleID', $articleId)));
             $articleData = $articleData->createAssociativeArray();
             if (!empty($articleData)) {
-                $quantity[] = $orderLine['Quantity'];
+                $quantity[$articleId] = $orderLine['Quantity'];
                 $orderLineData[] = $orderLine;
                 $articles[] = $articleData;
 

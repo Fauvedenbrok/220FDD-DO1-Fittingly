@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
     if(!empty($_SESSION['cart'])) {
         $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), Session::get('customer_id'), array_keys($_SESSION['cart']));
         $cartHandler->processOrder($checkoutData, $_SESSION['cart']);
-        var_dump($_SESSION['order_id']);
+        
     }
 
     header('Location: checkout.php');

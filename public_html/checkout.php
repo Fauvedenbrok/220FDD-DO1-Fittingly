@@ -11,8 +11,23 @@ $cartHandler = new CartHandler();
 $userId = $_SESSION['user_email'] ?? null; // Or however you store the logged-in user
 $orderId = $_SESSION['order_id'] ?? null; // Assuming you have an order ID in the session
 $checkoutData = $cartHandler->getCheckoutViewData($orderId);
-?>
 
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Overzicht Bestelling</title>
+   <link rel="stylesheet" href="css/styles.css">
+   <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+
+<header>
+    <?php require_once 'header.php'; ?>
+</header>
+
+<main>
 <h1>Bestelling Overzicht</h1>
 
 <h2>Klantgegevens</h2>
@@ -35,9 +50,19 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
         <tr>
             <td><?= htmlspecialchars($article['ArticleID']) ?></td>
             <td><?= htmlspecialchars($article['Name'] ?? '') ?></td>
-            <td><?= htmlspecialchars($quantity) ?></td>
+            <td><?= htmlspecialchars($checkoutData['quantity'][$article['ArticleID']]) ?></td>
             <td><?= htmlspecialchars($article['Category'] ?? '') ?></td>
             <td><?= htmlspecialchars($article['Color'] ?? '') ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
+</main>
+<footer>
+    <?php require_once 'footer.php' ?>
+</footer>
+</body>
+</html>
+
+<?php
+    Session::remove('cart'); // Clear the cart after checkout
+?>
