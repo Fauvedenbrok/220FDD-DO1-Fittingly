@@ -1,6 +1,6 @@
 Om deze tests te draaien moet je composer installeren.
 
-dan moet je PHPUnit installeren met de terminal:
+dan moet je PHPUnit installeren met de terminal:composer require --dev phpunit/phpunit
 composer require --dev phpunit/phpunit
 
 als alles goed geïnstalleerd is kan je met de onderstaande opdracht de tests uit het mapje: tests uitvoeren.
