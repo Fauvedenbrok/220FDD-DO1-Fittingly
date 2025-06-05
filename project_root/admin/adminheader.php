@@ -46,30 +46,31 @@ use Models\UserAccounts;
           <a class="nav-button-tekst" href="https://mail.one.com/mail/INBOX/1" target="_blank"><?= $translator->get('admin-navbar_4') ?></a>
         </button>
 
-        <?php if (Session::exists('user_email')):
-          $userName = UserAccounts::getUserNameBySession();
-        ?>
+        <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
+
           <div class="account-dropdown">
             <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
               <img src="/public_html/Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
               <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
               </span>
+
             </button>
             <div id="account-menu" class="account-menu">
               <a class="nav-button-tekst" href="../Core/LoginHandler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
           </div>
+          
         <?php else: ?>
           <div class="account-dropdown">
             <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
               <img src="/public_html/Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
               <span class="nav-profiel" style="margin-left: 12px;">
-               <?= $translator->get('header_dropdown_text') ?>
+                <?= $translator->get('header_dropdown_text') ?>
               </span>
             </button>
-          <div id="account-menu" class="account-menu">
-            <a class="nav-button-tekst" href="/public_html/inloggen.php"><?= $translator->get('header_navbar_5') ?></a>
-          </div>
+            <div id="account-menu" class="account-menu">
+              <a class="nav-button-tekst" href="/public_html/inloggen.php"><?= $translator->get('header_navbar_5') ?></a>
+            </div>
 
           </div>
         <?php endif; ?>
