@@ -1,5 +1,5 @@
 <?php
-/** Importeer namespaces voor database en artikelenrepository.YOOOOO
+/** Importeer namespaces voor database en artikelenrepository.
  * @use Core\Database                      Verantwoordelijk voor de PDO-verbinding.
  * @use Repositories\ArticlesRepository    Beheert ophalen van artikeldata uit de database.
  */
