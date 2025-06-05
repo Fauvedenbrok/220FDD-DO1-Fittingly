@@ -1,9 +1,13 @@
 <?php 
 use PHPUnit\Framework\TestCase;
+use Models\Addresses;
+use SebastianBergmann\Type\VoidType;
+
+use function PHPUnit\Framework\once;
 
 
-
-include_once __DIR__ . '/../project_root/Models/Addresses.php';
+require_once dirname(__DIR__) . '/project_root/Controllers/admin_searchwords_controller.php';
+require_once dirname(__DIR__) . '/project_root/Models/Addresses.php';
 
 
 
@@ -16,8 +20,10 @@ class AddressTest extends TestCase
         $this->address = new Addresses("1234AB", "12", "Main Street", "Amsterdam", "Netherlands");
     }
 
-    public function testToString()
+    public function testtoString()
     {
-        $this->assertEquals("1234AB, 12, Main Street, Amsterdam, Netherlands", $this->address->ToString());
+        $this->assertEquals("1234AB, 12, Main Street, Amsterdam, Netherlands", 
+        (string)$this->address);
     }
 }
+

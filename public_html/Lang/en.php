@@ -108,7 +108,7 @@ return [
     'inlogpagina_formulier_button' => "Login",
 
     // Admin Portal
-    'admin-navbar_1' => "Home",
+    'admin-navbar_1' => "Admin Portal",
     'admin-navbar_2' => "Products",
     'admin-navbar_4' => "Mail",
     'admin-navbar_5' => "Searchwords",

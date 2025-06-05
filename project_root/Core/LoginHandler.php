@@ -11,6 +11,8 @@ $action = $_GET['action'] ?? 'login';
 
 if ($action === 'logout') {
     $controller->logout();
+} elseif ($action === 'adminlogout') {
+    $controller->adminlogout();
 } else {
     $controller->login();
 }
