@@ -50,8 +50,8 @@ use Models\UserAccounts;
 
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">
-              <img src="/public_html/Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
-              <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
+              <img src="/public_html/Images/icons/profiel.png" alt="Account">
+              <span class="nav-profiel"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
               </span>
 
             </button>
@@ -59,10 +59,10 @@ use Models\UserAccounts;
               <a class="nav-button-tekst" href="/project_root/Core/LoginHandler.php?action=adminlogout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
           </div>
-          
+
         <?php else: ?>
           <div class="account-dropdown">
-            <button class="account-btn" onclick="toggleAccountMenu()" >
+            <button class="account-btn" onclick="toggleAccountMenu()">
               <img src="/public_html/Images/icons/profiel.png" alt="Account">
               <span class="nav-profiel">
                 <?= $translator->get('header_dropdown_text') ?>
