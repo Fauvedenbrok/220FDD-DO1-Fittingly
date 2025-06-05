@@ -28,6 +28,7 @@ return [
     'header_navbar_7' => "Producten",
     'header_navbar_8' => "Welkom",
     'header_navbar_9' => "Mijn account",
+    'header_dropdown_text' => "Account",
 
 
     // Footer

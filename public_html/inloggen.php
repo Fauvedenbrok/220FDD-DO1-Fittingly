@@ -7,18 +7,7 @@ $translator = init_translator();
 require_once "../project_root/Core/Session.php";
 use Core\Session;
 
-if (Session::exists('user_email')) {
-    // User is logged in
-    $email = Session::get('user_email');
-    if ($email === 'Admin@fittingly.nl') {
-        echo "$email";
-    } else {
-        echo "You are logged in as: $email";
-    }
-} else {
-    // User is NOT logged in
-    echo "You are not logged in.";
-}
+
 
 
 ?>

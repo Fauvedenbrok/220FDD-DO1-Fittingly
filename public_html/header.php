@@ -68,7 +68,7 @@ Session::start();
           <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
             <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
             <span class="nav-profiel" style="margin-left: 12px;">
-              Account
+              <?= $translator->get('header_dropdown_text') ?>
             </span>
           </button>
           <div id="account-menu" class="account-menu">

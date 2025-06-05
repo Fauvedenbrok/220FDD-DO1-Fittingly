@@ -14,7 +14,7 @@ $translator = init_translator();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fittingly</title>o
+  <title>Fittingly</title>
   <link rel="icon" href="./Images/icons/favicon.ico">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="./css/indexstyles.css">
@@ -59,7 +59,7 @@ $translator = init_translator();
       <div class="hero-sectie-partners">
         <div class="hero-content">
           <h2> <?= $translator->get('hero_content_h2') ?> </h2>
-          <button class="cta-partner-hero" onclick="window.location.href='/public_html/partnerpagina.php'"> <?= $translator->get('hero_content_partnerpagina_button') ?> </button>
+          <button id="cta-partner-hero-button2" class="cta-partner-hero" onclick="window.location.href='/public_html/partnerpagina.php'"> <?= $translator->get('hero_content_partnerpagina_button') ?> </button>
         </div>
       </div>
       <div class="scroll-info">
