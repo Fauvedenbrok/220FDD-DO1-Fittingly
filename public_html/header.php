@@ -113,7 +113,7 @@ Session::start();
       </nav>
 
     </div>
-    <script src="js/accountmenu.js"></script>
+    <script src="js/scripts.js"></script>
   </div>
 </body>
 
