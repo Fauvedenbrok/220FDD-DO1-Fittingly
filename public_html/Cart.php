@@ -85,7 +85,7 @@ foreach ($cartItems as $productId => $quantity) {
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Winkelwagen</title>
+    <title> <?= $translator->get('cart_title'); ?> </title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>

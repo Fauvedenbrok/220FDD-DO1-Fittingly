@@ -68,7 +68,7 @@ Session::start();
           <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
             <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
             <span class="nav-profiel" style="margin-left: 12px;">
-              Account
+              <?= $translator->get('header_dropdown_text') ?>
             </span>
           </button>
           <div id="account-menu" class="account-menu">
@@ -80,16 +80,18 @@ Session::start();
       </nav>
 
 
+
       <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="./Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
       <nav id="language-dropdown" class="language-dropdown">
         <?php if(!Session::exists('id')): ?>
         <button>
-          <a href="?lang=nl">
+          <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=nl' : '?lang=nl' ?>">
             <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
           </a>
         </button>
+
         <button>
-          <a href="?lang=en">
+          <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=en' : '?lang=en' ?>">
             <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
           </a>
         </button>

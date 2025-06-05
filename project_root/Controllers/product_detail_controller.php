@@ -26,10 +26,14 @@ $articlesRepo = new ArticlesRepository($pdo);
  */
 $id = (int) ($_GET['id'] ?? 0);
 
+<<<<<<< HEAD
+
+=======
 /** Als ID niet geldig is (0), geef een lege array terug.
  * @!$id           Controleert of ID 0 of ongeldig is.
  * @ return array  Lege array als failsafe voor de view.
  */
+>>>>>>> 29cf47f163f21e045e841c24b7b7c19362db2aa9
 if (!$id) {
     return []; 
 }

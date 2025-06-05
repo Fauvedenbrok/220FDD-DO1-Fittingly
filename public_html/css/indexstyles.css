@@ -219,7 +219,7 @@ body {
 }
 
 .hero-content > button {
-    width: 100%;
+    width: 75%;
     padding: 20px;
     box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 50%);
     border: none;
@@ -228,6 +228,12 @@ body {
     font-size: 20px;
     font-family: "Raleway", sans-serif;
     cursor: pointer;
+}
+
+#cta-partner-hero-button2{
+    margin-left: 100px;
+    width: 85%;
+
 }
 
 .scroll-info > p {

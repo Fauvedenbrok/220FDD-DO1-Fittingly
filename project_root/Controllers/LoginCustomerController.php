@@ -73,11 +73,19 @@ class LoginCustomerController
         $redirect = '/public_html/index.php';
         if (!empty($_SERVER['HTTP_REFERER'])) {
             $redirect = $_SERVER['HTTP_REFERER'];
-            // Verwijder eventueel ?action=logout uit de URL
             $redirect = preg_replace('/(\?|&)action=logout(&|$)/', '$1', $redirect);
             $redirect = rtrim($redirect, '?&');
         }
         header("Location: $redirect");
         exit;
+    }
+
+        public function logout_admin(): void
+    {
+        Session::remove('user_email');
+        Session::remove('account_access_rights');
+
+        $redirect = '/public_html/index.php';
+
     }
 }

@@ -28,6 +28,7 @@ return [
     'header_navbar_7' => "Producten",
     'header_navbar_8' => "Welkom",
     'header_navbar_9' => "Mijn account",
+    'header_dropdown_text' => "Account",
 
 
     // Footer
@@ -146,6 +147,7 @@ return [
     'product_detail_view_back_link' => "← Terug naar overzicht",
 
     // Product_list_view
+    'product_list_view_title' => "Productoverzicht",
     'product_list_view_search_placeholder' => "Zoek naar producten...",
     'product_list_view_search_button' => "Zoeken",
     'product_list_view_category_all' => "Alle categorieën",

@@ -24,21 +24,12 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
     $searchword = $_GET['zoekwoord'];
     $tableName = "searchlog";
 
-    /** Check of het zoekwoord al in de DB staat.
-     * @stmt: SQL query klaarzetten.
-     * @row: resultaat van de query, bevat de huidige Count van het zoekwoord.
-     */
-    $pdo = Database::getConnection();
-    $stmt = $pdo->prepare("SELECT Count FROM $tableName WHERE SearchWord = ?");
-    $stmt->execute([$searchword]);
-    $row = $stmt->fetch();
-
-    if ($row) {
-        /** Zoekwoord bestaat, verhoog Count met 1.*/
+ if (CrudModel::checkRecordExists($tableName, ['SearchWord' => $searchword])) {
+        $pdo = Database::getConnection();
         $stmt = $pdo->prepare("UPDATE $tableName SET Count = Count + 1 WHERE SearchWord = ?");
         $stmt->execute([$searchword]);
     } else {
-        /** Zoekwoord bestaat niet, voeg toe (Count krijgt automatisch de waarde 1). */
+        $pdo = Database::getConnection();
         $stmt = $pdo->prepare("INSERT INTO $tableName (SearchWord, Count) VALUES (?, 1)");
         $stmt->execute([$searchword]);
     }

@@ -64,5 +64,7 @@ if(isset($_GET['id'])){
     includeHTML("footer.php", "footer");
 </script>
 
+
+
 </body>
 </html>
