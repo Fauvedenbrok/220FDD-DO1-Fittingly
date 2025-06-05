@@ -37,7 +37,7 @@ class CartHandler {
     }
     
 
-    function getCheckoutData($userId, $customerId, $articleIds) {
+    function getCheckoutData($userId, $articleIds) {
         $user = new UserAccounts(...array_values(CrudModel::readAllById('UserAccounts', 'EmailAddress', $userId)));
         // change this to get the customer data based on the foreign key in UserAccounts
         $customerId = CrudModel::getForeignKeyValue('UserAccounts', 'EmailAddress', $user->getUserEmail(), 'CustomerID');
