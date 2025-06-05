@@ -79,4 +79,13 @@ class LoginCustomerController
         header("Location: $redirect");
         exit;
     }
+
+        public function logout_admin(): void
+    {
+        Session::remove('user_email');
+        Session::remove('account_access_rights');
+
+        $redirect = '/public_html/index.php';
+
+    }
 }
