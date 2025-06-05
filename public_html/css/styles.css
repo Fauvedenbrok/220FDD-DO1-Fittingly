@@ -475,11 +475,13 @@ footer p {
   transition: color 0.3s ease;
 }
 
+<<<<<<< Updated upstream
+=======
+/* Winkelmand styles */
+>>>>>>> Stashed changes
 .cart-icon-link:hover {
   color: #CC9C4E;
 }
-
-
 
 .cart-container {
   font-family: "Montserrat", sans-serif;
