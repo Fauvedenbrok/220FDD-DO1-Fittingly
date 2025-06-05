@@ -175,4 +175,5 @@ return [
     'cart_total' => 'Totaal',
     'cart_update_button' => 'Bijwerken',
     'cart_checkout_button' => 'Afrekenen',
+    'product_list_view_cart_link' => "Naar Winkelwagen",
 ];

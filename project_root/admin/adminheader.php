@@ -24,7 +24,7 @@ use Models\UserAccounts;
       <h1 class="main-title">Fittingly</h1>
       <button class="hamburger">
         <img
-          src="./Images/hamburger-dark.png"
+          src="/public_html/Images/hamburger-dark.png"
           onclick="changeNav()"
           alt="menu knop">
       </button>
@@ -49,7 +49,7 @@ use Models\UserAccounts;
         <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
 
           <div class="account-dropdown">
-            <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
+            <button class="account-btn" onclick="toggleAccountMenu()">
               <img src="/public_html/Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
               <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
               </span>
@@ -62,9 +62,9 @@ use Models\UserAccounts;
           
         <?php else: ?>
           <div class="account-dropdown">
-            <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
-              <img src="/public_html/Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
-              <span class="nav-profiel" style="margin-left: 12px;">
+            <button class="account-btn" onclick="toggleAccountMenu()" >
+              <img src="/public_html/Images/icons/profiel.png" alt="Account">
+              <span class="nav-profiel">
                 <?= $translator->get('header_dropdown_text') ?>
               </span>
             </button>
@@ -78,7 +78,7 @@ use Models\UserAccounts;
 
 
 
-      <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="./Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
+      <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="/public_html/Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
       <nav id="language-dropdown" class="language-dropdown">
         <button>
           <a href="?lang=nl">

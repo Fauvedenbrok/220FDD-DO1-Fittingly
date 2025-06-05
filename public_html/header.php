@@ -26,7 +26,7 @@ Session::start();
       <h1 class="main-title">Fittingly</h1>
       <button class="hamburger">
         <img
-          src="./Images/hamburger-dark.png"
+          src="/public_html/Images/hamburger-dark.png"
           onclick="changeNav()"
           alt="menu knop">
       </button>
