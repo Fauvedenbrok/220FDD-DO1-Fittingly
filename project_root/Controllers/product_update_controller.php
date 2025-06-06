@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $articleID = $_POST['productID'];
     
     // deze regel moest ik naar de juiste map zetten omdat die de map anders niet kon vinden..
-    $uploadDir = 'C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\public_html\Images\productImages/'; // De map waar de afbeelding wordt opgeslagen
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; // Toegestane bestandsformaten
+    $uploadDir = __DIR__ . '/../../public_html/Images/productImages/'; // De map waar de afbeelding wordt opgeslagen
+    $allowedTypes = ['image/jpeg']; // Toegestane bestandsformaten
     
     // Only handle image upload if a file was actually uploaded
 if (isset($_FILES['imagePath']) && !empty($_FILES['imagePath']['tmp_name'])) {
