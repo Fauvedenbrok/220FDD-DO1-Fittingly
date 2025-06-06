@@ -481,6 +481,23 @@ footer p {
 
 
 /* Admin styles */
+.account-btn {
+background: none;
+border: none;
+padding: 0;
+display: flex;
+align-items: center;
+}
+
+.nav-profiel {
+  margin-left: 12px;
+}
+
+.account-btn img, #winkelmand-btn img {
+  width: 32px;
+  height: 32px;
+}
+
 .search-words-table {
     display: flex;
     align-items: center;
@@ -513,15 +530,8 @@ footer p {
 }
 
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 /* Winkelmand styles */
->>>>>>> Stashed changes
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 29cf47f163f21e045e841c24b7b7c19362db2aa9
+
 .cart-icon-link:hover {
   color: #CC9C4E;
 }
@@ -608,4 +618,3 @@ footer p {
   font-size: 1.1rem;
   padding: 0.75rem 2rem;
 }
->>>>>>> cc16fa4c2e6445a8344ebac09d6f0e6dd2bf84f4

@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../public_html/Lang/translator.php';
 
 $translator = init_translator();
 
-require_once __DIR__ . '/../Controllers/admin_searchwords_controller.php';
+require_once '../../project_root/Controllers/admin_searchwords_controller.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
   deleteSearchWord($_POST['delete_word']);
@@ -70,9 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
   </main>
   <footer>
   </footer>
-  <script src="/public_html/js/scripts.js"></script>
+  <script src="../../public_html/js/scripts.js"></script>
   <script>
-    includeHTML("/project_root/admin/adminheader.php", "header");
+    includeHTML("../../public_html/admin/adminheader.php", "header");
   </script>
 </body>
 

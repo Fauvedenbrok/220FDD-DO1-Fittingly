@@ -13,7 +13,19 @@
     require_once '../project_root/Models/Orders.php';
     require_once '../project_root/Models/OrderLines.php';
 
+/**
+ * Class CartHandler
+ *
+ * Handles cart operations such as adding/removing items, processing orders, and retrieving checkout data.
+ */
 class CartHandler {
+    /**
+     * Adds a product to the cart.
+     *
+     * @param int $productId The ID of the product to add.
+     * @param int $quantity The quantity to add.
+     * @return void
+     */
     public function addToCart(int $productId, int $quantity): void {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
@@ -21,23 +33,48 @@ class CartHandler {
         $_SESSION['cart'][$productId] = ($_SESSION['cart'][$productId] ?? 0) + $quantity;
     }
 
+    /**
+     * Removes a product from the cart.
+     *
+     * @param int $productId The ID of the product to remove.
+     * @return void
+     */
     public function removeFromCart(int $productId): void {
         if (isset($_SESSION['cart'][$productId])) {
             unset($_SESSION['cart'][$productId]);
         }
     }
 
+    /**
+     * Gets all items currently in the cart.
+     *
+     * @return array Associative array of productId => quantity.
+     */
     public function getCartItems(): array {
         return $_SESSION['cart'] ?? [];
     }
 
+    /**
+     * Calculates the total price of the cart.
+     * (Currently returns 0.00 as price calculation is not implemented.)
+     *
+     * @param array $artikelen List of articles.
+     * @return float The total price.
+     */
     // Voorlopig geen prijs, dus total altijd 0
-    public function calculateTotal(array $artikelen): float {
-        return 0.0;
+    public function calculateTotal(array $artikelen): decimal {
+        return 0.00;
     }
     
 
-    function getCheckoutData($userId, $customerId, $articleIds) {
+    /**
+     * Retrieves checkout data for the current user and selected articles.
+     *
+     * @param string $userId The user's email address.
+     * @param array $articleIds Array of article IDs in the cart.
+     * @return array Associative array with user, customer, and articles data.
+     */
+    function getCheckoutData($userId, $articleIds) {
         $user = new UserAccounts(...array_values(CrudModel::readAllById('UserAccounts', 'EmailAddress', $userId)));
         // change this to get the customer data based on the foreign key in UserAccounts
         $customerId = CrudModel::getForeignKeyValue('UserAccounts', 'EmailAddress', $user->getUserEmail(), 'CustomerID');
@@ -56,6 +93,13 @@ class CartHandler {
 
 
 
+    /**
+     * Processes the order: creates an order and order lines in the database.
+     *
+     * @param array $checkoutData Data for the order (user, customer, articles).
+     * @param array $articleQuantities Associative array of ArticleID => quantity.
+     * @return int The created OrderID.
+     */
     function processOrder($checkoutData, $articleQuantities) {
         // Prepare order data
         $user = $checkoutData['user']->createAssociativeArray();
@@ -105,11 +149,12 @@ class CartHandler {
     }
 
 
-    // fix this function to return the data needed for the checkout view
-    //
-    //
-    //
-    //
+    /**
+     * Retrieves all data needed for the checkout view for a given order.
+     *
+     * @param int $orderId The ID of the order.
+     * @return array Associative array with order, user, customer, quantity, orderLines, and articles data.
+     */
     public function getCheckoutViewData($orderId): array {
         // 1. Get order info
         $orderData = new Orders(...array_values(CrudModel::readAllById('Orders', 'OrderID', $orderId)));

@@ -57,7 +57,7 @@ class LoginCustomerController
 
             // Redirect based on access rights
             if (strtolower(trim($user['AccountAccessRights'])) === 'admin') {
-                header("Location: /project_root/admin/adminportal.php");
+                header("Location: /public_html/admin/adminportal.php");
             } else {
                 header("Location: /public_html/index.php");
             }
@@ -80,12 +80,12 @@ class LoginCustomerController
         exit;
     }
 
-        public function logout_admin(): void
+    public function adminlogout(): void
     {
         Session::remove('user_email');
         Session::remove('account_access_rights');
 
-        $redirect = '/public_html/index.php';
-
+        header("Location: /public_html/index.php");
+        exit;
     }
 }

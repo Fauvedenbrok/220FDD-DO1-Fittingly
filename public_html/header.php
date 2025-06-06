@@ -26,10 +26,11 @@ Session::start();
       <h1 class="main-title">Fittingly</h1>
       <button class="hamburger">
         <img
-          src="./Images/hamburger-dark.png"
+          src="/public_html/Images/hamburger-dark.png"
           onclick="changeNav()"
           alt="menu knop">
       </button>
+
       <nav>
         <button class="nav-button">
           <a class="nav-button-tekst" href="index.php"><?= $translator->get('header_navbar_1') ?></a>
@@ -47,70 +48,72 @@ Session::start();
         $cartHref = Session::exists('user_email') ? 'Cart.php' : 'inloggen.php';
         ?>
         <button id="winkelmand-btn">
-          <a href="<?= $cartHref ?>"><img src="./Images/icons/winkelmand.png" alt="Account" style="width:32px;height:32px;"></a>
+          <a href="<?= $cartHref ?>"><img src="./Images/icons/winkelmand.png" alt="Account"></a>
         </button>
-        <?php if (Session::exists('user_email')):
-            $userName = UserAccounts::getUserNameBySession();
-        ?>
-        <div class="account-dropdown">
-          <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
-            <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
-            <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8')?> <?= htmlspecialchars($userName) ?>
-            </span>
-          </button>
-          <div id="account-menu" class="account-menu">
-            <a class="nav-button-tekst" href="mijnaccount.php"><?= $translator->get('header_navbar_9')?></a><br>
-            <a class="nav-button-tekst" href="../project_root/Core/LoginHandler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
+
+        <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
+
+          <div class="account-dropdown">
+            <button class="account-btn" onclick="toggleAccountMenu()">
+              <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
+              <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
+              </span>
+
+            </button>
+            <div id="account-menu" class="account-menu">
+              <a class="nav-button-tekst" href="mijnaccount.php"><?= $translator->get('header_navbar_9') ?></a>
+              <a class="nav-button-tekst" href="../project_root/Core/LoginHandler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
+            </div>
           </div>
-        </div>
-      <?php else: ?>
-        <div class="account-dropdown">
-          <button id="account-btn" onclick="toggleAccountMenu()" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
-            <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
-            <span class="nav-profiel" style="margin-left: 12px;">
-              <?= $translator->get('header_dropdown_text') ?>
-            </span>
-          </button>
-          <div id="account-menu" class="account-menu">
-            <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_5') ?></a><br>
-            <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_4') ?></a>
+          
+        <?php else: ?>
+          <div class="account-dropdown">
+            <button class="account-btn" onclick="toggleAccountMenu()">
+              <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
+              <span class="nav-profiel" style="margin-left: 12px;">
+                <?= $translator->get('header_dropdown_text') ?>
+              </span>
+            </button>
+            <div id="account-menu" class="account-menu">
+              <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_5') ?></a>
+              <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_4') ?></a>
+            </div>
           </div>
-        </div>
-      <?php endif; ?>
+        <?php endif; ?>
       </nav>
 
 
 
       <button class="language-button" onclick="changeLang()"><img class="header-lang-img" src="./Images/icons/vlag-nederlands-engels.png" alt="">▼</button>
       <nav id="language-dropdown" class="language-dropdown">
-        <?php if(!Session::exists('id')): ?>
-        <button>
-          <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=nl' : '?lang=nl' ?>">
-            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
-          </a>
-        </button>
+        <?php if (!Session::exists('id')): ?>
+          <button>
+            <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=nl' : '?lang=nl' ?>">
+              <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+            </a>
+          </button>
 
-        <button>
-          <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=en' : '?lang=en' ?>">
-            <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
-          </a>
-        </button>
+          <button>
+            <a href="<?= isset($artikel) ? '?id=' . urlencode($artikel->getArticleID()) . '&lang=en' : '?lang=en' ?>">
+              <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
+            </a>
+          </button>
         <?php else: ?>
           <button>
-          <a href="<?php echo("?id=" . "{$_SESSION['id']}" . "&lang=nl")?>">
-            <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
-          </a>
-        </button>
-        <button>
-          <a href="<?php echo("?id=" . "{$_SESSION['id']}" . "&lang=en")?>">
-            <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
-          </a>
-        </button>
+            <a href="<?php echo ("?id=" . "{$_SESSION['id']}" . "&lang=nl") ?>">
+              <img class="header-lang-img" src="./Images/icons/netherlands_flag.png" alt="Nederlands">
+            </a>
+          </button>
+          <button>
+            <a href="<?php echo ("?id=" . "{$_SESSION['id']}" . "&lang=en") ?>">
+              <img class="header-lang-img" src="./Images/icons/Flag_of_the_United_Kingdom.png" alt="English">
+            </a>
+          </button>
         <?php endif; ?>
       </nav>
 
     </div>
-    <script src="js/accountmenu.js"></script>
+    <script src="js/scripts.js"></script>
   </div>
 </body>
 

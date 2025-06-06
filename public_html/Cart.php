@@ -1,6 +1,9 @@
 <?php
 require_once '../project_root/Core/Session.php';
 use Core\Session;
+/**
+ * Check if the user is logged in; if not, redirect to login page.
+ */
 if (!Session::exists('user_email')) {
     header('Location: inloggen.php');
     exit;
@@ -10,6 +13,7 @@ require_once 'CartHandler.php';
 $cartHandler = new CartHandler();
 
 require_once 'Lang/translator.php';
+/** @var object $translator Translator object for multi-language support. */
 $translator = init_translator();
 
 require_once '../project_root/Helpers/ViewHelper.php';
@@ -18,6 +22,9 @@ use Helpers\ViewHelper;
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
 
+/**
+ * Handle adding a product to the cart.
+ */
 // Verwerken winkelwagen toevoeging via CartHandler
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $productId = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
@@ -29,22 +36,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
         exit();
     }
 }
+/**
+ * Handle checkout: process the order if the cart is not empty.
+ */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {            
     if(!empty($_SESSION['cart'])) {
-        $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), Session::get('customer_id'), array_keys($_SESSION['cart']));
-        $cartHandler->processOrder($checkoutData, $_SESSION['cart']);
-        
+        $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), array_keys($_SESSION['cart']));
+        $cartHandler->processOrder($checkoutData, $_SESSION['cart']); 
     }
-
     header('Location: checkout.php');
     exit();
         }
-
+/**
+ * Load the product list controller and extract articles.
+ * @var array $data Data returned from the controller.
+ * @var array $artikelen List of article objects.
+ */
 $data = require __DIR__ . '/../project_root/Controllers/product_list_controller.php';
 $artikelen = $data['artikelen'] ?? [];
 
+/**
+ * Get the current cart items.
+ * @var array $cartItems Associative array of productId => quantity.
+ */
 $cartItems = $cartHandler->getCartItems();
 
+/**
+ * Handle removing a product from the cart or updating quantities.
+ */
 // Verwerken verwijderen product uit winkelwagen
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['remove_product_id'])) {
@@ -73,10 +92,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+/**
+ * Calculate the total price of the cart.
+ * @var decimal $totaalPrijs The total price of all items in the cart.
+ */
 // Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
-$totaalPrijs = 0;
+$totaalPrijs = 0.00;
 foreach ($cartItems as $productId => $quantity) {
-    $prijs = 0; // placeholder prijs
+    $prijs = 0.00; // placeholder prijs
     $totaalPrijs += $prijs * $quantity;
 }
 ?>
