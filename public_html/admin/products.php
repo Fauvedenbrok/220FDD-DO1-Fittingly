@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../public_html/Lang/translator.php';
+require_once __DIR__ . '/../Lang/translator.php';
 
 $translator = init_translator();
 
@@ -32,18 +32,17 @@ if (isset($_GET['upload'])) {
 <body>
   <header>
   </header>
-
   <main class="main-content">
-    <form action="includes/upload/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
+    <form action="../../project_root/Controllers/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
       <?= $translator->get('admin_products_upload_csv_label') ?>
       <input type="file" name="csv_file" accept=".csv">
       <button type="submit" name="upload"><?= $translator->get('admin_products_upload_button') ?></button>
     </form>
-    <form action="includes/download/csv-product-download-controller.php" method="post">
+    <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
       <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
     </form>
     <?php
-    $data = require_once '../Controllers/product_list_controller.php';
+    $data = require_once '../../project_root/Controllers/product_list_controller.php';
 
     // Extraheer de variabelen uit de controller naar losse variabelen
     extract($data);
@@ -56,7 +55,7 @@ if (isset($_GET['upload'])) {
   </footer>
   <script src="/public_html/js/scripts.js"></script>
   <script>
-    includeHTML("/project_root/admin/adminheader.php", "header");
+    includeHTML("adminheader.php", "header");
   </script>
 </body>
 

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+require_once __DIR__ . '/../../../project_root/Helpers/ViewHelper.php';
 /** ViewHelper verwerkt htmlspecialchars voor veilige HTML-uitvoer en minder herhaling (OOP) */
 use Helpers\ViewHelper;
 ?>
@@ -49,7 +49,7 @@ use Helpers\ViewHelper;
         * @enctype multipart/...   Nodig voor bestand (image) upload.
         */
         -->
-        <form action="includes/update/product_update_controller.php" method="post" enctype="multipart/form-data">
+        <form action="../../project_root/Controllers/product_update_controller.php" method="post" enctype="multipart/form-data">
         <!--
         /** Lijst met attributen van het product. Elk <li> bevat één regel.
         * @ul.product-attributes      Layout-class voor styling.
@@ -103,7 +103,7 @@ use Helpers\ViewHelper;
 
 <script src="/public_html/js/scripts.js"></script>
   <script>
-    includeHTML("/project_root/admin/adminheader.php", "header");
+    includeHTML("../admin/adminheader.php", "header");
   </script>
 
 </body>

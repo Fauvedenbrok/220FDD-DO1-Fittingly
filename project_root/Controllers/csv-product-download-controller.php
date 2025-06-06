@@ -2,8 +2,8 @@
 use Models\CrudModel;
 use Core\Database;
 
-require_once '../../../Models/CrudModel.php';
-require_once '../../../Core/Database.php';
+require_once '../Models/CrudModel.php';
+require_once '../Core/Database.php';
 
 // ob_start();
 

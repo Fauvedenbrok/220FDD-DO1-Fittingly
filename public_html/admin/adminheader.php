@@ -4,9 +4,9 @@ require_once __DIR__ . '/../../public_html/Lang/translator.php';
 
 $translator = init_translator();
 
-require_once '../Core/Session.php';
-require_once '../Models/UserAccounts.php';
-require_once '../Models/CrudModel.php';
+require_once '../../project_root/Core/Session.php';
+require_once '../../project_root/Models/UserAccounts.php';
+require_once '../../project_root/Models/CrudModel.php';
 
 use Core\Session;
 use Models\UserAccounts;
@@ -56,7 +56,7 @@ use Models\UserAccounts;
 
             </button>
             <div id="account-menu" class="account-menu">
-              <a class="nav-button-tekst" href="/project_root/Core/LoginHandler.php?action=adminlogout"><?= $translator->get('header_navbar_6') ?></a>
+              <a class="nav-button-tekst" href="../../project_root/Core/LoginHandler.php?action=adminlogout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
           </div>
 

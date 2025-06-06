@@ -28,7 +28,7 @@ require_once __DIR__ . '/../public_html/Lang/translator.php';
 require __DIR__ . '/../vendor/autoload.php';
 
 $translator = init_translator();
-$config = require __DIR__ . '/admin/includes/config.php';
+$config = require __DIR__ . '/config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

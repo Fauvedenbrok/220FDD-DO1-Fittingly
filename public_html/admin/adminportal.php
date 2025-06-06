@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../public_html/Lang/translator.php';
+require_once __DIR__ . '/../Lang/translator.php';
 
 $translator = init_translator();
 
@@ -45,7 +45,7 @@ include 'adminheader.php'; // include admin header
   </main>
   <footer>
   </footer>
-  <script src="/public_html/js/scripts.js"></script>
+  <script src="../js/scripts.js"></script>
 </body>
 
 </html>

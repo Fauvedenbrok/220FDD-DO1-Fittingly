@@ -1,6 +1,6 @@
 <?php
 // 1. Laad de controller en ontvang de data
-$data = require_once '../Controllers/product_detail_controller.php';
+$data = require_once '../../project_root/Controllers/product_detail_controller.php';
 
 // 2. Controleer of artikel is gevonden
 if (!isset($data['artikel'])) {

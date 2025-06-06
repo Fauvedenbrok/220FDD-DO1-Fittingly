@@ -3,11 +3,11 @@ use Core\Database;
 use Models\Articles;
 use Models\CrudModel;
 
-    require_once '../../../Core/Database.php';
-    require_once '../../../Models/CrudModel.php';
-    require_once '../../../Models/Articles.php';
+    require_once '../Core/Database.php';
+    require_once '../Models/CrudModel.php';
+    require_once '../Models/Articles.php';
 
-    // Hier zou ook een aparte functie van gemaakt kunnen worden. Als je bijvoorbeeld ook een andere file upload wilt maken.
+    
     if (isset($_POST["upload"])) { 
     if ($_FILES["csv_file"]["error"] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES["csv_file"]["tmp_name"];
@@ -22,17 +22,45 @@ use Models\CrudModel;
         echo "Fout bij uploaden.";
     }
     }
+
+    function detectCsvDelimiter($filePath) {
+        $delimiters = [",", ";", "\t", "|"];
+        $handle = fopen($filePath, "r");
+        $firstLine = fgets($handle);
+        fclose($handle);
+
+        $maxCount = 0;
+        $delimiter = ",";
+        foreach ($delimiters as $d) {
+            $count = substr_count($firstLine, $d);
+            if ($count > $maxCount) {
+                $maxCount = $count;
+                $delimiter = $d;
+            }
+        }
+        return $delimiter;
+    }
+
+
     // functie verwerkt de csv, controleert of de gegevens al bestaan in de database en voegt ze toe of update ze.
     // Deze functie ga ik dus nog opsplitsen in losse functies en OOP maken. -Bart
     function processCSV($filePath) {
-        $handle = fopen($filePath, "r");
+        try {
+            // Detecteer de delimiter van de CSV
+            $delimiter = detectCsvDelimiter($filePath);
+        } catch (Exception $e) {
+            header("Location: ../../public_html/admin/products.php?lang=nl&upload=error");
+            exit;
+        }
 
+
+        $handle = fopen($filePath, "r");
         if ($handle !== false) {
                 // slaat de eerste regel van de csv over
                 // Dit is de header regel, die we niet willen verwerken
-                fgetcsv($handle, 0, ",");
+                fgetcsv($handle, 0, $delimiter);
             // Verwerk rijen van de CSV hierbij controleert die of er nog een record is in de csv
-            while (($data = fgetcsv($handle, 0, ",")) !== false) {
+            while (($data = fgetcsv($handle, 0, $delimiter)) !== false) {
                 
                 $tableName = "Articles";
 
@@ -52,9 +80,9 @@ use Models\CrudModel;
 
             fclose($handle);
 
-            header("Location: ../../products.php?lang=nl&upload=success");
+            header("Location: ../../public_html/admin/products.php?lang=nl&upload=success");
          } 
         else {   
-            header("Location: ../../products.php?lang=nl&upload=error");
+            header("Location: ../../public_html/admin/products.php?lang=nl&upload=error");
         }
     }
