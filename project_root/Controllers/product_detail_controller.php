@@ -1,6 +1,6 @@
 <?php
 /** Importeer namespaces voor database en artikelenrepository.
- * @use Core\Database                      Verantwoordelijk voor de PDO-verbinding.
+ * @use Core\Database                      Zorgt voor de verbinding met de database.
  * @use Repositories\ArticlesRepository    Beheert ophalen van artikeldata uit de database.
  */
 use Core\Database;
@@ -11,33 +11,30 @@ require_once __DIR__ . '/../repositories/ArticlesRepository.php';
 
 
 /** Initialiseer databaseverbinding en repository voor artikeldata.
- * @Database $db                Instantie van de databaseklasse.
- * @PDO $pdo                    De daadwerkelijke databaseverbinding.
- * @ArticlesRepository $articlesRepo  Repository die artikel-methodes bevat.
+ * @ $db new Database           Maakt een nieuw database-object aan
+ * @ $pdo = $db                 De daadwerkelijke databaseverbinding.
+ * @$articlesRepo = new ArticlesRepository  Geeft de databaseverbinding door aan de artikelen-beheertool
  */
 $db = new Database();
 $pdo = $db->getConnection();
 $articlesRepo = new ArticlesRepository($pdo);
 
 /** Haal artikel-ID op uit de URL (GET-parameter).
- * @int $id             Gecast naar integer, fallback = 0 als ID ontbreekt.
- * @$_GET['id']         Parameter uit de URL (?id=123).
- * @?? 0                Null coalescing: geeft 0 als ID ontbreekt.
+ * @$id = (int)         Zet ID om naar een geheel getal (integer).
+ * @$_GET['id']         Haalt 'id' op uit de URL (?id=123).
+ * @?? 0                Controleert of 'id' bestaat, anders wordt 0 gebruikt.
  */
 $id = (int) ($_GET['id'] ?? 0);
 
-/** Als ID niet geldig is (0), geef een lege array terug.
+/** Controleer of het artikel-ID geldig is. Als niet, geef een lege lijst terug.
  * @!$id           Controleert of ID 0 of ongeldig is.
- * @ return array  Lege array als failsafe voor de view.
+ * @ return array  Geeft een lege lijst als er geen geldig ID is.
  */
 if (!$id) {
     return []; 
 }
 
-/** Haal artikel op via ID met behulp van de repository.
- * @object|false $artikel   Het opgehaalde artikelobject of false als niet gevonden.
- * @findById(int $id)       Methode die een specifiek artikel ophaalt.
- */
+/** Zoek het artikel in de database via het ID. */
 $artikel = $articlesRepo->findById($id);
 
 /** Als het artikel niet bestaat, return lege array (errorhandling).
@@ -48,18 +45,18 @@ if (!$artikel) {
     return []; 
 }
 
-/** Genereert CSS-classnaam gebaseerd op de categorie van het artikel.
- * @getArticleCategory()            Methode op artikelobject.
+/** Maak een CSS-classnaam op basis van de artikelcategorie.
+ * @getArticleCategory()            Haalt de categorie van het artikel op.
  * @str_replace(' ', '-', ...)      Vervangt spaties met koppeltekens.
- * @strtolower(...)                 Maakt de string lowercase voor CSS-doeleinden.
+ * @strtolower(...)                 Zet alles om naar kleine letters voor CSS.
  * @$categorieClass                 CSS-ready string zoals 'mannen-accessoires'.
  */
 $categorieClass = strtolower(str_replace(' ', '-', $artikel->getArticleCategory()));
 
-/** Retourneert artikeldata en bijbehorende CSS-class naar de view.
- * @ return array
- *     'artikel' => artikelobject,
- *     'categorieClass' => string (bv. "vrouwenkleding")
+/** Geeft het artikel en de bijbehorende CSS-class terug aan de view pagina.
+ * @ return array een lijst met:
+ *     'artikel' => Het artikelobject met gegevens.
+ *     'categorieClass' => De CSS-classnaam als tekst (bijv. "vrouwenkleding".
  */
 return [
     'artikel' => $artikel,
