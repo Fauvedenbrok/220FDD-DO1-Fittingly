@@ -4,6 +4,13 @@ namespace Models;
 // use Core\Database;
 use Models\CrudModel;
 
+/**
+ * Class Customers
+ *
+ * Represents a customer and provides methods to interact with the database.
+ *
+ * @package Models
+ */
 class Customers
 {
 
@@ -16,8 +23,16 @@ class Customers
     private array $customerInfo;
     // private PDO $db;
 
-
-
+    /**
+     * Customers constructor.
+     *
+     * @param string $customerID   The unique ID of the customer.
+     * @param string $firstName    The first name of the customer.
+     * @param string $lastName     The last name of the customer.
+     * @param string $dateOfBirth  The date of birth of the customer.
+     * @param string $postalCode   The postal code of the customer.
+     * @param string $houseNumber  The house number of the customer.
+     */
     public function __construct(
         string $customerID,
         string $firstName,
@@ -37,10 +52,20 @@ class Customers
         $this->customerInfo = $this->createAssociativeArray();
     }
 
+    /**
+     * Returns a string representation of the customer.
+     *
+     * @return string
+     */
     public function __toString(){
         return "$this->customerID, $this->firstName, $this->lastName, $this->dateOfBirth, $this->postalCode, $this->houseNumber";
     }
 
+    /**
+     * Creates an associative array of the customer properties.
+     *
+     * @return array Associative array with customer data.
+     */
     public function createAssociativeArray(): array {
         $customerArray = array(
             'CustomerID' => $this->customerID,
@@ -53,6 +78,11 @@ class Customers
         return $customerArray;
     }
 
+    /**
+     * Saves the customer to the database using CrudModel.
+     *
+     * @return bool True on success, false on failure.
+     */
     public function saveCustomer(): bool {
         return CrudModel::createData("customers", $this->customerInfo);
     }

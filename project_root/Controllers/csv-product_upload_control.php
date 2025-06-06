@@ -7,7 +7,9 @@ use Models\CrudModel;
     require_once '../Models/CrudModel.php';
     require_once '../Models/Articles.php';
 
-    
+    /**
+     * Handles the CSV upload and processing if the form is submitted.
+     */
     if (isset($_POST["upload"])) { 
     if ($_FILES["csv_file"]["error"] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES["csv_file"]["tmp_name"];
@@ -23,6 +25,12 @@ use Models\CrudModel;
     }
     }
 
+    /**
+     * Detects the delimiter used in a CSV file by checking the first line.
+     *
+     * @param string $filePath The path to the CSV file.
+     * @return string The detected delimiter (default is comma).
+     */
     function detectCsvDelimiter($filePath) {
         $delimiters = [",", ";", "\t", "|"];
         $handle = fopen($filePath, "r");
@@ -41,7 +49,12 @@ use Models\CrudModel;
         return $delimiter;
     }
 
-
+    /**
+     * Processes a CSV file: checks if each record exists in the database and updates or inserts accordingly.
+     *
+     * @param string $filePath The path to the uploaded CSV file.
+     * @return void
+     */
     // functie verwerkt de csv, controleert of de gegevens al bestaan in de database en voegt ze toe of update ze.
     // Deze functie ga ik dus nog opsplitsen in losse functies en OOP maken. -Bart
     function processCSV($filePath) {
@@ -75,6 +88,7 @@ use Models\CrudModel;
                     // Update existing row
                     CrudModel::updateData($tableName, $articles);
                 } else {
+                    // Insert new row
                     CrudModel::createData($tableName, $articles);
             }}
 

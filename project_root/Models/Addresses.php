@@ -5,10 +5,15 @@ use Models\CrudModel;
 
 require_once __DIR__ . '/CrudModel.php';
 
+/**
+ * Class Addresses
+ *
+ * Represents an address and provides methods to interact with the database.
+ *
+ * @package Models
+ */
 class Addresses
 {
-
-    // private PDO $db;
 
     private string $postalCode;
     private string $houseNumber;
@@ -17,6 +22,15 @@ class Addresses
     private string $country;
     private array $addressInfo;
      
+    /**
+     * Addresses constructor.
+     *
+     * @param string $postalCode   The postal code.
+     * @param string $houseNumber  The house number.
+     * @param string $streetName   The street name.
+     * @param string $city         The city.
+     * @param string $country      The country.
+     */
     public function __construct(
         string $postalCode,
         string $houseNumber,
@@ -24,8 +38,6 @@ class Addresses
         string $city,
         string $country
     ) {
-        // $this->db = Database::getConnection();
-
         $this->postalCode = $postalCode;
         $this->houseNumber = $houseNumber;
         $this->streetName = $streetName;
@@ -34,6 +46,11 @@ class Addresses
         $this->addressInfo = $this->createAssociativeArray();
     }
 
+    /**
+     * Creates an associative array of the address properties.
+     *
+     * @return array Associative array with address data.
+     */
     public function createAssociativeArray(){
         $addressesArray = array(
             'PostalCode' => $this->postalCode,
@@ -45,6 +62,11 @@ class Addresses
         return $addressesArray;
     }
 
+    /**
+     * Saves the address to the database using CrudModel.
+     *
+     * @return bool True on success, false on failure.
+     */
     public function saveAddress(): bool {
         return CrudModel::createData("Addresses", $this->addressInfo);
         // $stmt = $this->db->prepare("
@@ -61,6 +83,11 @@ class Addresses
         // ]);
     }
     
+    /**
+     * Returns a string representation of the address.
+     *
+     * @return string The address as a string.
+     */
     function __toString(){
         return "$this->postalCode, $this->houseNumber, $this->streetName, $this->city, $this->country";
     }
