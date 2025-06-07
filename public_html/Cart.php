@@ -113,7 +113,7 @@ foreach ($cartItems as $productId => $quantity) {
 </head>
 <body>
 
-<header></header>
+<header><?php include 'header.php'; ?></header>
 
 <main class="cart-container">
     <h2><?= $translator->get('cart_title'); ?></h2>
@@ -160,7 +160,7 @@ foreach ($cartItems as $productId => $quantity) {
                         </td>
                         <td>€<?= number_format($subtotal, 2, ',', '.'); ?></td>
                         <td>
-                            <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('Weet je zeker dat je dit product wilt verwijderen?')">
+                            <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('<?= addslashes($translator->get('remove_product_confirmation')); ?>')">
                                 <?= $translator->get('cart_remove_button'); ?>
                             </button>
                         </td>
@@ -180,13 +180,12 @@ foreach ($cartItems as $productId => $quantity) {
     <a href="productpagina.php" class="button-back"><?= $translator->get('cart_continue_shopping'); ?></a>
 </main>
 
-<footer></footer>
+<footer><?php include 'footer.php'; ?></footer>
 
 <script src="js/scripts.js"></script>
-<script>
-    includeHTML("header.php", "header");
-    includeHTML("footer.php", "footer");
-</script>
+
+
+
 
 </body>
 </html>

@@ -132,6 +132,11 @@ return [
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
     'admin_searchwords_column_delete' => "Delete",
+    'admin_searchwords_match' => "Found in articles",
+    'admin_searchwords_no_match' => "Not found in articles.",
+    'admin_searchwords_delete_confirmation' => "Are you sure you want to delete this search word?",
+    'admin_searchwords_match_yes' => "Yes",
+    'admin_searchwords_match_no' => "No",
 
 
     // Product Detail View
@@ -148,6 +153,7 @@ return [
     'product_detail_view_price' => "Price",
     'product_detail_view_availability' => "Availability",
     'product_detail_view_back_link' => "← Back to overview",
+    'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
 
     // Product List View
     'product_list_view_title' => "Product Page",
