@@ -89,7 +89,7 @@ use Helpers\ViewHelper;
             */
             -->
             <li><label for="file">Upload afbeelding:</label>
-            <input type="file" name="imagePath" id="file" accept="image/*"></li>
+            <input type="file" name="imagePath" id="file" accept="image/jpeg"></li>
 
         </ul>
         <button type="submit" name="update">Update Productinformatie</button>

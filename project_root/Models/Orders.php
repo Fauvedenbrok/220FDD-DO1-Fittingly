@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class Orders
+ *
+ * Represents an order and provides methods to interact with the database.
+ */
 class Orders{
    
     private $orderID;
@@ -11,6 +16,17 @@ class Orders{
     private $customerID;
     private $orderInfo;
 
+    /**
+     * Orders constructor.
+     *
+     * @param int $orderID The unique ID of the order.
+     * @param string $orderDate The date of the order.
+     * @param bool $paymentStatus The payment status of the order.
+     * @param string $postalCode The postal code for the order delivery.
+     * @param string $houseNumber The house number for the order delivery.
+     * @param string $orderStatus The status of the order (e.g., pending, completed).
+     * @param string $customerID The ID of the customer who placed the order.
+     */
     public function __construct(int $orderID, string $orderDate, bool $paymentStatus, string $postalCode, string $houseNumber, string $orderStatus, string $customerID) {
         $this->orderID = $orderID;
         $this->orderDate = $orderDate;
@@ -21,10 +37,20 @@ class Orders{
         $this->customerID = $customerID;
         $this->orderInfo = $this->createAssociativeArray();
     }
+    /**
+     * Returns a string representation of the order.
+     *
+     * @return string
+     */
     public function __toString(){
         return "$this->orderID, $this->orderDate, $this->paymentStatus, $this->postalCode, $this->houseNumber, $this->orderStatus, $this->customerID";
     }
 
+    /**
+     * Creates an associative array of the order properties.
+     *
+     * @return array Associative array with order data.
+     */
     public function createAssociativeArray(): array {
         $orderArray = array(
             'OrderID' => $this->orderID,

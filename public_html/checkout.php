@@ -1,15 +1,34 @@
 <?php
 require_once '../project_root/Core/Session.php';
 use Core\Session;
+/**
+ * Checkout page for displaying the order summary to the user.
+ *
+ * - Checks if the user is logged in.
+ * - Loads the CartHandler and retrieves checkout data.
+ * - Displays customer and order information.
+ *
+ * @package Public
+ */
+
+// Check if the user is logged in; if not, redirect to login page.
 if (!Session::exists('user_email')) {
     header('Location: inloggen.php');
     exit;
 }
 require_once 'CartHandler.php';
 
+/** @var CartHandler $cartHandler Handles cart and checkout operations. */
 $cartHandler = new CartHandler();
+/** @var string|null $userId The email address of the logged-in user. */
 $userId = $_SESSION['user_email'] ?? null; // Or however you store the logged-in user
+/** @var int|null $orderId The ID of the current order. */
 $orderId = $_SESSION['order_id'] ?? null; // Assuming you have an order ID in the session
+
+/**
+ * Retrieve all data needed for the checkout view.
+ * @var array $checkoutData Contains 'order', 'user', 'customer', 'quantity', 'orderLines', and 'articles'.
+ */
 $checkoutData = $cartHandler->getCheckoutViewData($orderId);
 
 ?>
@@ -64,5 +83,8 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
 </html>
 
 <?php
-    Session::remove('cart'); // Clear the cart after checkout
+/**
+ * Clear the cart after checkout.
+ */
+Session::remove('cart'); // Clear the cart after checkout
 ?>
