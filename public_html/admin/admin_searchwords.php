@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
   </header>
 
