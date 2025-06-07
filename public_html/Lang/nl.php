@@ -1,6 +1,6 @@
 <?php
 return [
-    //index
+    // index
     'hero_content_h2' => 'Partner worden van Fittingly?',
     'hero_content_partnerpagina_button' => "Meer informatie",
     'hero_content_productpagina_button' => "Bekijk producten",
@@ -129,6 +129,11 @@ return [
     'admin_searchwords_column_word' => "Zoekwoord",
     'admin_searchwords_column_count' => "Aantal",
     'admin_searchwords_column_delete' => "Verwijderen",
+    'admin_searchwords_match' => "Gevonden in artikelen",
+    'admin_searchwords_no_match' => "Niet gevonden in artikelen",
+    'admin_searchwords_delete_confirmation' => "Weet je zeker dat je dit zoekwoord wilt verwijderen?",
+    'admin_searchwords_match_yes' => "Ja",
+    'admin_searchwords_match_no' => "Nee",
 
     // Product_detail_view
     'product_detail_view_product_id' => "Product ID:",
@@ -176,4 +181,8 @@ return [
     'cart_update_button' => 'Bijwerken',
     'cart_checkout_button' => 'Afrekenen',
     'product_list_view_cart_link' => "Naar Winkelwagen",
+    'remove_product_confirmation' => "Weet je zeker dat je dit product wilt verwijderen?",
+
+    // 
+
 ];

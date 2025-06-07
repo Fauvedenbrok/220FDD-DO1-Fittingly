@@ -8,9 +8,8 @@ require_once '../../project_root/Controllers/admin_searchwords_controller.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
   deleteSearchWord($_POST['delete_word']);
-  // Optional: header('Location: admin_searchwords.php'); exit; // to refresh the page
 }
-// login check en rechten check
+
 
 
 ?>
@@ -37,9 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
       <table id="admin-table">
         <thead>
           <tr>
-            <th class="admin-table-header"><?php echo $translator->get('admin_searchwords_column_word'); ?></th>
-            <th class="admin-table-header"><?php echo $translator->get('admin_searchwords_column_count'); ?></th>
-            <th class="admin-table-header"><?php echo $translator->get('admin_searchwords_column_delete'); ?></th>
+            <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_word'); ?></th>
+            <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_count'); ?></th>
+            <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_delete'); ?></th>
+            <th class="admin-table-header"><?= $translator->get('admin_searchwords_match'); ?></th>
           </tr>
         </thead>
         <tbody>
@@ -52,9 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
               <td class="admin-table-data"><?= htmlspecialchars($word['SearchWord']) ?></td>
               <td class="admin-table-data"><?= htmlspecialchars($word['Count']) ?></td>
               <td class="admin-table-data">
+                <?php if (searchWordExists($word['SearchWord'])): ?>
+                  <span class="match"><?= $translator->get('admin_searchwords_match_yes') ?></span>
+                <?php else: ?>
+                  <span class="no-match"><?= $translator->get('admin_searchwords_match_no') ?></span>
+                <?php endif; ?>
+              </td>
+              <td class="admin-table-data">
                 <form method="post" action="">
                   <input type="hidden" name="delete_word" value="<?= htmlspecialchars($word['SearchWord']) ?>">
-                  <button type="submit" onclick="return confirm('Weet je zeker dat je dit zoekwoord wilt verwijderen?')"><?= $translator->get('admin_searchwords_column_delete') ?></button>
+                  <button type="submit" onclick="return confirm('<?= $translator->get('admin_searchwords_delete_confirmation') ?>')"><?= $translator->get('admin_searchwords_column_delete') ?></button>
                 </form>
               </td>
             </tr>
@@ -63,13 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
         </tbody>
       </table>
 
-
-
-
-
   </main>
+
   <footer>
   </footer>
+
   <script src="../../public_html/js/scripts.js"></script>
   <script>
     includeHTML("../../public_html/admin/adminheader.php", "header");

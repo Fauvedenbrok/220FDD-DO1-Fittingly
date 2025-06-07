@@ -7,11 +7,6 @@ $translator = init_translator();
 include 'adminheader.php'; // include admin header
 
 
-
-
-// login check en rechten check
-
-
 ?>
 
 <!DOCTYPE html>
@@ -42,8 +37,10 @@ include 'adminheader.php'; // include admin header
     </div>
 
   </main>
+
   <footer>
   </footer>
+  
   <script src="../js/scripts.js"></script>
 </body>
 
