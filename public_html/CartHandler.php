@@ -5,13 +5,14 @@
     use Models\UserAccounts;
     use Models\Articles;
 
-    require_once __DIR__ . '/../project_root/Core/Database.php';
-    require_once '../project_root/Models/CrudModel.php';
-    require_once '../project_root/Models/Customers.php';
-    require_once '../project_root/Models/UserAccounts.php';
-    require_once '../project_root/Models/Articles.php';
-    require_once '../project_root/Models/Orders.php';
-    require_once '../project_root/Models/OrderLines.php';
+require_once __DIR__ . '/../project_root/Core/Database.php';
+require_once __DIR__ . '/../project_root/Models/CrudModel.php';
+require_once __DIR__ . '/../project_root/Models/Customers.php';
+require_once __DIR__ . '/../project_root/Models/UserAccounts.php';
+require_once __DIR__ . '/../project_root/Models/Articles.php';
+require_once __DIR__ . '/../project_root/Models/Orders.php';
+require_once __DIR__ . '/../project_root/Models/OrderLines.php';
+
 
 /**
  * Class CartHandler
