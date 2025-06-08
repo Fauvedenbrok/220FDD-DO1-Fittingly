@@ -1,0 +1,243 @@
+/* Product Overview Styles */
+body {
+  margin: auto;
+  background-color: #dcd3c2;
+}
+
+.product-overview-container {
+  width: 85%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.search-form input,
+.search-form select {
+  padding: 12px;
+  font-family: "Raleway", sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  flex: 1 1 200px;
+}
+
+.search-form button {
+  background-color: #cc9c4e;
+  color: #1a3030;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background-color: #1a3030;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  font-family: "Playfair Display", serif;
+  color: #cc9c4e;
+  font-size: 24px;
+}
+
+.product-card p {
+  font-family: "Raleway", sans-serif;
+  color: #dcd3c2;
+  margin: 0.5rem 0;
+}
+
+.detail-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #cc9c4e;
+  color: #1a3030;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* Product Detail Styles */
+.product-detail-container {
+  width: 85%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1a3030;
+  border-radius: 10px;
+}
+
+.product-detail-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.product-detail-image img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-detail-info {
+  flex: 1;
+}
+
+.product-detail-info h2 {
+  font-family: "Playfair Display", serif;
+  color: #cc9c4e;
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #dcd3c2;
+  margin-bottom: 2rem;
+}
+
+.product-attributes p {
+  margin: 0.3rem 0;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  color: #dcd3c2;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #cc9c4e;
+  font-family: "Montserrat", sans-serif;
+}
+
+.product-attributes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-attributes li {
+  display: flex;
+  padding: 4px 0;
+  font-family: "Raleway", sans-serif;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.attr-label {
+  flex: 0 0 150px; /* vaste breedte */
+  font-weight: bold;
+  color: #dcd3c2;
+}
+
+.attr-value {
+  flex: 1;
+  color: #dcd3c2;
+}
+
+.add-to-cart-form button {
+  background-color: #cc9c4e;
+  color: #1a3030;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* ruimte tussen tekst en icoon */
+}
+
+.add-to-cart-form button svg {
+  stroke: currentColor; /* Zorgt dat de SVG kleur overeenkomt met de tekstkleur */
+}
+
+.add-to-cart-form button:hover:not(:disabled) {
+  background-color: #b38b42;
+  color: #1a3030;
+}
+
+.add-to-cart-form button:disabled {
+  background-color: #555;
+  color: #999; /* grijzere kleur */
+  cursor: not-allowed;
+}
+
+.cart-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #cc9c4e;
+  color: #1a3030;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #cc9c4e;
+  color: #1a3030;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.popup.show {
+  opacity: 1;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.button-back {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #CC9C4E; /* fittingly goudkleur */
+    color: #1A3030; /* donker */
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.button-back:hover {
+    background-color: #B38630;
+    color: #fff;
+}

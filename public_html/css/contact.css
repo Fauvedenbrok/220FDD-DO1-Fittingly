@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    background-color: #1A3030;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container met de achtergrondafbeelding */
+.background-container {
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url(./Images/backgroundImages/contactPagina.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+#h2-contact {
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-shadow: #3a3b33 1px 1px 1px;
+    margin-bottom: 10px;
+    width: 60%;
+
+}
+
+#para-contact {
+    color: #DCD3C2B2;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    width: 60%;
+    text-align: left;
+}
+
+/* Container met contactformulier */
+.form-container {
+    display: flex;
+    position: relative;
+    width: 60%;
+    background: #B3AD98;
+    padding: 40px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+#contact-form {
+    width: 50%;
+}
+
+.form-error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Form content: inputvelden + contactinformatie */
+.form-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 200%;
+}
+
+.input-fields {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #1A3030;
+}
+
+.input-bericht {
+    width: 200%;
+}
+
+#h3-contact {
+    margin-bottom: 20px;
+    color: #1A3030;
+    font-size: 28px;
+}
+
+.contact-info {
+    width: 35%;
+    font-size: 1.2rem;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    color: #1A3030;
+    font-family: Raleway;
+    font-size: 1.0rem;
+}
+
+#usp1-contact,
+#usp2-contact,
+#usp3-contact {
+    width: 30px;
+    height: 20px;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+label {
+    display: block;
+    margin: 20px 0;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    border-radius: 3px;
+}
+
+textarea#bericht {
+    height: 350px;
+    border-radius: 5px;
+}
+
+.input-fields label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input:focus,
+textarea:focus {
+    border-bottom: 1px solid #1A3030;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+form button[type="submit"] {
+    width: 50%;
+    background-color: #cc9c4e;
+    border-color: #cc9c4e;
+    color: black;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+}
+
+.error-border {
+    border-bottom: 1px solid red;
+}
+
+#succes {
+    color: #28A745;
+}
+
+/* Media queries voor grote schermen */
+@media (max-width: 1200px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .form-content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .input-fields,
+    .input-bericht,
+    .contact-info {
+        width: 100%;
+    }
+
+    #para-contact {
+        font-size: 1rem;
+        margin-left: 0;
+    }
+
+    form button[type="submit"] {
+        width: 100%;
+    }
+
+}
+
+/* Media queries voor mobiel */
+@media screen and (max-width: 1200px) {
+
+    #usp1-contact,
+    #usp2-contact,
+    #usp3-contact {
+        width: 22px;
+        height: 16px;
+        padding-right: 8px;
+    }
+
+    #h2-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #para-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #h3-contact {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contact-info p {
+        display: flex;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .form-container {
+        width: 80%;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .input-fields,
+    .input-bericht,
+    .contact-info {
+        width: 100%;
+    }
+
+    #contact-form {
+        width: 100%;
+    }
+
+}

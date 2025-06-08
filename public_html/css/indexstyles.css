@@ -1,0 +1,619 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* ------------------ visibility header & main content voor de preloader ------------------*/
+header {
+    height: 0;
+    visibility: hidden; /* Hide visibility initially */
+    transition: height 0.5s ease, visibility 0.5s ease; /* Smooth transition */
+  }
+header.visible {
+    height: auto; /* Allow height to expand */
+    visibility: visible; /* Make header visible */
+  }
+
+/* Main content styling */
+.main-content {
+    visibility: hidden; 
+    height: 0;
+    opacity: 0;
+    transition: height 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+/* When main content is shown */
+.main-content.visible {
+    visibility: visible;
+    height: auto; /* Allow height to expand */
+    opacity: 1; /* Fade in */
+}
+/* ------------------ Preloader ------------------*/
+.splash-screen {
+    background-color: #1A3030;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.logo-splash {
+    background-image: url(../Images/logo_fittingly_light.png);
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+.brandname-splash{
+    color: #DCD3C2;
+    font-family: "Playfair Display", serif;
+    font-size: 128px;
+    font-weight: 200;
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+.slogan-splash {
+    color: #DCD3C2;
+    font-family: "Playfair Display", serif;
+    font-weight: 100;
+    font-size: 48px;
+    margin: 0;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+    animation-delay: 1.5s;
+}
+
+@media  (max-width: 770px) {
+    .logo-splash {
+        width: 100px;
+        height: 100px;
+    }
+    .brandname-splash{
+        font-size: 72px;
+    }
+    .slogan-splash {
+        font-size: 28px;
+    }
+}
+
+/* Fade in animatie*/
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+/* --------------------------------------------------------------------------------*/
+
+
+/* ------------------ main styles voor teksten ------------------*/
+h2 {
+    font-family: "Playfair Display", serif;
+    color: #CC9C4E;
+    font-weight: 100;
+    font-size: 80px;
+    line-height: 2;
+}
+
+h3 {
+    font-family: "Playfair Display", serif;
+    color: #DCD3C2;
+    font-size: 48px; /* Flexibele eenheid */
+    margin-bottom: 0px;
+    font-weight: 100;
+    line-height: 2;
+}
+
+h4 {
+    font-family: "Montserrat", sans-serif;
+    color: #CC9C4E;
+    font-size: 48px;
+    font-weight: normal;
+    font-size: 32px; 
+    margin-top: 0px;
+}
+
+p {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    line-height: 2;
+}
+body {
+    background-color: #1A3030;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------------------------------------------------------------------------*/
+
+
+/* ------------------ hero sectie landingspagina ------------------*/
+.hero-sectie {
+    height: 100vh;
+    display: flex;
+    position: relative;
+}
+.hero-sectie-klanten, .hero-sectie-partners {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.hero-content {
+    align-content: center;
+    width: 545px;
+    padding: 0px 50px;
+    position: relative;
+}
+.hero-sectie-klanten {
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/hero-section-klant-image.jpeg');
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    width: 68%;
+    left: 0;
+}
+.hero-sectie-klanten > .hero-content {
+    top: -20%;
+}
+
+.timer {
+    font-family: '';
+    display: flex;
+    justify-content: space-between;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card > span {
+    display: inline-block;
+    padding-bottom: 10px;
+    font-family: "Playfair Display", serif;
+    font-size: 50px;
+    color: #1A3030;
+    background-color: #DCD3C2;
+    border-radius: 10px;
+    width: 70px;
+    height: 100px;
+    text-align: center;
+    align-content: center;
+}
+
+.timer-text {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color: #CC9C4E;
+    text-align: center;
+}
+.hero-sectie-partners {
+    align-items: center;
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url('../Images/backgroundImages/partnerPagina.jpg');
+    clip-path: polygon(14.5% 0, 100% 0, 100% 100%, 0% 100%);
+    width: 50%;
+    right: 0;
+    margin-left: -10%;
+}
+.hero-sectie-partners > .hero-content {
+    bottom: -10%;
+}
+.hero-sectie-partners > .hero-content > h2 {
+    text-align: right;
+    font-size: 70px;
+}
+
+.hero-content > button {
+    width: 75%;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 50%);
+    border: none;
+    background-color: #DCD3C2;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: "Raleway", sans-serif;
+    cursor: pointer;
+}
+
+#cta-partner-hero-button2{
+    margin-left: 100px;
+    width: 85%;
+
+}
+
+.scroll-info > p {
+    font-size: 32px;
+    font-family: "Raleway", sans-serif;
+    color: #DCD3C2;
+    position: absolute;
+    bottom: 10%;
+    left: 44%;
+}
+.scroll-info > p::after {
+    content: "";
+    position: absolute;
+    background-image: url('/Images/icons/arrow.png'); /* Change to your image path */
+    background-size: cover; /* Makes the image cover the whole area */
+    background-position: center; /* Centers the image */
+    top: 100%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 100%;
+    height: 100px; /
+}
+/* --------------------------------------------------------------------------------*/
+
+
+
+/* ------------------ Ons platform & ons doel blokken ------------------*/
+.onsdoel-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; /* Maximaliseren breedte van de container */
+    
+}
+.image-blok-1 {
+    display: flex;
+    width: 200px;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.index-textopmaak-1 {
+    display: flex;
+    width: 100%;
+}
+
+.index-textopmaak-2 {
+    flex-direction: column;
+    padding: 20px; /* Ruimte rondom de tekstinhoud */
+    max-width: 800px;
+}
+
+.index-paragraph-tekst-1, .index-paragraph-tekst-2 {
+    font-family: "Raleway", sans-serif;
+    color: #DCD3C2;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 2em;
+    text-align: left;
+    margin: 30px 0px;
+}
+
+.index-paragraph-tekst-2.color-1 {
+    color: #CC9C4E; /* Gouden kleur */
+}
+
+/* Nieuwe stijl voor andere kleuren */
+.index-paragraph-tekst-2.color-2 {
+    color: #CC9C4E; /* Tweede kleur */
+}
+
+.index-paragraph-tekst-2.color-3 {
+    color: #CC9C4E; /* Derde kleur */
+}
+
+.image-right {
+    height: 400px;
+}
+
+.image-left {
+    width: auto; /* Maximaliseren breedte van afbeeldingen */
+    height: 600px;
+    /* margin-top: 20px; */
+    /* display: grid; */
+    /* justify-content: space-between; */
+    /* transform: translate(-50px, 50px); Verplaats de afbeelding naar links (-50px) en naar beneden (50px) */
+}
+/* --------------------------------------------------------------------------------*/
+
+
+
+/* ------------------ product image slider ------------------*/
+.slider-container {
+    overflow: hidden;
+    width: calc(100vw - 20px);
+    position: relative;
+    margin: 50px 0px;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    /* width: calc(100% + 12px); Corrigeer de breedte om marges van de afbeeldingen te compenseren */
+}
+
+.slider-image {
+    width: 300px; /* Pas aan indien nodig */
+    height: 400px; /* Pas aan indien nodig */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0px 7px 4px 0px #00000059;
+    border-radius: 10px;
+    /* cursor: pointer; */
+    margin: 0 6px; /* Ruimte tussen afbeeldingen */
+    flex-shrink: 0; /* Zorg ervoor dat de afbeeldingen niet krimpen */
+}
+/* --------------------------------------------------------------------------------*/
+
+
+
+/* ------------------ USP's (ons doel blok) ------------------*/
+.usp-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.usp-item {
+    display: inline-flex;
+    flex-direction: column; /* Zorgt ervoor dat de afbeelding en tekst verticaal worden gestapeld */
+    align-items: center; 
+    margin: 0 20px;
+    margin-top: 60px; 
+}
+
+.hexagon {
+    width: 75px;
+    /*Pas de breedte aan*/
+    height: auto;
+    /* height: 60px; Pas de hoogte aan */
+    /* align-items: center; */
+    border: none;
+    /* position: relative; */
+    cursor: pointer;
+    outline: none;
+    /* margin: 0 40px; Ruimte tussen afbeeldingen */
+    transition: transform 0.2s;
+
+    justify-content: space-between;
+    display: flex;
+}
+
+.usp-item:hover .hexagon, .usp-item:hover .gold-text {
+    transform: translateY(-5px); /* Kleine omhoog-beweging bij hover */
+}
+
+.gold-text {
+    color: #CC9C4E; /* Gouden kleur */
+    text-align: right; 
+    margin-top: 10px; 
+    font-family: "Raleway"; 
+    font-size: 20px; 
+    font-weight: 400; 
+    line-height: 39px;
+    transition: transform 0.2s;
+}
+/* --------------------------------------------------------------------------------*/
+
+
+
+/* ------------------ media queries ------------------*/
+@media (min-width: 1920px) {
+
+}
+@media (max-width: 1440px) {
+    h2 {
+        font-size: 48px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 48px;
+    }
+    .scroll-info p{
+        display: none;
+    }
+    .hero-sectie {
+        flex-direction: column;
+        height: unset;
+    }
+    .hero-sectie-klanten, .hero-sectie-partners {
+        width: 100%;
+        clip-path: none;
+        margin: 0;
+        min-height: 40vh;
+    }
+    .hero-sectie-klanten > .hero-content,
+    .hero-sectie-partners > .hero-content{
+        width: unset;
+        top: 0;
+        justify-content: center;
+        padding: 0px 30px;
+    }
+    .hero-sectie-partners > .hero-content > h2 {
+        font-size: 48px;
+        text-align: center;
+    }
+    .scroll-info > p {
+        left: unset;
+        width: 100%;
+        text-align: center;
+        bottom: 0%;
+    }
+    .scroll-info > p::after {
+        width: 100px;
+    }
+
+    .index-textopmaak-1 {
+        flex-direction: column;
+    }
+    .index-textopmaak-2 {
+        max-width: unset;
+        padding: 0px 50px;
+    }
+    .index-textopmaak-2 > * {
+        text-align: center;
+    }
+    .image-mobile {
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 400px;
+    }
+    .image-about {
+        background-image: url('../Images/onsdoelImages/mobieldesign.png');
+        background-size: contain;
+    }
+    .image-goal {
+        background-image: linear-gradient(rgba(19, 30, 36, 0.2), rgba(19, 30, 36, 0.2)), url('../Images/backgroundImages/twosplitPartners.jpg');
+        background-size: cover;
+    }
+    .image-blok-1 {
+        visibility: hidden;
+        height: 0;
+    }
+
+    .image-left {
+        visibility: hidden;
+        height: 0;
+    }
+    
+
+}
+@media (max-width: 768px) {
+
+    h3 {
+        font-size: 32px; /* Proportioneel schalen */
+    }
+
+    h4 {
+        font-size: 24px; /* Proportioneel schalen */
+    }
+
+    .index-paragraph-tekst-1, .index-paragraph-tekst-2 {
+        font-size: 20px; /* Proportioneel schalen */
+    }
+
+    .image-right, .image-left {
+        max-width: 90%; /* Volledige breedte voor afbeeldingen op mobiele schermen */
+        margin-top: 20px; /* Ruimte boven afbeeldingen */
+    }
+
+    .slider-image {
+        width: 50%; /* Verklein de breedte van de afbeeldingen in de slider */
+        height: auto; /* Automatische hoogte voor de afbeeldingen */
+        margin: 0 2%; /* Verminder ruimte tussen afbeeldingen */
+    }
+
+    .slider-container {
+        width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
+        padding: 0; /* Verwijder padding als dat nodig is */
+    }
+
+    .USP-container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+
+    .usp-item {
+        margin: 20px 0; /* Ruimte tussen USP-items */
+    }
+
+    .hexagon {
+        width: 60px; /* Kleinere hexagon knoppen op kleinere schermen */
+        height: auto; /* Automatische hoogte */
+    }
+
+    .index-textopmaak-1 {
+        /* display: inline-flex; */
+        margin-bottom: 20px;
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+/* Extra voor kleinere schermen */
+@media (max-width: 520px) {
+
+    .card > span {
+        font-size: 32px;
+        width: 50px;
+        height: 80px;
+    }
+    
+    .timer-text {
+        font-size: 16px;
+    }
+    .index-paragraph-tekst-1, .index-paragraph-tekst-2 {
+        font-size: 14px; /* Nog kleinere tekst voor smartphones */
+        line-height: 2.5;
+    }
+
+    .slider-image {
+        width: 50%; /* Verklein de breedte van de afbeeldingen in de slider voor smartphones */
+    }
+
+    .slider-container {
+        width: 100%; /* Stel de breedte in op 100% voor mobiele weergave */
+        padding: 0; /* Verwijder padding als dat nodig is */
+    }
+
+    .index-textopmaak-1 {
+        /* display: inline-flex; */
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .usp-container {
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+}
+
+/* !!EXTRA ALS SITE AF IS!! */
+
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #CC9C4E; /* Gouden kleur voor de knop */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s; /* Hover effect */
+}
+
+.mode-toggle:hover {
+    transform: scale(1.05); /* Vergroot de knop bij hover */
+}
+
+/* Light mode styling */
+/* .light-mode {
+    background-color: #DCD3C2; /* Achtergrondkleur */
+    /* color: #3A3B33; /* Kleur voor tekst */
+/* }
+
+.light-mode .heading4Tekst {
+    color: #1A3030; /* Kleur voor h1 in light mode */
+/* } */
+
+/* .light-mode .heading5Tekst {
+    color: #CC9C4E; /* Gouden kleur voor h2 in light mode */
+/* } */ 
+
+/* .light-mode .paragraph3Tekst {
+    color: #1A3030; Kleur voor p in light mode */
+/* }  */ 

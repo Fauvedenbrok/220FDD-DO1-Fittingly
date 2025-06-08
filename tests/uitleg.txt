@@ -1,0 +1,24 @@
+Om deze tests te draaien moet je composer installeren.
+
+dan moet je PHPUnit installeren met de terminal:composer require --dev phpunit/phpunit
+composer require --dev phpunit/phpunit
+
+als alles goed geïnstalleerd is kan je met de onderstaande opdracht de tests uit het mapje: tests uitvoeren.
+vendor/bin/phpunit tests
+
+In de terminal kan je dan zien welke tests goed gaan en welke fout zijn gegaan.
+
+Runtime:       PHP 8.2.12
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.004, Memory: 8.00 MB
+
+OK (2 tests, 2 assertions)
+
+Bij het maken van tests is het belangrijk om ook alle edge-cases te testen. 
+Bijvoorbeeld:
+bij een formule testen als a - b = c
+- Test je of c ook een 0 of min getal kan zijn. 
+- Moet er alleen een int uitkomen of moet de formule ook floats kunnen verwerken?
+- Ook niet vergeten om de meest voor de handliggende uitkomsten te testen zoals 10 - 1 = 9
