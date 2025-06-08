@@ -7,11 +7,6 @@ $translator = init_translator();
 include 'adminheader.php'; // include admin header
 
 
-
-
-// login check en rechten check
-
-
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +19,9 @@ include 'adminheader.php'; // include admin header
   <link rel="icon" href="../Images/icons/favicon.ico">
 
   <link rel="stylesheet" href="/public_html/css/styles.css">
-  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
 </head>
 
-<body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
   </header>
 
@@ -43,8 +37,10 @@ include 'adminheader.php'; // include admin header
     </div>
 
   </main>
+
   <footer>
   </footer>
+  
   <script src="../js/scripts.js"></script>
 </body>
 

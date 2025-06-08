@@ -132,6 +132,11 @@ return [
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
     'admin_searchwords_column_delete' => "Delete",
+    'admin_searchwords_match' => "Found in articles",
+    'admin_searchwords_no_match' => "Not found in articles.",
+    'admin_searchwords_delete_confirmation' => "Are you sure you want to delete this search word?",
+    'admin_searchwords_match_yes' => "Yes",
+    'admin_searchwords_match_no' => "No",
 
 
     // Product Detail View
@@ -180,4 +185,5 @@ return [
     'cart_update_button' => 'Update',
     'cart_checkout_button' => 'Checkout',
     'product_list_view_cart_link' => "Add to Cart",
+    'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
 ];

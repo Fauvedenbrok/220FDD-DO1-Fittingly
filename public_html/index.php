@@ -20,7 +20,7 @@ $translator = init_translator();
   <link rel="stylesheet" href="./css/indexstyles.css">
 </head>
 
-<body style="background-image: url('./Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
     <?php include 'header.php'; ?>
   </header>

@@ -31,7 +31,6 @@ if (isset($_GET['upload'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
@@ -39,6 +38,7 @@ if (isset($_GET['upload'])) {
   <header>
   </header>
   <main class="main-content">
+    <div id="CSV-upload-download-form">
     <!--
       CSV upload form for products.
       @form Uploads a CSV file to the server for product import.
@@ -55,6 +55,7 @@ if (isset($_GET['upload'])) {
     <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
       <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
     </form>
+    </div>
     <?php
     /**
      * Load the product list controller and extract its data for the view.

@@ -23,7 +23,7 @@ $translator = init_translator();
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
   </header>
 
