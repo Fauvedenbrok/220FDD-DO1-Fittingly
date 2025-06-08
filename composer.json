@@ -8,7 +8,11 @@
 		"phpunit/phpunit": "^11.5"
 	},
 	"scripts": {
-		"test": "phpunit tests"
+		"test": "phpunit tests",
+		"test:example": "phpunit tests/ExampleTest.php",
+		"test:address": "phpunit tests/AddressTest.php",
+		"test:mail": "phpunit tests/ContactMailerTest.php",
+		"test:contactmailer:instantiate": "phpunit --filter testContactMailerCanBeInstantiated tests/ContactMailerTest.php"
 	},
 	"require": {
 		"phpmailer/phpmailer": "^6.10",

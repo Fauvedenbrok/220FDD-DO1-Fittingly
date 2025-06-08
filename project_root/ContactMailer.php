@@ -39,16 +39,18 @@ class ContactMailer
     private $translator;
 
     /**
-     * Constructor slaat configuratie en translator op voor later gebruik
-     * 
-     * @param array $config SMTP en mailconfiguratie
-     * @param object $translator Vertaalfunctie object
+     * Constructor
+     * @param array $config         SMTP-configuratie
+     * @param object $translator    Translator klasse voor fout-/succesberichten
+     * @param PHPMailer|null $mailer Optioneel: een mock PHPMailer voor tests
      */
-    public function __construct($config, $translator)
+    public function __construct($config, $translator, $mailer = null)
     {
         $this->config = $config;
         $this->translator = $translator;
+        $this->mailer = $mailer;    // Wordt gebruikt in tests om daadwerkelijk uitsturen te vermijden
     }
+
 
     /**
      * Validatie van formulierdata: controleert op lege velden en geldig emailadres
@@ -77,7 +79,7 @@ class ContactMailer
      */
     public function send($data)
     {
-        $mail = new PHPMailer(true);
+        $mail = $this->mailer ?? new PHPMailer(true); // Gebruik mock als die is meegegeven
 
         try {
             // SMTP configuratie
@@ -92,7 +94,7 @@ class ContactMailer
 
             // Afzender en ontvanger instellen
             $mail->setFrom($this->config['from_email'], $this->config['from_name']);
-            $mail->addAddress($data['email'], $data['naam']); // E-mail naar de persoon die het formulier invulde
+            $mail->addAddress('info.fittingly@dumpvanplaatjes.nl', 'Fittingly'); // Ontvanger instellen
             $mail->addReplyTo($data['email'], $data['naam']); // Antwoordadres instellen
 
             // Mail content opmaken

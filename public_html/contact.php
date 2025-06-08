@@ -36,7 +36,7 @@ $translator = init_translator();
                     <p><img id="usp3-contact" src="./Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">
                         <?= $translator->get('contactpagina_p_contactinfo_3') ?> </p>
                 </div>
-                <form id="contact-form" method="post" action="../project_root/send_mail.php">
+                <form id="contact-form" method="post" action="../project_root/ContactMailer.php">
                     <div class="form-content">
                         <div class="input-fields">
                             <label for="naam"> <?= $translator->get('contactpagina_formulier_naam') ?>:</label>
@@ -87,17 +87,3 @@ $translator = init_translator();
 </body>
 
 </html>
-
-<?php
-// laat het result van de submit zien
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $naam = $_POST['naam'];
-    $bedrijf = $_POST['bedrijf'];
-    $email = $_POST['email'];
-    $tel = $_POST['tel'];
-    $bericht = $_POST['bericht'];
-
-
-}
-
-//Valideer de contactgegeven voordat ze de database ingaan

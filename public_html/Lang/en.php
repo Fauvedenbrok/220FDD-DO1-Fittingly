@@ -160,7 +160,7 @@ return [
     'product_list_view_availability_out_of_stock' => "Out of Stock",
 
     // Contact Page
-    'contactpagina_formulier_success' => "Thank you for your message! We will contact you as soon as possible. <a href=\"/public_html/index.php\">Back to the homepage</a>",
+    'contactpagina_formulier_success' => "Thank you for your message! We will contact you as soon as possible. You will be automatically redirected to the homepage within 5 seconds. If that doesn’t work, please click <a href=\"../public_html/index.php\">here</a>.",
     'contactpagina_formulier_error' => "There was an error sending your message. Please try again later.",
     'contactpagina_formulier_no_post' => "No POST data received. Please fill out the form and try again.",
 
