@@ -5,8 +5,6 @@ require_once __DIR__ . '/../public_html/CartHandler.php';
 
 class CartCheckoutTest extends TestCase
 {
-    private $handler;
-
     protected function setUp(): void
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -15,8 +13,6 @@ class CartCheckoutTest extends TestCase
 
         $_SESSION['user_email'] = 'test@example.com';
         $_SESSION['order_id'] = 123;
-
-        $this->handler = new CartHandler();
     }
 
     public function testSessionOrderIdIsSet()
