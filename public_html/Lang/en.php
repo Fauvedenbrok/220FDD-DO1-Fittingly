@@ -185,5 +185,5 @@ return [
     'cart_total' => 'Total',
     'cart_update_button' => 'Update',
     'cart_checkout_button' => 'Checkout',
-    'product_list_view_cart_link' => "Add to Cart",
+    'product_list_view_cart_link' => "Go to Shopping Cart",
 ];
