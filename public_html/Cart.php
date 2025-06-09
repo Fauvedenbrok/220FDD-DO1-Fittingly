@@ -31,8 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT, ['options' => ['default' => 1, 'min_range' => 1]]);
 
     if ($productId && $quantity > 0) {
-        $cartHandler->addToCart($productId, $quantity);
-        header('Location: productpagina.php');
+        $cartHandler->addToCart($productId, $quantity);;
         exit();
     }
 }
