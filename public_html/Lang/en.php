@@ -1,5 +1,9 @@
 <?php
 return [
+    /**
+     * All strings on all pages translated to english
+     * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
+     */
     // Index
     'hero_content_h2' => 'Become a partner of Fittingly?',
     'hero_content_partnerpagina_button' => "Become a partner",

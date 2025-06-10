@@ -9,6 +9,8 @@ $translator = init_translator();
 
 
 <!DOCTYPE html>
+
+<!-- wanneer de taal veranderd (button) moet deze tag ook veranderen naar de taal -->
 <html lang="nl">
 
 <head>
