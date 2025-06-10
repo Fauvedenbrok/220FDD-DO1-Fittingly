@@ -39,22 +39,24 @@ if (isset($_GET['upload'])) {
   <header>
   </header>
   <main class="main-content">
-    <!--
+    <div id="CSV-upload-download-form">
+      <!--
       CSV upload form for products.
       @form Uploads a CSV file to the server for product import.
     -->
-    <form action="../../project_root/Controllers/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
-      <?= $translator->get('admin_products_upload_csv_label') ?>
-      <input type="file" name="csv_file" accept=".csv">
-      <button type="submit" name="upload"><?= $translator->get('admin_products_upload_button') ?></button>
-    </form>
-    <!--
+      <form action="../../project_root/Controllers/csv-product_upload_control.php" method="post" enctype="multipart/form-data">
+        <?= $translator->get('admin_products_upload_csv_label') ?>
+        <input type="file" name="csv_file" accept=".csv">
+        <button type="submit" name="upload"><?= $translator->get('admin_products_upload_button') ?></button>
+      </form>
+      <!--
       CSV download form for products.
       @form Downloads all products as a CSV file.
     -->
-    <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
-      <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
-    </form>
+      <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
+        <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
+      </form>
+    </div>
     <?php
     /**
      * Load the product list controller and extract its data for the view.

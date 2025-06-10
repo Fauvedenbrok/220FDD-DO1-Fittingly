@@ -55,8 +55,8 @@ Session::start();
 
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">
-              <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
-              <span class="nav-profiel" style="margin-left: 12px;"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
+              <img src="./Images/icons/profiel.png" alt="Account">
+              <span class="nav-profiel"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
               </span>
 
             </button>
@@ -69,8 +69,8 @@ Session::start();
         <?php else: ?>
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">
-              <img src="./Images/icons/profiel.png" alt="Account" style="width:32px;height:32px;">
-              <span class="nav-profiel" style="margin-left: 12px;">
+              <img src="./Images/icons/profiel.png" alt="Account">
+              <span class="nav-profiel">
                 <?= $translator->get('header_dropdown_text') ?>
               </span>
             </button>
