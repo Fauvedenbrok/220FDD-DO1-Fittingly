@@ -1,6 +1,10 @@
 <?php
 return [
-    //index
+    /**
+     * All strings on all pages translated to dutch.
+     * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
+     */
+    // index
     'hero_content_h2' => 'Partner worden van Fittingly?',
     'hero_content_partnerpagina_button' => "Meer informatie",
     'hero_content_productpagina_button' => "Bekijk producten",
@@ -182,4 +186,7 @@ return [
     'cart_update_button' => 'Bijwerken',
     'cart_checkout_button' => 'Afrekenen',
     'product_list_view_cart_link' => "Naar Winkelwagen",
+
+    // 
+
 ];

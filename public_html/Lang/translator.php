@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Defines the Translator class, which handles loading and retrieving translations.
+ * $translations [] holds the loaded translations as an associative array.
+ */
 class Translator
 {
     public $translations = [];
@@ -20,8 +25,13 @@ class Translator
 }
 
 
-
-function init_translator() {
+/**
+ * Initializes the Translator object based on the user's language preference.
+ * Will start a sessions if one isn't already active.
+ * If a language is specified in the url, it stores it into the session.
+ */
+function init_translator()
+{
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }

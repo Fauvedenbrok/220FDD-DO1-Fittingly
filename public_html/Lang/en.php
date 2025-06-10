@@ -1,5 +1,9 @@
 <?php
 return [
+    /**
+     * All strings on all pages translated to english
+     * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
+     */
     // Index
     'hero_content_h2' => 'Become a partner of Fittingly?',
     'hero_content_partnerpagina_button' => "Become a partner",
@@ -186,4 +190,5 @@ return [
     'cart_update_button' => 'Update',
     'cart_checkout_button' => 'Checkout',
     'product_list_view_cart_link' => "Add to Cart",
+    'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
 ];

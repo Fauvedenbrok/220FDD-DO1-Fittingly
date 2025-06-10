@@ -160,7 +160,11 @@ foreach ($cartItems as $productId => $quantity) {
                         </td>
                         <td>€<?= number_format($subtotal, 2, ',', '.'); ?></td>
                         <td>
+<<<<<<< HEAD
                             <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('<?= addslashes($translator->get('remove_product_confirmation')); ?>')">
+=======
+                            <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('<?= $translator->get('remove_product_confirmation'); ?>')">
+>>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
                                 <?= $translator->get('cart_remove_button'); ?>
                             </button>
                         </td>
