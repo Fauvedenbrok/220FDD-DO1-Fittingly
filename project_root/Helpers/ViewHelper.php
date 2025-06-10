@@ -28,9 +28,6 @@ class ViewHelper
      * @function nl2br     Zet "\n" om naar `<br>`.
      * @self::e()          Gebruikt eerst ViewHelper::e om HTML veilig te maken.
      *
-     * @ example
-     *  Input:  "Hallo\nWereld"
-     *  Output: "Hallo<br>Wereld"
      */
     public static function eWithBreaks($value): string
     {
