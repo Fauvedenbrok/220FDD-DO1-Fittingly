@@ -9,6 +9,8 @@ $translator = init_translator();
 
 
 <!DOCTYPE html>
+
+<!-- wanneer de taal veranderd (button) moet deze tag ook veranderen naar de taal -->
 <html lang="nl">
 
 <head>
@@ -20,7 +22,7 @@ $translator = init_translator();
   <link rel="stylesheet" href="./css/indexstyles.css">
 </head>
 
-<body">
+<body>
   <header>
     <?php include 'header.php'; ?>
   </header>

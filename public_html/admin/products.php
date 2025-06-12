@@ -31,7 +31,6 @@ if (isset($_GET['upload'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-  <link rel="stylesheet" href="/public_html/css/adminstyles.css">
   <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 

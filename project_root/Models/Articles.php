@@ -1,6 +1,8 @@
 <?php
 namespace Models;
-use Models\CrudModel;
+use CrudModel;
+
+require_once __DIR__ . '/CrudModel.php';
 
 /**
  * Class Articles
@@ -26,6 +28,8 @@ class Articles
     private bool $articleAvailability;
     private array $articleInfo;
 
+    private $crudModel;
+
     /**
      * Articles constructor.
      *
@@ -43,7 +47,7 @@ class Articles
      * @param string $articleBrand
      * @param bool $articleAvailability
      */
-    public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
+    public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability, $crudModel = null)
     {
         $this->articleID = $articleID;
         $this->articleName = $articleName;
@@ -59,6 +63,7 @@ class Articles
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
         $this->articleInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
     /**
      * Returns a string representation of the article.
@@ -122,7 +127,7 @@ class Articles
      * @return bool True on success, false on failure.
      */
     public function saveArticle(): bool {
-        return CrudModel::createData("Articles", $this->articleInfo);
+        return ($this->crudModel)::createData("Articles", $this->articleInfo);
     }
 
     /**
@@ -131,7 +136,7 @@ class Articles
      * @return bool True on success, false on failure.
      */
     public function updateArticle(): bool {
-        return CrudModel::updateData("Articles", $this->articleInfo);
+        return ($this->crudModel)::updateData("Articles", $this->articleInfo);
     }
 
     // Getters

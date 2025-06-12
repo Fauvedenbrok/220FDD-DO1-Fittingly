@@ -70,7 +70,7 @@ Session::start();
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">
               <img src="./Images/icons/profiel.png" alt="Account">
-              <span class="nav-profiel">
+              <span class="nav-profiel" style="margin-left: 12px;">
                 <?= $translator->get('header_dropdown_text') ?>
               </span>
             </button>

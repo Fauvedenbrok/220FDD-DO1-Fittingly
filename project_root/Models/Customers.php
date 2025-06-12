@@ -2,7 +2,9 @@
 namespace Models;
 // use PDO;
 // use Core\Database;
-use Models\CrudModel;
+use CrudModel;
+
+require_once __DIR__ . '/CrudModel.php';
 
 /**
  * Class Customers
@@ -21,6 +23,8 @@ class Customers
     private string $postalCode;
     private string $houseNumber;
     private array $customerInfo;
+    
+    private $crudModel;
     // private PDO $db;
 
     /**
@@ -39,7 +43,8 @@ class Customers
         string $lastName,
         string $dateOfBirth,
         string $postalCode,
-        string $houseNumber
+        string $houseNumber,
+        $crudModel = null
     ) {
         // $this->db = Database::getConnection();
 
@@ -50,6 +55,7 @@ class Customers
         $this->postalCode = $postalCode;
         $this->houseNumber = $houseNumber;
         $this->customerInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
 
     /**
@@ -84,7 +90,7 @@ class Customers
      * @return bool True on success, false on failure.
      */
     public function saveCustomer(): bool {
-        return CrudModel::createData("customers", $this->customerInfo);
+        return ($this->crudModel)::createData("customers", $this->customerInfo);
     }
 
 

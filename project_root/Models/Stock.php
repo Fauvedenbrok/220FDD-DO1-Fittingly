@@ -13,6 +13,8 @@ class Stock{
     private string $internalReference;
     private int $articleID;
     private int $partnerID;
+    
+    private $crudModel;
 
     /**
      * Stock constructor.
@@ -24,13 +26,14 @@ class Stock{
      * @param int $articleID The ID of the article associated with this stock.
      * @param int $partnerID The ID of the partner associated with this stock.
      */
-    public function __construct(int $quantityOfStock, float $price, string $dateAdded, string $internalReference, int $articleID, int $partnerID){
+    public function __construct(int $quantityOfStock, float $price, string $dateAdded, string $internalReference, int $articleID, int $partnerID, $crudModel = null){
         $this->quantityOfStock = $quantityOfStock;
         $this->price = $price;
         $this->dateAdded = $dateAdded;
         $this->internalReference = $internalReference;
         $this->articleID = $articleID;
         $this->partnerID = $partnerID;
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
     /**
      * Returns a string representation of the stock.

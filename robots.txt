@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /.idea/
+Disallow: /.phpdoc/
+Disallow: /.vscode/
+Disallow: /docs/
+Disallow: /vendor/
+Disallow: /tests/
+
+

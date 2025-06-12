@@ -202,9 +202,7 @@ body {
 }
 
 .popup {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  position: absolute; /* <- belangrijk: zodat top/left via JS werken */
   background-color: #cc9c4e;
   color: #1a3030;
   padding: 12px 20px;
@@ -215,7 +213,9 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1000;
+  pointer-events: none;
 }
+
 
 .popup.show {
   opacity: 1;
