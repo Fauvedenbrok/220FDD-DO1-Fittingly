@@ -28,22 +28,18 @@ class AddressTest extends TestCase
         ");
     }
 
-    public static function tearDownAfterClass(): void
-    {
-        // Drop the test table after all tests
-        self::$pdo->exec("DROP TABLE IF EXISTS Addresses");
-    }
 
     protected function setUp(): void
     {
         self::$pdo->exec("SET FOREIGN_KEY_CHECKS=0");
+        self::$pdo->exec("DELETE FROM customers"); // or any table referencing Addresses
         self::$pdo->exec("DELETE FROM Addresses");
         self::$pdo->exec("SET FOREIGN_KEY_CHECKS=1");
     }
 
     public function testCreateAssociativeArrayReturnsCorrectArray()
     {
-        $address = new Addresses('1234AB', '10', 'Main Street', 'Amsterdam', 'Netherlands');
+        $address = new Addresses('1234AB', '10', 'Main Street', 'Amsterdam', 'Netherlands', new \Tests\CrudModel());
         $expected = [
             'PostalCode' => '1234AB',
             'HouseNumber' => '10',
@@ -56,7 +52,7 @@ class AddressTest extends TestCase
 
     public function testSaveAddressInsertsIntoDatabase()
     {
-        $address = new Addresses('5678CD', '20', 'Second Street', 'Rotterdam', 'Netherlands');
+        $address = new Addresses('5678CD', '20', 'Second Street', 'Rotterdam', 'Netherlands', new \Tests\CrudModel());
         $result = $address->saveAddress();
         $this->assertTrue($result);
 
@@ -72,14 +68,14 @@ class AddressTest extends TestCase
 
     public function testToStringReturnsCorrectFormat()
     {
-        $address = new Addresses('9999ZZ', '99', 'Testlaan', 'Utrecht', 'Nederland');
+        $address = new Addresses('9999ZZ', '99', 'Testlaan', 'Utrecht', 'Nederland', new \Tests\CrudModel());
         $expected = '9999ZZ, 99, Testlaan, Utrecht, Nederland';
         $this->assertEquals($expected, (string)$address);
     }
 
     public function testSaveAddressWithEmptyFields()
     {
-        $address = new Addresses('', '', '', '', '');
+        $address = new Addresses('', '', '', '', '', new \Tests\CrudModel());
         $result = $address->saveAddress();
         $this->assertTrue($result);
 
@@ -93,30 +89,39 @@ class AddressTest extends TestCase
         $this->assertEquals('', $row['Country']);
     }
 
+
+    public function testDuplicateAddressPrimaryKey()
+    {
+        $address1 = new Addresses('1111AA', '1', 'First', 'City', 'Country', new \Tests\CrudModel());
+        $address2 = new Addresses('1111AA', '1', 'Second', 'OtherCity', 'OtherCountry', new \Tests\CrudModel());
+        $this->assertTrue($address1->saveAddress());
+        $result = true;
+        try {
+            $address2->saveAddress();
+        } catch (\Exception $e) {
+            $result = false;
+        }
+        $this->assertFalse($result);
+    }
+
     public function testSaveAddressWithLongStrings()
     {
         $longString = str_repeat('a', 255);
-        $address = new Addresses($longString, $longString, $longString, $longString, $longString);
+        $address = new Addresses($longString, $longString, $longString, $longString, $longString, new \Tests\CrudModel());
         $result = $address->saveAddress();
+        // Dit is waar omdat maar een deel van de strings wordt opgeslagen in de database
+        // vanwege de lengtebeperkingen van de kolommen.
         $this->assertTrue($result);
 
         $stmt = self::$pdo->prepare("SELECT * FROM Addresses WHERE PostalCode = ? AND HouseNumber = ?");
         $stmt->execute([$longString, $longString]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // Dit is niet false omdat de lange strings zijn opgeslagen, maar mogelijk zijn ze afgekapt
         $this->assertNotFalse($row);
         $this->assertEquals($longString, $row['StreetName']);
         $this->assertEquals($longString, $row['City']);
         $this->assertEquals($longString, $row['Country']);
-    }
-
-    public function testDuplicateAddressPrimaryKey()
-    {
-        $address1 = new Addresses('1111AA', '1', 'First', 'City', 'Country');
-        $address2 = new Addresses('1111AA', '1', 'Second', 'OtherCity', 'OtherCountry');
-        $this->assertTrue($address1->saveAddress());
-        // Should fail due to primary key constraint, but CrudModel::createData returns false on failure
-        $this->assertFalse($address2->saveAddress());
     }
 }
 

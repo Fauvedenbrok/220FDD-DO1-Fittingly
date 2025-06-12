@@ -15,6 +15,8 @@ class OrderLines{
     private $articleID;
     private $partnerID;
     private $orderLineInfo;
+    
+    private $crudModel;
 
     /**
      * OrderLines constructor.
@@ -27,7 +29,7 @@ class OrderLines{
      * @param int $articleID The ID of the article in this order line.
      * @param int $partnerID The ID of the partner associated with this order line.
      */
-    public function __construct(int $quantity, string $startDateReservation, string $endDateReservation, float $orderLinePrice, int $orderID, int $articleID, int $partnerID){
+    public function __construct(int $quantity, string $startDateReservation, string $endDateReservation, float $orderLinePrice, int $orderID, int $articleID, int $partnerID, $crudModel = null){
         $this->quantity = $quantity;
         $this->startDateReservation = $startDateReservation;
         $this->endDateReservation = $endDateReservation;
@@ -36,6 +38,7 @@ class OrderLines{
         $this->articleID = $articleID;
         $this->partnerID = $partnerID;
         $this->orderLineInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
     /**
      * Returns a string representation of the order line.
@@ -69,7 +72,7 @@ class OrderLines{
      *
      * @return bool True on success, false on failure.
      */
-    public function saveCustomer(): bool {
-        return CrudModel::createData("orderlines", $this->oderLineInfo);
+    public function saveOrderLine(): bool {
+        return ($this->crudModel)::createData("orderlines", $this->oderLineInfo);
     }
 }

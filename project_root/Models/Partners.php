@@ -15,6 +15,8 @@ class Partners
     private $coCNr;
     private $postalCode;
     private $houseNumber;
+    
+    private $crudModel;
 
     /**
      * Partners constructor.
@@ -26,13 +28,14 @@ class Partners
      * @param string $postalCode The postal code of the company address.
      * @param string $houseNumber The house number of the company address.
      */
-    public function __construct(int $partnerID, string $companyName, string $vatNr, int $coCNr, string $postalCode, string $houseNumber){
+    public function __construct(int $partnerID, string $companyName, string $vatNr, int $coCNr, string $postalCode, string $houseNumber, $crudModel = null){
         $this->partnerID = $partnerID;
         $this->companyName = $companyName;
         $this->vatNr = $vatNr;
         $this->coCNr = $coCNr;
         $this->postalCode = $postalCode;
         $this->houseNumber = $houseNumber;
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
     /**
      * Returns a string representation of the partner.

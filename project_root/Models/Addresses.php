@@ -1,6 +1,6 @@
 <?php
 namespace Models;
-use Models\CrudModel;
+use CrudModel;
 // use Core\DataBase;
 
 require_once __DIR__ . '/CrudModel.php';
@@ -14,13 +14,23 @@ require_once __DIR__ . '/CrudModel.php';
  */
 class Addresses
 {
-
+    /**
+     * @var string The postal code of the address.
+     * @var string The house number of the address.
+     * @var string The street name of the address.
+     * @var string The city of the address.
+     * @var string The country of the address.
+     * @var array  An associative array containing the address information.
+     * @var mixed  An instance of CrudModel or null. If null, a new instance will be created.
+     */
     private string $postalCode;
     private string $houseNumber;
     private string $streetName;
     private string $city;
     private string $country;
     private array $addressInfo;
+
+    private $crudModel;
      
     /**
      * Addresses constructor.
@@ -30,13 +40,15 @@ class Addresses
      * @param string $streetName   The street name.
      * @param string $city         The city.
      * @param string $country      The country.
+     * @param mixed $crudModel     An instance of CrudModel or null. If null, a new instance will be created.
      */
     public function __construct(
         string $postalCode,
         string $houseNumber,
         string $streetName,
         string $city,
-        string $country
+        string $country,
+        $crudModel = null
     ) {
         $this->postalCode = $postalCode;
         $this->houseNumber = $houseNumber;
@@ -44,6 +56,7 @@ class Addresses
         $this->city = $city;
         $this->country = $country;
         $this->addressInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
 
     /**
@@ -68,7 +81,7 @@ class Addresses
      * @return bool True on success, false on failure.
      */
     public function saveAddress(): bool {
-        return CrudModel::createData("Addresses", $this->addressInfo);
+        return ($this->crudModel)::createData("Addresses", $this->addressInfo);
         // $stmt = $this->db->prepare("
         //     INSERT INTO addresses (PostalCode, HouseNumber, StreetName, City, Country)
         //     VALUES (:postalCode, :houseNumber, :streetName, :city, :country)

@@ -15,6 +15,8 @@ class Orders{
     private $orderStatus;
     private $customerID;
     private $orderInfo;
+    
+    private $crudModel;
 
     /**
      * Orders constructor.
@@ -27,7 +29,7 @@ class Orders{
      * @param string $orderStatus The status of the order (e.g., pending, completed).
      * @param string $customerID The ID of the customer who placed the order.
      */
-    public function __construct(int $orderID, string $orderDate, bool $paymentStatus, string $postalCode, string $houseNumber, string $orderStatus, string $customerID) {
+    public function __construct(int $orderID, string $orderDate, bool $paymentStatus, string $postalCode, string $houseNumber, string $orderStatus, string $customerID, $crudModel = null) {
         $this->orderID = $orderID;
         $this->orderDate = $orderDate;
         $this->paymentStatus = $paymentStatus;
@@ -36,6 +38,7 @@ class Orders{
         $this->orderStatus = $orderStatus;
         $this->customerID = $customerID;
         $this->orderInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
     /**
      * Returns a string representation of the order.

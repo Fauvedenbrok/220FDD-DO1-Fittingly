@@ -24,6 +24,8 @@ class UserAccounts
     private ?int $partnerID;
     private ?string $customerID;
     private array $userInfo;
+    
+    private $crudModel;
     // private PDO $db;
 
     /**
@@ -48,7 +50,8 @@ class UserAccounts
         string $phoneNumber,
         int $newsletter,
         ?int $partnerID,
-        ?string $customerID
+        ?string $customerID,
+        $crudModel = null
     ) {
         // $this->db = Database::getConnection();
 
@@ -62,6 +65,7 @@ class UserAccounts
         $this->partnerID = $partnerID;
         $this->customerID = $customerID;
         $this->userInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
     /**
      * Returns a string representation of the user account.
@@ -114,7 +118,7 @@ class UserAccounts
      */
     public function saveUserAccount(): bool
     {
-        return CrudModel::createData("useraccounts", $this->userInfo);
+        return ($this->crudModel)::createData("useraccounts", $this->userInfo);
     }
     /**
      * Retrieves a user account by email address.
@@ -142,13 +146,13 @@ class UserAccounts
         }
         $email = $_SESSION['user_email'];
         // Stap 1: Haal useraccount op
-        $user = CrudModel::readAllById('useraccounts', 'EmailAddress', $email);
+        $user = ($this->crudModel)::readAllById('useraccounts', 'EmailAddress', $email);
         if (!$user || !isset($user['CustomerID'])) {
             return null;
         }
         $customerID = $user['CustomerID'];
         // Stap 2: Haal klant op uit customer-tabel
-        $customer = CrudModel::readAllById('customers', 'CustomerID', $customerID);
+        $customer = ($this->crudModel)::readAllById('customers', 'CustomerID', $customerID);
         if (!$customer || !isset($customer['FirstName'])) {
             return null;
         }
