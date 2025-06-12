@@ -5,6 +5,8 @@ namespace Models;
 // use Core\Database;
 use Models\CrudModel;
 
+require_once __DIR__ . "/CrudModel.php";
+
 /**
  * Class UserAccounts
  *
@@ -141,18 +143,20 @@ class UserAccounts
      */
     public static function getUserNameBySession(): ?string
     {
+        $crudModel = new CrudModel();
         if (!isset($_SESSION['user_email'])) {
             return null;
         }
         $email = $_SESSION['user_email'];
         // Stap 1: Haal useraccount op
-        $user = ($this->crudModel)::readAllById('useraccounts', 'EmailAddress', $email);
+        
+        $user = $crudModel::readAllById('useraccounts', 'EmailAddress', $email);
         if (!$user || !isset($user['CustomerID'])) {
             return null;
         }
         $customerID = $user['CustomerID'];
         // Stap 2: Haal klant op uit customer-tabel
-        $customer = ($this->crudModel)::readAllById('customers', 'CustomerID', $customerID);
+        $customer = $crudModel::readAllById('customers', 'CustomerID', $customerID);
         if (!$customer || !isset($customer['FirstName'])) {
             return null;
         }

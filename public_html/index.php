@@ -24,7 +24,6 @@ $translator = init_translator();
 
 <body>
   <header>
-    <?php include 'header.php'; ?>
   </header>
   
   <div class="splash-screen">
@@ -136,7 +135,6 @@ $translator = init_translator();
     </div>
   </main>
   <footer>
-    <?php include 'footer.php'; ?>
   </footer>
 
   <script src="js/scripts.js"></script>
@@ -149,6 +147,13 @@ $translator = init_translator();
       usp3: "<?= $translator->get('translation.usp3') ?>"
   };
 </script>
+
+<script>
+  includeHTML("/public_html/header.php", "header");
+  includeHTML("/public_html/footer.php", "footer");
+</script>
+
+
 
 
 </body>
