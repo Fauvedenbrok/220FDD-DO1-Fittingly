@@ -1,5 +1,9 @@
 <?php
 return [
+    /**
+     * All strings on all pages translated to dutch.
+     * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
+     */
     // index
     'hero_content_h2' => 'Partner worden van Fittingly?',
     'hero_content_partnerpagina_button' => "Meer informatie",
@@ -149,6 +153,7 @@ return [
     'product_detail_view_price' => "Prijs:",
     'product_detail_view_availability' => "Beschikbaarheid:",
     'product_detail_view_back_link' => "← Terug naar overzicht",
+    'remove_product_confirmation' => "Weet je zeker dat je dit product wilt verwijderen?",
 
     // Product_list_view
     'product_list_view_title' => "Productoverzicht",
@@ -181,7 +186,6 @@ return [
     'cart_update_button' => 'Bijwerken',
     'cart_checkout_button' => 'Afrekenen',
     'product_list_view_cart_link' => "Naar Winkelwagen",
-    'remove_product_confirmation' => "Weet je zeker dat je dit product wilt verwijderen?",
 
     // 
 

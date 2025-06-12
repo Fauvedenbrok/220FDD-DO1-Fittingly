@@ -17,7 +17,6 @@ function getSearchWords() {
     return [];
   }
 }
-
 function searchWordExists($searchWord) {
     $pdo = Database::getConnection();
 
@@ -30,7 +29,6 @@ function searchWordExists($searchWord) {
         return false;
     }
 }
-
 
 function deleteSearchWord($searchWord) {
   $pdo = Database::getConnection();

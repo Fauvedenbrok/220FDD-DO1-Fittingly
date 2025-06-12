@@ -267,7 +267,7 @@ nav>button>a,
   font-weight: 400;
   line-height: 24px;
   font-size: 20px;
-  margin-left: 8px;
+  margin-left: 12px;
   cursor: pointer;
 }
 
@@ -636,8 +636,15 @@ align-items: center;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+<<<<<<< HEAD
 }
 
+<<<<<<< HEAD
+=======
+}
+>>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
+=======
 #CSV-upload-download-form input {
 
 }
+>>>>>>> 7b626de92753cb08c0b1e14e60b58e8fd0008458

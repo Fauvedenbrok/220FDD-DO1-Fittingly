@@ -31,9 +31,9 @@ include 'adminheader.php'; // include admin header
 
     <div>
       <h1 id="welkomst_tekst_admin_h1"> <?= $translator->get('adminportal_welcome_title') ?></h1>
-      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_1') ?> </p>
-      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_2') ?> </p>
-      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_3') ?> </p>
+      <p class="admin-intro-text"> <?= $translator->get('adminportal_intro_1') ?> </p>
+      <p class="admin-intro-text"> <?= $translator->get('adminportal_intro_2') ?> </p>
+      <p class="admin-intro-text"> <?= $translator->get('adminportal_intro_3') ?> </p>
     </div>
 
   </main>
