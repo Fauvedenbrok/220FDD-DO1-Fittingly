@@ -4,7 +4,9 @@
 require_once(__DIR__ . '/../project_root/Core/Session.php');
 require_once __DIR__ . '/../project_root/Core/Database.php';            
 require_once __DIR__ . '/../project_root/Repositories/ArticlesRepository.php';
+require_once __DIR__ . '/../project_root/Models/CrudModel.php';
 
+use Models\CrudModel;
 use Core\Database;  
 use Core\Session;
 use Repositories\ArticlesRepository;
@@ -126,62 +128,88 @@ class CartHandler
     }
 
 
-/**
- * Plaatst een order en orderregels in de database, en leegt daarna de cart.
- *
- * @param string $postalCode   De postcode van de klant
- * @param string $houseNumber  Het huisnummer van de klant
- * @return int                 De nieuw aangemaakte OrderID
- * @throws Exception           Bij fouten in de database-operaties
- */
 public function checkout(string $postalCode, string $houseNumber): int
 {
-    // Zorg dat de sessie loopt en cart beschikbaar is
     Session::start();
     $cart = Session::get('cart') ?: [];
     if (empty($cart)) {
         throw new \Exception("Winkelwagen is leeg.");
     }
 
-    $pdo = Database::getConnection();
-    // Haal CustomerID op uit de ingelogde user
-    $emailStmt = $pdo->prepare("SELECT CustomerID FROM UserAccounts WHERE EmailAddress = ?");
-    $emailStmt->execute([Session::get('user_email')]);
-    $customerId = $emailStmt->fetchColumn();
+    // Haal CustomerID op
+    $customerId = CrudModel::getForeignKeyValue(
+        'UserAccounts', 'EmailAddress', Session::get('user_email'), 'CustomerID'
+    );
     if (!$customerId) {
-        throw new \Exception("Geen klant gekoppeld aan deze gebruiker.");
+        throw new \Exception("Geen klant gekoppeld.");
     }
 
-    // Start transactie
-    $pdo->beginTransaction();
-    try {
-        // Insert order
-        $orderStmt = $pdo->prepare("
-            INSERT INTO Orders
-            (OrderDate, PaymentStatus, PostalCode, HouseNumber, OrderStatus, CustomerID)
-            VALUES (NOW(), 0, ?, ?, 'Pending', ?)
-        ");
-        $orderStmt->execute([$postalCode, $houseNumber, $customerId]);
-        $orderId = (int)$pdo->lastInsertId();
+    // 1) Zorg dat adres bestaat
 
-        // Insert orderregels
-        $lineStmt = $pdo->prepare("
-            INSERT INTO OrderLines
-            (OrderID, PartnerID, ArticleID, Quantity, StartDateReservation, EndDateReservation, OrderLinePrice)
-            VALUES (?, 1, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 0)
-        ");
-        foreach ($cart as $articleId => $quantity) {
-            $lineStmt->execute([$orderId, $articleId, $quantity]);
+$exists = CrudModel::checkRecordExists('Addresses', [
+  'PostalCode'  => $postalCode,
+  'HouseNumber' => $houseNumber,
+]);
+
+if (!$exists) {
+    // Alleen als nog niet bestaat, toevoegen
+    CrudModel::createData('Addresses', [
+        'PostalCode'   => $postalCode,
+        'HouseNumber'  => $houseNumber,
+        'StreetName'   => '',
+        'City'         => '',
+        'Country'      => 'Nederland',
+    ]);
+}
+
+
+    // 2) Insert order
+    CrudModel::createData('Orders', [
+        'OrderDate'      => date('Y-m-d'),
+        'PaymentStatus'  => 0,
+        'PostalCode'     => $postalCode,
+        'HouseNumber'    => $houseNumber,
+        'OrderStatus'    => 'Pending',
+        'CustomerID'     => $customerId,
+    ]);
+
+    // Haal nieuw OrderID (PDO nodig hiervoor)
+    $pdo = Database::getConnection();
+    $orderId = (int)$pdo->lastInsertId();
+
+    // 3) Insert orderregels én update stock
+    foreach ($cart as $articleId => $qty) {
+        // OrderLine
+        CrudModel::createData('OrderLines', [
+            'OrderID'              => $orderId,
+            'PartnerID'            => 1,
+            'ArticleID'            => $articleId,
+            'Quantity'             => $qty,
+            'StartDateReservation' => date('Y-m-d'),
+            'EndDateReservation'   => date('Y-m-d', strtotime('+7 days')),
+            'OrderLinePrice'       => 0.00,
+        ]);
+
+        // Stock bijwerken (aftrekken)
+        // Stel dat Stock-tabel kolommen: ArticleID, PartnerID, QuantityOfStock, Price, DateAdded, InternalReference
+        // Lees huidige stock
+        $stockRow = CrudModel::readAllById('Stock', 'ArticleID', $articleId);
+        if ($stockRow) {
+            $newStock = max(0, $stockRow['QuantityOfStock'] - $qty);
+            CrudModel::updateData('Stock', [
+                'ArticleID'       => $articleId,
+                'PartnerID'       => $stockRow['PartnerID'],
+                'QuantityOfStock' => $newStock,
+                'Price'           => $stockRow['Price'],
+                'DateAdded'       => $stockRow['DateAdded'],
+                'InternalReference'=> $stockRow['InternalReference'],
+            ]);
         }
-
-        // Commit en cart legen
-        $pdo->commit();
-        Session::remove('cart');
-
-        return $orderId;
-    } catch (\Exception $e) {
-        $pdo->rollBack();
-        throw $e;
     }
+
+    // 4) Leeg cart
+    Session::remove('cart');
+
+    return $orderId;
 }
 }
