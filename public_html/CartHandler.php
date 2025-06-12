@@ -63,7 +63,7 @@ class CartHandler {
      * @return float The total price.
      */
     // Voorlopig geen prijs, dus total altijd 0
-    public function calculateTotal(array $artikelen): decimal {
+    public function calculateTotal(array $artikelen): float {
         return 0.00;
     }
     
@@ -79,7 +79,7 @@ class CartHandler {
         $user = new UserAccounts(...array_values(CrudModel::readAllById('UserAccounts', 'EmailAddress', $userId)));
         // change this to get the customer data based on the foreign key in UserAccounts
         $customerId = CrudModel::getForeignKeyValue('UserAccounts', 'EmailAddress', $user->getUserEmail(), 'CustomerID');
-        $customer = new Customers(...array_values(CrudModel::readAllById('UserAccounts', 'CustomerID', $customerId)));
+        $customer = new Customers(...array_values(CrudModel::readAllById('Customers', 'CustomerID', $customerId)));
 
         $articles = [];
         foreach ($articleIds as $articleId) {
@@ -105,14 +105,14 @@ class CartHandler {
         // Prepare order data
         $user = $checkoutData['user']->createAssociativeArray();
         $customer = $checkoutData['customer']->createAssociativeArray();
-
+        
         $orderData = [
             'OrderDate' => date('Y-m-d'), // Current date
             'PaymentStatus' => false, // Default payment status
-            'PostalCode' => "5152RL",
-            'HouseNumber' => "27",
+            'PostalCode' => $customer['PostalCode'],
+            'HouseNumber' => $customer['HouseNumber'],
             'OrderStatus' => 'Pending', // Default order status
-            'CustomerID' => "c4b239a3-a9d4-422f-9b5b-3d195bb7ba54"
+            'CustomerID' => $customer['CustomerID'],
         ];
 
         // Insert into Orders table
