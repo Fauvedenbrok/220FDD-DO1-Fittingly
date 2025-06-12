@@ -4,9 +4,6 @@ require_once __DIR__ . '/../Lang/translator.php';
 
 $translator = init_translator();
 
-include 'adminheader.php'; // include admin header
-
-
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +39,10 @@ include 'adminheader.php'; // include admin header
   </footer>
   
   <script src="../js/scripts.js"></script>
+
+  <script>
+includeHTML("/public_html/admin/adminheader.php", "header");
+</script>
 </body>
 
 </html>
