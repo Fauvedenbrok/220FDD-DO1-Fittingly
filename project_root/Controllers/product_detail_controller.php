@@ -36,11 +36,7 @@ $articlesRepo = new ArticlesRepository($pdo);
  */
 $id = (int) ($_GET['id'] ?? 0);
 
-
-
-/** 
- * Controleer of het artikel-ID geldig is. Als niet, geef een lege lijst terug.
- * 
+/** Als ID niet geldig is (0), geef een lege array terug.
  * @!$id           Controleert of ID 0 of ongeldig is.
  * @ return array  Geeft een lege lijst als er geen geldig ID is.
  */
