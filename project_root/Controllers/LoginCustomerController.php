@@ -57,7 +57,7 @@ class LoginCustomerController
 
             // Redirect based on access rights
             if (strtolower(trim($user['AccountAccessRights'])) === 'admin') {
-                header("Location: /project_root/admin/adminportal.php");
+                header("Location: /public_html/admin/adminportal.php");
             } else {
                 header("Location: /public_html/index.php");
             }

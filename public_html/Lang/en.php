@@ -1,9 +1,13 @@
 <?php
 return [
+    /**
+     * All strings on all pages translated to english
+     * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
+     */
     // Index
     'hero_content_h2' => 'Become a partner of Fittingly?',
-    'hero_content_partnerpagina_button' => "More information",
-    'hero_content_productpagina_button' => "Become a partner",
+    'hero_content_partnerpagina_button' => "Become a partner",
+    'hero_content_productpagina_button' => "View our products",
     'scroll_info_text' => "Who are we?",
     'about_h3' => "Exclusive clothing, without buying",
     'about_h4' => "Our platform",
@@ -12,11 +16,11 @@ return [
     'index_textopmaak_h4' => "Our goal",
     'index_paragraph_text' => "At Fittingly, we aim to uniquely combine luxury and sustainability. Our goal is to become the standard for exclusive clothing rental. We strive to play a leading role in a future where sharing and reusing clothing is the norm. In this way, we contribute together to a sustainable world where luxury and responsibility go hand in hand.",
     'usp_container_1' => "Affordability",
-    'usp1_translation' => 'At Fittingly, we believe that luxury should be accessible to everyone. By renting exclusive clothing instead of selling it, we make it possible to wear high-end fashion at a fraction of the price. This way, everyone can enjoy beautiful outfits without the high costs usually associated with luxury. We offer affordable solutions without compromising on style or quality.',
+    'translation.usp1' => 'At Fittingly, we believe that luxury should be accessible to everyone. By renting exclusive clothing instead of selling it, we make it possible to wear high-end fashion at a fraction of the price. This way, everyone can enjoy beautiful outfits without the high costs usually associated with luxury. We offer affordable solutions without compromising on style or quality.',
     'usp_container_2' => "Innovation",
-    'usp2_translation' => "Innovation is at the heart of everything we do at Fittingly. We use advanced technologies to make our rental process simple and efficient, from online reservations to smart clothing maintenance systems. By continuously innovating, we stay ahead in the market and can offer our customers new possibilities and services.",
+    'translation.usp2' => "Innovation is at the heart of everything we do at Fittingly. We use advanced technologies to make our rental process simple and efficient, from online reservations to smart clothing maintenance systems. By continuously innovating, we stay ahead in the market and can offer our customers new possibilities and services.",
     'usp_container_3' => "Sustainability",
-    'usp3_translation' => "Sustainability is a core value of Fittingly. We strive to minimize our ecological footprint by giving clothing a second, third, or even fourth life. Our circular model contributes to less waste and more conscious consumption behavior. By choosing Fittingly, you not only choose luxury but also a sustainable future where reuse and environmental friendliness are central.",
+    'translation.usp3' => "Sustainability is a core value of Fittingly. We strive to minimize our ecological footprint by giving clothing a second, third, or even fourth life. Our circular model contributes to less waste and more conscious consumption behavior. By choosing Fittingly, you not only choose luxury but also a sustainable future where reuse and environmental friendliness are central.",
 
     // Header
     'header_navbar_1' => "Home",
@@ -132,6 +136,11 @@ return [
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
     'admin_searchwords_column_delete' => "Delete",
+    'admin_searchwords_match' => "Found in articles",
+    'admin_searchwords_no_match' => "Not found in articles.",
+    'admin_searchwords_delete_confirmation' => "Are you sure you want to delete this search word?",
+    'admin_searchwords_match_yes' => "Yes",
+    'admin_searchwords_match_no' => "No",
 
 
     // Product Detail View
@@ -148,6 +157,7 @@ return [
     'product_detail_view_price' => "Price",
     'product_detail_view_availability' => "Availability",
     'product_detail_view_back_link' => "← Back to overview",
+    'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
 
     // Product List View
     'product_list_view_title' => "Product Page",
@@ -179,4 +189,6 @@ return [
     'cart_total' => 'Total',
     'cart_update_button' => 'Update',
     'cart_checkout_button' => 'Checkout',
+    'product_list_view_cart_link' => "Add to Cart",
+    'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
 ];

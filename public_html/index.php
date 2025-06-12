@@ -9,6 +9,8 @@ $translator = init_translator();
 
 
 <!DOCTYPE html>
+
+<!-- wanneer de taal veranderd (button) moet deze tag ook veranderen naar de taal -->
 <html lang="nl">
 
 <head>
@@ -20,8 +22,11 @@ $translator = init_translator();
   <link rel="stylesheet" href="./css/indexstyles.css">
 </head>
 
-<body style="background-image: url('./Images/onsdoelImages/background_dark.png');">
-  <header></header>
+<body>
+  <header>
+    <?php include 'header.php'; ?>
+  </header>
+  
   <div class="splash-screen">
     <div class="logo-splash"></div>
     <h1 class="brandname-splash">Fittingly</h1>
@@ -130,7 +135,9 @@ $translator = init_translator();
       </div>
     </div>
   </main>
-  <footer></footer>
+  <footer>
+    <?php include 'footer.php'; ?>
+  </footer>
 
   <script src="js/scripts.js"></script>
   <script src="js/onsdoelscript.js"></script>
@@ -142,12 +149,6 @@ $translator = init_translator();
       usp3: "<?= $translator->get('translation.usp3') ?>"
   };
 </script>
-
-  <script>
-    includeHTML("header.php", "header")
-    includeHTML("footer.php", "footer")
-  </script>
-
 
 
 </body>

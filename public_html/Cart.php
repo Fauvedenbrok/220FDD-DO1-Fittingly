@@ -1,6 +1,11 @@
 <?php
 require_once '../project_root/Core/Session.php';
+
 use Core\Session;
+
+/**
+ * Check if the user is logged in; if not, redirect to login page.
+ */
 if (!Session::exists('user_email')) {
     header('Location: inloggen.php');
     exit;
@@ -10,41 +15,57 @@ require_once 'CartHandler.php';
 $cartHandler = new CartHandler();
 
 require_once 'Lang/translator.php';
+/** @var object $translator Translator object for multi-language support. */
 $translator = init_translator();
 
 require_once '../project_root/Helpers/ViewHelper.php';
+
 use Helpers\ViewHelper;
 
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
 
+/**
+ * Handle adding a product to the cart.
+ */
 // Verwerken winkelwagen toevoeging via CartHandler
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $productId = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
     $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT, ['options' => ['default' => 1, 'min_range' => 1]]);
 
     if ($productId && $quantity > 0) {
-        $cartHandler->addToCart($productId, $quantity);
-        header('Location: productpagina.php');
+        $cartHandler->addToCart($productId, $quantity);;
         exit();
     }
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {            
-    if(!empty($_SESSION['cart'])) {
-        $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), Session::get('customer_id'), array_keys($_SESSION['cart']));
+/**
+ * Handle checkout: process the order if the cart is not empty.
+ */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkout'])) {
+    if (!empty($_SESSION['cart'])) {
+        $checkoutData = $cartHandler->getCheckoutData(Session::get('user_email'), array_keys($_SESSION['cart']));
         $cartHandler->processOrder($checkoutData, $_SESSION['cart']);
-        
     }
-
     header('Location: checkout.php');
     exit();
-        }
-
+}
+/**
+ * Load the product list controller and extract articles.
+ * @var array $data Data returned from the controller.
+ * @var array $artikelen List of article objects.
+ */
 $data = require __DIR__ . '/../project_root/Controllers/product_list_controller.php';
 $artikelen = $data['artikelen'] ?? [];
 
+/**
+ * Get the current cart items.
+ * @var array $cartItems Associative array of productId => quantity.
+ */
 $cartItems = $cartHandler->getCartItems();
 
+/**
+ * Handle removing a product from the cart or updating quantities.
+ */
 // Verwerken verwijderen product uit winkelwagen
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['remove_product_id'])) {
@@ -73,97 +94,108 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+/**
+ * Calculate the total price of the cart.
+ * @var decimal $totaalPrijs The total price of all items in the cart.
+ */
 // Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
-$totaalPrijs = 0;
+$totaalPrijs = 0.00;
 foreach ($cartItems as $productId => $quantity) {
-    $prijs = 0; // placeholder prijs
+    $prijs = 0.00; // placeholder prijs
     $totaalPrijs += $prijs * $quantity;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title> <?= $translator->get('cart_title'); ?> </title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<header></header>
+    <header><?php include 'header.php'; ?></header>
 
-<main class="cart-container">
-    <h2><?= $translator->get('cart_title'); ?></h2>
+    <main class="cart-container">
+        <h2><?= $translator->get('cart_title'); ?></h2>
 
-    <?php if (empty($cartItems)): ?>
-        <p><?= $translator->get('cart_empty'); ?></p>
-    <?php else: ?>
-        <form method="post" action="Cart.php" class="cart-form">
-            <table>
-                <thead>
-                    <tr>
-                        <th><?= $translator->get('cart_table_product'); ?></th>
-                        <th><?= $translator->get('cart_table_price'); ?></th>
-                        <th><?= $translator->get('cart_table_quantity'); ?></th>
-                        <th><?= $translator->get('cart_table_subtotal'); ?></th>
-                        <th><?= $translator->get('cart_table_actions'); ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($cartItems as $productId => $quantity): ?>
-                    <?php
-                        $artikel = null;
-                        foreach ($artikelen as $a) {
-                            if ($a->getArticleID() == $productId) {
-                                $artikel = $a;
-                                break;
+        <?php if (empty($cartItems)): ?>
+            <p><?= $translator->get('cart_empty'); ?></p>
+        <?php else: ?>
+            <form method="post" action="Cart.php" class="cart-form">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><?= $translator->get('cart_table_product'); ?></th>
+                            <th><?= $translator->get('cart_table_price'); ?></th>
+                            <th><?= $translator->get('cart_table_quantity'); ?></th>
+                            <th><?= $translator->get('cart_table_subtotal'); ?></th>
+                            <th><?= $translator->get('cart_table_actions'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($cartItems as $productId => $quantity): ?>
+                            <?php
+                            $artikel = null;
+                            foreach ($artikelen as $a) {
+                                if ($a->getArticleID() == $productId) {
+                                    $artikel = $a;
+                                    break;
+                                }
                             }
-                        }
-                        if (!$artikel) continue; // Product bestaat niet meer
-                        $prijs = 0; // prijs nog niet beschikbaar
-                        $subtotal = $prijs * $quantity;
-                    ?>
-                    <tr>
-                        <td><?= ViewHelper::e($artikel->getArticleName()); ?></td>
-                        <td>€<?= number_format($prijs, 2, ',', '.'); ?></td>
-                        <td>
-                            <input 
-                                type="number" 
-                                name="quantities[<?= ViewHelper::e($productId); ?>]" 
-                                value="<?= ViewHelper::e($quantity); ?>" 
-                                min="0" max="99" 
-                                required
-                            >
-                        </td>
-                        <td>€<?= number_format($subtotal, 2, ',', '.'); ?></td>
-                        <td>
-                            <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('Weet je zeker dat je dit product wilt verwijderen?')">
-                                <?= $translator->get('cart_remove_button'); ?>
-                            </button>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
+                            if (!$artikel) continue; // Product bestaat niet meer
+                            $prijs = 0; // prijs nog niet beschikbaar
+                            $subtotal = $prijs * $quantity;
+                            ?>
+                            <tr>
+                                <td><?= ViewHelper::e($artikel->getArticleName()); ?></td>
+                                <td>€<?= number_format($prijs, 2, ',', '.'); ?></td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        name="quantities[<?= ViewHelper::e($productId); ?>]"
+                                        value="<?= ViewHelper::e($quantity); ?>"
+                                        min="0" max="99"
+                                        required>
+                                </td>
+                                <td>€<?= number_format($subtotal, 2, ',', '.'); ?></td>
+                                <td>
 
-            <p><strong><?= $translator->get('cart_total'); ?>:</strong> €<?= number_format($totaalPrijs, 2, ',', '.'); ?></p>
+                                    <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('<?= addslashes($translator->get('remove_product_confirmation')); ?>')">
 
-            <button type="submit" name="update_quantities"><?= $translator->get('cart_update_button'); ?></button>
-            <button type="submit" name="checkout"><?= $translator->get('cart_checkout_button'); ?></button>
-        </form>
-    <?php endif; ?>
+                                        <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('<?= $translator->get('remove_product_confirmation'); ?>')">
 
-    <!-- Deze knop is altijd zichtbaar -->
-    <a href="productpagina.php" class="button-back"><?= $translator->get('cart_continue_shopping'); ?></a>
-</main>
+                                            <button type="submit" name="remove_product_id" value="<?= ViewHelper::e($productId); ?>" onclick="return confirm('<?= addslashes($translator->get('remove_product_confirmation')); ?>')">
 
-<footer></footer>
+                                                <?= $translator->get('cart_remove_button'); ?>
+                                            </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
-<script src="js/scripts.js"></script>
-<script>
-    includeHTML("header.php", "header");
-    includeHTML("footer.php", "footer");
-</script>
+                <p><strong><?= $translator->get('cart_total'); ?>:</strong> €<?= number_format($totaalPrijs, 2, ',', '.'); ?></p>
+
+                <button type="submit" name="update_quantities"><?= $translator->get('cart_update_button'); ?></button>
+                <button type="submit" name="checkout"><?= $translator->get('cart_checkout_button'); ?></button>
+            </form>
+        <?php endif; ?>
+
+        <!-- Deze knop is altijd zichtbaar -->
+        <a href="productpagina.php" class="button-back"><?= $translator->get('cart_continue_shopping'); ?></a>
+    </main>
+
+    <footer><?php include 'footer.php'; ?></footer>
+
+    <script src="js/scripts.js"></script>
+
+
+
 
 </body>
+
 </html>

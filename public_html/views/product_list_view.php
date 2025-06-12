@@ -83,7 +83,7 @@ require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
                     <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button"><?= $translator->get('product_list_view_detail_button') ?></a>
 
                     <a href="Cart.php" class="cart-link">
-                        Naar winkelwagen
+                        <?= $translator->get('product_list_view_cart_link'); ?>
                     </a>
                 </div>
             <?php endforeach; ?>

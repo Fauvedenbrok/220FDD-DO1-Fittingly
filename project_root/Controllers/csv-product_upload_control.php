@@ -3,11 +3,13 @@ use Core\Database;
 use Models\Articles;
 use Models\CrudModel;
 
-    require_once '../../../Core/Database.php';
-    require_once '../../../Models/CrudModel.php';
-    require_once '../../../Models/Articles.php';
+    require_once '../Core/Database.php';
+    require_once '../Models/CrudModel.php';
+    require_once '../Models/Articles.php';
 
-    // Hier zou ook een aparte functie van gemaakt kunnen worden. Als je bijvoorbeeld ook een andere file upload wilt maken.
+    /**
+     * Handles the CSV upload and processing if the form is submitted.
+     */
     if (isset($_POST["upload"])) { 
     if ($_FILES["csv_file"]["error"] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES["csv_file"]["tmp_name"];
@@ -22,17 +24,56 @@ use Models\CrudModel;
         echo "Fout bij uploaden.";
     }
     }
+
+    /**
+     * Detects the delimiter used in a CSV file by checking the first line.
+     *
+     * @param string $filePath The path to the CSV file.
+     * @return string The detected delimiter (default is comma).
+     */
+    function detectCsvDelimiter($filePath) {
+        $delimiters = [",", ";", "\t", "|"];
+        $handle = fopen($filePath, "r");
+        $firstLine = fgets($handle);
+        fclose($handle);
+
+        $maxCount = 0;
+        $delimiter = ",";
+        foreach ($delimiters as $d) {
+            $count = substr_count($firstLine, $d);
+            if ($count > $maxCount) {
+                $maxCount = $count;
+                $delimiter = $d;
+            }
+        }
+        return $delimiter;
+    }
+
+    /**
+     * Processes a CSV file: checks if each record exists in the database and updates or inserts accordingly.
+     *
+     * @param string $filePath The path to the uploaded CSV file.
+     * @return void
+     */
     // functie verwerkt de csv, controleert of de gegevens al bestaan in de database en voegt ze toe of update ze.
     // Deze functie ga ik dus nog opsplitsen in losse functies en OOP maken. -Bart
     function processCSV($filePath) {
-        $handle = fopen($filePath, "r");
+        try {
+            // Detecteer de delimiter van de CSV
+            $delimiter = detectCsvDelimiter($filePath);
+        } catch (Exception $e) {
+            header("Location: ../../public_html/admin/products.php?lang=nl&upload=error");
+            exit;
+        }
 
+
+        $handle = fopen($filePath, "r");
         if ($handle !== false) {
                 // slaat de eerste regel van de csv over
                 // Dit is de header regel, die we niet willen verwerken
-                fgetcsv($handle, 0, ",");
+                fgetcsv($handle, 0, $delimiter);
             // Verwerk rijen van de CSV hierbij controleert die of er nog een record is in de csv
-            while (($data = fgetcsv($handle, 0, ",")) !== false) {
+            while (($data = fgetcsv($handle, 0, $delimiter)) !== false) {
                 
                 $tableName = "Articles";
 
@@ -47,14 +88,15 @@ use Models\CrudModel;
                     // Update existing row
                     CrudModel::updateData($tableName, $articles);
                 } else {
+                    // Insert new row
                     CrudModel::createData($tableName, $articles);
             }}
 
             fclose($handle);
 
-            header("Location: ../../products.php?lang=nl&upload=success");
+            header("Location: ../../public_html/admin/products.php?lang=nl&upload=success");
          } 
         else {   
-            header("Location: ../../products.php?lang=nl&upload=error");
+            header("Location: ../../public_html/admin/products.php?lang=nl&upload=error");
         }
     }

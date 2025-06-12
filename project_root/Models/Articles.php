@@ -1,7 +1,16 @@
 <?php
 namespace Models;
-use Models\CrudModel;
+use CrudModel;
 
+require_once __DIR__ . '/CrudModel.php';
+
+/**
+ * Class Articles
+ *
+ * Represents an article/product and provides methods to interact with the database.
+ *
+ * @package Models
+ */
 class Articles
 {
     private int $articleID;
@@ -19,7 +28,26 @@ class Articles
     private bool $articleAvailability;
     private array $articleInfo;
 
-    public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability)
+    private $crudModel;
+
+    /**
+     * Articles constructor.
+     *
+     * @param int $articleID
+     * @param string $articleName
+     * @param string $size
+     * @param float $weight
+     * @param string $weightUnit
+     * @param string $color
+     * @param string $articleDescription
+     * @param string|null $articleImagePath
+     * @param string $articleCategory
+     * @param string $articleSubCategory
+     * @param string $articleMaterial
+     * @param string $articleBrand
+     * @param bool $articleAvailability
+     */
+    public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability, $crudModel = null)
     {
         $this->articleID = $articleID;
         $this->articleName = $articleName;
@@ -35,26 +63,45 @@ class Articles
         $this->articleBrand = $articleBrand;
         $this->articleAvailability = $articleAvailability;
         $this->articleInfo = $this->createAssociativeArray();
+        $this->crudModel = $crudModel ?? new \Models\CrudModel();
     }
+    /**
+     * Returns a string representation of the article.
+     *
+     * @return string
+     */
     public function __toString()
     {
         return "$this->articleID, $this->articleName, $this->weight, $this->weightUnit, $this->color, $this->articleDescription, $this->articleImagePath, $this->articleCategory, $this->articleSubCategory, $this->articleMaterial, $this->articleBrand, $this->articleAvailability";
     }
 
+    /**
+     * Returns the URL path to the article image.
+     *
+     * @return string
+     */
     // Geeft het URL-pad naar de afbeelding (voor <img src=...>)
     public function getImageUrl(): string 
     {
     // Als je databasepad NIET wilt gebruiken maar bestand op basis van ID
             return 'Images/productImages/' . $this->articleID . '.jpg';
     }
-
+    /**
+     * Checks if the image file exists on the server.
+     *
+     * @return bool
+     */
     public function imageExists(): bool {
     // Gebruik absoluut pad op de server (let op: pad buiten public_html)
     $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
     return file_exists($serverPath);
     }
 
-    // als je alle gegevens in een associative array wilt opvragen.
+    /**
+     * Returns all article data as an associative array.
+     *
+     * @return array
+     */
     public function createAssociativeArray(){
         $articlesArray = array(
             'ArticleID' => $this->articleID,
@@ -74,28 +121,53 @@ class Articles
         return $articlesArray;
     }
 
+    /**
+     * Saves the article to the database using CrudModel.
+     *
+     * @return bool True on success, false on failure.
+     */
     public function saveArticle(): bool {
-        return CrudModel::createData("Articles", $this->articleInfo);
+        return ($this->crudModel)::createData("Articles", $this->articleInfo);
     }
 
+    /**
+     * Updates the article in the database using CrudModel.
+     *
+     * @return bool True on success, false on failure.
+     */
     public function updateArticle(): bool {
-        return CrudModel::updateData("Articles", $this->articleInfo);
+        return ($this->crudModel)::updateData("Articles", $this->articleInfo);
     }
 
-// Voeg eventueel getters toe als je de eigenschappen los wilt opvragen!
-public function getArticleID() { return $this->articleID; }
-public function getArticleName() { return $this->articleName; }
-public function getWeight() { return $this->weight; }
-public function getWeightUnit() { return $this->weightUnit; }
-public function getColor() { return $this->color; }
-public function getSize() { return $this->size; }
-public function getArticleDescription() { return $this->articleDescription; }
-public function getArticleImagePath() { return $this->articleImagePath; }
-public function getArticleCategory() { return $this->articleCategory; }
-public function getArticleSubCategory() { return $this->articleSubCategory; }
-public function getArticleMaterial() { return $this->articleMaterial; }
-public function getArticleBrand() { return $this->articleBrand; }
-public function getArticleAvailability() { return $this->articleAvailability; }
-public function getArticlesArray() { return $this->articleInfo; }
+    // Getters
+
+    /** @return int */
+    public function getArticleID() { return $this->articleID; }
+    /** @return string */
+    public function getArticleName() { return $this->articleName; }
+    /** @return float */
+    public function getWeight() { return $this->weight; }
+    /** @return string */
+    public function getWeightUnit() { return $this->weightUnit; }
+    /** @return string */
+    public function getColor() { return $this->color; }
+    /** @return string */
+    public function getSize() { return $this->size; }
+    /** @return string */
+    public function getArticleDescription() { return $this->articleDescription; }
+    /** @return string|null */
+    public function getArticleImagePath() { return $this->articleImagePath; }
+    /** @return string */
+    public function getArticleCategory() { return $this->articleCategory; }
+    /** @return string */
+    public function getArticleSubCategory() { return $this->articleSubCategory; }
+    /** @return string */
+    public function getArticleMaterial() { return $this->articleMaterial; }
+    /** @return string */
+    public function getArticleBrand() { return $this->articleBrand; }
+    /** @return bool */
+    public function getArticleAvailability() { return $this->articleAvailability; }
+    /** @return array */
+    public function getArticlesArray() { return $this->articleInfo; }
 }
 ?>

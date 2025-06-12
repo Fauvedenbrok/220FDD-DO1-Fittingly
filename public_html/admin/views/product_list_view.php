@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../Helpers/ViewHelper.php';
+require_once __DIR__ . '/../../../project_root/Helpers/ViewHelper.php';
 
 /** ViewHelper verwerkt htmlspecialchars voor veilige HTML-uitvoer en minder herhaling (OOP) */
 use Helpers\ViewHelper;

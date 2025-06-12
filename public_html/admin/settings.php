@@ -4,13 +4,10 @@ require_once __DIR__ . '/../../public_html/Lang/translator.php';
 
 $translator = init_translator();
 
-include 'adminheader.php'; // include admin header
-
-
-
 
 // login check en rechten check
 
+// admin gegevens bijwerken / partner
 
 ?>
 
@@ -22,12 +19,11 @@ include 'adminheader.php'; // include admin header
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fittingly</title>
   <link rel="icon" href="../Images/icons/favicon.ico">
-
-  <link rel="stylesheet" href="/public_html/css/styles.css">
   <link rel="stylesheet" href="/public_html/css/adminstyles.css">
+  <link rel="stylesheet" href="/public_html/css/styles.css">
 </head>
 
-<body style="background-image: url('../Images/onsdoelImages/background_dark.png');">
+<body>
   <header>
   </header>
 
@@ -35,17 +31,16 @@ include 'adminheader.php'; // include admin header
     <!-- extra navigatie voor opties admin portal 
    // producten, orders, berichten, retouren, klanten, instellingen-->
 
-    <div>
-      <h1 id="welkomst_tekst_admin_h1"> <?= $translator->get('adminportal_welcome_title') ?></h1>
-      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_1') ?> </p>
-      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_2') ?> </p>
-      <p class="admin-intro-text"> <?= $translator-> get('adminportal_intro_3') ?> </p>
-    </div>
+
 
   </main>
   <footer>
   </footer>
+
   <script src="/public_html/js/scripts.js"></script>
+  <script>
+    includeHTML("/project_root/admin/adminheader.php", "header");
+  </script>
 </body>
 
 </html>

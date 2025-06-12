@@ -138,3 +138,10 @@ composer-setup.php
 # config.php
 # This file is used to store sensitive information such as database credentials.
 project_root/admin/includes/config.php
+
+
+
+# PHPdoc
+.phpdoc
+docs
+
