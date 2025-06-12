@@ -636,15 +636,89 @@ align-items: center;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-<<<<<<< HEAD
 }
 
-<<<<<<< HEAD
-=======
+/* Container en layout */
+.checkout-container {
+  width: 85%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1a3030;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  color: #dcd3c2;
+  font-family: "Raleway", sans-serif;
 }
->>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
-=======
+
+/* Koppen */
+.checkout-container h1,
+.checkout-container h2 {
+  font-family: "Playfair Display", serif;
+  color: #cc9c4e;
+  margin-bottom: 1rem;
+}
+.checkout-container h1 {
+  font-size: 2rem;
+}
+.checkout-container h2 {
+  font-size: 1.5rem;
+}
+
+/* Foutmelding */
+.checkout-container .error {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Formulier */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.checkout-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: #dcd3c2;
+}
+.checkout-form input[type="text"] {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Plaats bestelling knop */
+.checkout-form button[type="submit"] {
+  align-self: start;
+  background-color: #cc9c4e;
+  color: #1a3030;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+.checkout-form button[type="submit"]:hover {
+  background-color: #b38b42;
+}
+
+
+
+
+
+
+
 #CSV-upload-download-form input {
 
 }
->>>>>>> 7b626de92753cb08c0b1e14e60b58e8fd0008458
+
+

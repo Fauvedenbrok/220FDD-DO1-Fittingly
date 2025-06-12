@@ -75,24 +75,57 @@ class ArticlesRepository
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
-            // door ...array_values($row) tussen de haakjes bij Articles(); te zetten stopt die alle variabelen op volgorde van de database kollommen in de constructor.
-            return new Articles(
-                $row['ArticleID'],
-                $row['Name'],
-                $row['Size'],
-                (float) $row['Weight'],
-                $row['WeightUnit'],
-                $row['Color'],
-                $row['Description'],
-                $row['Image'],
-                $row['Category'],
-                $row['SubCategory'],
-                $row['Material'],
-                $row['Brand'],
-                (bool) $row['Availability']
-            );
-        }
+ // 1) Maak basis-Article-object
+$article = new Articles(
+    $row['ArticleID'],
+    $row['Name'],
+    $row['Size'],
+    (float) $row['Weight'],
+    $row['WeightUnit'],
+    $row['Color'],
+    $row['Description'],
+    $row['Image'],
+    $row['Category'],
+    $row['SubCategory'],
+    $row['Material'],
+    $row['Brand'],
+    (bool) $row['Availability']
+);
 
+// 2) Haal live-prijs uit Stock (partnerId = 1)
+$priceStmt = $this->pdo->prepare(
+    "SELECT Price 
+       FROM Stock 
+      WHERE ArticleID = :aid 
+        AND PartnerID = :pid"
+);
+$priceStmt->execute([
+    'aid' => $row['ArticleID'],
+    'pid' => 1
+]);
+$priceRow = $priceStmt->fetch(PDO::FETCH_ASSOC);
+
+// 3) Zet prijs in Article-object
+$article->setPrice($priceRow['Price'] ?? '0.00');
+
+return $article;
+        }
+            // door ...array_values($row) tussen de haakjes bij Articles(); te zetten stopt die alle variabelen op volgorde van de database kollommen in de constructor.
+            // return new Articles(
+            //     $row['ArticleID'],
+            //     $row['Name'],
+            //     $row['Size'],
+            //     (float) $row['Weight'],
+            //     $row['WeightUnit'],
+            //     $row['Color'],
+            //     $row['Description'],
+            //     $row['Image'],
+            //     $row['Category'],
+            //     $row['SubCategory'],
+            //     $row['Material'],
+            //     $row['Brand'],
+            //     (bool) $row['Availability']
+            // );
         return null;
     }
 }

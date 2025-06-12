@@ -1,90 +1,78 @@
 <?php
-require_once '../project_root/Core/Session.php';
-use Core\Session;
-/**
- * Checkout page for displaying the order summary to the user.
- *
- * - Checks if the user is logged in.
- * - Loads the CartHandler and retrieves checkout data.
- * - Displays customer and order information.
- *
- * @package Public
- */
+require_once __DIR__ . '/../project_root/Core/Session.php';
+require_once __DIR__ . '/../project_root/Core/Database.php';
+require_once __DIR__ . '/../project_root/Repositories/ArticlesRepository.php';
+require_once __DIR__ . '/CartHandler.php';
 
-// Check if the user is logged in; if not, redirect to login page.
+use Core\Session;
+use Core\Database;
+use Repositories\ArticlesRepository;
+
+// 1) Start sessie & login-check
+Session::start();
 if (!Session::exists('user_email')) {
     header('Location: inloggen.php');
     exit;
 }
-require_once 'CartHandler.php';
 
-/** @var CartHandler $cartHandler Handles cart and checkout operations. */
-$cartHandler = new CartHandler();
-/** @var string|null $userId The email address of the logged-in user. */
-$userId = $_SESSION['user_email'] ?? null; // Or however you store the logged-in user
-/** @var int|null $orderId The ID of the current order. */
-$orderId = $_SESSION['order_id'] ?? null; // Assuming you have an order ID in the session
+// 2) Maak repository & handler
+$pdo         = Database::getConnection();
+$repo        = new ArticlesRepository($pdo);
+$cartHandler = new CartHandler($repo, 1);
 
-/**
- * Retrieve all data needed for the checkout view.
- * @var array $checkoutData Contains 'order', 'user', 'customer', 'quantity', 'orderLines', and 'articles'.
- */
-$checkoutData = $cartHandler->getCheckoutViewData($orderId);
+// 3) Verwerk checkout-formulier
+$success      = false;
+$errorMessage = '';
+$orderId      = null;
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $postalCode  = trim($_POST['PostalCode']  ?? '');
+    $houseNumber = trim($_POST['HouseNumber'] ?? '');
+
+    try {
+        // Gebruik hier wél de bestaande handler
+        $orderId = $cartHandler->checkout($postalCode, $houseNumber);
+        $success = true;
+    } catch (\Exception $e) {
+        $errorMessage = $e->getMessage();
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Overzicht Bestelling</title>
-   <link rel="stylesheet" href="css/styles.css">
-   <link rel="stylesheet" href="css/product.css">
+  <meta charset="UTF-8">
+  <title>Afrekenen</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-<header>
-    <?php require_once 'header.php'; ?>
-</header>
-
-<main>
-<h1>Bestelling Overzicht</h1>
-
-<h2>Klantgegevens</h2>
-<ul>
-    <li>Naam: <?= htmlspecialchars(($checkoutData['customer']['FirstName'] ?? '') . ' ' . ($checkoutData['customer']['LastName'] ?? '')) ?></li>
-    <li>Email: <?= htmlspecialchars($checkoutData['user']['EmailAddress'] ?? '') ?></li>
-    <li>Adres: <?= htmlspecialchars(($checkoutData['customer']['PostalCode'] ?? '') . ' ' . ($checkoutData['customer']['HouseNumber'] ?? '')) ?></li>
-</ul>
-
-<h2>Artikelen in winkelwagen</h2>
-<table>
-    <tr>
-        <th>Artikel ID</th>
-        <th>Naam</th>
-        <th>Aantal</th>
-        <th>Categorie</th>
-        <th>Kleur</th>
-    </tr>
-    <?php foreach ($checkoutData['articles'] as $article): ?>
-        <tr>
-            <td><?= htmlspecialchars($article['ArticleID']) ?></td>
-            <td><?= htmlspecialchars($article['Name'] ?? '') ?></td>
-            <td><?= htmlspecialchars($checkoutData['quantity'][$article['ArticleID']]) ?></td>
-            <td><?= htmlspecialchars($article['Category'] ?? '') ?></td>
-            <td><?= htmlspecialchars($article['Color'] ?? '') ?></td>
-        </tr>
-    <?php endforeach; ?>
-</table>
-</main>
-<footer>
-    <?php require_once 'footer.php' ?>
-</footer>
+  <header><?php include 'header.php'; ?></header>
+  <main class="checkout-container">
+    <?php if ($success): ?>
+      <h1>Bedankt! Je bestelling #<?= htmlspecialchars($orderId) ?> is geplaatst.</h1>
+      <p>Je ontvangt per e-mail een bevestiging van je bestelling.</p>
+      <a href="index.php">Verder winkelen</a>
+    <?php else: ?>
+      <?php if ($errorMessage): ?>
+        <div class="error">
+          <?= htmlspecialchars($errorMessage) ?>
+        </div>
+      <?php endif; ?>
+      <h2>Bevestig je gegevens</h2>
+      <form method="post" class="checkout-form">
+        <label>
+          Postcode:
+          <input type="text" name="PostalCode" value="<?= htmlspecialchars($postalCode ?? '') ?>" required>
+        </label>
+        <label>
+          Huisnummer:
+          <input type="text" name="HouseNumber" value="<?= htmlspecialchars($houseNumber ?? '') ?>" required>
+        </label>
+        <button type="submit"><?= $translator->get('checkout_place_order_button') ?? 'Bestelling plaatsen' ?></button>
+      </form>
+    <?php endif; ?>
+  </main>
+  <footer><?php include 'footer.php'; ?></footer>
 </body>
 </html>
-
-<?php
-/**
- * Clear the cart after checkout.
- */
-Session::remove('cart'); // Clear the cart after checkout
-?>

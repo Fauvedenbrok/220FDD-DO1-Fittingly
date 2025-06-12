@@ -164,5 +164,11 @@ class Articles
     public function getArticleAvailability() { return $this->articleAvailability; }
     /** @return array */
     public function getArticlesArray() { return $this->articleInfo; }
+    /** @var string */
+    private $price = '0.00';
+    /** @param string $price */
+    public function setPrice($price) { $this->price = $price; }
+    /** @return string */
+    public function getPrice() { return $this->price; }
 }
 ?>

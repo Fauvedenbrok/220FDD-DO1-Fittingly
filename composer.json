@@ -5,6 +5,9 @@
 		"allow-plugins": {
 			"pestphp/pest-plugin": true,
 			"phpdocumentor/shim": true
+		},
+		"platform": {
+			"php": "8.1.0"
 		}
 	},
 	"require-dev": {

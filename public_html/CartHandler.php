@@ -1,206 +1,187 @@
 <?php
-    use Models\CrudModel;
-    use Core\Database;
-    use Models\Customers;
-    use Models\UserAccounts;
-    use Models\Articles;
+// CartHandler.php
+// Object-georiënteerde cart-handler, met BCMath en zonder floats
+require_once(__DIR__ . '/../project_root/Core/Session.php');
+require_once __DIR__ . '/../project_root/Core/Database.php';            
+require_once __DIR__ . '/../project_root/Repositories/ArticlesRepository.php';
 
-require_once __DIR__ . '/../project_root/Core/Database.php';
-require_once __DIR__ . '/../project_root/Models/CrudModel.php';
-require_once __DIR__ . '/../project_root/Models/Customers.php';
-require_once __DIR__ . '/../project_root/Models/UserAccounts.php';
-require_once __DIR__ . '/../project_root/Models/Articles.php';
-require_once __DIR__ . '/../project_root/Models/Orders.php';
-require_once __DIR__ . '/../project_root/Models/OrderLines.php';
+use Core\Database;  
+use Core\Session;
+use Repositories\ArticlesRepository;
+use Models\Articles;
+ 
+class CartItem
+{
+    private Articles $article;
+    private int $quantity;
 
+    public function __construct(Articles $article, int $quantity)
+    {
+        $this->article  = $article;
+        $this->quantity = $quantity;
+    }
 
-/**
- * Class CartHandler
- *
- * Handles cart operations such as adding/removing items, processing orders, and retrieving checkout data.
- */
-class CartHandler {
-    /**
-     * Adds a product to the cart.
-     *
-     * @param int $productId The ID of the product to add.
-     * @param int $quantity The quantity to add.
-     * @return void
-     */
-    public function addToCart(int $productId, int $quantity): void {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-        $_SESSION['cart'][$productId] = ($_SESSION['cart'][$productId] ?? 0) + $quantity;
+    public function getArticle(): Articles
+    {
+        return $this->article;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
     }
 
     /**
-     * Removes a product from the cart.
-     *
-     * @param int $productId The ID of the product to remove.
-     * @return void
+     * @return string Price as decimal string, e.g. "12.34"
      */
-    public function removeFromCart(int $productId): void {
-        if (isset($_SESSION['cart'][$productId])) {
-            unset($_SESSION['cart'][$productId]);
-        }
+    public function getPrice(): string
+    {
+        return $this->article->getPrice();
     }
 
     /**
-     * Gets all items currently in the cart.
-     *
-     * @return array Associative array of productId => quantity.
+     * @return string Subtotal = price * quantity
      */
-    public function getCartItems(): array {
-        return $_SESSION['cart'] ?? [];
-    }
-
-    /**
-     * Calculates the total price of the cart.
-     * (Currently returns 0.00 as price calculation is not implemented.)
-     *
-     * @param array $artikelen List of articles.
-     * @return float The total price.
-     */
-    // Voorlopig geen prijs, dus total altijd 0
-    public function calculateTotal(array $artikelen): decimal {
-        return 0.00;
-    }
-    
-
-    /**
-     * Retrieves checkout data for the current user and selected articles.
-     *
-     * @param string $userId The user's email address.
-     * @param array $articleIds Array of article IDs in the cart.
-     * @return array Associative array with user, customer, and articles data.
-     */
-    function getCheckoutData($userId, $articleIds) {
-        $user = new UserAccounts(...array_values(CrudModel::readAllById('UserAccounts', 'EmailAddress', $userId)));
-        // change this to get the customer data based on the foreign key in UserAccounts
-        $customerId = CrudModel::getForeignKeyValue('UserAccounts', 'EmailAddress', $user->getUserEmail(), 'CustomerID');
-        $customer = new Customers(...array_values(CrudModel::readAllById('UserAccounts', 'CustomerID', $customerId)));
-
-        $articles = [];
-        foreach ($articleIds as $articleId) {
-            $article = new Articles(...array_values(CrudModel::readAllById('Articles', 'ArticleID', $articleId)));
-            if ($article) {
-                $articles[] = $article;
-            }
-        }
-
-        return ['user' => $user, 'customer' => $customer, 'articles' => $articles];
-    }
-
-
-
-    /**
-     * Processes the order: creates an order and order lines in the database.
-     *
-     * @param array $checkoutData Data for the order (user, customer, articles).
-     * @param array $articleQuantities Associative array of ArticleID => quantity.
-     * @return int The created OrderID.
-     */
-    function processOrder($checkoutData, $articleQuantities) {
-        // Prepare order data
-        $user = $checkoutData['user']->createAssociativeArray();
-        $customer = $checkoutData['customer']->createAssociativeArray();
-
-        $orderData = [
-            'OrderDate' => date('Y-m-d'), // Current date
-            'PaymentStatus' => false, // Default payment status
-            'PostalCode' => "5152RL",
-            'HouseNumber' => "27",
-            'OrderStatus' => 'Pending', // Default order status
-            'CustomerID' => "c4b239a3-a9d4-422f-9b5b-3d195bb7ba54"
-        ];
-
-        // Insert into Orders table
-        CrudModel::createData('Orders', $orderData);
-        $pdo = Database::getConnection();
-        $orderId = $pdo->lastInsertId(); // Retrieve the last inserted OrderID
-
-        
-        // Insert order lines
-        foreach ($checkoutData['articles'] as $articles) {
-            $article = $articles->createAssociativeArray();
-            
-                // Assuming articleQuantities is an associative array with ArticleID as key and quantity as value
-                if (isset($articleQuantities[$article['ArticleID']])) {
-                    $quantity = $articleQuantities[$article['ArticleID']];
-                } else {
-                    $quantity = 1; // Default quantity if not specified
-                }
-                
-                
-                // 
-                $orderLineData = [
-                    'OrderID' => $orderId,
-                    'ArticleID' => $article['ArticleID'],
-                    'PartnerID' => 1, // Assuming articles have partner data
-                    'Quantity' => $quantity,
-                    'StartDateReservation' => date('Y-m-d'), // Placeholder start date
-                    'EndDateReservation' => date('Y-m-d', strtotime('+7 days')), // Placeholder end date (7-day reservation)
-                    'OrderLinePrice' => 0.0 // Assuming articles have price data
-                ];
-                CrudModel::createData('OrderLines', $orderLineData);
-            }
-            return $_SESSION['order_id'] = $orderId; // Return the OrderID for further processing or confirmation
-        
-    }
-
-
-    /**
-     * Retrieves all data needed for the checkout view for a given order.
-     *
-     * @param int $orderId The ID of the order.
-     * @return array Associative array with order, user, customer, quantity, orderLines, and articles data.
-     */
-    public function getCheckoutViewData($orderId): array {
-        // 1. Get order info
-        $orderData = new Orders(...array_values(CrudModel::readAllById('Orders', 'OrderID', $orderId)));
-        $orderData = $orderData->createAssociativeArray();
-        // 2. Get customer info
-        $customerId = $orderData['CustomerID'];
-        $customerData = new Customers(...array_values(CrudModel::readAllById('Customers', 'CustomerID', $customerId)));
-        $customerData = $customerData->createAssociativeArray();
-
-        // 3. Get user info (from UserAccounts)
-
-        if ($customerId) {
-            $userData = new UserAccounts(...array_values(CrudModel::readAllById('UserAccounts', 'CustomerID', $customerId)));
-            $userData = $userData->createAssociativeArray();
-        }
-
-        // 4. Get order lines
-        $orderLines = CrudModel::readAllByColumn('OrderLines', 'OrderID', $orderId);
-
-        // 5. Get article info for each order line
-        $articles = [];
-        $quantity = [];
-        $orderLineData = [];
-        foreach ($orderLines as $orderLine) {
-            $orderLine = new OrderLines(...array_values($orderLine));
-            $orderLine = $orderLine->createAssociativeArray();
-            $articleId = $orderLine['ArticleID'];
-            $articleData = new Articles(...array_values(CrudModel::readAllById('Articles', 'ArticleID', $articleId)));
-            $articleData = $articleData->createAssociativeArray();
-            if (!empty($articleData)) {
-                $quantity[$articleId] = $orderLine['Quantity'];
-                $orderLineData[] = $orderLine;
-                $articles[] = $articleData;
-
-            }
-        }
-
-        return [
-            'order' => $orderData,
-            'user' => $userData,
-            'customer' => $customerData,
-            'quantity' => $quantity,
-            'orderLines' => $orderLineData,
-            'articles' => $articles
-        ];
+    public function getSubtotal(): string
+    {
+        return bcmul($this->getPrice(), (string)$this->quantity, 2);
     }
 }
 
+class CartHandler
+{
+    private ArticlesRepository $repo;
+    private int $partnerId;
+
+    public function __construct(ArticlesRepository $repo, int $partnerId = 1)
+    {
+        $this->repo      = $repo;
+        $this->partnerId = $partnerId;
+
+        if (!Session::exists('cart')) {
+            Session::set('cart', []);
+        }
+    }
+
+       public function add(int $articleId, int $qty): void
+    {
+        $cart = Session::get('cart');
+        $cart[$articleId] = ($cart[$articleId] ?? 0) + $qty;
+        Session::set('cart', $cart);
+    }
+
+    public function remove(int $articleId): void
+    {
+        $cart = Session::get('cart');
+        unset($cart[$articleId]);
+        Session::set('cart', $cart);
+    }
+
+    public function update(array $quantities): void
+    {
+        $cart = Session::get('cart');
+        foreach ($quantities as $id => $qty) {
+            $qty = (int)$qty;
+            if ($qty <= 0) {
+                unset($cart[$id]);
+            } else {
+                $cart[$id] = $qty;
+            }
+        }
+        Session::set('cart', $cart);
+    }
+
+    public function clear(): void
+    {
+        Session::set('cart', []);
+    }
+
+    /**
+     * @return CartItem[]
+     */
+    public function getItems(): array
+    {
+        $items = [];
+        $cart = Session::get('cart');
+        
+        foreach ($cart as $id => $qty) {
+            $article = $this->repo->findById($id, $this->partnerId);
+            if ($article instanceof Articles) {
+                $items[] = new CartItem($article, $qty);
+            }
+        }
+        return $items;
+    }
+
+    /**
+     * @return string Total as decimal string
+     */
+    public function getTotal(): string
+    {
+        $total = '0.00';
+        foreach ($this->getItems() as $item) {
+            $total = bcadd($total, $item->getSubtotal(), 2);
+        }
+        return $total;
+    }
+
+
+/**
+ * Plaatst een order en orderregels in de database, en leegt daarna de cart.
+ *
+ * @param string $postalCode   De postcode van de klant
+ * @param string $houseNumber  Het huisnummer van de klant
+ * @return int                 De nieuw aangemaakte OrderID
+ * @throws Exception           Bij fouten in de database-operaties
+ */
+public function checkout(string $postalCode, string $houseNumber): int
+{
+    // Zorg dat de sessie loopt en cart beschikbaar is
+    Session::start();
+    $cart = Session::get('cart') ?: [];
+    if (empty($cart)) {
+        throw new \Exception("Winkelwagen is leeg.");
+    }
+
+    $pdo = Database::getConnection();
+    // Haal CustomerID op uit de ingelogde user
+    $emailStmt = $pdo->prepare("SELECT CustomerID FROM UserAccounts WHERE EmailAddress = ?");
+    $emailStmt->execute([Session::get('user_email')]);
+    $customerId = $emailStmt->fetchColumn();
+    if (!$customerId) {
+        throw new \Exception("Geen klant gekoppeld aan deze gebruiker.");
+    }
+
+    // Start transactie
+    $pdo->beginTransaction();
+    try {
+        // Insert order
+        $orderStmt = $pdo->prepare("
+            INSERT INTO Orders
+            (OrderDate, PaymentStatus, PostalCode, HouseNumber, OrderStatus, CustomerID)
+            VALUES (NOW(), 0, ?, ?, 'Pending', ?)
+        ");
+        $orderStmt->execute([$postalCode, $houseNumber, $customerId]);
+        $orderId = (int)$pdo->lastInsertId();
+
+        // Insert orderregels
+        $lineStmt = $pdo->prepare("
+            INSERT INTO OrderLines
+            (OrderID, PartnerID, ArticleID, Quantity, StartDateReservation, EndDateReservation, OrderLinePrice)
+            VALUES (?, 1, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 0)
+        ");
+        foreach ($cart as $articleId => $quantity) {
+            $lineStmt->execute([$orderId, $articleId, $quantity]);
+        }
+
+        // Commit en cart legen
+        $pdo->commit();
+        Session::remove('cart');
+
+        return $orderId;
+    } catch (\Exception $e) {
+        $pdo->rollBack();
+        throw $e;
+    }
+}
+}

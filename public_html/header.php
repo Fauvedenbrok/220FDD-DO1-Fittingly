@@ -3,7 +3,7 @@
 require_once 'Lang/translator.php';
 $translator = init_translator();
 
-require_once '../project_root/Core/Session.php';
+require_once __DIR__ . '/../project_root/Core/Session.php';
 require_once '../project_root/Models/UserAccounts.php';
 require_once '../project_root/Models/CrudModel.php';
 
@@ -70,11 +70,7 @@ Session::start();
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">
               <img src="./Images/icons/profiel.png" alt="Account">
-<<<<<<< HEAD
-              <span class="nav-profiel">
-=======
               <span class="nav-profiel" style="margin-left: 12px;">
->>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
                 <?= $translator->get('header_dropdown_text') ?>
               </span>
             </button>

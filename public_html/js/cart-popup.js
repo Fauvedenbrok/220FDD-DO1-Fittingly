@@ -1,68 +1,162 @@
-/**
- * Toont een tijdelijke pop-up op de pagina bij het toevoegen van een product aan de winkelwagen.
- * De pop-up verschijnt net boven de positie van de muisklik en verdwijnt automatisch na 2 seconden.
- */
+// Simpele popup weergave
 function showCartPopup(x, y) {
     const popup = document.getElementById('cart-popup');
-    popup.style.left = `${x}px`;
-    popup.style.top = `${y - 40}px`; // 40px boven de klikpositie
-    popup.style.position = 'absolute';
-
-    // Pop-up zichtbaar maken
+    if (!popup) return;
+    
+    // Positionering
+    popup.style.left = x + 'px';
+    popup.style.top = (y - 40) + 'px';
+    popup.style.position = 'fixed';
+    
+    // Zichtbaar maken
     popup.classList.remove('hidden');
     popup.classList.add('show');
-
-    // Pop-up automatisch verbergen na 2 seconden
+    
+    // Na 2 seconden verbergen
     setTimeout(() => {
         popup.classList.remove('show');
         popup.classList.add('hidden');
     }, 2000);
 }
 
-/**
- * Wacht tot de DOM volledig is geladen.
- * Vervolgens zoekt het script alle formulieren met de class 'add-to-cart-form'
- * en voegt een event listener toe aan elk formulier om via fetch() te verzenden i.p.v. klassiek formulier.
- */
+// Functie om het totaalbedrag bij te werken
+function updateCartTotal(total) {
+    const totalElement = document.querySelector('.cart-total');
+    if (totalElement) {
+        totalElement.textContent = `€${parseFloat(total).toFixed(2)}`;
+    }
+}
+
+// Functie om een artikel te verwijderen uit de weergave
+function removeArticleRow(articleId) {
+    const row = document.querySelector(`tr[data-article-id="${articleId}"]`);
+    if (row) {
+        row.remove();
+    }
+}
+
+// Functie om winkelwagen te updaten zonder pagina te herladen
+async function updateCartDisplay() {
+    try {
+        const response = await fetch('cart_controller.php?format=json');
+        if (!response.ok) return;
+        
+        const cartData = await response.json();
+        
+        // Update totaal
+        updateCartTotal(cartData.total);
+        
+        // Controleer of de winkelwagen leeg is
+        if (cartData.items.length === 0) {
+            document.querySelector('.cart-form')?.remove();
+            document.querySelector('.cart-empty').classList.remove('hidden');
+        }
+    } catch (error) {
+        console.error('Fout bij ophalen winkelwagen:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    const controllerUrl = 'cart_controller.php';
+    
+    // Muispositie bijhouden
+    let mouseX = 0;
+    let mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Toevoegen aan winkelwagen
     document.querySelectorAll('.add-to-cart-form').forEach(form => {
-        const button = form.querySelector('button');
-
-        // Wanneer het formulier wordt verzonden (via klikken op de knop)
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault(); // voorkom pagina-herlading
-
-            // Bepaal de positie van de knop voor de popup
-            const x = event.submitter?.getBoundingClientRect().left + window.scrollX ?? 0;
-            const y = event.submitter?.getBoundingClientRect().top + window.scrollY ?? 0;
-
-            // Verzamelt de gegevens van het formulier
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
             const formData = new FormData(form);
-
-            // ✅ Simuleert het meesturen van de naam en waarde van de knop (zoals 'add_to_cart'),
-            // want dit gebeurt niet automatisch bij gebruik van fetch + FormData
-            if (event.submitter?.name) {
-                formData.append(event.submitter.name, event.submitter.value ?? "");
-            }
-
+            formData.append('add_to_cart', '1');
+            
             try {
-                // Verstuur het formulier via fetch naar het opgegeven PHP-bestand (bijv. Cart.php)
-                const response = await fetch(form.action, {
+                const res = await fetch(controllerUrl, {
                     method: 'POST',
                     body: formData
                 });
-
-                // Als de response succesvol is (HTTP 200), toon popup
-                if (response.ok) {
-                    showCartPopup(x, y);
-                } else {
-                    // Toon een foutmelding in de console als er iets misgaat met de request
-                    console.error('Fout bij toevoegen aan winkelwagen:', await response.text());
+                
+                if (res.ok) {
+                    showCartPopup(mouseX, mouseY);
                 }
             } catch (error) {
-                // Bij netwerkproblemen (zoals server offline), log fout
-                console.error('Netwerkfout:', error);
+                console.error('Fout:', error);
             }
         });
     });
+
+// Verwijderen uit winkelwagen
+document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const articleId = btn.dataset.removeId;
+        
+        try {
+            // Verzend verwijderverzoek
+            const formData = new FormData();
+            formData.append('remove_product_id', articleId);
+            
+            const res = await fetch(controllerUrl, {
+                method: 'POST',
+                body: formData
+            });
+            
+            if (res.ok) {
+                // Toon bevestiging
+                alert('Artikel verwijderd!');
+                
+                // Verwijder de rij onmiddellijk
+                removeArticleRow(articleId);
+                
+                // Update de winkelwagenweergave
+                await updateCartDisplay();
+            }
+        } catch (error) {
+            console.error('Fout:', error);
+        }
+    });
+});
+
+    // Updaten hoeveelheden
+const updateBtn = document.getElementById('update-btn');
+if (updateBtn) {
+  updateBtn.addEventListener('click', async (e) => {
+    e.preventDefault();  // voorkomt een onbedoelde submit
+
+    const form = document.getElementById('cart-form');
+    const formData = new FormData(form);
+
+    // **Nieuw:** geef aan dat dit een update-verzoek is**
+    formData.append('update_cart', '1');
+
+try {
+  const res = await fetch(controllerUrl, {
+    method: 'POST',
+    body: formData
+  });
+  if (res.ok) {
+    // Toon een melding dat het gelukt is
+    alert('Aantal bijgewerkt!');
+    
+    // Daarna pas herladen
+    location.reload();
+  } else {
+    console.error('Update mislukt:', await res.text());
+  }
+} catch (err) {
+  console.error('Fetch error:', err);
+}
+  });
+}
+    
+    // Afrekenknop
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            window.location.href = 'checkout.php';
+        });
+    }
 });

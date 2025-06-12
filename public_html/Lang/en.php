@@ -191,4 +191,5 @@ return [
     'cart_checkout_button' => 'Checkout',
     'product_list_view_cart_link' => "Add to Cart",
     'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
+    'checkout_place_order_button' => 'Place Order',
 ];

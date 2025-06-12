@@ -54,6 +54,10 @@ class LoginCustomerController
             Session::set('user_email', $user['EmailAddress']);
             Session::set('account_access_rights', $user['AccountAccessRights']); // Save access rights
 
+            // INITIALISEER WINKELWAGEN BIJ INLOGGEN
+            if (!Session::exists('cart')) {
+            Session::set('cart', []);
+            }
 
             // Redirect based on access rights
             if (strtolower(trim($user['AccountAccessRights'])) === 'admin') {
