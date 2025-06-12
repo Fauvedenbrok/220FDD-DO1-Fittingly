@@ -22,11 +22,7 @@ $translator = init_translator();
   <link rel="stylesheet" href="./css/indexstyles.css">
 </head>
 
-<<<<<<< HEAD
-<body">
-=======
 <body>
->>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
   <header>
     <?php include 'header.php'; ?>
   </header>

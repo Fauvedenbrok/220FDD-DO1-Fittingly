@@ -39,11 +39,7 @@ if (isset($_GET['upload'])) {
   </header>
   <main class="main-content">
     <div id="CSV-upload-download-form">
-<<<<<<< HEAD
       <!--
-=======
-    <!--
->>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
       CSV upload form for products.
       @form Uploads a CSV file to the server for product import.
     -->
@@ -56,15 +52,9 @@ if (isset($_GET['upload'])) {
       CSV download form for products.
       @form Downloads all products as a CSV file.
     -->
-<<<<<<< HEAD
       <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
         <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
       </form>
-=======
-    <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
-      <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
-    </form>
->>>>>>> f3a6362cb4047e2419ece22c3285004a2dc92c11
     </div>
     <?php
     /**
