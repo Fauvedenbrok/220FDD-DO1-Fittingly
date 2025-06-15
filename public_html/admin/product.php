@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__ . '/auth_admin.php';
+
 /**
  * Product detail page for the admin panel.
  *
