@@ -1,192 +1,203 @@
 <?php
 
 /**
- * ContactMailer class en verwerking van contactformulier
- * 
- * Dit script verwerkt het contactformulier via POST, valideert en verstuurt de mail via PHPMailer.
- * 
+ * Mailer class voor het versturen van e-mails via PHPMailer.
+ *
  * Functionaliteiten:
- * - Initialiseren van ContactMailer met configuratie en vertaler.
+ * - Versturen van contactformulierberichten.
+ * - Versturen van bestelbevestigingen na checkout.
  * - Valideren van formulierdata (naam, bedrijf, email, tel, bericht).
- * - Versturen van e-mail met PHPMailer (SMTP).
- * - Teruggeven van vertaalde succes- of foutmelding.
- * - Redirect na 5 seconden bij succesmelding.
- * 
- * Gebruik:
- * - Wordt aangeroepen na submit van contactformulier.
- * - Sanitize input met htmlspecialchars().
- * - Resultaat wordt ge-echo'd (bericht en redirect).
- * 
+ * - Centrale configuratie via config.php.
+ * - Meertalige fout- en succesmeldingen via vertaalkeys.
+ *
  * Vereisten:
- * - PHPMailer via Composer autoload.
- * - Translator functie init_translator().
- * - Configbestand met SMTP gegevens.
- * 
+ * - PHPMailer via Composer.
+ * - translator.php met init_translator().
+ * - config.php met SMTP instellingen.
  */
-
-require_once __DIR__ . '/../public_html/Lang/translator.php';
-require __DIR__ . '/../vendor/autoload.php';
-
-$translator = init_translator();
-$config = require __DIR__ . '/config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class ContactMailer
+require_once __DIR__ . '/../vendor/autoload.php';
+
+class Mailer
 {
-    private $config;
+    /**
+     * @var array Configuratie-instellingen uit config.php (SMTP)
+     */
+    private array $config;
+
+    /**
+     * @var object|null Optioneel vertaalobject voor meertalige meldingen
+     */
     private $translator;
 
     /**
-     * Constructor slaat configuratie en translator op voor later gebruik
-     * 
-     * @param array $config SMTP en mailconfiguratie
-     * @param object $translator Vertaalfunctie object
+     * Constructor voor het initialiseren van de mailer met configuratie en optioneel een vertaler
+     *
+     * @param array $config SMTP-instellingen zoals host, user, port etc.
+     * @param object|null $translator Vertaalobject voor het ophalen van vertaalde fout-/succesmeldingen
      */
-    public function __construct($config, $translator)
+    public function __construct(array $config, $translator = null)
     {
         $this->config = $config;
         $this->translator = $translator;
     }
 
     /**
-     * Validatie van formulierdata: controleert op lege velden en geldig emailadres
-     * 
-     * @param array $data Formulierdata
-     * @return bool True als alles geldig, anders false
+     * Verwerkt en verstuurt een e-mail van het contactformulier
+     *
+     * @param array $data Formulierdata van de POST (naam, bedrijf, email, tel, bericht)
+     * @return string Vertaalde succes- of foutmelding
      */
-    private function validate($data)
+    public function sendContactMail(array $data): string
     {
-        // Check of verplichte velden niet leeg zijn
-        foreach (['naam', 'bedrijf', 'email', 'tel', 'bericht'] as $key) {
-            if (empty($data[$key])) {
-                return false;
-            }
+        if (!$this->validateContactForm($data)) {
+            return $this->translator?->get('contactpagina_formulier_error') ?? 'Ongeldige invoer.';
         }
-        // Controleer of email valide is
-        return filter_var($data['email'], FILTER_VALIDATE_EMAIL);
+
+        $mail = $this->prepareMailer($data['email'], $data['naam']);
+        $mail->Subject = 'Fittingly contactformulier';
+        $mail->Body = $this->buildContactBody($data);
+        $mail->AltBody = strip_tags($mail->Body);
+
+        // successKey en failKey worden gebruikt voor meertalige output
+        return $this->tryToSend($mail, 'contactpagina_formulier_success', 'contactpagina_formulier_error');
     }
 
     /**
-     * Verstuurt de mail met PHPMailer, op basis van de data.
-     * Retourneert vertaalde succes- of foutmelding.
-     * 
-     * @param array $data Formulierdata
-     * @return string Vertaalde boodschap (succes/fout)
+     * Verstuurt een bestelbevestiging naar de klant
+     *
+     * @param array $data Orderdata: naam, e-mail, orderId, artikelen, aantallen
+     * @return bool True bij succes, false bij fout
      */
-    public function send($data)
+    public function sendOrderConfirmationMail(array $data): bool
+    {
+        $mail = $this->prepareMailer($data['email'], $data['name']);
+        $mail->Subject = 'Bevestiging van uw bestelling';
+        $mail->Body = $this->buildOrderBody($data);
+        $mail->AltBody = strip_tags($mail->Body);
+
+        return $this->tryToSend($mail) === true;
+    }
+
+    /**
+     * Configureert een PHPMailer instantie met SMTP settings uit config.php
+     *
+     * @param string $toEmail E-mailadres van ontvanger
+     * @param string $toName Naam van ontvanger
+     * @return PHPMailer Volledig geconfigureerde mailer
+     */
+    private function prepareMailer(string $toEmail, string $toName): PHPMailer
     {
         $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = $this->config['smtp_host'];
+        $mail->SMTPAuth = true;
+        $mail->Username = $this->config['smtp_user'];
+        $mail->Password = $this->config['smtp_pass'];
+        $mail->SMTPSecure = $this->config['smtp_encryption'];
+        $mail->Port = $this->config['smtp_port'];
+        $mail->Timeout = 10;
 
+        $mail->setFrom($this->config['from_email'], $this->config['from_name']);
+        $mail->addAddress($toEmail, $toName);
+        $mail->addReplyTo($toEmail, $toName);
+        $mail->isHTML(true);
+
+        return $mail;
+    }
+
+    /**
+     * Probeert de e-mail te versturen en retourneert het resultaat
+     *
+     * - Als je keys meegeeft, wordt de vertaling opgehaald via $translator
+     * - Als je geen keys meegeeft, krijg je gewoon true/false
+     *
+     * @param PHPMailer $mail Het mailobject dat verzonden wordt
+     * @param string $successKey Vertaalkey bij succes (bijv. 'contactpagina_formulier_success')
+     * @param string $failKey Vertaalkey bij fout (bijv. 'contactpagina_formulier_error')
+     * @return string|bool Vertaalde melding of boolean resultaat
+     */
+    private function tryToSend(PHPMailer $mail, string $successKey = '', string $failKey = ''): string|bool
+    {
         try {
-            // SMTP configuratie
-            $mail->isSMTP();
-            $mail->Host = $this->config['smtp_host'];
-            $mail->SMTPAuth = true;
-            $mail->Username = $this->config['smtp_user'];
-            $mail->Password = $this->config['smtp_pass'];
-            $mail->SMTPSecure = $this->config['smtp_encryption'];
-            $mail->Port = $this->config['smtp_port'];
-            $mail->Timeout = 10;
-
-            // Afzender en ontvanger instellen
-            $mail->setFrom($this->config['from_email'], $this->config['from_name']);
-            $mail->addAddress($data['email'], $data['naam']); // E-mail naar de persoon die het formulier invulde
-            $mail->addReplyTo($data['email'], $data['naam']); // Antwoordadres instellen
-
-            // Mail content opmaken
-            $mail->isHTML(true);
-            $mail->Subject = 'Fittingly contactformulier';
-            $mail->Body = $this->buildEmailBody($data); // HTML body
-            $mail->AltBody = "Naam: {$data['naam']}\nBedrijf: {$data['bedrijf']}\nEmail: {$data['email']}\nTelefoon: {$data['tel']}\nBericht:\n{$data['bericht']}"; // Plain text body
-
             $mail->send();
 
-            // Return succesbericht vertaling
-            return $this->translator->get('contactpagina_formulier_success');
+            return $successKey
+                ? ($this->translator?->get($successKey) ?? 'Verzonden.')
+                : true;
+
         } catch (Exception $e) {
-            // Log foutmelding en return foutbericht vertaling
-            error_log("PHPMailer fout: " . $mail->ErrorInfo);
-            return $this->translator->get('contactpagina_formulier_error');
+            error_log("Mail error: " . $mail->ErrorInfo);
+
+            return $failKey
+                ? ($this->translator?->get($failKey) ?? 'Fout bij verzenden.')
+                : false;
         }
     }
 
     /**
-     * Bouwt de HTML body van de mail met de formulierdata
-     * 
-     * @param array $data Formulierdata
-     * @return string HTML string van e-mail body
+     * Bouwt de HTML inhoud van de e-mail voor contactberichten
+     *
+     * @param array $data Gegevens uit het contactformulier
+     * @return string HTML string voor in de mail
      */
-    private function buildEmailBody(array $data): string
+    private function buildContactBody(array $data): string
     {
         return "
         <html>
-        <head>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    line-height: 1.6;
-                    color: #333;
-                }
-                .container {
-                    padding: 20px;
-                    background-color: #f9f9f9;
-                    border: 1px solid #ddd;
-                    border-radius: 6px;
-                    max-width: 600px;
-                }
-                .field {
-                    margin-bottom: 12px;
-                }
-                .label {
-                    font-weight: bold;
-                }
-            </style>
-        </head>
         <body>
-            <div class='container'>
-                <div class='field'><span class='label'>Naam:</span> {$data['naam']}</div>
-                <div class='field'><span class='label'>Bedrijf:</span> {$data['bedrijf']}</div>
-                <div class='field'><span class='label'>Email:</span> {$data['email']}</div>
-                <div class='field'><span class='label'>Telefoon:</span> {$data['tel']}</div>
-                <div class='field'><span class='label'>Bericht:</span><br><pre>{$data['bericht']}</pre></div>
+            <div style='font-family: Arial;'>
+                <p><strong>Naam:</strong> {$data['naam']}</p>
+                <p><strong>Bedrijf:</strong> {$data['bedrijf']}</p>
+                <p><strong>Email:</strong> {$data['email']}</p>
+                <p><strong>Telefoon:</strong> {$data['tel']}</p>
+                <p><strong>Bericht:</strong><br><pre>{$data['bericht']}</pre></p>
             </div>
         </body>
-        </html>
-        ";
-    }
-}
-
-// Verwerking van POST request
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Sanitizen van formulierdata (specialchars om XSS te voorkomen)
-    $data = [
-        'naam' => htmlspecialchars($_POST['naam']),
-        'bedrijf' => htmlspecialchars($_POST['bedrijf']),
-        'email' => htmlspecialchars($_POST['email']),
-        'tel' => htmlspecialchars($_POST['tel']),
-        'bericht' => htmlspecialchars($_POST['bericht']),
-    ];
-
-    // ContactMailer instantie maken en mail versturen
-    $mailer = new ContactMailer($config, $translator);
-    $result = $mailer->send($data);
-
-    // Resultaat tonen
-    echo $result;
-
-    // Bij succes redirect na 5 seconden
-    if ($result === $translator->get('contactpagina_formulier_success')) {
-        echo '<meta http-equiv="refresh" content="5;url=../public_html/index.php">';
+        </html>";
     }
 
-    exit;
+    /**
+     * Bouwt de HTML inhoud van een bestelbevestiging
+     *
+     * @param array $data Ordergegevens (artikelen, hoeveelheden, klant)
+     * @return string HTML string voor in de bevestigingsmail
+     */
+    private function buildOrderBody(array $data): string
+    {
+        $items = '';
+        foreach ($data['articles'] as $article) {
+            $qty = $data['quantities'][$article['ArticleID']] ?? 0;
+            $items .= "<li>" . htmlspecialchars($article['Name']) . " ({$qty} stuks)</li>";
+        }
 
-} else {
-    // Geen POST, geen formulier ingediend
-    echo $translator->get('contactpagina_formulier_no_post');
-    exit;
+        return "
+        <html>
+        <body>
+            <h2>Bedankt voor uw bestelling!</h2>
+            <p>Beste " . htmlspecialchars($data['name']) . ",</p>
+            <p>Uw bestelling (Order ID: {$data['orderId']}) is succesvol geplaatst.</p>
+            <p>Overzicht van uw bestelling:</p>
+            <ul>{$items}</ul>
+        </body>
+        </html>";
+    }
+
+    /**
+     * Valideert het contactformulier op verplichte velden en geldig e-mailadres
+     *
+     * @param array $data Ingevoerde data uit formulier
+     * @return bool True als alles correct is ingevuld
+     */
+    private function validateContactForm(array $data): bool
+    {
+        foreach (['naam', 'bedrijf', 'email', 'tel', 'bericht'] as $key) {
+            if (empty($data[$key])) return false;
+        }
+
+        return filter_var($data['email'], FILTER_VALIDATE_EMAIL);
+    }
 }
-
