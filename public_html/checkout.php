@@ -35,6 +35,7 @@ $orderId = $_SESSION['order_id'] ?? null; // Assuming you have an order ID in th
  */
 $checkoutData = $cartHandler->getCheckoutViewData($orderId);
 
+$totalamount = 0;
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -77,6 +78,7 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
             $articleInfo = $article->createAssociativeArray();
             $quantity = $checkoutData['quantity'][$articleInfo['ArticleID']];
             $price = $checkoutData['price'][$articleInfo['ArticleID']] * $quantity;
+            $totalamount += $price;
             ?>
         <tr>
             <td><?= htmlspecialchars($articleInfo['ArticleID']) ?></td>
@@ -99,7 +101,11 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
                         <?php endif; ?></td>
         </tr>
     <?php endforeach; ?>
+    <tr><td class="totalamount" colspan="6">Totaalprijs:</td>
+    <td><?= htmlspecialchars($totalamount ?? '') ?></td>
+    </tr>
 </table>
+
 </main>
 <footer>
     <?php require_once 'footer.php' ?>

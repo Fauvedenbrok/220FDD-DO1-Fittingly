@@ -105,12 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
 
 $totaalPrijs = 0.00;
-foreach ($cartItems as $productId => $quantity) {
-    $stock = new Stock(...array_values(CrudModel::readAllByTwoKeys('Stock', 'ArticleID', $productId, 'PartnerID', 1)));
-    $stock = $stock->createAssociativeArray();
-    $prijs = $stock['Price']; 
-    $totaalPrijs += $prijs * $quantity;
-}
 ?>
 
 <!DOCTYPE html>
@@ -146,6 +140,10 @@ foreach ($cartItems as $productId => $quantity) {
                     <tbody>
                         <?php foreach ($cartItems as $productId => $quantity): ?>
                             <?php
+                            $stock = new Stock(...array_values(CrudModel::readAllByTwoKeys('Stock', 'ArticleID', $productId, 'PartnerID', 1)));
+                            $stock = $stock->createAssociativeArray();
+                            $prijs = $stock['Price']; 
+                            $totaalPrijs += $prijs * $quantity;
                             $artikel = null;
                             foreach ($artikelen as $a) {
                                 if ($a->getArticleID() == $productId) {
@@ -178,6 +176,9 @@ foreach ($cartItems as $productId => $quantity) {
                                 </td>
                             </tr>
                         <?php endforeach; ?>
+                        <tr><td class="totalamount" colspan="4">Totaalprijs:</td>
+                        <td><?= htmlspecialchars($totaalPrijs ?? '') ?></td>
+                        </tr>
                     </tbody>
                 </table>
 
