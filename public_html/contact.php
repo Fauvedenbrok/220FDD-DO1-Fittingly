@@ -36,7 +36,7 @@ $translator = init_translator();
                     <p><img id="usp3-contact" src="./Images/backgroundImages/usp_Fittingly_dark.png" alt="usp">
                         <?= $translator->get('contactpagina_p_contactinfo_3') ?> </p>
                 </div>
-                <form id="contact-form" method="post" action="../project_root/send_mail.php">
+                <form id="contact-form" method="post" action="../project_root/Controllers/contact_controller.php">
                     <div class="form-content">
                         <div class="input-fields">
                             <label for="naam"> <?= $translator->get('contactpagina_formulier_naam') ?>:</label>

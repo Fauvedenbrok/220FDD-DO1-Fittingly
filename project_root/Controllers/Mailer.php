@@ -19,7 +19,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class Mailer
 {
@@ -102,6 +102,7 @@ class Mailer
         $mail->Timeout = 10;
 
         $mail->setFrom($this->config['from_email'], $this->config['from_name']);
+        $mail->addBCC($this->config['from_email'], $this->config['from_name']);
         $mail->addAddress($toEmail, $toName);
         $mail->addReplyTo($toEmail, $toName);
         $mail->isHTML(true);
