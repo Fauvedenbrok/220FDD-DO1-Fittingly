@@ -25,9 +25,9 @@ require_once 'CartHandler.php';
 /** @var CartHandler $cartHandler Handles cart and checkout operations. */
 $cartHandler = new CartHandler();
 /** @var string|null $userId The email address of the logged-in user. */
-$userId = $_SESSION['user_email'] ?? null; // Or however you store the logged-in user
+$userId = $_SESSION['user_email'] ?? null;
 /** @var int|null $orderId The ID of the current order. */
-$orderId = $_SESSION['order_id'] ?? null; // Assuming you have an order ID in the session
+$orderId = $_SESSION['order_id'] ?? null;
 
 /**
  * Retrieve all data needed for the checkout view.
@@ -35,8 +35,33 @@ $orderId = $_SESSION['order_id'] ?? null; // Assuming you have an order ID in th
  */
 $checkoutData = $cartHandler->getCheckoutViewData($orderId);
 
-$totalamount = 0;
+/**
+ * Verstuur bestelbevestiging per e-mail met behulp van de Mailer class.
+ */
+require_once '../project_root/send_mail.php';
+require_once '../project_root/Lang/translator.php';
+
+$config = require '../project_root/config.php';
+$translator = init_translator();
+
+$mailer = new Mailer($config, $translator);
+
+/**
+ * Stel de data samen die nodig is voor de orderbevestiging
+ * - Dit bevat e-mailadres, klantnaam, orderId, artikelen en hoeveelheden
+ */
+$orderMailData = [
+    'email' => $checkoutData['user']['EmailAddress'] ?? '',
+    'name' => ($checkoutData['customer']['FirstName'] ?? '') . ' ' . ($checkoutData['customer']['LastName'] ?? ''),
+    'orderId' => $orderId,
+    'articles' => $checkoutData['articles'],
+    'quantities' => $checkoutData['quantity']
+];
+
+// Verzend de e-mail
+$mailer->sendOrderConfirmationMail($orderMailData);
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
