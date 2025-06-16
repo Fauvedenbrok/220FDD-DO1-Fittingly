@@ -23,19 +23,14 @@ GRANT SELECT, INSERT, UPDATE ON `Addresses` TO `Customer`, `Support`, `Partner`;
 -- nog ID's aan de views toevoegen, zodat de views ook kunnen worden gebruikt voor het updaten van de tabellen
 -- Partner Table
 CREATE VIEW `View_CompanyName_VATNr_CoCNr` AS
-SELECT CompanyName, VATNr, CoCNr
+SELECT PartnerID, CompanyName, VATNr, CoCNr
 FROM Partners;
 
 CREATE VIEW `View_CompanyName` AS
-SELECT CompanyName
-FROM Partners;
-
-CREATE VIEW `View_PartnerID` AS
-SELECT PartnerID
+SELECT PartnerID, CompanyName
 FROM Partners;
 
 GRANT UPDATE ON `View_CompanyName` TO `Partner`;
-GRANT DELETE ON `View_PartnerID` TO `Partner`;
 GRANT SELECT ON `View_CompanyName_VATNr_CoCNr` TO `Customer`;
 GRANT SELECT, INSERT ON `Partners` TO `Partner`, `Support`;
 GRANT UPDATE ON `View_CompanyName_VATNr_CoCNr` TO `Support`;
