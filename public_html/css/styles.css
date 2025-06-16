@@ -639,4 +639,41 @@ align-items: center;
 
 }
 
+/* Container en layout */
+.checkout-container {
+  width: 85%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1a3030;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  color: #dcd3c2;
+  font-family: "Raleway", sans-serif;
+}
 
+/* Koppen */
+.checkout-container h1,
+.checkout-container h2 {
+  font-family: "Playfair Display", serif;
+  color: #cc9c4e;
+  margin-bottom: 1rem;
+}
+.checkout-container h1 {
+  font-size: 2rem;
+}
+.checkout-container h2 {
+  font-size: 1.5rem;
+}
+
+.checkout-container table, th, td{
+  border: 1pt solid #b38b42;
+  text-align: center;
+}
+
+.checkout-container th {
+  width: 10%
+}
+
+.checkout-container img{
+  width: 250px;
+}

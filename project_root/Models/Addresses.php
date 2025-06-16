@@ -64,7 +64,7 @@ class Addresses
      *
      * @return array Associative array with address data.
      */
-    public function createAssociativeArray(){
+    public function createAssociativeArray() : array{
         $addressesArray = array(
             'PostalCode' => $this->postalCode,
             'HouseNumber' => $this->houseNumber,

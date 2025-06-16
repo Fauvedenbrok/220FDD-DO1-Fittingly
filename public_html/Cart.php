@@ -1,7 +1,11 @@
 <?php
 require_once '../project_root/Core/Session.php';
+require_once '../project_root/Models/Stock.php';
+require_once '../project_root/Models/CrudModel.php';
 
 use Core\Session;
+use Models\Stock;
+use Models\CrudModel;
 
 /**
  * Check if the user is logged in; if not, redirect to login page.
@@ -99,9 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  * @var decimal $totaalPrijs The total price of all items in the cart.
  */
 // Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
+
 $totaalPrijs = 0.00;
 foreach ($cartItems as $productId => $quantity) {
-    $prijs = 0.00; // placeholder prijs
+    $stock = new Stock(...array_values(CrudModel::readAllByTwoKeys('Stock', 'ArticleID', $productId, 'PartnerID', 1)));
+    $stock = $stock->createAssociativeArray();
+    $prijs = $stock['Price']; 
     $totaalPrijs += $prijs * $quantity;
 }
 ?>
@@ -147,7 +154,7 @@ foreach ($cartItems as $productId => $quantity) {
                                 }
                             }
                             if (!$artikel) continue; // Product bestaat niet meer
-                            $prijs = 0; // prijs nog niet beschikbaar
+                            
                             $subtotal = $prijs * $quantity;
                             ?>
                             <tr>

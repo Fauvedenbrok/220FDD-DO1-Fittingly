@@ -51,6 +51,15 @@ class CrudModel
         return $result ? $result : [];
     }
 
+    public static function readAllByTwoKeys(string $tableName, string $columnOne, $valueOne, $columnTwo, $valueTwo) : array {
+        $pdo = Database::getConnection();
+        $query = "SELECT * FROM {$tableName} WHERE {$columnOne} = ? AND {$columnTwo} = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$valueOne, $valueTwo]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result : [];
+    }
+
     /**
      * Reads all records from a table.
      *

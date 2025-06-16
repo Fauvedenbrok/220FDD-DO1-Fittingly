@@ -1,6 +1,10 @@
 <?php
-require_once '../project_root/Core/Session.php';
+
 use Core\Session;
+use Models\Articles;
+
+require_once '../project_root/Core/Session.php';
+require_once __DIR__ . '/../project_root/Models/Articles.php';
 /**
  * Checkout page for displaying the order summary to the user.
  *
@@ -46,14 +50,15 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
     <?php require_once 'header.php'; ?>
 </header>
 
-<main>
+<main class="checkout-container">
 <h1>Bestelling Overzicht</h1>
 
 <h2>Klantgegevens</h2>
 <ul>
     <li>Naam: <?= htmlspecialchars(($checkoutData['customer']['FirstName'] ?? '') . ' ' . ($checkoutData['customer']['LastName'] ?? '')) ?></li>
     <li>Email: <?= htmlspecialchars($checkoutData['user']['EmailAddress'] ?? '') ?></li>
-    <li>Adres: <?= htmlspecialchars(($checkoutData['customer']['PostalCode'] ?? '') . ' ' . ($checkoutData['customer']['HouseNumber'] ?? '')) ?></li>
+    <li>Adres: <?= htmlspecialchars(($checkoutData['customer']['PostalCode'] ?? '') . ' ' . ($checkoutData['address']['City'] ?? '')) ?> <br>
+    <?= htmlspecialchars(($checkoutData['address']['StreetName'] ?? '') . ' ' . ($checkoutData['customer']['HouseNumber'] ?? '')) ?></li>
 </ul>
 
 <h2>Artikelen in winkelwagen</h2>
@@ -64,14 +69,34 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
         <th>Aantal</th>
         <th>Categorie</th>
         <th>Kleur</th>
+        <th>Prijs</th>
+        <th>Afbeelding</th>
     </tr>
-    <?php foreach ($checkoutData['articles'] as $article): ?>
+    <?php foreach ($checkoutData['articles'] as $item): 
+            $article = new Articles(...array_values($item));
+            $articleInfo = $article->createAssociativeArray();
+            $quantity = $checkoutData['quantity'][$articleInfo['ArticleID']];
+            $price = $checkoutData['price'][$articleInfo['ArticleID']] * $quantity;
+            ?>
         <tr>
-            <td><?= htmlspecialchars($article['ArticleID']) ?></td>
-            <td><?= htmlspecialchars($article['Name'] ?? '') ?></td>
-            <td><?= htmlspecialchars($checkoutData['quantity'][$article['ArticleID']]) ?></td>
-            <td><?= htmlspecialchars($article['Category'] ?? '') ?></td>
-            <td><?= htmlspecialchars($article['Color'] ?? '') ?></td>
+            <td><?= htmlspecialchars($articleInfo['ArticleID']) ?></td>
+            <td><?= htmlspecialchars($articleInfo['Name'] ?? '') ?></td>
+            <td><?= htmlspecialchars($quantity ?? '') ?></td>
+            <td><?= htmlspecialchars($articleInfo['Category'] ?? '') ?></td>
+            <td><?= htmlspecialchars($articleInfo['Color'] ?? '') ?></td>
+            <td><?= htmlspecialchars($price ?? '') ?></td>
+            <td>
+                <?php if($article->imageExists()): ?>
+                        <img src="/public_html/<?= $article->getImageUrl(); ?>" alt="Afbeelding van <?= htmlspecialchars($article->getArticleName()); ?>">
+                        <!--
+                        /** Laadt placeholder als er geen afbeelding is.*/
+                        -->
+                        <?php else: ?>
+                        <img src="/Images/productImages/1.jpg" alt="Geen afbeelding beschikbaar">
+                        <!--
+                        /** Toont beschikbaarheid van artikel.*/
+                        -->
+                        <?php endif; ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

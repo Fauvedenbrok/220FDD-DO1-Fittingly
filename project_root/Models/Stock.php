@@ -1,5 +1,5 @@
 <?php
-
+namespace Models;
 /**
  * Class Stock
  *
@@ -8,8 +8,8 @@
 class Stock{
    
     private int $quantityOfStock;
-    private decimal $price;
-    private date $dateAdded;
+    private float $price;
+    private string $dateAdded;
     private string $internalReference;
     private int $articleID;
     private int $partnerID;
@@ -42,6 +42,18 @@ class Stock{
      */
     public function __toString(){
         return "$this->quantityOfStock, $this->price, $this->dateAdded, $this->internalReference, $this->articleID, $this->partnerID";
+    }
+
+    public function createAssociativeArray(){
+        $stockArray = array(
+            'QuantityOfStock' => $this->quantityOfStock,
+            'Price' => $this->price,
+            'DateAdded' => $this->dateAdded,
+            'InternalReference' => $this->internalReference,
+            'ArticleID' => $this->articleID,
+            'PartnerID' => $this->partnerID,
+        );
+        return $stockArray;
     }
 
 }

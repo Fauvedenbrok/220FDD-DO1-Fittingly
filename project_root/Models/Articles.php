@@ -94,6 +94,12 @@ class Articles
     public function imageExists(): bool {
     // Gebruik absoluut pad op de server (let op: pad buiten public_html)
     $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
+    if(file_exists($serverPath)){
+        return file_exists($serverPath);
+    }
+    else{
+        $serverPath = __DIR__ . '/public_html/Images/productImages/' . $this->articleID . '.jpg';
+    }
     return file_exists($serverPath);
     }
 

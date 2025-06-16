@@ -4,6 +4,9 @@
     use Models\Customers;
     use Models\UserAccounts;
     use Models\Articles;
+    use Models\Stock;
+    use Models\OrderLines;
+    use Models\Addresses;
 
 require_once __DIR__ . '/../project_root/Core/Database.php';
 require_once __DIR__ . '/../project_root/Models/CrudModel.php';
@@ -12,6 +15,8 @@ require_once __DIR__ . '/../project_root/Models/UserAccounts.php';
 require_once __DIR__ . '/../project_root/Models/Articles.php';
 require_once __DIR__ . '/../project_root/Models/Orders.php';
 require_once __DIR__ . '/../project_root/Models/OrderLines.php';
+require_once __DIR__ . '/../project_root/Models/Stock.php';
+require_once __DIR__ . '/../project_root/Models/Addresses.php';
 
 
 /**
@@ -84,8 +89,9 @@ class CartHandler {
         $articles = [];
         foreach ($articleIds as $articleId) {
             $article = new Articles(...array_values(CrudModel::readAllById('Articles', 'ArticleID', $articleId)));
-            if ($article) {
-                $articles[] = $article;
+            $stock = new Stock(...array_values(CrudModel::readAllByTwoKeys('Stock', 'ArticleID', $articleId, 'PartnerID', 1)));
+            if ($article && $stock) {
+                $articles[] = [$article, $stock];
             }
         }
 
@@ -123,7 +129,7 @@ class CartHandler {
         
         // Insert order lines
         foreach ($checkoutData['articles'] as $articles) {
-            $article = $articles->createAssociativeArray();
+            $article = $articles[0]->createAssociativeArray();
             
                 // Assuming articleQuantities is an associative array with ArticleID as key and quantity as value
                 if (isset($articleQuantities[$article['ArticleID']])) {
@@ -141,7 +147,6 @@ class CartHandler {
                     'Quantity' => $quantity,
                     'StartDateReservation' => date('Y-m-d'), // Placeholder start date
                     'EndDateReservation' => date('Y-m-d', strtotime('+7 days')), // Placeholder end date (7-day reservation)
-                    'OrderLinePrice' => 0.0 // Assuming articles have price data
                 ];
                 CrudModel::createData('OrderLines', $orderLineData);
             }
@@ -160,24 +165,27 @@ class CartHandler {
         // 1. Get order info
         $orderData = new Orders(...array_values(CrudModel::readAllById('Orders', 'OrderID', $orderId)));
         $orderData = $orderData->createAssociativeArray();
-        // 2. Get customer info
-        $customerId = $orderData['CustomerID'];
-        $customerData = new Customers(...array_values(CrudModel::readAllById('Customers', 'CustomerID', $customerId)));
-        $customerData = $customerData->createAssociativeArray();
 
-        // 3. Get user info (from UserAccounts)
+        $customerId = $orderData['CustomerID'];
+
+        // Get customer, user and address info
 
         if ($customerId) {
+            $customerData = new Customers(...array_values(CrudModel::readAllById('Customers', 'CustomerID', $customerId)));
+            $customerData = $customerData->createAssociativeArray();
             $userData = new UserAccounts(...array_values(CrudModel::readAllById('UserAccounts', 'CustomerID', $customerId)));
             $userData = $userData->createAssociativeArray();
+            $addressData = new Addresses(...array_values(CrudModel::readAllByTwoKeys('Addresses', 'PostalCode', $customerData['PostalCode'], 'HouseNumber', $customerData['HouseNumber'])));
+            $addressData = $addressData->createAssociativeArray();
         }
 
-        // 4. Get order lines
+        // Get order lines
         $orderLines = CrudModel::readAllByColumn('OrderLines', 'OrderID', $orderId);
 
-        // 5. Get article info for each order line
+        // Get article info for each order line
         $articles = [];
         $quantity = [];
+        $price = [];
         $orderLineData = [];
         foreach ($orderLines as $orderLine) {
             $orderLine = new OrderLines(...array_values($orderLine));
@@ -187,17 +195,18 @@ class CartHandler {
             $articleData = $articleData->createAssociativeArray();
             if (!empty($articleData)) {
                 $quantity[$articleId] = $orderLine['Quantity'];
+                $price[$articleId] = CrudModel::getForeignKeyValue('Stock', 'ArticleID', $articleId, 'Price');
                 $orderLineData[] = $orderLine;
                 $articles[] = $articleData;
-
             }
         }
-
         return [
             'order' => $orderData,
             'user' => $userData,
+            'address' => $addressData,
             'customer' => $customerData,
             'quantity' => $quantity,
+            'price' => $price,
             'orderLines' => $orderLineData,
             'articles' => $articles
         ];
