@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
           <tr>
             <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_word'); ?></th>
             <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_count'); ?></th>
-            <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_delete'); ?></th>
             <th class="admin-table-header"><?= $translator->get('admin_searchwords_match'); ?></th>
+            <th class="admin-table-header"><?= $translator->get('admin_searchwords_column_delete'); ?></th>
           </tr>
         </thead>
         <tbody>
