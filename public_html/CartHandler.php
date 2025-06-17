@@ -130,6 +130,7 @@ class CartHandler {
         // Insert order lines
         foreach ($checkoutData['articles'] as $articles) {
             $article = $articles[0]->createAssociativeArray();
+            $stock = $articles[1]->createAssociativeArray();
             
                 // Assuming articleQuantities is an associative array with ArticleID as key and quantity as value
                 if (isset($articleQuantities[$article['ArticleID']])) {
@@ -147,6 +148,7 @@ class CartHandler {
                     'Quantity' => $quantity,
                     'StartDateReservation' => date('Y-m-d'), // Placeholder start date
                     'EndDateReservation' => date('Y-m-d', strtotime('+7 days')), // Placeholder end date (7-day reservation)
+                    'OrderLinePrice' => ($stock['Price'] * $quantity)
                 ];
                 CrudModel::createData('OrderLines', $orderLineData);
             }

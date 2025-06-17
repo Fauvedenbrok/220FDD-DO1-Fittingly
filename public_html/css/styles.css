@@ -678,6 +678,8 @@ align-items: center;
   width: 250px;
 }
 
-.checkout-container .totalamount td{
+td.totalamount{
   text-align: right;
+  padding-right: 10px;
+  width: auto;
 }
