@@ -1,8 +1,10 @@
 <?php
 
 require_once 'Lang/translator.php';
+require_once '../project_root/Core/Session.php';
 
 $translator = init_translator();
+use Core\Session;
 
 ?>
 
@@ -37,7 +39,12 @@ $translator = init_translator();
       <div class="hero-sectie-klanten">
         <div class="hero-content">
           <h2>Rent your perfect fit</h2>
-          <button class="cta-partner-hero" onclick="window.location.href='/public_html/productpagina.php'"> <?= $translator->get('hero_content_productpagina_button') ?> </button>
+          <?php
+          $productHref = Session::exists('user_email') ? 'productpagina.php' : 'inloggen.php';
+          ?>
+          <button class="cta-partner-hero" onclick="window.location.href='<?= $productHref ?>'">
+            <?= $translator->get('hero_content_productpagina_button') ?>
+          </button>
 
           <!-- <div class="timer">
             <div class="card days">
