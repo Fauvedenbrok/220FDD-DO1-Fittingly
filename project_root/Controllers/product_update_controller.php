@@ -68,5 +68,5 @@ if (isset($_FILES['imagePath']) && !empty($_FILES['imagePath']['tmp_name'])) {
     $article->updateArticle();
 }
 // Redirect to the product page after update
-header("Location: ../../public_html/admin/product.php?id={$_POST['productID']}");
+header("Location: ../../public_html/admin/product.php?id={$_POST['productID']}&nocookies=true");
 
