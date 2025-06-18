@@ -39,10 +39,7 @@ use Core\Session;
       <div class="hero-sectie-klanten">
         <div class="hero-content">
           <h2>Rent your perfect fit</h2>
-          <?php
-          $productHref = Session::exists('user_email') ? 'productpagina.php' : 'inloggen.php';
-          ?>
-          <button class="cta-partner-hero" onclick="window.location.href='<?= $productHref ?>'">
+          <button class="cta-partner-hero" onclick="window.location.href='productpagina.php'">
             <?= $translator->get('hero_content_productpagina_button') ?>
           </button>
 

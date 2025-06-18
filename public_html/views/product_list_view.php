@@ -1,7 +1,10 @@
 <?php
 use Helpers\ViewHelper;
+use Core\Session;
 
 require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
+require_once __DIR__ . '/../../project_root/Core/Session.php';
+
 
 
 ?>
@@ -53,29 +56,33 @@ require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
 
                     <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_availability_in_stock') : $translator->get('product_list_view_availability_out_of_stock'); ?></p>
                     
+                    <?php if (Session::exists('user_email')): ?>
                     <form method="post" action="../public_html/Cart.php" class="add-to-cart-form">
-                    <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
-
-                    <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>">Aantal:</label>
-                    <input 
-                        type="number" 
-                        id="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>" 
-                        name="quantity" 
-                        value="1" 
-                        min="1" max="99" 
-                        required
-                    >
-
-                    
-                    <button type="submit" name="add_to_cart" 
-                      <?= !$artikel->getArticleAvailability() ? 'disabled title="Niet op voorraad"' : '' ?> 
-                      class="add-to-cart-button"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                      </svg>
+                        <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
+                        <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>">Aantal:</label>
+                        <input 
+                            type="number" 
+                            id="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>" 
+                            name="quantity" 
+                            value="1" 
+                            min="1" max="99" 
+                            required
+                        >
+                        <button type="submit" name="add_to_cart" 
+                        <?= !$artikel->getArticleAvailability() ? 'disabled title="Niet op voorraad"' : '' ?> 
+                        class="add-to-cart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </button>
+                    </form>
+                    <?php else: ?>
+                    <button type="button" onclick="window.location.href='inloggen.php'" class="add-to-cart-button detail-button" style="display:inline-block;text-align:center;">
+                        <?= $translator->get('product_list_view_cart_login_first') ?? 'Log in om toe te voegen aan winkelmand' ?>
+                    </button>
+                    <?php endif; ?>
                     </button>
 
                 </form>
