@@ -81,6 +81,7 @@ return [
     'contactpagina_formulier_bericht' => "Bericht",
     'contactpagina_formulier_bericht_placeholder' => "Bericht",
     'contactpagina_formulier_button' => "Verstuur",
+    'mail_sent_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. <a href=\"/public_html/index.php\">Terug naar home pagina</a>.",
 
     // registratiepagina
     'klantregistratiepagina_titel' => "Klantregistratie",

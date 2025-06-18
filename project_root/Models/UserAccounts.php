@@ -67,7 +67,7 @@ class UserAccounts
         $this->partnerID = $partnerID;
         $this->customerID = $customerID;
         $this->userInfo = $this->createAssociativeArray();
-        $this->crudModel = $crudModel ?? new \Models\CrudModel();
+        $this->crudModel = $crudModel ?? new CrudModel();
     }
     /**
      * Returns a string representation of the user account.

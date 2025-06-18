@@ -82,6 +82,7 @@ return [
     'contactpagina_formulier_bericht_placeholder' => "Message",
     'contactpagina_formulier_button' => "Submit",
     'contactpagina_formulier_send' => "Sign Up",
+    'mail_sent_success' => "Thank you for your message! We will contact you as soon as possible. <a href=\"/public_html/index.php\">Back to the homepage</a>",
 
     // registration page
     'klantregistratiepagina_titel' => "Customer Registration",
