@@ -1,19 +1,25 @@
 <?php
+
 use Core\Validator;
+
 
 require_once __DIR__ . '/Core/Validator.php';
 require_once __DIR__ . '/../public_html/Lang/translator.php';
 require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../public_html/Lang/translator.php';
+
+$translator = init_translator();
 
 
 $mailconfig = require __DIR__ . '/Models/Models_Mail/MailDataController.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;  
+use PHPMailer\PHPMailer\Exception;
 
 
 
-class SendMail {
+class SendMail
+{
 
     private $smtp_host;
     private $smtp_user;
@@ -26,7 +32,8 @@ class SendMail {
     private $translator;
 
 
-    public function __construct($name, $email, $data) {
+    public function __construct($name, $email, $data)
+    {
         $this->smtp_host = 'send.one.com';
         $this->smtp_user = 'info.fittingly@dumpvanplaatjes.nl';
         $this->smtp_pass = 'fittingly';
@@ -45,17 +52,19 @@ class SendMail {
     // }
 
 
-    public function buildMailCustomer($name, array $data): string {
+    public function buildMailCustomer($name, array $data): string
+    {
         $mail = $name . "<br><br>";
-        foreach($data as $key => $value){
+        foreach ($data as $key => $value) {
             $mail += $key . ": " . $value . "<br>";
         };
         return $mail;
     }
 
-    public function sendMailCustomer($email, $message, $subject) {
+    public function sendMailCustomer($email, $message, $subject)
+    {
         $mail = new PHPMailer();
-        
+
         try {
             // SMTP configuratie
             $mail->isSMTP();
@@ -68,7 +77,7 @@ class SendMail {
 
             //Mail set from
             $mail->setFrom($this->from_email, $this->from_name);
-            $mail->addAddress($this->$email, $this->from_name);
+            $mail->addAddress($email, $this->from_name);
 
             //Mail HTML content
             $mail->isHTML(true);
@@ -77,18 +86,14 @@ class SendMail {
             $mail->AltBody = "Dit is tekst wanneer HTML niet gegenereerd kan worden. (Screen reader)";
 
             $mail->send();
-            
+
+            //Return message
+            return $this->translator->get('mail_sent_success');
         } catch (exception $e) {
             echo $e->getMessage();
         }
     }
-
-    
-
-
-
 }
-    /*afzender
-    *mail inhoud omzetten naar html
-    *mail versturen
-    */
+
+$result = $mail->sendMailCustomer($email, $message, $subject);
+echo $result;
