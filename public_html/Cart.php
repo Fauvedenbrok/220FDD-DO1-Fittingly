@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 /**
  * Calculate the total price of the cart.
- * @var decimal $totaalPrijs The total price of all items in the cart.
+ * @var float $totaalPrijs The total price of all items in the cart.
  */
 // Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
 

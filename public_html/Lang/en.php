@@ -170,6 +170,7 @@ return [
     'product_list_view_detail_button' => "View Details",
     'product_list_view_availability_in_stock' => "In Stock",
     'product_list_view_availability_out_of_stock' => "Out of Stock",
+    'product_list_view_cart_login_first' => "Log in to add",
 
     // Contact Page
     'contactpagina_formulier_success' => "Thank you for your message! We will contact you as soon as possible. <a href=\"/public_html/index.php\">Back to the homepage</a>",
