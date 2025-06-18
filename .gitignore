@@ -133,6 +133,10 @@ dist
 vendor/
 composer.lock
 composer-setup.php
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2b9b9f83a9de66fbfad933e513e693541cedc1bd
 
 # config.php
 # This file is used to store sensitive information such as database credentials.
