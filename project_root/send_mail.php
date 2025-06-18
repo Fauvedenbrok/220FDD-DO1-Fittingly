@@ -47,6 +47,16 @@ class SendMail
         $this->translator = init_translator();
     }
 
+
+    public function buildMailToCustomer($name, array $data): string
+    {
+        $mail = $name . "<br><br>";
+        foreach ($data as $key => $value) {
+            $mail .= $key . ": " . $value . "<br>";
+        };
+        return $mail;
+    }
+
     public function sendMailCustomer($email, $message, $subject)
     {
         $mail = new PHPMailer();
@@ -76,7 +86,8 @@ class SendMail
             //Return message
             return $this->translator->get('mail_sent_success');
         } catch (exception $e) {
-            echo $e->getMessage();
+            $log = $e->getMessage();
+            return $this->translator->get('mail_sent_failure');
         }
     }
 }

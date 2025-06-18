@@ -9,7 +9,11 @@ $subject = "Fittingly contactformulier";
     $data = [
         'tel' => $_POST ['tel'],
         'bedrijf' => $_POST ['bedrijf'],
-        'bericht' => $message,
+        'bericht' => $message
     ];
 
-    $mail = new SendMail($name, $email, $data);
+    $mail = new SendMail();
+    $mailMessage = $mail->buildMailToCustomer($name, $data);
+    $result = $mail->sendMailCustomer($email, $mailMessage, $subject);
+
+    
