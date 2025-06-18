@@ -1,5 +1,6 @@
 <?php
 
+use Core\Database;
 use Core\Validator;
 
 
@@ -11,7 +12,7 @@ require_once __DIR__ . '/../public_html/Lang/translator.php';
 $translator = init_translator();
 
 
-$mailconfig = require __DIR__ . '/Models/Models_Mail/MailDataController.php';
+$mailconfig = require __DIR__ . '/./Controllers/MailDataController.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -32,7 +33,8 @@ class SendMail
     private $translator;
 
 
-    public function __construct($name, $email, $data)
+
+    public function __construct()
     {
         $this->smtp_host = 'send.one.com';
         $this->smtp_user = 'info.fittingly@dumpvanplaatjes.nl';
@@ -43,22 +45,6 @@ class SendMail
         $this->from_name = 'Fittingly';
         $this->validator = new Validator();
         $this->translator = init_translator();
-    }
-
-    //mail opbouwen
-    // public function buildMailFittingly(array $data) {
-    //     $message = 
-    //     "Geachte " . $this->name;
-    // }
-
-
-    public function buildMailCustomer($name, array $data): string
-    {
-        $mail = $name . "<br><br>";
-        foreach ($data as $key => $value) {
-            $mail += $key . ": " . $value . "<br>";
-        };
-        return $mail;
     }
 
     public function sendMailCustomer($email, $message, $subject)
