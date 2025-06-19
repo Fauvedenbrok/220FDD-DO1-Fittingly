@@ -5,15 +5,15 @@ return [
      * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
      */
     // Index
-    'hero_content_h2' => 'Become a partner of Fittingly?',
+    'hero_content_h2' => 'Interested in becoming a Fittingly partner?',
     'hero_content_partnerpagina_button' => "Become a partner",
-    'hero_content_productpagina_button' => "View our products",
+    'hero_content_productpagina_button' => "View products",
     'scroll_info_text' => "Who are we?",
     'about_h3' => "Exclusive clothing, without buying",
     'about_h4' => "Our platform",
     'about_text' => "Fittingly is the destination for renting exclusive clothing! Whether you're going to a wedding, gala, or another special occasion, you'll find the perfect outfit with us, without having to buy it. This contributes to sustainability and prevents clothing waste.",
     'index_textopmaak_h3' => "Sustainable Fashion, Luxury Experience",
-    'index_textopmaak_h4' => "Our goal",
+    'index_textopmaak_h4' => "Our mission",
     'index_paragraph_text' => "At Fittingly, we aim to uniquely combine luxury and sustainability. Our goal is to become the standard for exclusive clothing rental. We strive to play a leading role in a future where sharing and reusing clothing is the norm. In this way, we contribute together to a sustainable world where luxury and responsibility go hand in hand.",
     'usp_container_1' => "Affordability",
     'translation.usp1' => 'At Fittingly, we believe that luxury should be accessible to everyone. By renting exclusive clothing instead of selling it, we make it possible to wear high-end fashion at a fraction of the price. This way, everyone can enjoy beautiful outfits without the high costs usually associated with luxury. We offer affordable solutions without compromising on style or quality.',
@@ -46,7 +46,7 @@ return [
     'footer_submit_button' => "Sign Up",
     'footer_privacypolicy' => "Privacy Policy",
     'footer_terms_conditions' => "Terms and Conditions",
-    'footer_allrights' => "Fittingly, all rights reserved",
+    'footer_allrights' => "Fittingly. All rights reserved.",
 
 
     // Partnerpagina
@@ -58,7 +58,7 @@ return [
     'partnerpagina_h3' => "Collaborating with Fittingly",
     'partnerpagina_h4' => "The Future of Fashion Rental",
     'partnerpagina_paragraph2' => "At Fittingly, we are committed to making fashion more accessible, sustainable, and innovative. Our platform offers a reliable and personalized clothing rental experience, with hygiene and customer satisfaction as top priorities. We collaborate with forward-thinking brands and partners to provide our customers with a carefully curated selection. Together, we can contribute to a circular fashion industry and reduce environmental impact. Become a partner of Fittingly and discover how we are transforming the fashion world!",
-    'partnerpagina_koptekst_h4' => "These Partners Preceded You",
+    'partnerpagina_koptekst_h4' => "Partners who went before you",
     'partnerpagina_afsluiting_p_1' => "Interested?",
     'partnerpagina_afsluiting_p_2' => "Do you see opportunities to collaborate with Fittingly and be part of the future of fashion? Sign up today and discover what we can achieve together. We look forward to hearing from you!",
     'partnerpagina_aanmeld_button' => "Sign Up",
@@ -138,8 +138,8 @@ return [
     'admin_searchwords_column_word' => "Word",
     'admin_searchwords_column_count' => "Count",
     'admin_searchwords_column_delete' => "Delete",
-    'admin_searchwords_match' => "Found in articles",
-    'admin_searchwords_no_match' => "Not found in articles.",
+    'admin_searchwords_match' => "Found in product descriptions.",
+    'admin_searchwords_no_match' => "Not found in product descriptions.",
     'admin_searchwords_delete_confirmation' => "Are you sure you want to delete this search word?",
     'admin_searchwords_match_yes' => "Yes",
     'admin_searchwords_match_no' => "No",
@@ -177,7 +177,7 @@ return [
     // Contact Page
     'contactpagina_formulier_success' => "Thank you for your message! We will contact you as soon as possible. <a href=\"/public_html/index.php\">Back to the homepage</a>",
     'contactpagina_formulier_error' => "There was an error sending your message. Please try again later.",
-    'contactpagina_formulier_no_post' => "No POST data received. Please fill out the form and try again.",
+    'contactpagina_formulier_no_post' => "No form data received. Please fill out the form and try again.",
 
     // Shopping Cart
     'cart_title' => 'Shopping Cart',
@@ -193,5 +193,4 @@ return [
     'cart_update_button' => 'Update',
     'cart_checkout_button' => 'Checkout',
     'product_list_view_cart_link' => "Add to Cart",
-    'remove_product_confirmation' => "Are you sure you want to remove this product from your cart?",
 ];

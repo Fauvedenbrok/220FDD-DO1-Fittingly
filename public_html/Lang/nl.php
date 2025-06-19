@@ -9,11 +9,11 @@ return [
     'hero_content_partnerpagina_button' => "Meer informatie",
     'hero_content_productpagina_button' => "Bekijk producten",
     'scroll_info_text' => "Wie zijn wij?",
-    'about_h3' => "Exclusieve kleding, zonder kopen",
+    'about_h3' => "Exclusieve kleding, zonder te kopen",
     'about_h4' => "Ons platform",
     'about_text' => "Fittingly is dé bestemming voor het huren van exclusieve kleding! Of je nu naar een bruiloft, gala of een andere bijzondere gelegenheid gaat, bij ons vind je de perfecte outfit, zonder dat je deze hoeft te kopen. Hiermee draag je bij aan duurzaamheid en voorkom je kledingverspilling.",
     'index_textopmaak_h3' => "Duurzame Mode, Luxe Ervaring",
-    'index_textopmaak_h4' => "Onze doel",
+    'index_textopmaak_h4' => "Ons doel",
     'index_paragraph_text' => "Bij Fittingly willen we luxe en duurzaamheid op een unieke manier combineren. Ons doel is om dé standaard te worden voor exclusieve kledingverhuur. We streven ernaar een leidende rol te spelen in een toekomst waarin kleding delen en hergebruiken vanzelfsprekend is. Op die manier dragen we samen bij aan een duurzame wereld waarin luxe en verantwoordelijkheid hand in hand gaan.",
     'usp_container_1' => "Betaalbaarheid",
     'translation.usp1' => 'Bij Fittingly geloven we dat luxe toegankelijk moet zijn voor iedereen. Door exclusieve kleding te verhuren in plaats van te verkopen, maken we het mogelijk om high-end mode te dragen tegen een fractie van de prijs. Zo kan iedereen genieten van prachtige outfits zonder de hoge kosten die normaal gesproken met luxe gepaard gaan. Zo bieden we betaalbare oplossingen zonder concessies te doen aan stijl of kwaliteit.',
@@ -50,17 +50,17 @@ return [
     'footer_allrights' => "Fittingly, alle rechten voorbehouden",
 
     // partnerpagina
-    'partnerpagina_h2' => "Duurzaam verhuren, Tijdloze elegantie",
+    'partnerpagina_h2' => "Duurzaam verhuren, tijdloze elegantie",
     'partnerpagina_paragraph' => "Sluit je aan bij Fittingly en geef je collectie een tweede leven. Bereik een nieuwe doelgroep, verhoog je omzet en draag bij aan een duurzame mode-industrie.",
     'partnerpagina_usp1' => "Duurzaam kledingverhuur",
     'partnerpagina_usp2' => "Toegankelijke prijsstructuur",
     'partnerpagina_usp3' => "Virtuele paskamer",
     'partnerpagina_h3' => "Samenwerken met Fittingly",
-    'partnerpagina_h4' => "De toekomst van Modeverhuur",
+    'partnerpagina_h4' => "De toekomst van modeverhuur",
     'partnerpagina_paragraph2' => "Bij Fittingly zetten we ons in om mode toegankelijker, duurzamer en innovatiever te maken. Ons platform biedt een betrouwbare en gepersonaliseerde kledingverhuurervaring, waarbij hygiëne en klanttevredenheid voorop staan. We werken samen met vooruitstrevende merken en partners om onze klanten een zorgvuldig geselecteerd aanbod te bieden. Samen kunnen we bijdragen aan een circulaire mode-industrie en de impact op het milieu verkleinen. Word partner van Fittingly en ontdek hoe wij de modewereld transformeren!",
     'partnerpagina_koptekst_h4' => "Deze partners gingen je voor",
     'partnerpagina_afsluiting_p_1' => "Geïnteresseerd?",
-    'partnerpagina_afsluiting_p_2' => " Zie jij mogelijkheden om samen te werken met Fittingly en deel uit te maken van de toekomst van mode? Meld je dan vandaag nog aan en ontdek wat we samen kunnen bereiken. We kijken ernaar uit om van je te horen!",
+    'partnerpagina_afsluiting_p_2' => "Zie jij mogelijkheden om samen te werken met Fittingly en deel uit te maken van de toekomst van mode? Meld je dan vandaag nog aan en ontdek wat we samen kunnen bereiken. We kijken ernaar uit om van je te horen!",
     'partnerpagina_aanmeld_button' => "Aanmelden",
 
     // contactformulier pagina
@@ -69,12 +69,12 @@ return [
     'contactpagina_h3_contactinfo' => "Contactinformatie",
     'contactpagina_p_contactinfo_1' => "Adres: Straat 123, 1021 AB, Breda",
     'contactpagina_p_contactinfo_2' => "Telefoon: +31631506081",
-    'contactpagina_p_contactinfo_3' => "Email: info@fittingly.nl",
+    'contactpagina_p_contactinfo_3' => "E-mail: info@fittingly.nl",
     'contactpagina_formulier_naam' => "Naam",
     'contactpagina_formulier_naam_placeholder' => "Voornaam Achternaam",
     'contactpagina_formulier_bedrijf' => "Bedrijf",
     'contactpagina_formulier_bedrijf_placeholder' => "Bedrijfsnaam",
-    'contactpagina_formulier_email' => "Email adres",
+    'contactpagina_formulier_email' => "E-mailadres",
     'contactpagina_formulier_email_placeholder' => "johndoe123@email.nl",
     'contactpagina_formulier_tel' => "Telefoonnummer",
     'contactpagina_formulier_tel_placeholder' => "06-12345678",
@@ -119,15 +119,15 @@ return [
     'admin-navbar_5' => "Zoekwoorden",
     'admin-navbar_7' => "Instellingen",
 
-    'adminportal_welcome_title' => "Welkom bij het Admin Portal",
-    'adminportal_intro_1' => "Welkom bij het admin portal. Hier kunt u de verschillende opties beheren.",
+    'adminportal_welcome_title' => "Welkom bij het Admin Portaal",
+    'adminportal_intro_1' => "Welkom bij het admin portaal. Hier kunt u de verschillende opties beheren.",
     'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
     'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
 
     // Admin/Partner Products
     'admin_products_upload_csv' => "Selecteer CSV-bestand:",
     'admin_products_upload_button' => "Uploaden",
-    'admin_products_download_csv' => "Download CSV",
+    'admin_products_download_csv' => "CSV Downloaden",
     'admin_products_upload_csv_label' => "Upload een CSV-bestand met productgegevens om producten toe te voegen of bij te werken.",
 
     // Admin_searchwords
@@ -188,7 +188,7 @@ return [
     'cart_total' => 'Totaal',
     'cart_update_button' => 'Bijwerken',
     'cart_checkout_button' => 'Afrekenen',
-    'product_list_view_cart_link' => "Naar Winkelwagen",
+    'product_list_view_cart_link' => "Naar winkelwagen",
 
     // 
 
