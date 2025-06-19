@@ -152,6 +152,11 @@ body {
   align-items: flex-start;
 }
 
+.add-to-cart-form label {
+  color: #dcd3c2;
+  font-family: "Raleway", sans-serif;
+}
+
 .attr-label {
   flex: 0 0 150px; /* vaste breedte */
   font-weight: bold;

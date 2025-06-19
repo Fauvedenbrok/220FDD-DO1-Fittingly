@@ -31,9 +31,70 @@
 }
 
 .p-registration-login {
-  color: #dcd3c2b2;
+  color: #dcd3c2;
   font-size: 1.2rem;
   line-height: 1.5;
   width: 60%;
   text-align: left;
+}
+
+.form-row-registration {
+  display: flex;
+  gap: 20px;
+  min-width: 100px;
+}
+
+.form-row-button-newsletter-container {
+  justify-content: center;
+  margin-top: 20px;
+  width: 80%;
+  margin: auto;
+}
+
+#form-row-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+}
+
+#form-row-newsletter-container {
+  display: flex;
+  justify-content: center;
+}
+
+#newsletter-checkbox-label {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#newsletter-checkbox-text {
+  margin-top: -5px !important;
+  color: #1a3030;
+}
+
+.form-row-registration label {
+  width: 100%;
+  color: #1a3030;
+}
+
+.form-row-login {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #1a3030;
+}
+
+.form-row, .form-row h3 {
+  color: #1a3030; 
+}
+
+.form-row h3 {
+  font-size: 40px;
+}
+
+#form-row-button-container input {
+  color: #1a3030 !important;
 }

@@ -59,7 +59,7 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
                     <?php if (Session::exists('user_email')): ?>
                     <form method="post" action="../public_html/Cart.php" class="add-to-cart-form">
                         <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
-                        <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>">Aantal:</label>
+                        <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>"><?= $translator->get('product_list_view_quantity')?></label>
                         <input 
                             type="number" 
                             id="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>" 

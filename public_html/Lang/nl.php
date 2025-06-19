@@ -169,6 +169,7 @@ return [
     'product_list_view_availability_in_stock' => "Op voorraad",
     'product_list_view_availability_out_of_stock' => "Niet op voorraad",
     'product_list_view_cart_login_first' => "Log in om toe te voegen",
+    'product_list_view_quantity' => "Aantal:",
 
     // Contactpagina
     'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. U wordt automatisch teruggeleid naar de homepage binnen 5 seconden. Als dat niet lukt, klik dan <a href=\"/public_html/index.php\">hier</a>.",
