@@ -2,7 +2,7 @@
 return [
     /**
      * All strings on all pages translated to english
-     * translator.php calls upon either the dutch or english array and connects the specific string using a tag.
+     * Translator.php calls upon either the dutch or english array and connects the specific string using a tag.
      */
     // Index
     'hero_content_h2' => 'Interested in becoming a Fittingly partner?',
@@ -94,6 +94,7 @@ return [
     'klantregistratiepagina_formulier_email' => "Email:",
     'klantregistratiepagina_formulier_tel' => "Phone:",
     'klantregistratiepagina_formulier_geboortedatum' => "Date of Birth:",
+    'klantregistratiepagina_formulier_formrow' => "Login details",
     'klantregistratiepagina_formulier_postcode' => "Postal Code:",
     'klantregistratiepagina_formulier_straat' => "Street:",
     'klantregistratiepagina_formulier_huisnummer' => "House Number:",

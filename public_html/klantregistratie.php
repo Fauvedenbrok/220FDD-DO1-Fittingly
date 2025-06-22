@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Lang/translator.php';
+require_once 'Lang/Translator.php';
 
 $translator = init_translator();
 
@@ -80,7 +80,7 @@ $translator = init_translator();
 
                     <div class="form-row">
                         <br>
-                        <h3>Inloggegevens:</h3>
+                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow')?>:</h3>
                     </div>
                     <div class="form-row-login">
                         <label for="email">

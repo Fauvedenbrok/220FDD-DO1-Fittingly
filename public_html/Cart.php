@@ -18,7 +18,7 @@ if (!Session::exists('user_email')) {
 require_once __DIR__ . '/../project_root/Controllers/CartHandler.php';
 $cartHandler = new CartHandler();
 
-require_once 'Lang/translator.php';
+require_once 'Lang/Translator.php';
 /** @var object $translator Translator object for multi-language support. */
 $translator = init_translator();
 

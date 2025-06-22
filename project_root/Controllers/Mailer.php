@@ -12,7 +12,7 @@
  *
  * Vereisten:
  * - PHPMailer via Composer.
- * - translator.php met init_translator().
+ * - Translator.php met init_translator().
  * - config.php met SMTP instellingen.
  */
 

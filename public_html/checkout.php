@@ -39,7 +39,7 @@ $checkoutData = $cartHandler->getCheckoutViewData($orderId);
  * Verstuur bestelbevestiging per e-mail met behulp van de Mailer class.
  */
 require_once '../project_root/Controllers/Mailer.php';
-require_once '../public_html/Lang/translator.php';
+require_once '../public_html/Lang/Translator.php';
 
 $config = require '../project_root/config.php';
 $translator = init_translator();

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/auth_admin.php';
-require_once __DIR__ . '/../../public_html/Lang/translator.php';
+require_once __DIR__ . '/../../public_html/Lang/Translator.php';
 
 $translator = init_translator();
 

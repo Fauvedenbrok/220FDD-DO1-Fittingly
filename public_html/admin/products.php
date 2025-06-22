@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/auth_admin.php';
-require_once __DIR__ . '/../Lang/translator.php';
+require_once __DIR__ . '/../Lang/Translator.php';
 
 /**
  * @var object $translator Translator object for multi-language support.

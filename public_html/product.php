@@ -1,6 +1,6 @@
 <?php
 /** Laad de vertaler in en zet 'm klaar */
-require_once __DIR__ . '/Lang/translator.php';
+require_once __DIR__ . '/Lang/Translator.php';
 $translator = init_translator();
 
 /** Laad de controller en ontvang de data */

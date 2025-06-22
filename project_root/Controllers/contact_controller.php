@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Mailer.php';
-require_once __DIR__ . '/../../public_html/Lang/translator.php';
+require_once __DIR__ . '/../../public_html/Lang/Translator.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $naam = $_POST['naam'];

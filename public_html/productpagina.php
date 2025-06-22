@@ -1,6 +1,6 @@
 <?php
 /** Laad de vertaler in en zet 'm klaar. */
-require_once 'Lang/translator.php';
+require_once 'Lang/Translator.php';
 $translator = init_translator();
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Lang/translator.php';
+require_once 'Lang/Translator.php';
 require_once '../project_root/Core/Session.php';
 
 $translator = init_translator();
