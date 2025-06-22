@@ -32,6 +32,7 @@ return [
     'header_navbar_7' => "Products",
     'header_navbar_8' => "Welcome",
     'header_navbar_9' => "My Account",
+    'header_navbar_winkelwagen' => "Shopping Cart",
     'header_dropdown_text' => "Account",
 
     // Footer

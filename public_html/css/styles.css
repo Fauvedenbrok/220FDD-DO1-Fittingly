@@ -171,6 +171,10 @@
   div.footer-newsletter p {
     font-size: 16px !important;
   }
+
+  .form-row-registration {
+    display: block !important;
+  }
 }
 
 body {

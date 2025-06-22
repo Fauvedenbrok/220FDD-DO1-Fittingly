@@ -81,8 +81,6 @@
 }
 
 .form-row-login {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   color: #1a3030;
 }

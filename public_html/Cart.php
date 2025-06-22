@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productIdToRemove = filter_input(INPUT_POST, 'remove_product_id', FILTER_VALIDATE_INT);
         if ($productIdToRemove) {
             $cartHandler->removeFromCart($productIdToRemove);
-            header('Location: Cart.php');
+            header('Location: cart.php');
             exit();
         }
     }
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $cartHandler->addToCart($productId, $quantity);
             }
         }
-        header('Location: Cart.php');
+        header('Location: cart.php');
         exit();
     }
 }
@@ -126,7 +126,7 @@ $totaalPrijs = 0.00;
         <?php if (empty($cartItems)): ?>
             <p><?= $translator->get('cart_empty'); ?></p>
         <?php else: ?>
-            <form method="post" action="Cart.php" class="cart-form">
+            <form method="post" action="cart.php" class="cart-form">
                 <table>
                     <thead>
                         <tr>

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                // Verstuur het formulier via fetch naar het opgegeven PHP-bestand (bijv. Cart.php)
+                // Verstuur het formulier via fetch naar het opgegeven PHP-bestand (bijv. cart.php)
                 const response = await fetch(form.action, {
                     method: 'POST',
                     body: formData

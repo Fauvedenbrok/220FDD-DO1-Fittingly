@@ -58,7 +58,7 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
                     <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_customer_availability_in_stock') : $translator->get('product_list_view_customer_availability_out_of_stock'); ?></p>
 
                     <?php if (Session::exists('user_email')): ?>
-                        <form method="post" action="../public_html/Cart.php" class="add-to-cart-form">
+                        <form method="post" action="../public_html/cart.php" class="add-to-cart-form">
                             <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
                             <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>"><?= $translator->get('product_list_view_customer_quantity') ?></label>
                             <input
@@ -89,7 +89,7 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
 
                     <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button"><?= $translator->get('product_list_view_customer_detail_button') ?></a>
 
-                    <a href="Cart.php" class="cart-link">
+                    <a href="cart.php" class="cart-link">
                         <?= $translator->get('product_list_view_customer_cart_link'); ?>
                     </a>
                 </div>
