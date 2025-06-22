@@ -157,19 +157,35 @@ return [
     'product_detail_view_back_link' => "← Terug naar overzicht",
     'remove_product_confirmation' => "Weet je zeker dat je dit product wilt verwijderen?",
 
-    // Product_list_view
-    'product_list_view_title' => "Productoverzicht",
-    'product_list_view_search_placeholder' => "Zoek naar producten...",
-    'product_list_view_search_button' => "Zoeken",
-    'product_list_view_category_all' => "Alle categorieën",
-    'product_list_view_category_men' => "Mannenkleding",
-    'product_list_view_category_women' => "Vrouwenkleding",
-    'product_list_view_category_accessories' => "Accessoires",
-    'product_list_view_detail_button' => "Bekijk details",
-    'product_list_view_availability_in_stock' => "Op voorraad",
-    'product_list_view_availability_out_of_stock' => "Niet op voorraad",
-    'product_list_view_cart_login_first' => "Log in om toe te voegen",
-    'product_list_view_quantity' => "Aantal:",
+    // product_list_view_customer
+    'product_list_view_customer_popup' => "✅ Toegevoegd aan winkelwagen!",
+    'product_list_view_customer_title' => "Productoverzicht",
+    'product_list_view_customer_search_placeholder' => "Zoek naar producten...",
+    'product_list_view_customer_search_button' => "Zoeken",
+    'product_list_view_customer_category_all' => "Alle categorieën",
+    'product_list_view_customer_category_men' => "Mannenkleding",
+    'product_list_view_customer_category_women' => "Vrouwenkleding",
+    'product_list_view_customer_category_accessories' => "Accessoires",
+    'product_list_view_customer_detail_button' => "Bekijk details",
+    'product_list_view_customer_availability_in_stock' => "Op voorraad",
+    'product_list_view_customer_availability_out_of_stock' => "Niet op voorraad",
+    'product_list_view_customer_cart_login_first' => "Log in om toe te voegen",
+    'product_list_view_customer_quantity' => "Aantal:",
+
+    // Prudct_list_view_admin_partner
+    'product_list_view_admin_partner_title' => "Productoverzicht",
+    'product_list_view_admin_partner_search_placeholder' => "Zoek naar producten...",
+    'product_list_view_admin_partner_search_button' => "Zoeken",
+    'product_list_view_admin_partner_category_all' => "Alle categorieën",
+    'product_list_view_admin_partner_category_men' => "Mannenkleding",
+    'product_list_view_admin_partner_category_women' => "Vrouwenkleding",
+    'product_list_view_admin_partner_category_accessories' => "Accessoires",
+    'product_list_view_admin_partner_detail_button' => "Bekijk details",
+    'product_list_view_admin_partner_availability_in_stock' => "Op voorraad",
+    'product_list_view_admin_partner_availability_out_of_stock' => "Niet op voorraad",
+    'product_list_view_admin_partner_cart_login_first' => "Log in om toe te voegen",
+    'product_list_view_admin_partner_quantity' => "Aantal:",
+    
 
     // Contactpagina
     'contactpagina_formulier_success' => "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op. U wordt automatisch teruggeleid naar de homepage binnen 5 seconden. Als dat niet lukt, klik dan <a href=\"/public_html/index.php\">hier</a>.",
@@ -186,10 +202,10 @@ return [
     'cart_table_subtotal' => 'Subtotaal',
     'cart_table_actions' => 'Acties',
     'cart_remove_button' => 'Verwijderen',
-    'cart_total' => 'Totaal',
+    'cart_total' => 'Totaalprijs:',
     'cart_update_button' => 'Bijwerken',
     'cart_checkout_button' => 'Afrekenen',
-    'product_list_view_cart_link' => "Naar winkelwagen",
+    'product_list_view_customer_cart_link' => "Naar winkelwagen",
 
     // 
 

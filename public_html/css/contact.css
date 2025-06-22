@@ -11,7 +11,7 @@ body {
 
 /* Container met de achtergrondafbeelding */
 .background-container {
-    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url(./Images/backgroundImages/contactPagina.jpg);
+    background-image: linear-gradient(rgba(19, 30, 36, 0.8), rgba(19, 30, 36, 0.8)), url(/public_html/Images/backgroundImages/contactPagina.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -175,7 +175,7 @@ form button[type="submit"] {
 }
 
 /* Media queries voor grote schermen */
-@media (max-width: 1200px) {
+@media (max-width: 1210px) {
     .form-container {
         width: 90%;
         padding: 20px;
@@ -205,7 +205,7 @@ form button[type="submit"] {
 }
 
 /* Media queries voor mobiel */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1210px) {
 
     #usp1-contact,
     #usp2-contact,

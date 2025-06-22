@@ -52,7 +52,7 @@ h2 {
 }
 
 #couple-img-hidden {
-  background-image: url(/Images/backgroundImages/faded_couple.png);
+  background-image: url(/public_html/Images/backgroundImages/faded_couple.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

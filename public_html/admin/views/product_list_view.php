@@ -1,7 +1,10 @@
 <?php
 require_once __DIR__ . '/../../../project_root/Helpers/ViewHelper.php';
+require_once __DIR__ . '/../../../public_html/Lang/translator.php';
+$translator = init_translator();
 
 /** ViewHelper verwerkt htmlspecialchars voor veilige HTML-uitvoer en minder herhaling (OOP) */
+
 use Helpers\ViewHelper;
 ?>
 
@@ -10,7 +13,7 @@ use Helpers\ViewHelper;
 
 <head>
     <meta charset="UTF-8">
-    <title>Productpagina</title>
+    <title><?= $translator->get('product_list_view_admin_partner_title') ?></title>
     <link rel="stylesheet" href="../../public_html/css/styles.css">
     <link rel="stylesheet" href="../../public_html/css/product.css">
 
@@ -20,13 +23,13 @@ use Helpers\ViewHelper;
 
     <header></header>
     <!--
-    /** Hoofdcontainer voor de productoverzichtspagina.
+    /** Hoofdcontainer voor de overzichtspagina.
      * @div Container voor titel, zoekformulier en productgrid.
      */
     -->
     <div class="product-overview-container">
         <h2>Fittingly Wardrobe</h2>
-         <!--
+        <!--
         /** Zoekformulier voor filtering op zoekwoord en categorie.
          * @form Method: GET — stuurt zoekdata via URL naar dezelfde pagina.
          * @action Beveiligd met htmlspecialchars om XSS te voorkomen.
@@ -36,16 +39,16 @@ use Helpers\ViewHelper;
          */
         -->
         <form method="get" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="search-form">
-            <input type="text" name="zoekwoord" placeholder="Zoek artikelen..." value="<?= ViewHelper::e($zoekwoord); ?>">
+            <input type="text" name="zoekwoord" placeholder="<?= $translator->get('product_list_view_admin_partner_search_placeholder') ?>" value="<?= ViewHelper::e($zoekwoord); ?>">
 
             <select name="categorie">
-                <option value="">Alle categorieën</option>
-                <option value="Mannenkleding" <?= $categorie === 'Mannenkleding' ? 'selected' : ''; ?>>Mannenkleding</option>
-                <option value="Vrouwenkleding" <?= $categorie === 'Vrouwenkleding' ? 'selected' : ''; ?>>Vrouwenkleding</option>
-                <option value="Accessoires" <?= $categorie === 'Accessoires' ? 'selected' : ''; ?>>Accessoires</option>
+                <option value=""><?= $translator->get('product_list_view_admin_partner_category_all') ?></option>
+                <option value="Mannenkleding" <?= $categorie === 'Mannenkleding' ? 'selected' : ''; ?>> <?= $translator->get('product_list_view_admin_partner_category_men') ?></option>
+                <option value="Vrouwenkleding" <?= $categorie === 'Vrouwenkleding' ? 'selected' : ''; ?>><?= $translator->get('product_list_view_admin_partner_category_women') ?></option>
+                <option value="Accessoires" <?= $categorie === 'Accessoires' ? 'selected' : ''; ?>> <?= $translator->get('product_list_view_admin_partner_category_accessoires') ?></option>
             </select>
 
-            <button type="submit">Zoek</button>
+            <button type="submit"><?= $translator->get('product_list_view_admin_partner_search_button') ?></button>
         </form>
         <!--
         /** Grid met alle producten (artikelen).
@@ -65,17 +68,17 @@ use Helpers\ViewHelper;
                         <!--
                         /** Laadt placeholder als er geen afbeelding is.*/
                         -->
-                        <?php else: ?>
+                    <?php else: ?>
                         <img src="../../public_html/Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
                         <!--
                         /** Toont beschikbaarheid van artikel.*/
                         -->
-                        <?php endif; ?>
-                    <p><?= $artikel->getArticleAvailability() ? 'Op voorraad' : 'Niet beschikbaar'; ?></p>
+                    <?php endif; ?>
+                    <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_admin_partner_availability_in_stock') : $translator->get('product_list_view_admin_partner_availability_out_of_stock'); ?></p>
                     <!--
                     /** Knop om naar product-detailpagina te gaan met ID.*/
                     -->
-                    <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button">Bekijk product</a>
+                    <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button"><?= $translator->get('product_list_view_admin_partner_detail_button') ?></a>
                 </div>
             <?php endforeach; ?>
         </div>

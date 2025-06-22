@@ -79,6 +79,5 @@
         ('Fauve@fittingly.nl', '$2y$10$CtCcR3XZxYimPRkuBQjLHeuz/RULwjF/yNev9VGshUSQCBnGTyeca', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
         ('Yoran@fittingly.nl', '$2y$10$JIJbxSoALFTIj/qXsLuOTOg9a649YjhaRK7D6v5ScEleQErrr1R1W', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
         ('Bart@fittingly.nl',  '$2y$10$ahcEE61CQ6k3RxPZtkON1uR1Yshz4tITCV8AtblOqYHhcP4DFPTjm', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
-        ('Micha@fittingly.nl', '$2y$10$SYqSgzSJPfHGWwAF3mo9cut5yP7u/ocOgIEllQu13.ar8kCmSml1O', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL),
         ('Freek@fittingly.nl', '$2y$10$pbfN/.7JoY0xzcVWeVuND.nd8CZ..CPA56qrmr4sQe0e/XPd.jFd2', 'Active', 'Admin', CURDATE(), NULL, TRUE, NULL, NULL);
 

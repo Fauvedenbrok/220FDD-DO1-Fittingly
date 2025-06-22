@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1210px) {
 
   div#about,
   .hero-sectie {
@@ -473,7 +473,7 @@ footer p {
   width: 50%;
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1211px) {
   .language-button {
     display: none;
   }

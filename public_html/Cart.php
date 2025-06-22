@@ -15,7 +15,7 @@ if (!Session::exists('user_email')) {
     exit;
 }
 
-require_once 'CartHandler.php';
+require_once __DIR__ . '/../project_root/Controllers/CartHandler.php';
 $cartHandler = new CartHandler();
 
 require_once 'Lang/translator.php';
@@ -176,13 +176,11 @@ $totaalPrijs = 0.00;
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                        <tr><td class="totalamount" colspan="4">Totaalprijs:</td>
-                        <td><?= htmlspecialchars($totaalPrijs ?? '') ?></td>
+                        <tr><td class="totalamount" colspan="4"><?= $translator->get('cart_total'); ?></td>
+                        <td>€<?= htmlspecialchars(string: $totaalPrijs ?? '') ?></td>
                         </tr>
                     </tbody>
                 </table>
-
-                <p><strong><?= $translator->get('cart_total'); ?>:</strong> €<?= number_format($totaalPrijs, 2, ',', '.'); ?></p>
 
                 <button type="submit" name="update_quantities"><?= $translator->get('cart_update_button'); ?></button>
                 <button type="submit" name="checkout"><?= $translator->get('cart_checkout_button'); ?></button>

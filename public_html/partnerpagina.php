@@ -71,7 +71,8 @@ $translator = init_translator();
             </p>
           </div>
           <div class="ons-platform-img-container">
-            <img id="img-couple" src="./Images/backgroundImages/faded_couple.png" alt="Mens Brown Long-Coat Model">
+
+            <img id="img-couple" src="/public_html/Images/backgroundImages/faded_couple.png" alt="Mens Brown Long-Coat Model">
           </div>
         </div>
 
