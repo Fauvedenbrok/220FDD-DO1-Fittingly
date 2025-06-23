@@ -1,4 +1,19 @@
 <?php
+/**
+ * product_detail_view.php
+ *
+ * View for displaying the details of a single product to the customer.
+ * - Shows product image, attributes, and description.
+ * - Uses ViewHelper for safe HTML output.
+ * - Uses Translator for multilingual labels.
+ * - Displays a back link to the product overview page.
+ *
+ * Variables:
+ * @var object $artikel        The article object containing product data.
+ * @var string $categorieClass The CSS class for category-based styling.
+ * @var object $translator     Translator object for multilingual labels.
+ */
+
 use Helpers\ViewHelper;
 require_once __DIR__ . '/../../project_root/Helpers/ViewHelper.php';
 
@@ -21,8 +36,23 @@ if(isset($_GET['id'])){
 <header></header>
 
 <main>
+    <!--
+    /**
+     * Main container for the product detail page.
+     * @class product-detail-container   For CSS styling.
+     * @var string $categorieClass       Dynamically adds a category class (e.g., "men", "women").
+     */
+    -->
     <div class="product-detail-container <?= $categorieClass; ?>">
     <div class="product-detail-layout">
+        <!--
+        /**
+         * Displays the product image or a placeholder if not available.
+         * @if $artikel->imageExists()        Checks if an image exists for the product.
+         * @getImageUrl()                     Returns the image URL.
+         * @getArticleName()                  Returns the product name for alt text.
+         */
+        -->
         <div class="product-detail-image">
             <?php if ($artikel->imageExists()): ?>
                 <img src="<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= htmlspecialchars($artikel->getArticleName()); ?>">
@@ -37,7 +67,12 @@ if(isset($_GET['id'])){
             <p class="product-description">
                 <?= ViewHelper::eWithBreaks($artikel->getArticleDescription()); ?>
             </p>
-
+            <!--
+            /**
+             * List of product attributes.
+             * Each <li> contains a label and value, using the translator for multilingual support.
+             */
+            -->
         <ul class="product-attributes">
             <li><div class="attr-label"><?= $translator->get('product_detail_view_product_id')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleID()); ?></div></li>
             <li><div class="attr-label"><?= $translator->get('product_detail_view_brand')?></div><div class="attr-value"><?= ViewHelper::e($artikel->getArticleBrand()); ?></div></li>

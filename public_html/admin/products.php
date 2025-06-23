@@ -1,4 +1,18 @@
 <?php
+/**
+ * products.php
+ *
+ * Admin product management page for Fittingly.
+ * - Secures the page for admin access only.
+ * - Loads the translator for multilingual support.
+ * - Handles CSV upload and download for product data.
+ * - Loads the product list controller and passes data to the view.
+ * - Displays upload status alerts.
+ *
+ * Variables:
+ * @var object $translator Translator object for multi-language support.
+ * @var array $data        Data array returned from the product_list_controller.
+ */
 
 require_once __DIR__ . '/auth_admin.php';
 require_once __DIR__ . '/../Lang/Translator.php';
@@ -12,15 +26,13 @@ $translator = init_translator();
  * Show upload status alerts based on the 'upload' GET parameter.
  */
 if (isset($_GET['upload'])) {
-  // Hier kan je de upload status controleren
+  // Check the upload status and show an alert
   if ($_GET['upload'] == "success") {
     echo "<script>alert('Upload succesvol!');</script>";
   } elseif ($_GET['upload'] == "error") {
     echo "<script>alert('Upload mislukt!');</script>";
   }
 }
-
-// login check en rechten
 
 ?>
 
@@ -52,7 +64,7 @@ if (isset($_GET['upload'])) {
       <!--
       CSV download form for products.
       @form Downloads all products as a CSV file.
-    -->
+      -->
       <form action="../../project_root/Controllers/csv-product-download-controller.php" method="post">
         <button type="submit" name="download"><?= $translator->get('admin_products_download_csv') ?></button>
       </form>
@@ -64,10 +76,10 @@ if (isset($_GET['upload'])) {
      */
     $data = require_once '../../project_root/Controllers/product_list_controller.php';
 
-    // Extraheer de variabelen uit de controller naar losse variabelen
+    // Extract the variables from the controller data array
     extract($data);
 
-    // Laad de view (HTML weergave)
+    // Load the view (HTML display)
     require_once 'views/product_list_view.php';
     ?>
   </main>
@@ -75,7 +87,7 @@ if (isset($_GET['upload'])) {
   </footer>
   <script src="/public_html/js/scripts.js"></script>
   <script>
-    // Dynamically include the admin header HTML fragment
+    // Includes the admin header HTML into the <header> element
     includeHTML("adminheader.php", "header");
   </script>
 </body>

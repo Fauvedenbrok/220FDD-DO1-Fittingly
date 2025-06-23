@@ -1,4 +1,18 @@
 <?php
+/**
+ * partnerpagina.php
+ *
+ * Partner page for Fittingly.
+ * - Displays information for potential and current partners.
+ * - Shows USPs (Unique Selling Points) for partners.
+ * - Describes the platform and its benefits.
+ * - Displays a slider with partner logos.
+ * - Provides a call-to-action button for partner sign-up.
+ * - Uses Translator for multilingual support.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ */
 
 require_once 'Lang/Translator.php';
 

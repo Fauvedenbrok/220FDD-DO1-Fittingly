@@ -1,3 +1,24 @@
+/**
+ * onsdoelscript.js
+ *
+ * Handles interactive features for the Fittingly landing page:
+ * - Splash screen preloader on hard refresh.
+ * - Image slider for homepage banners.
+ * - Countdown timer for launch date.
+ * - USP (Unique Selling Point) text switcher on image click.
+ * - (Commented out) Light/Dark mode toggle.
+ *
+ * Functions:
+ * - Preloader: Shows splash screen on hard refresh, hides after 3.5 seconds.
+ * - Image slider: Animates images horizontally in a loop.
+ * - Countdown timer: Calculates and displays days, hours, minutes, seconds until launch.
+ * - USP switch: Changes paragraph text and color based on which USP image is clicked.
+ *
+ * Event Listeners:
+ * - DOMContentLoaded: Initializes preloader, slider, and USP switch logic.
+ * - Click: Handles USP image clicks to update text and color.
+ */
+
 const sliderImages = document.querySelectorAll('.slider-image');
 // Gebruik const (constant) wanneer je zeker weet dat een variabele niet verandert.
 let currentIndex = 0;

@@ -1,4 +1,16 @@
 <?php
+/**
+ * footer.php
+ *
+ * Footer template for Fittingly.
+ * - Displays company logo, social media icons, and navigation links.
+ * - Shows a newsletter subscription form.
+ * - Provides links to privacy policy and terms & conditions.
+ * - Uses Translator for multilingual support.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ */
 
 require_once 'Lang/Translator.php';
 

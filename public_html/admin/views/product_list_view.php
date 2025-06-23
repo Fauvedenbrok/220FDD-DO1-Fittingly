@@ -1,9 +1,21 @@
 <?php
+/**
+ * product_list_view.php
+ *
+ * View for displaying a list of products (admin overview).
+ * - Shows a search form for filtering by keyword and category.
+ * - Displays a grid of product cards with image, name, availability, and detail link.
+ * - Uses ViewHelper for safe HTML output and Translator for multilingual support.
+ *
+ * Variables:
+ * @var array $artikelen      List of article objects to display.
+ * @var string $zoekwoord     The current search keyword (from GET).
+ * @var string $categorie     The selected category (from GET).
+ * @var object $translator    Translator object for multilingual labels.
+ */
 require_once __DIR__ . '/../../../project_root/Helpers/ViewHelper.php';
 require_once __DIR__ . '/../../../public_html/Lang/Translator.php';
 $translator = init_translator();
-
-/** ViewHelper verwerkt htmlspecialchars voor veilige HTML-uitvoer en minder herhaling (OOP) */
 
 use Helpers\ViewHelper;
 ?>
@@ -23,19 +35,21 @@ use Helpers\ViewHelper;
 
     <header></header>
     <!--
-    /** Hoofdcontainer voor de overzichtspagina.
-     * @div Container voor titel, zoekformulier en productgrid.
+    /**
+     * Main container for the product overview page.
+     * @div Contains the title, search form, and product grid.
      */
     -->
     <div class="product-overview-container">
         <h2>Fittingly Wardrobe</h2>
         <!--
-        /** Zoekformulier voor filtering op zoekwoord en categorie.
-         * @form Method: GET — stuurt zoekdata via URL naar dezelfde pagina.
-         * @action Beveiligd met htmlspecialchars om XSS te voorkomen.
-         * @input Zoekveld met ingevulde waarde via ViewHelper::e().
-         * @select Dropdown voor categorieën met 'selected' op actieve filter.
-         * @button Verzenden van formulier (zoeken).
+        /**
+         * Search form for filtering by keyword and category.
+         * @form Method: GET — sends search data via URL to the same page.
+         * @action Secured with htmlspecialchars to prevent XSS.
+         * @input Search field with value filled via ViewHelper::e().
+         * @select Dropdown for categories with 'selected' on active filter.
+         * @button Submits the form (search).
          */
         -->
         <form method="get" action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="search-form">
@@ -51,9 +65,10 @@ use Helpers\ViewHelper;
             <button type="submit"><?= $translator->get('product_list_view_admin_partner_search_button') ?></button>
         </form>
         <!--
-        /** Grid met alle producten (artikelen).
-         * @foreach Loopt door elke `$artikel` in de `$artikelen` lijst.
-         * @ViewHelper::e() Wordt gebruikt om XSS-veilige output te genereren.
+        /**
+         * Grid with all products (articles).
+         * @foreach Loops through each `$artikel` in the `$artikelen` list.
+         * @ViewHelper::e() Used for XSS-safe output.
          */
         -->
         <div class="product-grid">
@@ -61,22 +76,20 @@ use Helpers\ViewHelper;
                 <div class="product-card">
                     <h3><?= ViewHelper::e($artikel->getArticleName()); ?></h3>
                     <!--
-                    /** Laadt afbeelding van artikel als die bestaat.*/
+                    /**
+                     * Loads article image if it exists, otherwise shows a placeholder.
+                     */
                     -->
                     <?php if ($artikel->imageExists()): ?>
                         <img src="../../public_html/<?= $artikel->getImageUrl(); ?>" alt="Afbeelding van <?= ViewHelper::e($artikel->getArticleName()); ?>">
-                        <!--
-                        /** Laadt placeholder als er geen afbeelding is.*/
-                        -->
                     <?php else: ?>
                         <img src="../../public_html/Images/placeholder.jpg" alt="Geen afbeelding beschikbaar">
-                        <!--
-                        /** Toont beschikbaarheid van artikel.*/
-                        -->
                     <?php endif; ?>
                     <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_admin_partner_availability_in_stock') : $translator->get('product_list_view_admin_partner_availability_out_of_stock'); ?></p>
                     <!--
-                    /** Knop om naar product-detailpagina te gaan met ID.*/
+                    /**
+                     * Button to go to the product detail page with the article ID.
+                     */
                     -->
                     <a href="product.php?id=<?= ViewHelper::e($artikel->getArticleID()); ?>" class="detail-button"><?= $translator->get('product_list_view_admin_partner_detail_button') ?></a>
                 </div>

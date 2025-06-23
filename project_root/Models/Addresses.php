@@ -30,6 +30,9 @@ class Addresses
     private string $country;
     private array $addressInfo;
 
+    /**
+     * @var mixed An instance of CrudModel or null. If null, a new instance will be created.
+     */
     private $crudModel;
      
     /**
@@ -82,18 +85,6 @@ class Addresses
      */
     public function saveAddress(): bool {
         return ($this->crudModel)::createData("Addresses", $this->addressInfo);
-        // $stmt = $this->db->prepare("
-        //     INSERT INTO addresses (PostalCode, HouseNumber, StreetName, City, Country)
-        //     VALUES (:postalCode, :houseNumber, :streetName, :city, :country)
-        // ");
-
-        // return $stmt->execute([
-        //     ':postalCode' => $this->postalCode,
-        //     ':houseNumber' => $this->houseNumber,
-        //     ':streetName' => $this->streetName,
-        //     ':city' => $this->city,
-        //     ':country' => $this->country
-        // ]);
     }
     
     /**

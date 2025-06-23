@@ -1,4 +1,18 @@
 <?php
+/**
+ * index.php
+ *
+ * Homepage for Fittingly.
+ * - Displays splash screen and main landing content.
+ * - Shows hero sections for customers and partners with call-to-action buttons.
+ * - Displays a slider with product images.
+ * - Shows company mission, USPs, and about information.
+ * - Uses Translator for multilingual support.
+ * - Loads header and footer templates dynamically.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ */
 
 require_once 'Lang/Translator.php';
 require_once '../project_root/Core/Session.php';

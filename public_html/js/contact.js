@@ -1,4 +1,19 @@
-//selecteerd het element met de id 'contactForm' en gaat daarna na of de button met type"submit" is ingeklikt.
+/**
+ * contact.js
+ *
+ * Handles client-side validation for the contact form.
+ * - Prevents default form submission and validates all fields.
+ * - Displays error messages for invalid or empty fields.
+ * - Validates name, company, email, phone number, and message fields.
+ * - Shows a popup alert on successful or failed validation (commented out).
+ *
+ * Functions:
+ * - Validates each input field and updates the corresponding error message.
+ * - Uses regular expressions for email and phone number validation.
+ *
+ * Event Listeners:
+ * - On form submit: Validates all fields and prevents submission if any are invalid.
+ */
 document
 	.getElementById('contact-form')
 	.addEventListener('submit', function (event) {

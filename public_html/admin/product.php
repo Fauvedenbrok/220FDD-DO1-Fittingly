@@ -1,15 +1,23 @@
 <?php
+/**
+ * product.php
+ *
+ * Product detail page for the admin panel.
+ * - Secures the page for admin access only.
+ * - Loads the product detail controller and retrieves product data.
+ * - Checks if the product exists; if not, displays an error and exits.
+ * - Extracts controller data for use in the view.
+ * - Loads the product detail view for display and editing.
+ *
+ * Usage:
+ * This file is accessed by admins to view and edit a single product.
+ *
+ * Variables:
+ * @var array $data      Data array returned from the product_detail_controller.
+ * @var object $artikel  The article object containing product data (from $data).
+ */
 
 require_once __DIR__ . '/auth_admin.php';
-
-/**
- * Product detail page for the admin panel.
- *
- * Loads the product detail controller, checks if the product exists,
- * extracts variables for the view, and loads the product detail view.
- *
- * @package Admin
- */
 
 /**
  * 1. Load the controller and receive the data.

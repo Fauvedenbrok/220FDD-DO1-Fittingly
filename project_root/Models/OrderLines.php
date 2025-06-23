@@ -7,6 +7,16 @@ namespace Models;
  */
 class OrderLines{
     
+    /**
+     * @var int The quantity of the article in the order line.
+     * @var string The start date of the reservation.
+     * @var string The end date of the reservation.
+     * @var float The price of the order line.
+     * @var int The ID of the order this line belongs to.
+     * @var int The ID of the article in this order line.
+     * @var int The ID of the partner associated with this order line.
+     * @var array Associative array containing all order line data.
+     */
     private $quantity;
     private $startDateReservation;
     private $endDateReservation;
@@ -16,6 +26,9 @@ class OrderLines{
     private $partnerID;
     private $orderLineInfo;
     
+    /**
+     * @var mixed CrudModel instance or null.
+     */
     private $crudModel;
 
     /**
@@ -28,6 +41,7 @@ class OrderLines{
      * @param int $orderID The ID of the order this line belongs to.
      * @param int $articleID The ID of the article in this order line.
      * @param int $partnerID The ID of the partner associated with this order line.
+     * @param mixed $crudModel Optional CrudModel instance for database operations.
      */
     public function __construct(int $quantity, string $startDateReservation, string $endDateReservation, float $orderLinePrice, int $orderID, int $articleID, int $partnerID, $crudModel = null){
         $this->quantity = $quantity;

@@ -1,6 +1,19 @@
 <?php
+
+/**
+ * product_detail_view.php
+ *
+ * View for displaying and editing the details of a single product (admin).
+ * - Shows product image, attributes, and an update form.
+ * - Uses ViewHelper for safe HTML output.
+ * - Allows admin to update product information and upload a new image.
+ *
+ * Variables:
+ * @var object $artikel        The article object containing product data.
+ * @var string $categorieClass The CSS class for category-based styling.
+ */
+
 require_once __DIR__ . '/../../../project_root/Helpers/ViewHelper.php';
-/** ViewHelper verwerkt htmlspecialchars voor veilige HTML-uitvoer en minder herhaling (OOP) */
 use Helpers\ViewHelper;
 ?>
 
@@ -18,21 +31,21 @@ use Helpers\ViewHelper;
 
 <main>
     <!--    
-    /** Container voor de detailpagina van een product.
-    * @class product-detail-container   Voor styling via CSS.
-    * @?= $categorieClass; ?            Short echo van PHP-variabele die dynamisch een extra class toevoegt (bijv. "mannen", "vrouwen").
-    * @categorieClass string            Wordt meestal bepaald aan de hand van de gekozen categorie.
-    */
+    /**
+     * Container for the product detail page.
+     * @class product-detail-container   For CSS styling.
+     * @var string $categorieClass       Dynamically adds a category class (e.g., "men", "women").
+     */
     -->
     <div class="product-detail-container <?= $categorieClass; ?>">
     <div class="product-detail-layout">
         <!--
-        /** Toont afbeelding van product of een placeholder.
-         * @if $artikel->imageExists()        Methode van object die checkt of er een afbeelding beschikbaar is (bool).
-         * @getImageUrl()                     Methode die de URL van de afbeelding retourneert (string).
-         * @getArticleName()                  Geeft productnaam terug voor alt-tekst.
-         * @htmlspecialchars()                Escape functie om XSS in alt-tekst te voorkomen.
-         * @artikel object                    Bevat alle informatie over 1 artikel.
+        /**
+         * Displays the product image or a placeholder if not available.
+         * @if $artikel->imageExists()        Checks if an image exists for the product.
+         * @getImageUrl()                     Returns the image URL.
+         * @getArticleName()                  Returns the product name for alt text.
+         * @artikel object                    Contains all product information.
          */
         -->
         <div class="product-detail-image">
@@ -43,23 +56,25 @@ use Helpers\ViewHelper;
             <?php endif; ?>
         </div>
         <!--
-        /** Formulier om een product te updaten als admin (POST).
-        * @action string           Verwijst naar controller die de update uitvoert.
-        * @method POST             Gegevens worden veilig verstuurd.
-        * @enctype multipart/...   Nodig voor bestand (image) upload.
-        */
+        /**
+         * Form for updating product information as admin (POST).
+         * @action string           Points to the controller handling the update.
+         * @method POST             Data is sent securely.
+         * @enctype multipart/...   Required for file (image) upload.
+         */
         -->
         <form action="../../project_root/Controllers/product_update_controller.php" method="post" enctype="multipart/form-data">
         <!--
-        /** Lijst met attributen van het product. Elk <li> bevat één regel.
-        * @ul.product-attributes      Layout-class voor styling.
-        * @type hidden                Niet zichtbaar in user interface.
-        * @name="productID"           Formulier-naam.
-        * @getArticleX()              Verschillende methodes die artikelinfo ophalen: naam, beschrijving, merk, etc.
-        * @method_exists()            Alleen uitvoeren als methode (price) bestaat.
-        * @getQuantityOfStock()       Methode die voorraad teruggeeft (int)
-        * @'N.v.t.'                   Wordt getoond als methode (price) niet beschikbaar is.
-        */
+        /**
+         * List of product attributes. Each <li> contains one attribute.
+         * @ul.product-attributes      Layout class for styling.
+         * @type hidden                Not visible in the UI.
+         * @name="productID"           Form field name.
+         * @getArticleX()              Methods to get article info: name, description, brand, etc.
+         * @method_exists()            Only call if method (price) exists.
+         * @getQuantityOfStock()       Method returning stock quantity (int).
+         * @'N.v.t.'                   Shown if method (price) is not available.
+         */
         -->
         <ul class="product-attributes">
             <li><input type="hidden" id="productID" name="productID" value="<?= ViewHelper::e($artikel->getArticleID()); ?>"></li>
@@ -82,11 +97,12 @@ use Helpers\ViewHelper;
                 </select>
             </li>
             <!--
-            /** Inputveld voor het uploaden van een afbeelding (admin).
-            * @type file               Nodig voor bestandsselectie.
-            * @name imagePath          Key voor verwerking in controller.
-            * @accept="image/*"        Beperk bestandstypes tot afbeeldingen.
-            */
+            /**
+             * Input field for uploading an image (admin).
+             * @type file               Required for file selection.
+             * @name imagePath          Key for processing in the controller.
+             * @accept="image/*"        Restrict file types to images.
+             */
             -->
             <li><label for="file">Upload afbeelding:</label>
             <input type="file" name="imagePath" id="file" accept="image/jpeg"></li>

@@ -1,14 +1,22 @@
 <?php
+/**
+ * settings.php
+ *
+ * Admin settings page for Fittingly.
+ * - Secures the page for admin access only.
+ * - Loads the translator for multilingual support.
+ * - Intended for updating admin or partner information.
+ * - Placeholder for additional admin portal navigation and settings options.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ */
 
 require_once __DIR__ . '/auth_admin.php';
 require_once __DIR__ . '/../../public_html/Lang/Translator.php';
 
 $translator = init_translator();
 
-
-// login check en rechten check
-
-// admin gegevens bijwerken / partner
 
 ?>
 
@@ -29,17 +37,20 @@ $translator = init_translator();
   </header>
 
   <main class="main-content">
-    <!-- extra navigatie voor opties admin portal 
-   // producten, orders, berichten, retouren, klanten, instellingen-->
-
-
-
+    <!--
+    /**
+     * Main content for the admin settings page.
+     * Placeholder for extra navigation and admin/partner settings options.
+     * @var object $translator Used for multilingual content.
+     */
+    -->
   </main>
   <footer>
   </footer>
 
   <script src="/public_html/js/scripts.js"></script>
   <script>
+    // Includes the admin header HTML into the <header> element
     includeHTML("/project_root/admin/adminheader.php", "header");
   </script>
 </body>

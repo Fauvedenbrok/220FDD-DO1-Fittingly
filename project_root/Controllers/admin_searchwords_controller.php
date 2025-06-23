@@ -4,7 +4,11 @@ use Core\Database;
 require_once __DIR__ . '/../Core/Database.php';
 
 
-
+/**
+ * Retrieves all search words and their counts from the search log.
+ *
+ * @return array List of search words and their count.
+ */
 function getSearchWords() {
 
   $pdo = Database::getConnection();
@@ -17,6 +21,13 @@ function getSearchWords() {
     return [];
   }
 }
+
+/**
+ * Checks if a search word exists in the articles table.
+ *
+ * @param string $searchWord The word to search for.
+ * @return bool True if the search word exists, false otherwise.
+ */
 function searchWordExists($searchWord) {
     $pdo = Database::getConnection();
 
@@ -30,6 +41,12 @@ function searchWordExists($searchWord) {
     }
 }
 
+/**
+ * Deletes a search word from the search log.
+ *
+ * @param string $searchWord The search word to delete.
+ * @return bool True on success, false otherwise.
+ */
 function deleteSearchWord($searchWord) {
   $pdo = Database::getConnection();
 

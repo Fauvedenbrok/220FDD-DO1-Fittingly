@@ -1,4 +1,34 @@
 <?php
+/**
+ * en.php
+ *
+ * English language translation file for Fittingly.
+ * - Contains all strings used throughout the application, translated to English.
+ * - Used by Translator.php to provide multilingual support.
+ * - Each key is referenced by a tag in the codebase to retrieve the correct translation.
+ *
+ * Usage:
+ * return [
+ *     'translation_key' => 'English translation string',
+ *     // ...
+ * ];
+ *
+ * Example:
+ * $translator->get('header_navbar_1'); // Returns "Home"
+ *
+ * Sections:
+ * - Index page
+ * - Header and Footer
+ * - Partner page
+ * - Contact form page
+ * - Registration and login pages
+ * - Admin portal and product management
+ * - Product detail and list views
+ * - Shopping cart
+ *
+ * @return array Associative array of translation keys and English strings.
+ */
+
 return [
     /**
      * All strings on all pages translated to english

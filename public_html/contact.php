@@ -1,4 +1,22 @@
 <?php
+/**
+ * contact.php
+ *
+ * Contact page for Fittingly.
+ * - Displays a contact form for users to reach out to Fittingly.
+ * - Shows company contact information and USPs.
+ * - Uses Translator for multilingual support.
+ * - Handles POST requests to submit the contact form.
+ * - Includes client-side and server-side validation (JS and PHP).
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ * @var string $naam       Name submitted via the form (POST).
+ * @var string $bedrijf    Company submitted via the form (POST).
+ * @var string $email      Email submitted via the form (POST).
+ * @var string $tel        Phone number submitted via the form (POST).
+ * @var string $bericht    Message submitted via the form (POST).
+ */
 
 require_once 'Lang/Translator.php';
 

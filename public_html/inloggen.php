@@ -1,4 +1,15 @@
 <?php
+/**
+ * inloggen.php
+ *
+ * Login page for Fittingly.
+ * - Displays a login form for users to access their account.
+ * - Uses Translator for multilingual support.
+ * - Handles POST requests to authenticate users via login_handler.php.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ */
 
 require_once 'Lang/Translator.php';
 

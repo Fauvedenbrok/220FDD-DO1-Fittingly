@@ -1,4 +1,20 @@
 <?php
+/**
+ * product_list_view.php
+ *
+ * View for displaying a list of products to the customer.
+ * - Shows a search form for filtering by keyword and category.
+ * - Displays a grid of product cards with image, name, availability, and detail link.
+ * - Allows logged-in users to add products to the cart.
+ * - Shows a popup when a product is added to the cart.
+ * - Uses ViewHelper for safe HTML output and Translator for multilingual support.
+ *
+ * Variables:
+ * @var array $artikelen      List of article objects to display.
+ * @var string $zoekwoord     The current search keyword (from GET).
+ * @var string $categorie     The selected category (from GET).
+ * @var object $translator    Translator object for multilingual labels.
+ */
 
 use Helpers\ViewHelper;
 use Core\Session;
@@ -30,7 +46,15 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
         <div id="cart-popup" class="popup hidden">
             <?= $translator->get('product_list_view_customer_popup') ?>
         </div>
-
+        <!--
+        /**
+         * Search form for filtering by keyword and category.
+         * @form Method: GET — sends search data via URL to productpagina.php.
+         * @input Search field with value filled via ViewHelper::e().
+         * @select Dropdown for categories with 'selected' on active filter.
+         * @button Submits the form (search).
+         */
+        -->
         <form method="get" action="productpagina.php" class="search-form">
             <input type="text" name="zoekwoord" placeholder=" <?= $translator->get('product_list_view_customer_search_placeholder') ?>" value="<?= ViewHelper::e($zoekwoord); ?>">
 
@@ -44,6 +68,13 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
             <button type="submit"><?= $translator->get('product_list_view_customer_search_button') ?></button>
         </form>
 
+        <!--
+        /**
+         * Grid with all products (articles).
+         * @foreach Loops through each `$artikel` in the `$artikelen` list.
+         * @ViewHelper::e() Used for XSS-safe output.
+         */
+        -->
         <div class="product-grid">
             <?php foreach ($artikelen as $artikel): ?>
                 <div class="product-card">
@@ -58,6 +89,13 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
                     <p><?= $artikel->getArticleAvailability() ? $translator->get('product_list_view_customer_availability_in_stock') : $translator->get('product_list_view_customer_availability_out_of_stock'); ?></p>
 
                     <?php if (Session::exists('user_email')): ?>
+                        <!--
+                        /**
+                         * Add-to-cart form for logged-in users.
+                         * @form Submits product ID and quantity to cart.php.
+                         * @button Disabled if not in stock.
+                         */
+                        -->
                         <form method="post" action="../public_html/cart.php" class="add-to-cart-form">
                             <input type="hidden" name="product_id" value="<?= ViewHelper::e($artikel->getArticleID()); ?>">
                             <label for="quantity_<?= ViewHelper::e($artikel->getArticleID()); ?>"><?= $translator->get('product_list_view_customer_quantity') ?></label>
@@ -79,6 +117,11 @@ require_once __DIR__ . '/../../project_root/Core/Session.php';
                             </button>
                         </form>
                     <?php else: ?>
+                        <!--
+                        /**
+                         * Button for guests to prompt login before adding to cart.
+                         */
+                        -->
                         <button type="button" onclick="window.location.href='inloggen.php'" class="add-to-cart-button detail-button" style="display:inline-block;text-align:center;">
                             <?= $translator->get('product_list_view_customer_cart_login_first') ?? 'Log in om toe te voegen aan winkelmand' ?>
                         </button>

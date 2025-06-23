@@ -1,35 +1,44 @@
 <?php
-/** Laad de vertaler in en zet 'm klaar. */
+/**
+ * productpagina.php
+ *
+ * Product overview page controller for Fittingly.
+ * - Loads the Translator for multilingual support.
+ * - Handles search logging: saves or updates search keywords in the database.
+ * - Loads the product list controller to fetch product data.
+ * - Extracts controller data into variables for easier access in the view.
+ * - Loads the product list view for display.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ * @var array $data        Data array returned from the product_list_controller.
+ * @var array $artikelen   List of article objects to display.
+ * @var string $zoekwoord  The current search keyword (from GET).
+ * @var string $categorie  The selected category (from GET).
+ */
+
 require_once 'Lang/Translator.php';
 $translator = init_translator();
 
-
-
-/** 
- * Activeer klassen via namespaces, 
- * zodat je dezelfde klassenamen in verschillende onderdelen kunt gebruiken zonder conflicten.
- * 
- * @use: zorgt dat je klassen kunt gebruiken uit andere mappen via namespaces.
- * @CrudModel: klasse voor Create, Read, Update, Delete acties.
- * @DataBase: klasse voor database connecties.
+/**
+ * Activate classes via namespaces to avoid conflicts.
+ * - CrudModel: class for Create, Read, Update, Delete actions.
+ * - DataBase: class for database connections.
  */
 use Models\CrudModel;
 use Core\DataBase;
 
-
 require_once '../project_root/Models/CrudModel.php';
 require_once '../project_root/Core/Database.php';
 
-
-
-/** 
- * Checkt of er een zoekwoord is meegegeven via de URL en dat het niet leeg is.
- * 
- * @isset($_GET['zoekwoord'])   Controleert of de parameter 'zoekwoord' bestaat in de URL.
- * @!empty($_GET['zoekwoord'])  Controleert of de parameter niet leeg is (geen "", 0, null, enz.).
- * @searchword: de zoekterm die de gebruiker heeft ingevoerd.
- * @tableName: de naam van de database tabel waar zoekwoorden worden opgeslagen.
-*/
+/**
+ * Checks if a search keyword is provided via the URL and is not empty.
+ * - If the keyword exists in the searchlog table, increments its count.
+ * - Otherwise, inserts the new keyword into the searchlog table.
+ *
+ * @var string $searchword The search term entered by the user.
+ * @var string $tableName  The name of the database table for search logging.
+ */
 if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
     $searchword = $_GET['zoekwoord'];
     $tableName = "searchlog";
@@ -47,13 +56,16 @@ if (isset($_GET['zoekwoord']) && !empty($_GET['zoekwoord'])) {
 
 
 
-/** Laad de controller en haal de data op */
+/**
+ * Load the product list controller and extract data.
+ * - $data: Data returned from the controller.
+ * - extract($data): Makes controller variables available for the view.
+ */
 $data = require_once __DIR__ . '/../project_root/Controllers/product_list_controller.php';
-
-
-/** Zet de variabelen uit de controller om aar losse variabelen. */
 extract($data);
 
 
-/** Laad de view (HTML weergave). */
+/** 
+ * Load the HTML view for the product list page. 
+ */
 require_once __DIR__ . '/views/product_list_view.php';

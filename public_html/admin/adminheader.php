@@ -1,4 +1,17 @@
 <?php
+/**
+ * adminheader.php
+ *
+ * Header template for the admin section of Fittingly.
+ * - Displays the logo, navigation bar, and language switcher.
+ * - Shows account dropdown with login/logout options based on session.
+ * - Uses Translator for multilingual support.
+ * - Uses Session and UserAccounts to display the logged-in admin's name.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ * @var string|null $userName The name of the logged-in admin user (if any).
+ */
 
 require_once __DIR__ . '/../../public_html/Lang/Translator.php';
 

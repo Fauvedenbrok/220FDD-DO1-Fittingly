@@ -15,7 +15,25 @@ require_once "../Models/Addresses.php";
 require_once "../Models/Customers.php";
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+/**
+ * Class RegistrationCustomerController
+ *
+ * Handles the registration process for new customers.
+ * - Validates input data from the registration form.
+ * - Creates and saves address, customer, and user account records in the database.
+ * - Uses transactions to ensure data consistency.
+ */
 class RegistrationCustomerController {
+    /**
+     * Handles the registration process for a new customer.
+     *
+     * - Validates required fields and email address.
+     * - Begins a database transaction.
+     * - Creates and saves address, customer, and user account objects.
+     * - Rolls back the transaction and outputs an error message if any step fails.
+     *
+     * @return void
+     */
     public function register(): void{
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $data = $_POST;
@@ -36,9 +54,16 @@ class RegistrationCustomerController {
                 $db = Database::getConnection();
                 $db->beginTransaction();
 
+                /**
+                 * Generate a unique customer ID using UUID.
+                 * @var string $customerID The generated customer ID.
+                 */
                 $customerID = Uuid::uuid4()->toString();
 
-
+                /**
+                 * Create and save the address.
+                 * @var Addresses $address The address object.
+                 */
                 $address = new Addresses(
                 $data['PostalCode'],
                 $data['HouseNumber'],
@@ -52,6 +77,10 @@ class RegistrationCustomerController {
                     throw new \Exception("Fout bij het opslaan van Address");
                 }
 
+                /**
+                 * Create and save the customer.
+                 * @var Customers $customer The customer object.
+                 */
                 $customer = new Customers(
                 $customerID,
                 $data['FirstName'],
@@ -65,6 +94,10 @@ class RegistrationCustomerController {
                     throw new \Exception("Fout bij het opslaan van Customer");
                 }
 
+                /**
+                 * Create and save the user account.
+                 * @var UserAccounts $userAccount The user account object.
+                 */
                 $userAccount = new UserAccounts(
                 $data['EmailAddress'],
                 $data['UserPassword'],

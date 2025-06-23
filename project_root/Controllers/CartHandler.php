@@ -6,6 +6,7 @@
     use Models\Articles;
     use Models\Stock;
     use Models\OrderLines;
+    use Models\Orders;
     use Models\Addresses;
 
 require_once __DIR__ . '/../Core/Database.php';

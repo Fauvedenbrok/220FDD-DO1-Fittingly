@@ -17,9 +17,16 @@ require_once '../Core/Database.php';
  * @package Controllers
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    /**
+     * @var int $articleID The ID of the article to update.
+     */
     $articleID = $_POST['productID'];
     
-    // Directory where the uploaded image will be stored    
+    // Directory where the uploaded image will be stored  
+    /**
+     * @var string $uploadDir Directory where the uploaded image will be stored.
+     * @var array $allowedTypes Allowed MIME types for image upload.
+     */  
     $uploadDir = __DIR__ . '/../../public_html/Images/productImages/'; // De map waar de afbeelding wordt opgeslagen
     // Allowed MIME types for image upload
     $allowedTypes = ['image/jpeg']; // Toegestane bestandsformaten
@@ -36,21 +43,23 @@ if (isset($_FILES['imagePath']) && !empty($_FILES['imagePath']['tmp_name'])) {
         die('Ongeldig bestandstype.');
     }
 
-    // Bepaal de bestandsnaam: articleID + de juiste extensie
+    // Determine the file name: articleID + correct extension
     $fileExt = pathinfo($file['name'], PATHINFO_EXTENSION);
     $newFileName = $articleID . '.' . $fileExt;
     $filePath = $uploadDir . $newFileName;
 
     if (move_uploaded_file($file['tmp_name'], $filePath)) {
-        // Bewaar het relatieve pad in $_POST['imagePath']
+        // Save the relative path in $_POST['imagePath']
         $_POST['imagePath'] = "Images/productImages/" . $newFileName;
         echo "Upload gelukt! Bestand opgeslagen als: $filePath";
     } else {
         echo "Er is iets misgegaan bij het uploaden van de afbeelding.";
     }
 } else {
-    // No new image uploaded, keep the old image path from the database
-    // Fetch the current article data
+    /**
+     * No new image uploaded, keep the old image path from the database.
+     * Fetch the current article data.
+     */
     $existingArticle = CrudModel::readAllById('Articles', 'ArticleID', $articleID);
     $_POST['imagePath'] = $existingArticle['ImagePath'] ?? null;
 }
@@ -64,9 +73,11 @@ if (isset($_FILES['imagePath']) && !empty($_FILES['imagePath']['tmp_name'])) {
                         $_POST['productDescription'], $filePath, $_POST['productCategory'], 
                         $_POST['productSubCategory'], $_POST['productMaterial'], 
                         $_POST['productBrand'], $_POST['productAvailability']);
-    // data van het artikel updaten
+    // Update the article data in the database
     $article->updateArticle();
 }
-// Redirect to the product page after update
+/**
+ * Redirect to the product page after update.
+ */
 header("Location: ../../public_html/admin/product.php?id={$_POST['productID']}&nocookies=true");
 

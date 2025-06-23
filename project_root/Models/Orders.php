@@ -1,12 +1,24 @@
 <?php
-
+namespace Models;
 /**
  * Class Orders
  *
  * Represents an order and provides methods to interact with the database.
+ *
+ * @package Models
  */
 class Orders{
    
+    /**
+     * @var int The unique ID of the order.
+     * @var string The date of the order.
+     * @var bool The payment status of the order.
+     * @var string The postal code for the order delivery.
+     * @var string The house number for the order delivery.
+     * @var string The status of the order (e.g., pending, completed).
+     * @var string The ID of the customer who placed the order.
+     * @var array Associative array containing all order data.
+     */
     private $orderID;
     private $orderDate;
     private $paymentStatus;
@@ -15,7 +27,10 @@ class Orders{
     private $orderStatus;
     private $customerID;
     private $orderInfo;
-    
+
+    /**
+     * @var mixed CrudModel instance or null.
+     */
     private $crudModel;
 
     /**
@@ -28,6 +43,7 @@ class Orders{
      * @param string $houseNumber The house number for the order delivery.
      * @param string $orderStatus The status of the order (e.g., pending, completed).
      * @param string $customerID The ID of the customer who placed the order.
+     * @param mixed $crudModel Optional CrudModel instance for database operations.
      */
     public function __construct(int $orderID, string $orderDate, bool $paymentStatus, string $postalCode, string $houseNumber, string $orderStatus, string $customerID, $crudModel = null) {
         $this->orderID = $orderID;

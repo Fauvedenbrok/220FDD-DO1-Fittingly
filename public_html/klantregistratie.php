@@ -1,4 +1,17 @@
 <?php
+/**
+ * klantregistratie.php
+ *
+ * Customer registration page for Fittingly.
+ * - Displays a registration form for new customers.
+ * - Uses Translator for multilingual support.
+ * - Handles POST requests to register new users via registration_handler.php.
+ * - Shows success or error messages after registration.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ * @var string $message    Registration status message from GET parameter.
+ */
 
 require_once 'Lang/Translator.php';
 

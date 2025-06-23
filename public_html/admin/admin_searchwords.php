@@ -1,4 +1,23 @@
 <?php
+/**
+ * admin_searchwords.php
+ *
+ * Admin page for managing and viewing search words used on the platform.
+ * - Requires admin authentication.
+ * - Loads the translator for multilingual support.
+ * - Loads the controller for search word management.
+ * - Handles POST requests to delete search words.
+ * - Displays a table of search words, their usage count, and match status.
+ *
+ * Functions used:
+ * - getSearchWords(): Retrieves all search words from the database.
+ * - deleteSearchWord(string $word): Deletes a search word from the database.
+ * - searchWordExists(string $word): Checks if a search word exists in the database.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ * @var array $searchWords List of search words with their count and match status.
+ */
 
 require_once __DIR__ . '/auth_admin.php';
 require_once __DIR__ . '/../../public_html/Lang/Translator.php';
@@ -31,7 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
   </header>
 
   <main class="main-content">
-    <!-- Table waar de zoekwoorden worden weergegeven vanuit de database -->
+    <!-- 
+    /**
+     * Table displaying search words from the database.
+     * @var array $searchWords List of search words.
+     * @var object $translator Translator for column headers and labels.
+     */
+    -->
     <div class="search-words-table">
       <h2><?php echo $translator->get('admin_searchwords_title'); ?></h2>
       <table id="admin-table">
@@ -47,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_word'])) {
           <?php
           $searchWords = getSearchWords();
 
-          // Loop door de zoekwoorden en voeg ze toe aan de tabel
+          // Loop through the search words and add them to the table
           foreach ($searchWords as $word): ?>
             <tr>
               <td class="admin-table-data"><?= htmlspecialchars($word['SearchWord']) ?></td>

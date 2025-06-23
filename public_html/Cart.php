@@ -1,4 +1,22 @@
 <?php
+/**
+ * cart.php
+ *
+ * Shopping cart page for Fittingly.
+ * - Handles adding, removing, and updating products in the cart.
+ * - Handles checkout and order processing.
+ * - Loads product and stock data for display.
+ * - Calculates and displays the total price.
+ * - Uses CartHandler for cart logic and session management.
+ * - Uses Translator for multilingual support.
+ * - Uses ViewHelper for safe HTML output.
+ *
+ * Variables:
+ * @var object $translator Translator object for multi-language support.
+ * @var array $artikelen   List of article objects.
+ * @var array $cartItems   Associative array of productId => quantity.
+ * @var float $totaalPrijs The total price of all items in the cart.
+ */
 require_once '../project_root/Core/Session.php';
 require_once '../project_root/Models/Stock.php';
 require_once '../project_root/Models/CrudModel.php';
@@ -31,8 +49,8 @@ require_once '../project_root/Core/Database.php';
 
 /**
  * Handle adding a product to the cart.
+ * Processes POST requests with 'add_to_cart' to add a product and quantity.
  */
-// Verwerken winkelwagen toevoeging via CartHandler
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $productId = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
     $quantity = filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT, ['options' => ['default' => 1, 'min_range' => 1]]);
@@ -69,8 +87,8 @@ $cartItems = $cartHandler->getCartItems();
 
 /**
  * Handle removing a product from the cart or updating quantities.
+ * Processes POST requests for removing or updating cart items.
  */
-// Verwerken verwijderen product uit winkelwagen
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['remove_product_id'])) {
         $productIdToRemove = filter_input(INPUT_POST, 'remove_product_id', FILTER_VALIDATE_INT);
@@ -88,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($quantity <= 0) {
                 $cartHandler->removeFromCart($productId);
             } else {
-                // Voor nu verwijderen en opnieuw toevoegen:
+                // Remove and re-add to update quantity
                 $cartHandler->removeFromCart($productId);
                 $cartHandler->addToCart($productId, $quantity);
             }
@@ -102,8 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  * Calculate the total price of the cart.
  * @var float $totaalPrijs The total price of all items in the cart.
  */
-// Bereken totaal (prijs staat nu op 0 omdat die nog niet is gedefinieerd)
-
 $totaalPrijs = 0.00;
 ?>
 
@@ -151,7 +167,7 @@ $totaalPrijs = 0.00;
                                     break;
                                 }
                             }
-                            if (!$artikel) continue; // Product bestaat niet meer
+                            if (!$artikel) continue; // Product no longer exists
                             
                             $subtotal = $prijs * $quantity;
                             ?>

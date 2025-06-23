@@ -4,9 +4,19 @@ namespace Models;
  * Class Stock
  *
  * Represents the stock information for an article/partner combination.
+ *
+ * @package Models
  */
 class Stock{
    
+    /**
+     * @var int The quantity of stock available.
+     * @var float The price of the stock item.
+     * @var string The date when the stock was added.
+     * @var string An internal reference for the stock item.
+     * @var int The ID of the article associated with this stock.
+     * @var int The ID of the partner associated with this stock.
+     */
     private int $quantityOfStock;
     private float $price;
     private string $dateAdded;
@@ -14,6 +24,9 @@ class Stock{
     private int $articleID;
     private int $partnerID;
     
+    /**
+     * @var mixed CrudModel instance or null.
+     */
     private $crudModel;
 
     /**
@@ -25,6 +38,7 @@ class Stock{
      * @param string $internalReference An internal reference for the stock item.
      * @param int $articleID The ID of the article associated with this stock.
      * @param int $partnerID The ID of the partner associated with this stock.
+     * @param mixed $crudModel Optional CrudModel instance for database operations.
      */
     public function __construct(int $quantityOfStock, float $price, string $dateAdded, string $internalReference, int $articleID, int $partnerID, $crudModel = null){
         $this->quantityOfStock = $quantityOfStock;
@@ -44,6 +58,11 @@ class Stock{
         return "$this->quantityOfStock, $this->price, $this->dateAdded, $this->internalReference, $this->articleID, $this->partnerID";
     }
 
+    /**
+     * Creates an associative array of the stock properties.
+     *
+     * @return array Associative array with stock data.
+     */
     public function createAssociativeArray(){
         $stockArray = array(
             'QuantityOfStock' => $this->quantityOfStock,

@@ -13,9 +13,21 @@ require_once "../Core/Session.php";
 
 
 
-
+/**
+ * Class LoginCustomerController
+ *
+ * Handles customer login and logout functionality.
+ */
 class LoginCustomerController
 {
+    /**
+     * Handles the login process for a customer.
+     *
+     * Validates input, checks credentials, sets session variables, and redirects
+     * the user based on their access rights.
+     *
+     * @return void
+     */
     public function login(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,6 +77,11 @@ class LoginCustomerController
         }
     }
 
+    /**
+     * Logs out the current user and redirects to the previous page or homepage.
+     *
+     * @return void
+     */
     public function logout(): void
     {
         Session::remove('user_email');
@@ -80,6 +97,11 @@ class LoginCustomerController
         exit;
     }
 
+    /**
+     * Logs out the current admin user and redirects to the homepage.
+     *
+     * @return void
+     */
     public function adminlogout(): void
     {
         Session::remove('user_email');

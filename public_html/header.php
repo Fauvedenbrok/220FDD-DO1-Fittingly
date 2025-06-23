@@ -1,4 +1,18 @@
 <?php
+/**
+ * header.php
+ *
+ * Header template for Fittingly.
+ * - Displays the logo, navigation bar, and language switcher.
+ * - Shows account dropdown with login/logout or registration options based on session.
+ * - Shows a shopping cart button (links to cart or login depending on user status).
+ * - Uses Translator for multilingual support.
+ * - Uses Session and UserAccounts to display the logged-in user's name.
+ *
+ * Variables:
+ * @var object $translator Translator object for multilingual labels.
+ * @var string|null $userName The name of the logged-in user (if any).
+ */
 
 require_once 'Lang/Translator.php';
 $translator = init_translator();

@@ -13,6 +13,22 @@ require_once __DIR__ . '/CrudModel.php';
  */
 class Articles
 {
+    /**
+     * @var int The unique ID of the article.
+     * @var string The name of the article.
+     * @var string The size of the article.
+     * @var float The weight of the article.
+     * @var string The unit of weight (e.g., kg, g).
+     * @var string The color of the article.
+     * @var string The description of the article.
+     * @var string|null The image path of the article (relative or null).
+     * @var string The category of the article.
+     * @var string The subcategory of the article.
+     * @var string The material of the article.
+     * @var string The brand of the article.
+     * @var bool Whether the article is available.
+     * @var array Associative array containing all article data.
+     */
     private int $articleID;
     private string $articleName;
     private string $size;
@@ -28,6 +44,9 @@ class Articles
     private bool $articleAvailability;
     private array $articleInfo;
 
+    /**
+     * @var mixed CrudModel instance or null.
+     */
     private $crudModel;
 
     /**
@@ -46,6 +65,7 @@ class Articles
      * @param string $articleMaterial
      * @param string $articleBrand
      * @param bool $articleAvailability
+     * @param mixed $crudModel Optional CrudModel instance for database operations.
      */
     public function __construct(int $articleID, string $articleName, string $size, float $weight, string $weightUnit, string $color, string $articleDescription, ?string $articleImagePath, string $articleCategory, string $articleSubCategory, string $articleMaterial, string $articleBrand, bool $articleAvailability, $crudModel = null)
     {
@@ -78,21 +98,21 @@ class Articles
     /**
      * Returns the URL path to the article image.
      *
-     * @return string
+     * @return string The relative URL to the article image.
      */
-    // Geeft het URL-pad naar de afbeelding (voor <img src=...>)
     public function getImageUrl(): string 
     {
-    // Als je databasepad NIET wilt gebruiken maar bestand op basis van ID
-            return 'Images/productImages/' . $this->articleID . '.jpg';
+        // Returns the image path based on article ID.
+        return 'Images/productImages/' . $this->articleID . '.jpg';
     }
+
     /**
      * Checks if the image file exists on the server.
      *
-     * @return bool
+     * @return bool True if the image exists, false otherwise.
      */
     public function imageExists(): bool {
-    // Gebruik absoluut pad op de server (let op: pad buiten public_html)
+    // Use absolute path on the server (note: path outside public_html)
     $serverPath = __DIR__ . '/../../public_html/Images/productImages/' . $this->articleID . '.jpg';
     if(file_exists($serverPath)){
         return file_exists($serverPath);
@@ -106,7 +126,7 @@ class Articles
     /**
      * Returns all article data as an associative array.
      *
-     * @return array
+     * @return array Associative array of article properties.
      */
     public function createAssociativeArray(){
         $articlesArray = array(
@@ -147,33 +167,33 @@ class Articles
 
     // Getters
 
-    /** @return int */
+    /** @return int The article ID. */
     public function getArticleID() { return $this->articleID; }
-    /** @return string */
+    /** @return string The article name. */
     public function getArticleName() { return $this->articleName; }
-    /** @return float */
+    /** @return float The article weight. */
     public function getWeight() { return $this->weight; }
-    /** @return string */
+    /** @return string The weight unit. */
     public function getWeightUnit() { return $this->weightUnit; }
-    /** @return string */
+    /** @return string The article color. */
     public function getColor() { return $this->color; }
-    /** @return string */
+    /** @return string The article size. */
     public function getSize() { return $this->size; }
-    /** @return string */
+    /** @return string The article description. */
     public function getArticleDescription() { return $this->articleDescription; }
-    /** @return string|null */
+    /** @return string|null The article image path. */
     public function getArticleImagePath() { return $this->articleImagePath; }
-    /** @return string */
+    /** @return string The article category. */
     public function getArticleCategory() { return $this->articleCategory; }
-    /** @return string */
+    /** @return string The article subcategory. */
     public function getArticleSubCategory() { return $this->articleSubCategory; }
-    /** @return string */
+    /** @return string The article material. */
     public function getArticleMaterial() { return $this->articleMaterial; }
-    /** @return string */
+    /** @return string The article brand. */
     public function getArticleBrand() { return $this->articleBrand; }
-    /** @return bool */
+    /** @return bool The article availability. */
     public function getArticleAvailability() { return $this->articleAvailability; }
-    /** @return array */
+    /** @return array The article data as an array. */
     public function getArticlesArray() { return $this->articleInfo; }
 }
 ?>

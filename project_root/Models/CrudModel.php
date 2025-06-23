@@ -21,8 +21,6 @@ class CrudModel
      * @param array $data Associative array with column names as keys and values to insert.
      * @return bool True on success, false on failure.
      */
-    // $data should be an associative array
-    // with column names as keys and values to insert
     public static function createData(string $table, array $data) {
     $pdo = Database::getConnection();
     // 'key1', 'key2', 'key3' etc
@@ -51,6 +49,16 @@ class CrudModel
         return $result ? $result : [];
     }
 
+    /**
+     * Reads a single record from a table by two column values.
+     *
+     * @param string $tableName The table name.
+     * @param string $columnOne The first column to search by.
+     * @param mixed $valueOne The value for the first column.
+     * @param string $columnTwo The second column to search by.
+     * @param mixed $valueTwo The value for the second column.
+     * @return array The found record as an associative array, or an empty array if not found.
+     */
     public static function readAllByTwoKeys(string $tableName, string $columnOne, $valueOne, $columnTwo, $valueTwo) : array {
         $pdo = Database::getConnection();
         $query = "SELECT * FROM {$tableName} WHERE {$columnOne} = ? AND {$columnTwo} = ?";
@@ -105,8 +113,6 @@ class CrudModel
      *                    The first key/value pair is assumed to be the primary key.
      * @return bool True on success, false on failure.
      */
-    // $data should be an associative array
-    // with column names as keys and values to update
     public static function updateData(string $table, array $data) {
     $pdo = Database::getConnection();
     // Extract the first key as the primary key column and its value as the ID

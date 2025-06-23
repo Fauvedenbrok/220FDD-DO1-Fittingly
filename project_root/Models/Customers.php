@@ -1,7 +1,5 @@
 <?php
 namespace Models;
-// use PDO;
-// use Core\Database;
 use CrudModel;
 
 require_once __DIR__ . '/CrudModel.php';
@@ -15,7 +13,15 @@ require_once __DIR__ . '/CrudModel.php';
  */
 class Customers
 {
-
+    /**
+     * @var string The unique ID of the customer.
+     * @var string The first name of the customer.
+     * @var string The last name of the customer.
+     * @var string The date of birth of the customer.
+     * @var string The postal code of the customer.
+     * @var string The house number of the customer.
+     * @var array Associative array containing all customer data.
+     */
     private string $customerID;
     private string $firstName;
     private string $lastName;
@@ -24,8 +30,10 @@ class Customers
     private string $houseNumber;
     private array $customerInfo;
     
+    /**
+     * @var mixed CrudModel instance or null.
+     */
     private $crudModel;
-    // private PDO $db;
 
     /**
      * Customers constructor.
@@ -36,6 +44,7 @@ class Customers
      * @param string $dateOfBirth  The date of birth of the customer.
      * @param string $postalCode   The postal code of the customer.
      * @param string $houseNumber  The house number of the customer.
+     * @param mixed $crudModel     Optional CrudModel instance for database operations.
      */
     public function __construct(
         string $customerID,
@@ -46,8 +55,6 @@ class Customers
         string $houseNumber,
         $crudModel = null
     ) {
-        // $this->db = Database::getConnection();
-
         $this->customerID = $customerID;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -93,37 +100,47 @@ class Customers
         return ($this->crudModel)::createData("customers", $this->customerInfo);
     }
 
-
-    // public function saveCustomer(): bool {
-    //     $stmt = $this->db->prepare("
-    //         INSERT INTO customers (customerID, firstName, lastName, dateOfBirth, postalCode, houseNumber)
-    //         VALUES (:customerID, :firstName, :lastName, :dateOfBirth, :postalCode, :houseNumber)");
-
-    //     return $stmt->execute([
-    //         ':customerID' => $this->customerID,
-    //         ':firstName' => $this->firstName,
-    //         ':lastName' => $this->lastName,
-    //         ':dateOfBirth' => $this->dateOfBirth,
-    //         ':postalCode' => $this->postalCode,
-    //         ':houseNumber' => $this->houseNumber
-    //     ]);
-    // }
-
+    /**
+     * Placeholder for registering an account for the customer.
+     *
+     * @return void
+     */
     public function registerAccount(){
         // placeholder
     }
 
+    /**
+     * Placeholder for verifying the customer's account.
+     *
+     * @return void
+     */
     public function verifyAccount(){
         // placeholder
     }
 
+    /**
+     * Placeholder for changing the verification status of the customer.
+     *
+     * @return void
+     */
     public function changeVerificationStatus(){
         // placeholder
     }
 
+    /**
+     * Placeholder for adding a person related to the customer.
+     *
+     * @return void
+     */
     function addPerson(){
         // placeholder
     }
+    
+    /**
+     * Placeholder for adding an account ID to the customer.
+     *
+     * @return void
+     */
     function addAccountID(){
         // placeholder
     }

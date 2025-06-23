@@ -1,19 +1,30 @@
 <?php
+/**
+ * checkout.php
+ *
+ * Checkout page for displaying the order summary to the user.
+ * - Checks if the user is logged in.
+ * - Loads the CartHandler and retrieves checkout data.
+ * - Displays customer and order information.
+ * - Sends an order confirmation email to the customer.
+ * - Shows a table with all ordered articles, their quantities, and total price.
+ * - Clears the cart after checkout.
+ *
+ * Variables:
+ * @var CartHandler $cartHandler Handles cart and checkout operations.
+ * @var string|null $userId      The email address of the logged-in user.
+ * @var int|null $orderId        The ID of the current order.
+ * @var array $checkoutData      Contains 'order', 'user', 'customer', 'quantity', 'orderLines', and 'articles'.
+ * @var object $translator       Translator object for multilingual support.
+ * @var array $orderMailData     Data for the order confirmation email.
+ * @var float $totalamount       The total price of all items in the order.
+ */
 
 use Core\Session;
 use Models\Articles;
 
 require_once '../project_root/Core/Session.php';
 require_once __DIR__ . '/../project_root/Models/Articles.php';
-/**
- * Checkout page for displaying the order summary to the user.
- *
- * - Checks if the user is logged in.
- * - Loads the CartHandler and retrieves checkout data.
- * - Displays customer and order information.
- *
- * @package Public
- */
 
 // Check if the user is logged in; if not, redirect to login page.
 if (!Session::exists('user_email')) {
@@ -36,7 +47,7 @@ $orderId = $_SESSION['order_id'] ?? null;
 $checkoutData = $cartHandler->getCheckoutViewData($orderId);
 
 /**
- * Verstuur bestelbevestiging per e-mail met behulp van de Mailer class.
+ * Send order confirmation email using the Mailer class.
  */
 require_once '../project_root/Controllers/Mailer.php';
 require_once '../public_html/Lang/Translator.php';
@@ -47,8 +58,9 @@ $translator = init_translator();
 $mailer = new Mailer($config, $translator);
 
 /**
- * Stel de data samen die nodig is voor de orderbevestiging
- * - Dit bevat e-mailadres, klantnaam, orderId, artikelen en hoeveelheden
+ * Prepare the data needed for the order confirmation email.
+ * - Includes email address, customer name, orderId, articles, and quantities.
+ * @var array $orderMailData
  */
 $orderMailData = [
     'email' => $checkoutData['user']['EmailAddress'] ?? '',
@@ -58,7 +70,7 @@ $orderMailData = [
     'quantities' => $checkoutData['quantity']
 ];
 
-// Verzend de e-mail
+// Send the email
 $mailer->sendOrderConfirmationMail($orderMailData);
 
 $totalamount = 0;
@@ -118,12 +130,12 @@ $totalamount = 0;
                 <?php if($article->imageExists()): ?>
                         <img src="/public_html/<?= $article->getImageUrl(); ?>" alt="Afbeelding van <?= htmlspecialchars($article->getArticleName()); ?>">
                         <!--
-                        /** Laadt placeholder als er geen afbeelding is.*/
+                        /** Loads placeholder if no image is available. */
                         -->
                         <?php else: ?>
                         <img src="/Images/productImages/1.jpg" alt="Geen afbeelding beschikbaar">
                         <!--
-                        /** Toont beschikbaarheid van artikel.*/
+                        /** Shows article availability. */
                         -->
                         <?php endif; ?></td>
         </tr>
@@ -144,5 +156,5 @@ $totalamount = 0;
 /**
  * Clear the cart after checkout.
  */
-Session::remove('cart'); // Clear the cart after checkout
+Session::remove('cart'); 
 ?>
