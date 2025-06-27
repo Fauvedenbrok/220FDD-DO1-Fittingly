@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../public_html/CartHandler.php';
+require_once __DIR__ . '/../project_root/Controllers/CartHandler.php';
 
 class CartCheckoutTest extends TestCase
 {
