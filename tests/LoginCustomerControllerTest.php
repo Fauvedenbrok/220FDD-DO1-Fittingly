@@ -1,9 +1,12 @@
 <?php
-namespace Controllers
-
-require_once __DIR__ . '/../Controllers/LoginCustomerController.php';
-
 use PHPUnit\Framework\TestCase;
+use Controllers\LoginCustomerController;
+use Models\UserAccounts;
+use Core\Session;
+
+require_once __DIR__ . '/../project_root/Controllers/LoginCustomerController.php';
+require_once __DIR__ . '/../project_root/Models/UserAccounts.php';
+require_once __DIR__ . '/../project_root/Core/Session.php';
 
 class LoginCustomerControllerTest extends TestCase
 {

@@ -25,14 +25,16 @@ require_once __DIR__ . '/../../vendor/autoload.php';
  */
 class RegistrationCustomerController {
 
-    // private $addresses;
+    private $addresses;
+    private $userAccounts;
+    private $customers;
 
-    // public function __construct($addresses = null, $userAccounts = null, $customers = null)
-    // {
-    //     $this->addresses = $addresses ?: new Addresses();
-    //     $this->userAccounts = $userAccounts ?: new UserAccounts();
-    //     $this->customers = $customers ?: new Customers();
-    // }
+    public function __construct($addresses = null, $userAccounts = null, $customers = null)
+    {
+        $this->addresses = $addresses ?: new Addresses();
+        $this->userAccounts = $userAccounts ?: new UserAccounts();
+        $this->customers = $customers ?: new Customers();
+    }
 
     /**
      * Handles the registration process for a new customer.
