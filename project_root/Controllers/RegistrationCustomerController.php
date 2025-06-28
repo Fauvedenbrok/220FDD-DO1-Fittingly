@@ -8,11 +8,11 @@ use Core\Validator;
 use Core\Database;
 use Ramsey\Uuid\Uuid;
 
-require_once "../Core/validator.php";
-require_once "../Core/Database.php";
-require_once "../Models/UserAccounts.php";
-require_once "../Models/Addresses.php";
-require_once "../Models/Customers.php";
+require_once __DIR__ .  '/../Core/validator.php';
+require_once __DIR__ .  '/../Core/Database.php';
+require_once __DIR__ .  '/../Models/UserAccounts.php';
+require_once __DIR__ .  '/../Models/Addresses.php';
+require_once __DIR__ .  '/../Models/Customers.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 /**
@@ -25,14 +25,14 @@ require_once __DIR__ . '/../../vendor/autoload.php';
  */
 class RegistrationCustomerController {
 
-    private $addresses;
+    // private $addresses;
 
-    public function __construct($addresses = null, $userAccounts = null, $customers = null)
-    {
-        $this->addresses = $addresses ?: new Addresses();
-        $this->userAccounts = $userAccounts ?: new UserAccounts();
-        $this->customers = $customers ?: new Customers();
-    }
+    // public function __construct($addresses = null, $userAccounts = null, $customers = null)
+    // {
+    //     $this->addresses = $addresses ?: new Addresses();
+    //     $this->userAccounts = $userAccounts ?: new UserAccounts();
+    //     $this->customers = $customers ?: new Customers();
+    // }
 
     /**
      * Handles the registration process for a new customer.
