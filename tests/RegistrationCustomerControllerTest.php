@@ -79,7 +79,7 @@ class RegistrationCustomerControllerTest extends TestCase
 
     public function testSaveCustomerDetailsFails(): void
     {
-        
+
         $_POST = [
             'FirstName' => 'John',
             'LastName' => 'Doe',
@@ -106,7 +106,10 @@ class RegistrationCustomerControllerTest extends TestCase
         $controller = new RegistrationCustomerController($addressesMock, $customersMock, $userAccountsMock);
         $controller->register();
         $output = ob_get_clean();
+        while (ob_get_level() > 0) {
+            ob_end_clean();
+        }
 
-        $this->assertStringContainsString('Fout bij het opslaan van Customer', $output);
+        $this->assertStringContainsString('Registratie mislukt: Fout bij het opslaan van Customer', $output);
     }
 }

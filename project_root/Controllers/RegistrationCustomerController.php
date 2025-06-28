@@ -25,14 +25,16 @@ require_once __DIR__ . '/../../vendor/autoload.php';
  */
 class RegistrationCustomerController {
 
-    // private $addresses;
+    private $addresses;
+    private $userAccounts;
+    private $customers;
 
-    // public function __construct($addresses = null, $userAccounts = null, $customers = null)
-    // {
-    //     $this->addresses = $addresses ?: new Addresses();
-    //     $this->userAccounts = $userAccounts ?: new UserAccounts();
-    //     $this->customers = $customers ?: new Customers();
-    // }
+    public function __construct($addresses = null, $userAccounts = null, $customers = null)
+    {
+        $this->addresses = $addresses ?: null;
+        $this->userAccounts = $userAccounts ?: null;
+        $this->customers = $customers;
+    }
 
     /**
      * Handles the registration process for a new customer.
@@ -74,7 +76,7 @@ class RegistrationCustomerController {
                  * Create and save the address.
                  * @var Addresses $address The address object.
                  */
-                $address = new Addresses(
+                $address = $this->addresses ?: new Addresses(
                 $data['PostalCode'],
                 $data['HouseNumber'],
                 $data['StreetName'],
@@ -91,7 +93,7 @@ class RegistrationCustomerController {
                  * Create and save the customer.
                  * @var Customers $customer The customer object.
                  */
-                $customer = new Customers(
+                $customer = $this->customers ?: new Customers(
                 $customerID,
                 $data['FirstName'],
                 $data['LastName'],
@@ -108,7 +110,7 @@ class RegistrationCustomerController {
                  * Create and save the user account.
                  * @var UserAccounts $userAccount The user account object.
                  */
-                $userAccount = new UserAccounts(
+                $userAccount = $this->userAccounts ?: new UserAccounts(
                 $data['EmailAddress'],
                 $data['UserPassword'],
                 'pending',          // voorbeeld status
@@ -129,7 +131,7 @@ class RegistrationCustomerController {
                 $db = Database::getConnection();
                 $db->rollback();
                 echo "Registratie mislukt: " . $e->getMessage();
-                exit;
+                return;
             }
 
         }
