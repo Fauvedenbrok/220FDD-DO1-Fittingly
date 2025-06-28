@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fittingly Code Learning Environment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Fittingly Code Learning Environment</h1>
+            <p>Master your codebase for the upcoming test!</p>
+            <div class="stats">
+                <span id="score">Score: 0/0</span>
+                <span id="streak">Streak: 0</span>
+            </div>
+        </header>
+
+        <div class="learning-modes">
+            <button class="mode-btn active" data-mode="explain">📝 Code Explanation</button>
+            <button class="mode-btn" data-mode="identify">🔍 Code Identification</button>
+            <button class="mode-btn" data-mode="debug">🐛 Debug Challenge</button>
+            <button class="mode-btn" data-mode="complete">✏️ Code Completion</button>
+        </div>
+
+        <div class="difficulty-selector">
+            <label>Difficulty:</label>
+            <select id="difficulty">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate" selected>Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+        </div>
+
+        <div class="question-container">
+            <div class="question-header">
+                <h2 id="question-title">Loading...</h2>
+                <span class="question-number" id="question-number">Question 1</span>
+            </div>
+            
+            <div class="code-block">
+                <pre><code id="code-display"></code></pre>
+            </div>
+
+            <div class="question-content">
+                <div id="question-text"></div>
+                <div id="answer-options"></div>
+                <div id="user-input" style="display: none;">
+                    <textarea id="user-answer" placeholder="Type your answer here..."></textarea>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="submit-btn">Submit Answer</button>
+                <button id="hint-btn">💡 Hint</button>
+                <button id="next-btn" style="display: none;">Next Question</button>
+            </div>
+
+            <div id="feedback" class="feedback"></div>
+            <div id="hint" class="hint" style="display: none;"></div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="study-notes">
+            <h3>📚 Study Notes</h3>
+            <div id="notes-content">
+                <p>Notes will appear here as you complete questions...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

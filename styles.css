@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a3030 0%, #2c5454 100%);
+    color: #dcd3c2;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(26, 48, 48, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #cc9c4e;
+}
+
+header h1 {
+    color: #cc9c4e;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.stats {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.stats span {
+    background: rgba(204, 156, 78, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.learning-modes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    background: rgba(220, 211, 194, 0.1);
+    border: 2px solid #cc9c4e;
+    color: #dcd3c2;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.mode-btn:hover {
+    background: rgba(204, 156, 78, 0.2);
+    transform: translateY(-2px);
+}
+
+.mode-btn.active {
+    background: #cc9c4e;
+    color: #1a3030;
+    font-weight: bold;
+}
+
+.difficulty-selector {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.difficulty-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.difficulty-selector select {
+    background: rgba(220, 211, 194, 0.1);
+    border: 1px solid #cc9c4e;
+    color: #dcd3c2;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.question-container {
+    background: rgba(220, 211, 194, 0.05);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(204, 156, 78, 0.3);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.question-header h2 {
+    color: #cc9c4e;
+    font-size: 1.5rem;
+}
+
+.question-number {
+    background: #cc9c4e;
+    color: #1a3030;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.code-block {
+    background: #0d1117;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 4px solid #cc9c4e;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.code-block code {
+    color: #f8f8f2;
+}
+
+.question-content {
+    margin: 20px 0;
+}
+
+#question-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.answer-option {
+    background: rgba(220, 211, 194, 0.1);
+    border: 2px solid transparent;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.answer-option:hover {
+    border-color: #cc9c4e;
+    background: rgba(204, 156, 78, 0.1);
+}
+
+.answer-option.selected {
+    border-color: #cc9c4e;
+    background: rgba(204, 156, 78, 0.2);
+}
+
+.answer-option.correct {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.2);
+}
+
+.answer-option.incorrect {
+    border-color: #dc3545;
+    background: rgba(220, 53, 69, 0.2);
+}
+
+#user-answer {
+    width: 100%;
+    min-height: 120px;
+    background: rgba(220, 211, 194, 0.1);
+    border: 2px solid #cc9c4e;
+    color: #dcd3c2;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    background: #cc9c4e;
+    color: #1a3030;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background: #b38b42;
+    transform: translateY(-2px);
+}
+
+.controls button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.feedback {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.feedback.correct {
+    background: rgba(40, 167, 69, 0.2);
+    border: 2px solid #28a745;
+    color: #28a745;
+}
+
+.feedback.incorrect {
+    background: rgba(220, 53, 69, 0.2);
+    border: 2px solid #dc3545;
+    color: #dc3545;
+}
+
+.hint {
+    background: rgba(204, 156, 78, 0.1);
+    border: 2px solid #cc9c4e;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    background: rgba(220, 211, 194, 0.2);
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #cc9c4e, #b38b42);
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.study-notes {
+    background: rgba(220, 211, 194, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgba(204, 156, 78, 0.3);
+}
+
+.study-notes h3 {
+    color: #cc9c4e;
+    margin-bottom: 15px;
+}
+
+#notes-content {
+    line-height: 1.6;
+}
+
+.note-item {
+    background: rgba(204, 156, 78, 0.1);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border-left: 3px solid #cc9c4e;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .learning-modes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mode-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .question-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .controls button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
