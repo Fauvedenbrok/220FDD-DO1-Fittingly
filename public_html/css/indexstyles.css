@@ -407,10 +407,7 @@ body {
 
 
 /* ------------------ media queries ------------------*/
-@media (min-width: 1920px) {
-
-}
-@media (max-width: 1440px) {
+@media (max-width: 1471px) {
     h2 {
         font-size: 48px;
         text-align: center;

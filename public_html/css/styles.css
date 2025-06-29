@@ -3,7 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 @media (max-width: 1470px) {
-  
 }
 
 @media screen and (max-width: 1470px) {
@@ -44,7 +43,7 @@
     background-color: #dcd3c2;
   }
 
-  nav button a {
+  button a {
     color: #1a3030 !important;
     font-weight: 500 !important;
   }
@@ -482,9 +481,14 @@ footer p {
   .language-button {
     display: none;
   }
+
   #nav-button-inloggen,
   #nav-button-registratie {
     display: none !important;
+  }
+
+  #nav-button-welkom {
+    display: none;
   }
 
   .header-flexbox {
