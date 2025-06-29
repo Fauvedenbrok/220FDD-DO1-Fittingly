@@ -1,4 +1,5 @@
 <?php
+
 /**
  * header.php
  *
@@ -61,14 +62,17 @@ Session::start();
         <?php
         $cartHref = Session::exists('user_email') ? 'cart.php' : 'inloggen.php';
         ?>
-        <button id="winkelmand-btn">
-          <a href="<?= $cartHref ?>"><?= $translator->get('header_navbar_winkelwagen')?></a>
+        <button class="winkelmand-btn" id="winkelmand-btn-text">
+          <a href="<?= $cartHref ?>"><?= $translator->get('header_navbar_winkelwagen') ?></a>
+        </button>
+        <button class="winkelmand-btn" id="winkelmand-btn-img">
+          <a href="<?= $cartHref ?>"> <img src="/public_html/Images/icons/winkelmand.png" alt=""></a>
         </button>
         <button class="nav-button" id="nav-button-inloggen">
-          <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_inloggen')?></a>
+          <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_inloggen') ?></a>
         </button>
         <button class="nav-button" id="nav-button-registratie">
-          <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_registreren')?></a>
+          <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_registreren') ?></a>
         </button>
 
         <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
@@ -85,7 +89,7 @@ Session::start();
               <a class="nav-button-tekst" href="../project_root/Core/login_handler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
           </div>
-          
+
         <?php else: ?>
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">

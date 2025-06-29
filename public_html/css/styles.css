@@ -2,15 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
+@media (max-width: 1470px) {
+  
+}
+
 @media screen and (max-width: 1210px) {
   div#about,
   .hero-sectie {
     flex-direction: column;
   }
 
-  header button.hamburger {
-    display: block;
+  .account-btn {
+    display: none !important;
   }
+
+  #winkelmand-btn-img {
+    display: none;
+  }
+
+
 
   header nav {
     display: none;
@@ -473,7 +483,14 @@ footer p {
   #nav-button-inloggen,
   #nav-button-registratie {
     display: none !important;
-    padding: 0 !important;
+  }
+
+  .header-flexbox {
+    width: 85%;
+  }
+
+  #winkelmand-btn-text {
+    display: none;
   }
 }
 
@@ -491,7 +508,7 @@ footer p {
 }
 
 .account-btn img,
-#winkelmand-btn img {
+.winkelmand-btn img {
   width: 32px;
   height: 32px;
 }
