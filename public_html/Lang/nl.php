@@ -151,8 +151,8 @@ return [
     'admin-navbar_5' => "Zoekwoorden",
     'admin-navbar_7' => "Instellingen",
 
-    'adminportal_welcome_title' => "Welkom bij het Admin Portaal",
-    'adminportal_intro_1' => "Welkom bij het admin portaal. Hier kunt u de verschillende opties beheren.",
+    'adminportal_welcome_title' => "Admin Portaal",
+    'adminportal_intro_1' => "Hier kunt u de verschillende opties beheren.",
     'adminportal_intro_2' => "Gebruik de navigatiebalk aan de bovenkant van uw scherm om door de verschillende secties te navigeren.",
     'adminportal_intro_3' => "Als u vragen heeft, neem dan contact op met de support.",
 
