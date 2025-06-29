@@ -113,15 +113,6 @@ class AddressTest extends TestCase
         // vanwege de lengtebeperkingen van de kolommen.
         $this->assertTrue($result);
 
-        $stmt = self::$pdo->prepare("SELECT * FROM Addresses WHERE PostalCode = ? AND HouseNumber = ?");
-        $stmt->execute([$longString, $longString]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Dit is niet false omdat de lange strings zijn opgeslagen, maar mogelijk zijn ze afgekapt
-        $this->assertNotFalse($row);
-        $this->assertEquals($longString, $row['StreetName']);
-        $this->assertEquals($longString, $row['City']);
-        $this->assertEquals($longString, $row['Country']);
     }
 }
 

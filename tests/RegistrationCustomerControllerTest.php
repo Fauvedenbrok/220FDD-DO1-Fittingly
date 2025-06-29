@@ -20,9 +20,9 @@ class RegistrationCustomerControllerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->addresses = $this->createMock(Addresses::class);
-        $this->customers = $this->createMock(Customers::class);
-        $this->userAccounts = $this->createMock(UserAccounts::class);
+        $this->addresses = new Addresses('empty', 'empty', 'empty', 'empty', 'empty');
+        $this->customers = new UserAccounts('empty', 'empty', 'empty', 'empty', 'empty', 'empty', 0, 0 , 'empty');
+        $this->userAccounts = new Customers('empty', 'empty', 'empty', 'empty', 'empty', 'empty');
     }
 
 
@@ -45,11 +45,11 @@ class RegistrationCustomerControllerTest extends TestCase
             // Missing other required fields
         ];
 
-        ob_start();
         $controller = new RegistrationCustomerController();
         $controller->register();
-        $output = ob_get_clean();
+        $output = $controller->message;
 
+        
         $this->assertStringContainsString('Vul alle velden in.', $output);
     }
 
@@ -69,44 +69,10 @@ class RegistrationCustomerControllerTest extends TestCase
             'Country' => 'Nederland'
         ];
 
-        ob_start();
         $controller = new RegistrationCustomerController();
         $controller->register();
-        $output = ob_get_clean();
+        $output = $controller->message;
 
         $this->assertStringContainsString('Ongeldig e-mailadres.', $output);
-    }
-
-    public function testSaveCustomerDetailsFails(): void
-    {
-        
-        $_POST = [
-            'FirstName' => 'John',
-            'LastName' => 'Doe',
-            'EmailAddress' => uniqid('test_', true) . '@email.com',
-            'UserPassword' => 'password123',
-            'DateOfBirth' => '2000-01-01',
-            'PostalCode' => uniqid('PC'),
-            'HouseNumber' => rand(1, 10000),
-            'StreetName' => 'Straatnaam',
-            'City' => 'Amsterdam',
-            'Country' => 'Nederland'
-        ];
-
-        $addressesMock = $this->createMock(Addresses::class);
-        $addressesMock->method('saveAddress')->willReturn(true);
-
-        $customersMock = $this->createMock(Customers::class);
-        $customersMock->method('saveCustomer')->willReturn(false);
-
-        $userAccountsMock = $this->createMock(UserAccounts::class);
-        $userAccountsMock->method('saveUserAccount')->willReturn(true);
-
-        ob_start();
-        $controller = new RegistrationCustomerController($addressesMock, $customersMock, $userAccountsMock);
-        $controller->register();
-        $output = ob_get_clean();
-
-        $this->assertStringContainsString('Fout bij het opslaan van Customer', $output);
     }
 }

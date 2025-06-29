@@ -18,10 +18,10 @@ class LoginCustomerControllerTest extends TestCase
             'UserPassword' => ''
         ];
 
-        ob_start();
+      
         $controller = new LoginCustomerController();
         $controller->login(true);
-        $output = ob_get_clean();
+        $output = $_SESSION['login_error'];
 
         $this->assertStringContainsString('Vul alle verplichte velden in.', $output);
     }
@@ -34,10 +34,10 @@ class LoginCustomerControllerTest extends TestCase
             'UserPassword' => 'password123'
         ];
 
-        ob_start();
+
         $controller = new LoginCustomerController();
         $controller->login(true);
-        $output = ob_get_clean();
+        $output = $_SESSION['login_error'];
 
         $this->assertStringContainsString('Ongeldig e-mailadres.', $output);
     }

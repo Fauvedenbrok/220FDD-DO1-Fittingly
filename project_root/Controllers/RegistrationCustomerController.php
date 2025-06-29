@@ -8,7 +8,7 @@ use Core\Validator;
 use Core\Database;
 use Ramsey\Uuid\Uuid;
 
-require_once __DIR__ .  '/../Core/validator.php';
+require_once __DIR__ .  '/../Core/Validator.php';
 require_once __DIR__ .  '/../Core/Database.php';
 require_once __DIR__ .  '/../Models/UserAccounts.php';
 require_once __DIR__ .  '/../Models/Addresses.php';
@@ -25,16 +25,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
  */
 class RegistrationCustomerController {
 
-    private $addresses;
-    private $userAccounts;
-    private $customers;
-
-    public function __construct($addresses = null, $userAccounts = null, $customers = null)
-    {
-        $this->addresses = $addresses ?: new Addresses();
-        $this->userAccounts = $userAccounts ?: new UserAccounts();
-        $this->customers = $customers ?: new Customers();
-    }
+    public $message;
 
     /**
      * Handles the registration process for a new customer.
@@ -54,11 +45,13 @@ class RegistrationCustomerController {
             $validation = new Validator();
             if ($validation->isEmpty($data, $required)) {
                 echo "Vul alle velden in.";
+                $this->message = "Vul alle velden in.";
                 return;
             }
 
             if (!$validation->isValidEmail($data['EmailAddress'])) {
                 echo "Ongeldig e-mailadres.";
+                $this->message = "Ongeldig e-mailadres.";
                 return;
             }
 
