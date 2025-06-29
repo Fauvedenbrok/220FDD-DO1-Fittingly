@@ -50,10 +50,7 @@ Session::start();
         <?php
         $cartHref = Session::exists('user_email') ? 'cart.php' : 'inloggen.php';
         ?>
-        <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
-          <button id="nav-button-welkom" class="nav-button" class="nav-profiel"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
-          </button>
-          <button class="nav-button">
+        <button class="nav-button">
             <a class="nav-button-tekst" href="index.php"><?= $translator->get('header_navbar_1') ?></a>
           </button>
           <button class="nav-button">
@@ -65,6 +62,10 @@ Session::start();
           <button class="nav-button">
             <a class="nav-button-tekst" href="contact.php"><?= $translator->get('header_navbar_3') ?></a>
           </button>
+        <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
+          <button id="nav-button-welkom" class="nav-button" class="nav-profiel"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
+          </button>
+          
 
           <button class="winkelmand-btn" id="winkelmand-btn-text">
             <a href="<?= $cartHref ?>"><?= $translator->get('header_navbar_winkelwagen') ?></a>
@@ -80,7 +81,7 @@ Session::start();
               </span>
 
             </button>
-            <div id="account-menu" class="account-menu">
+            <div id="account-menu" class="account-menu nav-button">
               <a class="nav-button-tekst" href="mijnaccount.php"><?= $translator->get('header_navbar_9') ?></a>
               <a class="nav-button-tekst" href="../project_root/Core/login_handler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
