@@ -1,4 +1,5 @@
 <?php
+
 /**
  * klantregistratie.php
  *
@@ -42,34 +43,39 @@ $translator = init_translator();
 
             <div class="registration-login-form-container">
 
-                <form method="post" action="../project_root/Core/registration_handler.php">
+                <form method="POST" action="../project_root/Core/registration_handler.php">
+                    <?php
+                    if (isset($_SESSION['registration_error'])): ?>
+                        <p class="error"><?= $_SESSION['registration_error'];
+                                            unset($_SESSION['registration_error']); ?></p>
+                    <?php endif; ?>
                     <div class="form-row">
                         <br>
-                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow_persoon')?>:</h3>
+                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow_persoon') ?>:</h3>
                     </div>
                     <div class="form-row-registration">
                         <label for="name">
                             <?= $translator->get('klantregistratiepagina_formulier_naam') ?>
-                            <input type="text" name="FirstName" id="firstname" required><br>
+                            <input type="text" name="FirstName" id="firstname"><br>
                         </label>
                         <label for="name">
                             <?= $translator->get('klantregistratiepagina_formulier_achternaam') ?>
-                            <input type="text" name="LastName" id="lastname" required><br>
+                            <input type="text" name="LastName" id="lastname"><br>
                         </label>
                     </div>
 
                     <div class="form-row-registration">
                         <label for="streetName">
                             <?= $translator->get('klantregistratiepagina_formulier_straat') ?>
-                            <input type="text" name="StreetName" id="streetName" required><br>
+                            <input type="text" name="StreetName" id="streetName"><br>
                         </label>
                         <label for="streetNumber">
                             <?= $translator->get('klantregistratiepagina_formulier_huisnummer') ?>
-                            <input type="text" name="HouseNumber" id="streetNumber" required><br>
+                            <input type="text" name="HouseNumber" id="streetNumber"><br>
                         </label>
                         <label for="postalCode">
                             <?= $translator->get('klantregistratiepagina_formulier_postcode') ?>
-                            <input type="text" name="PostalCode" id="postalCode" required><br>
+                            <input type="text" name="PostalCode" id="postalCode"><br>
                         </label>
 
 
@@ -77,11 +83,11 @@ $translator = init_translator();
                     <div class="form-row-registration">
                         <label for="city">
                             <?= $translator->get('klantregistratiepagina_formulier_stad') ?>
-                            <input type="text" name="City" id="city" required><br>
+                            <input type="text" name="City" id="city"><br>
                         </label>
                         <label for="country">
                             <?= $translator->get('klantregistratiepagina_formulier_land') ?>
-                            <input type="text" name="Country" id="country" required><br>
+                            <input type="text" name="Country" id="country"><br>
                         </label>
                     </div>
                     <div class="form-row">
@@ -91,22 +97,22 @@ $translator = init_translator();
                         </label>
                         <label for="dateOfBirth">
                             <?= $translator->get('klantregistratiepagina_formulier_geboortedatum') ?>
-                            <input type="date" name="DateOfBirth" id="dateOfBirth" required><br>
+                            <input type="date" name="DateOfBirth" id="dateOfBirth"><br>
                         </label>
                     </div>
 
                     <div class="form-row">
                         <br>
-                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow_login')?>:</h3>
+                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow_login') ?>:</h3>
                     </div>
                     <div class="form-row-login">
                         <label for="email">
                             <?= $translator->get('klantregistratiepagina_formulier_email') ?>
-                            <input type="email" name="EmailAddress" id="email" required><br>
+                            <input type="email" name="EmailAddress" id="email"><br>
                         </label>
                         <label for="password">
                             <?= $translator->get('klantregistratiepagina_formulier_wachtwoord') ?>
-                            <input type="password" name="UserPassword" id="password" required><br>
+                            <input type="password" name="UserPassword" id="password"><br>
                         </label>
 
                     </div>
@@ -131,12 +137,6 @@ $translator = init_translator();
                         alert("Thank you for registering!");
                     });
                 </script>
-            <?php endif; ?>
-
-            <?php
-            if (isset($_SESSION['registration_error'])): ?>
-                <p class="error"><?= $_SESSION['registration_error'];
-                                    unset($_SESSION['registration_error']); ?></p>
             <?php endif; ?>
             <div>
             </div>

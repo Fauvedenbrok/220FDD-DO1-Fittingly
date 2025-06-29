@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+
 use Models\Customers;
 use Models\UserAccounts;
 use Models\Addresses;
@@ -23,7 +24,8 @@ require_once __DIR__ . '/../../vendor/autoload.php';
  * - Creates and saves address, customer, and user account records in the database.
  * - Uses transactions to ensure data consistency.
  */
-class RegistrationCustomerController {
+class RegistrationCustomerController
+{
 
     public $message;
 
@@ -37,14 +39,26 @@ class RegistrationCustomerController {
      *
      * @return void
      */
-    public function register(): void{
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    public function register(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = $_POST;
 
             $required = ['FirstName', 'LastName', 'EmailAddress', 'UserPassword', 'DateOfBirth', 'PostalCode', 'HouseNumber', 'StreetName', 'City', 'Country'];
             $validation = new Validator();
             if ($validation->isEmpty($data, $required)) {
-                echo "Vul alle velden in.";
+                // Start session if not already started
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                // Find which fields are empty
+                $_SESSION['registration_error_fields'] = [];
+                foreach ($required as $field) {
+                    if (empty($data[$field])) {
+                        $_SESSION['registration_error_fields'][] = $field;
+                    }
+                }
+                $_SESSION['registration_error'] = "Vul alle velden in.";
                 $this->message = "Vul alle velden in.";
                 return;
             }
@@ -70,15 +84,15 @@ class RegistrationCustomerController {
                  * @var Addresses $address The address object.
                  */
                 $address = new Addresses(
-                $data['PostalCode'],
-                $data['HouseNumber'],
-                $data['StreetName'],
-                $data['City'],
-                $data['Country']
+                    $data['PostalCode'],
+                    $data['HouseNumber'],
+                    $data['StreetName'],
+                    $data['City'],
+                    $data['Country']
                 );
 
-                
-                if(!$address->saveAddress()){
+
+                if (!$address->saveAddress()) {
                     throw new \Exception("Fout bij het opslaan van Address");
                 }
 
@@ -87,15 +101,15 @@ class RegistrationCustomerController {
                  * @var Customers $customer The customer object.
                  */
                 $customer = new Customers(
-                $customerID,
-                $data['FirstName'],
-                $data['LastName'],
-                $data['DateOfBirth'],
-                $data['PostalCode'],
-                $data['HouseNumber']
+                    $customerID,
+                    $data['FirstName'],
+                    $data['LastName'],
+                    $data['DateOfBirth'],
+                    $data['PostalCode'],
+                    $data['HouseNumber']
                 );
 
-                if(!$customer->saveCustomer()){
+                if (!$customer->saveCustomer()) {
                     throw new \Exception("Fout bij het opslaan van Customer");
                 }
 
@@ -104,30 +118,28 @@ class RegistrationCustomerController {
                  * @var UserAccounts $userAccount The user account object.
                  */
                 $userAccount = new UserAccounts(
-                $data['EmailAddress'],
-                $data['UserPassword'],
-                'pending',          // voorbeeld status
-                'customer',         // voorbeeld access rights
-                date('Y-m-d'),      // registratie datum vandaag
-                $data['PhoneNumber'] ?? '',
-                isset($data['newsletter']) ? 1 : 0,
-                null,
-                $customerID
+                    $data['EmailAddress'],
+                    $data['UserPassword'],
+                    'pending',          // voorbeeld status
+                    'customer',         // voorbeeld access rights
+                    date('Y-m-d'),      // registratie datum vandaag
+                    $data['PhoneNumber'] ?? '',
+                    isset($data['newsletter']) ? 1 : 0,
+                    null,
+                    $customerID
                 );
 
-                if (!$userAccount->saveUserAccount()){
+                if (!$userAccount->saveUserAccount()) {
                     throw new \Exception("Fout bij het opslaan van een UserAccount");
                 }
 
                 $db->commit();
-            } catch (\Exception $e){
+            } catch (\Exception $e) {
                 $db = Database::getConnection();
                 $db->rollback();
                 echo "Registratie mislukt: " . $e->getMessage();
                 exit;
             }
-
         }
     }
-    
 }

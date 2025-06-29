@@ -8,10 +8,6 @@
     flex-direction: column;
   }
 
-  .account-dropdown .account-btn {
-    display: none !important;
-  }
-
   header button.hamburger {
     display: block;
   }
@@ -473,6 +469,11 @@ footer p {
 @media (min-width: 1211px) {
   .language-button {
     display: none;
+  }
+  #nav-button-inloggen,
+  #nav-button-registratie {
+    display: none !important;
+    padding: 0 !important;
   }
 }
 

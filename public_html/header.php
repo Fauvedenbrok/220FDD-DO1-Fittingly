@@ -64,10 +64,10 @@ Session::start();
         <button id="winkelmand-btn">
           <a href="<?= $cartHref ?>"><?= $translator->get('header_navbar_winkelwagen')?></a>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" id="nav-button-inloggen">
           <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_inloggen')?></a>
         </button>
-        <button class="nav-button">
+        <button class="nav-button" id="nav-button-registratie">
           <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_registreren')?></a>
         </button>
 
