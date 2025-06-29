@@ -85,8 +85,9 @@
   color: #1a3030;
 }
 
-.form-row, .form-row h3 {
-  color: #1a3030; 
+.form-row,
+.form-row h3 {
+  color: #1a3030;
 }
 
 .form-row h3 {
@@ -99,7 +100,7 @@
   background-color: #cc9c4e;
   border-radius: 8px;
   border-color: #cc9c4e;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 20px;
   line-height: 39px;
   cursor: pointer;
@@ -113,14 +114,38 @@
   margin: auto;
 }
 
-#form-row-button-container button {
+#form-row-button-container button,
+#login-button-container input {
   color: #1a3030 !important;
   background-color: #cc9c4e;
   border-radius: 8px;
   border-color: #cc9c4e;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 20px;
   line-height: 39px;
-  width: 40%;
+  width: 50%;
   cursor: pointer;
+}
+
+#login-button-container input {
+  box-shadow: #3a3b33 1px 1px 1px;
+}
+
+@media (max-width: 850px) {
+  .registration-login-form-container {
+    width: 95%;
+  }
+
+  #form-row-button-container button,
+  #login-button-container input {
+    width: 100%;
+  }
+
+  .p-registration-login {
+    width: 95%;
+  }
+
+  .h2-registration-login {
+    width: 95%;
+  }
 }

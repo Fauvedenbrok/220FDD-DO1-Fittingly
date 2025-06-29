@@ -1,4 +1,5 @@
 <?php
+
 /**
  * en.php
  *
@@ -63,6 +64,8 @@ return [
     'header_navbar_8' => "Welcome",
     'header_navbar_9' => "My Account",
     'header_navbar_winkelwagen' => "Shopping Cart",
+    'header_navbar_inloggen' => "Login",
+    'header_navbar_registreren' => "Register",
     'header_dropdown_text' => "Account",
 
     // Footer

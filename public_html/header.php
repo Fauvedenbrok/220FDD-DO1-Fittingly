@@ -64,6 +64,12 @@ Session::start();
         <button id="winkelmand-btn">
           <a href="<?= $cartHref ?>"><?= $translator->get('header_navbar_winkelwagen')?></a>
         </button>
+        <button class="nav-button">
+          <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_inloggen')?></a>
+        </button>
+        <button class="nav-button">
+          <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_registreren')?></a>
+        </button>
 
         <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
 
