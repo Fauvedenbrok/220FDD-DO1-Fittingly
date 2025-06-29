@@ -153,8 +153,8 @@ return [
     'admin-navbar_7' => "Settings",
     'admin-navbar_8' => "Log Out?",
 
-    'adminportal_welcome_title' => "Welcome to the Admin Portal",
-    'adminportal_intro_1' => "Welcome to the admin portal. Here you can manage the different options.",
+    'adminportal_welcome_title' => "Admin Portal",
+    'adminportal_intro_1' => "Here you can manage the different options.",
     'adminportal_intro_2' => "Use the navigation bar at the top of your screen to navigate through the different sections.",
     'adminportal_intro_3' => "If you have any questions, please contact support.",
 
