@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CLI Arguments" tests="30" assertions="52" errors="2" failures="4" skipped="0" time="0.281621">
+    <testsuite name="AddressTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" tests="6" assertions="16" errors="0" failures="1" skipped="0" time="0.018313">
+      <testcase name="testCreateAssociativeArrayReturnsCorrectArray" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" line="40" class="AddressTest" classname="AddressTest" assertions="1" time="0.004088"/>
+      <testcase name="testSaveAddressInsertsIntoDatabase" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" line="53" class="AddressTest" classname="AddressTest" assertions="5" time="0.003221"/>
+      <testcase name="testToStringReturnsCorrectFormat" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" line="69" class="AddressTest" classname="AddressTest" assertions="1" time="0.000879"/>
+      <testcase name="testSaveAddressWithEmptyFields" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" line="76" class="AddressTest" classname="AddressTest" assertions="5" time="0.001029"/>
+      <testcase name="testDuplicateAddressPrimaryKey" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" line="93" class="AddressTest" classname="AddressTest" assertions="2" time="0.002197"/>
+      <testcase name="testSaveAddressWithLongStrings" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php" line="107" class="AddressTest" classname="AddressTest" assertions="2" time="0.006900">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">AddressTest::testSaveAddressWithLongStrings&#13;
+Failed asserting that false is not false.
+&#13;
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AddressTest.php:120</failure>
+      </testcase>
+    </testsuite>
+    <testsuite name="AdminSearchWordsTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AdminSearchWordsTest.php" tests="1" assertions="5" errors="0" failures="0" skipped="0" time="0.027573">
+      <testcase name="testGetSearchWords" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\AdminSearchWordsTest.php" line="12" class="AdminSearchWordsTest" classname="AdminSearchWordsTest" assertions="5" time="0.027573"/>
+    </testsuite>
+    <testsuite name="CartCheckoutTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartCheckoutTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.000531">
+      <testcase name="testSessionOrderIdIsSet" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartCheckoutTest.php" line="18" class="CartCheckoutTest" classname="CartCheckoutTest" assertions="1" time="0.000436"/>
+      <testcase name="testSessionUserEmailIsSet" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartCheckoutTest.php" line="23" class="CartCheckoutTest" classname="CartCheckoutTest" assertions="1" time="0.000095"/>
+    </testsuite>
+    <testsuite name="CartHandlerTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartHandlerTest.php" tests="3" assertions="5" errors="0" failures="0" skipped="0" time="0.000217">
+      <testcase name="testAddItemToCart" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartHandlerTest.php" line="20" class="CartHandlerTest" classname="CartHandlerTest" assertions="2" time="0.000086"/>
+      <testcase name="testUpdateQuantityInCart" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartHandlerTest.php" line="28" class="CartHandlerTest" classname="CartHandlerTest" assertions="1" time="0.000055"/>
+      <testcase name="testRemoveItemFromCart" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CartHandlerTest.php" line="36" class="CartHandlerTest" classname="CartHandlerTest" assertions="2" time="0.000076"/>
+    </testsuite>
+    <testsuite name="CrudModelTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" tests="7" assertions="15" errors="0" failures="0" skipped="0" time="0.014113">
+      <testcase name="testCreateData" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="38" class="CrudModelTest" classname="CrudModelTest" assertions="2" time="0.001392"/>
+      <testcase name="testReadAllById" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="49" class="CrudModelTest" classname="CrudModelTest" assertions="1" time="0.001397"/>
+      <testcase name="testReadAll" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="58" class="CrudModelTest" classname="CrudModelTest" assertions="3" time="0.002379"/>
+      <testcase name="testReadAllByColumn" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="71" class="CrudModelTest" classname="CrudModelTest" assertions="3" time="0.002763"/>
+      <testcase name="testUpdateData" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="86" class="CrudModelTest" classname="CrudModelTest" assertions="2" time="0.002758"/>
+      <testcase name="testCheckRecordExists" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="99" class="CrudModelTest" classname="CrudModelTest" assertions="2" time="0.001788"/>
+      <testcase name="testGetForeignKeyValue" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\CrudModelTest.php" line="111" class="CrudModelTest" classname="CrudModelTest" assertions="2" time="0.001635"/>
+    </testsuite>
+    <testsuite name="LoginCustomerControllerTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\LoginCustomerControllerTest.php" tests="2" assertions="2" errors="0" failures="2" skipped="0" time="0.001343">
+      <testcase name="testLoginWithEmptyFields" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\LoginCustomerControllerTest.php" line="13" class="LoginCustomerControllerTest" classname="LoginCustomerControllerTest" assertions="1" time="0.000667">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">LoginCustomerControllerTest::testLoginWithEmptyFields&#13;
+Failed asserting that '' [ASCII](length: 0) contains "Vul alle verplichte velden in." [ASCII](length: 30).
+&#13;
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\LoginCustomerControllerTest.php:26</failure>
+      </testcase>
+      <testcase name="testLoginWithInvalidEmail" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\LoginCustomerControllerTest.php" line="29" class="LoginCustomerControllerTest" classname="LoginCustomerControllerTest" assertions="1" time="0.000675">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">LoginCustomerControllerTest::testLoginWithInvalidEmail&#13;
+Failed asserting that '' [ASCII](length: 0) contains "Ongeldig e-mailadres." [ASCII](length: 21).
+&#13;
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\LoginCustomerControllerTest.php:42</failure>
+      </testcase>
+    </testsuite>
+    <testsuite name="RegistrationCustomerControllerTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php" tests="3" assertions="1" errors="2" failures="1" skipped="0" time="0.058090">
+      <testcase name="testRegisterMissingFields" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php" line="39" class="RegistrationCustomerControllerTest" classname="RegistrationCustomerControllerTest" assertions="0" time="0.004182">
+        <error type="ArgumentCountError">RegistrationCustomerControllerTest::testRegisterMissingFields&#13;
+ArgumentCountError: Too few arguments to function Models\Addresses::__construct(), 0 passed in C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\project_root\Controllers\RegistrationCustomerController.php on line 34 and at least 5 expected
+&#13;
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\project_root\Models\Addresses.php:48
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\project_root\Controllers\RegistrationCustomerController.php:34
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php:49</error>
+      </testcase>
+      <testcase name="testInvalidEmail" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php" line="56" class="RegistrationCustomerControllerTest" classname="RegistrationCustomerControllerTest" assertions="0" time="0.000369">
+        <error type="ArgumentCountError">RegistrationCustomerControllerTest::testInvalidEmail&#13;
+ArgumentCountError: Too few arguments to function Models\Addresses::__construct(), 0 passed in C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\project_root\Controllers\RegistrationCustomerController.php on line 34 and at least 5 expected
+&#13;
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\project_root\Models\Addresses.php:48
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\project_root\Controllers\RegistrationCustomerController.php:34
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php:73</error>
+      </testcase>
+      <testcase name="testSaveCustomerDetailsFails" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php" line="80" class="RegistrationCustomerControllerTest" classname="RegistrationCustomerControllerTest" assertions="1" time="0.053539">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">RegistrationCustomerControllerTest::testSaveCustomerDetailsFails&#13;
+Failed asserting that '' [ASCII](length: 0) contains "Fout bij het opslaan van Customer" [ASCII](length: 33).
+&#13;
+C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\RegistrationCustomerControllerTest.php:110</failure>
+      </testcase>
+    </testsuite>
+    <testsuite name="ValidatorTest" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" tests="6" assertions="6" errors="0" failures="0" skipped="0" time="0.161440">
+      <testcase name="testIsEmptyReturnsTrueWhenFieldIsEmpty" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" line="9" class="ValidatorTest" classname="ValidatorTest" assertions="1" time="0.000101"/>
+      <testcase name="testIsEmptyReturnsFalseWhenAllFieldsAreFilled" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" line="16" class="ValidatorTest" classname="ValidatorTest" assertions="1" time="0.000091"/>
+      <testcase name="testIsValidEmailReturnsTrueForValidEmail" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" line="23" class="ValidatorTest" classname="ValidatorTest" assertions="1" time="0.000059"/>
+      <testcase name="testIsValidEmailReturnsFalseForInvalidEmail" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" line="28" class="ValidatorTest" classname="ValidatorTest" assertions="1" time="0.000047"/>
+      <testcase name="testIsPasswordWrongReturnsFalseForCorrectPassword" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" line="33" class="ValidatorTest" classname="ValidatorTest" assertions="1" time="0.081870"/>
+      <testcase name="testIsPasswordWrongReturnsTrueForIncorrectPassword" file="C:\Users\bartk\Documents\Avans\Fittingly\220FDD-DO1-Fittingly\tests\ValidatorTest.php" line="41" class="ValidatorTest" classname="ValidatorTest" assertions="1" time="0.079273"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

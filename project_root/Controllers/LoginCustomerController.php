@@ -6,10 +6,10 @@ use Models\UserAccounts;
 use Core\Validator;
 use Core\Session;
 
-require_once __DIR__ . '../Core/validator.php';
-require_once __DIR__ . '../Core/Database.php';
-require_once __DIR__ . '../Models/UserAccounts.php';
-require_once __DIR__ . '../Core/Session.php';
+require_once __DIR__ . '/../Core/Validator.php';
+require_once __DIR__ . '/../Core/Database.php';
+require_once __DIR__ . '/../Models/UserAccounts.php';
+require_once __DIR__ . '/../Core/Session.php';
 
 
 
@@ -28,7 +28,7 @@ class LoginCustomerController
      *
      * @return void
      */
-    public function login(): void
+    public function login(bool $testMode = false): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = $_POST;
@@ -37,29 +37,41 @@ class LoginCustomerController
             $validation = new Validator();
             if ($validation->isEmpty($data, $required)) {
                 Session::set('login_error', "Vul alle verplichte velden in.");
+                if (!$testMode) {
                 header("Location: /public_html/inloggen.php");
                 exit;
+                }
+                return;
             }
 
             if (!$validation->isValidEmail($data['EmailAddress'])) {
                 Session::set('login_error', 'Ongeldig e-mailadres.');
+                if (!$testMode) {
                 header("Location: /public_html/inloggen.php");
                 exit;
+                }
+                return;
             }
 
             $user = UserAccounts::getUserAccountByEmail($data['EmailAddress']);
 
             if (!$user) {
                 Session::set('login_error', 'Geen gebruiker gevonden met dit e-mailadres.');
+                if (!$testMode) {
                 header("Location: /public_html/inloggen.php");
                 exit;
+                }
+                return;
             }
 
             $hashed_password = $user['UserPassword'];
             if (!password_verify($data['UserPassword'], $hashed_password)) {
                 Session::set('login_error', 'Ongeldig wachtwoord');
+                if (!$testMode) {
                 header("Location: /public_html/inloggen.php");
                 exit;
+                }
+                return;
             }
 
             // Set session variables

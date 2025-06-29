@@ -20,10 +20,10 @@ class LoginCustomerControllerTest extends TestCase
 
         ob_start();
         $controller = new LoginCustomerController();
-        $controller->login();
+        $controller->login(true);
         $output = ob_get_clean();
 
-        $this->assertStringContainsString('Vul alle velden in.', $output);
+        $this->assertStringContainsString('Vul alle verplichte velden in.', $output);
     }
 
     public function testLoginWithInvalidEmail(): void
@@ -36,7 +36,7 @@ class LoginCustomerControllerTest extends TestCase
 
         ob_start();
         $controller = new LoginCustomerController();
-        $controller->login();
+        $controller->login(true);
         $output = ob_get_clean();
 
         $this->assertStringContainsString('Ongeldig e-mailadres.', $output);
