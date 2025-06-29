@@ -6,7 +6,7 @@
   
 }
 
-@media screen and (max-width: 1210px) {
+@media screen and (max-width: 1470px) {
   div#about,
   .hero-sectie {
     flex-direction: column;
@@ -20,7 +20,9 @@
     display: none;
   }
 
-
+  header button.hamburger {
+    display: block;
+  }
 
   header nav {
     display: none;
@@ -476,7 +478,7 @@ footer p {
   width: 50%;
 }
 
-@media (min-width: 1211px) {
+@media (min-width: 1471px) {
   .language-button {
     display: none;
   }
