@@ -43,6 +43,9 @@ use Core\Session;
             <h2 class="h2-registration-login"> <?= $translator->get('inlogpagina_header_text') ?> </h2>
             <p class="p-registration-login"> <?= $translator->get('inlogpagina_paragraph_text') ?> </p>
 
+            <div id="inloggen-popup" class="popup hidden">
+            <?= $translator->get('product_list_view_customer_popup') ?>
+            </div>
 
             <div class="registration-login-form-container">
 
@@ -65,9 +68,42 @@ use Core\Session;
     <footer>
     </footer>
     <script src="js/scripts.js"></script>
+    <?php
+            $message = htmlspecialchars($_SESSION['login_error'] ?? '', ENT_QUOTES, 'UTF-8');
+            if ($message === 'Vul alle verplichte velden in.'): ?>
+                <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                        alert("Vul alle verplichte velden in.");
+                    });
+                </script>
+            <?php
+            elseif($message === 'Ongeldig e-mailadres.'):
+            ?>
+            <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                        alert("Ongeldig e-mailadres.");
+                    });
+                </script>
+                <?php
+            elseif($message === 'Geen gebruiker gevonden met dit e-mailadres.'):
+            ?>
+            <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                        alert("Geen gebruiker gevonden met dit e-mailadres.");
+                    });
+                </script>
+                    <?php
+            elseif($message === 'Ongeldig wachtwoord'):
+            ?>
+            <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                        alert("Ongeldig wachtwoord");
+                    });
+                </script>
+            <?php endif; ?>
     <script>
         includeHTML("header.php", "header");
-        includeHTML("footer.php", "footer")
+        includeHTML("footer.php", "footer");
     </script>
 
 </body>
