@@ -50,27 +50,34 @@ Session::start();
         <?php
         $cartHref = Session::exists('user_email') ? 'cart.php' : 'inloggen.php';
         ?>
+
         <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
           <button id="nav-button-welkom" class="nav-button" class="nav-profiel"> <?= $translator->get('header_navbar_8') ?> <?= htmlspecialchars($userName) ?>
           </button>
-          <button class="nav-button">
-            <a class="nav-button-tekst" href="index.php"><?= $translator->get('header_navbar_1') ?></a>
-          </button>
-          <button class="nav-button">
-            <a class="nav-button-tekst" href="productpagina.php"><?= $translator->get('header_navbar_7') ?></a>
-          </button>
-          <button class="nav-button">
-            <a class="nav-button-tekst" href="partnerpagina.php"><?= $translator->get('header_navbar_2') ?></a>
-          </button>
-          <button class="nav-button">
-            <a class="nav-button-tekst" href="contact.php"><?= $translator->get('header_navbar_3') ?></a>
-          </button>
+        <?php endif; ?>
 
+        <button class="nav-button">
+          <a class="nav-button-tekst" href="index.php"><?= $translator->get('header_navbar_1') ?></a>
+        </button>
+        <button class="nav-button">
+          <a class="nav-button-tekst" href="productpagina.php"><?= $translator->get('header_navbar_7') ?></a>
+        </button>
+        <button class="nav-button">
+          <a class="nav-button-tekst" href="partnerpagina.php"><?= $translator->get('header_navbar_2') ?></a>
+        </button>
+        <button class="nav-button">
+          <a class="nav-button-tekst" href="contact.php"><?= $translator->get('header_navbar_3') ?></a>
+        </button>
+
+        <?php if (Session::exists('user_email')): $userName = UserAccounts::getUserNameBySession(); ?>
           <button class="winkelmand-btn" id="winkelmand-btn-text">
             <a href="<?= $cartHref ?>"><?= $translator->get('header_navbar_winkelwagen') ?></a>
           </button>
           <button class="winkelmand-btn" id="winkelmand-btn-img">
             <a href="<?= $cartHref ?>"> <img src="/public_html/Images/icons/winkelmand.png" alt=""></a>
+          </button>
+          <button id="nav-button-logout">
+            <a href="../project_root/Core/login_handler.php?action=logout" class="nav-button-tekst"><?= $translator->get('header_navbar_6') ?></a>
           </button>
 
           <div class="account-dropdown">
@@ -87,6 +94,13 @@ Session::start();
           </div>
 
         <?php else: ?>
+          </button>
+          <button class="nav-button" id="nav-button-inloggen">
+            <a class="nav-button-tekst" href="inloggen.php"><?= $translator->get('header_navbar_inloggen') ?></a>
+          </button>
+          <button class="nav-button" id="nav-button-registratie">
+            <a class="nav-button-tekst" href="klantregistratie.php"><?= $translator->get('header_navbar_registreren') ?></a>
+          </button>
           <div class="account-dropdown">
             <button class="account-btn" onclick="toggleAccountMenu()">
               <img src="./Images/icons/profiel.png" alt="Account">

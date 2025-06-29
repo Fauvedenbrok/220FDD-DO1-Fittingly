@@ -483,7 +483,8 @@ footer p {
   }
 
   #nav-button-inloggen,
-  #nav-button-registratie {
+  #nav-button-registratie,
+  #nav-button-logout {
     display: none !important;
   }
 
