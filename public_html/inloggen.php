@@ -43,10 +43,6 @@ use Core\Session;
             <h2 class="h2-registration-login"> <?= $translator->get('inlogpagina_header_text') ?> </h2>
             <p class="p-registration-login"> <?= $translator->get('inlogpagina_paragraph_text') ?> </p>
 
-            <div id="inloggen-popup" class="popup hidden">
-            <?= $translator->get('product_list_view_customer_popup') ?>
-            </div>
-
             <div class="registration-login-form-container">
 
                 <form method="post" action="../project_root/Core/login_handler.php">

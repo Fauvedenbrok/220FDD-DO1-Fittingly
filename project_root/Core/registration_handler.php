@@ -21,6 +21,6 @@ if (empty($controller->message)) {
     exit();
 } else {
     $_SESSION['registration_error'] = $controller->message;
-    header("Location: /public_html/klantregistratie.php");
+    header("Location: /public_html/klantregistratie.php?message=error");
     exit();
 }

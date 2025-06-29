@@ -138,6 +138,14 @@ $translator = init_translator();
                     });
                 </script>
             <?php endif; ?>
+
+            <?php if ($message === 'error'): ?>
+                <script>
+                    window.addEventListener('DOMContentLoaded', function() {
+                        alert("Please fill in all fields.");
+                    });
+                </script>
+            <?php endif; ?>
             <div>
             </div>
         </div>
