@@ -43,6 +43,10 @@ $translator = init_translator();
             <div class="registration-login-form-container">
 
                 <form method="post" action="../project_root/Core/registration_handler.php">
+                    <div class="form-row">
+                        <br>
+                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow_persoon')?>:</h3>
+                    </div>
                     <div class="form-row-registration">
                         <label for="name">
                             <?= $translator->get('klantregistratiepagina_formulier_naam') ?>
@@ -93,7 +97,7 @@ $translator = init_translator();
 
                     <div class="form-row">
                         <br>
-                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow')?>:</h3>
+                        <h3><?= $translator->get('klantregistratiepagina_formulier_formrow_login')?>:</h3>
                     </div>
                     <div class="form-row-login">
                         <label for="email">
@@ -113,7 +117,7 @@ $translator = init_translator();
                                 <p id="newsletter-checkbox-text"><?= $translator->get('klantregistratiepagina_formulier_nieuwsbrief') ?></p>
                             </label>
                         </div>
-                        <div id="form-row-button-container">
+                        <div id="login-button-container">
                             <input type="submit" value="<?= $translator->get('klantregistratiepagina_formulier_button') ?>" name="submit">
                         </div>
                     </div>

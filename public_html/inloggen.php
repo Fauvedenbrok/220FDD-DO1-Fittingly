@@ -55,7 +55,7 @@ use Core\Session;
                         <?= $translator->get('inlogpagina_formulier_password') ?>
                         <input type="password" name="UserPassword" placeholder="<?= $translator->get('inlogpagina_formulier_password_placeholder') ?> "><br>
                     </label>
-                    <label>
+                    <label id="form-row-button-container">
                         <button><?= $translator->get('inlogpagina_formulier_button') ?> </button>
                     </label>
                 </form>
