@@ -32,7 +32,7 @@ class ValidatorTest extends TestCase
 
     public function testIsPasswordWrongReturnsFalseForCorrectPassword()
     {
-        $password = 'MySecret123!';
+        $password = 'MyPassword123!';
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $validator = new Validator();
         $this->assertFalse($validator->is_password_wrong($password, $hash));
@@ -40,7 +40,7 @@ class ValidatorTest extends TestCase
 
     public function testIsPasswordWrongReturnsTrueForIncorrectPassword()
     {
-        $password = 'MySecret123!';
+        $password = 'MyPassword23!';
         $wrongPassword = 'WrongPassword!';
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $validator = new Validator();

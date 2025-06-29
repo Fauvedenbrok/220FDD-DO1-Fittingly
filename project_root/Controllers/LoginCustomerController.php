@@ -6,10 +6,10 @@ use Models\UserAccounts;
 use Core\Validator;
 use Core\Session;
 
-require_once "../Core/validator.php";
-require_once "../Core/Database.php";
-require_once "../Models/UserAccounts.php";
-require_once "../Core/Session.php";
+require_once __DIR__ . '../Core/validator.php';
+require_once __DIR__ . '../Core/Database.php';
+require_once __DIR__ . '../Models/UserAccounts.php';
+require_once __DIR__ . '../Core/Session.php';
 
 
 
