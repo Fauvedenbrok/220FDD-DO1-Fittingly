@@ -87,7 +87,7 @@ Session::start();
               </span>
 
             </button>
-            <div id="account-menu" class="account-menu">
+            <div id="account-menu" class="account-menu nav-button">
               <a class="nav-button-tekst" href="mijnaccount.php"><?= $translator->get('header_navbar_9') ?></a>
               <a class="nav-button-tekst" href="../project_root/Core/login_handler.php?action=logout"><?= $translator->get('header_navbar_6') ?></a>
             </div>
