@@ -62,78 +62,88 @@ class RegistrationCustomerController
                 $this->message = "Vul alle velden in.";
                 return;
             }
-        }
 
-        try {
-            $db = Database::getConnection();
-            $db->beginTransaction();
-
-            /**
-             * Generate a unique customer ID using UUID.
-             * @var string $customerID The generated customer ID.
-             */
-            $customerID = Uuid::uuid4()->toString();
-
-            /**
-             * Create and save the address.
-             * @var Addresses $address The address object.
-             */
-            $address = new Addresses(
-                $data['PostalCode'],
-                $data['HouseNumber'],
-                $data['StreetName'],
-                $data['City'],
-                $data['Country']
-            );
-
-
-            if (!$address->saveAddress()) {
-                throw new \Exception("Fout bij het opslaan van Address");
+            if (!$validation->isValidEmail($data['EmailAddress'])) {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $_SESSION['registration_error'] = "Ongeldig e-mailadres.";
+                $this->message = "Ongeldig e-mailadres.";
+                return;
             }
 
-            /**
-             * Create and save the customer.
-             * @var Customers $customer The customer object.
-             */
-            $customer = new Customers(
-                $customerID,
-                $data['FirstName'],
-                $data['LastName'],
-                $data['DateOfBirth'],
-                $data['PostalCode'],
-                $data['HouseNumber']
-            );
+            // Now start the try { ... } catch { ... } block for database actions
+            try {
+                $db = Database::getConnection();
+                $db->beginTransaction();
 
-            if (!$customer->saveCustomer()) {
-                throw new \Exception("Fout bij het opslaan van Customer");
+                /**
+                 * Generate a unique customer ID using UUID.
+                 * @var string $customerID The generated customer ID.
+                 */
+                $customerID = Uuid::uuid4()->toString();
+
+                /**
+                 * Create and save the address.
+                 * @var Addresses $address The address object.
+                 */
+                $address = new Addresses(
+                    $data['PostalCode'],
+                    $data['HouseNumber'],
+                    $data['StreetName'],
+                    $data['City'],
+                    $data['Country']
+                );
+
+
+                if (!$address->saveAddress()) {
+                    throw new \Exception("Fout bij het opslaan van Address");
+                }
+
+                /**
+                 * Create and save the customer.
+                 * @var Customers $customer The customer object.
+                 */
+                $customer = new Customers(
+                    $customerID,
+                    $data['FirstName'],
+                    $data['LastName'],
+                    $data['DateOfBirth'],
+                    $data['PostalCode'],
+                    $data['HouseNumber']
+                );
+
+                if (!$customer->saveCustomer()) {
+                    throw new \Exception("Fout bij het opslaan van Customer");
+                }
+
+                /**
+                 * Create and save the user account.
+                 * @var UserAccounts $userAccount The user account object.
+                 */
+                $userAccount = new UserAccounts(
+                    $data['EmailAddress'],
+                    $data['UserPassword'],
+                    'pending',          // voorbeeld status
+                    'customer',         // voorbeeld access rights
+                    date('Y-m-d'),      // registratie datum vandaag
+                    $data['PhoneNumber'] ?? '',
+                    isset($data['newsletter']) ? 1 : 0,
+                    null,
+                    $customerID
+                );
+
+                if (!$userAccount->saveUserAccount()) {
+                    throw new \Exception("Fout bij het opslaan van een UserAccount");
+                }
+
+                $db->commit();
+            } catch (\Exception $e) {
+                $db = Database::getConnection();
+                $db->rollback();
+                echo "Registratie mislukt: " . $e->getMessage();
+                exit;
             }
-
-            /**
-             * Create and save the user account.
-             * @var UserAccounts $userAccount The user account object.
-             */
-            $userAccount = new UserAccounts(
-                $data['EmailAddress'],
-                $data['UserPassword'],
-                'pending',          // voorbeeld status
-                'customer',         // voorbeeld access rights
-                date('Y-m-d'),      // registratie datum vandaag
-                $data['PhoneNumber'] ?? '',
-                isset($data['newsletter']) ? 1 : 0,
-                null,
-                $customerID
-            );
-
-            if (!$userAccount->saveUserAccount()) {
-                throw new \Exception("Fout bij het opslaan van een UserAccount");
-            }
-
-            $db->commit();
-        } catch (\Exception $e) {
-            $db = Database::getConnection();
-            $db->rollback();
-            echo "Registratie mislukt: " . $e->getMessage();
-            exit;
         }
     }
 }
