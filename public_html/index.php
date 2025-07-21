@@ -167,8 +167,8 @@ use Core\Session;
 </script>
 
 <script>
-  includeHTML("/public_html/header.php", "header");
-  includeHTML("/public_html/footer.php", "footer");
+  includeHTML("header.php", "header");
+  includeHTML("footer.php", "footer");
 </script>
 
 
